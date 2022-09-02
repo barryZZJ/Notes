@@ -1,0 +1,52 @@
+Content-Type: text/x-zim-wiki
+
+字号：
+三号16pt、小三15pt、四号14pt、小四12pt、五号10.5pt
+pt = point = word中的磅
+
+{\fontsize{xpt}{1.2xpt} \selectfont sometext} 
+% 如果不是在导言区，\fontsize 的设定需要 \selectfont 命令才能立即生效
+
+\zihao{字号} 数字
+
+标准文档类中的字号大小。
+字号 10pt 选项（默认） 11pt 选项 12pt 选项
+\tiny 5pt 6pt 6pt
+\scriptsize 7pt 8pt 8pt
+\footnotesize 8pt 9pt 10pt
+\small 9pt 10pt 10.95pt
+\normalsize 10pt 10.95pt 12pt
+\large 12pt 12pt 14.4pt
+\Large 14.4pt 14.4pt 17.28pt
+\LARGE 17.28pt 17.28pt 20.74pt
+\huge 20.74pt 20.74pt 24.88pt
+\Huge 24.88pt 24.88pt 24.88pt
+
+
+字体：
+\textbf 粗体
+\textit 斜体
+\emph 强调，默认为斜体
+
+font family:
+\rmfamily roman font family (times new roman)
+\sffamily sans serif font family
+\ttfamily monospaced font family
+
+\mdseries regular
+\bfseries bold
+
+\upshape 直体
+\slshape 倾斜体
+\itshape 意大利斜体
+\scshape 全大写不同大小
+
+局部使用：
+1.{\zihao{x} text}
+2.在\begin .. \end 内则只影响这一部分
+
+如果不带大括号，默认后文全部使用该字号
+
+数学环境：
+\mathbf 粗体
+\mathcal 花体 \bm{\mathcal{}} 粗花体（需要宏包bm）

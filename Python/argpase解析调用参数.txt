@@ -1,0 +1,37 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2022-09-02T12:00:59+08:00
+
+https://docs.python.org/zh-cn/3/howto/argparse.html
+https://docs.python.org/zh-cn/3/library/argparse.html#module-argparse
+
+import argparse
+parser = argparse.ArgumentParser()
+
+# 位置参数（必须参数）
+parser.add_argument("some", help="helpful text", type=int)
+add_argument参数：
+nargs:  '+' 可获取多个参数，返回一个列表；整数：读取指定个数的参数
+help 帮助说明
+type 保存类型
+default 默认值
+metavar
+choices
+
+# 可选参数（flag）
+parser.add_argument("-v", "--verbose", action="store_true") # 使用-v时该选项为true，否则为false
+# 接收参数
+parser.add_argument("-m", "--msg", type=int, default=1, choices=[0,1,2])
+parser.add_argument("-v", type=bool, default=False) # 这种情况下不带-v则为False，只要带了，就算-v False也是True
+
+metavar="xxx" : 改变帮助内容里显示的参数名
+
+args = parser.parse_args()
+
+获取参数：
+args.some (如果add_argument中为'-'，这里需要使用'_')
+args.verbose
+args.msg
+
+存储：
+vars(args)，输出字典

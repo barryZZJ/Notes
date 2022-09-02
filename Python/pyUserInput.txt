@@ -1,0 +1,4 @@
+Content-Type: text/x-zim-wiki
+
+模拟鼠标键盘操作
+https://pypi.org/project/PyUserInput/

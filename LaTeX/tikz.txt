@@ -1,0 +1,35 @@
+Content-Type: text/x-zim-wiki
+
+https://tex.stackexchange.com/questions/594797/converting-equations-to-images
+https://latexdraw.com/how-to-convert-a-latex-pdf-to-png/
+
+导出为图片
+52 Externalization Library
+可以把公式、表格什么的都导出成图片
+
+1. usedlibrary添加external
+2. \begin{document}前添加\tikzexternalize %[prefix=tikz/]加了这个导入会报错不知道为什么
+3. 转png （这一步很麻烦，先使用png export编译一次，然后手动执行magick -density 300 "image.pdf" "image.png"，再使用png import重新编译）
+\tikzset{%
+    % Add size information to the .dpth file (png is in density not size)
+    /pgf/images/external info,
+    % Use the png export AND the import
+    use png/.style={png export,png import},
+    png export/.style={
+        external/system call=%
+        {xelatex \tikzexternalcheckshellescape -halt-on-error -interaction=batchmode -jobname "\image" "\texsource"}%
+    },
+    png import/.code={%
+        \tikzset{%
+            /pgf/images/include external/.code={%
+                % Here you can alter to whatever you want
+                % \pgfexternalwidth is only available if /pgf/images/external info
+                % is set
+                \includegraphics%
+                [width=\pgfexternalwidth,height=\pgfexternalheight]%
+                {{##1}.png}%
+            }%
+        }%
+    }%
+}
+4. latexmk main.tex -xelatex -shell-escape

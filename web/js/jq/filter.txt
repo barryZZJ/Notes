@@ -1,0 +1,7 @@
+Content-Type: text/x-zim-wiki
+
+function getElementsByText(elems, value){
+  return elems.filter(function(index) {
+    return $(this).text() == value;
+  });
+}

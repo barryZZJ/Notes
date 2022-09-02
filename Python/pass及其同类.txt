@@ -1,0 +1,22 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+
+https://www.bilibili.com/video/BV1wZ4y1a7qi
+
+书写文档API的时候用、写了一个函数暂时不去实现的时候用
+
+pass: 关键字
+... == Ellipsis: 一个对象
+
+
+demo:
+class Person:
+	...
+def func():
+	...
+
+...可用于注解
+def func(arg: ...) -> ...:
+	return None
+
+python3.10+的注解支持联合类型: 如[str|int]

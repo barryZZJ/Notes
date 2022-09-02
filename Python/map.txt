@@ -1,0 +1,13 @@
+Content-Type: text/x-zim-wiki
+
+把函数作用于列表的每个元素
+返回结果为map对象，需要手动转换为list
+
+map(int, ["1", "2"]) # -> [1, 2]
+<==> 
+[int(i) for i in ["1", "2"]]
+
+"".join(map(chr, [105, 110, 116, 101, 103, 114, 105, 116, 121])) # 'integrity'
+
+快速格式转换：
+[*map(xxx)]

@@ -1,0 +1,6 @@
+Content-Type: text/x-zim-wiki
+
+插入行、格：
+var tr = table.insertRow(?index)
+var td = tr.insertCell(?index)
+table有属性.rows可以访问所有tr行

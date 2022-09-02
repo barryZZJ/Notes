@@ -1,0 +1,9 @@
+Content-Type: text/x-zim-wiki
+
+\chapter{⟨title⟩} 
+\section{⟨title⟩} 
+\subsection{⟨title⟩}
+\subsubsection{⟨title⟩} 
+\paragraph{⟨title⟩} 
+\subparagraph{⟨title⟩}
+其中 \chapter 只在 book 和 report 文档类有定义。

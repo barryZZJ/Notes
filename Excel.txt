@@ -1,0 +1,10 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2022-09-02T15:28:35+08:00
+
+====== 秒转时分秒 ======
+https://zh-cn.extendoffice.com/documents/excel/3300-excel-convert-seconds-to-hh-mm-ss.html
+1. = A2 / 86400
+2. custom: dd:hh:mm:ss
+
+= TEXT(A2 / 86400,CHOOSE(MATCH(A2,{0,60,3600},1)," s"" sec"""," m"" min"" s"" sec"""," [ h]"" hrs"" m"" min"" s"" sec"""))

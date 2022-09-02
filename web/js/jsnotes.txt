@@ -1,0 +1,33 @@
+Content-Type: text/x-zim-wiki
+
+alert() confirm() 输入：prompt()
+输出：console.log(xx)
+
+一般在外部定义
+var xx = document.getElementById("xx");
+以及
+var Init = {
+  init(){...}
+}
+Init.init();
+
+_self = unsafeWindow,
+url = location.pathname,
+$ = _self.jQuery;
+
+elem.on('eventname', function(){..})
+elem.div=$('<div>....</div>').appendTo('body').on('click','button, td', function(){...});
+elem.appendTo('body')
+p = $("xx").detach(); 删除元素，但内容保留，以便以后插入
+按键
+    $(document).keydown(function(event) {
+        if (event.keyCode == 38) {
+            setting.div.detach();
+        } else if (event.keyCode == 40) {
+            setting.div.appendTo('body');
+        }
+    });
+
+
+当前网址
+window.location.href/ .origin / .pathname

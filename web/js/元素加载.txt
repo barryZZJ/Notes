@@ -1,0 +1,4 @@
+Content-Type: text/x-zim-wiki
+
+等某元素加载完：
+element.redy(function(){...});

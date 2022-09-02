@@ -1,0 +1,12 @@
+Content-Type: text/x-zim-wiki
+
+在赋值语句后加上 # type : a_type
+如
+net = Net() # type : nn.Module
+
+或
+net : nn.Module = Net()
+
+或
+在参数列表里加
+f(net: nn.Module)

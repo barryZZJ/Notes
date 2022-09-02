@@ -1,0 +1,74 @@
+Content-Type: text/x-zim-wiki
+
+
+0. enumerate环境
+加参数[\itemindent=1em]，设置缩进
+
+1. itemize
+整段缩进
+\begin{itemize}
+\item[]
+xxxx
+\end{itemize}
+
+段前符号不缩进，段落缩进
+\begin{itemize}
+\item[(1)]
+xxxx
+\end{itemize}
+
+（方括号即修改默认的点为新的符号）
+
+段首缩进
+\indent xxx
+\noindent xxx
+\usepackage{indentfirst}
+\setlength{\parindent}{0pt}
+
+2. description环境
+定义内的文字加粗显示。默认版式为悬挂缩进
+
+5.调整浮动体（图/表）/小标题上下的间距：
+5.1在浮动体内前：\vspace{-8mm}；后：\vspace{-3mm}；并减小字号：\small
+
+5.2 调整浮动体标题(与图片/正文)上/下的间距：
+在浮动环境内开头处添加：
+\setlength{\abovecaptionskip}{3pt} %可负数
+\setlength{\belowcaptionskip}{5pt} %可负数
+
+
+6.调整公式与正文的间距：
+在equation环境外用一组大括号括起来，在{}内添加：设得越小间距越小，但不能为负数
+当公式前一行/后一行的文字很短，不超过公式的时候，生效的是\abovedisplayshortskip、\belowdisplayshortskip
+（不要加small，反而间距会变大）
+
+每个公式单独调整：
+{\setlength{\abovedisplayskip}{3pt}
+\setlength{\belowdisplayskip}{3pt}
+\setlength\abovedisplayshortskip{0pt}
+\setlength\belowdisplayshortskip{0pt}
+\small
+\begin{equation}...\end{equation}}%
+
+全局设置：
+在document环境之前写
+普通字号：
+\expandafter\def\expandafter\normalsize\expandafter{%
+    \normalsize
+    \setlength\abovedisplayskip{3pt}
+    \setlength\belowdisplayskip{3pt}
+    \setlength\abovedisplayshortskip{0pt}
+    \setlength\belowdisplayshortskip{0pt}
+}
+
+小一号
+\expandafter\def\expandafter\small\expandafter{%
+    \small
+    \setlength\abovedisplayskip{3pt}
+    \setlength\belowdisplayskip{3pt}
+    \setlength\abovedisplayshortskip{0pt}
+    \setlength\belowdisplayshortskip{0pt}
+}
+在每个equation外套一个{\small ...}
+
+7.参考文献可以把会议名改为缩写，减少空间

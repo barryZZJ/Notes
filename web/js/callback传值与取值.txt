@@ -1,0 +1,10 @@
+Content-Type: text/x-zim-wiki
+
+js判断函数是否存在并且执行
+typeof fn === "function" ? fn() : false;
+
+function f(callback){
+    typeof callback === "function" ? fn() : false;
+}
+
+f(function(){...});

@@ -1,0 +1,48 @@
+Content-Type: text/x-zim-wiki
+
+https://pandas.pydata.org/docs/development/contributing_docstring.html
+https://peps.python.org/pep-0257/
+
+一对撇号：`Italic` ： 斜体
+两对撇号：``Roman``：罗马字体
+
+:class:`~pandas.Series`
+:meth:`pandas.Series.sum`
+
+pandas docstring:
+        """
+        Generate a plot.
+
+        Render the data in the Series as a matplotlib plot of the
+        specified kind.
+
+        Parameters
+        ----------
+        kind : int, float, str, bool, optional
+            Kind of matplotlib plot.
+        color : str, default 'blue'
+            Color name or rgb code.
+        iterable_param: list of int, dict of {str : int}, tuple of (str, int, int), tuple of (str,)
+           Definition.
+        **kwargs
+            These parameters will be passed to the matplotlib plotting
+            function.
+
+        Returns
+        -------
+        float
+                Random number generated.
+        """
+
+def xxx(p, **kwargs):
+    """
+    definition of function. To refer param :p:
+    
+    :param p: definition of p
+    :type p: int
+    :return: definition of return value
+             continued definition (pay attention to indent)
+    :Keyword Arguments:
+        *   **key1** (*int*, *bytes*) --
+            Description...
+    """

@@ -1,0 +1,5 @@
+Content-Type: text/x-zim-wiki
+
+[submodule "cqu_auth"]
+	path = cqu_auth
+	url = git@github.com:barryZZJ/CQU_Authenticator.git

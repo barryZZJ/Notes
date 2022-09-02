@@ -1,0 +1,22 @@
+Content-Type: text/x-zim-wiki
+
+% \def\contentsname{Contents}
+% \def\listfigurename{List of Figures}
+% \def\listtablename{List of Tables}
+% \def\refname{References}
+% \def\indexname{Index}
+% \def\figurename{Fig.}
+% \def\tablename{TABLE}
+% \def\partname{Part}
+% \def\appendixname{Appendix}
+% \def\abstractname{Abstract}
+
+见zh_template
+\renewcommand{\contentsname}{目录}  % 将Contents改为目录
+\renewcommand{\abstractname}{摘要}  % 将Abstract改为摘要
+\renewcommand{\refname}{参考文献}   % 将References改为参考文献
+\renewcommand{\indexname}{索引}
+\renewcommand{\figurename}{图}
+\renewcommand{\tablename}{表}
+\renewcommand{\appendixname}{附录}
+\renewcommand{\algorithm}{算法}

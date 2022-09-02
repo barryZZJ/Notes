@@ -1,0 +1,170 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+
+美化数据处理，方便地进行数据分析、处理统计数据、矩阵运算
+
+https://pandas.pydata.org/docs/
+https://www.pypandas.cn/docs/
+https://www.runoob.com/pandas/pandas-tutorial.html
+
+pandas主要是Series和DataFrame（网格化二维数组）
+
+pandas.DataFrame( data, index, columns, dtype, copy)
+data：一组数据(ndarray、series, map, lists, dict, List[dict] 等类型)
+index：索引值，或者可以称为行标签。
+columns：列标签，默认为 RangeIndex (0, 1, 2, …, n) 。
+
+读取csv：df=pd.read_csv(path,header=None)
+保存csv：df.to_csv(path,header=True,index=False)是否保存列名和索引
+
+https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.read_excel.html
+读取excel(.xls)：.read_excel()
+读取excel(.xlsx):.read_excel(file, engine='openpyxl') (或转存成xls)
+【详见excel操作.txt】
+
+# 都不是in-place，需要重新赋值
+df.insert(index,col_label,value) pd.concat([a,b])
+df.drop(index=?, column=?, inplace=True) 删除指定行和/或列
+df.pop(item) 删除标签为item的列
+.append() 添加一行
+
+Series:
+.all() 全都是True 缩减与
+.any() 存在True 缩减或
+.argmax() 返回最大值对应的位置
+.idxmax() 返回最大值对应的标签值
+遍历：
+1. 直接遍历
+2. .items() (index, value)对
+3. 
+
+DataFrame:
+按行：
+.loc: 按标签选择，以行列名获取
+.loc['row'] 获取一行
+.loc['row','col'] 获取某个值，同df.at['row','col']
+.locrowlist], [collist
+.loc[rowslice, colslice]
+用loc获取一列：df.loc[:, 'col']
+
+.iloc:按坐标选择，用法同上，把字符串换成数字
+.iloc[r,c]: 按位置选择，以行列数字位置获取
+.iat[r,c]: 同iloc[r,c]
+条件更新行：
+.mask(cond, other=nan:scalar, Series/DataFrame, or callable) 满足条件的替换为other
+.where(cond, other=Nan) 不满足条件的替换为other
+df.mask(df['name']=='tom', Series(Dict), axis=1)
+self.table.loc[self.table[searchKey] == searchVal] = [newMeta[k] for k in self.table]
+
+按列：
+df['col'] 获取一列
+df.iloc[:,col_i] 
+df['row_i':'row_j'] 用切片可以获取行
+.index 行标签
+.columns 列标签
+.values/.to_numpy() 只含元素的列表
+
+遍历：
+按行：
+for i, row in df.iterrows(): 
+	type(row) # Series
+
+for row in df.values:
+	type(row) # array
+
+for row in df.itertuples():
+	type(row) # 类似Series
+
+按列：
+for col in df.items():
+	type(col) # Series
+
+直接遍历得到的是列标签，相当于遍历df.keys()：
+for col in df:
+	print(col) # 列标签
+
+
+
+
+numpy:
+https://numpy.org/doc/stable/reference/index.html
+降序排列：arr[::-1].sort()
+变换维度：
+atleast_1d()
+atleast_2d()
+
+条件选择二者之一: 
+np.where(arr>5) 或arr[arr>5] 返回满足条件的子集
+np.where(condition, x, y) 满足条件则输出x，否则输出y np.where(bimg < t, 0, 255)
+近似等于：np.isclose(a, b) 返回布尔数组
+条件之间可以用& |取交并集
+如[(arr>5) & (arr<=10)]
+模拟index函数：
+ind, = np.where(np.isclose(x, val))
+
+arr>5 返回一个真值表mask
+
+按mask取值
+np.compress 相当于 ndarray[condition]
+按下标取值/赋值
+np.take/np.put
+按行取值/赋值
+take_along_axis /
+put_along_axis
+从choices里依次取第a[i]个数作为结果的第i个数
+np.choose
+
+等差数列：
+np.linspace(start, stop, num=50, endpoint=True, retstep=False, dtype=None)
+在指定的间隔内返回均匀间隔的数字。
+返回num个均匀分布的样本，在[start, stop]。
+（ endpoint=Ture时返回[start, stop] ）
+
+数列:
+返回[start, end) 的数列（整数）
+np.arange(end) (start=0, step=1)
+np.arange(start, end) (step=1)
+np.arange(start, end, step)
+
+np.zeros((row_n, col_n)) 全0
+
+np.random.:
+固定种子：.RandomState(seed).xxx
+.permute(x) 随机生成一个打乱的0~x-1的序列
+.rand(d0, d1, ...) 0~1平均分布，dx代表x维的长度
+.randn(d0, d1, ...) 标准正态分布，dx代表x维的长度
+
+.uniform(low=0.0, high=1.0, size=None) 平均分布在[low, high)
+.normal(loc=0.0, scale=1.0, size=None) 正态分布
+
+修改形状：
+reshape([1,-1]) 可以用-1表示自动推算
+删除为空的维度:
+squeeze()
+变为一维：
+flatten()
+添加一维：
+expand_dims
+合并分块矩阵：
+np.block
+矩阵拼接：
+vstack, hstack
+
+模仿List.append()：
+bb: (0,2,2), block: (2,2)
+bb=np.append(bb, np.expand_dims(block,axis=0), axis=0)
+
+普通函数构造np函数
+np.vectorize
+np.frompyfunc
+
+单行循环生成ndarray
+np.fromiter((a for a in l), dtype)
+
+sort, argsort, partition, argpartition
+
+应用函数
+apply_along_axis Apply a function to 1-D slices along the given axis.
+apply_over_axis Apply a function repeatedly over multiple axes.
+
+unravel_index 获取下标在多维数组中的位置

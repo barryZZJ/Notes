@@ -1,0 +1,26 @@
+Content-Type: text/x-zim-wiki
+
+https://docs.python.org/2/library/itertools.html
+
+1.无限迭代器：
+count(start [,step])  count(10) --> 10 11 12 13 14 ...
+for t in count(): <==> t=0 while t: t+=1
+cycle(p)  cycle('ABCD') --> A B C D A B C D ...
+repeat(elem [,n]) elem, elem, elem, … endlessly or up to n times
+
+2.Iterators terminating on the shortest input sequence:
+islice(seq, [start,] stop [,step]) islice('ABCDEFG', 2, None) --> C D E F G
+izip(p, q, ...)  -> (p[0],q[0]), (p[1],q[1])...  izip('ABCD', 'xy') --> Ax By
+
+3.排列组合Combinatoric generators:
+permutations(p [,r]) r-length tuples, all possible orderings, no repeated elements
+
+combinations(p, r) r-length tuples, in sorted order, no repeated elements
+
+combinations_with_replacement(p, r) r-length tuples, in sorted order, with repeated elements
+
+permutations('ABCD', 2)  AB AC AD BA BC BD CA CB CD DA DB DC
+
+combinations('ABCD', 2)  AB AC AD BC BD CD
+
+combinations_with_replacement('ABCD', 2)  AA AB AC AD BB BC BD CC CD DD

@@ -1,0 +1,19 @@
+Content-Type: text/x-zim-wiki
+
+定义
+function fun(){}
+匿名函数：function (){}
+箭头函数：()=>{}
+
+按值传参：
+1.默认值
+
+2.call, apply
+function f(arg1, arg2){
+    if (this.a) xxx;
+    let b = this.b || undefined;
+    // this.c()
+}
+
+f.call(thisobj={a:1, b:2}, arg1, arg2)
+f.apply(thisobj={a:1, b:2}, [arg1, arg2])

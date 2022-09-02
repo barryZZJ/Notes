@@ -1,0 +1,3 @@
+Content-Type: text/x-zim-wiki
+
+将后缀.py改成.pyw

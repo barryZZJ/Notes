@@ -1,0 +1,33 @@
+Content-Type: text/x-zim-wiki
+
+import warnings
+warnings.warn()
+
+https://docs.python.org/zh-cn/3/library/warnings.html
+
+捕获warning：
+import warnings
+warnings.filterwarnings("error")
+try:
+    some_heavy_calculations()
+except RuntimeWarning:
+    import ipdb; ipdb.set_trace()
+
+隐藏warning：
+https://docs.python.org/2/library/warnings.html#temporarily-suppressing-warnings
+1. python -W ignore foo.py  隐藏特定：-W ignore::DeprecationWarning
+2. export PYTHONWARNINGS="ignore"
+3. 修改代码：
+
+隐藏所有：
+import warnings
+warnings.filterwarnings("ignore")
+隐藏指定：
+import warnings
+
+def fxn():
+    warnings.warn("deprecated", DeprecationWarning)
+
+with warnings.catch_warnings():
+    warnings.simplefilter("ignore")
+    fxn()

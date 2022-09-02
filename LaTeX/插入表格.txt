@@ -1,0 +1,48 @@
+Content-Type: text/x-zim-wiki
+
+表格
+array相当于tabular，但是套在equation中，自动数学模式
+
+table[htb]里套tabular / tabularx
+  tabularx: https://blog.csdn.net/m0_38024097/article/details/108416476
+
+tabluar[tcb规定垂直上中下对齐]{列样式定义水平对齐|c| <or> |*{5}{c|}} 
+
+
+对齐格式
+l c r 
+p{⟨width⟩} 指定宽度(实现自动换行) 
+@{⟨string⟩} 添加字符串
+
+（@格式可以适当使用以充当竖线。如{@{} r@{:}lr @{}}。特别地，@{} 可直接用来消除单元格前后的间距）
+内容里用&隔开
+
+定义p的对齐方式(默认好像是分散对齐)：array宏包
+\newcolumntype{P}[1]{>{\centering\arraybackslash}p{#1}}  \centering \raggedright \raggedleft
+P{<width>}
+或直接
+>{\centering\arraybackslash}p{<width>}
+
+
+调整行距：
+\renewcommand\arraystretch{1.5} 
+或\\[5pt]
+
+调整列间距：
+减小：在对齐格式里加入@{}
+增加：在对齐格式里加入@{\hspace{2em}} @{\quad}等
+\setlength{\tabcolsep}{0.5em}
+\\ 后加[5pt]可以指定行后间距
+
+横线：(画线后不用换行)
+\hline （能跟竖线连上） 
+\hline\hline 双横线
+booktabs宏包：
+\toprule \midrule \bottomrule 加粗横线，与内容有间距，写两次是双横线。画线后不用换行
+
+
+垂直盒子实现手动换行：
+\parbox[<tbc>]{width}{text}
+
+子表格：
+在table里插入minipage，每个minipage里再使用tabular

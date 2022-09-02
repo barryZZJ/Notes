@@ -1,0 +1,3 @@
+Content-Type: text/x-zim-wiki
+
+divmod(x,y) #（x//y, x%y)

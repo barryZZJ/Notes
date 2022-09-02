@@ -1,0 +1,73 @@
+Content-Type: text/x-zim-wiki
+
+https://cn.python-requests.org/zh_CN/latest/
+https://docs.python-requests.org/en/latest/user/advanced/
+
+session:
+with requests.Session() as s:
+    s.get('https://httpbin.org/get')
+或
+s = requests.Session()
+
+跳过ssl验证：参数加个verify=False。
+不显示对应的warning: from requests.packages import urllib3; urllib3.disable_warnings()
+
+参数：
+url
+params:dict
+headers:dict
+cookies:dict
+
+正则替换headers：
+(\S+) *: *(.+)
+'$1': '$2',
+
+正则替换data:
+(\S+?)=(\S*?)&
+$1='$2',\n
+
+
+直接用dict构造：
+cookies = dict(key1='value1', key2='value2')
+
+
+requests.get('http://httpbin.org/get', params=payload)
+
+>>> payload = dict(key1='value1', key2='value2')
+>>> r = requests.post('https://httpbin.org/post', data=payload)
+
+post(url, data=None, json=None, **kwargs)
+:param data: (optional) Dictionary, list of tuples, bytes, or file-like
+        object to send in the body of the :class:`Request`.
+:param json: (optional) json data to send in the body of the :class:`Request`.
+:param \*\*kwargs: Optional arguments that ``request`` takes.
+
+设置cookies: dict
+https://docs.python-requests.org/en/latest/api/#api-cookies
+https://docs.python-requests.org/en/latest/api/#requests.cookies.RequestsCookieJar
+session.cookies为RequestsCookieJar对象
+
+session.cookies.set("COOKIE_NAME", "value", domain="example.com", path="/")
+或
+cookie_obj = requests.cookies.create_cookie(domain="example.com",name="COOKIE_NAME",value="the cookie works")
+s.cookies.set_cookie(cookie_obj)
+或
+cookiejar_from_dict(cookie_dict, cookiejar=s.cookies, overwrite=False)
+
+设置代理：
+proxies = {
+   'http': 'http://127.0.0.1:9999',
+   'https': 'http://127.0.0.1:9999',
+}
+报ssl错处理：
+https://blog.csdn.net/iKaChu/article/details/106787413
+
+Response.status_code
+Response.encoding
+Response.content
+Response.text
+
+
+jsondata = json.loads(poststr)
+
+resp = re.post(url, headers=headers, cookies=cookies, json=jsondata)

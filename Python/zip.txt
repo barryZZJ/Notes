@@ -1,0 +1,16 @@
+Content-Type: text/x-zim-wiki
+
+https://docs.python.org/3/library/zipfile.html
+import zipfile
+压缩：
+with zipfile.ZipFile(zip文件名, "w", zipfile.ZIP_DEFLATED) as zf:
+    zf.write(要压缩的文件名, 压缩包中的文件名)
+
+解压：
+with zipfile.ZipFile(zip文件名) as zf:
+    zf.extractall(dir=None)
+
+zip_file = zipfile.ZipFile(zipfile, 'r')
+zip_list = zip_file.namelist()
+for f in zip_list:
+    zip_file.extract(f, dir)

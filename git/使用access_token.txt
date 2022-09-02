@@ -1,0 +1,28 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2022-09-02T15:55:39+08:00
+
+Content-Type: text/x-zim-wiki
+1. github.com: settings - developer settings - personal access tokens
+https://github.com/settings/tokens
+
+2. git登录：
+
+正常输入用户名，密码输入token：
+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
+
+3. 长期存储token：
+git config --global credential.helper store
+
+会在用户主目录的.gitconfig文件中生成下面的配置。
+
+[credential]
+	helper = store
+
+清除已存储的toekn
+git config --global --unset credential.helper
+git config --system --unset credential.helper
+
+4.一次性：git clone https://<username>:<githubtoken>@github.com/<username>/<repositoryname>.git
+
+git remote set-url origin https://<githubtoken>@github.com/<username>/<repositoryname>.git

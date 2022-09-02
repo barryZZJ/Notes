@@ -1,0 +1,16 @@
+Content-Type: text/x-zim-wiki
+
+异步操作，可以在不刷新整个页面的情况下刷新网页的一部分
+
+https://www.runoob.com/jquery/jquery-ref-ajax.html
+
+https://www.runoob.com/jquery/ajax-get.html
+$.get(URL,data,function(data,status,xhr),dataType)
+
+https://www.runoob.com/jquery/ajax-post.html
+$.post(URL, data, function(data,status,xhr),dataType)
+传入的数据data最好别套字典，否则views里不能直接按key取出来值。
+
+const csrftoken = $.cookie("csrftoken");
+POST要带csrftoken
+"csrfmiddlewaretoken":csrftoken

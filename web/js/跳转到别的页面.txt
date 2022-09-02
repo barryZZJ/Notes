@@ -1,0 +1,9 @@
+Content-Type: text/x-zim-wiki
+
+https://developer.mozilla.org/zh-CN/docs/Web/API/Window/location
+
+window.location.assign("http://www.mozilla.org"); // or
+window.location = "http://www.mozilla.org";
+
+例子#2：强制从服务器重新加载当前页面
+window.location.reload(true);

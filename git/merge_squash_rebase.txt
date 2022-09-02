@@ -1,0 +1,17 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2022-09-02T15:42:27+08:00
+
+https://www.jianshu.com/p/684a8ae9dcf1
+
+squash 是把所有commit合并成一个commit，可以得到干净的历史记录
+In squash mode, changes are combined into a single commit on master branch, looks quite neat.
+details are gone with the feature branch
+
+rebase 是把当前分支的commit作为patch依次打在main上（把当前分支的commit重放一遍），不会合并。使用interactive rebase会自动合并fixup, amend之类的提交。
+In rebase mode, all commits are added onto master branch individually, a little verbose.
+details are retained at the cost of “verboseness”.
+选rebase current onto selected，把当前分支的修改依次打在selected上
+
+merge 不能保持 master 分支干净，保持了所有的 commit history，
+In merge mode, an ugly sideway out-and-in retains all details in developing the feature.

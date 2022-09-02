@@ -1,0 +1,7 @@
+Content-Type: text/x-zim-wiki
+
+Instance Variables:
+_lower_with_under (protected) or __lower_with_under (private)
+
+Method Names:
+_lower_with_under() (protected) or __lower_with_under() (private)

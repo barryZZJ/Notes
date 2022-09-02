@@ -1,0 +1,34 @@
+Content-Type: text/x-zim-wiki
+
+type hint / annotation
+
+from typing import List, Tuple, Optional, Union, Any, Callable, overload
+# Callable[[int], str] is a function of (int) -> str.
+
+指定参数：
+def f(a: int) -> None :
+
+或 （参见docstring.txt）
+def f(a, **kwargs):
+    '''
+    :type a:int
+    :Keyword Arguments:
+        *   **key1** (*int*, *bytes*) --
+            Description...
+    '''
+
+指定变量：
+a # type: List[str]
+单独写a: int 
+
+检测：
+isinstance(o, t)
+
+返回类型是自己：
+T = TypeVar('T', bound='类名')
+成员函数(sth: Type[T]) -> T:...
+
+用于numpy：
+from numpy.typing import NDArray
+NDArray[dtype]
+https://numpy.org/doc/stable/reference/typing.html#numpy.typing.NDArray

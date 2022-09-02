@@ -1,0 +1,4 @@
+Content-Type: text/x-zim-wiki
+
+预分配空间比append快，预分配一个定长的None列表：
+Pre-allocating a list of None

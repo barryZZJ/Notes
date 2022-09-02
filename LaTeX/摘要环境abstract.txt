@@ -1,0 +1,8 @@
+Content-Type: text/x-zim-wiki
+
+摘要名
+\abstractname
+
+\begin{abstract}
+
+\end{abstract}

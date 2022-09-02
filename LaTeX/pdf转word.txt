@@ -1,0 +1,47 @@
+Content-Type: text/x-zim-wiki
+
+1. acrobat导出为word
+字体、段落、格式都是对的，整体比2好很多
+缺点：
+中文论文部分引用文献后，正文也保持上标状态（通过把\cite改为\inlinecite解决）
+复杂公式为乱码（把公式用tikz画解决）
+导入的pdf图片公式也不好看（额外画一份png版的解决）
+tikz的公式也不好看（把tikz画的图渲染为图片）
+
+2.用word直接打开pdf
+复杂公式会变成图片
+缺点：
+字体错误、引用公式等超链接失效
+部分公式也是乱码
+分段有点不太正常，会分出多余的段。
+
+
+
+
+手动修改：
+1.tikz画的图存为图片
+52 Externalization Library
+https://tex.stackexchange.com/questions/74605/tikz-external-use-png-as-default-instead-of-pdf
+2.公式保存为图片：（注意$$和equation环境都要改）
+  2.1 用tikz环境
+  https://tex.stackexchange.com/questions/594797/converting-equations-to-images
+  真的折磨。
+  system call改成xelatex \tikzexternalcheckshellescape -halt-on-error -interaction=batchmode -jobname "\image" "\texsource"
+  然后magick/convert怎么都不会运行，需要先编译一边生成对应的pdf，然后通过magick -density 300 "image.pdf" "image.png"手动把pdf转成png，再编译一遍就好了。
+
+  2.2 https://tex.stackexchange.com/questions/214641/how-to-get-mathematical-equations-into-image-in-latex
+  2.3 make4ht/tex4ht 用来导出html文件，其中公式都是一个个图片，然后手动插入到word里
+  htxelatex
+  htlatex inputfile configfile
+  https://tex.stackexchange.com/questions/183969/mark-inline-equation-to-render-as-image-with-htlatex
+  https://tug.org/tex4ht/doc/mn.html
+  2.4.pandoc
+  --webtex参数似乎也可以导出html格式，公式为一个个图片
+
+3.取消中文引用文献的上标\let\cite\inlinecite % for cqu thesis
+4.导入的图片分为pdf和png两个版本
+  \newcommand{\picsubff}{png}
+
+最终用acrobat导出word即可
+
+

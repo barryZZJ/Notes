@@ -1,0 +1,11 @@
+Content-Type: text/x-zim-wiki
+
+https://github.com/bcherny/draggable
+https://www.runoob.com/jqueryui/example-draggable.html
+https://www.npmjs.com/package/draggable
+
+demo:
+http://borischerny.com/draggable/demos/basic/
+
+cdn:
+https://cdn.jsdelivr.net/npm/draggable@4.2.0/src/draggable.js

@@ -1,0 +1,12 @@
+Content-Type: text/x-zim-wiki
+
+f().apply(this) 可以把函数中的this替换为apply的第一个参数
+但返回的是执行f()的结果，而不是函数本身
+
+function add(...args){
+  for (let value of args)
+}
+add.apply(null, array) 可以把array展开，当作多个实参
+
+call()与apply方法类似，只有一个区别就是call除了this之外其他蚕食是一个参数列表
+https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Function/call

@@ -1,0 +1,7 @@
+Content-Type: text/x-zim-wiki
+
+查找：
+indexOf(val)
+find(el=>el==xx) find是一个一个下标找，效率要低于那些只遍历有值的索引的方法。
+findIndex(el=>el==xx)
+includes()

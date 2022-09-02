@@ -1,0 +1,25 @@
+Content-Type: text/x-zim-wiki
+
+https://docs.python.org/3/library/enum.html
+
+from enum import Enum
+from enum import IntEnum
+from enum import unique, auto
+
+
+@unique # 不允许重复值
+class color(Enum):
+    YELLOW = 1
+    BLUE = 2
+
+class dictionary(Enum):
+    ONE = auto() # 自动生成
+    TWO = auto()
+
+color = Enum('color', 'YELLOW BLUE', module=__name__)
+
+color.YELLOW.value # 1
+color.BLUE.name # 'BLUE'
+
+color(1) # <color.YELLOW: 1>
+color['BLUE'] # <color.BLUE: 2>

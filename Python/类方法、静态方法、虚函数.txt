@@ -1,0 +1,23 @@
+Content-Type: text/x-zim-wiki
+
+静态方法：
+@staticmethod
+def func(args):
+    ...
+可以直接用类名调用，也可以被对象调用
+
+类方法：
+@classmethod
+def func(cls, args):
+    ...
+第一个参数为cls表示类对象，可以直接用类名调用，也可以被对象调用
+
+
+虚函数：
+from abc import abstractmethod
+@abstractmethod
+
+虚类：
+from abc import ABC
+class name(ABC):
+   ...

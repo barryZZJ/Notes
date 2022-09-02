@@ -1,0 +1,11 @@
+Content-Type: text/x-zim-wiki
+
+获取：
+document.documentElement.outerHTML;
+
+修改：
+document.open()
+document.write(html字符串)
+document.close()
+
+jQuery的.html()方法

@@ -1,0 +1,6 @@
+Content-Type: text/x-zim-wiki
+
+<filename>可以不带扩展名，此时默认扩展名为 .tex。
+
+\include{<filename>} 插入之前会另起一页。
+\input{<filename>} 纯粹把文件里的内容插入，不会另起一页。

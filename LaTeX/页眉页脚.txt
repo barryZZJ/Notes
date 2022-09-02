@@ -1,0 +1,19 @@
+Content-Type: text/x-zim-wiki
+
+latex中文文档p85
+
+1. 自带
+empty 没有页眉页脚；
+
+plain 没有页眉，页脚是居中的页码；
+
+heading 没有页脚，页眉是章节名称的页码；
+
+myheading 没有页脚，页眉是页码和用户自定义的内容。
+
+可以使用 \pagestyle{} 设置整体页面风格，也可以用 \thispagestyle{} 单独设置当前页的风格。
+
+\setcounter{page}{1} 重置页脚
+
+2.
+fancyhdr 宏包提供了新的页面风格 fancy ,我们可以通过 fancy 风格来设置我们的页眉页脚。

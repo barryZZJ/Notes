@@ -1,0 +1,92 @@
+Content-Type: text/x-zim-wiki
+
+command的名字不能包含数字
+
+\ref{label}
+
+目录
+\tabelofcontents
+
+下划线：\_
+百分号：\%
+
+引用环境
+短文字，首行不缩进：\begin{quote}\end{quote}
+若干段文字，首行缩进：\begin{quotation}\end{quotation}
+首航悬挂缩进:\begin{verse}\end{verse}
+
+!htbp - "!"忽略美学
+
+组合数 {n \choose k} 或 \[d/t]binom{n}{k}
+
+修改item的标志：
+\renewcommand{\labelenumi}{\alph{enumi}.} 修改序号 \arbic
+\renewcommand{\labeleitemi}{\dag} 修改原点
+
+pt, bp, mm, cm, in, ex, em
+选项
+enumerate
+itemize
+
+文本加粗、强调
+\textbf
+\emph
+
+引用
+\bibitem{TAG} ...  
+\cite
+
+宏定义：
+\def\foo{x^2}
+\gdef\bar#1{#1^2} 储存全局宏
+定义新指令（全局）
+\newcommand{\name}[参数个数, 最多9个]{命令#1, #2}
+\renewcommand{\newcomm}{\oldcomm} 修改已有命令
+\providecommand 包含new和renew
+
+定义圈数字\renewcommand{\ci}[1]{\raisebox{.5pt}{\textcircled{\raisebox{-.9pt} {#1}}}}
+
+定义新环境
+\newenvironment{name（不带\)}[参数个数]{begin之前的操作}{end之后的操作}
+\renewenvironment参数同上
+
+$\colon$ 或 $:$ 冒号
+
+缩进\!
+空格
+~
+\, \: \; 只能数学环境
+\  \quad \qquad 文本和数学环境均可
+
+上划线 \overline{}
+
+换行 \\ 或 \newline
+
+禁用所有段首缩进
+\setlength{\parindent}{0pt}
+
+使用该段缩进 \indent
+禁用该段缩进 \noindent
+
+水平间距 \hspace{1.5cm}
+可使用 \hspace* 命令代替 \hspace 命令得到不会因断行而消失的水平间距
+
+调整行间距
+\uspackage{setspace}
+1）\renewcommand{\baselinestretch}{1.0}
+
+可以把这种理解为我刚才在word中所用到的，一种是单倍间距、1.5倍间距、2倍间距等进行调整。
+
+2）\setlength{\baselineskip}{20pt}
+
+对齐环境
+\begin{center} … \end{center}
+\begin{flushleft} … \end{flushleft}
+\begin{flushright} … \end{flushright}
+或\centering \raggedright \raggedleft
+
+\mbox避免换行
+
+加外框：
+\usepackage{framed}
+\begin{framed}...

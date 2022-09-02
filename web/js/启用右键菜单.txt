@@ -1,0 +1,10 @@
+Content-Type: text/x-zim-wiki
+
+// @run-at    document-start
+
+const nativeListener = document.addEventListener;
+document.addEventListener = (...args) => {
+  const type = args[0];
+  if (type === 'contextmenu') return;
+  nativeListener.apply(document, args);
+}

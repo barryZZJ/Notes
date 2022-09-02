@@ -1,0 +1,7 @@
+Content-Type: text/x-zim-wiki
+
+Parse a URL into 6 components: 
+<scheme>://<netloc>/<path>;<params>?<query>#<fragment>
+
+from urllib.parse import urlparse
+p = urlparse(url, allow_fragments=False)

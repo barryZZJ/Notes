@@ -1,0 +1,20 @@
+Content-Type: text/x-zim-wiki
+
+difflib （自带）
+https://docs.python.org/3/library/difflib.html
+
+>>> diff = ndiff('one\ntwo\nthree\n'.splitlines(keepends=True),
+...              'ore\ntree\nemu\n'.splitlines(keepends=True))
+>>> print(''.join(diff), end="")
+- one
+?  ^
++ ore
+?  ^
+- two
+- three
+?  -
++ tree
++ emu
+
+Deltas
+https://pypi.org/project/deltas/

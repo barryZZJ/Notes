@@ -1,0 +1,23 @@
+Content-Type: text/x-zim-wiki
+
+还是input标签
+https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/Input/file
+
+.main .upload{
+    background-color: cornflowerblue;
+    color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 1px;
+    padding: 8px 18px;
+}
+
+<input type="file"
+       class="upload"
+       id="avatar" name="avatar"
+       onchange="fileSelected()"
+       accept="image/png, image/jpeg">
+
+var fbutton = $("#avatar")[0];  //DOM
+var file = fbutton.files[0];   //fbutton.files可能一次选择了多个文件
+fbutton.value = "";  //清空选择
+startUpload(file);   //开始上传

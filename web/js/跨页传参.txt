@@ -1,0 +1,12 @@
+Content-Type: text/x-zim-wiki
+
+1.锚点链接实现
+可以对目标网址添加'#{...}'
+传递json，跳转后对网址进行解析
+
+2.参数
+对目标网址添加?param={...}
+只要param不是网页本身会用到的就行
+
+2.GM_setValue GM_getValue
+不太推荐，不适合多页面同时操作的情况

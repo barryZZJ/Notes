@@ -1,0 +1,10 @@
+Content-Type: text/x-zim-wiki
+
+try:
+
+except .. as err:
+    # 发生错误时执行
+else:
+    # 无错误时执行
+finally:
+    # 收尾工作，无论是否错误均执行。

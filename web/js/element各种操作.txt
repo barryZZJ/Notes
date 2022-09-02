@@ -1,0 +1,25 @@
+Content-Type: text/x-zim-wiki
+
+FIND:
+document.getElementById
+.getElementsByClassName
+.getElementsByTagName('script')
+.querySelector
+.querySelectorAll  多个查找内容用逗号隔开
+.closest(cssSelector) 匹配符合选择器且离当前元素最近的祖先元素
+
+CREATE:
+document.createElement(String) - "div" "p" 等
+document.createElement('div');
+
+APPEND:
+1.elem.append(DOMString or elem) 可以有多个参数，向匹配元素集合中的每个元素结尾插入由参数指定的内容。DOMString = "p" / "div" 等
+
+2.elem.appendChild(elem) 只能传一个节点，且不直接支持传字符串，返回追加的 Node 节点；
+若 appendChild() 的参数是页面存在的一个元素，则执行后原来的元素会被移除；
+
+3.elem.appendTo(par) 向目标结尾插入集合中的每个元素。
+elem.appendTo('body') // 好像是jq的功能
+
+INSERT:
+parentNode.insertBefore(newNode, referenceNode)

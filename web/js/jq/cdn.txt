@@ -1,0 +1,26 @@
+Content-Type: text/x-zim-wiki
+
+https://code.jquery.com/
+https://code.jquery.com/jquery-3.6.0.min.js
+
+新浪：
+http://lib.sinaapp.com/js/jquery/1.9.1/jquery-1.9.1.min.js
+其它版本可以在这里找地址 http://lib.sinaapp.com/?path=/jquery
+
+百度：
+http://libs.baidu.com/jquery/1.9.1/jquery.min.js
+
+官方：
+https://code.jquery.com/
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+如果担心CDN地址加载失败，可以这样载入本地jquery
+
+    <script type="text/javascript">
+    !window.jQuery && document.write('<script src="js/jquery.min.js"><\/script>');
+    </script>
+
+版本	描述
+1.x	兼容ie678，使用最为广泛的，官方只做bug维护，功能不再新增。因此一般项目来说，使用1.x版本就可以了，最终版本：1.12.4
+2.x	不兼容ie678，很少人使用，官方只做bug维护，功能不再新增。如果不考虑兼容版本低的浏览器可以使用2.x，最终版本：2.2.4
+3.x	不兼容ie678，只支持最新的浏览器。除非特殊要求，一般不会使用3.x版本的，很多老的jQuery插件不支持这个版本。目前该版本是官方主要更新维护的版本。截至2018年6月13日，最新版本：3.3.1

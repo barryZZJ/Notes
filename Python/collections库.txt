@@ -1,0 +1,34 @@
+Content-Type: text/x-zim-wiki
+
+https://docs.python.org/2/library/collections.html
+
+1.计数器Counter
+>>> cnt = Counter()
+>>> for word in ['red', 'blue', 'red', 'green', 'blue', 'blue']:
+...     cnt[word] += 1
+>>> cnt
+Counter({'blue': 3, 'red': 2, 'green': 1})
+
+>>> Counter('abracadabra').most_common(3)
+[('a', 5), ('r', 2), ('b', 2)]
+c.most_common()[:-n-1:-1]       # n least common elements
+
+2.更快的列表和栈deque
+
+3.namedtuple 生成Tuple的子类，用类名代替元组，可以用属性来引用
+
+Point = namedtuple('Point','x y') # ['x','y']/ 'x, y'
+p = Point(2,y=3)
+p[0]+p[1]
+p.x+p.y
+x, y = p
+getattr(p, 'x')
+p._fields            # view the field names
+
+defaultp = Point(0,0)
+p = defaultp._replace(x=3)
+
+4.OrderedDict 会记录插入数据的顺序，遍历的时候按插入顺序排列，可以实现（FIFO的字典）
+
+5.defaultdict
+使用dict时，如果引用的Key不存在，就会抛出KeyError。如果希望key不存在时，返回一个默认值，就可以用defaultdict

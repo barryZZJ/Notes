@@ -1,0 +1,29 @@
+Content-Type: text/x-zim-wiki
+
+https://api.jquery.com/
+
+(function ($) {
+   ...
+})(jQuery);
+
+
+$("#findbyid").get() //返回DOM对象
+.get(i) // 多个匹配时选第i个dom对象
+
+获取/设置：
+.attr()属性 attribute 用于html节点 (自定义属性只能用这个获取)
+.prop()集合中第一个元素的property 用于js对象
+.val()值
+
+.on 设置EventListener
+.on('click'[, selector][, data], func)
+.off 解除EventListener
+
+选择到多个对象后，只取其中一个：
+.eq(index)
+.eq(-index)
+
+设置css：
+.css('background-color', 'red')
+或.css({backgroundColor: 'red', ...})
+

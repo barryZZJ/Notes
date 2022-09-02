@@ -1,0 +1,11 @@
+Content-Type: text/x-zim-wiki
+
+1.插入为整页：
+\usepackage{pdfpages}
+
+\begin{document}
+\includepdf[pages={1,2}]{1.pdf} 
+\end{document}
+
+2.
+也可以用figure插入pdf，作为图片

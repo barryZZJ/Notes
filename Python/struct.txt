@@ -1,0 +1,3 @@
+Content-Type: text/x-zim-wiki
+
+把变量转换为bytes，用于网络传输

@@ -1,0 +1,10 @@
+Content-Type: text/x-zim-wiki
+
+if (navigator.clipboard) {
+    navigator.clipboard.writeText(text);
+}
+
+如果不兼容：
+https://github.com/zenorocha/clipboard.js/
+
+或油猴脚本的GM_setClipboard(data, info)

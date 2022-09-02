@@ -1,0 +1,12 @@
+Content-Type: text/x-zim-wiki
+
+function injectCover(url, img) {
+  let mask = document.createElement('div');
+  mask.style.width = img.width + 'px';   // offsetWidth 含padding
+  mask.style.height = img.height + 'px';  // offsetHeight 含padding
+  mask.style.background = '#fff';
+  mask.style.opacity = '0.1';
+  mask.style.position = 'fixed';
+  mask.style.zIndex = "10086";
+  img.parentElement.insertBefore(mask, img);
+}

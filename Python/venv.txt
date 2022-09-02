@@ -1,0 +1,22 @@
+Content-Type: text/x-zim-wiki
+
+1.自带虚拟环境venv（√）它的很多操作都和 virtualenv 类似，但是两者运行机制不同
+https://docs.python.org/zh-cn/3/tutorial/venv.html
+
+python3 -m venv venv_path
+不能指定版本，与当前版本相同
+
+# windows:
+venv\Scripts\activate.bat
+
+bat中启动虚拟环境：
+call venv\Scripts\activate.bat
+
+# linux:
+source venv/bin/activate
+deactivate
+
+2. 第三方工具
+pip3 install virtualenv
+virtualenv venv --python=python3.8 
+

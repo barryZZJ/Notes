@@ -1,0 +1,18 @@
+Content-Type: text/x-zim-wiki
+
+Request:
+Accept-Language: zh-CN,zh;q=0.8,zh-TW;q=0.6
+q为权重，没有指定时默认为1。若指定为0，表示浏览器不接受该语言
+
+Accept:text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+
+Accept-Encoding: gzip,deflate
+支持压缩
+
+User-Agent: Mozilla/5.0 ...
+用户代理，使服务器能够识别客户端使用的操作系统和版本、CPU类型、浏览器及版本等等
+
+Content-Type
+
+Response:
+Set...

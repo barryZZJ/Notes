@@ -1,0 +1,4 @@
+Content-Type: text/x-zim-wiki
+
+pack = importlib.import_module('xxx', __package__)
+class_ / func = getattr(pack, 'y') # == pack.y

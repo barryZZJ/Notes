@@ -1,0 +1,41 @@
+Content-Type: text/x-zim-wiki
+
+with如何工作?
+
+1.类实现
+紧跟with后面的对象（或执行函数后返回的对象）的'__enter__()'方法被调用,这个方法的返回值（一般是self）将被赋值给as后面的变量.
+
+当with后面的代码块全部执行完之后, 将调用前面返回对象的__exit__()方法.
+
+class Sample:
+    def __enter__(self):
+        return self
+    def __exit__(self, exc_type, value, traceback): # 参数用于异常处理
+	pass
+
+with Sample() as s:
+    s.dosomething()
+
+2. 使用contextlib.contextmanager
+https://docs.python.org/3/library/contextlib.html
+快速配置demo：
+import contextlib
+
+@contextlib.contextmanager
+def log_context(key):
+    log._config.context.append(key)
+    yield
+    log._config.context.pop()
+
+
+@contextlib.contextmanager
+def time_measure(key):
+    start = time.perf_counter()
+    yield
+    end = time.perf_counter()
+    elapsed = end - start
+    log.data(key, elapsed)
+
+使用：
+with log_context(name):
+        ...

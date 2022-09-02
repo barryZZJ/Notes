@@ -1,0 +1,12 @@
+Content-Type: text/x-zim-wiki
+
+\tableofcontents
+\listoffigures
+\listoftables
+
+\setcounter{tocdepth}{2} % Set the depth of the table of contents to show sections and subsections only
+
+\section*{xxx} 带*的不会计入目录
+
+目录加超链接：
+\usepackage[hidelinks]{hyperref}

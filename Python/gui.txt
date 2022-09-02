@@ -1,0 +1,6 @@
+Content-Type: text/x-zim-wiki
+
+tkinter
+pyqt5
+easygui
+wxpython

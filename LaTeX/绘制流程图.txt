@@ -1,0 +1,94 @@
+Content-Type: text/x-zim-wiki
+
+\usepackage{tikz}
+\usetikzlibrary{positioning, shapes.geometric, graphs, arrows.meta, backgrounds,fit}
+
+\begin{tikzpicture}[全局参数] xxx/.style={}可定义宏
+单独定义参数：\tikzset{options}
+
+node：
+\node [<param>] <at (<pos>)> <(refname>) {<text>};
+3 Tutorial: A Petri-Net for Hagen
+Tutorial 5: Diagrams as Simple Graphs
+5.1 Styling the Nodes
+17 Nodes and Edges
+17.5 Positioning Nodes
+不绘制边框：不使用draw指令，或draw=none
+圆角：[rounded corners]
+
+label:
+17.10.2 The Label Option
+节点的label为数学公式时要用{}括起来 label=${exp}$
+shift 参数调整平移
+
+color:
+\definecolor{mycolor}{RGB}{255,51,76}
+或fill={rgb,255:red,21; green,66; blue,128}
+
+draw=color 边框颜色
+fill=color 背景颜色 fill=none取消颜色
+15.2 Specifying a Color
+shade：渐变色. top color, bottom color
+
+设置背景：使用backgrounds库\usetikzlibrary{backgrounds}
+3.13 Using Layers: The Background Rectangles
+6.5 Adding the Background
+12.2.4 Adding a Background
+45 Background Library
+（1）全局参数里添加background rectangle/.style={fill=graybg}, show background rectangle
+（2）单独开一个背景层，先是设置为background的每一个scope环境依次绘制（后面的叠在前面的上面），然后依次绘制环境外部的：
+\begin{scope}[on background layer]
+    \node [fill=darkbg,fit=(attack), noteb=DP-Opt] (fit1) {};
+    \node [fill=graybg,fit=(input) (opt) (fit1) (lcb),label=above left:PowerSearcher] {};
+\end{scope}
+(3)可以分别画内部流程和外部文字为两个不同背景色的node，然后连线时连外部的线
+
+设置多个层：
+\pgfdeclarelayer{background}
+\pgfdeclarelayer{foreground}
+\pgfsetlayers{background,main,foreground}
+\begin{pgfonlayer}{<layername>}
+\end{pgfonlayer}
+
+自动调整node大小：
+54 Fitting Library
+(1) 设置inner sep=.5cm可以扩大fit节点的大小
+(2) 对fit节点添加label是画在背景的外部，下面的代码可以画在背景内部的角落
+文字在节点内部：
+    \node[draw=red,fit=(a) (b) (c) (d) (e)] (fit) {};
+    \node[below right] at (fit.north west) {box};
+(3)fit引用的节点需要在后面定义时，临时救急：同一个node画两遍
+(4)可以使用padding扩大方框大小
+(5)可以使用平移 shift, xshift, yshift 指令精细调整。
+
+padding:
+    17.2.3 Common Options: Separations, Margins, Padding and Border Rotation
+    inner sep, inner xsep, inner ysep, outer sep
+
+
+定位：
+17.5 Positioning Nodes
+17.5.1 Positioning Nodes Using Anchors
+    anchor=
+17.5.2 Basic Placement Options
+    below, above, left, right
+25.3 Coordinate Transformations
+    shift xshift yshift scale
+106.4 Special Nodes 特殊变量
+    current bounding box
+    current path bounding box
+106.3.1 Referencing Anchors of Nodes in the Same Picture
+    \pgfpointanchor{hnodei}{hanchori}
+
+
+箭头：
+17.12 Connecting Nodes: Using the Edge Operation
+19 Specifying Graphs
+箭头类型：--, ->, -stealth
+
+\graph[edges={edge options}]{...};
+
+on grid: 以center计算距离。默认计算边的距离。
+
+\draw[help lines] (ax,ay) grid (bx,by); (左下角是ax,ay,右上角是bx,by的平面直角坐标系)
+

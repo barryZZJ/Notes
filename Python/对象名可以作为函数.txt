@@ -1,0 +1,3 @@
+Content-Type: text/x-zim-wiki
+
+在类定义里的__call__()魔法函数里定义形参，然后可以通过对象名加参数的形势调用

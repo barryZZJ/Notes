@@ -1,0 +1,9 @@
+Content-Type: text/x-zim-wiki
+
+revert是 “恢复”，用于撤销commit，通过新增一个相反操作的commit实现。
+
+对于具有多个 parent 的 commit，需要结合 -m 属性：
+git revert commit_id -m parent_id; 执行merge指令时所在分支parent_id为1，另一个为2
+
+注意revert之后，被丢弃的那个分支的历史commit都被视为不再需要，新的commit不影响；如果需要恢复被丢弃的commit，需要对第一次revert生成的commit再来一次revert
+

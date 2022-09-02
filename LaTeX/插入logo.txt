@@ -1,0 +1,17 @@
+Content-Type: text/x-zim-wiki
+
+标题插入logo：
+\title[Title]{\includegraphics{logo.jpg}\\Title}
+
+左下角插入logo
+\put(16.57, 23.19){
+\parbox[t]{\textwidth}{
+\includegraphics[scale=1,keepaspectratio]{logo_jnm.png}
+}
+}
+
+页眉插入logo
+\pagestyle{fancy}
+\lhead{\includegraphics[scale=0.1]{logo.pdf}}  %在此处插入logo.pdf图片 图片靠左
+\chead{} % 页眉中间位置内容
+\rhead{\bfseries Result} 页眉右边位置内容，并加粗

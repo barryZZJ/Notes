@@ -1,0 +1,75 @@
+Content-Type: text/x-zim-wiki
+
+模拟和监听鼠标、键盘
+https://pypi.org/project/pynput/
+
+监听：
+from pynput import keyboard,mouse
+
+# 鼠标 -------------------------------------
+
+def on_move(x, y):
+    print('Pointer moved to {0}'.format((x, y)))
+
+def on_click(x, y, button, pressed):
+    print('{0} at {1}'.format('Pressed' if pressed else 'Released',(x, y)))
+
+def on_scroll(x, y, dx, dy):
+    print('Scrolled {0} at {1}'.format('down' if dy < 0 else 'up',(x, y)))
+
+# Collect events until released
+with mouse.Listener(
+        on_move=on_move,
+        on_click=on_click,
+        on_scroll=on_scroll) as listener:
+    listener.join()
+
+# ...or, in a non-blocking fashion:
+listener = mouse.Listener(
+    on_move=on_move,
+    on_click=on_click,
+    on_scroll=on_scroll)
+listener.start()
+
+# 键盘 -------------------------------------
+
+def on_press(key):
+#    
+    if isinstance(key, keyboard.KeyCode):
+    #key: KeyCode
+    #比较时key.char == 'm'
+        print('alphanumeric key {0} pressed'.format(key.char)) 
+	
+    elif isinstance(key, keyboard.Key):
+    #key: Key{'name':Key, 'value':KeyCode}
+    #比较时key == keyboard.Key.Left
+        print('special key {0} pressed'.format(key))
+	
+
+def on_release(key):
+    print('{0} released'.format(key))
+    if key == keyboard.Key.esc:
+        # Stop listener
+        return False # 返回False就会结束线程
+
+# Collect events until released # 阻碍主进程
+with keyboard.Listener(
+        on_press=on_press,
+        on_release=on_release) as listener:
+    # with语句相当于 listener.start() listener.wait() .....   listener.stop()
+    # 这里的代码只运行一次
+    listener.join() # 主线程需等这个线程结束才能继续。只有前面的函数返回False线程才能结束
+
+# ...or, in a non-blocking fashion: # 不阻碍主进程
+listener = keyboard.Listener(
+    on_press=on_press,
+    on_release=on_release)
+listener.start()
+# 等前面的函数返回False或listener.stop()后线程结束
+
+
+mouse_listener=mouse.Listener(on_click=on_click,on_move=on_move,on_scroll=on_scroll)
+keyboard_listener=keyboard.Listener(on_press=on_press,on_release=on_release)
+#lst=[keyboard_listener,mouse_listener]
+#for t in lst:t.start()
+#for t in lst:t.join() #阻塞主进程，等所有子线程都结束后才继续主进程

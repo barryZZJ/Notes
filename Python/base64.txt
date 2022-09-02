@@ -1,0 +1,7 @@
+Content-Type: text/x-zim-wiki
+
+https://docs.python.org/zh-cn/3/library/base64.html
+
+import base64
+.b64encode(bytes) -> bytes
+.b64decode(bytes) -> bytes

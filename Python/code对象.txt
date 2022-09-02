@@ -1,0 +1,6 @@
+Content-Type: text/x-zim-wiki
+
+动态获取代码
+c = func.__code__
+c.co_argcount
+c.co_varnames

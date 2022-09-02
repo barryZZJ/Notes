@@ -1,0 +1,8 @@
+Content-Type: text/x-zim-wiki
+
+1. pip install pydevd-pycharm
+2.pycharm配置里添加一个Python Remote Debug (Python Debug Server)，端口号随便改，IP填IDE的IP，然后对应代码（如下）加在py文件里，
+先运行debug，再运行代码即可。
+
+import pydevd
+pydevd.settrace('IP of IDE', port=5555, stdoutToServer=True, stderrToServer=True)

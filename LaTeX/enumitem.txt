@@ -1,0 +1,3 @@
+Content-Type: text/x-zim-wiki
+
+latex 使用 enumitem 宏包调整 enumerate 或 itemize 的上下左右缩进间距

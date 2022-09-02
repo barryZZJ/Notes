@@ -1,0 +1,66 @@
+Content-Type: text/x-zim-wiki
+
+!查阅CTeX宏集手册
+
+1. 使用CTeX文档类
+\documentclass[UTF8]{ctexart} ctexrep ctexbook ctexbeamer
+                              分别对应article report book beamer
+\begin{document}
+...
+\end{document}
+明确编码为utf8后用pdflatex,不加编码用xelatex
+
+2. 使用CTeX宏包（不改变documentclass）
+\usepackage[UTF8, scheme=chinese, heading=true, key=val...]{ctex}
+
+配置标题左对齐（默认是居中）
+heading=false
+或
+\ctexset{
+  chapter/format += \raggedright,
+  section/format += \raggedright,
+  subsection/format += \raggedright
+}
+
+设置编号格式 p16
+
+参数：
+字体集：PDF p7
+fontset =
+⟨none|adobe|fandol|founder|mac|macnew|macold|ubuntu|windows|windowsnew|windowsold|...⟩
+
+字体：PDF p8
+\songti \heiti \fangsong \kaishu \lishu \youyuan \yahei \pingfang
+(如果不带大括号，则默认后文全部使用该字体）
+
+字号：p8
+zihao = ⟨-4|5|false|10pt|11pt|12pt⟩ 将文章默认字号（\normalsize）设置为小四号字或五号字，false 禁用本功能。
+scheme = chinese 时，对标准文档类默认值为 5；对beamer 则为 false
+
+排版方案：p9
+scheme = <chinese(默认)|plain>
+chinese: 对 beamer 以外的文档类，调整默认字号为五号字，并调整行距为 1.3；文档中的标题名字改为中文；节）；在 heading = true 的情况下，还会将章节标题的风格修改为中文样式
+plain：只提供中文支持，不改变版式
+
+行距：
+linespread = <浮点数值>
+
+章节标题风格：
+heading = <true|false（默认）>
+有些文档类是建立在 LATEX 标准文档类之上开发的。这时，给 ctex 宏包加上 heading 选项，可以将章节标题设置为中文风格。
+
+autoindent = ⟨true（默认）|false|数值|带单位的数值⟩
+
+有些设置在引入的时候指定，有些可以通过\ctexset{键=值,...}指定
+
+\showthe\baselineskip 在编译器中显示当前默认行距
+
+中文字体字号设置https://www.cnblogs.com/shawncheer/p/5844925.html
+
+
+
+另一种：CJK：
+
+CJK模板文件见latex\zh_template
+
+\usepackage{CJKutf8}

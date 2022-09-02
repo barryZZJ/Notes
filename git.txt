@@ -1,0 +1,184 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2022-09-02T15:39:23+08:00
+
+start a working area:
+	-clone 克隆版本库的时候，所使用的远程主机自动被Git命名为origin
+	-init
+	-remote 管理主机名
+		git remote add <主机名> <网址> 添加远程主机。
+		git remote rm <主机名>
+		git remote rename <原主机名> <新主机名>
+		git remote -v 查看远程仓库
+
+work on the current change:
+	-add：将修改添加到暂存区
+		git add .
+	-revert 撤销commit
+	-rm
+	git rm -r --cached dir_name 删除已add的文件
+
+examine the history and state:
+	-log: Show commit logs
+		git log
+		git log --pretty=oneline 合并到一行
+		git log --graph 可以看到分支合并图
+	-show: Show various types of objects
+	-git status: 查看文件改动
+
+grow, mark and tweak your common history:
+	-branch: List, create, or delete branches
+		-查看本地有哪些分支: 
+			git branch
+		-查看本地和远程分支: 
+			git branch -a
+		-新建分支：
+			git branch <分支名>
+		-删除已merge的分支: 
+			git branch -d <分支名>
+		-删除未merge的分支: 
+			git branch -D <分支名>
+		-在git clone的时候，所有本地分支默认与远程主机的同名分支，建立追踪关系，Git也允许手动建立追踪关系:
+			git branch --set-upstream-to <远程主机>/<远程分支>
+			git switch <branch> -t(--track) <remote>/<branch>
+
+	-switch 切换分支
+		-创建并切换新分支：
+			switch -c <分支名>                
+		-切换分支：
+			switch <分支名>
+	-checkout:
+		-创建并切换新分支: 
+			checkout -b <分支名>
+		-切换分支: 
+			checkout <分支名>
+		-git checkout commitid # 切换到某个commit id
+	-commit
+	-merge  
+		- git merge --abort 发生冲突时，取消正在进行的合并
+
+collaborate
+	-fetch: 将远程主机的commit取回本地。通常用来查看其他人的进程，因为不影响本地的开发代码
+		git fetch <主机名> 查看所有分支的更新
+		git fetch <主机名> <远程分支名>:<本地分支名> 查看指定分支的更新
+	-pull: 取回远程主机某个分支的更新，再与本地的指定分支合并
+		git pull <远程主机名> <远程分支名>:<本地分支名>
+		- 远程分支与当前分支合并:
+			git pull <远程主机名> <远程分支名> 等同于先 git fetch，再 git merge。
+		- 如果当前分支与远程分支存在追踪关系，git pull就可以省略远程分支名:
+			git pull origin 表示本地的当前分支自动与对应的origin主机"追踪分支"（remote-tracking branch）进行合并。
+		- 如果当前分支只有一个追踪分支，连远程主机名都可以省略:
+			git pull 表示当前分支自动与唯一一个追踪分支进行合并
+	-push: 将本地分支的更新，推送到远程主机
+		git push <远程主机名> <本地分支名>:<远程分支名>
+		- 省略远程分支名，将本地分支推送与之存在"追踪关系"的远程分支（通常两者同名）
+			git push origin master 将本地的master分支推送到origin主机的master分支。如果后者不存在，则会被新建
+		- 如果当前分支与多个主机存在追踪关系，则可以使用-u选项指定一个默认主机，这样后面就可以不加任何参数使用git push。
+			git push -u origin master 将本地的master分支推送到origin主机，同时指定origin为默认主机，后面就可以不加任何参数使用git push了
+		- 如果省略本地分支名，则表示删除指定的远程分支，因为这等同于推送一个空的本地分支到远程分支。
+			git push origin :master
+			等同于
+			git push origin --delete master
+		- 如果当前分支与远程分支之间存在追踪关系，则本地分支和远程分支都可以省略。
+			git push origin
+		- 如果当前分支只有一个追踪分支，那么主机名都可以省略。
+			git push
+		- 不管是否存在对应的远程分支，将本地的所有分支都推送到远程主机，这时需要使用--all选项。
+			git push --all origin 表示将所有本地分支都推送到origin主机。
+		--force
+
+
+-checkout 既被用来切换分支，又被用来恢复工作区文件，被替换为 switch 和 restore
+-stash:
+https://www.yiibai.com/git/git_stash_operation.html
+要切换分支，但不想提交一直在做的工作; 那么可以把当前工作的改变隐藏起来。要将一个新的存根推到堆栈上，运行git stash命令。
+
+
+合并分支：
+如果修改的文件不同或修改同一个文件中的不同部分，则git会自动合并，
+如果修改了同一个部分，就会发生冲突。
+	1. 将<newbranch>合并入<master>:
+	   git switch master
+	   [git status]
+	   git merge newbranch
+
+	2. 冲突解决：
+	   merge时会提示有冲突，用git status查看哪些文件发生了冲突。（如file.txt发生了冲突）
+	   手动打开file.txt，会标注出两个分支中冲突的部分。修改其中不同的部分为最终所需的结果。
+	   重新提交: git add file.txt && git commit -m "fix conflict"
+
+
+第一次开发：
+1. 在git上创建仓库
+2. git clone URL [localpath]
+3. git add .
+4. git commit -m "message"
+5. git push -u origin master
+
+
+分支开发流程：
+1. clone[pull] master分支
+2. 创建新分支。git switch -c newbranch
+3. 本地开发
+4. commit && push
+5. git switch master
+6. git merge newbranch
+7. 删除新分支。git branch -d newbranch
+
+
+多人开发流程：
+A是创建者，B是合作者。
+1. A 创建仓库
+2. B clone master 分支到本地
+3. B 创建新分支（或直接在master上）进行本地开发
+4. B commit && push 到远端
+（如果在新分支上开发：）
+5. git switch master
+6. git merge newbranch
+7. 删除新分支。git branch -d newbranch
+
+
+非仓库合作者开发流程 （pull request（请求开发者pull自己的仓库））:
+1. fork 远程仓库（到自己名下）
+2. clone 自己名下的这个仓库
+	git clone https://....
+3. （可选）创建一个新分支
+	git checkout -b newbranch （-b: 创建分支）
+4. 本地开发
+5. push到远端：
+	git add . && git commit -m "message"
+	git push origin master（或newbranch）
+6. 打开github，找到你的分支，点击 compare & pull request
+7. 添加一些注释信息，确认提交 (create pull request)
+8. 仓库作者看到后可以merge
+
+fork后本地仓库与远端保持同步：
+A是创建者，B是fork者
+0. commit自己的内容
+1. 添加A的库为上游代码库：
+	git remote add upstream A的库url
+2. （可选）git remote -v
+3. 抓取A库的修改：
+	git fetch upstream
+4. 切换到upstream的master分支
+	git switch master
+5. 合并远程的master分支到本地
+	git merge upstream/master
+6. push到自己的仓库master分支
+	git commit -m "" && git push origin master
+
+远程比本地更新时的合并：
+https://blog.csdn.net/loongshawn/article/details/78864039
+1.从远程的origin仓库的master分支下载到本地，并新建一个temp分支。
+git fetch origin master:temp
+2.查看temp分支与本地原有分支的不同
+git diff temp
+3.将temp分支和本地分支合并
+git merge temp
+4.删除temp分支
+git branch -d temp
+
+
+只合并某一个文件
+git checkout -p BRANCHNAME FILENAME
+远程分支应该写origin/BRANCHNAME，否则默认是本地分支

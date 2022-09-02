@@ -1,0 +1,8 @@
+Content-Type: text/x-zim-wiki
+
+1.
+\footnote{text}
+
+2.
+在表格环境、各种盒子内使用 \footnote 并不能正确生成脚注。
+分两步进行，先使用 \footnotemark 为脚注计数，再在环境外用 \footnotetext{text} 生成脚注

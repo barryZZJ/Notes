@@ -1,0 +1,53 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2022-09-02T15:37:59+08:00
+
+====== del ======
+Created 星期五 02 九月 2022
+
+禁用Windows search服务
+禁用CDPUserSvc
+
+C盘：
+C:\ProgramData\Intel\Intel Extreme Tuning Utility\Logs
+C:\Users\Barry\AppData\Local\Microsoft\vscode-cpptools\ipch  (C_Cpp.intelliSenseCacheSize)
+"C:\Users\Barry\AppData\Roaming\od" 腾讯交友
+JAVA_ERROR_IN_IDEA.HPROF / JB IDE: File - Invalidate and Restart
+C:\Users\zyj
+python第三方库。
+C:/users
+vscode插件 C:\Users\Barry\.vscode\extensions
+各个IDE的缓存
+C:\Users\Barry\Documents\WeChat Files\wxid_iy5ejuzfavoq21\FileStorage
+
+C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA
+压缩：
+可以用steam的备份与还原压缩文件
+
+wallpaper engine 壁纸
+
+D:
+hgs
+steam 创意工坊
+vr游戏
+
+osu音乐文件
+
+darknet
+
+spfl_front
+数模
+重大\班委
+重大\信安竞赛、codes\federatedLearning、codes\Secure and Privacy Preserved Federated Learning System
+重大\保研相关 latex projects
+重大\各科作业
+重大\服创
+重大\已结课\毕业实习
+vivado projects
+各种project目录
+codes
+深度学习数据集
+D:\Software\LaTeX\latex
+
+opencv
+nvidia nsight visual studio edition

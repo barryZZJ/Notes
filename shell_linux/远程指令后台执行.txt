@@ -1,0 +1,20 @@
+Content-Type: text/x-zim-wiki
+
+https://zh.wikipedia.org/wiki/Nohup
+
+nohup 指令 &
+
+nohup ./myprogram > foo.out 2> foo.err < /dev/null &
+
+当前终端查看后台进程：jobs -l
+杀死后台进程：kill %job号 或 kill 进程号
+
+新建终端后：
+利用ps（进程查看命令）
+
+ps -aux | grep "python"  #a:显示所有程序 u:以用户为主的格式来显示 x:显示所有程序，不以终端机来区分
+
+
+另一个常见的问题是，SSH会话常常拒绝注销（或者挂起），因为它不愿意去丢失与后台job(s)进行交互的数据。[6][7] 该问题可通过 重定向 三次I/O流解决：待考证
+
+$ nohup ./myprogram > foo.out 2> foo.err < /dev/null &

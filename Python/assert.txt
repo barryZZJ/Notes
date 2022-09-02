@@ -1,0 +1,4 @@
+Content-Type: text/x-zim-wiki
+
+assert expression()
+assert expression(), error_msg

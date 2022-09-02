@@ -1,0 +1,82 @@
+Content-Type: text/x-zim-wiki
+
+@property
+@staticmethod
+@classmethod
+@DynamicClassAttribute
+
+主要是方便地实现在目标函数被调用前后执行其他函数
+使用场景：
+授权、日志（记录某个函数被调用了）、异常处理等
+
+1.使用functools.wraps。demo：
+https://docs.python.org/3/library/functools.html
+https://www.runoob.com/w3cnote/python-func-decorators.html
+注意：@wraps接受一个函数来进行装饰，并加入了复制函数名称、注释文档、参数列表等等的功能。这可以让我们在装饰器里面访问在装饰之前的函数的属性。
+注意2：任何写在decorated函数外的代码都会在函数定义时的@decorator_name/@getDecorator()除执行一次，要想在每次执行func前后执行的代码必须写在decorated里！
+
+from functools import wraps
+ 
+def decorator_name(func):
+    @wraps(func)
+    def decorated(*args, **kwargs):  # 被装饰后的函数。调用func()实际上是调用decorated()
+        print("before func()")
+        return func(*args, **kwargs)
+    return decorated
+ 
+@decorator_name  #相当于 func = decorator_name(func)
+def func():
+    return("Function is running")
+
+func() # 相当于 decorator_name(func)()
+
+2.带参数的装饰器：
+def getDecorator(*args, **kwargs):
+    def decorator_name(func):
+        @wraps(func)
+        def decorated(*args, **kwargs):
+            print("before func()")
+            res = func(*args, **kwargs)
+            print("after func()")
+            return res
+        return decorated
+    return decorator_name
+
+@getDecorator(params) # 先执行函数，相当于去掉了一层
+def func():
+    pass
+
+2.1. 自定义类实现：
+from functools import wraps
+class DecoratorFactory:
+    def __init__(self, arg):
+        self.arg=arg
+    def __call__(self, func):
+        @wraps(func)
+        def decorated(*args, **kwargs):
+            print("before func()")
+            func(*args, **kwargs)
+            print("after func()")
+        return decorated
+
+@DecoratorFactory()
+def func():
+    pass
+
+3. 使用contextlib实现装饰器
+https://docs.python.org/3/library/contextlib.html#using-a-context-manager-as-a-function-decorator
+
+from contextlib import ContextDecorator
+import logging
+
+logging.basicConfig(level=logging.INFO)
+
+class track_entry_and_exit(ContextDecorator):
+    def __init__(self, name):
+        self.name = name
+
+    def __enter__(self):
+        logging.info('Entering: %s', self.name)
+
+    def __exit__(self, exc_type, exc, exc_tb):
+        logging.info('Exiting: %s', self.name)

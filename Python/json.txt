@@ -1,0 +1,17 @@
+Content-Type: text/x-zim-wiki
+
+import json
+
+json转字符串：
+json.dumps(dict)
+
+字符串转json：
+json.loads(str)
+
+读取文件
+with open() as f:
+    d = json.load(f)
+
+写入文件
+with open() as f:
+    json.dump(f)

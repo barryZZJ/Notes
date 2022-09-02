@@ -1,0 +1,5 @@
+Content-Type: text/x-zim-wiki
+
+https://www.urldecoder.org/
+
+URL为百分号编码：将字符以字节为单位转换成%xx的形式，xx为该字节的十六进制表示

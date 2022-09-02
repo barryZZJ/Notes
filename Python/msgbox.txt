@@ -1,0 +1,4 @@
+Content-Type: text/x-zim-wiki
+
+cmd运行：
+mshta vbscript:msgbox("已找到",64)(window.close)

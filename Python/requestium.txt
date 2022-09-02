@@ -1,0 +1,13 @@
+Content-Type: text/x-zim-wiki
+
+https://github.com/tryolabs/requestium
+
+s = requestium.Session(webdriver_path='chromedriver', browser='chrome',
+                       webdriver_options={}) # 建立会话
+
+可以直接对response使用.re, .xpath, css selector(.css)
+xpath:
+/html/body/div[3]/div/div[1]
+
+css:
+body > div.container.main > div > div.col.left-column

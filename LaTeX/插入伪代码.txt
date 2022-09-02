@@ -1,0 +1,57 @@
+Content-Type: text/x-zim-wiki
+
+宏包：
+algorithm2e [较为复杂的、可定制的算法排版宏包。类似宏包有algorithmicx等]
+algorithmic [一个简单的实现算法排版的宏包。如果要生成浮动体的话，需要搭配algorithm 宏包使用。]
+
+调整行距：宏包setspace. 在环境内添加\setstretch{1.35}
+
+\renewcommand{\algorithmcfname}{算法}
+
+文档第9节（定义新指令）、第10节（已有指令）
+\SetKwProg{Fn}{function}{}{} # 定义函数关键字 见11.2
+\SetKwFunction{DPOpt}{DP-Opt} # 定义一个函数名，用法\DPOpt{<函数的参数>} 直接使用\DPOpt则不产生()
+\Fn{\DPOpt{args}}{
+    content
+}
+
+\DPOpt 等价于\FuncSty{DP-Opt(}\FuncArgSty{args}\FuncSty{)}
+
+代码每一行要以\;结尾
+\LinesNumbered 显示行号
+\SetAlgoNoLine 隐藏竖线
+\DontPrintSemicolon 隐藏末尾分号
+\SetAlgoNoEnd 隐藏for循环结束的end字样
+
+注释 9.7, 10.3
+\tcc*{right alined comments, 末尾自带\;}  # c主题注释： /* comment */
+\tcp*{} # c++主题注释： // comment
+\tcp*[f]{right alined comments, 末尾不带\;}
+
+
+
+\KwIn{} \KwOut{} \KwTo
+\For{condition}{loop}
+\Return{}
+\newcommand{\forcond}{$i=0$ \KwTo $n$}
+
+
+自定义Kw
+\SetKw{Kw}{thetext} 使用：\Kw{args}
+\SetKwInput{Params}{parameters} \Params{args}
+
+
+e.g. (注意\label写在\caption后面才能正确ref)
+\begin{algorithm}[htb]
+    \caption{DD-Search：搜索最优的witness} \label{alg:ddsearch}
+    \SetAlgoNoLine \DontPrintSemicolon \SetAlgoNoEnd
+    \SetFuncSty{text} \SetCommentSty{text} \SetNlSty{text}{}{} \SetAlgoNlRelativeSize{0}
+    \SetKwProg{Fn}{function}{}{}
+    \SetKwFunction{DD}{DD-Search}
+    \SetKwInput{Param}{Hyper-parameters}
+
+    \Param{样本量 $N$、$N_\text{train}$, 各类分类器 $\{p_\theta(a_1|b)\}_{\theta\in\Theta}$}
+    \Fn{\DD{$M$, $a_1$, $a_2$}}{
+        \Return 123\;
+    }
+\end{algorithm}

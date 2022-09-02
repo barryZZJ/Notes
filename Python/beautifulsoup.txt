@@ -1,0 +1,49 @@
+Content-Type: text/x-zim-wiki
+
+爬虫时使用
+可以方便地把html文件解析成树形结构，方便访问各个层次元素等等
+
+英文文档：
+https://beautiful-soup-4.readthedocs.io/en/latest/
+中文文档：
+https://beautifulsoup.readthedocs.io/zh_CN/v4.4.0/
+
+from bs4 import BeautifulSoup
+resp = requests.get()
+soup = BeautifulSoup(resp.content:str, 'lxml'或'html.parser')
+
+搜索：
+1.find_all(name, attrs, recursive, string, **kwargs )
+soup.find_all("title")
+# [<title>The Dormouse's story</title>]
+
+soup.find_all("p", "title")
+# [<p class="title"><b>The Dormouse's story</b></p>]
+
+soup.find_all("a", class_="sister")
+# [<a class="sister" href="http://example.com/elsie" id="link1">Elsie</a>,
+#  <a class="sister" href="http://example.com/lacie" id="link2">Lacie</a>,
+#  <a class="sister" href="http://example.com/tillie" id="link3">Tillie</a>]
+
+soup.find_all(id="link2")
+# [<a class="sister" href="http://example.com/lacie" id="link2">Lacie</a>]
+
+import re
+soup.find(string=re.compile("sisters")).string
+# 'Once upon a time there were three little sisters; and their names were\n'
+
+只返回一个元素
+（直接soup.<tag_name> 相当于 soup.find(<tag_name>)  如soup.table）
+2. find(name, attrs, recursive, string, **kwargs) == find_all(..., limit=1)
+soup.find(id="link3")
+soup.find(name='input')
+
+3. CSS选择器 https://www.w3school.com.cn/cssref/css_selectors.asp
+.select(str)
+
+获取文本：
+.getText()
+.get_text()
+.string
+获取属性
+[attr]

@@ -1,0 +1,4 @@
+Content-Type: text/x-zim-wiki
+
+tex插件面板 - COMMANDS - Miscellaneous - Count words in LaTeX project
+（标题文字不计入统计数字中）

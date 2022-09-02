@@ -1,0 +1,7 @@
+Content-Type: text/x-zim-wiki
+
+https://github.com.cnpmjs.org/
+https://hub.fastgit.org/
+
+raw.githubusercontent.com->
+raw.sevencdn.com

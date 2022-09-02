@@ -1,0 +1,21 @@
+Content-Type: text/x-zim-wiki
+
+1、获取当前滚动条位置信息
+
+var top = dom.scrollTop; // 获取y轴上的滚动位置
+var left = dom.scrollLeft; // 获取x轴上的滚动位置
+2、滚动到指定位置
+
+dom.scrollTop = 150; // 滚动到y轴上（竖直方向）的150位置
+dom.scrollLeft = 150; // 获取x轴上（水平方向）的150位置
+3、平滑滚动到指定位置
+
+dom.scrollTo({
+  top: 150,
+  left: 150,
+  behavior: 'smooth' //  smooth(平滑滚动),instant(瞬间滚动),默认auto
+});
+
+
+4. 滚动事件
+dom.onscroll 

@@ -1,0 +1,3 @@
+Content-Type: text/x-zim-wiki
+
+document.body.contentEditable='true';

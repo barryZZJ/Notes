@@ -1,0 +1,8 @@
+Content-Type: text/x-zim-wiki
+
+深拷贝：https://juejin.cn/post/6844904042322198541
+1. 列表 Array.from(otherArr) 或 newArr = [...otherArr]
+2. Map(不是{}) newMap = new Map([...otherMap])
+2. 通用 JSON.parse(JSON.stringify(obj))  // 不能拷贝函数，undefined、function、symbol会被清理
+3. $.extend( true, object1, object2 ); // jq 深度拷贝
+x. Object.assign(target={},source1=otherMap); （单层深拷贝，再内层还是引用）

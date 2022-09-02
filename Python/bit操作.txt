@@ -1,0 +1,27 @@
+Content-Type: text/x-zim-wiki
+
+bytearray: 可变的
+
+库：
+简易：bitstream，相当于队列，只有read, write，但write一定追加在尾部，read一定读出头部
+
+bitstring
+https://github.com/scott-griffiths/bitstring
+
+布尔值生成对应比特：Bitstream(bool=True)
+bin='0b1001 1011' / bin='1001 1011'
+hex='0xacd' / hex='acd'
+bytes=b'xxx'
+
+auto : Either a specially formatted string, a list or tuple, a file object, integer, bytearray, array, bytes or another bitstring.
+bytes : A bytes object (a str in Python 2.7), for example read from a binary file.
+hex, oct, bin: Hexadecimal, octal or binary strings.
+int, uint: Signed or unsigned bit-wise big-endian binary integers.
+intle, uintle: Signed or unsigned byte-wise little-endian binary integers.
+intbe, uintbe: Signed or unsigned byte-wise big-endian binary integers.
+intne, uintne: Signed or unsigned byte-wise native-endian binary integers.
+float / floatbe, floatle, floatne: Big, little and native endian floating point numbers.
+se, ue : Signed or unsigned exponential-Golomb coded integers.
+sie, uie : Signed or unsigned interleaved exponential-Golomb coded integers.
+bool : A boolean (i.e. True or False).
+filename : Directly from a file, without reading into memory.

@@ -1,0 +1,10 @@
+Content-Type: text/x-zim-wiki
+
+var el = document.createElement('script');
+el.src = scriptURL;
+document.body.appendChild(el)
+el.onload = function() { //...
+el['onload']=function(){ //...
+
+在外部资源被加载完成并执行后触发onload事件
+

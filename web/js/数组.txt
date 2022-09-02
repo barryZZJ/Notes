@@ -1,0 +1,29 @@
+Content-Type: text/x-zim-wiki
+
+数组：
+slice()切片
+splice()可删除、可替换
+push() pop() 尾追加、删除 (注意列表和字典需要深拷贝）
+shift() unshift() 头追加、删除
+concat() # out of place
+forEach(el=>) 只找非空的
+map(el=>return el+"2") 只找非空的
+contains(ele) 是否包含元素ele
+
+手写remove函数：
+// 根据值删除：
+Array.prototype.remove = function(val) { 
+  var index = this.indexOf(val);
+  if (index > -1) {
+    this.splice(index, 1);
+  }
+};
+// 根据角标删除，只有一个参数时删除from，否则删除from~to，且参数可正可负
+Array.prototype.remove = function(from, to) { 
+  var rest = this.slice((to || from) + 1 || this.length);
+  this.length = from < 0 ? this.length + from : from;
+  return this.push.apply(this, rest);
+};
+
+手写random choice函数：
+var choiceIndex = Math.floor(Math.random() * yourArray.length)

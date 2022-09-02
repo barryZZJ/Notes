@@ -1,0 +1,103 @@
+Content-Type: text/x-zim-wiki
+
+document/window/ele.addEventListener('event', function(){}, false);
+ele.onxxx = func
+
+查找元素的event：
+https://www.w3schools.com/tags/ref_eventattributes.asp
+
+onload: 完全加载完（img可以在完全加载之前获取到大小。可以改成添加onmouseover事件）
+
+删除监听器：
+1.使用ele.onxx = func设置的监听器，可以通过ele.onxx = null删除
+2.使用addEventListener设置的监听器，只能在原脚本执行前改写addEventListener行为来避免添加：
+const nativeListener = document.addEventListener;
+document.addEventListener = (...args) => {
+  const type = args[0];
+  if (type === 'contextmenu') return;
+  nativeListener.apply(document, args);
+}
+// left click listener works normally
+document.addEventListener('click', () => console.log('click'));
+// right click listener is never attached:
+document.addEventListener('contextmenu', () => console.log('contextmenu'));
+
+3.使用jquery添加的监听器，可以使用off(event)删除
+$("#display_item_groups").off('contextmenu')
+
+自定义事件，并监听
+https://blog.csdn.net/weixin_43743956/article/details/89228612
+
+侦听DOM变化（增删）：使用MutationObserver
+https://developer.mozilla.org/en-US/docs/Web/API/MutationObserver
+
+EXAMPLE1:
+// Select the node that will be observed for mutations
+const targetNode = document.getElementById('some-id');
+
+// Options for the observer (which mutations to observe)
+const config = { attributes: true, childList: true, subtree: true };
+// attributes: 属性发生变化
+// childlist: 子元素发生变化
+// The options object must set at least one of 'attributes', 'characterData', or 'childList' to true.
+
+// Callback function to execute when mutations are observed
+const callback = function(mutationList, observer) {
+    // Use traditional 'for loops' for IE 11
+    for(const mutation of mutationList) {
+        if (mutation.type === 'childList') {
+            console.log('A child node has been added or removed.');
+        }
+        else if (mutation.type === 'attributes') {
+            console.log(`The ${mutation.attributeName} attribute was modified.`);
+        }
+    }
+};
+
+// Create an observer instance linked to the callback function
+const observer = new MutationObserver(callback);
+
+// Start observing the target node for configured mutations
+observer.observe(targetNode, config);
+
+// Later, you can stop observing
+observer.disconnect();
+
+
+EXAMPLE2:
+https://stackoverflow.com/questions/3219758/detect-changes-in-the-dom
+
+var observeDOM = (function(){
+  var MutationObserver = window.MutationObserver || window.WebKitMutationObserver;
+
+  return function( obj, callback ){
+    if( !obj || obj.nodeType !== 1 ) return; 
+
+    if( MutationObserver ){
+      // define a new observer
+      var observer = new MutationObserver(callback)
+
+      // have the observer observe obj for changes in children
+      observer.observe( obj, { childList:true, subtree:true })
+      return mutationObserver
+    }
+    
+    // browser support fallback
+    else if( window.addEventListener ){
+      obj.addEventListener('DOMNodeInserted', callback, false)
+      obj.addEventListener('DOMNodeRemoved', callback, false)
+    }
+  }
+})()
+
+// Observe a specific DOM element:
+observeDOM( listElm, function(m){ 
+   var addedNodes = [], removedNodes = [];
+
+   m.forEach(record => record.addedNodes.length & addedNodes.push(...record.addedNodes))
+   
+   m.forEach(record => record.removedNodes.length & removedNodes.push(...record.removedNodes))
+
+  console.clear();
+  console.log('Added:', addedNodes, 'Removed:', removedNodes);
+});

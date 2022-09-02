@@ -1,0 +1,3 @@
+Content-Type: text/x-zim-wiki
+
+可以用a.b的形式访问a['b']

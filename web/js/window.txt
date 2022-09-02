@@ -1,0 +1,17 @@
+Content-Type: text/x-zim-wiki
+
+
+window = self = 省略
+
+父窗口:
+window.parent
+
+顶层窗口：
+window.top
+
+判断是否为顶层窗口
+
+window !== window.top
+
+当前网址
+window.location.href/ .origin / .pathname

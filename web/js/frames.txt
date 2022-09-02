@@ -1,0 +1,18 @@
+Content-Type: text/x-zim-wiki
+
+框架frames: https://www.jb51.net/article/47557.htm
+
+框架两种标签:iframe frame
+子框架：
+window.frames["frameName"];
+window.frames.frameName
+window.frames[index]
+
+兄弟框架：
+self.parent.frames["sibling"]
+
+父窗口:
+window.parent
+
+顶层窗口：
+window.top

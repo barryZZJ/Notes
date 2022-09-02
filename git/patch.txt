@@ -1,0 +1,5 @@
+Content-Type: text/x-zim-wiki
+
+什么是patch? 简单来讲,patch中存储的是你对代码的修改
+什么是生成patch? 生成patch就是记录你对代码的修改并将其保存在patch文件中
+什么是打patch? 打patch就是将patch文件中对代码的修改，应用到源代码，从而把对代码的修改应用到code中。

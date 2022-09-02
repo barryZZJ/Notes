@@ -1,0 +1,4 @@
+Content-Type: text/x-zim-wiki
+
+it = iter(l)
+it.next()

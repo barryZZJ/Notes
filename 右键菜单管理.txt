@@ -1,0 +1,59 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2022-09-02T15:31:59+08:00
+
+程序注册右键菜单查询：
+HKEY_CLASSES_ROOT\CLSID
+
+* 右键空白处：
+HKEY_CLASSES_ROOT\Directory\Background\shell
+HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Directory\background\shell\
+
+* 文件夹右键菜单：
+HKEY_CLASSES_ROOT\Directory\shell
+* 某些软件所添加的鼠标右键可能在：
+HKEY_CLASSES_ROOT\Folder\shell
+HKEY_CLASSES_ROOT\Folder\shellex\ContextMenuHandlers
+
+* 右键空白处——新建：
+HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\Discardable\PostSetup\ShellNew 
+编辑右边的classes项即可
+Classes默认是不能修改的，需要修改其权限，而其权限是继承父类的，所以在修改权限时，首先要修改不被继承的，修改方式如下：
+	 第一：右键ShellNew，选择权限，选择高级，取消权限“包括可从该对象的父项继承的权限”，保存；
+	 第二：对使用的账户的权限设置为读取，取消完全控制(完全控制包括读取、修改、删除，如果允许完全控制，系统会自动更改修改好的Classes值)，保存即可。
+	 第三：在桌面右键选择新建时候，顺序已改变即修改成功。
+或
+HKEY_CLASSES_ROOT，找到对应后缀名，删掉二次展开项里的“ShellNew”
+
+* 文件右键菜单：
+HKEY_CLASSES_ROOT\*\shell （所有文件）
+HKEY_CLASSES_ROOT\SystemFileAssociations\后缀名\shell （指定后缀名）
+{{.\1.png}}
+{{.\2.png}}
+ 
+* .lnk文件右键菜单
+HKEY_CLASSES_ROOT\lnkfile\shellex\ContextMenuHandlers
+* 可执行文件
+HKEY_CLASSES_ROOT\exefile\shellex\ContextMenuHandlers
+* IE浏览器中的右键菜单：
+HKEY_CURRENT_USER\Software\Microsoft\InternetExplorer\MenuExt
+
+新建字符串值“Extended”表示按住shift才显示
+%V 表示当前路径 %1 表示选中文件/文件夹的路径
+
+cmd: cmd.exe /s /k pushd “%V”
+Pushd 命令 改变当前目录到指定目录，并保存当前的目录在堆栈顶端 
+/c (run a particular command and then exit)
+/k (run a particular command and then show a shell prompt)
+/s 保留/c或/k参数的引号
+指令调整cmd窗口大小、颜色：https://blog.csdn.net/Kelvin_Yan/article/details/45193557
+
+name
+-默认字符串值表示显示的字符串
+-Icon字符串值表示ico文件路径
+->command 默认字符串值表示执行命令
+ 
+ {{.\3.png}}
+{{.\4.png}}
+
+

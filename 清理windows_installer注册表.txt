@@ -1,0 +1,8 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2022-09-02T15:29:21+08:00
+
+HKLM\Software\Classes\Installer\Products
+HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\{C4B7FF79-1195-436F-AA85-28EE995151B7}
+删除对应的项即可（或重命名）
+（还不行的话注册表全局搜索“项”）

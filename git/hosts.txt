@@ -1,0 +1,7 @@
+Content-Type: text/x-zim-wiki
+
+github.global.ssl.fastly.net
+
+https://zhuanlan.zhihu.com/p/133697788
+
+ipconfig /flushdns

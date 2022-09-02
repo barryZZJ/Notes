@@ -1,0 +1,6 @@
+Content-Type: text/x-zim-wiki
+
+
+self和this
+self永远指向当前的window对象，是静态的
+this是动态的

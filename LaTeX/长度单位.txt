@@ -1,0 +1,14 @@
+Content-Type: text/x-zim-wiki
+
+pt point 磅(小)
+mm
+cm
+
+em 当前字号下大写字母 M 的宽度，常用于水平距离的设定
+ex 当前字号下小写字母 x 的高度，常用于垂直距离的设定
+
+转换：
+https://tex.stackexchange.com/questions/8260/what-are-the-various-units-ex-em-in-pt-bp-dd-pc-expressed-in-mm
+
+\textwidth
+\columnwidth

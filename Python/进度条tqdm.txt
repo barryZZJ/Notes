@@ -1,0 +1,7 @@
+Content-Type: text/x-zim-wiki
+
+https://tqdm.github.io/
+from tqdm import tqdm
+
+for item in tqdm(<iterable>):
+    <process item>

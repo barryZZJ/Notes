@@ -1,0 +1,21 @@
+Content-Type: text/x-zim-wiki
+
+https://www.jianshu.com/p/9e2f55776bc0
+快速新建：!
+id #
+class .
+子节点 >，
+弟节点 +，
+上级节点 ^
+重复 * 自动数字 $ $@N 指定从N开始
+分组 ()
+属性 [attr]
+文本操作符 {}
+
+隐式标签：不用带标签名直接 .className
+有如下几个：
+
+li：用于 ul 和 ol 中 e.g. ul>.test1
+tr：用于 table、tbody、thead 和 tfoot 中
+td：用于 tr 中
+option：用于 select 和 optgroup 中

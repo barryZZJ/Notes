@@ -1,0 +1,14 @@
+Content-Type: text/x-zim-wiki
+
+a, *b = [1, 2, 3, 4]
+# a == 1
+# b == [2, 3, 4]
+
+def f(*args, **kwargs):
+    type(args) # <class 'tuple'>
+    type(kwargs) # <class 'dict'>
+
+可以将元素解包后传参
+a = (1,2,3)
+b = {'a' : 1, 'b': 2}
+f(*a, **b)

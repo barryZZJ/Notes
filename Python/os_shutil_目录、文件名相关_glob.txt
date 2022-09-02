@@ -1,0 +1,78 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2022-09-02T14:45:14+08:00
+
+====== 文件处理 ======
+shutil
+.copy(old,new) 可以是文件夹
+.copyfile(old,new) 只能是文件
+.copytree(old, new) 只能是目录
+.move(old, new)
+
+open:模式
+r+：可读可写，若文件不存在，报错；w+: 可读可写，若文件不存在，创建
+https://blog.csdn.net/ztf312/article/details/47259805
+
+os.system("pause") 返回状态码
+os.popen() 返回控制台输出内容
+清屏：os.system('cls')
+获取控制台输出
+cmd = 'ping baidu.com'
+r = os.popen(cmd)
+for line in r.readlines():
+	print (line)
+
+.makedirs(多级路径)
+
+获取当前活动目录:
+os.getcwd()
+获取当前文件所在目录:
+os.path.dirname(__file__)
+
+os.path
+
+.splitext(filepath:文件路径)：-> (文件所在目录+文件名, .后缀名)
+.splitext(path:目录路径)：-> (目录路径, 空)
+.split(filepath:文件路径) -> (文件目录（不带结尾/）, 文件名带后缀)
+.split(filepath:目录路径) -> (上一级目录（不带结尾/）, 最后一级目录名）
+.basename(path) 文件名带后缀 或 最后一级路径
+.dirname(path) 文件所在目录 或 父目录
+
+os.sep = "\\"
+
+#只遍历根目录下所有目录和文件：
+scandir返回生成器
+for entry in os.scandir(path):
+	entry: os.DirEntry
+	entry.name # 只有文件名和后缀名
+	entry.path # 完整目录带文件和后缀名
+	entry.is_dir()
+	entry.is_file()
+
+#递归遍历目录下的所有目录和文件：
+（walk返回生成器，可以用next遍历，第一个就是根目录下的信息）
+for root,dirs,files in os.walk(r"D:\test"):
+	for file in files:
+		#获取文件所属目录
+		print(root)
+		#获取文件路径
+		print(os.path.join(root,file))
+#获取test目录下的所有目录
+	for dir in dirs:
+		#获取目录的名称
+		print(dir)
+		#获取目录的路径
+		print(os.path.join(root,dir))
+
+os.listdir(path) 返回一个数组，只包含根目录下所有目录和文件名，随机顺序。
+
+指定遍历顺序：sorted()
+numbers = re.compile(r'(\d+)')
+def numericalSort(value):
+	parts = numbers.split(value)
+	parts[1::2] = map(int, parts[1::2])
+	return parts
+
+glob模块查找文件路径用
+
+os.writelines(iterable) 需要手动加换行符，否则默认就是把每个元素依次写入

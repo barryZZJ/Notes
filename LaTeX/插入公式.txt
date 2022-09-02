@@ -1,0 +1,61 @@
+Content-Type: text/x-zim-wiki
+
+http://www.4k8k.xyz/article/Strive_For_Future/118609968
+
+数学环境 amsmath
+
+行内公式
+\( \) 或 $ $
+
+行间公式
+\[\] == equation* 没编号
+equation环境：
+  \begin{equation}
+  \end{equation}
+
+长公式折行：
+multline环境，折行处行尾加\\
+
+加标签\label{} （要写在caption下面，否则引用出错） <-> \ref{} Eq.\eqref{} \pageref{} 
+\tab{} 修改公式编号 
+
+
+多行公式：
+align环境：每行一个编号；在对齐处添加&；\notag 或 \nonumber可去掉某行的编号；
+align*环境：没编号
+
+共用编号的多行公式：
+equation环境内加aligned环境。左对齐： &xxx \\ &xxx
+
+配合cases环境（大括号）：
+equation环境内加cases，在公式和if之间加&，可以按if对齐；cases里套tabular就能多个对齐了。
+也可以用matrix（矩阵环境）进行排版
+
+equation环境内加gathered：各行居中对齐
+
+
+
+导数：
+\mathrm{d}
+\partial
+^{'}
+
+\DeclareMathOperator*{\argmax}{argmax} amsmath宏包下
+
+上下结构
+\stackerel{}{} \overset{}{}   a \atop b
+\underset{}{} \sum_{\substack{xx\\xx}}
+
+分式：\frac{}{}
+\dfrac{}{} 行内大分数
+\tfrac{}{} 数学模式小分数
+\displaystyle\mathop{\arg\min}_{\theta}
+
+\displaystyle \textstyle
+
+\stackerel{}{} \overset{}{}   a \atop b
+\underset{}{} \sum_{\substack{xx\\xx}}
+
+自动调整括号的大小：
+\left(
+\right)

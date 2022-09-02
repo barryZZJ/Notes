@@ -1,0 +1,10 @@
+Content-Type: text/x-zim-wiki
+
+
+//JSON对象转JSON字符串
+　　var obj = {"a": 1,"b": 2};
+　　obj = JSON.stringify(obj); //转化为JSON字符串
+　　localStorage.setItem("temp2", obj);
+
+//JSON字符串转JSON对象
+　　obj=JSON.parse(localStorage.getItem("temp2"));

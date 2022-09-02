@@ -1,0 +1,44 @@
+Content-Type: text/x-zim-wiki
+
+打包成exe：
+https://pyinstaller.readthedocs.io/en/stable/
+pip install pyinstaller
+
+cmd中：
+pyinstaller -F xx.py --clean -n name
+
+如果报错，记得-p添加site-packages目录, e.g. xxx\envs\script\Lib\site-packages 
+
+可发布文件在dist文件夹中
+
+参数
+
+-p DIR，--path=DIR	设置 Python import模块的路径（和设置 PYTHONPATH 环境变量的作用相似）。也可使用路径分隔符（Windows 使用分号，Linux 使用冒号）来分隔多个路径
+-n NAME，--name=NAME	指定项目（产生的 spec）名字。如果省略该选项，那么第一个脚本的主文件名将作为 spec 的名字
+--clean 构造成功后清理缓存文件
+
+-y, --noconfirm 不提示是否覆盖
+-F，--onefile	产生单个的可执行文件
+-D，--onedir	产生一个目录（包含多个文件）作为可执行程序 （默认）
+-a，--ascii	不包含 Unicode 字符集支持
+-d，--debug	产生 debug 版本的可执行文件
+-w，--windowed，--noconsolc	运行时不显示命令行窗口（仅对 Windows 有效）
+-c，--nowindowed，--console	运行时显示命令行窗口（仅对 Windows 有效） （默认）
+--log-level LEVEL   TRACE, DEBUG, INFO, WARN, ERROR, CRITICAL.  default: INFO
+输出目录设置：
+--distpath DIR   default: ./dist
+--workpath WORKPATH    default: ./build
+--specpath DIR    default: ./
+
+
+如果报哪些dll没找到，就在-p参数里添加对应的路径
+
+打包pyqt5时可能会弹出warning，
+在xx.spec文件里a=Analysis()后添加：
+for b in a.binaries:
+    txt = '_C.cp38-win_amd64.pyd'
+    if txt in b[1] or txt in b[0]:
+        print(f"Removing {b}")
+        a.binaries.remove(b)
+        break
+后，使用pyinstaller xx.spec重新编译（不需要任何额外参数）

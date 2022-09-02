@@ -1,0 +1,9 @@
+Content-Type: text/x-zim-wiki
+
+Crypto (pip install pycryptodome)
+https://pycryptodome.readthedocs.io/en/latest/src/examples.html
+
+rsa
+
+pyDes
+

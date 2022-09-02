@@ -1,0 +1,55 @@
+Content-Type: text/x-zim-wiki
+
+https://segmentfault.com/a/1190000007535316
+
+async 会将其后的函数的返回值封装成一个 Promise 对象，
+（如果函数本身就是返回一个promise对象，那加不加async都一样）
+
+function resolveAfter2Seconds(x) {
+  return new Promise(resolve => {
+    setTimeout(() => {
+      resolve(x);
+    }, 2000);
+  });
+};
+
+而 await 会等待这个 Promise 完成，并得到其 resolve 的结果为返回值。
+
+传统方式使用then链，而async不需要，看起来像是同步函数一样。
+
+简单例子：
+
+// async function expression assigned to a variable
+var add1 = async function(x) {
+  var a = await resolveAfter2Seconds(20);
+  var b = await resolveAfter2Seconds(30);
+  return x + a + b;
+}
+
+add1(10).then(v => { // 调用add1返回的promise对象
+  console.log(v);  // 4 秒后打印 60
+});
+
+
+(async () => {
+    concurrentFuncs         // 多个不带await的函数同时执行
+    await sequentialFuncs   // 多个带await的函数按顺序执行
+})()
+
+直接执行
+(async function(){
+    await func
+})()
+
+function func(){
+    return new Promise( resolve => {...}, reject => {...} );
+}
+
+
+(async function(x) { // async function expression used as an IIFE
+  var p_a = resolveAfter2Seconds(20);
+  var p_b = resolveAfter2Seconds(30);
+  return x + await p_a + await p_b;
+})(10).then(v => {
+  console.log(v);  // 2 秒后打印 60
+});

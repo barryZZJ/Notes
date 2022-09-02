@@ -1,0 +1,5 @@
+Content-Type: text/x-zim-wiki
+
+>>> "abc"[0:2]
+
+'ab'

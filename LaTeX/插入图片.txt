@@ -1,0 +1,119 @@
+Content-Type: text/x-zim-wiki
+
+图片
+\usepackage{graphicx}
+\graphicspath{{src/}} % Set the default folder for images
+
+!htbp - "!"忽略美学
+
+强行放置图片在当前位置（放不下时需要手工调整，如果后面多了一个空白页也需要把图片缩小）
+\usepackage{float}
+\begin{figure}[H]
+
+示例：
+\begin{figure}[!h] [htb]
+	\centering \raggedright(左对齐) \raggedleft
+	\label{fig1}
+	\caption{Survey results} % 去掉图片序号：\usepackage{caption}\caption*{}
+	\includegraphics[width=10cm|0.5\columnwidth|scale=0.8]{filename.jpg}
+    \includegraphics[width=0.7\linewidth]{GAN.png}
+
+\end{figure}
+
+对齐方式：
+\centering 
+\raggedright 左对齐
+\raggedleft 右对齐
+
+多图排版：3.9.2
+\hfill 在每一行中均匀排布，可以代替空格
+1. 多图共享一个总标号：使用多个\includegraphics，空格：\qquad，换行\\[x pt]
+
+2. 每个图有一个单独的标号：（多个minipage用\qquad，\\隔开）
+minipage环境（可加参数[t/b]表示顶部/底部对齐）
+
+\begin{figure}[htbp]
+\centering
+\begin{minipage}{0.48\textwidth}
+   \centering
+   \includegraphics
+   \caption
+\end{minipage} \hfill
+\end{figure}
+
+3. 每个图有个小标题/标号，外面一个大标题 https://blog.csdn.net/u012428169/article/details/115449123
+修改小标号 \renewcommand\thesubfigure{(\arabic{subfigure})}
+罗马数字: \roman, 阿拉伯数字：\arabic, 大写罗马数字：\Roman
+推荐用3.1 subfloat
+注意如果标题包含数学环境里的[]，要用{}把整个数学环境括起来，否则会报错。
+3.1 新subfig包：添加[caption=false]参数可以避免修改标题格式
+\subfloat[Caption1\label{fig:subim1}]{%
+  \includegraphics[width=0.45\textwidth]{example-image-a}%
+}\hfill
+\subfloat[Caption1\label{fig:subim2}]{%
+  \includegraphics[width=0.45\textwidth]{example-image-b}%
+}
+使用\ref会生成如1a字样；使用\subref可以只生成(a)
+
+3.2注意subcaption包会修改默认的标题格式
+推荐使用\subcaptionbox，能使水平并列大小不同的图形按下边界对齐，且标题与子图宽度对应，引用subcaption宏包
+\begin{figure}[htbp]
+\centering
+    \subcaptionbox{<Caption>\label{只能放在这里}}[指定宽度]{
+       \includegraphics
+    }\hfill \quad \\
+    \caption{大标题}
+\end{figure}
+
+3.3 subcaption包：
+按图片上边界对齐，且标题不与子图宽度对应：
+subfigure宏包的subfigure环境 (查看新版的subfig宏包)
+\begin{figure}[htbp]
+\centering
+    \begin{subfigure}{<必需>宽度0.5\textwidth}
+         \includegraphics
+         \caption{小标题}
+    \end{subfigure} \hfill
+    ....
+    \caption{大标题}
+\end{figure}
+
+3.4 旧subfig包：\subfigure[]{}
+
+自动计算图片大小：
+\includegraphics[
+  height=\dimexpr\pagegoal-\pagetotal\relax,
+  width=\textwidth,
+  keepaspectratio]{graph}
+
+浮于文字上方：
+1. 作为前景图，不能调整位置，且页面必须有字（可以用\paragraph{}）
+\usepackage{eso-pic}
+\AddToShipoutPictureFG*{\indludegraphics[width=\paperwidth]{pic.jpg}}
+or
+2. 直接绘制一个图，不考虑排版，可用于一张图放在一页上（要编译两次），可以调整位置
+\usepackage{tikz}
+\begin{tikzpicture}[remember picture, overlay, inner sep=0pt]
+\node [xshift=0cm,yshift=0cm] at (current page.center) 
+    {\includegraphics[scale=0.93]{scorelist.pdf}};
+\end{tikzpicture}
+
+
+衬于文字下方：（本身是用于为每一页设置背景图）
+1.作为背景图，不能调整位置，页面必须有字（可以用\paragraph{}）
+\usepackage{eso-pic}
+\AddToShipoutPictureBG*{\includegraphics[width=\paperwidth]{xx.jpg}}
+
+2.设置wallpaper （可以调整位置，参考doc），页面必须有字（可以用\paragraph{}）
+\usepackage{wallpaper}
+\ThisCenterWallPaper{scaling}{filename}
+
+
+设置角落LOGO：
+\usepackage{wallpaper}
+\<This>XXCornerWallpaper{scaling}{filename}
+XX = UL, UR, LL, LR
+\ClearWallPaper
+调整位置：
+\setlength{\wpXoffset}{xpt}
+\wpYoffset

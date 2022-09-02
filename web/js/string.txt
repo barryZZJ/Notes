@@ -1,0 +1,10 @@
+Content-Type: text/x-zim-wiki
+
+
+多行字符串：`（撇号）；
+同时 `a = ${a}` 类似于python中的f'a = {a}'
+
+格式化字符串 (ES6)
+var name = 'letian'
+var s = `Hello ${name}`
+console.log(s)

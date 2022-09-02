@@ -1,0 +1,28 @@
+Content-Type: text/x-zim-wiki
+
+文档 https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Functions/Arrow_functions
+
+返回函数指针
+var fun = (x) => x*x
+
+基础语法
+(param1, param2, …, paramN) => { statements } 
+(param1, param2, …, paramN) => expression
+没有参数时只写一对圆括号
+
+支持可变参数和默认参数
+
+// 两个参数:
+(x, y) => x * x + y * y
+
+// 无参数:
+() => 3.14
+
+// 可变参数:
+(x, y, ...rest) => {
+    var i, sum = x + y;
+    for (i=0; i<rest.length; i++) {
+        sum += rest[i];
+    }
+    return sum;
+}

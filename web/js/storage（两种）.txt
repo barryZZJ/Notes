@@ -1,0 +1,14 @@
+Content-Type: text/x-zim-wiki
+
+
+storage只能存储字符串
+localStorage: 在同一域名下可以共享
+是一种你不主动清除它，它会一直将存储数据存储在客户端的存储方式，即使你关闭了客户端（浏览器)，属于本地持久层储存 
+
+localStorage.setItem(key, val); localStorage[key] = val; localStorage.key = val;
+localStorage.getItem(key, val); localStorage[key]; localStorage.key （不存在的话返回null)
+localStorage.removeItem(key); localStorage.key = "";
+localStorage.clear();
+
+sessionStorage： 
+用于本地存储一个会话（session）中的数据，用于临时保存同一窗口(或标签页)的数据，在关闭窗口或标签页之后将会删除这些数据。

@@ -1,0 +1,17 @@
+Content-Type: text/x-zim-wiki
+
+1. 使用window.postMessage方法（收发窗口必须在同一个页面）
+https://www.runoob.com/js/met-win-postmessage.html
+https://developer.mozilla.org/en-US/docs/Web/API/Window/postMessage
+https://blog.csdn.net/chituZip/article/details/82350798
+
+发送页面：
+receiverWindow.postMessage(msg, sender's host)
+window.parent.postMessage(jsonstr, url)
+接受页面：
+window.addEventListener("message", function(event){
+    var data = event.data; // 确认event.origin == 来源网址
+}, false);
+
+
+2. 油猴脚本的话可以使用GM_setValue, GM_getValue

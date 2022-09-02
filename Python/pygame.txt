@@ -1,0 +1,7 @@
+Content-Type: text/x-zim-wiki
+
+https://www.pygame.org/wiki/tutorials
+http://pygametutorials.wikidot.com/tutorials-basic
+https://coderslegacy.com/python/pygame-platformer-game-development/
+
+pygame无内置GUI，需要通过其他库实现

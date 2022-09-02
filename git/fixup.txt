@@ -1,0 +1,3 @@
+Content-Type: text/x-zim-wiki
+
+使用fixup可以在rebase --autosquash --interactive rebase时自动squash到被fixup的commit，实现对很久以前commit的修改。fixup不带message，amend带message。

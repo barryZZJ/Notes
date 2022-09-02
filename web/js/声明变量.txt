@@ -1,0 +1,19 @@
+Content-Type: text/x-zim-wiki
+
+let和var：
+var可以跨块级作用域{}，不能跨函数作用域。
+let不能跨块级作用域{}，可用于定义块局部变量，如for的每一次循环都是一个不同的块。
+且let不能重复声明
+const 允许声明一个不可变的常量。这个常量在定义域内总是可见的。
+
+var x = 1;
+
+if (x === 1) {
+  var x = 2;
+
+  console.log(x);
+  // expected output: 2
+}
+
+console.log(x);
+// expected output: 2

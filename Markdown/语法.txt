@@ -1,0 +1,251 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+
+支持HTML语言：
+空格 &nbsp; non-breaking space
+半角空格 &ensp;
+全角空格 &emsp;
+
+换行 <br> 插件设置Break on single new line后回车自动换行
+`>`可以作为小换行
+
+&   &amp;
+<   &lt;
+>   &gt;
+"   &quot;
+'   &qpos;
+键盘 <kbd> </kbd>
+
+居中：
+<div align="center">居中1</div> <center>居中2</center>
+左对齐：
+<p align="left">左对齐</p>
+右对齐：
+<p align="right">右对齐</p>
+
+# Katex 
+---
+- `\def\foo{x^2}`  <!-- 只在当前$$环境内有效 -->
+`\gdef\bar#1{#1^2}`  <!-- 全局$$环境内有效 -->
+`\global\def\macroname#1#2…{definition}`   <!-- 全局$$环境内有效 -->
+`\newcommand\macroname[numargs]{definition}` 
+`\renewcommand\macroname[numargs]{definition}` 
+`\providecommand\macroname[numargs]{definition}` 
+
+>
+
+- 强制文字间小符号：`\textstyle`，强制大符号：`\displaystyle`
+>
+>
+- 调整列表宽度 
+```html
+<style> 
+table:first-of-type {width: 100px;} th:first-of-type { width: 100px; } th:nth-of-type(2) {width:50px;} 
+</style>
+```  
+<!--th:表头；first-of-type：是父类范围内第一个这个类型的元素，table不知道为什么不能直接控制所有的 -->
+
+- `array`相当于`tabular`(katex没有)，要加对齐方式`{lcr}`
+- `array`环境前加`\def\arraystretch{1.5}`可以设置行距
+
+- `aligned`就可以对齐
+
+快捷键
+--------------------
+| Markdown All in One    |                                   |
+|------------------------|-----------------------------------|
+| `Ctrl` + `B`           | Toggle bold                       |
+| `Ctrl` + `I`           | Toggle italic                     |
+| `Ctrl` + `Shift` + `]` | Toggle heading (uplevel)          |
+| `Ctrl` + `Shift` + `[` | Toggle heading (downlevel)        |
+| `Ctrl` + `M`           | Toggle math environment           |
+| `Ctrl` + `Shift` + `M` | Toggle multiline math environment |
+| `Alt` + `C`            | Check/Uncheck task list item      |
+| `Ctrl` + `Shift` + `V` | Toggle preview to side            |
+| `Ctrl` + `K` `V`       | Toggle preview                    |
+| `Alt` + `Shift` + `F`  | Format table                      |
+|                        |                                   |
+
+命令控制里输入`table of contents`可以快速生成目录。
+`insert table`快速插入表格。
+
+标题
+--------------------
+
+# 1级标题
+## 2级标题
+### 3级标题
+#### 四级标题
+##### 五级标题
+###### 六级标题
+
+文本样式
+--------------------
+*斜体文本* _斜体文本_
+
+**加粗文本** __加粗文本__
+
+***斜体加粗*** ___斜体加粗___
+
+==标记文本==
+
+~~删除文本~~
+
+> 一级引用
+>> 二级引用
+>>> 三级引用
+
+H~2~O is是液体。
+
+2^10^ 运算结果是 1024。
+
+`$\color{颜色}{内容}$` &nbsp; 颜色可用单词、rgba(r, g, b)、#xxxxxx
+
+
+列表
+--------------------
+- 项目
+  * 项目
+	+ 项目
+
+1. 项目1
+2. 项目2
+3. 项目3
+
+- [ ] 计划任务
+- [x] 完成任务
+
+链接
+--------------------
+链接: [link](https://www.csdn.net/).
+
+图片: ![Alt](https://imgconvert.csdnimg.cn/aHR0cHM6Ly9hdmF0YXIuY3Nkbi5uZXQvNy83L0IvMV9yYWxmX2h4MTYzY29tLmpwZw)
+
+带尺寸的图片: ![Alt](https://imgconvert.csdnimg.cn/aHR0cHM6Ly9hdmF0YXIuY3Nkbi5uZXQvNy83L0IvMV9yYWxmX2h4MTYzY29tLmpwZw =30x30)
+
+居中的图片: ![Alt](https://imgconvert.csdnimg.cn/aHR0cHM6Ly9hdmF0YXIuY3Nkbi5uZXQvNy83L0IvMV9yYWxmX2h4MTYzY29tLmpwZw#pic_center)
+
+居中并且带尺寸的图片: ![Alt](https://imgconvert.csdnimg.cn/aHR0cHM6Ly9hdmF0YXIuY3Nkbi5uZXQvNy83L0IvMV9yYWxmX2h4MTYzY29tLmpwZw#pic_center =30x30)
+
+`<img src="xxx" align="xxx" width="50%" height="50%" alt="挂了时显示的文字"/>`
+图片居中需要外面套一个align=center的<div>
+| align  |
+|--------|
+| top    |
+| bottom |
+| middle |
+| left   |
+| right  |
+
+引用其他文件
+`:[alternate-text](onlinePath or localPath)`
+
+代码片
+--------------------
+下面展示一些 `内联代码片`。
+
+`单行`
+
+```
+// A code block
+var foo = 'bar';
+```
+
+```javascript
+// An highlighted block
+var foo = 'bar';
+```
+
+表格
+--------------------
+| 项目 | Value |
+|----|-------|
+| 电脑 | $1600 |
+| 手机 | $12   |
+| 导管 | $1    |
+
+|   Column 1    |           Column 2 |
+|:-------------:|-------------------:|
+| centered 文本居中 | right-aligned 文本居右 |
+
+
+注脚
+--------------------
+一个具有注脚的文本。[^1]
+
+[^1]: 注脚的解释
+
+注释
+--------------------
+Markdown将文本转换为 HTML。
+
+*[HTML]:   超文本标记语言
+
+LaTeX 数学公式
+--------------------
+[参考文档](https://khan.github.io/KaTeX/)
+
+
+Gamma公式展示 $ \Gamma(n) = (n-1)!\quad\forall n\in\mathbb N $ 是通过 Euler integral
+
+$$
+\Gamma(z) = \int_0^\infty t^{z-1}e^{-t}dt\,.
+$$
+
+插入甘特图
+--------------------
+[参考文档](https://mermaidjs.github.io/#/gantt)
+
+```mermaid
+gantt
+		dateFormat  YYYY-MM-DD
+		title Adding GANTT diagram functionality to mermaid
+		section 现有任务
+		已完成               :done,    des1, 2014-01-06,2014-01-08
+		进行中               :active,  des2, 2014-01-09, 3d
+		计划中               :         des3, after des2, 5d
+```
+
+插入UML图
+--------------------
+[参考文档](https://mermaidjs.github.io/#/sequenceDiagram)
+
+```mermaid
+sequenceDiagram
+张三 ->> 李四: 你好！李四, 最近怎么样?
+李四-->>王五: 你最近怎么样，王五？
+李四--x 张三: 我很好，谢谢!
+李四-x 王五: 我很好，谢谢!
+Note right of 王五: 李四想了很长时间, 文字太长了<br/>不适合放在一行.
+
+李四-->>张三: 打量着王五...
+张三->>王五: 很好... 王五, 你怎么样?
+```
+
+插入Mermaid流程图
+--------------------
+[参考文档](https://mermaidjs.github.io/#/flowchart?id=graph)
+
+```mermaid
+graph LR
+A[长方形] -- 链接 --> B((圆))
+A --> C(圆角长方形)
+B --> D{菱形}
+C --> D
+```
+
+插入Flowchart流程图
+--------------------
+[参考文档](http://flowchart.js.org/)
+
+```mermaid
+flowchat
+st=>start: 开始
+e=>end: 结束
+op=>operation: 我的操作
+cond=>condition: 确认？
+
+st->op->cond
+cond(yes)->e
+cond(no)->op
+```

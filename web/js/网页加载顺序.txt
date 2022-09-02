@@ -1,0 +1,47 @@
+Content-Type: text/x-zim-wiki
+
+window = self = ""
+document.readyState : 'loading' / 'interactive' / 'complete'
+
+等待页面加载完毕：
+1.自带的(function() {...})(); 相当于 document.ready = function(..){...}
+
+2.(默认是null) 页面资源全部加载完后（如图片和媒体）才调用，晚于document.ready:
+window.onload = function(){...}
+
+执行顺序：A>B>C>D>E
+$(function()
+{
+    alert("A");
+});
+
+$(document).ready(function(){
+    alert("B");
+});
+
+jQuery(function($) {  
+    alert("C");  
+});
+
+function loads(){
+    alert("D");
+};
+
+window.onload=function(){
+    alert("E");
+};
+
+解决onload只能注册一个函数：
+var $$ = function(func){    
+            if (document.addEventListener) {    
+                window.addEventListener("load", func, false);    
+            }    
+            else if (document.attachEvent) {    
+                window.attachEvent("onload", func);    
+            }    
+        }    
+            
+        $$(function(){    
+            ...此处加上需要执行的内容...   
+        }) 
+

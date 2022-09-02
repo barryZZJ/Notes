@@ -1,0 +1,19 @@
+Content-Type: text/x-zim-wiki
+
+int('0xf', 16)
+int('10100111',2)
+int('17',8)
+
+hex(十进制数)
+
+hex(int('1001',2))
+
+bin
+oct
+
+不带0x, 0b前缀：
+format(x, 'b')
+format(x, 'o')
+format(x, 'x')
+
+format(x, '#016b') #：包含0b，0填充，16个字节对齐

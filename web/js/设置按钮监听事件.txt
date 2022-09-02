@@ -1,0 +1,18 @@
+Content-Type: text/x-zim-wiki
+
+btn.onclick = function(){ ... }
+
+function f(){...}
+btn.onclick = f;
+
+click是方法，执行click()就是模拟鼠标点击，如果没有disabled就同时会触发onclick()事件
+
+或
+btn.addEventListener("click", function(){...});
+
+常用事件：click，dblclick，mouseup，mousedown。
+
+对应的组件方法：
+onclick()
+onmouseup()
+onmousedown()

@@ -1,0 +1,10 @@
+Content-Type: text/x-zim-wiki
+
+This module provides a comprehensive interface for compressing and decompressing data using the bzip2 compression algorithm.
+
+https://docs.python.org/3.7/library/bz2.html
+http://effbot.org/librarybook/bz2.htm
+
+
+s = 'BZh91AY&SYA\xaf\x82\r\x00\x00\x01\x01\x80\x02\xc0\x02\x00 \x00!\x9ah3M\x07<]\xc9\x14\xe1BA\x06\xbe\x084'
+bz2.decompress(s.encode('raw_unicode_escape'))

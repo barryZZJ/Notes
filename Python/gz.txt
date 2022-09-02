@@ -1,0 +1,7 @@
+Content-Type: text/x-zim-wiki
+
+import gzip
+with open(fn, 'rb') as f:
+    f.read()
+
+'wb'

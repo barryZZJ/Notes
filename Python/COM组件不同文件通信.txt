@@ -1,0 +1,49 @@
+Content-Type: text/x-zim-wiki
+
+解决方法。COM组件！
+
+COM is a technology from Microsoft that allows objects to communicate without the need for either object to know any details about the other, even the language it's implemented in.
+
+看看本书某章节的总结：
+
+We have seen examples of the various data types that can be passed back and forth between the two languages: numbers, strings, and arrays. The ability to pass multidimensional arrays allows you to move large amounts of data between the two languages without writing a lot of conversion code.
+
+也不用说很多，不想看书的，看看下面这个我从书中摘抄的简短例子，就能知道该方法的核心之处。
+在python里：
+#需要先安装pywin32模块
+import pythoncom
+class PythonUtilities:
+
+	_reg_clsctx_ = pythoncom.CLSCTX_LOCAL_SERVER
+    _public_methods_=['<SplitString>']
+    _reg_progid_='<PythonDemos.Utilities>'
+    _reg_clsid_=pythoncom.CreateGuid()
+
+    def <SplitString>(self, val, item=None):
+        import string 
+        if item !=None: 
+            item=str(item)
+        val=str(val)
+        return val.split(item)
+
+if __name__=='__main__':
+    print ('Registering COM server...')
+    import win32com.server.register
+    win32com.server.register.UseCommandLine(PythonUtilities)
+
+以管理员身份执行上述代码。在注册成功后，COM组件会一直保留，不受开关机影响，因此可以在任意时候进行调用。更新代码的函数部分需重新注册，因此通常情况下，你只需要在注册时使用管理员权限。
+在VB里：
+Private Sub Form_Load()
+    Set PythonUtils = CreateObject("<PythonDemos.Utilities>")
+    response = PythonUtils.<SplitString>("Hello from VB")
+    For Each Item In response
+        MsgBox Item
+    Next
+End Sub
+
+上面说COM组件会一直保留，如果需要注销，可使用管理员权限执行命令行语句（py_name是上面python文件的名称）。
+> python py_name.py --unregister
+
+多余的不用说了，一试便知，这点代码足以解决诸多混合编程的难题。
+
+VB接受Py的参数支持列表（数组），不支持字典

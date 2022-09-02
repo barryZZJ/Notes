@@ -1,0 +1,87 @@
+Content-Type: text/x-zim-wiki
+
+要排版简短的代码或关键字，可使用 \verb 命令：
+\verb⟨delim⟩⟨code⟩⟨delim⟩ 
+⟨delim⟩ 标明代码的分界位置，前后必须一致，除字母、空格或星号外，可任意选择使得不与代码本身冲突，习惯上使用 | 符号。
+\verb|int a|
+
+
+\usepackage{listings}
+
+\lstinputlisting[language=C++]{./code/mcmthesis-sudoku.cpp}
+或
+\begin{lstlisting}[language=C++,frame=single]
+...
+\end{lstlisting}
+
+显示行号：
+numbers=left
+加外框：
+frame=single
+
+加在document开头：
+matlab
+\lstset{ %
+extendedchars=false,            % Shutdown no-ASCII compatible
+language=Matlab,                % choose the language of the code
+basicstyle=\footnotesize\tt,    % the size of the fonts that are used for the code
+tabsize=3,                            % sets default tabsize to 3 spaces
+numbers=left,                   % where to put the line-numbers
+numberstyle=\tiny,              % the size of the fonts that are used for the line-numbers
+stepnumber=1,                   % the step between two line-numbers. If it's 1 each line
+                                % will be numbered
+numbersep=5pt,                  % how far the line-numbers are from the code   %
+keywordstyle=\color[rgb]{0,0,1},                % keywords
+commentstyle=\color[rgb]{0.133,0.545,0.133},    % comments
+stringstyle=\color[rgb]{0.627,0.126,0.941},      % strings
+backgroundcolor=\color{white}, % choose the background color. You must add \usepackage{color}
+showspaces=false,               % show spaces adding particular underscores
+showstringspaces=false,         % underline spaces within strings
+showtabs=false,                 % show tabs within strings adding particular underscores
+frame=single,                 % adds a frame around the code
+captionpos=b,                   % sets the caption-position to bottom
+breaklines=true,                % sets automatic line breaking
+breakatwhitespace=false,        % sets if automatic breaks should only happen at whitespace
+title=\lstname,                 % show the filename of files included with \lstinputlisting;
+                                % also try caption instead of title
+mathescape=true,escapechar=?    % escape to latex with ?..?
+escapeinside={\%*}{*)},         % if you want to add a comment within your code
+%columns=fixed,                  % nice spacing
+%morestring=[m]',                % strings
+%morekeywords={%,...},%          % if you want to add more keywords to the set
+%    break,case,catch,continue,elseif,else,end,for,function,global,%
+%    if,otherwise,persistent,return,switch,try,while,...},%
+}
+
+
+c++
+\lstset{
+  %编程语言
+    language=c++,
+    frame=single,
+    rulecolor=\color{gray},
+    xrightmargin=0pt,
+    columns=fullflexible,
+    showstringspaces=false,
+    breaklines=true,
+    framerule=0.7pt,
+    escapeinside=``
+}
+
+python
+\lstset{frame=tb,
+  language=Python,
+  aboveskip=3mm,
+  belowskip=3mm,
+  showstringspaces=false,
+  columns=flexible,
+  basicstyle={\small\ttfamily},
+  numbers=none,
+  numberstyle=\tiny\color{gray},
+  keywordstyle=\color{blue},
+  commentstyle=\color{dkgreen},
+  stringstyle=\color{mauve},
+  breaklines=true,
+  breakatwhitespace=true,
+  tabsize=3
+}

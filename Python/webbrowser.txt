@@ -1,0 +1,4 @@
+Content-Type: text/x-zim-wiki
+
+chr = webbrowser.get("chrome")
+chr.open(url)

@@ -1,0 +1,24 @@
+Content-Type: text/x-zim-wiki
+
+参见geometry文档：
+\usepackage[left=2.5cm,right=2.5cm,top=2.5cm,bottom=2.5cm]{geometry}
+or like this:
+\usepackage[hmargin=2.5cm,vmargin=2.5cm]{geometry}
+or
+\usepackage[margin=2.5cm]{geometry}
+
+只更改某一页的页边距：(\usepackage{geometry})
+在需要调整的页中加入
+\newgeometry{left=0cm, right=0cm}
+\newgeometry{hmargin=0cm}
+恢复：
+\restoregeometry
+
+或
+
+\addtolength{\topmargin}{-54pt}
+\setlength{\oddsidemargin}{0.63cm}  % 3.17cm - 1 inch
+\setlength{\evensidemargin}{\oddsidemargin}
+\setlength{\textwidth}{14.66cm}
+\setlength{\textheight}{24.00cm}    % 24.62
+

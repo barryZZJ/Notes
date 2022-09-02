@@ -1,0 +1,11 @@
+Content-Type: text/x-zim-wiki
+
+webbrowser
+chr = webbrowser.get("chrome")
+chr.open(url)
+
+selenium
+from selenium import webdriver
+driver=webdriver.Chrome()
+driver.get(url)
+driver.quit()

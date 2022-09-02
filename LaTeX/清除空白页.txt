@@ -1,0 +1,4 @@
+Content-Type: text/x-zim-wiki
+
+在\begin{document}前加
+\let\cleardoublepage\clearpage

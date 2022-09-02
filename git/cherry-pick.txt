@@ -1,0 +1,3 @@
+Content-Type: text/x-zim-wiki
+
+只把合并被选中的几个commit，而不是直接合并整个分支

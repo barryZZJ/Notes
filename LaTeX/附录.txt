@@ -1,0 +1,17 @@
+Content-Type: text/x-zim-wiki
+
+https://texfaq.org/FAQ-appendix
+1. 
+\usepackage{appendix}
+\appendix 声明接下来的是附录（正常使用section等）
+\section{附录}
+
+2.附录环境
+\begin{appendices}
+...
+\end{appendices}
+
+3.
+\appendixpage （新开一页并加上“附录”字样）
+\renewcommand{\appendixname}{附录}
+\addappheadtotoc （在目录加入附录内容）

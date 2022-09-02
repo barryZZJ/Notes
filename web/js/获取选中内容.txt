@@ -1,0 +1,4 @@
+Content-Type: text/x-zim-wiki
+
+https://stackoverflow.com/questions/5379120/get-the-highlighted-selected-text
+window.getSelection()

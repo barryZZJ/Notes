@@ -1,0 +1,11 @@
+Content-Type: text/x-zim-wiki
+
+https://www.w3school.com.cn/python/python_lambda.asp
+
+lambda [arguments] : expression
+
+x = lambda a : a + 10
+print(x(5))
+
+f = lambda: "abc"
+

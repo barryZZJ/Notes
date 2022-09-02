@@ -1,0 +1,7 @@
+Content-Type: text/x-zim-wiki
+
+https://www.jianshu.com/p/099089535e0e
+
+python -m py_compile code01.py
+
+python -m compileall ./utils/

@@ -1,0 +1,5 @@
+Content-Type: text/x-zim-wiki
+
+pip install jiphy
+
+jiphy md5.js [files...]

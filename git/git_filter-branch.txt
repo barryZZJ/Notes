@@ -1,0 +1,9 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2022-09-02T15:42:54+08:00
+
+git filter-branch --index-filter 'git rm -r --cached --ignore-unmatch -- inet/src/*.tmp*'
+
+https://www.cnblogs.com/flying_bat/p/4172435.html
+https://www.hollischuang.com/archives/1708
+https://rtyley.github.io/bfg-repo-cleaner/

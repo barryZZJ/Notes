@@ -1,0 +1,3 @@
+Content-Type: text/x-zim-wiki
+
+setattr(x, 'key', value)  # == x.key = value

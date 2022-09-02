@@ -1,0 +1,13 @@
+Content-Type: text/x-zim-wiki
+
+位置键：
+"{0}_{1}".format(a, b)
+名称键：
+"{a}_{b}".format(a=a, b=b)
+
+传入对象用名称键：
+"{date.year}{date.month}".format(date=datetime.datetime(year=2019, month=2))
+
+约束宽度：
+"{a:2d}".format(a=1) # -> " 1"
+"{a:0>2d}".format(a=1) # -> "01"

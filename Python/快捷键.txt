@@ -1,0 +1,18 @@
+Content-Type: text/x-zim-wiki
+
+ctrl[alt/shift] - / + 代码[递归/全部]折叠/展开
+ctrl shift F/R 全局查找/替换
+ctrl P 显示光标处参数
+ctrl Q 显示文档
+ctrl shift I 显示源码
+ctrl alt L 格式化代码
+ctrl alt S 打开设置
+ctrl shift ↑/↓ 上下移动函数块
+ctrl alt shift T 快速重构...
+ctrl alt v 提取变量
+ctrl alt enter 向上起一行
+ctrl shift j 删除结尾换行
+ctrl shift backspace 回到上次更改的地方
+ctrl shift f7 -> Rainbow Highlighter: shift alt z 标记变量，F3导航
+
+双击ctrl使用箭头插入多个光标，或按住alt使用鼠标插入多个光标

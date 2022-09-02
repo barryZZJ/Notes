@@ -1,0 +1,31 @@
+Content-Type: text/x-zim-wiki
+
+wget -N --no-check-certificate 
+
+find https://www.runoob.com/linux/linux-comm-find.html
+find . -name "*.c"
+
+https://www.jianshu.com/p/da49f71b9fc8
+
+阻止标准输出 + 阻止错误输出
+xxx > /dev/null 2>&1
+
+tmux
+
+nohup
+
+xxx & ->进入后台执行
+
+1.覆盖写入：
+
+echo "日志内容"  > 文件
+cat 文件 > 文件2
+
+2.追加写入：
+
+echo "日志内容"    >> 文件
+cat 文件 >> 文件2
+
+net 套件
+apt-get install inetutils-ping
+apt-get install net-tools

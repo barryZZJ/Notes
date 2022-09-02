@@ -1,0 +1,51 @@
+Content-Type: text/x-zim-wiki
+
+1.
+requests请求response.text返回\u 16进制数字，转换中文.
+r = requests.get(url)
+r.content.decode("unicode_escape")
+
+1.5
+\x16进制数解码
+b"\xce\xde\xd0\xa7\xb2\xd9\xd7\xf7".decode('utf-8')
+
+1.6
+url 解码: % -> \x
+from urllib.parse import unquote
+>>> unquote('%C4%A7%CA%DE')
+'\xc4\xa7\xca\xde'
+unquote_plus
+unquote_to_bytes
+加密：
+1. urlencode
+>>> from urllib.parse import urlencode
+>>> data = {
+...     'a': 'test',
+...     'name': '魔兽'
+... }
+>>> print urlencode(data)
+a=test&amp;name=%C4%A7%CA%DE
+or
+>>> from urllib.parse import quote
+>>> quote('魔兽')
+'%C4%A7%CA%DE'
+
+2.
+返回乱码中文
+获取网站原始编码
+print(requests.utils.get_encodings_from_content(r.text)[0])
+设置编码: r.encoding= requests.utils.get_encodings_from_content(r.text)[0]
+打印: print(r.text)
+
+3.
+带参数get:
+>>> payload = {'key1': 'value1', 'key2': ['value2', 'value3']}
+
+>>> r = requests.get('http://httpbin.org/get', params=payload)
+>>> print(r.url)
+http://httpbin.org/get?key1=value1&key2=value2&key2=value3
+
+.get(url=,headers=)
+
+
+

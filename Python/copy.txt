@@ -1,0 +1,6 @@
+Content-Type: text/x-zim-wiki
+
+import copy
+
+s = []
+s2 = copy.deepcopy(s)

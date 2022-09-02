@@ -1,0 +1,15 @@
+Content-Type: text/x-zim-wiki
+
+Overrides页面：
+添加一个目录后，右键文件，save for override，可以覆盖原js脚本
+
+在控制台输入函数后，双击返回结果可跳转到源码
+
+Ctrl shift f 全局搜索
+
+调试：
+XHR/fetch Beakpoints：含指定URL时进入调试
+Event Listener Breakpoints：发生指定事件时进入调试
+
+追submit事件：
+  js搜索关键词；分析api设xhr断点；分析callstack；Event Listener Breakpoints

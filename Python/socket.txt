@@ -1,0 +1,66 @@
+Content-Type: text/x-zim-wiki
+
+socket
+https://www.runoob.com/python/python-socket.html
+https://docs.python.org/3.9/library/socket.html
+https://docs.python.org/zh-cn/3.9/library/socket.html#example
+https://www.cnblogs.com/benchen/p/6219578.html 多线程
+
+socketserver
+https://docs.python.org/3/library/socketserver.html
+https://blog.csdn.net/ruanxingzi123/article/details/83010914
+
+ 1 服务端
+ 2 
+ 3 import socket
+ 4 
+ 5 
+ 6 host = '127.0.0.1'
+ 7 port = 8090
+ 8 sk=socket.socket(socket.AF_INET,socket.SOCK_STREAM)
+ 9 sk.bind((host,port))
+10 sk.listen(1)
+11 
+12 while True:
+13     conn,addr = sk.accept()
+14     while True:
+15         accept_data = conn.recv(1024).decode('UTF-8', 'ignore')
+16         if not accept_data:
+17             break
+18         print(accept_data)
+19         feedback_data =("回复\""+accept_data+"\":\n\t你好，我是Server端").encode("utf8")
+20         conn.sendall(feedback_data)
+21 
+22     conn.close()
+
+ 2 客户端
+ 3 
+ 4 import socket,time
+ 5 
+ 6 
+ 7 host = '127.0.0.1'
+ 8 port = 8090
+ 9 
+10 sk=socket.socket(socket.AF_INET,socket.SOCK_STREAM)
+11 sk.connect((host,port))
+12 
+13 for i in range(10):
+14     sk.sendall(("你好，我是Client No.%d" %i).encode("utf8"))
+15     data = sk.recv(1024)
+16     print(data.decode('UTF-8', 'ignore'))
+17     time.sleep(2)
+18     i = i + 1
+19 sk.close()
+
+服务端多线程
+def init():
+  self.s = socket.socket()
+  self.s.bind((host, port))
+  self.s.listen(10)
+  self.start()
+
+def start():
+  while True:
+    conn, addr = self.s.accept()
+    Thread(target=handler, args=[conn, addr]).start()
+  

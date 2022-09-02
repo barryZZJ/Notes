@@ -1,0 +1,11 @@
+Content-Type: text/x-zim-wiki
+
+from scipy.special import perm, comb
+perm(n,k)
+comb(n,k)
+
+from itertools import permutations, combinations
+list(permutations(['a','b','c'],2))
+#输出所有排列情形：[('a', 'b'), ('a', 'c'), ('b', 'a'), ('b', 'c'), ('c', 'a'), ('c', 'b')]
+list(combinations(['a','b','c'],2))
+#输出所有组合情形：[('a', 'b'), ('a', 'c'), ('b', 'c')]

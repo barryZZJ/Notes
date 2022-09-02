@@ -1,0 +1,14 @@
+Content-Type: text/x-zim-wiki
+
+function add(){
+}
+
+调用add(2,3,4)时，多余的参数在函数中用arguments数组保存。
+
+或剩余参数操作符：
+function add(...args){
+  for (let value of args)
+}
+
+add.apply(null, array) 可以把array展开，当作多个实参
+或：add(...array) 也可以自动展开array

@@ -1,0 +1,14 @@
+Content-Type: text/x-zim-wiki
+
+1. 防止断词（可能会overfull）
+\mbox{...}
+
+2.长单词放到下一行（部分）：
+Enclose the text block in a raggedright environment (this typesets the block raggedright and makes hyphenation very unlikely);
+
+Enclose the text block in a group and set \hyphenpenalty and \exhyphenpenalty to 10000;
+
+Load the hyphenat package and write \nohyphens{(text block)}.
+
+全局：
+\usepackage[none]{hyphenat}

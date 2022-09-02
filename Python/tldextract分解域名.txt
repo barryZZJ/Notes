@@ -1,0 +1,3 @@
+Content-Type: text/x-zim-wiki
+
+可以方便的分解URL的域名

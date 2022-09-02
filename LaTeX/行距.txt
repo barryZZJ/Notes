@@ -1,0 +1,16 @@
+Content-Type: text/x-zim-wiki
+
+1.
+{
+\linespread{2.0}
+or \setlength{\baselineskip}{20pt}
+...
+两倍行距
+}
+默认行距
+
+2.
+\usepackage{setspace}
+
+\begin{spacing}{2.0}
+\end{spacing}
