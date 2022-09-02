@@ -1,8 +1,9 @@
 Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
 
 图片
 \usepackage{graphicx}
-\graphicspath{{src/}} % Set the default folder for images
+\graphicspath{{src}} % Set the default folder for images
 
 !htbp - "!"忽略美学
 
@@ -16,7 +17,7 @@ Content-Type: text/x-zim-wiki
 	\label{fig1}
 	\caption{Survey results} % 去掉图片序号：\usepackage{caption}\caption*{}
 	\includegraphics[width=10cm|0.5\columnwidth|scale=0.8]{filename.jpg}
-    \includegraphics[width=0.7\linewidth]{GAN.png}
+	\includegraphics[width=0.7\linewidth]{GAN.png}
 
 \end{figure}
 
@@ -59,10 +60,10 @@ minipage环境（可加参数[t/b]表示顶部/底部对齐）
 推荐使用\subcaptionbox，能使水平并列大小不同的图形按下边界对齐，且标题与子图宽度对应，引用subcaption宏包
 \begin{figure}[htbp]
 \centering
-    \subcaptionbox{<Caption>\label{只能放在这里}}[指定宽度]{
-       \includegraphics
-    }\hfill \quad \\
-    \caption{大标题}
+	\subcaptionbox{<Caption>\label{只能放在这里}}[指定宽度]{
+	   \includegraphics
+	}\hfill \quad \\
+	\caption{大标题}
 \end{figure}
 
 3.3 subcaption包：
@@ -70,12 +71,12 @@ minipage环境（可加参数[t/b]表示顶部/底部对齐）
 subfigure宏包的subfigure环境 (查看新版的subfig宏包)
 \begin{figure}[htbp]
 \centering
-    \begin{subfigure}{<必需>宽度0.5\textwidth}
-         \includegraphics
-         \caption{小标题}
-    \end{subfigure} \hfill
-    ....
-    \caption{大标题}
+	\begin{subfigure}{<必需>宽度0.5\textwidth}
+		 \includegraphics
+		 \caption{小标题}
+	\end{subfigure} \hfill
+	....
+	\caption{大标题}
 \end{figure}
 
 3.4 旧subfig包：\subfigure[]{}
@@ -95,7 +96,7 @@ or
 \usepackage{tikz}
 \begin{tikzpicture}[remember picture, overlay, inner sep=0pt]
 \node [xshift=0cm,yshift=0cm] at (current page.center) 
-    {\includegraphics[scale=0.93]{scorelist.pdf}};
+	{\includegraphics[scale=0.93]{scorelist.pdf}};
 \end{tikzpicture}
 
 

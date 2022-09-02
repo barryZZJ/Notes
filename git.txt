@@ -2,6 +2,8 @@ Content-Type: text/x-zim-wiki
 Wiki-Format: zim 0.6
 Creation-Date: 2022-09-02T15:39:23+08:00
 
+git 命令大全 https://www.jianshu.com/p/93318220cdce
+
 start a working area:
 	-clone 克隆版本库的时候，所使用的远程主机自动被Git命名为origin
 	-init

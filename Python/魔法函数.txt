@@ -1,0 +1,9 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2022-09-02T21:56:49+08:00
+
+====== 魔法函数 ======
+Created 星期五 02 九月 2022
+
+{{.\1.png}}
+输入变量时，返回的是后者
