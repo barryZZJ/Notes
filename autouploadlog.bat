@@ -1,0 +1,1 @@
+D:\Notes\autoupload.bat > D:\Notes\log.txt

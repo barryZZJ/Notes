@@ -1,1 +1,0 @@
-autoupload.bat > log.txt

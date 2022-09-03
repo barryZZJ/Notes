@@ -1,0 +1,5 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+
+确定后报错解决办法：
+修改用户，添加BARRY/barry

@@ -1,0 +1,13 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2022-09-03T09:25:42+08:00
+
+====== OBS ======
+Created 星期六 03 九月 2022
+
+OBS录屏：
+http://www.obsproject.com.cn/obs/87.html
+
+显示器捕获黑屏解决办法：
+https://zhuanlan.zhihu.com/p/106848354
+
