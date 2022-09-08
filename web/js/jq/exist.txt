@@ -1,0 +1,10 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2022-09-04T13:55:33+08:00
+
+====== exist ======
+Created 星期日 04 九月 2022
+
+if ($().length){
+   //exists
+}

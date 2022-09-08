@@ -1,0 +1,8 @@
+Content-Type: text/x-zim-wiki
+
+<details>标签
+https://developer.mozilla.org/en-US/docs/Web/HTML/Element/details
+<details>
+    <summary><h3>Title</h3></summary>
+    <p> A paragraph with <br> new lines <br> in between. </p>
+</details>

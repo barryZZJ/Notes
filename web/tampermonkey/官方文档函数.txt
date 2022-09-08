@@ -1,0 +1,47 @@
+Content-Type: text/x-zim-wiki
+
+GM官方文档
+https://wiki.greasespot.net/Greasemonkey_Manual:API
+TM官方文档
+https://www.tampermonkey.net/documentation.php?ext=dhdg
+
+.为新API，是异步的。旧API是同步的
+
+@resource 可用GM_getResourceURL / GM_getResourceText获取的内容
+@run-at
+
+GM函数需要@grant 对应的函数名
+
+unsafeWindow可以获取页面上所有的函数和变量
+
+变量存取相关：（存储在不知道哪里的storage里，可以全局通用）
+GM_getValue(name[, defaultValue])
+GM_setValue(name, value)
+GM_deleteValue(name)
+GM_listValues()
+GM_addValueChangeListener(name, function(name, old_value, new_value, remote) {})
+
+GM_getResourceText(name)
+GM_getResourceURL(name)  GM.getResourceUrl
+
+GM_addStyle(css: String)
+
+GM_log(message)
+
+GM_registerMenuCommand(caption, func, accessKey) 添加在插件栏里脚本的子选项，返回id，从1开始，caption重名会导致原来的删了之后重名的才自动补上。
+GM_unregisterMenuCommand(menuCmdId)
+func是函数指针，可以引用返回的id值。
+GM_config(https://github.com/sizzlemctwizzle/GM_config/wiki）
+@require            https://openuserjs.org/src/libs/sizzle/GM_config.js
+
+产生HttpRequest： 网址由@connect规定
+GM_xmlhttpRequest(details)  GM.xmlHttpRequest
+$.ajax({url:..., method:"GET", success:function(t){...}});
+
+GM_download(details), GM_download(url, name)
+
+GM_setClipboard(data, info)
+
+GM_notification(details, ondone), GM_notification(text, title, image, onclick)
+
+

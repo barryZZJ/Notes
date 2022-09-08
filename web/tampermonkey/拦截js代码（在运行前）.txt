@@ -1,0 +1,78 @@
+Content-Type: text/x-zim-wiki
+
+// @run-at         document-start
+1. unsafewindow
+// @grant  unsafeWindow
+unsafeWindow.originalFunc = newFunc
+
+var hijack = function(){
+var original_func = window.their_func;
+unsafeWindow.their_func = function(){
+// do something before
+original_func();
+// do something after
+};
+};
+
+var script = document.createElement("script").
+script.textContent = hijack.toString();
+document.body.appendChild(script).
+
+https://userscripts-mirror.org/scripts/show/125936
+2. 'beforescriptexecute' event is HTML5 specifications, is supported only by Gecko-based browsers (Firefox) at the moment.
+element.onbeforescriptexecute
+当 HTML 文档中的<script>标签内的代码将要执行时触发该事件，如果这个script标签是用appendChild()等方法动态添加上去的，则不会触发该事件。
+// ==UserScript==
+// @name           editscript
+// @version        0.0.1
+// @namespace      example@dindog.com
+// @include        http://*
+// @run-at         document-start
+// ==/UserScript==
+
+var changed = 0; // script need to be edited with
+
+window.addEventListener('beforescriptexecute', function(e) {
+
+    ///for external script:
+	src = e.target.src;
+	if (src.search(/bad\.js/) != -1) {
+                changed++;
+		e.preventDefault();
+		e.stopPropagation();
+		append(NewScript1);
+	};
+
+    ///for inline script:
+        if(e.target===document.getElementsByTagName("script")[0]){
+            changed++;
+            e.stopPropagation();
+            e.preventDefault();
+            //todo
+        }
+        //tips: you could also run a regex search for the e.target.innerHTML
+        //if the position of the inline script is not fixed.
+
+
+    ///when done, remove the listener:
+	if(changed == 2) window.removeEventListener(e.type, arguments.callee, true);
+
+}, true);
+
+
+
+////// append with new block function:
+function append(s) {	 
+      document.head.appendChild(document.createElement('script'))
+             .innerHTML = s.toString().replace(/^function.*{|}$/g, '');
+}
+
+////////////////////////////////////////////////
+function NewScript1(){
+    /* insert new block here, like:  */
+    function load_good_stuff(){
+            /* we still got it!! 
+             * only without the evil thing. 
+             */
+    }
+};

@@ -1,0 +1,10 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+
+可以压缩js文件
+
+https://www.webpackjs.com/
+
+
+{{.\安装1.JPG}}
+{{.\安装2.JPG}}

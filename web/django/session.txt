@@ -1,0 +1,26 @@
+Content-Type: text/x-zim-wiki
+
+注意，与浏览器的sessionStorage不通用
+# django中使用数据表来管理sesison会话。
+# Session信息都存在django_session表中
+# 默认使用sqllite3数据库，在settings.py中的db里配置。
+# 生成数据表需要执行：
+python manage.py makemigrations
+python manage.py migrate
+
+当客户端与服务器端建立连接后，服务器会生成一个session会话，同时生成唯一的key,则是sessionID。
+服务器会为每一个连接的客户端创建一个独立的session，在服务器中session之间互不干扰。
+
+SET:
+request.session[key] = val
+
+GET:
+request.session.get(key, default_val)
+
+DELETE:
+del request.session[key]
+
+前端js使用session：
+window.sessionStorage.setItem(key, value)
+window.sessionStorage.getItem(key)
+window.sessionStorage.removeItem(key)

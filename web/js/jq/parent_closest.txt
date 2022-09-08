@@ -1,0 +1,21 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2022-09-04T14:07:13+08:00
+
+====== parent closest ======
+Created 星期日 04 九月 2022
+
+向上多级：
+.parents( [selector ] )
+Get the ancestors of each element in the current set of matched elements, optionally filtered by a selector.
+
+.closest( selector )
+For each element in the set, get the first element that matches the selector by testing the element itself and traversing up through its ancestors in the DOM tree.
+
+.parentsUntil( [selector ] [, filter ] )
+Get the ancestors of each element in the current set of matched elements, up to but not including the element matched by the selector, DOM node, or jQuery object.
+
+向上一级：
+.parent( [selector ] )
+Get the parent of each element in the current set of matched elements, optionally filtered by a selector.
+（只有一级）

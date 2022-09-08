@@ -1,0 +1,5 @@
+Content-Type: text/x-zim-wiki
+
+.classname1.classname2{
+  // 匹配 <label class="classname1 xxx classname2">
+}

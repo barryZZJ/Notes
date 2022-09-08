@@ -1,0 +1,19 @@
+Content-Type: text/x-zim-wiki
+
+查看存储数据：
+1. 设置->通用->配置模式：高级
+2. 点开脚本面积页面
+3. "存储"选项卡
+
+1. GM_setValue GM_getValue:
+// @grant GM_setValue
+// @grant GM_getValue
+
+GM_setValue(key, value)
+GM_getValue(key, default)
+
+2. localStorage (js自带)
+localStorage.setItem(key, val)
+.getItem(key)
+.removeItem(key)
+.clear()

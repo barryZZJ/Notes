@@ -1,0 +1,22 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2022-09-05T09:43:22+08:00
+
+====== 校园网ipv6 ======
+Created 星期一 05 九月 2022
+
+路由器：
+
+1.伪装电脑，获取ipv6地址：
+WAN 设置:
+MAC: 76:1D:76:BE:68:40
+
+Ipv6: 联机类型 passthrough
+
+2.merlin clash配置
+高级模式：取消勾选 大陆IP不经过Clash
+然后在yacd里修改GLOBAL的节点
+
+3.打开ipv6代理
+Tproxy
+（当前设备不支持！到这卡住了）

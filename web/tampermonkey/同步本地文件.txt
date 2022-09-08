@@ -1,0 +1,6 @@
+Content-Type: text/x-zim-wiki
+
+使用自己的 IDE 编写油猴脚本：
+1.允许油猴插件访问本地文件。在扩展程序列表chrome://extensions/进入插件的详细信息，开启“允许访问文件网址”
+
+2.// @require file:///<本地路径>

@@ -1,4 +1,14 @@
 Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+
+设置属性
+.setAttribute()
+
+.id
+.className
+
+Clone:
+.cloneNode(?deep)
 
 FIND:
 document.getElementById
@@ -11,6 +21,37 @@ document.getElementById
 CREATE:
 document.createElement(String) - "div" "p" 等
 document.createElement('div');
+封装一个更方便的：
+'''
+function createElement(element, attribute, inner) {
+  if (typeof(element) === "undefined") {
+	return false;
+  }
+  if (typeof(inner) === "undefined") {
+	inner = "";
+  }
+  var el = document.createElement(element);
+  if (typeof(attribute) === 'object') {
+	for (var key in attribute) {
+	  el.setAttribute(key, attribute[key]);
+	}
+  }
+  if (!Array.isArray(inner)) {
+	inner = [inner];
+  }
+  for (var k = 0; k < inner.length; k++) {
+	if (inner[k].tagName) {
+	  el.appendChild(inner[k]);
+	} else {
+	  el.appendChild(document.createTextNode(inner[k]));
+	}
+  }
+  return el;
+}
+'''
+用例：
+''createElement("tag",{id:val,class:val},"inner text");''
+''createElement("tag",{id:val,class:val},[element1,"some text",element2,element3]);''
 
 APPEND:
 1.elem.append(DOMString or elem) 可以有多个参数，向匹配元素集合中的每个元素结尾插入由参数指定的内容。DOMString = "p" / "div" 等
@@ -23,3 +64,11 @@ elem.appendTo('body') // 好像是jq的功能
 
 INSERT:
 parentNode.insertBefore(newNode, referenceNode)
+parentNode.insertBefore(newNode, parentNode.firstChild);
+
+CHILD:
+Node.removeChild()
+Node.replaceChild()
+Node.appendChild()
+Node.insertBefore()
+Node.hasChildNodes()

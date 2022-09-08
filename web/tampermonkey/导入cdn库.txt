@@ -1,0 +1,3 @@
+Content-Type: text/x-zim-wiki
+
+// @require https://cdn.bootcdn.net/ajax/libs/pdf.js/2.10.377/pdf.min.js

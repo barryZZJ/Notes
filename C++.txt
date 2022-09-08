@@ -1,0 +1,16 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2022-09-03T14:02:41+08:00
+
+====== C++ ======
+Created 星期六 03 九月 2022
+
+退格符：\b，只移动光标，不会直接删除
+
+<cstdio>
+freopen(inputfilepath, "r", stdin);
+freopen(outputfilepath, "w", stdout);
+
+<algorithm>
+equal(first1, end1, first2);
+比较数组是否相同

@@ -1,0 +1,3 @@
+Content-Type: text/x-zim-wiki
+
+替换django的admin，提供更好的管理

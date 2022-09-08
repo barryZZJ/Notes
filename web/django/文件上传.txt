@@ -1,0 +1,31 @@
+Content-Type: text/x-zim-wiki
+
+单文件：
+<form action="#" method="post" enctype="multipart/form-data"> # 保证数据以字节流形式提交
+	{% csrf_token %}
+	<input type="file" name="xxx">
+</form>
+
+读取：
+file = request.FILES.get(key, default_val) #type: MultiValueDict
+filename = file.name
+filesize = file.size
+filesuffix = os.path.splittext(filename)[1]
+
+设置好文件路径
+path = os.path.join(os.getcwd(), 'statics/files/', filename)
+
+with open(path, 'wb+') as f: # '+'增加读功能
+    for chunk in file.chunks():
+        f.write(chunk)
+
+
+多文件：
+各个input的name要相同
+
+读取：
+files = request.FILES.getlist(key, default_val) #type: MultiValueDict
+# files: List
+
+
+    

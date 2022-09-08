@@ -1,0 +1,4 @@
+Content-Type: text/x-zim-wiki
+
+在元数据中声明// @resource mycss <地址>，然后
+GM_addStyle(GM_getResourceText('mycss'))

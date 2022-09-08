@@ -1,0 +1,23 @@
+Content-Type: text/x-zim-wiki
+
+分页器
+(数据表, 每页显示多少数据)
+paginator = Paginator(list, pagesize)
+page = request.GET.get('page')
+
+try:
+    subList = paginator.page(page)
+except EmptyPage:
+    subList = paginator.page(1)
+except PageNotAnInteger:
+    subList = paginator.page(paginator.num_pages)
+
+
+HTML:
+if subList.has_previous
+<a href="?page={{ subList.previous_page_number }}">上一页</a>
+if subList.has_next
+<a href="?page={{ subList.next_page_number }}">下一页</a>
+
+当前:
+{{subList.number}} / {{subList.paginator.num_pages}}

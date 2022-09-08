@@ -1,0 +1,3 @@
+Content-Type: text/x-zim-wiki
+
+https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/Input

@@ -1,0 +1,6 @@
+Content-Type: text/x-zim-wiki
+
+ctrl+D 取消选区 
+ctrl+L 色阶
+ctrl+I 反相
+ctrl+J 复制图层 

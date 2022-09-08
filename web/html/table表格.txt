@@ -1,0 +1,5 @@
+Content-Type: text/x-zim-wiki
+
+https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/table
+
+tfoot 汇总行

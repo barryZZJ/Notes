@@ -1,0 +1,15 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2022-09-03T17:30:51+08:00
+
+
+使用jq同步两个input文本框：
+var $inputs = $(".copyMe");  
+$inputs.keyup(function () {
+	 $inputs.val($(this).val());  // 可以直接用this对象，比$(this)更快
+});
+
+使用jq同步两个input复选框
+$("#checkbox1").change(function() {
+	$("#checkbox2").prop("checked", this.checked);
+});

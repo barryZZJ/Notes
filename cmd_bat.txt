@@ -2,6 +2,10 @@ Content-Type: text/x-zim-wiki
 Wiki-Format: zim 0.6
 Creation-Date: 2022-09-02T15:29:52+08:00
 
+修改cmd窗口字符编码为UTF-8，命令行中执行：chcp 65001
+切换回中文：chcp 936
+这两条命令只在当前窗口生效，重启后恢复之前的编码
+
 查端口：
 netstat -ano | findstr xxx
 

@@ -1,4 +1,5 @@
 Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
 
 打包成exe：
 https://pyinstaller.readthedocs.io/en/stable/
@@ -36,9 +37,16 @@ pyinstaller -F xx.py --clean -n name
 打包pyqt5时可能会弹出warning，
 在xx.spec文件里a=Analysis()后添加：
 for b in a.binaries:
-    txt = '_C.cp38-win_amd64.pyd'
-    if txt in b[1] or txt in b[0]:
-        print(f"Removing {b}")
-        a.binaries.remove(b)
-        break
+	txt = '_C.cp38-win_amd64.pyd'
+	if txt in b[1] or txt in b[0]:
+		print(f"Removing {b}")
+		a.binaries.remove(b)
+		break
 后，使用pyinstaller xx.spec重新编译（不需要任何额外参数）
+
+pyinstaller>4.2存在__file__非真实路径问题：
+def app_path():
+	if hasattr(sys, 'frozen'):  # 可执行文件走这里
+		return os.path.dirname(sys.executable)
+	return os.path.dirname(__file__)  # 源码走这里
+

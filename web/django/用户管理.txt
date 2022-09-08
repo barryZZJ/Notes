@@ -1,0 +1,87 @@
+Content-Type: text/x-zim-wiki
+
+https://www.cnblogs.com/breezey/p/6715641.html
+migrate指令创建数据库
+
+通过auth_user表来存储站点中的所有用户
+
+在使用auth权限管理的时候，一定要在settings.py中配置LOGIN_URL = '/login/'
+如果用户没有登陆，会自动跳转到LOGIN_URL
+（后面还会自动加上请求的url作为登陆后的跳转地址，如：/login/?next=/index/，登陆完后，可以去请求/index/)
+
+如果LOGIN_URL使用默认值，那么在urls.py中还需要进行如下设置：（加入下面这句）
+
+(r'^accounts/login/$', 'django.contrib.auth.views.login'),
+
+这样的话，如果登录，程序会默认跳转到“templates\registration\login.html”这个模板。
+
+如果想换个路径，另一种方式:那就再加个template_name参数，如下：
+
+(r'^accounts/login/$', 'django.contrib.auth.views.login', {'template_name': 'myapp/login.html'}),
+
+这样程序就会跳转到templates\myapp\login.html”
+
+
+views.py中创建用户：
+from django.contrib.auth.models import User
+from jdango.contrib.auth.decorators import login_required
+
+# 用户注册：
+user = User.objects.create_user(username, password)
+
+在需要权限控制的视图函数前加上@login_required装饰器
+
+# 用户认证：
+from django.contrib.auth import authenticate, login
+
+user = authenticate(username = username, password = password)
+if user is not None:
+    # 登录
+    login(request, user)
+    return redirect(URL)
+
+# 退出：
+from django.contrib.auth import logout
+
+logout(request)
+return redirect('/index/')
+
+# 增加auth_user表中没有的字段：
+新建一个表，与auth_user表设置为一对一映射关系
+model.py:
+class UserProfile(models.Model):
+    # 与User(auth_user)表的主键建立一对一映射（可以看成外键）关系
+    userid = models.OneToOneFiled(User, unique=True, on_delete=model.CASCADE)
+    
+    # 添加新的字段
+    phone = modles.CharField(max_length=16)
+
+
+Group组：
+auth_group表
+一个user可以有多个group，一个group可以有多个user，多对多关系。
+需要创建一张第三方关系表描述这个关系，auth_user_groups
+
+使用组模型：
+from django.contrib.auth.models import Group
+
+创建组和删除组；添加用户到组，从组中移除用户，清空组
+
+创建组:
+Group.objects.create(name=组名)
+或
+group  =  new  Group()
+group.name  =  组名
+group.save()
+
+常用功能:
+移除用户:
+group对象.delete()
+
+Group.objects.all()	得到:  QuerySet
+Group.objects.get(id=组id值)	得到:  Group
+
+group对象.user_set.all()	得到:  QuerySet  表示反向查询组中所有用户
+group对象.user_set().add(用户)	
+
+

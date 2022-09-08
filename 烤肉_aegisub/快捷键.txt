@@ -1,0 +1,30 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2022-09-06T17:04:34+08:00
+
+指令设置
+https://aegi.vmoe.info/docs/3.2/Commands/en_US/
+
+全局：
+ctrl+space 视频播放/暂停
+ctrl+shift+space 视频播放当前line
+ctrl+e 按style排序
+ctrl+t 按start time排序
+ctrl+shift+f select lines
+alt+left 视频后退
+alt+right 视频前进
+
+Subtitle Edit Box：
+ctrl+space 视频播放/暂停
+ctrl+shift+space 视频播放当前line
+alt+s 拆分(估计时间)
+alt+shift+s 拆分(保留原时间)
+
+Subtitle Grid：
+ctrl+j 合并所选行
+ctrl+shift+e 选择部分按style排序
+ctrl+shift+t 选择部分按start time排序
+
+audio：
+按住shift再点左键：贴边
+z, x, pgup, pgdn：切换上/下一条字幕

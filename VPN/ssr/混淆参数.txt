@@ -1,0 +1,25 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2022-09-05T09:40:40+08:00
+
+混淆参数 (多个域名之间用英文 ',' 间隔，客户端会随机选择一个进行混淆伪装)
+国外域名:
+tse1.mm.bing.net
+cloudfront.com
+cloudflare.com
+itunes.apple.com
+www.icloud.com
+ajax.microsoft.com
+apps.bdimg.com
+www.bing.com
+国内域名：平常访问以下站点那个多就用那个，或定期更换
+static.youku.com  #优酷
+static.hdslb.com  #B站
+item.taobao.com #淘宝
+m.10010.com #联通
+uac.10010.com #联通
+wap.10086.cn  #移动
+dl.music.189.cn #电信
+cdn.4g.play.cn  #电信
+
+static.hdslb.com,www.icloud.com

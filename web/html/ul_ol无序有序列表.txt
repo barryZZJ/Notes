@@ -1,0 +1,5 @@
+Content-Type: text/x-zim-wiki
+
+<ul> 无序列表 https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/ul
+<ol> 有序列表 https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/ol
+<li> 列表项

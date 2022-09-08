@@ -1,3 +1,6 @@
 Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
 
-可以用a.b的形式访问a['b']
+定义时，键可以直接写，不用字符串
+
+访问时，可以用a.b的形式访问a['b']

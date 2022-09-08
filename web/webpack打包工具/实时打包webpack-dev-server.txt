@@ -1,0 +1,14 @@
+Content-Type: text/x-zim-wiki
+
+console:
+cnpm i webpack-dev-server -D
+
+package.json:
+"scripts":{
+  "dev": "webpack-dev-server"  // 自动打开 --open --port xxxx --hot --host 127.0.0.1
+}
+
+console:
+npm run dev
+
+编译好的js文件存储在内存中，位置为/

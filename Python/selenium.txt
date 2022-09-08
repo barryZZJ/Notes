@@ -1,4 +1,5 @@
 Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
 
 1.
 from selenium import webdriver
@@ -16,6 +17,6 @@ browser.close()
 2.
 selenium 是用来模拟登陆获取cookie的，避免了分析网页执行原理
 
-3. 
+
 设置chromedriver：
-下载当前浏览器对应版本的chromedriver（http://npm.taobao.org/mirrors/chromedriver/），放入C:\Program Files (x86)\Google\Chrome\Application（所在位置添加进PATH），或在webdriver.Chrome()中添加executable_path参数
+下载当前浏览器对应版本的chromedriver（http://npm.taobao.org/mirrors/chromedriver/），放入C:\Program Files (x86)\Google\Chrome\Application（或所在位置添加进PATH），或在webdriver.Chrome()中添加executable_path参数

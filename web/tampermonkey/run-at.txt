@@ -1,0 +1,24 @@
+Content-Type: text/x-zim-wiki
+
+@run-at
+Defines the moment the script is injected. In opposition to other script handlers, @run-at defines the first possible moment a script wants to run. This means it may happen, that a script that uses the @require tag may be executed after the document is already loaded, cause fetching the required script took that long. Anyhow, all DOMNodeInserted and DOMContentLoaded events that happended after the given injection moment are cached and delivered to the script when it is injected.
+
+脚本没有明确run-at也没有加以限定的话，每次匹配页面加载完就会执行一次脚本，
+保证每个页面只运行一次脚本：if(window == top)
+
+Code:
+// @run-at document-start
+The script will be injected as fast as possible.
+Code:
+// @run-at document-body
+The script will be injected if the body element exists.
+Code:
+// @run-at document-end
+The script will be injected when or after the DOMContentLoaded event was dispatched.
+Code:
+// @run-at document-idle
+The script will be injected after the DOMContentLoaded event was dispatched. This is the default value if no @run-at tag is given.
+Code:
+// @run-at context-menu
+The script will be injected if it is clicked at the browser context menu (desktop Chrome-based browsers only).
+Note: all @include and @exclude statements will be ignored if this value is used, but this may change in the future.

@@ -1,0 +1,4 @@
+Content-Type: text/x-zim-wiki
+
+{% include %} 标签允许在模板中包含其它的模板的内容。
+{% include "xxx.html" %}

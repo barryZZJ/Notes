@@ -1,0 +1,25 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2022-09-04T11:41:16+08:00
+
+====== 集合 ======
+Created 星期日 04 九月 2022
+
+https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Set
+
+new Set()
+.size
+.add(v)
+.clear()
+.delete(v)
+.entries()
+.forEach(func)
+.has(v)
+.keys()
+.values()
+
+数组转换为集合：
+new Set(arr)
+
+集合转换为数组：
+[...set]

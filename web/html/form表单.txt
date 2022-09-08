@@ -1,0 +1,3 @@
+Content-Type: text/x-zim-wiki
+
+过滤某些input不提交：不设置其name属性即可

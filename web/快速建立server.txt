@@ -1,0 +1,14 @@
+Content-Type: text/x-zim-wiki
+
+0. phpstudy快速开服
+
+1.vscode 插件：php server。安装后右键html或php文件，选start server。vscode关闭后服务器也会关闭
+
+2.php server:
+php -S localhost:8000
+
+3. http-server:
+下载node.js
+npm install http-server -g 全局安装
+http-server [path=./] -c-1 (-c-1可以实现修改文件即时显示)
+关闭cmd即关闭server

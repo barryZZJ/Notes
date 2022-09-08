@@ -1,0 +1,22 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2022-09-08T13:50:29+08:00
+
+百度网盘的Python客户端。可以用来实现自动备份
+
+https://github.com/houtianze/bypy
+https://www.jikecloud.net/supports/docs/bp-sync/
+
+''pip install bypy''
+
+''bypy -h''
+''bypy info''
+''bypy upload [path]''
+''bypy downfile [path]''
+''bypy downdir [/path]''
+
+
+备份列表：
+aegisub设置、脚本
+
+

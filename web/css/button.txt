@@ -1,0 +1,16 @@
+Content-Type: text/x-zim-wiki
+
+
+按下时变色
+button:active{
+  background-color: gray;
+}
+
+自动换行：
+width: 50px;
+word-wrap: break-word;
+overflow-wrap: break-word;
+white-space: normal;
+
+禁止换行：
+white-space: nowrap;

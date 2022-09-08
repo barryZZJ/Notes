@@ -1,0 +1,137 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2022-09-05T09:29:41+08:00
+
+1. SSR
+自动配置脚本：
+wget -N --no-check-certificate https://raw.githubusercontent.com/ToyoDAdoubi/doubi/master/ssr.sh && chmod +x ssr.sh && bash ssr.sh
+
+ssr config
+vim全部删除：dG
+/etc/shadowsocksr/user-config.json:
+{
+	"server": "0.0.0.0",
+	"server_ipv6": "::",
+	"local_address": "127.0.0.1",
+	"local_port": 1080,
+
+	"port_password":{
+		"12446":"fuck@ucas.cn",
+		"12447":"fuck@ucas.cn"
+	},
+	"method": "aes-256-cfb",
+	"protocol": "auth_sha1_v4_compatible",
+	"protocol_param": "",
+	"obfs": "http_simple_compatible",
+	"obfs_param": "",
+	"speed_limit_per_con": 0,
+	"speed_limit_per_user": 0,
+
+	"additional_ports" : {},
+	"timeout": 120,
+	"udp_timeout": 60,
+	"dns_ipv6": false,
+	"connect_verbose_info": 0,
+	"redirect": "",
+	"fast_open": false
+}
+
+2. bbr(默认自带的，不用配）
+Ubuntu开启BBR
+Step 1：修改系统变量
+echo "net.core.default_qdisc=fq" >> /etc/sysctl.conf
+echo "net.ipv4.tcp_congestion_control=bbr" >> /etc/sysctl.conf
+全选代码Copy
+Step 2:保存生效
+sysctl -p
+全选代码Copy
+Step 3：检查BBR是否开启
+sysctl net.ipv4.tcp_available_congestion_control
+全选代码Copy
+如果 返回
+net.ipv4.tcp_available_congestion_control = bbr cubic reno
+全选代码复制
+则开启成功！
+
+Step 4：检查BBR是否启动成功
+lsmod | grep bbr
+全选代码复制
+如果返回
+
+tcp_bbr                20480  14
+全选代码复制
+则启动 成功
+
+
+3. Frp
+frps服务端：（服务器防火墙记得开放对应端口）（不要开kcp，否则会用不了）
+wget https://raw.githubusercontent.com/MvsCode/frps-onekey/master/install-frps.sh
+chmod 700 ./frps.sh
+./frps.sh install  {install|uninstall|update|config}
+
+frps {start|stop|restart|status|config|version}
+log_file = /usr/local/frps/frps.log
+watch -n 1 /usr/local/frps/frps.log
+
+/usr/local/frps/frps.ini:
+================================================
+You Server IP      : 43.143.3.229
+Bind port          : 5443
+KCP support        : false
+vhost http port    : 80
+vhost https port   : 443
+Dashboard port     : 6443
+token              : Gg3f3GDRhQE9YjtT
+subdomain_host     : barryzzj.xyz
+tcp_mux            : true
+Max Pool count     : 50
+Log level          : info
+Log max days       : 3
+Log file           : enable
+================================================
+frps Dashboard     : http://barryzzj.xyz:6443/
+Dashboard user     : admin
+Dashboard password : X6RNHrEB
+================================================
+
+frpc客户端注册映射：
+log_file = /tmp/frpc.log
+内网端口：
+RDP：3389 -> 23334
+splashtop: 6783 -> 23335
+smb: 445 -> 23336
+router: 8888 -> 23337
+
+# frpc configuration
+[common]
+server_addr = [2001:19f0:4400:75a2:5400:04ff:fe1c:3d4a]
+server_port = 23333
+token = tXuaco4ZUx8qkiSa
+log_file = /tmp/frpc.log
+log_level = info
+log_max_days = 3
+tcp_mux = true
+protocol = tcp
+login_fail_exit = true
+tls_enable=true
+user = zhouzejun2
+[rdp]
+type = tcp
+local_ip = 192.168.50.201
+local_port = 3389
+remote_port = 23334
+use_encryption = false
+use_compression = true
+[splashtop]
+type = tcp
+local_ip = 192.168.50.201
+local_port = 6783
+remote_port = 23335
+use_encryption = false
+use_compression = true
+
+
+4. mirai QQ机器人
+4.1 下载mcl-installer
+linux x86架构下载amd64_musl
+4.2 运行后会一键安装java和mcl (mirai console loader)

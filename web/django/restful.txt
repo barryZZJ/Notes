@@ -1,0 +1,9 @@
+Content-Type: text/x-zim-wiki
+
+把get信息放在地址中传递（注意冒号后面不能有空格）
+urls.py:
+path('<str:school>/<int:year>', views.fun)
+
+views.py:
+def fun(request, school, year):
+

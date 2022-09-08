@@ -1,0 +1,32 @@
+Content-Type: text/x-zim-wiki
+
+最大大小：4kB
+
+request # type: WSGIRequest
+response = HttpResponse || render || redirect # type: django.shortcuts
+
+
+SET:
+response.set_cookies(key, val[, **kwargs])
+最好为cookie的name和value进行url编码
+kwargs:
+# max_age 存活时间(s)。默认为session结束。正常情况下，max-age的优先级高于expires。
+# expires 到期时间。默认为session结束。时间戳、或datetime
+# path 生效路径。默认为'/'
+
+# domain: 生效域名。所有向该域发送的请求中都会包含这个cookie信息。这个值可以包含子域(如：yq.aliyun.com)，也可以不包含它(如：.aliyun.com，则对于aliyun.com的所有子域都有效).
+
+# secure: 是否是https传输，默认为False。安全标志，指定后，只有在使用SSL链接时候才能发送到服务器，如果是http链接则不会传递该信息。就算设置了secure 属性也并不代表他人不能看到你机器本地保存的 cookie 信息，所以不要把重要信息放cookie就对了。
+
+# httponly: 是否只能用http协议传输。默认False。告知浏览器不允许通过js脚本document.cookie去更改这个值，同样这个值在document.cookie中也不可见。但在http请求中仍然会携带这个cookie。注意这个值虽然在脚本中不可获取，但仍然在浏览器安装目录中以文件形式存在。这项设置通常在服务器端设置。
+
+response.set_signed_cookies(key, val, salt=''[, **kwargs])
+
+GET:
+request.COOKIES.get(key, default_val)
+request.get_signed_cookie(key, default_val, salt='')
+
+DELETE:
+del request.COOKIES[key]
+或
+response.delete_cookie(key[, path='/', domain])

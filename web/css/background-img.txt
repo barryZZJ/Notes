@@ -1,0 +1,4 @@
+Content-Type: text/x-zim-wiki
+
+svg图片的xml格式，经base64编码后，元素设置：
+background-image: url(data:image/svg+xml;base64,.....)

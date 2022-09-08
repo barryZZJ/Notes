@@ -1,0 +1,7 @@
+Content-Type: text/x-zim-wiki
+
+<lable for="eleid"> 文字 </label>
+其中eleid为元素的id属性值
+
+点文字时复选框也被选中：
+<input type="checkbox" id="a" ><label for="a">点我也行</label>

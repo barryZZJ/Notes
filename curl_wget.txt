@@ -1,0 +1,32 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2022-09-03T14:04:31+08:00
+
+curl
+
+https://www.jianshu.com/p/07c4dddae43a
+
+-G,--get 使用 GET 方法发送
+-d, --data <data> 使用POST方法发送
+--data-urlencode 使用POST方法，并自动url编码
+-F, --form <name=string> 提交MIME data multipart POST (H)
+-c, --cookie-jar <filename> 把访问后获得的cookie保存到文件
+-o, --output <file>
+
+Headers：
+-H, --header <header/@file> 设置自定义头，可以重复使用或用分号隔开多个头 e.g. -H "User-Agent: test; charset=utf-8"
+-b, --cookie <data|filename> Send cookies from string/file
+-A, --user-agent <name>
+-e, --referer <URL>
+
+
+GET
+$curl http://www.yahoo.com/login.cgi?user=nickname&password=12345
+
+POST
+$curl -d "user=nickname&password=12345" http://www.yahoo.com/login.cgi
+
+
+发送http请求工具：
+windows：curl
+linux：wget

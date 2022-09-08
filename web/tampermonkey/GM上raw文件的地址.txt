@@ -1,0 +1,3 @@
+Content-Type: text/x-zim-wiki
+
+https://greasyfork.org/zh-CN/scripts/name/codes/name.user.js

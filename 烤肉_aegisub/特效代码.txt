@@ -1,0 +1,55 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2022-09-06T17:05:34+08:00
+
+https://aegi.vmoe.info/docs/3.2/ASS_Tags/
+https://www.jianshu.com/p/cfdbfdc6d3a7
+
+{\rJp_secondary_720p}{\r}
+{\rEng_secondary_720p}{\r}
+
+加粗 \b1 取消加粗 \b0
+斜体 \i1 取消斜体 \i0
+下划线 \u1 \u0
+删除线 \s1 \s0
+边框 \bord<size>
+阴影 \shad<depth>
+主要颜色 \c&H<bb><gg><rr>&
+			   \1c&H<bb><gg><rr>&
+次要颜色 \2c&H<bb><gg><rr>&
+边框颜色 \3c&H<bb><gg><rr>&
+阴影颜色 \4c&H<bb><gg><rr>&
+
+边框模糊
+\be0
+\be1
+\be<strength> 整数
+如果文本有边框 (边框设置详见 \bord) 那么边框将会被模糊，但是如果没有边框，那么文本整体就会被模糊
+
+边缘模糊
+\blur<strength>
+可以是小数
+把 strength 设置的太高的话，渲染时会占用大量 CPU 时间
+
+矢量绘图
+https://cnlang.org/thread-85231-1-1.html
+
+设置绝对位置
+\pos(<x>,<y>) 
+
+样式：
+\r 使用该行字幕原来的样式
+\r<style> 设置新样式
+
+渐变/淡入淡出
+\fad(<fadein>,<fadeout>)
+
+遮罩（方形）
+该区域内可见 \clip(<x1>,<y1>,<x2>,<y2>)
+该区域内不可见 \iclip(<x1>,<y1>,<x2>,<y2>)
+
+动画效果
+\t(<style modifiers>)
+\t(<accel>,<style modifiers>)
+\t(<t1>,<t2>,<style modifiers>)
+\t(<t1>,<t2>,<accel>,<style modifiers>)

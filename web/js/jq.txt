@@ -1,0 +1,8 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2022-09-04T11:34:59+08:00
+
+====== jq ======
+Created 星期日 04 九月 2022
+
+https://api.jquery.com/

@@ -1,4 +1,5 @@
 Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
 
 https://api.jquery.com/
 
@@ -6,14 +7,18 @@ https://api.jquery.com/
    ...
 })(jQuery);
 
+.get() // 返回DOM对象数组
+.get(i) // 返回第i个dom对象（0开始）
 
-$("#findbyid").get() //返回DOM对象
-.get(i) // 多个匹配时选第i个dom对象
+.find(selector) 在当前对象内继续搜索
+.children(selector) 只向内搜索一级
+.contents(selector)  .children() does not return text nodes; to get all children including text and comment nodes, use .contents().
 
 获取/设置：
-.attr()属性 attribute 用于html节点 (自定义属性只能用这个获取)
-.prop()集合中第一个元素的property 用于js对象
-.val()值
+.attr() 属性 attribute 用于html节点 (自定义属性只能用这个获取)
+.prop() 集合中第一个元素的property 用于js对象
+.val() 值
+.text() 内容文本
 
 .on 设置EventListener
 .on('click'[, selector][, data], func)
@@ -22,8 +27,12 @@ $("#findbyid").get() //返回DOM对象
 选择到多个对象后，只取其中一个：
 .eq(index)
 .eq(-index)
+.first()
 
 设置css：
 .css('background-color', 'red')
 或.css({backgroundColor: 'red', ...})
 
+.clone()
+.html()  == .innerHTML
+$("<div>").append($(...).clone()).html()  == .outerHTML

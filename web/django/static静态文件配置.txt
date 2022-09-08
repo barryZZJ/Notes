@@ -1,0 +1,8 @@
+Content-Type: text/x-zim-wiki
+
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, "statics"),
+]
+
+收集静态文件的命令
+python manage.py collectstatic

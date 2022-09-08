@@ -1,0 +1,11 @@
+Content-Type: text/x-zim-wiki
+
+GET:
+request.GET.get(key, default_val)
+
+POST:
+if request.POST:
+    request.POST.get(key, default_val)
+
+for key, val in request.POST.items():
+...

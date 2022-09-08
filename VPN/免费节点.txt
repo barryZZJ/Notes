@@ -1,0 +1,12 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2022-09-05T09:39:29+08:00
+
+免费节点
+
+二爷翻墙，目前来说可用的免费节点，虽然速度不快，但尚且可用。
+添加订阅：https://jiang.netlify.com
+如果失效，可在 github项目 中寻找新地址。
+https://github.com/ugvf2009/Miles
+
+telegram搜vpn试试？

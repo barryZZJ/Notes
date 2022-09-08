@@ -1,0 +1,22 @@
+Content-Type: text/x-zim-wiki
+
+{% for key, val in views_dict.items %}
+{{ key }}---{{ val }}
+{% endfor %}
+
+在 {% for %} 标签里可以通过 {{forloop}} 变量获取循环序号。
+forloop.counter: 顺序获取循环序号，从 1 开始计算
+forloop.counter0: 顺序获取循环序号，从 0 开始计算
+forloop.revcounter: 倒叙获取循环序号，结尾序号为 1
+forloop.revcounter0: 倒叙获取循环序号，结尾序号为 0
+forloop.first（一般配合if标签使用）: 第一条数据返回 True，其他数据返回 False
+forloop.last（一般配合if标签使用）: 最后一条数据返回 True，其他数据返回 False
+
+{% for i in listvar %}
+    {{ forloop.counter }}
+    {{ forloop.counter0 }}
+    {{ forloop.revcounter }}
+    {{ forloop.revcounter0 }}
+    {{ forloop.first }}
+    {{ forloop.last }}
+{% endfor %}

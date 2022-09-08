@@ -1,0 +1,7 @@
+Content-Type: text/x-zim-wiki
+
+PS
+色阶(ctrl+l)，第一个吸管吸背景白色，第三个吸管吸文字黑色
+
+or
+第一个吸管直接吸黑色
