@@ -1,5 +1,13 @@
 Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
 
 https://www.jianshu.com/p/2b8770f70f07
 
+显示项目的所有文件列表及行数（已删除的文件显示为空）
 git ls-files | xargs wc -l
+
+只统计项目代码的总行数
+git ls-files | xargs cat | wc -l
+
+只查看项目文件列表
+git ls-files

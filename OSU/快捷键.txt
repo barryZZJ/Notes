@@ -1,0 +1,6 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2022-09-08T18:15:21+08:00
+
+调整note下降速度：F3 F4
+重载皮肤： ctrl shift alt s

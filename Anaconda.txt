@@ -1,4 +1,5 @@
 Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
 
 If you'd prefer that conda's base environment not be activated on startup, 
    set the auto_activate_base parameter to false: 
@@ -6,15 +7,18 @@ If you'd prefer that conda's base environment not be activated on startup,
 conda config --set auto_activate_base false
 
 在bat中初始化conda环境：
-call activate.bat
-call conda activate xxx
+win:
+''call activate.bat''
+''call conda activate xxx''
 
-conda create -n 名字 python==3.x --clone exist_name
+linux:
+''eval "$(/root/miniconda3/bin/conda shell.bash hook)"''
+
+conda create -n 名字 python==3.x --clone exist_name -y
 
 conda env remove -n 名字
 
 conda info -e
 
 
-linux:
-eval "$(/root/miniconda3/bin/conda shell.bash hook)"
+

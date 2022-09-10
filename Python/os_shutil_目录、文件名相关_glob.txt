@@ -37,6 +37,7 @@ os.path
 .split(filepath:目录路径) -> (上一级目录（不带结尾/）, 最后一级目录名）
 .basename(path) 文件名带后缀 或 最后一级路径
 .dirname(path) 文件所在目录 或 父目录
+.splitdrive() -> (盘符:, [[/路径]])
 
 os.sep = "\\"
 
@@ -48,6 +49,8 @@ for entry in os.scandir(path):
 	entry.path # 完整目录带文件和后缀名
 	entry.is_dir()
 	entry.is_file()
+
+os.listdir(path) 返回一个数组，只包含根目录下所有目录和文件名，随机顺序。
 
 #递归遍历目录下的所有目录和文件：
 （walk返回生成器，可以用next遍历，第一个就是根目录下的信息）
@@ -63,8 +66,6 @@ for root,dirs,files in os.walk(r"D:\test"):
 		print(dir)
 		#获取目录的路径
 		print(os.path.join(root,dir))
-
-os.listdir(path) 返回一个数组，只包含根目录下所有目录和文件名，随机顺序。
 
 指定遍历顺序：sorted()
 numbers = re.compile(r'(\d+)')

@@ -10,6 +10,7 @@ https://www.jikecloud.net/supports/docs/bp-sync/
 ''pip install bypy''
 
 ''bypy -h''
+''bypy help <command>''
 ''bypy info''
 ''bypy upload [path]''
 ''bypy downfile [path]''

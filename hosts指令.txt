@@ -1,0 +1,11 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2022-09-08T18:20:06+08:00
+
+netsh winsock reset
+
+ipconfig /displaydns # 显示dns缓存 
+
+ipconfig /flushdns # 刷新DNS记录 
+
+ipconfig /renew # 重请从DHCP服务器获得IP 
