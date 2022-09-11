@@ -1,1 +1,1 @@
-D:\Notes\autoupload.bat > D:\Notes\log.txt
+D:\Notes\autoupload.bat > D:\Notes\log.txt 2>D:\Notes\err.txt

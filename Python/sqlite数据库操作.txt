@@ -1,0 +1,35 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2022-09-11T10:19:24+08:00
+
+====== sqlite数据库操作 ======
+Created 星期日 11 九月 2022
+
+https://www.runoob.com/sqlite/sqlite-python.html
+https://zhuanlan.zhihu.com/p/103592132
+
+import sqlite3
+
+conn = sqlite3.connect("database.db")
+c = conn.cursor()
+
+# CREATE
+c.execute('CREATE TABLE IF NOT EXISTS numbers (id integer primary key ,number varchar(20) NOT NULL)') 
+conn.commit()
+
+# SELECT
+cursor = c.execute("SELECT id, name, address, salary  from COMPANY")
+for row in cursor: # 无论field的输入，都返回元组
+   print "ID = ", row[0]
+   print "NAME = ", row[1]
+   print "ADDRESS = ", row[2]
+   print "SALARY = ", row[3], "\n"
+
+conn.close()
+
+实现insert if not exists else update:
+注意使用insert or replace的话，未赋值的域会置默认值
+https://stackoverflow.com/questions/3634984/insert-if-not-exists-else-update
+
+import报错：
+去SQLite官网去下载sqlite3，网址为：https://www.sqlite.org/download.html，下载完之后，将sqlite3.dll解压至anaconda对应环境下的DDLs目录

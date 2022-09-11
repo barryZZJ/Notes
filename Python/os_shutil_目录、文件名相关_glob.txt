@@ -54,18 +54,20 @@ os.listdir(path) 返回一个数组，只包含根目录下所有目录和文件
 
 #递归遍历目录下的所有目录和文件：
 （walk返回生成器，可以用next遍历，第一个就是根目录下的信息）
+# 对dirs的操作会影响后续的遍历，dirs.remove('CVS') # don't visit CVS directories。但直接给dirs赋值不行
+ 备选方案：如果root不满足条件，直接dirs.clear()+continue
 for root,dirs,files in os.walk(r"D:\test"):
 	for file in files:
 		#获取文件所属目录
 		print(root)
 		#获取文件路径
 		print(os.path.join(root,file))
-#获取test目录下的所有目录
 	for dir in dirs:
 		#获取目录的名称
 		print(dir)
 		#获取目录的路径
 		print(os.path.join(root,dir))
+
 
 指定遍历顺序：sorted()
 numbers = re.compile(r'(\d+)')

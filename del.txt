@@ -9,16 +9,23 @@ Created 星期五 02 九月 2022
 禁用CDPUserSvc
 
 C盘：
-C:\ProgramData\Intel\Intel Extreme Tuning Utility\Logs
+JB旧版缓存: 
+C:\Users\Barry\AppData\Local\JetBrains; \logs
+C:\Users\Barry\AppData\Roaming\JetBrains
+
+logs:
+C:\ProgramData\Intel\Intel Extreme Tuning Utility\Logs （超大）
+C:\Users\Barry\AppData\Roaming\MySQL\Workbench\log
+
 C:\Users\Barry\AppData\Local\Microsoft\vscode-cpptools\ipch  (C_Cpp.intelliSenseCacheSize)
-"C:\Users\Barry\AppData\Roaming\od" 腾讯交友
+C:\Users\Barry\AppData\Roaming\od 腾讯交友
 JAVA_ERROR_IN_IDEA.HPROF / JB IDE: File - Invalidate and Restart
-C:\Users\zyj
-python第三方库。
+python第三方库
 C:/users
 vscode插件 C:\Users\Barry\.vscode\extensions
 各个IDE的缓存
 C:\Users\Barry\Documents\WeChat Files\wxid_iy5ejuzfavoq21\FileStorage
+C:\Users\Barry\AppData\Roaming\11bitstudios\Frostpunk\Default\saves 游戏存档
 
 C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA
 压缩：
