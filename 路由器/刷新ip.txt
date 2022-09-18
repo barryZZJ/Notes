@@ -1,0 +1,5 @@
+Content-Type: text/x-zim-wiki
+
+ipconfig /release
+ipconfig /renew
+ipconfig /flushdns

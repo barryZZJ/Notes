@@ -1,0 +1,6 @@
+Content-Type: text/x-zim-wiki
+
+ssh <username>@ip
+密码为登录web界面的密码
+
+授权密钥设置为本地生成的公钥，相当于写入authorized_keys文件

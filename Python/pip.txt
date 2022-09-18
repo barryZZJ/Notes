@@ -1,6 +1,10 @@
 Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
 
 pip freeze > requirements.txt
 pip install -r requirements.txt
 
 使用 pip freeze 会输出所有在本地已安装的包（但不包括 pip、wheel、setuptools 等自带包），若需要输出内容与 pip list 一致，需使用 pip freeze -all。
+
+更新pip版本：
+python -m pip install --upgrade pip

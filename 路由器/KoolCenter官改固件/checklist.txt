@@ -1,0 +1,17 @@
+Content-Type: text/x-zim-wiki
+
+校园网：（拷贝至/koolshare/scripts/，然后chmod +x xxx.sh）
+每天定时连接校园网（连接校园网脚本drcom.sh）
+每59min自动连接校园网+自动添加cru指令(drcominit.sh，并执行一次即可）
+卸载：删除/koolshare/init.d/S97drcom.sh，删除cru任务(crud.sh)
+
+阿里ddns：
+nvram get wan0_ipaddr
+修改查ip命令5默认指令(/koolshare/scripts/aliddns_update.sh) √
+修改界面命令5(/koolshare/webs/Module_aliddns.asp) √
+
+装Merlinclash。（自带去广告规则）
+只保留带v1.关键字的节点
+管理面板要输入提示的路由器ip+端口号，以及密码。
+
+

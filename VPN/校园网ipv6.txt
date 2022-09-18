@@ -20,3 +20,5 @@ Ipv6: 联机类型 passthrough
 3.打开ipv6代理
 Tproxy
 （当前设备不支持！到这卡住了）
+
+https://cyp0633.icu/archives/681

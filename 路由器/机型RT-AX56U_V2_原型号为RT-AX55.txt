@@ -1,0 +1,5 @@
+Content-Type: text/x-zim-wiki
+
+CPU: BCM6755
+架构: armv7
+linux内核: 4.1.52

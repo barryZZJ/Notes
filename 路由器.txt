@@ -1,0 +1,10 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2022-09-15T13:04:27+08:00
+
+====== 路由器 ======
+Created 星期四 15 九月 2022
+
+MerlinClash 管理面板连不上：
+chrome://flags/#block-insecure-private-network-requests
+设为Disabled即可

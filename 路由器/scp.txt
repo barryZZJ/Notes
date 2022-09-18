@@ -1,0 +1,3 @@
+Content-Type: text/x-zim-wiki
+
+scp ./drcominit.sh asus:/koolshare/scripts/

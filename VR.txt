@@ -1,0 +1,27 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2022-09-15T21:19:00+08:00
+
+====== VR ======
+Created 星期四 15 九月 2022
+
+Reset Controller
+Still having trouble? Don’t panic, try resetting the controller. We’ll walk you through it.
+
+First, press and hold the Windows button and turn off the power. Then, open the battery cover and, press and hold the Bluetooth pairing button and the Windows button simultaneously. This will reset the controller and it will vibrate and turn on the lights. Turn the controller on and reconnect the controller on your computer. If it is still not working correctly after the reset, bring the controller, HMD, and your computer to a Samsung Service Center.
+
+
+Windows Mixed reality for SteamVR:
+https://docs.microsoft.com/zh-cn/windows/mixed-reality/enthusiast-guide/using-steamvr-with-windows-mixed-reality
+
+在设置中添加虚拟现实选项：
+修改注册表：
+Hkey_Current_User\Software\Microsoft\Windows\CurrentVersion\Holographic
+添加DWORD "FirstRunSuceeded" 值为1
+
+
+How to setup mixed reality portal in windows 10 fall creater update
+https://www.youtube.com/watch?v=JFXyJnP9Q5E
+
+5 Windows Mixed Reality Setup Fixes | You Could Try | Could Not Download | H0002000-0
+https://www.youtube.com/watch?v=OYO2PRqqAF8

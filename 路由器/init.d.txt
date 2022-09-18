@@ -1,0 +1,4 @@
+Content-Type: text/x-zim-wiki
+
+/koolshare/init.d
+内存放系统启动时自动执行的脚本，具体需要再搜索一下命名格式，大概为S01xxx.sh等

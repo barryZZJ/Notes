@@ -1,0 +1,6 @@
+Content-Type: text/x-zim-wiki
+
+梅林固件merlin：外国作者制作（不支持ax56u v2）
+官改固件：KoolCenter制作
+
+梅林改版固件：merlin + 官改

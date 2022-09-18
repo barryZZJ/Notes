@@ -1,0 +1,25 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2022-09-14T02:21:15+08:00
+
+桌面布局
+开始菜单
+快速访问
+环境变量
+计划任务
+防火墙
+注册表（右键菜单）
+油猴脚本（使用webdav同步）
+pycharm、vscode等编辑器的配置
+conda各个环境的包
+SSH配置 (C:\Users\Barry\.ssh)
+git配置 (C:\Users\Barry\.gitconfig, .git-credentials)
+各种(正/盗版)游戏存档（战神、欧卡、）
+
+装好系统后：
+装显卡驱动
+重装各个程序+配置
+安装Dism++
+	关闭快速启动、关闭游戏模式
+Windows Defender 添加排除项
+清理系统自带任务计划程序

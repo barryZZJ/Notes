@@ -1,0 +1,5 @@
+Content-Type: text/x-zim-wiki
+
+add:    cru a <unique name|id> <"min hour day month week command"> 一定要带引号
+delete: cru d <unique name|id>
+list:   cru l

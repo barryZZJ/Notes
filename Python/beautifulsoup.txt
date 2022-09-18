@@ -1,7 +1,10 @@
 Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
 
 爬虫时使用
 可以方便地把html文件解析成树形结构，方便访问各个层次元素等等
+
+pip install beautifulsoup4
 
 英文文档：
 https://beautiful-soup-4.readthedocs.io/en/latest/

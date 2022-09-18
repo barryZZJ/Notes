@@ -1,0 +1,13 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2022-09-14T11:38:26+08:00
+
+Windows Registry Editor Version 5.00
+ 
+[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\*\shell\notepad]
+ 
+@="用记事本打开 "
+ 
+[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\*\shell\notepad\command]
+ 
+@="notepad %1"

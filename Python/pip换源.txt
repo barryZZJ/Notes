@@ -1,6 +1,7 @@
 Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
 
 升级：
 python -m pip install --upgrade pip
 
-python3 -m pip config set global.index-url https://pypi.tuna.tsinghua.edu.cn/simple
+python -m pip config set global.index-url https://pypi.tuna.tsinghua.edu.cn/simple
