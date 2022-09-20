@@ -1,42 +1,32 @@
 Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
 
-# 16进制转bytes
-byte_arr = bytes.fromhex("1f2f3f4f")
-# bytes转16进制
-byte_arr.hex()
-# bytes转base64，输入输出都是bytes
+# 16进制字符串转bytes
+b = bytes.fromhex("1f2f3f4f")
+# bytes转16进制字符串
+b.hex()
+
+# bytes转base64字节流
 import base64
 base64.b64encode(byte_arr)
-# base64转bytes
+# base64字节流转bytes
 base64.b64decode(base64_byte_arr)
-# 字符串转bytes
-"xxxxx".encode("UTF-8")
 
-1. encode, decode默认都是utf8
-
-2. 
+str.encode, b.decode默认都是utf8
 'hello'.encode() # b'hello'
 b'hello'.decode() # 'hello'
 
-
-3.
 bytes形式的字符串解码:
-'raw_unicode_escape' 把bytes形式的字符串转成bytes
-
-e.g.:
+用'raw_unicode_escape' 把字符串编码再用utf8解码
 a = '\xe5\x93\x88\xe5\x93\x88'
-b = a.encode('raw_unicode_escape') # b'\xe5\x93\x88\xe5\x93\x88'
-b.decode() # '哈哈'
+b = a.encode('raw_unicode_escape')  # b'\xe5\x93\x88\xe5\x93\x88'
+b.decode()  # '哈哈'
 
 
-4.
 unicode形式的字符串解码:
 'unicode_escape' 把unicode形式的字符串转成bytes
-
-e.g.
 a = '\u54c8\u54c8'
-b = a.encode('unicode_escape') # b'\\u54c8\\u54c8'
-b.decode('unicode_escape') # '哈哈'
+b = a.encode('unicode_escape')  # b'\\u54c8\\u54c8'
+b.decode('unicode_escape')  # '哈哈'
 
-5.
-u'\u54c8\u54c8' # '哈哈'
+u'\u54c8\u54c8'  # '哈哈'

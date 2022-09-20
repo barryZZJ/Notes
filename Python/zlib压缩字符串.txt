@@ -1,0 +1,14 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2022-09-20T10:30:37+08:00
+
+====== zlib压缩字符串 ======
+Created 星期二 20 九月 2022
+
+import zlib
+
+zlib.compress(b)  : bytes
+zlib.decompress(b)  : bytes
+
+也可以用来压缩文件:
+https://www.cnblogs.com/kaituorensheng/p/5448761.html
