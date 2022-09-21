@@ -18,18 +18,25 @@ c.execute('CREATE TABLE IF NOT EXISTS numbers (id integer primary key ,number va
 conn.commit()
 
 # SELECT
+注意如果在循环体中有新的数据库操作，cursor的值会改变，导致循环立即终止，因此需要完整复制一份再遍历
 cursor = c.execute("SELECT id, name, address, salary  from COMPANY")
-for row in cursor: # 无论field的输入，都返回元组
+for row in cursor: # 无论field的输入，都返回元组 
    print "ID = ", row[0]
    print "NAME = ", row[1]
    print "ADDRESS = ", row[2]
    print "SALARY = ", row[3], "\n"
-
 conn.close()
+
+也可以用while row:=cursor.fetchone()的形式，遍历结束后返回None
+.fetchone()
+.fetchmany()
+.fetchall()
 
 实现insert if not exists else update:
 注意使用insert or replace的话，未赋值的域会置默认值
 https://stackoverflow.com/questions/3634984/insert-if-not-exists-else-update
 
+注意每次commit都会占用一次磁盘IO，因此可以的话尽量执行一组操作后一次性commit
+
 import报错：
-去SQLite官网去下载sqlite3，网址为：https://www.sqlite.org/download.html，下载完之后，将sqlite3.dll解压至anaconda对应环境下的DDLs目录
+去SQLite官网去下载sqlite3，网址为：https://www.sqlite.org/download.html%EF%BC%8C%E4%B8%8B%E8%BD%BD%E5%AE%8C%E4%B9%8B%E5%90%8E%EF%BC%8C%E5%B0%86sqlite3.dll%E8%A7%A3%E5%8E%8B%E8%87%B3anaconda%E5%AF%B9%E5%BA%94%E7%8E%AF%E5%A2%83%E4%B8%8B%E7%9A%84DDLs%E7%9B%AE%E5%BD%95

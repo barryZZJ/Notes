@@ -38,6 +38,10 @@ os.path
 .basename(path) 文件名带后缀 或 最后一级路径
 .dirname(path) 文件所在目录 或 父目录
 .splitdrive() -> (盘符:, [[/路径]])
+.commonpath(list) 求公共路径，一定会返回合法路径
+.commonprefix(list) 求公共父路径（字符级，可能会返回不合法路径）
+
+
 
 os.sep = "\\"
 
@@ -79,3 +83,6 @@ def numericalSort(value):
 glob模块查找文件路径用
 
 os.writelines(iterable) 需要手动加换行符，否则默认就是把每个元素依次写入
+
+pathlib
+https://docs.python.org/3/library/pathlib.html

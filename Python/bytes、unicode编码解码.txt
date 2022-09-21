@@ -6,11 +6,12 @@ b = bytes.fromhex("1f2f3f4f")
 # bytes转16进制字符串
 b.hex()
 
-# bytes转base64字节流
+# base64
 import base64
-base64.b64encode(byte_arr)
-# base64字节流转bytes
-base64.b64decode(base64_byte_arr)
+# 与bytes字节流互转
+base64.b64encode(bytes)  # bytes
+base64.b64decode(base64_bytes)  # bytes
+
 
 str.encode, b.decode默认都是utf8
 'hello'.encode() # b'hello'
