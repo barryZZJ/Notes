@@ -15,6 +15,7 @@ conda各个环境的包
 SSH配置 (C:\Users\Barry\.ssh)
 git配置 (C:\Users\Barry\.gitconfig, .git-credentials)
 各种(正/盗版)游戏存档（战神、欧卡、）
+aegisub的配置和样式(C:\Users\85046\AppData\Roaming\Aegisub)
 
 装好系统后：
 装显卡驱动
