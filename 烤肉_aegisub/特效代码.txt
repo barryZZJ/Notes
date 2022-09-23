@@ -5,10 +5,14 @@ Creation-Date: 2022-09-06T17:05:34+08:00
 https://aegi.vmoe.info/docs/3.2/ASS_Tags/
 https://www.jianshu.com/p/cfdbfdc6d3a7
 
+Aegisub 追踪插件 motion mocha
+https://www.bilibili.com/video/av289069676/
+
 {\rJp_secondary_720p}{\r}
 {\rEng_secondary_720p}{\r}
 
-加粗 \b1 取消加粗 \b0
+对后面的字符应用：
+加粗 \b1 取消加粗 \b0 \b<100k>设置字重值(100~400~900)
 斜体 \i1 取消斜体 \i0
 下划线 \u1 \u0
 删除线 \s1 \s0
@@ -19,6 +23,8 @@ https://www.jianshu.com/p/cfdbfdc6d3a7
 次要颜色 \2c&H<bb><gg><rr>&
 边框颜色 \3c&H<bb><gg><rr>&
 阴影颜色 \4c&H<bb><gg><rr>&
+
+对齐方式\an<pos> 1~9
 
 边框模糊
 \be0
@@ -43,6 +49,10 @@ https://cnlang.org/thread-85231-1-1.html
 
 渐变/淡入淡出
 \fad(<fadein>,<fadeout>)
+在前<fadin>ms淡入，后<fadeout>ms淡出。设为0则取消渐变效果
+
+复杂渐变：
+\fade(<a1>,<a2>,<a3>,<t1>,<t2>,<t3>,<t4>) 
 
 遮罩（方形）
 该区域内可见 \clip(<x1>,<y1>,<x2>,<y2>)
@@ -53,3 +63,7 @@ https://cnlang.org/thread-85231-1-1.html
 \t(<accel>,<style modifiers>)
 \t(<t1>,<t2>,<style modifiers>)
 \t(<t1>,<t2>,<accel>,<style modifiers>)
+
+平移：(无法实现变速移动，需要多个字幕效果拼接)
+\move(<x1>,<y1>,<x2>,<y2>)
+\move(<x1>,<y1>,<x2>,<y2>,<t1>,<t2>) 在<t1>ms~<t2>ms期间进行平移（t为相对时间，t2可设为0表示字幕结束）

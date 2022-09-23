@@ -2,10 +2,18 @@ Content-Type: text/x-zim-wiki
 Wiki-Format: zim 0.6
 Creation-Date: 2022-09-06T17:04:15+08:00
 
+整体流程：
+1. 拷入翻译文本，全部标为Zh_Pri
+2. 按顺序打轴，遇到需特殊处理的修改字体为Zh_vfx
+3. 使用Timing Post-processor填充300ms空隙 (Max gap: 300, Max overlap: 50, Bias: ->End)
+4. 挨个处理Zh_vfx，设置位置、特效等
+5. 使用StyleSplitChan分出双字（Zh_Pri->Zh_pri+Jp_pri / Zh_Sec->Zh_Sec+Jp_Sec)
+6. 最终倍速校对
+
 轴：
-比开始说话提前0~100ms，比说话结束晚100~300ms。（按D之后大概能听到一点人声即可）
-最短500ms
-若空隙小于300ms，前一行结尾延长连接到后一行开头
+单个轴最短500ms
+比开始说话提前0~100ms，比说话结束晚100~300ms。（设为说话结束后按V，正好延后300ms）
+若空隙小于300ms，前一行结尾延长，连接到后一行开头。（可使用Timing Post-processor，统一把空隙填满）
 
 
 字幕：
