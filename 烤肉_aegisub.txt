@@ -1,0 +1,8 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2022-09-24T01:25:06+08:00
+
+====== 烤肉 aegisub ======
+Created 星期五 23 九月 2022
+
+https://aegi.vmoe.info/docs/3.2/Main_Page/
