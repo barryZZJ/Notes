@@ -6,10 +6,14 @@ Vultr https://www.vultr.com/
 	5USD/月
 
 雨云 https://www.rainyun.com/
+买云服务器不买虚拟主机。
+12元版用不了太卡了
+22元版？
+51元版足够了
 
 腾讯云：
 免费体验专区 https://cloud.tencent.com/act/pro/seckill_season
-2核4G 6Mbps 1000GB/月 1个月
+2核4G 6Mbps 1000GB/月 1个月 续费100元/月
 
 校园云服务器 https://cloud.tencent.com/act/campus?from=17302
 2核2GB 4Mbps 300GB/月 65元/年≈5.42/月（85折）

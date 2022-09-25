@@ -23,22 +23,20 @@ https://www.bilibili.com/video/av289069676/
 \pos(x,y) 整数
 \r<style> 设置新样式 (为空时使用原样式)
 
+字体相关：
+\fn<fontname> 为空时恢复为原样式的字体
+\fs<fontsize> 字号
+\fscx<scale%> \fscy<scale%> 字体缩放 scale:0~100
+\fsp<spacing> 字符间距 -~0~+
+\fsvp<spacing> 行间距，正数为减小缩近行间距，负数为增加拉宽行间距（写在新行前、需要 VSFilterMod）
+\frx<amount> \fry<amount> \frz<amount> \fr<amount> 旋转
+\fax<factor> \fay<factor> 文本剪切变换
+
 主要颜色 \c&H<bb><gg><rr>&
 			   \1c&H<bb><gg><rr>&
 次要颜色 \2c&H<bb><gg><rr>&
 边框颜色 \3c&H<bb><gg><rr>&
 阴影颜色 \4c&H<bb><gg><rr>&
-
-
-字体相关：
-\fn<fontname> 为空时恢复为原样式的字体
-\fs<fontsize> 字号
-\fscx<scale%> \fscy<scale%> 字体缩放 scale:0~100
-\fsp<spacing> 字符间距
-\fsvp<spacing> 行间距，正数为减小缩近行间距，负数为增加拉宽行间距（需要 VSFilterMod）
-\frx<amount> \fry<amount> \frz<amount> \fr<amount> 旋转
-\fax<factor> \fay<factor> 文本剪切变换
-
 
 矢量绘图
 https://cnlang.org/thread-85231-1-1.html
@@ -63,3 +61,8 @@ https://cnlang.org/thread-85231-1-1.html
 平移：(无法实现变速移动，需要多个字幕效果拼接)
 \move(<x1>,<y1>,<x2>,<y2>)
 \move(<x1>,<y1>,<x2>,<y2>,<t1>,<t2>) 在<t1>ms~<t2>ms期间进行平移（t为相对时间，t2可设为0表示字幕结束）
+
+卡拉OK轴：\k<f/o><duration>
+\k 一次跳一个字
+\kf 或 \K 有平滑效果，每个字会部分渐变
+\ko 一次跳一个字，同时边框会变
