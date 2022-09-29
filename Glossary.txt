@@ -1,0 +1,46 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2022-09-29T15:47:35+08:00
+
+====== Glossary ======
+Created 星期四 29 九月 2022
+符号不要在一段中多次重复使用，第二次开始只需要用名词。
+
+a and b are A and B, respectively.
+argue
+curator
+empirically == experimentally
+i.e, namely, that is to say
+insight
+intractable
+shed light on
+surrogate
+包含 incorporate 
+表示 denotes, represents, considered, means, interpreted
+程度副词 substantially, significantly, remarkably, dramatically, considerably, prominently, tremendously
+除了 apart form, except for, besides
+到目前为止 hitherto
+对比 in constrast to/with
+恶化 exacerbate
+概念 concept, notion
+关于 pertain to
+基于 based on, on the basis of
+记为 denote DEFINITION by SYMBOL
+简洁 brevity
+杰出的、突出的 prominent
+空间 room, space, margin, gap
+困难的 intractable, challenging, demanding
+其中/具体地 specifically
+强大, 艰巨, 可怕, 吓人 formidable
+缺陷 deficiency, flaw, drawback, shortcoming, defect, shortage, disadvantage, weakness 
+如图示 illustrated, demonstrated, shown,（表现两个变量关系的）图表 plot
+使用 utilize, leverage, exploit
+说明 indicate
+推测 conjecture
+为此 To this end
+相似：resemble, analogous, similar
+一致 in consistency with, remain consistent with, in line with, in accordance with, in keeping with
+因果/转折连接词 thus, hence, therefore, as a result, so far, to this end, by far, due to, consequently, result in, lead to, accordingly. moreover, further, furthermore, besides, additionally, nevertheless, give rise to, notwithstanding, albeit(尽管)
+引用表 shown, listed
+有害的 detrimental
+组成 be comprised of、constitute、consist of

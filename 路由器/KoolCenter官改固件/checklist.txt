@@ -1,4 +1,5 @@
 Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
 
 校园网：（拷贝至/koolshare/scripts/，然后chmod +x xxx.sh）
 每天定时连接校园网（连接校园网脚本drcom.sh）
@@ -14,4 +15,4 @@ nvram get wan0_ipaddr
 只保留带v1.关键字的节点
 管理面板要输入提示的路由器ip+端口号，以及密码。
 
-
+装frpc，同时添加指令在自启前 sleep 3m

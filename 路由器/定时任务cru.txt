@@ -1,5 +1,8 @@
 Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
 
 add:    cru a <unique name|id> <"min hour day month week command"> 一定要带引号
 delete: cru d <unique name|id>
 list:   cru l
+
+注意：每次重启后cru任务都会清空，需要脚本内重新添加

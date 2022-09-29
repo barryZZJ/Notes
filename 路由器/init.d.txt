@@ -1,4 +1,7 @@
 Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
 
 /koolshare/init.d
 内存放系统启动时自动执行的脚本，具体需要再搜索一下命名格式，大概为S01xxx.sh等
+
+https://unix.stackexchange.com/questions/20357/how-can-i-make-a-script-in-etc-init-d-start-at-boot
