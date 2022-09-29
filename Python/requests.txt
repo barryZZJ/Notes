@@ -1,11 +1,12 @@
 Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
 
 https://cn.python-requests.org/zh_CN/latest/
 https://docs.python-requests.org/en/latest/user/advanced/
 
 session:
 with requests.Session() as s:
-    s.get('https://httpbin.org/get')
+	s.get('https://httpbin.org/get')
 或
 s = requests.Session()
 
@@ -30,7 +31,6 @@ $1='$2',\n
 直接用dict构造：
 cookies = dict(key1='value1', key2='value2')
 
-
 requests.get('http://httpbin.org/get', params=payload)
 
 >>> payload = dict(key1='value1', key2='value2')
@@ -38,7 +38,7 @@ requests.get('http://httpbin.org/get', params=payload)
 
 post(url, data=None, json=None, **kwargs)
 :param data: (optional) Dictionary, list of tuples, bytes, or file-like
-        object to send in the body of the :class:`Request`.
+		object to send in the body of the :class:`Request`.
 :param json: (optional) json data to send in the body of the :class:`Request`.
 :param \*\*kwargs: Optional arguments that ``request`` takes.
 

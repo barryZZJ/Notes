@@ -1,0 +1,10 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2022-09-28T15:43:19+08:00
+
+====== crontab ======
+Created 星期三 28 九月 2022
+
+crontab会读取/etc/localtime的时区，可能不是北京时间，解决办法：
+TZ=Asia/Shanghai
+ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > [[/etc/timezone]]

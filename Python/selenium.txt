@@ -1,22 +1,70 @@
 Content-Type: text/x-zim-wiki
 Wiki-Format: zim 0.6
 
+https://selenium-python-zh.readthedocs.io/en/latest/
+https://selenium-python.readthedocs.io/
+
+https://www.selenium.dev/documentation/
+
+selenium 是用来模拟登陆获取cookie的，避免了分析网页执行原理
+
+设置chromedriver：
+下载当前浏览器对应版本的chromedriver (http://npm.taobao.org/mirrors/chromedriver/ )，放入C:\Program Files (x86)\Google\Chrome\Application，并添加进PATH
+
 1.
 from selenium import webdriver
 
+# 参数https://zhuanlan.zhihu.com/p/60852696
 option = webdriver.ChromeOptions()
-option.add_argument('--start-maximized')  # 最大化
+#option.add_argument('--start-maximized')  # 最大化
 option.add_argument('--headless')  # 无界面
 option.add_argument('user-agent=xxx')
+option.binary_location = 'PATH_TO_CHROMEDRIVER_EXE' # 不可用
+
 browser = webdriver.Chrome(options=option)
 
 browser.get("https://www.baidu.com")
 browser.add_cookie(cookiedict)
 browser.close()
 
-2.
-selenium 是用来模拟登陆获取cookie的，避免了分析网页执行原理
+2. 定位元素
+https://selenium-python.readthedocs.io/locating-elements.html#locating-elements
+from selenium.webdriver.common.by import By
+elem=browser.find_element(By.NAME, "q")
+ID = "id"
+NAME = "name"
+XPATH = "xpath"
+LINK_TEXT = "link text"
+PARTIAL_LINK_TEXT = "partial link text"
+TAG_NAME = "tag name"
+CLASS_NAME = "class name"
+CSS_SELECTOR = "css selector"
 
+https://selenium-python.readthedocs.io/navigating.html
+# 元素操作
+elem.send_keys('some text') # 输入内容
+elem.send_keys(Keys.RETURN) # 按下按键
+elem.clear() # 清除textfiled内容
+.get_attribute
+.click()
+.submit() # 如果elem在form内，会自动找到该form并调用其submit方法
 
-设置chromedriver：
-下载当前浏览器对应版本的chromedriver（http://npm.taobao.org/mirrors/chromedriver/），放入C:\Program Files (x86)\Google\Chrome\Application（或所在位置添加进PATH），或在webdriver.Chrome()中添加executable_path参数
+# select元素特殊操作 https://selenium-python.readthedocs.io/api.html?highlight=implicitly_wait#module-selenium.webdriver.support.select
+select = Select(elem)
+.select_by_index(ind)
+.select_by_visible_text("text")
+.select_by_value(val)
+.deselect_all()
+
+# 执行js脚本
+.execute_script
+
+# 获取兄弟元素
+1. js脚本的 nextSibling属性
+2. xpath的 following-sibling::<tagname>
+
+# 等待网页完全加载
+1. browser.implicitly_wait() # 定义browser后立即执行一次（每个session只需执行一次），可以保证网页完全加载/元素被找到
+2. selenium.webdriver.support.wait.WebDriverWait https://selenium-python.readthedocs.io/api.html?highlight=implicitly_wait#module-selenium.webdriver.support.wait
+	a. element = WebDriverWait(driver, 10).until(lambda browser: browser..find_element(By.ID, "someId"))
+	b. .until方法，直到js脚本的document.readyState返回'complete'

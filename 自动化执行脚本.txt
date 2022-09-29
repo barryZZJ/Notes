@@ -1,0 +1,9 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2022-09-28T15:42:59+08:00
+
+====== 自动化执行脚本 ======
+Created 星期三 28 九月 2022
+
+1. 服务器crontab
+2. serverless function 腾讯云等的"云函数"页面，不会收费

@@ -65,12 +65,15 @@ tcp_bbr                20480  14
 
 3. Frp
 frps服务端：（服务器防火墙记得开放对应端口）（不要开kcp，否则会用不了）
+# 一键配置脚本：
 mkdir frps
 cd frps
 wget https://raw.githubusercontent.com/MvsCode/frps-onekey/master/install-frps.sh
 mv install-frps.sh frps.sh
 chmod 700 ./frps.sh
 ./frps.sh install  {install|uninstall|update|config}
+# 手动配置：
+https://www.jianshu.com/p/1a30d9ec1775
 
 frps {start|stop|restart|status|config|version}
 log_file = /usr/local/frps/frps.log

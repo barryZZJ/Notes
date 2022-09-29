@@ -1,0 +1,9 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2022-09-28T18:24:55+08:00
+
+====== 域名购买 ======
+Created 星期三 28 九月 2022
+
+godaddy
+freenom

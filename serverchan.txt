@@ -1,0 +1,18 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2022-09-28T15:17:20+08:00
+
+====== serverchan ======
+Created 星期三 28 九月 2022
+
+https://sct.ftqq.com/
+
+sendkey:
+SCT164400THDN7R51ck5uOz8H3MAhIejfR
+
+GET:
+https://sctapi.ftqq.com/{api}.send
+https://sctapi.ftqq.com/SCT164400THDN7R51ck5uOz8H3MAhIejfR.send
+参数：（中文不用编码直接发就行）
+title 必填
+desp 选填
