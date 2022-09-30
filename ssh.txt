@@ -1,2 +1,8 @@
 Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
 
+ssh -p <port> user@hostip
+
+C:\Users\85046\.ssh
+
+https://www.jianshu.com/p/1e793e386beb

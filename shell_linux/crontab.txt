@@ -5,6 +5,11 @@ Creation-Date: 2022-09-28T15:43:19+08:00
 ====== crontab ======
 Created 星期三 28 九月 2022
 
+https://www.runoob.com/linux/linux-comm-crontab.html
+使用crontab -e进入配置编辑
+crontab -l
+crontab -d
+
 crontab会读取/etc/localtime的时区，可能不是北京时间，解决办法：
 TZ=Asia/Shanghai
 ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > [[/etc/timezone]]
