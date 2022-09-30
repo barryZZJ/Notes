@@ -7,8 +7,8 @@ Created 星期三 28 九月 2022
 
 https://www.runoob.com/linux/linux-comm-crontab.html
 使用crontab -e进入配置编辑
-crontab -l
-crontab -d
+crontab -l 列举
+crontab -r 删除
 
 crontab会读取/etc/localtime的时区，可能不是北京时间，解决办法：
 TZ=Asia/Shanghai
