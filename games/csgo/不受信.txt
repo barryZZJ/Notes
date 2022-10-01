@@ -1,0 +1,5 @@
+Content-Type: text/x-zim-wiki
+
+D:\Software\Steam\Steam\userdata\191490386\730\local\cfg\trustedlaunch.cfg
+
+如果只显示SUCCESS XXX则删掉该文件，然后重启游戏

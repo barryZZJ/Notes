@@ -1,0 +1,8 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2022-10-01T23:15:33+08:00
+
+====== 启动项 ======
+Created 星期六 01 十月 2022
+
+-perfectworld -novid -nojoy -noipx  -highpriority -processheap +exec barry.cfg +exec auto.cfg

@@ -1,0 +1,73 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2022-10-01T23:15:19+08:00
+
+====== 控制台 ======
+Created 星期六 01 十月 2022
+
+https://www.bilibili.com/read/cv4617211
+
+sv_cheats 1; 
+
+局：
+mp_roundtime 40
+mp_round_restart_delay 0; 
+mp_freezetime 0; 
+mp_warmup_end
+mp_restartgame 1; 
+mp_limitteams 0; 
+mp_autoteambalance 0; 
+mp_startmoney 10000; 
+mp_buytime 3600; 
+mp_maxrounds x //休闲/竞技模式最大局数设为x局
+
+mp_respawn_on_death_ct 1; 
+mp_respawn_on_death_t 1; 
+sv_infinite_ammo 2; 
+mp_restartgame 1; 
+
+mp_drop_knife_enable 1
+mp_death_drop_grenade 0; 
+mp_death_drop_gun 1; 
+mp_death_drop_defuser 0
+
+BOT：
+bot_kick; 
+bot_dont_shoot 1; 
+bot_allow_rifles 0;
+bot_join_after_player 1;
+bot_quota 19; 
+bot_join_team CT; 
+
+连跳：
+sv_cheats 1
+sv_enablebunnyhopping 1 // 解除地速限制
+sv_autobunnyhopping 1 
+bind mwheeldown +jump
+cl_showpos 1
+sv_airaccelerate x // 限制最高空速为x
+sv_staminajumpcost 0
+sv_staminalandcost 0
+mp_roundtime 40
+
+投掷物:
+sv_cheats 1
+ammo_grenade_limit_total 5
+sv_infinite_ammo 1   设置弹药投掷物是否无限
+sv_grenade_trajectory 1：当你拉环时显示实时的投掷物预测轨迹
+sv_rethrow_last_grenade: 重现服务器内上一个使用过的投掷物。非常适合用于测试在不同位置同一枚闪光弹的闪光效果
+cl_sim_grenade_trajectory：在特定秒数内固定显示正在使用的投掷物轨迹。这对练习投掷超出视野范围的远距离烟雾弹很有帮助
+bind ? "record record.record;ent_fire smokegrenade_projectile kill;snd_playsounds Music.StopAllExceptMusic;stop;snd_playsounds Buttons.snd37" // 清除烟雾弹
+
+mp_restartgame 1
+mp_buy...
+
+give weapon_hegrenade  快速获取一枚手雷
+give weapon_flashbang  快速获取一枚闪光震撼弹
+give weapon_smokegrenade  快速获取一枚烟雾弹
+give weapon_molotov 燃烧弹
+
+sv_showimpacts 0/1/2 //子弹击中点显示，0不显示，1显示红蓝方块，2只显示红方块
+sv_showimpacts_penetration 0/1 //关闭/显示子弹穿透详细信息
+mp_respawn_immunitytime x //设置复活无敌时间为x秒
+

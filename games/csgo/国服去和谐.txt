@@ -1,0 +1,3 @@
+Content-Type: text/x-zim-wiki
+
+删除Counter-Strike Global Offensive\csgo下的pakxv_perfectworld_xxx文件

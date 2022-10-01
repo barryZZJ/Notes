@@ -1,0 +1,10 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2022-10-01T23:17:06+08:00
+
+====== 服务器 ======
+Created 星期六 01 十月 2022
+
+https://www.smartfox.cc/archives/48/
+https://developer.valvesoftware.com/wiki/Counter-Strike:_Global_Offensive_Dedicated_Servers
+https://bbs.upkk.com/data/portal/toutiaogonggao/202111/00000092.html
