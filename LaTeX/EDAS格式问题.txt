@@ -1,0 +1,22 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2022-10-04T14:06:29+08:00
+
+====== EDAS格式问题 ======
+Created 星期二 04 十月 2022
+
+增加上边距(负数为减少)（只对当前页有效）：\addtolength{\topmargin}{0.01in}
+
+设置全局栏间距(在document之前)：\setlength{\columnsep}{0.24in}
+
+使用geometry包：
+在\begin{document}之前添加
+\usepackage[left=0.625in,right=0.625in,bottom=1in,top=0.75in]{geometry}
+\usepackage[left=1.62cm,right=1.62cm,top=1.9cm]{geometry}
+
+论文如果过长，可以通过
+\renewcommand{\baselinestretch}{0.96}
+缩短间距来调整页数。可以把{0.96}改为0.93-1之间的数灵活调整。
+
+How to beat publisher PDF checks with LaTeX document unit testing
+https://blog.martisak.se/2020/05/16/latex-test-cases/

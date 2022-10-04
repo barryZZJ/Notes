@@ -1,0 +1,10 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2022-10-04T17:39:05+08:00
+
+====== 日语输入法快捷键 ======
+Created 星期二 04 十月 2022
+
+切换假名与英语：alt+~
+设置为片假名：alt+capslock
+设置为平假名：ctrl+capslock

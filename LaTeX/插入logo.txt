@@ -1,11 +1,12 @@
 Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
 
 标题插入logo：
 \title[Title]{\includegraphics{logo.jpg}\\Title}
 
 左下角插入logo
 \put(16.57, 23.19){
-\parbox[t]{\textwidth}{
+\parbox[t]{\linewidth}{
 \includegraphics[scale=1,keepaspectratio]{logo_jnm.png}
 }
 }

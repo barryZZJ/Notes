@@ -1,5 +1,9 @@
 Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
 
+论文如果过长，可以通过
+\renewcommand{\baselinestretch}{0.96}
+缩短间距来调整页数。可以把{0.96}改为0.93-1之间的数灵活调整。
 
 0. enumerate环境
 加参数[\itemindent=1em]，设置缩进
@@ -54,20 +58,20 @@ xxxx
 在document环境之前写
 普通字号：
 \expandafter\def\expandafter\normalsize\expandafter{%
-    \normalsize
-    \setlength\abovedisplayskip{3pt}
-    \setlength\belowdisplayskip{3pt}
-    \setlength\abovedisplayshortskip{0pt}
-    \setlength\belowdisplayshortskip{0pt}
+	\normalsize
+	\setlength\abovedisplayskip{3pt}
+	\setlength\belowdisplayskip{3pt}
+	\setlength\abovedisplayshortskip{0pt}
+	\setlength\belowdisplayshortskip{0pt}
 }
 
 小一号
 \expandafter\def\expandafter\small\expandafter{%
-    \small
-    \setlength\abovedisplayskip{3pt}
-    \setlength\belowdisplayskip{3pt}
-    \setlength\abovedisplayshortskip{0pt}
-    \setlength\belowdisplayshortskip{0pt}
+	\small
+	\setlength\abovedisplayskip{3pt}
+	\setlength\belowdisplayskip{3pt}
+	\setlength\abovedisplayshortskip{0pt}
+	\setlength\belowdisplayshortskip{0pt}
 }
 在每个equation外套一个{\small ...}
 

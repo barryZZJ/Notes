@@ -5,6 +5,7 @@ Creation-Date: 2022-10-01T23:15:19+08:00
 ====== 控制台 ======
 Created 星期六 01 十月 2022
 
+https://f.upkk.com/plugin.php?id=srcds_server_user_manager:CSGO_Commands
 https://www.bilibili.com/read/cv4617211
 
 sv_cheats 1; 

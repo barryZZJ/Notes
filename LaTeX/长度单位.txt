@@ -1,4 +1,5 @@
 Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
 
 pt point 磅(小)
 mm
@@ -10,5 +11,6 @@ ex 当前字号下小写字母 x 的高度，常用于垂直距离的设定
 转换：
 https://tex.stackexchange.com/questions/8260/what-are-the-various-units-ex-em-in-pt-bp-dd-pc-expressed-in-mm
 
-\textwidth
+\linewidth （多栏时其中一栏的宽度）
+\textwidth （整个页面的宽度）
 \columnwidth

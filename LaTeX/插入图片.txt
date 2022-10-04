@@ -35,7 +35,7 @@ minipage环境（可加参数[t/b]表示顶部/底部对齐）
 
 \begin{figure}[htbp]
 \centering
-\begin{minipage}{0.48\textwidth}
+\begin{minipage}{0.48\linewidth}
    \centering
    \includegraphics
    \caption
@@ -49,10 +49,10 @@ minipage环境（可加参数[t/b]表示顶部/底部对齐）
 注意如果标题包含数学环境里的[]，要用{}把整个数学环境括起来，否则会报错。
 3.1 新subfig包：添加[caption=false]参数可以避免修改标题格式
 \subfloat[Caption1\label{fig:subim1}]{%
-  \includegraphics[width=0.45\textwidth]{example-image-a}%
+  \includegraphics[width=0.45\linewidth]{example-image-a}%
 }\hfill
 \subfloat[Caption1\label{fig:subim2}]{%
-  \includegraphics[width=0.45\textwidth]{example-image-b}%
+  \includegraphics[width=0.45\linewidth]{example-image-b}%
 }
 使用\ref会生成如1a字样；使用\subref可以只生成(a)
 
@@ -71,7 +71,7 @@ minipage环境（可加参数[t/b]表示顶部/底部对齐）
 subfigure宏包的subfigure环境 (查看新版的subfig宏包)
 \begin{figure}[htbp]
 \centering
-	\begin{subfigure}{<必需>宽度0.5\textwidth}
+	\begin{subfigure}{<必需>宽度0.5\linewidth}
 		 \includegraphics
 		 \caption{小标题}
 	\end{subfigure} \hfill

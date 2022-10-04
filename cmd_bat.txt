@@ -2,6 +2,9 @@ Content-Type: text/x-zim-wiki
 Wiki-Format: zim 0.6
 Creation-Date: 2022-09-02T15:29:52+08:00
 
+cmd [[/c]] ... 执行字符串指定的命令然后终止
+cmd [[/k]] ... 执行字符串指定的命令但保留
+
 输出log到txt：
 xxx.bat > log.txt (>覆盖写, >>追加写) 
 1>stdout.txt (1>输出普通输出)
