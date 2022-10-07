@@ -11,8 +11,8 @@ nvram get wan0_ipaddr
 修改查ip命令5默认指令(/koolshare/scripts/aliddns_update.sh) √
 修改界面命令5(/koolshare/webs/Module_aliddns.asp) √
 
-装Merlinclash。（自带去广告规则）
+Merlinclash（自带去广告规则）
 只保留带v1.关键字的节点
 管理面板要输入提示的路由器ip+端口号，以及密码。
 
-装frpc，同时添加指令在自启前 sleep 3m
+frpc
