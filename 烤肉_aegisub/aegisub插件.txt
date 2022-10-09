@@ -25,3 +25,4 @@ https://cwlrin.wiki/wp-content/uploads/2021/02/vsfiltermod-%E6%89%8B%E5%86%8C.pd
 下载
 https://github.com/sorayuki/VSFilterMod
 x86版的.dll拷入aegisub目录下的scri
+在options最下面Advanced-Video中的Subtitles provider选择CSRI/vsfiltermod_textsub
