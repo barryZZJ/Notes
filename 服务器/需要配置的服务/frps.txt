@@ -1,0 +1,45 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2022-10-10T19:39:44+08:00
+
+====== frps ======
+Created 星期一 10 十月 2022
+
+frps服务端：（服务器防火墙记得开放对应端口）（不要开kcp，否则会用不了）
+# 一键配置脚本：
+mkdir frps
+cd frps
+wget https://raw.githubusercontent.com/MvsCode/frps-onekey/master/install-frps.sh
+mv install-frps.sh frps.sh
+chmod 700 ./frps.sh
+./frps.sh install  {install|uninstall|update|config}
+# 手动配置：
+https://www.jianshu.com/p/1a30d9ec1775
+
+frps {start|stop|restart|status|config|version}
+log_file = /usr/local/frps/frps.log
+watch -n 1 cat /usr/local/frps/frps.log
+如果报错ine 45: [: 2431: binary operator expected，修改/usr/bin/frps，把$PID全部替换为${PID}
+
+# frps configuration:
+/usr/local/frps/frps.ini:
+================================================
+You Server IP      : 43.143.3.229
+Bind port          : 5443
+KCP support        : false
+vhost http port    : 80
+vhost https port   : 443
+Dashboard port     : 6443
+token              : Gg3f3GDRhQE9YjtT
+subdomain_host     : barryzzj.xyz
+tcp_mux            : true
+Max Pool count     : 50
+Log level          : info
+Log max days       : 3
+Log file           : enable
+================================================
+frps Dashboard     : http://barryzzj.xyz:6443/
+Dashboard user     : zhouzejun2
+Dashboard password : zzjzzj0123
+================================================
+

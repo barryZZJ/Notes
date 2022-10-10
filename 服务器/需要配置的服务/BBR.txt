@@ -1,0 +1,33 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2022-10-10T18:13:56+08:00
+
+====== BBR ======
+Created 星期一 10 十月 2022
+
+
+2. bbr(默认自带的，不用配）
+Ubuntu开启BBR
+Step 1：修改系统变量
+echo "net.core.default_qdisc=fq" >> /etc/sysctl.conf
+echo "net.ipv4.tcp_congestion_control=bbr" >> /etc/sysctl.conf
+全选代码Copy
+Step 2:保存生效
+sysctl -p
+全选代码Copy
+Step 3：检查BBR是否开启
+sysctl net.ipv4.tcp_available_congestion_control
+全选代码Copy
+如果 返回
+net.ipv4.tcp_available_congestion_control = bbr cubic reno
+全选代码复制
+则开启成功！
+
+Step 4：检查BBR是否启动成功
+lsmod | grep bbr
+全选代码复制
+如果返回
+
+tcp_bbr                20480  14
+全选代码复制
+则启动 成功

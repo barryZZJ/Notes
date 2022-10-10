@@ -1,0 +1,58 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2022-10-10T19:40:25+08:00
+
+====== frpc ======
+Created 星期一 10 十月 2022
+
+frpc客户端注册映射：
+log_file = /tmp/frpc.log
+内网端口：
+frps: 5443
+frps-dashboard: 6443
+ssh: 22
+RDP: 3389
+splashtop: 6783
+smb: 445 -> 23336
+router: 8888 -> 23337
+
+# frpc configuration Router: /tmp/upload/.frpc.ini
+[common]
+server_addr = 43.248.189.36
+server_port = 23354
+token = Gg3f3GDRhQE9YjtT
+log_file = /tmp/frpc.log
+log_level = info
+log_max_days = 1
+tcp_mux = true
+protocol = tcp
+login_fail_exit = true
+user = asus
+[winrdp]
+type = tcp
+local_ip = 192.168.50.201
+local_port = 3389
+remote_port = 3389
+use_encryption = false
+use_compression = false
+[splash]
+type = tcp
+local_ip = 192.168.50.201
+local_port = 6783
+remote_port = 6783
+use_encryption = false
+use_compression = false
+[smb]
+type = tcp
+local_ip = 192.168.50.201
+local_port = 445
+remote_port = 445
+use_encryption = false
+use_compression = false
+[router]
+type = tcp
+local_ip = 192.168.50.1
+local_port = 8888
+remote_port = 8888
+use_encryption = false
+use_compression = false
