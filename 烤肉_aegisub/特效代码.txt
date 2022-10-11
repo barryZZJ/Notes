@@ -57,6 +57,7 @@ https://cnlang.org/thread-85231-1-1.html
 \t(<accel>,<style modifiers>)
 \t(<t1>,<t2>,<style modifiers>)
 \t(<t1>,<t2>,<accel>,<style modifiers>)
+t1, t2为发生的时间起止，ms，相对时间，可设为0
 
 平移：(无法实现变速移动，需要多个字幕效果拼接)
 \move(<x1>,<y1>,<x2>,<y2>)

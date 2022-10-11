@@ -1,10 +1,11 @@
 Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
 
 pip install pillow
 from PIL import Image, ImageDraw
 im = Image.open(path) # type: Image.Image
 with Image.open(infile) as im:
-    im.save(path)
+	im.save(path)
 im = Image.new("RGB"/"L"/"P", (wid, hei))
 
 modes:https://pillow.readthedocs.io/en/stable/handbook/concepts.html#concept-modes
@@ -27,11 +28,15 @@ px[0, 0] # (R, G, B) or 0~255
 px[im.width, im.height] # 按列存的。
 按行遍历：
 for y in range(img.height):
-    for x in range(img.width):
-        px[x, y] # x=0~width, y=0~height
+	for x in range(img.width):
+		px[x, y] # x=0~width, y=0~height
 box:
 left, upper, right(left+width), lower(upper+height)
 box 不可以为负
+
+.getbands()
+.getchannel(channel:str|int)
+.getdata(band:int)
 
 im.getpixel(Tuple)
 im.putpixel

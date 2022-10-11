@@ -12,6 +12,7 @@ C盘：
 JB旧版缓存: 
 C:\Users\Barry\AppData\Local\JetBrains; \logs
 C:\Users\Barry\AppData\Roaming\JetBrains
+C:\Users\85046\Documents\WeChat Files
 
 logs:
 C:\ProgramData\Intel\Intel Extreme Tuning Utility\Logs （超大）

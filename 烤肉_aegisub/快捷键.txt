@@ -28,3 +28,4 @@ ctrl+shift+t 选择部分按start time排序
 audio：
 按住shift再点左键：贴边
 z, x, pgup, pgdn：切换上/下一条字幕
+v：结束时间加300ms

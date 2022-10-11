@@ -11,3 +11,11 @@ http://www.obsproject.com.cn/obs/87.html
 显示器捕获黑屏解决办法：
 https://zhuanlan.zhihu.com/p/106848354
 
+码率与网速关系：
+https://www.bilibili.com/read/cv17855265
+https://www.bilibili.com/read/cv18369614
+（上传80Mbps
+上行4Mbps : 建议2000kbps
+上行10Mbps  : 建议4000kbps
+上行20Mbps  : 建议6000kbps
+{{.\pasted_image.png?width=800}}

@@ -18,6 +18,8 @@ AegisubMotion:
 	(位置不变的话会合并成一个长时间轴)
 Blender
 Mocha: https://www.52pojie.cn/thread-1128366-1-1.html
+	导出：选择第一个(CS3)
+	支持先写好\t特效，再应用追踪数据
 
 VSFilterMod
 手册
