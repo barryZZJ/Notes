@@ -1,10 +1,18 @@
 Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
 
 try:
 
 except .. as err:
-    # 发生错误时执行
+	# 发生错误时执行
+	# 就算含continue、break等指令也会先执行finally再执行
 else:
-    # 无错误时执行
+	# 无错误时执行
 finally:
-    # 收尾工作，无论是否错误均执行。
+	# 收尾工作，无论是否错误均执行。
+
+# 打印详细的traceback
+https://docs.python.org/3.9/library/traceback.html
+https://www.geeksforgeeks.org/how-to-print-exception-stack-trace-in-python/
+import traceback
+traceback.print_exc()

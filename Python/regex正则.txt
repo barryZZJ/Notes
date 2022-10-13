@@ -1,4 +1,5 @@
 Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
 
 https://docs.python.org/3/library/re.html
 https://zhengze.51240.com/
@@ -18,16 +19,16 @@ finditer(pattern, string, flags=0) 同上，但返回生成器
 
 fullmatch(pattern, string, flags=0) 相当于pattern前后加上^和$。Try to apply the pattern to all of the string, returning a match object, or None if no match was found.
 
-sub(pattern, repl, string, count=0, flags=0) 替换repl中出现的pattern为string。repl中可以包含'\1'表示第一个括号中的内容。
+sub(pattern, repl, string, count=0, flags=0) repl:替换结果，string:搜索字符串。repl中可以包含'\1'表示第一个括号中的内容。
 
 split(pattern, string, maxsplit=0, flags=0) 用 pattern 分开 string 。 如果在 pattern 中捕获到括号，那么所有的组里的文字也会包含在列表里。
 
 如果不匹配返回None，否则
 搜索结果为Match对象：
-    [i] 获取第i个括号内的匹配结果（0为全部匹配内容）
-    .group() 返回整个匹配内容
-        有括号时：.group(0)获得全部匹配内容；.group(1)获得第一个括号的内容...；
-    .groups() 返回元组，获得每个括号内容，.groups(arg)把元组中所有未匹配到的None替换为arg
+	[i] 获取第i个括号内的匹配结果（0为全部匹配内容）
+	.group() 返回整个匹配内容
+		有括号时：.group(0)获得全部匹配内容；.group(1)获得第一个括号的内容...；
+	.groups() 返回元组，获得每个括号内容，.groups(arg)把元组中所有未匹配到的None替换为arg
 
 
 Pattern：

@@ -8,6 +8,13 @@ https://docs.python.org/zh-cn/3/library/argparse.html#module-argparse
 import argparse
 parser = argparse.ArgumentParser()
 
+自定义说明信息（Description）https://docs.python.org/3/library/argparse.html#description
+argparse.ArgumentParser(description='A foo that bars')
+PS：不带参数运行时不会显示，因此代码需要判断，如果没有参数，则调用parser.print_help()然后退出
+说明信息设为多行(使用RawDescriptionHelpFormatter为formatter_class参数)
+	https://docs.python.org/3/library/argparse.html#formatter-class
+	https://stackoverflow.com/questions/3853722/how-to-insert-newlines-on-argparse-help-text
+
 # 位置参数（必须参数）
 parser.add_argument("some", help="helpful text", type=int)
 add_argument参数：
@@ -29,9 +36,13 @@ metavar="xxx" : 改变帮助内容里显示的参数名
 args = parser.parse_args()
 
 获取参数：
-args.some (如果add_argument中为'-'，这里需要使用'_')
+args.some (如果add_argument中为'-'，这里需要使用'_'；大小写保持不变)
 args.verbose
 args.msg
 
 存储：
 vars(args)，输出字典
+
+手动处理参数错误的情况（可以用于exe双击执行时自定义处理方式）(python>=3.9)
+https://docs.python.org/3.9/library/argparse.html#exit-on-error
+如果不管用，可以继承并重载parser.error()函数

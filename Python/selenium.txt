@@ -21,7 +21,7 @@ chrome_options.add_argument('--disable-dev-shm-usage')
 1.
 from selenium import webdriver
 
-# [[%E5%8F%82%E6%95%B0https://zhuanlan.zhihu.com/p/60852696]]
+# %E5%8F%82%E6%95%B0https://zhuanlan.zhihu.com/p/60852696
 opt = webdriver.ChromeOptions()
 #opt.add_argument('--start-maximized')  # 最大化
 opt.add_argument('--headless')  # 无界面

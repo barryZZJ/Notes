@@ -50,3 +50,5 @@ def app_path():
 		return os.path.dirname(sys.executable)
 	return os.path.dirname(__file__)  # 源码走这里
 
+缩小文件大小：
+

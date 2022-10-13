@@ -1,9 +1,13 @@
 Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
 
 https://www.runoob.com/python/python-strings.html
 .replace(old, new)
 .removesuffix(suff)
 .removeprefix(pref)
+
+.translate(str.maketrans(dict)) # 把key换成val
+# .maketrans把key的字符换成对应的ord数字
 
 isdecimal() ⊆ isdigit() ⊆ isnumeric()
 isalpha()
