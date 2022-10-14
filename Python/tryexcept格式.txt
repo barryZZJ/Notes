@@ -16,3 +16,5 @@ https://docs.python.org/3.9/library/traceback.html
 https://www.geeksforgeeks.org/how-to-print-exception-stack-trace-in-python/
 import traceback
 traceback.print_exc()
+
+.format_exc() -> str

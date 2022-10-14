@@ -2,6 +2,14 @@ Content-Type: text/x-zim-wiki
 Wiki-Format: zim 0.6
 Creation-Date: 2022-09-02T15:29:52+08:00
 
+=== %~dp0 ===
+将.bat路径(%0)展开到 盘符+路径
+cd /d %~dp0 即cd到当前bat所在路径
+其他相关指令：
+https://www.cnblogs.com/smwikipedia/archive/2009/03/30/1424749.html
+
+echo. 输出换行
+
 cmd [[/c]] ... 执行字符串指定的命令然后终止
 cmd [[/k]] ... 执行字符串指定的命令但保留
 

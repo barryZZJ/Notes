@@ -1,0 +1,17 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2022-10-13T15:57:06+08:00
+
+====== tags ======
+Created 星期四 13 十月 2022
+
+git tag 标签简介
+1、git tag --list 列出所有的标签
+2、git tag <your_tag_name> 创建一个标签
+3、git tag -a <your_tag_name> -m ‘your_tag_description’ 创建一个带有注释的标签
+4、git show <your_tag_name> 查看标签信息
+5、git ls-remote --tags origin 查看所有的远程标签及commit ID
+6、git tag -d <your_tag_name> 删除一个标签
+7、git push --delete origin <your_tag_name> 删除远程仓库的标签
+8、git push origin <your_tag_name> 推送一个标签到远程
+9、git push origin --tags 推送多个本地标签到远程

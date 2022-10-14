@@ -1,0 +1,10 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2022-10-14T18:49:11+08:00
+
+====== typecho ======
+Created 星期五 14 十月 2022
+
+http://docs.typecho.org/doku.php
+
+https://github.com/typecho/typecho

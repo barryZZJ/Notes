@@ -1,8 +1,13 @@
 Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
 
-redirect stdout to file:
+# redirect stdout to file:
 with open() as f:
-    sys.stdout = f
+	sys.stdout = f
+或
+print(..., file=f)
+或
+print » f, ...
 
 1."{}".format
 {:.nf} 保留n位小数
@@ -26,7 +31,7 @@ the length of (runoob) is 6
 %G	 %f 和 %E 的简写
 %p	 用十六进制数格式化变量的地址
     
-*	定义宽度或者小数点精度
+* 定义宽度或者小数点精度
 -	用做左对齐
 +	在正数前面显示加号( + )
 <sp>	在正数前面显示空格

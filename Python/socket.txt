@@ -1,4 +1,5 @@
 Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
 
 socket
 https://www.runoob.com/python/python-socket.html
@@ -10,47 +11,51 @@ socketserver
 https://docs.python.org/3/library/socketserver.html
 https://blog.csdn.net/ruanxingzi123/article/details/83010914
 
- 1 服务端
- 2 
- 3 import socket
- 4 
- 5 
- 6 host = '127.0.0.1'
- 7 port = 8090
- 8 sk=socket.socket(socket.AF_INET,socket.SOCK_STREAM)
- 9 sk.bind((host,port))
-10 sk.listen(1)
-11 
-12 while True:
-13     conn,addr = sk.accept()
-14     while True:
-15         accept_data = conn.recv(1024).decode('UTF-8', 'ignore')
-16         if not accept_data:
-17             break
-18         print(accept_data)
-19         feedback_data =("回复\""+accept_data+"\":\n\t你好，我是Server端").encode("utf8")
-20         conn.sendall(feedback_data)
-21 
-22     conn.close()
+服务端
+import socket
+host = '127.0.0.1'
+port = 8090
+sk=socket.socket(socket.AF_INET,socket.SOCK_STREAM)
+sk.bind((host,port))
+sk.listen(1) # If backlog is specified, it must be at least 0 (if it is lower, it is set to 0); it specifies the number of unaccepted connections that the system will allow before refusing new connections. If not specified, a default reasonable value is chosen.
 
- 2 客户端
- 3 
- 4 import socket,time
- 5 
- 6 
- 7 host = '127.0.0.1'
- 8 port = 8090
- 9 
-10 sk=socket.socket(socket.AF_INET,socket.SOCK_STREAM)
-11 sk.connect((host,port))
-12 
-13 for i in range(10):
-14     sk.sendall(("你好，我是Client No.%d" %i).encode("utf8"))
-15     data = sk.recv(1024)
-16     print(data.decode('UTF-8', 'ignore'))
-17     time.sleep(2)
-18     i = i + 1
-19 sk.close()
+# serveforever
+while True:
+	# serveonce
+	# wait for new connection
+	conn,addr = sk.accept()
+	while True:
+		# wait for data
+		accept_data = conn.recv(1024).decode('UTF-8', 'ignore')
+		if not accept_data:
+			break
+		print(accept_data)
+		feedback_data =("回复\""+accept_data+"\":\n\t你好，我是Server端").encode("utf8")
+		conn.sendall(feedback_data)
+		time.sleep(0.1)
+	conn.close()
+
+判断连接是否已断开：
+1. 当尝试从已断开的连接recv时，会报ConnectionAbortedError
+2. sk.getpeername() 会报OSError
+3. sk._closed / sk.fileno()<0 经测试都没用
+
+ 
+客户端
+import socket,time
+host = '127.0.0.1'
+port = 8090
+
+sk=socket.socket(socket.AF_INET,socket.SOCK_STREAM)
+sk.connect((host,port))
+
+for i in range(10):
+	sk.sendall(("你好，我是Client No.%d" %i).encode("utf8"))
+	data = sk.recv(1024)
+	print(data.decode('UTF-8', 'ignore'))
+	time.sleep(2)
+	i = i + 1
+sk.close()
 
 服务端多线程
 def init():
@@ -61,6 +66,6 @@ def init():
 
 def start():
   while True:
-    conn, addr = self.s.accept()
-    Thread(target=handler, args=[conn, addr]).start()
+	conn, addr = self.s.accept()
+	Thread(target=handler, args=[conn, addr]).start()
   

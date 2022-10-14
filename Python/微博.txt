@@ -1,0 +1,8 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2022-10-13T16:43:05+08:00
+
+====== 微博 ======
+Created 星期四 13 十月 2022
+
+https://open.weibo.com/

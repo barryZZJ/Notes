@@ -1,0 +1,8 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2022-10-13T16:43:12+08:00
+
+====== 微信公众号 ======
+Created 星期四 13 十月 2022
+
+https://developers.weixin.qq.com/doc/offiaccount/Getting_Started/Overview.html
