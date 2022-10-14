@@ -20,13 +20,15 @@ sk.bind((host,port))
 sk.listen(1) # If backlog is specified, it must be at least 0 (if it is lower, it is set to 0); it specifies the number of unaccepted connections that the system will allow before refusing new connections. If not specified, a default reasonable value is chosen.
 
 # serveforever
+# 含中文可使用unicode_escape编码转换成\u形式
+# 注意json.dumps包含中文的话会自动转换成\u的形式，接收方解码时需要改用unicode_escape格式解码
 while True:
 	# serveonce
 	# wait for new connection
 	conn,addr = sk.accept()
 	while True:
 		# wait for data
-		accept_data = conn.recv(1024).decode('UTF-8', 'ignore')
+		accept_data = conn.recv(1024).decode('UTF-8', 'ignore') 
 		if not accept_data:
 			break
 		print(accept_data)
