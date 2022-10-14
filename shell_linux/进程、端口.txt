@@ -1,0 +1,11 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2022-10-15T00:55:25+08:00
+
+====== 进程、端口 ======
+Created 星期六 15 十月 2022
+
+ps -ef | grep 进程名
+
+netstat -nap | grep 进程pid
+netstat -nap | grep 端口号

@@ -1,0 +1,24 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2022-10-14T14:54:48+08:00
+
+====== 微信小程序 ======
+Created 星期五 14 十月 2022
+
+管理
+https://mp.weixin.qq.com/
+
+doc
+https://developers.weixin.qq.com/miniprogram/dev/framework/quickstart/
+
+api
+https://developers.weixin.qq.com/miniprogram/dev/api/
+https://developers.weixin.qq.com/miniprogram/dev/framework/app-service/api.html#API
+wx.login
+auth.code2Session https://developers.weixin.qq.com/miniprogram/dev/api-backend/open-api/login/auth.code2Session.html
+wx.request
+wx.canIUse
+wx.getUserProfile
+
+open-data（貌似非自己的话就获取不到）
+https://developers.weixin.qq.com/miniprogram/dev/component/open-data.html

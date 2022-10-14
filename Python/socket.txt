@@ -21,7 +21,7 @@ sk.listen(1) # If backlog is specified, it must be at least 0 (if it is lower, i
 
 # serveforever
 # 含中文可使用unicode_escape编码转换成\u形式
-# 注意json.dumps包含中文的话会自动转换成\u的形式，接收方解码时需要改用unicode_escape格式解码
+# 注意json.dumps包含中文的话会自动转换成\u的形式，接收方同样使用json.loads即可
 while True:
 	# serveonce
 	# wait for new connection
