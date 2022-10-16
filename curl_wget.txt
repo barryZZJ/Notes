@@ -12,6 +12,9 @@ https://www.jianshu.com/p/07c4dddae43a
 -F, --form <name=string> 提交MIME data multipart POST (H)
 -c, --cookie-jar <filename> 把访问后获得的cookie保存到文件
 -o, --output <file>
+-O 不用手写文件名
+-L follow redirects
+-J Use the header-provided filename
 
 Headers：
 -H, --header <header/@file> 设置自定义头，可以重复使用或用分号隔开多个头 e.g. -H "User-Agent: test; charset=utf-8"

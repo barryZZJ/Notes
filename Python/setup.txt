@@ -1,0 +1,9 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2022-10-15T15:11:26+08:00
+
+====== setup ======
+Created 星期六 15 十月 2022
+
+python setup.py build
+python setup.py install

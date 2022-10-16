@@ -1,0 +1,32 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+
+=== easydict ===
+>>> from easydict import EasyDict as edict
+>>> d = edict({'foo':3, 'bar':{'x':1, 'y':2}})
+d = edict(foo=3, bar={'x':1, 'y':2})
+>>> d.foo
+3
+>>> d.bar.x
+1
+
+>>> d = edict(foo=3)
+>>> d.foo
+3
+
+=== addict ===
+https://github.com/mewwts/addict
+>>> from addict import Dict
+>>> mapping = Dict()
+>>> mapping.a.b.c.d.e = 2
+>>> mapping
+{'a': {'b': {'c': {'d': {'e': 2}}}}}
+
+>>> mapping = {'a': [{'b': 3}, {'b': 3}]}
+>>> dictionary = Dict(mapping)
+>>> dictionary.a[0].b
+3
+
+默认情况missing keys return an empty Dict
+
+.update() is in-place

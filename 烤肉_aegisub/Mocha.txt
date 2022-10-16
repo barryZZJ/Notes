@@ -1,0 +1,97 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2022-10-16T15:12:06+08:00
+
+====== Mocha ======
+Created 星期日 16 十月 2022
+
+工作流程：https://borisfx.com/documentation/mocha/9.5.0/#_workflow_inside_mocha
+导出：选择第一个(CS3)
+
+关键帧的数据是写死的，普通帧的数据是根据关键帧推断出来的。
+关键帧太多移动会不够平滑，关键帧太少会导致追踪不精确，产生偏移。
+
+经验 https://borisfx.com/documentation/mocha/9.5.0/#_tips_for_tracking
+	尽量用x-Spline；绘制时避开不在同一平面上的物品
+	多利用边缘，围住整个物品
+	可以移动spline的位置，再继续tracking
+	在内部再画一个spline可以移除其中的内容（可用于发生前景被遮挡的情况）
+	打开planar surface (蓝框)，调整为被追踪平面，同时可以打开grid，预览tracking data的效果，并及时发现追踪错误。
+	从最清晰、最大的一帧开始追
+	完全不动的话，可以直接跳过追踪，或者在开头结尾设置两个关键帧再追。
+
+	追踪不正确时，调整追踪参数和形状。
+		调整Search Area
+		增加Min % Pixels Used
+		增加新的area，cur holes in existing areas。
+		新增一层，追踪前景障碍，然后以此为基准mask out foreground obstructions。
+		也可以添加关键帧，so that it tracks only the planar region of a shape.
+			No initial keyframe is set until you first hit Add Key or move a point with Auto-Key turned on.
+		使用AdjustTrack，或手动设置追踪点
+
+tracking参数: https://borisfx.com/documentation/mocha/9.5.0/#tracking_basics
+https://borisfx.com/documentation/mocha/9.5.0/#_tracking_parameters
+	Preprocessing:
+		Input Channel: 默认的亮度即可，如果效果不好可以尝试其他信道
+		Min % Pixels Used: 越大越准确，但更费时
+		Smoothing Level: 噪点较多时使用
+		
+	Motion: 要追踪的数据
+		shear: 物品只有两个角发生变形
+		perspective: 相机视角发生变化，即物体整体在观察者视野发生明显变动。
+			The front of a truck turning a corner in front of you would be showing significant perspective change.
+		Large Motion: 默认，searches for motion + optimizes the track. 同时也包含Small Motion
+		Small Motion: only optimizes. 只发生微小变动时使用
+		Manual Tracking: 
+			This is only necessary to use when the object you are tracking is completely obscured or becomes untrackable. Usually used when you need to make some adjustments to complete the rest of the automated tracking successfully.
+	
+	Search Area: 限制搜索区域，可以帮助优化追踪效果
+		This defines ranges for the tracker to search within
+		
+		Horizontal/Vertical: 
+			The distance of pixels in the footage to search for the next object position. This is set to Auto by default.
+		Angle: 
+			If you have a fast rotating object, like a wheel, you can set an angle of rotation to help the tracker to lock onto the detail correctly. The tracker will handle a small amount of rotation, less than 10º per frame, with Angle set to zero.
+		Zoom: 
+			If you have a fast zoom, you can add a percentage value here to help the tracker. Again, the tracker will still handle a small amount of zoom with this set to zero.
+
+调整 Surface (蓝框) https://borisfx.com/documentation/mocha/9.5.0/#_checking_your_track
+检查追踪的准确度
+	会影响导出的tracking data，因此需要匹配到待追踪平面后再导出数据。
+	The Surface and Grid have no keyframes; they are simply guides that let you check the accuracy of your track. Note that the position of the Surface WILL affect the exported tracking data, so you MUST position the corners of the Surface before exporting tracking data.
+
+AdjustTrack: https://borisfx.com/documentation/mocha/9.5.0/#_adjusttrack_classic
+用于对追踪数据进行微调，彻底清除偏移
+作用：根据参考点调整tracking data的位置
+	开始前：
+		1. 追踪已完成，发现有抖动
+		2. (隐藏spline)，(调整好Surface的位置)。
+		3. 切换至AdjustTrack选项卡，跳转至最优的那一帧，点击reset设为master frame (doc中叫primary frame)，四角会出现X参考点(Primary Frame)，可以移动X的位置，作为baseline位置
+		4. 每个角还可以额外添加参考点(解决参考点出画等问题)(逆向调整时点击<- New Ref，此时Primary Frame对应的是下一帧，正向调整时点击New Ref ->)。
+	修正：
+		查看每一帧的参考点位置，如果位置不对表示存在抖动
+		调整任一参考点至与baseline中X的位置相同，即可修改这一帧的tracking data
+		此操作会新增一个关键帧，因此使用二分法减少关键帧数量
+	
+	Set Primary: 修改某个参考点的baseline位置为当前帧
+	Set Priamry All: 修改所有参考点
+	Next: 激活下一个参考点
+	Nudge: 微调参考点
+		按住快捷键可持续移动，Auto可以自动推测应该微调到哪里。
+		推荐先auto，再手动调整
+	
+	结束后退出该选项卡，Surface可以自由修改
+	You cannot keyframe the Surface — only the Reference Points. The original track and any refinements you make in AdjustTrack cause the Surface to move however.
+	
+	移动参考点时的虚线表示此移动的质量，尽量选择黄色以上
+	
+	
+	
+Auto key: 当 moving points or adjusting parameters 时，设置当前帧为关键帧
+uber key: modifies all key frames in the layer relative to the key frame you are now on. 好像是修改所有关键帧的数据？
+	The Überkey is a powerful tool that allows you to offset the positions of control points without destroying their keyframe data.
+	
+	Use this tool with care, as it is not setting any keyframes per se, it is offsetting any and all keyframe data on the points you move while it is on. Überkey is very useful, but remember to turn it off again when you don’t need it. Use with care.
+	
+	Überkey affects only those frames between the timeline’s In and Out point. If you wish to make adjustments to a particular range, set the In and Out points to that range.
+stablize: mode: 播放时以追踪数据为中心

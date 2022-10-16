@@ -17,7 +17,9 @@ https://docs.mirai.mamoe.net/console/BuiltInCommands.html
 mirai-core
 https://github.com/mamoe/mirai
 
-使用其他语言提供http接口的框架（需要运行命令行，然后启动框架与server进行交互）
+使用其他语言提供http接口的框架
+（需要安装mirai-api-http插件https://github.com/project-mirai/mirai-api-http
+启动mcl运行服务后，启动代码调用服务接口）
 https://docs.mirai.mamoe.net/#http-%E6%8E%A5%E5%8F%A3
 推荐：（基本都很活跃）
 readme.md里有易懂的demo：

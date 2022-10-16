@@ -5,4 +5,44 @@ Creation-Date: 2022-10-13T16:43:12+08:00
 ====== 微信公众号 ======
 Created 星期四 13 十月 2022
 
+微信公众平台后台
+https://mp.weixin.qq.com/
+
+免注册获取测试接口
+https://blog.csdn.net/qq_50007511/article/details/110202258
+
+doc
 https://developers.weixin.qq.com/doc/offiaccount/Getting_Started/Overview.html
+		
+	新增素材
+	https://developers.weixin.qq.com/doc/offiaccount/Asset_Management/New_temporary_materials.html
+	files = {'media': open(r'/tmp/pycharm_project_471/test_short.mp4', 'rb'),
+			 'description': (None, json.dumps({'title': 'short', 'introduction': 'intro1'}), 'application/json')}
+	resp = s.post(uploadurl, params=params, files=files, proxies=proxies)
+	
+	草稿
+	https://developers.weixin.qq.com/doc/offiaccount/Draft_Box/Add_draft.html
+	发布
+	https://developers.weixin.qq.com/doc/offiaccount/Publish/Publish.html
+	
+	错误码
+	https://developers.weixin.qq.com/doc/offiaccount/Getting_Started/Global_Return_Code.html
+	
+	OCR、语音识别等接口
+	https://developers.weixin.qq.com/doc/offiaccount/Intelligent_Interface/OCR.html
+	https://developers.weixin.qq.com/doc/offiaccount/Intelligent_Interface/AI_Open_API.html
+	
+发布视频
+只支持插入微信公众号中的永久素材(<10M)，和 腾讯视频中的视频素材(>10M)。
+https://blog.csdn.net/m0_46109609/article/details/120225531
+
+做微信公众号API开发已经有一些时间，在这里想和大家分享一下开发中遇到的一些坑。近期我们实现了视频文章的发送功能，通过调用公众号的群发API接口，可以实现实时发送图文或者视频文章的功能。微信网上的开发文档对图文消息有着比较详细的描述，但是对视频文章发送的描述有这样一个步骤，需要把视频通过uploadvideo接口上传到微信端，但是调取这个接口的时候需要提供“media_id”，而“此处media_id需通过素材管理->新增素材来得到”，这里的素材管理和新增素材管理是指临时素材，如果使用永久素材，系统会返回“invalid media id”错误。所以正确的步骤如下：
+
+使用临时素材接口上传视频内容 https://api.weixin.qq.com/cgi-bin/media/upload?access_token=ACCESS_TOKEN&type=video
+使用视频上传接口把视频从临时素材转到 [[%E4%BD%BF%E7%94%A8%E8%A7%86%E9%A2%91%E4%B8%8A%E4%BC%A0%E6%8E%A5%E5%8F%A3%E6%8A%8A%E8%A7%86%E9%A2%91%E4%BB%8E%E4%B8%B4%E6%97%B6%E7%B4%A0%E6%9D%90%E8%BD%AC%E5%88%B0https://api.weixin.qq.com/cgi-bin/media/uploadvideo?access_token=ACCESS_TOKEN|https://api.weixin.qq.com/cgi-bin/media/uploadvideo?access_token=ACCESS_TOKEN]]
+使用文章发送端口对视频进行发送 https://api.weixin.qq.com/cgi-bin/message/mass/sendall?access_token=ACCESS_TOKEN
+这里面的第一步，如果使用永久素材端口是会出现错误的，所以需要注意。
+
+
+
+

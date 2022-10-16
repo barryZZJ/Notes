@@ -13,9 +13,10 @@ venv\Scripts\activate.bat
 bat中启动虚拟环境：
 call venv\Scripts\activate.bat
 
-# linux:
-source venv/bin/activate
+# linux 控制台/sh中:
+source venv/bin/activate # (完整路径，~要改成/<user>)
 deactivate
+
 
 2. 第三方工具
 pip3 install virtualenv

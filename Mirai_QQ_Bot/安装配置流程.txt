@@ -6,17 +6,42 @@ Creation-Date: 2022-09-09T10:52:27+08:00
 1. mcl-installer安装工具：
 https://github.com/iTXTech/mcl-installer
 
+linux:
+arch 查看架构
+请优先选择以musl结尾的二进制文件，无外部依赖，兼容性更好。
+'''
+cd 你想要安装 iTXTech MCL 的目录
+curl -LJO https://github.com/iTXTech/mcl-installer/releases/download/v1.0.7/mcl-installer-1.0.7-linux-amd64-musl # 如果是macOS，就将链接中的 linux 修改为 macos
+chmod +x mcl-installer-1.0.7-linux-amd64-musl
+./mcl-installer-1.0.7-linux-amd64
+'''
+
+
+手动：
+sudo apt update
+安装java jre：sudo apt install default-jre
+java -version
+
 运行后会一键安装java和mcl
 mcl (Mirai Console Loader) 命令行工具：
 https://github.com/iTXTech/mirai-console-loader
 
+如无法启动可以尝试换源
+https://mirai.mamoe.net/topic/1084/mcl-%E6%97%A0%E6%B3%95%E4%BD%BF%E7%94%A8%E7%9A%84%E7%9B%B8%E5%85%B3%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95-2022-3-25?_=1660982767820
+config.json: "mirai_repo" -> https://repo.mirai.mamoe.net/keep/mcl
+
 2. 安装插件
 在社区中下载插件后，放入plugins
-
 
 3. 启动命令行server端
 ./mcl
 配置qq号，登录
+	登陆验证 https://github.com/project-mirai/mirai-login-solver-selenium
+	chrome debug https://developer.chrome.com/docs/devtools/remote-debugging/
+	（手机需打开USB调试，勾选仅充电模式下允许ADB调试，并打开chrome）
+?
+[[/login]]
+/autologin
 
 4. 配置插件的权限
 /perm lp 查看所有权限

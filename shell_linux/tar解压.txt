@@ -1,0 +1,13 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2022-10-15T13:36:05+08:00
+
+====== tar解压 ======
+Created 星期六 15 十月 2022
+
+tar -xvf x.tar
+tar -xzvf x.tar.gz
+tar -xjvf x.tar.bz2
+tar -xZvf x.tar.Z
+unrar e x.rar
+unzip x.zip

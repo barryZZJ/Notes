@@ -1,6 +1,8 @@
 Content-Type: text/x-zim-wiki
 Wiki-Format: zim 0.6
 
+sudo service ssh {start|stop|reload|force-reload|restart|try-restart|status}
+
 ssh -p <port> user@hostip
 
 C:\Users\85046\.ssh

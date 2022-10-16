@@ -1,0 +1,15 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2022-10-15T13:36:37+08:00
+
+====== 修改PATH ======
+Created 星期六 15 十月 2022
+
+
+https://blog.csdn.net/ermuzhi/article/details/7815733
+https://blog.csdn.net/lucky_ricky/article/details/74330806
+.bashrc  //编辑.bashrc文件
+
+//在最后一行添上：
+
+export PATH=$PATH:/xxx/xxx  ///xxx/xxx位需要加入的环境变量地址 等号两边没空格

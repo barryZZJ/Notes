@@ -2,6 +2,7 @@ Content-Type: text/x-zim-wiki
 Wiki-Format: zim 0.6
 
 https://cn.python-requests.org/zh_CN/latest/
+https://requests.readthedocs.io/en/latest/
 https://docs.python-requests.org/en/latest/user/advanced/
 
 session:
@@ -71,3 +72,9 @@ Response.text
 jsondata = json.loads(poststr)
 
 resp = re.post(url, headers=headers, cookies=cookies, json=jsondata)
+
+以form表单格式发送multipart文件(对应curl -F参数)
+https://requests.readthedocs.io/en/latest/user/quickstart/#post-a-multipart-encoded-file
+https://toolbelt.readthedocs.io/en/latest/
+https://requests.readthedocs.io/en/latest/user/advanced/#post-multiple-multipart-encoded-files
+https://requests.readthedocs.io/en/latest/user/advanced/#streaming-uploads

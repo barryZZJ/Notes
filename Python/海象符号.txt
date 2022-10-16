@@ -1,0 +1,9 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2022-10-15T10:25:33+08:00
+
+====== 海象符号 ======
+Created 星期六 15 十月 2022
+
+:=
+注意不支持多参数解包，只能接受到一个tuple里

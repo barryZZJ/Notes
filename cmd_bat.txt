@@ -8,6 +8,9 @@ cd /d %~dp0 即cd到当前bat所在路径
 其他相关指令：
 https://www.cnblogs.com/smwikipedia/archive/2009/03/30/1424749.html
 
+@ 关闭本行的回显
+@REM 注释
+
 echo. 输出换行
 
 cmd [[/c]] ... 执行字符串指定的命令然后终止
@@ -33,6 +36,11 @@ taskkill /pid xxx
 
 http请求
 curl
+
+设置代理
+set HTTP_PROXY=http://proxy_userid:proxy_password@proxy_ip:proxy_port
+set HTTP_PROXY=localhost:9999
+set HTTPS_PROXY=%HTTP_PROXY%
 
 === 获取当前日期时间 ===
 如何获取日期呢?

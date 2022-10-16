@@ -6,16 +6,21 @@ Creation-Date: 2022-09-09T11:15:17+08:00
 https://mirai.mamoe.net/
 
 插件发布
-https://mirai.mamoe.net/category/11/%E6%8F%92%E4%BB%B6%E5%8F%91%E5%B8%83
+https://mirai.mamoe.net/category/11/插件发布
 
 插件
 https://mirai-bot.com/t/plugins
 
 色图
 https://github.com/bloodyrabbit/mirai-setu
-https://mirai.mamoe.net/topic/29/mirai-setu-%E5%9C%A8%E7%BE%A4%E9%87%8C%E8%8E%B7%E5%8F%96loliconapi%E7%9A%84setu%E6%8F%92%E4%BB%B6
+https://mirai.mamoe.net/topic/29/mirai-setu-在群里获取loliconapi的setu插件
 
 mirai-api-http
 https://github.com/project-mirai/mirai-api-http
-https://github.com/project-mirai/mirai-api-http/blob/master/docs/adapter/HttpAdapter.md#%E8%AE%A4%E8%AF%81
+https://github.com/project-mirai/mirai-api-http/blob/master/docs/adapter/HttpAdapter.md#认证
 
+
+NovelAI
+https://mirai.mamoe.net/topic/1676/novelai-naifu接口-插件/2
+https://mirai.mamoe.net/topic/1657/novelai-helper-ai图片生成插件/2
+https://mirai.mamoe.net/topic/1659/本地搭建novelai-免费的色图生成器-可用colab在线运行/9
