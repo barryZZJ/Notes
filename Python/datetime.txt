@@ -1,4 +1,5 @@
 Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
 
 https://docs.python.org/3/library/datetime.html
 
@@ -13,14 +14,14 @@ format:
 %B	月份的引文单词的缩写：如一月， 则返回 January
 %c	返回datetime的字符串表示，如03/08/15 23:01:26
 %d	返回的是当前时间是当前月的第几天
-%f	微秒的表示： 范围: [0,999999]
 %H	以24小时制表示当前小时
 %I	以12小时制表示当前小时
 %j	返回 当天是当年的第几天 范围[001,366]
 %m	返回月份 范围[0,12]
 %M	返回分钟数 范围 [0,59]
 %P	返回是上午还是下午–AM or PM
-%S	返回秒数 范围 [0,61]。。。手册说明的
+%S	返回秒数 范围 [0,61]
+%f	微秒的表示： 范围: [0,999999]
 %U	返回当周是当年的第几周 以周日为第一天
 %W	返回当周是当年的第几周 以周一为第一天
 %w	当天在当周的天数，范围为[0, 6]，6表示星期天
@@ -33,7 +34,7 @@ format:
 
 
 time_format = "TZID=Asia/Shanghai:{date.year}{date.month:0>2d}{date.day:0>2d}T{date.hour:0>2d}{date.minute:0>2d}{date.second:0>2d}"
-    dt_start = time_format.format(date=DTSTART) # DTSTART: datetime
+	dt_start = time_format.format(date=DTSTART) # DTSTART: datetime
 
 datetime.today().strftime("%Y%m%dT%H%M%SZ")
 

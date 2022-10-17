@@ -1,0 +1,24 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2022-10-16T23:27:24+08:00
+
+====== 执行外部命令并获取输出 ======
+Created 星期日 16 十月 2022
+
+https://python3-cookbook.readthedocs.io/zh_CN/latest/c13/p06_executing_external_command_and_get_its_output.html
+使用subprocess库
+
+import subprocess
+out_bytes = subprocess.check_output(['netstat','-a'])
+out_text = out_bytes.decode('utf-8')
+
+捕获错误
+try:
+	out_bytes = subprocess.check_output(['cmd','arg1','arg2'])
+except subprocess.CalledProcessError as e:
+	out_bytes = e.output       # Output generated before error
+	code      = e.returncode   # Return code
+
+同时获取stderr
+out_bytes = subprocess.check_output(['cmd','arg1','arg2'],
+									stderr=subprocess.STDOUT)

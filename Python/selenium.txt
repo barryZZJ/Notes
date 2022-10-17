@@ -1,7 +1,7 @@
 Content-Type: text/x-zim-wiki
 Wiki-Format: zim 0.6
 
-https://selenium-python-zh.readthedocs.io/en/latest/
+https://www.selenium.dev/documentation/
 https://selenium-python.readthedocs.io/
 
 https://www.selenium.dev/documentation/
@@ -26,11 +26,10 @@ opt.add_argument('user-agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWeb
 chromedriver = PATH_TO_CHROMEEDRIVER_EXE # 如不传需要加入PATH
 browser = webdriver.Chrome(chromedriver, options=option)
 browser.get("https://www.baidu.com")
-# browser.add_cookie(cookiedict)
 browser.close()  # 关闭当前选项卡
 browser.quit()  # 完全关闭浏览器
 
-# opts: https://zhuanlan.zhihu.com/p/60852696
+* opts: https://zhuanlan.zhihu.com/p/60852696
 	opt.add_argument('--start-maximized')  # 最大化
 	opt.add_argument('--headless')  # 无界面
 	opt.add_argument('--disable-gpu') # 禁用GPU加速
@@ -47,47 +46,111 @@ browser.quit()  # 完全关闭浏览器
 	opt.add_argument('--disable-extensions')
 	opt.binary_location = 'PATH_TO_CHROM_EXE'
 
-2. 定位元素
+* 等待网页完全加载
+browser.implicitly_wait() # 定义browser后立即执行一次（每个session只需执行一次），可以保证网页完全加载/元素被找到
+
+* 定位元素
+# 在iframe内的元素无法直接找到，见下面的iframe处理
 https://selenium-python.readthedocs.io/locating-elements.html#locating-elements
 from selenium.webdriver.common.by import By
+from selenium.webdriver.remote.webelement import WebElement
+
 elem=browser.find_element(By.NAME, "q")
 ID = "id"
 NAME = "name"
 XPATH = "xpath"
-LINK_TEXT = "link text"
-PARTIAL_LINK_TEXT = "partial link text"
+	https://www.runoob.com/xpath/xpath-syntax.html
+	//为查找子孙
+	.为从当前节点开始查找
+	.. 父级节点
+	.// 即为当前节点的子孙，//为document全局查找
+	* 匹配任意标签
+	@attr 匹配属性名，如tag[@class]
+	[.='text'] 匹配文字
+	contains() 部分匹配，如//*[contains(@class, 'Test')]
+	text() 获取文字
+	not() 取非，如tag[not(@attr)]
+	
+LINK_TEXT = "link text"  # 精确匹配超链接文本 (<a>?)
+PARTIAL_LINK_TEXT = "partial link text"  # 部分匹配超链接文本
 TAG_NAME = "tag name"
 CLASS_NAME = "class name"
 CSS_SELECTOR = "css selector"
+	[[web:js:element各种操作]]
+Find by text: 
+	1. 遍历每个元素，if ele_txt.text.strip() 满足条件:
+	2. 参考js里的笔记
+	3. 使用XPath (不一定就是包裹着文字的那一级，也可以是父元素)
+	driver.find_elements_by_xpath("//*[contains(text(), 'My Button')]")  # match partial text
+	driver.find_elements_by_xpath("//*[.='text']") # match exact text
+	browser.find_element_by_xpath('//button[normalize-space()="BUTTON-TEXT-HERE"]') 
+未找到则报selenium.common.exceptions.NoSuchElementException
 
-# 获取兄弟元素
+判断元素是否不存在：
+find_elements() 返回空列表
+或wait.until_not里使用find_elements()# 以防执行太快，最好先until元素出现再until_not，但是万一错过了就卡住了，所以要先对until设置短的timeout
+
+* 获取兄弟元素
 1. js脚本的 nextSibling属性
-2. xpath的 following-sibling::<tagname>
+2. xpath的 following-sibling::<tagname> .find_element(By.XPATH, 'following-sibling::*')
 
 https://selenium-python.readthedocs.io/navigating.html
-# 元素操作
+* 元素操作 # 注意这些操作都需要滚动至元素可见才能点击
+	from selenium.webdriver.common.action_chains import ActionChains
+	ActionChains(browser).scroll_to_element(ele).perform()
+from selenium.webdriver.common.keys import Keys
 elem.send_keys('some text') # 输入内容
 elem.send_keys(Keys.RETURN) # 按下按键
 elem.clear() # 清除textfiled内容
-.get_attribute
-.click()
+.get_attribute 获取<tag>中的属性 如 href, type
+	获取html：innerHTML
+.get_property 获取需要计算的属性，如checked, value
+.click() 
 .submit() # 如果elem在form内，会自动找到该form并调用其submit方法
 
-# select元素特殊操作 https://selenium-python.readthedocs.io/api.html?highlight=implicitly_wait#module-selenium.webdriver.support.select
+	* 填写form
+	https://selenium-python.readthedocs.io/navigating.html#filling-in-forms
+	<input type='file'>: .send_keys(filename)
+
+* select元素特殊操作 https://selenium-python.readthedocs.io/api.html?highlight=implicitly_wait#module-selenium.webdriver.support.select
 select = Select(elem)
 .select_by_index(ind)
 .select_by_visible_text("text")
 .select_by_value(val)
 .deselect_all()
 
-3. 执行js脚本
-.execute_script
+* 执行js脚本
+.execute_script("arguments[0]", *args)
+返回值需要return才能获取到
 
-4. 等待网页完全加载
-browser.implicitly_wait() # 定义browser后立即执行一次（每个session只需执行一次），可以保证网页完全加载/元素被找到
-
+* 等待元素加载
 from selenium.webdriver.support.wait import WebDriverWait
 	https://selenium-python.readthedocs.io/api.html?highlight=implicitly_wait#module-selenium.webdriver.support.wait
 	* element = WebDriverWait(driver, 10).until(lambda browser: browser.find_element(By.ID, "someId"))
 	* .until方法条件为js脚本的document.readyState返回'complete'
 
+* cookies
+.get_cookies() -> list[dict]
+.add_cookie(dict)
+	注意需要先访问cookie所在域名，才能添加cookie。（然后.refresh或者重新get一下）
+
+* scroll
+	1. browser.execute_script("arguments[0].scrollIntoView();", Element);
+	2. ActionChains https://selenium-python.readthedocs.io/api.html#selenium.webdriver.common.action_chains.ActionChains.scroll
+	from selenium.webdriver.common.action_chains import ActionChains
+	ActionChains(browser).scroll_to_element(ele).perform()
+
+* ActionChains https://selenium-python.readthedocs.io/api.html?highlight=scroll#module-selenium.webdriver.common.action_chains
+This is useful for doing more complex actions like hover over and drag and drop.
+	from selenium.webdriver.common.action_chains import [[ActionChains]]
+
+* Exceptions:
+selenium.common.exceptions
+
+* iframe处理：
+在iframe内的元素无法直接找到，需要进入iframe后再查找
+iframe = driver.find_elements(By.TAG_NAME,'iframe')[1]
+进入iframe：
+driver.switch_to.frame(iframe or id)
+退出iframe：
+driver.switch_to.default_content()

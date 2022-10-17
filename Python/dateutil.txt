@@ -1,0 +1,10 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2022-10-16T23:48:32+08:00
+
+====== dateutil ======
+Created 星期日 16 十月 2022
+
+dateutil 模块具有扩展时区和解析支持的第三方库，时间解析功能非常强大几乎包含任何形式的时间字符串格式；
+
+详细接口参考文档：https://dateutil.readthedocs.io/en/stable/

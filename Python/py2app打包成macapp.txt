@@ -1,0 +1,16 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2022-10-17T11:53:42+08:00
+
+====== py2app打包成macapp ======
+Created 星期一 17 十月 2022
+
+无法在windows系统下运行！！
+
+https://py2app.readthedocs.io/en/latest/
+https://www.jianshu.com/p/d6c18e391cca
+
+1. 生成setup
+py2applet –make-setup main.py  
+2. 打包
+python3 setup.py py2app

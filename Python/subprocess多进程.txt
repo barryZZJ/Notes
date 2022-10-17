@@ -1,4 +1,5 @@
 Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
 
 subprocess.run(args, *, stdin=None, input=None, stdout=None, stderr=None, capture_output=False, shell=False, cwd=None, timeout=None, check=False, encoding=None, errors=None, text=None, env=None, universal_newlines=None)
 
@@ -14,6 +15,11 @@ ret = subprocess.run(["ls", "-l", "/dev/null"])
 #crw-rw-rw-  1 root  wheel    3,   2  5  4 13:34 /dev/null
 #CompletedProcess(args=['ls', '-l', '/dev/null'], returncode=0)
 if ret.returncode == 0:
-    print("success:",ret)
+	print("success:",ret)
 else:
-    print("error:",ret)
+	print("error:",ret)
+	
+===== 执行外部命令并获取输出 =====
+https://python3-cookbook.readthedocs.io/zh_CN/latest/c13/p06_executing_external_command_and_get_its_output.html
+out_bytes = subprocess.check_output([cmd, *args])
+

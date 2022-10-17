@@ -1,6 +1,8 @@
 Content-Type: text/x-zim-wiki
 Wiki-Format: zim 0.6
 
+（在macOS中运行则会生成mac程序）
+
 打包成exe：
 https://pyinstaller.readthedocs.io/en/stable/
 pip install pyinstaller
@@ -25,6 +27,7 @@ pyinstaller -F xx.py --clean -n name --icon=xx.ico
 --log-level LEVEL   TRACE, DEBUG, INFO, WARN, ERROR, CRITICAL.  default: INFO
 --add-binary 附加其他exe文件, 访问路径为sys._MEIPASS
 --add-data
+-r --resource FILE[,TYPE[,NAME[,LANGUAGE]]]
 
 输出目录设置：
 --distpath DIR   default: ./dist

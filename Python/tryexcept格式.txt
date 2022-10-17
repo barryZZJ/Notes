@@ -4,8 +4,10 @@ Wiki-Format: zim 0.6
 try:
 
 except .. as err:
+except (Err1, Err2) as err:
 	# 发生错误时执行
 	# 就算含continue、break等指令也会先执行finally再执行
+	# err会是其中一个
 else:
 	# 无错误时执行
 finally:

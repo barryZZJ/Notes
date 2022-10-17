@@ -1,0 +1,14 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2022-10-17T23:33:52+08:00
+
+====== isDebugging ======
+Created 星期一 17 十月 2022
+
+gettrace = getattr(sys, 'gettrace', None)
+
+import sys 
+
+def debugger_is_active() -> bool:
+	"""Return if the debugger is currently active"""
+	return hasattr(sys, 'gettrace') and sys.gettrace() is not None

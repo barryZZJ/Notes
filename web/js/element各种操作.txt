@@ -16,13 +16,41 @@ document.getElementById
 .getElementsByTagName('script')
 .querySelector
 .querySelectorAll  多个查找内容用逗号隔开
-.closest(cssSelector) 匹配符合选择器且离当前元素最近的祖先元素
+.closest(cssSelector) 匹配离当前元素最近的**祖先元素**
+getElementByText 自定义：
+{{{code: lang="js" linenumbers="False"
+//未找到则返回空
+function getElementByText( text, node ){
+  return document.evaluate("//*[.='"+text+"']", 
+	 node || document, null, XPathResult.ANY_TYPE, null).iterateNext();
+}
+var myElement = getElementByText( "This is the string I need to match" );
+}}}
+
+或
+{{{code: lang="js" linenumbers="False"
+function findByText(node, text) {
+    if(node.nodeValue == text) {
+        return node.parentNode;
+    }
+
+    for (var i = 0; i < node.childNodes.length; i++) {
+        var returnValue = findByText(node.childNodes[i], text);
+        if (returnValue != null) {
+            return returnValue;
+        }
+    }
+
+    return null;
+}
+}}}
+
 
 CREATE:
 document.createElement(String) - "div" "p" 等
 document.createElement('div');
 封装一个更方便的：
-'''
+{{{code: lang="js" linenumbers="False"
 function createElement(element, attribute, inner) {
   if (typeof(element) === "undefined") {
 	return false;
@@ -48,7 +76,9 @@ function createElement(element, attribute, inner) {
   }
   return el;
 }
-'''
+
+}}}
+
 用例：
 ''createElement("tag",{id:val,class:val},"inner text");''
 ''createElement("tag",{id:val,class:val},[element1,"some text",element2,element3]);''
