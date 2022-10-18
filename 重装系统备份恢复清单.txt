@@ -3,6 +3,8 @@ Wiki-Format: zim 0.6
 Creation-Date: 2022-09-14T02:21:15+08:00
 
 robocopy 可靠备份指令
+tree .    只包含文件夹
+tree . -F 包含文件
 
 ===== 需要备份 =====
 D:\Backups:

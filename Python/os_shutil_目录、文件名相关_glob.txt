@@ -13,9 +13,12 @@ open:模式
 r+：可读可写，若文件不存在，报错；w+: 可读可写，若文件不存在，创建
 https://blog.csdn.net/ztf312/article/details/47259805
 
-os.system("pause") 返回状态码
-os.popen() 返回控制台输出内容
-清屏：os.system('cls')
+os.system(cmd) 执行指令 （更强大的是subprocess）
+	一般无报错返回0
+	os.system("pause") 返回状态码
+	os.system('cls') 清屏
+	
+os.popen() 返回控制台输出内容 (考虑使用subprocess)
 获取控制台输出
 cmd = 'ping baidu.com'
 r = os.popen(cmd)

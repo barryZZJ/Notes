@@ -1,25 +1,42 @@
 Content-Type: text/x-zim-wiki
 Wiki-Format: zim 0.6
 
+https://docs.python.org/3.9/library/subprocess.html
+
 subprocess.run(args, *, stdin=None, input=None, stdout=None, stderr=None, capture_output=False, shell=False, cwd=None, timeout=None, check=False, encoding=None, errors=None, text=None, env=None, universal_newlines=None)
 
-args：表示要执行的命令。必须是一个字符串，字符串参数列表。
-stdin、stdout 和 stderr：子进程的标准输入、输出和错误。其值可以是 subprocess.PIPE、subprocess.DEVNULL、一个已经存在的文件描述符、已经打开的文件对象或者 None。subprocess.PIPE 表示为子进程创建新的管道。subprocess.DEVNULL 表示使用 os.devnull。默认使用的是 None，表示什么都不做。另外，stderr 可以合并到 stdout 里一起输出。
-timeout：设置命令超时时间。如果命令执行时间超时，子进程将被杀死，并弹出 TimeoutExpired 异常。
-check：如果该参数设置为 True，并且进程退出状态码不是 0，则弹 出 CalledProcessError 异常。
-encoding: 如果指定了该参数，则 stdin、stdout 和 stderr 可以接收字符串数据，并以该编码方式编码。否则只接收 bytes 类型的数据。
-shell：如果该参数为 True，将通过操作系统的 shell 执行指定的命令。
+* args：表示要执行的命令。必须是一个字符串，字符串参数列表。
+* stdin、stdout 和 stderr：子进程的标准输入、输出和错误。其值可以是 subprocess.PIPE、subprocess.DEVNULL、一个已经存在的文件描述符、已经打开的文件对象或者 None。stderr=stdout 可以合并到 stdout 里一起输出。
+* capture_output: 拦截输出，相当于stdout=PIPE, stderr=PIPE，通过ret.stdout, ret.stderr获取
+* timeout：设置命令超时时间。如果命令执行时间超时，子进程将被杀死，并弹出 TimeoutExpired 异常。
+* check：如果该参数设置为 True，并且进程退出状态码不是 0，则弹 出 CalledProcessError 异常。
+* encoding: 如果指定了该参数，则 stdin、stdout 和 stderr 可以接收字符串数据，并以该编码方式编码。否则只接收 bytes 类型的数据。
+* shell：如果该参数为 True，将通过操作系统的 shell 执行指定的命令。
 
 #执行ls -l /dev/null 命令
-ret = subprocess.run(["ls", "-l", "/dev/null"])
-#crw-rw-rw-  1 root  wheel    3,   2  5  4 13:34 /dev/null
-#CompletedProcess(args=['ls', '-l', '/dev/null'], returncode=0)
+ret = subprocess.run(["ls", "-l", "/dev/null"]) -> CompletedProcess
+	.returncode
+	.stdout : bytes
+	.stderr : bytes
 if ret.returncode == 0:
 	print("success:",ret)
 else:
 	print("error:",ret)
-	
+
 ===== 执行外部命令并获取输出 =====
+https://docs.python.org/3.9/library/subprocess.html?highlight=subprocess#subprocess.check_output
 https://python3-cookbook.readthedocs.io/zh_CN/latest/c13/p06_executing_external_command_and_get_its_output.html
-out_bytes = subprocess.check_output([cmd, *args])
+out_bytes = subprocess.check_output([cmd, *args]) -> bytes
+out=out_bytes.decode('utf8')
+如果返回码不为0会报subprocess.CalledProcessError，包含.returncode, .output属性
+执行后的结果仍会输出到stdout和stderr
+
+拦截stdout和stderr(不输出)：
+	capture_output=True
+分别拦截：
+	stdout=subprocess.PIPE, stderr=subprocess.PIPE
+统一：
+	stdout=PIPE, stderr=stdout
+如果报错，可以通过CalledProcessError.stdout, .stderr # bytes获取
+
 

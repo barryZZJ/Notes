@@ -13,6 +13,10 @@ pyinstaller -F xx.py --clean -n name --icon=xx.ico
 如果报错，记得-p添加site-packages目录, e.g. xxx\envs\script\Lib\site-packages 
 可发布文件在dist文件夹中
 
+注意：__file__路径在打包后会返回tmp路径，而sys.argv[0] 返回的是文件名没有路径。
+BASE = os.path.dirname(__file__ if not hasattr(sys, 'frozen') else sys.executable)
+os.chdir(BASE)
+
 参数
 -p DIR，--path=DIR	设置 Python import模块的路径（和设置 PYTHONPATH 环境变量的作用相似）。也可使用路径分隔符（Windows 使用分号，Linux 使用冒号）来分隔多个路径
 -n NAME，--name=NAME	指定项目（产生的 spec）名字。如果省略该选项，那么第一个脚本的主文件名将作为 spec 的名字
@@ -52,7 +56,7 @@ for b in a.binaries:
 pyinstaller>4.2存在__file__非真实路径问题：
 def app_path():
 	if hasattr(sys, 'frozen'):  # 可执行文件走这里 
-		return os.path.dirname(sys.executable)
+		return os.path.dirname(sys.executable)  # 返回的是python所在的路径
 	return os.path.dirname(__file__)  # 源码走这里
 
 缩小文件大小：
