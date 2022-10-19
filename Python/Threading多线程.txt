@@ -1,4 +1,5 @@
 Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
 
 https://www.runoob.com/python/python-multithreading.html
 https://docs.python.org/3.9/library/threading.html#module-threading
@@ -9,7 +10,7 @@ https://docs.python.org/3.9/library/threading.html#module-threading
 
 
 守护线程：
-setDaemon(True) 代表让子线程跟随主线程销毁
+子线程.setDaemon(True) 代表让子线程跟随主线程销毁
 必须在start()方法调用之前设置
 设置后主线程（进程）结束了，不管子线程是否完成，必须也跟着结束。不设置的话，主线程结束后，子线程也还在执行。
 
@@ -32,14 +33,14 @@ lock.acquire()
 lock.release()
 
 class myThread(Thread):
-    def __init__(self, args):
-        super().__init__()
-        self.args = args
-        self.lock = Lock()
+	def __init__(self, args):
+		super().__init__()
+		self.args = args
+		self.lock = Lock()
 
-    def run(self): # 线程在创建后会直接运行run函数
+	def run(self): # 线程在创建后会直接运行run函数
 	self.lock.aquire() # 加锁
 	# ...
 	self.lock.release() # 解锁
-        pass
+		pass
 myThread(args).start()

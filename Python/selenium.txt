@@ -98,6 +98,9 @@ https://selenium-python.readthedocs.io/navigating.html
 * 元素操作 # 注意这些操作都需要滚动至元素可见才能点击
 	from selenium.webdriver.common.action_chains import ActionChains
 	ActionChains(browser).scroll_to_element(ele).perform()
+.is_displayed()
+.is_enabled()
+.is_selected()
 from selenium.webdriver.common.keys import Keys
 elem.send_keys('some text') # 输入内容
 elem.send_keys(Keys.RETURN) # 按下按键
@@ -123,7 +126,7 @@ select = Select(elem)
 .execute_script("arguments[0]", *args)
 返回值需要return才能获取到
 
-* 等待元素加载
+* 等待元素加载 WebDriverWait
 from selenium.webdriver.support.wait import WebDriverWait
 	https://selenium-python.readthedocs.io/api.html?highlight=implicitly_wait#module-selenium.webdriver.support.wait
 	* element = WebDriverWait(driver, 10).until(lambda browser: browser.find_element(By.ID, "someId"))
@@ -131,8 +134,10 @@ from selenium.webdriver.support.wait import WebDriverWait
 
 * cookies
 .get_cookies() -> list[dict]
+	keys: domain, expiry, httpOnly, name, path, secure, value
+	
 .add_cookie(dict)
-	注意需要先访问cookie所在域名，才能添加cookie。（然后.refresh或者重新get一下）
+	注意需要先访问cookie所在域名(手动加https://)，才能添加cookie。（然后.refresh或者重新get一下即可）
 
 * scroll
 	1. browser.execute_script("arguments[0].scrollIntoView();", Element);

@@ -27,6 +27,8 @@ https://github.com/mewwts/addict
 >>> dictionary.a[0].b
 3
 
+.to_dict() -> dict
+
 默认情况missing keys return an empty Dict
 
 .update() is in-place

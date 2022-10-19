@@ -1,0 +1,24 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2022-10-18T22:33:32+08:00
+
+====== properties配置文件 ======
+Created 星期二 18 十月 2022
+
+pip install jproperties
+https://pypi.org/project/jproperties/
+
+from jproperties import Properties
+
+# read
+p = Properties()
+with open("foobar.properties", "rb") as f:
+	p.load(f, "utf-8")
+
+# write
+p = Properties()
+p["foobar"] = "A very important message from our sponsors: Python is great!"
+
+with open("foobar.properties", "wb") as f:
+	p.store(f, encoding="utf-8")
+

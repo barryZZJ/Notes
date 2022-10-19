@@ -1,0 +1,37 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2022-10-18T22:59:53+08:00
+
+====== pyyaml ======
+Created 星期二 18 十月 2022
+
+处理.yaml文件
+https://pyyaml.org/wiki/PyYAMLDocumentation
+
+结构实例，与ini相比可以支持多级字典
+pollfreq:
+  wx:
+	sensorstate: 30
+	upload: 30
+sleep:
+  wx:
+	sensor: 600
+timeout:
+  normal: 60
+  short: 3
+  wx:
+	login: 3600
+	sensor: 3600
+	upload: 18000
+
+
+pip install pyyaml
+
+import yaml
+try:
+	from yaml import CLoader as Loader, CDumper as Dumper
+except ImportError:
+	from yaml import Loader, Dumper
+
+yaml.load(...,Loader)
+yaml.dump(..., Dumper)

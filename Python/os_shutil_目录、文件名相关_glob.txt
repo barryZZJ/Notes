@@ -12,6 +12,12 @@ shutil
 open:模式
 r+：可读可写，若文件不存在，报错；w+: 可读可写，若文件不存在，创建
 https://blog.csdn.net/ztf312/article/details/47259805
+r+:
+# read ...
+# write from start
+f.seek(0)
+f.truncate(0)
+f.write()
 
 os.system(cmd) 执行指令 （更强大的是subprocess）
 	一般无报错返回0
