@@ -25,15 +25,16 @@ https://www.bilibili.com/video/av289069676/
 
 字体相关：
 \fn<fontname> 为空时恢复为原样式的字体
+	圆体：腾祥嘉丽粗圆简 (最粗)、方正粗圆_GBK、猫啃网糖圆体 (测试版)、幼圆 (最细)
 \fs<fontsize> 字号
 \fscx<scale%> \fscy<scale%> 字体缩放 scale:0~100
 \fsp<spacing> 字符间距 -~0~+
-\fsvp<spacing> 行间距，正数为减小缩近行间距，负数为增加拉宽行间距（写在新行前、需要 VSFilterMod）
+\fsvp<spacing> 行间距，正数为减小缩近行间距，负数为增加拉宽行间距（夹在两行间、需要 VSFilterMod）
 \frx<amount> \fry<amount> \frz<amount> \fr<amount> 旋转
-\fax<factor> \fay<factor> 文本剪切变换
+\fax<factor> \fay<factor> 文本剪切变换 0~1
 
 主要颜色 \c&H<bb><gg><rr>&
-			   \1c&H<bb><gg><rr>&
+		 \1c&H<bb><gg><rr>&
 次要颜色 \2c&H<bb><gg><rr>&
 边框颜色 \3c&H<bb><gg><rr>&
 阴影颜色 \4c&H<bb><gg><rr>&

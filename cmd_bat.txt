@@ -36,6 +36,7 @@ taskkill /pid xxx
 
 http请求
 curl
+curl -JLO url
 
 设置代理
 set HTTP_PROXY=http://proxy_userid:proxy_password@proxy_ip:proxy_port

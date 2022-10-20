@@ -1,4 +1,5 @@
 Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
 
 pip install PyQt5
 pip install pyqt5-tools # designer
@@ -72,15 +73,15 @@ from PyQt5.QtCore import Qt
 import gui_file_name
 
 if __name__ == '__main__':
-    app = QApplication(sys.argv)
-    MainWindow = QDialog() # 或QMainWindow()、QWidget()等等
-    ui = gui_file_name.Ui_MainWindow()
-    ui.setupUi(MainWindow)
-    ui.retranslateUi(MainWindow)
-    MainWindow.setFixedSize(MainWindow.width(), MainWindow.height())
-    MainWindow.setWindowFlags(Qt.WindowMinimizeButtonHint|Qt.WindowCloseButtonHint)
-    MainWindow.show()
-    sys.exit(app.exec_()) # 如果有多线程，需要os._exit(app.exec_())
+	app = QApplication(sys.argv)
+	MainWindow = QDialog() # 或QMainWindow()、QWidget()等等
+	ui = gui_file_name.Ui_MainWindow()
+	ui.setupUi(MainWindow)
+	ui.retranslateUi(MainWindow)
+	MainWindow.setFixedSize(MainWindow.width(), MainWindow.height())
+	MainWindow.setWindowFlags(Qt.WindowMinimizeButtonHint|Qt.WindowCloseButtonHint)
+	MainWindow.show()
+	sys.exit(app.exec_()) # 如果有多线程，需要os._exit(app.exec_())
 
 带事件函数的高级模板：
 import sys
@@ -91,16 +92,16 @@ from wizard import Ui_Wizard
 
 
 class MyWizard(QWizard):
-    def __init__(self):
-        super(MyWizard, self).__init__()
-        Ui_Wizard().setupUi(self)
-        self.setFixedSize(self.width(), self.height())
-        self.setWindowFlags(Qt.WindowMinimizeButtonHint)
+	def __init__(self):
+		super(MyWizard, self).__init__()
+		Ui_Wizard().setupUi(self)
+		self.setFixedSize(self.width(), self.height())
+		self.setWindowFlags(Qt.WindowMinimizeButtonHint)
 
-    @QtCore.pyqtSlot() #如果有参数的话，装饰器pyqtSlot()里必须要加上参数类型
-    def on_pushButton_clicked(self):
+	@QtCore.pyqtSlot() #如果有参数的话，装饰器pyqtSlot()里必须要加上参数类型
+	def on_pushButton_clicked(self):
 	#命名格式on_Child_Signal，主窗口必须手动连接槽函数
-        print('button clicked!')
+		print('button clicked!')
 
 
 app = QApplication(sys.argv)
@@ -126,7 +127,7 @@ signal有.connect方法连接到槽函数
 一：
 designer中不设置，在代码中写：（如果信号带多个参数，对应槽函数包含多个参数即可）
 def connectSlots(ui: Ui_Form):
-    ui.xxButton.clicked.connect(lambda ui: func(ui)) 或实现函数闭包，.connect(fun(ui))中fun(ui)返回一个函数即可
+	ui.xxButton.clicked.connect(lambda ui: func(ui)) 或实现函数闭包，.connect(fun(ui))中fun(ui)返回一个函数即可
 xxButton.clicked.connect(funcname) def funcname(txt): ...
 self.connect(self.man_btn, QtCore.SIGNAL('clicked()'), self.manual_slot)
 
@@ -138,10 +139,10 @@ self.chk_modsw.stateChanged['int'].connect(Form.stateChanged) # 0:no, 1:half, 2:
 信号与槽函数：
 from PyQt5.QtCore import pyqtSignal, pyqtSlot, QObject
 class Obj(QObject):
-    newSignal = pyqtSignal(<type>) # 如果信号有参数，type里指明参数类型，如str, int
-    def doSomething(self):
-        ....
-        self.newSignal.emit(<param>) # 发射信号
+	newSignal = pyqtSignal(<type>) # 如果信号有参数，type里指明参数类型，如str, int
+	def doSomething(self):
+		....
+		self.newSignal.emit(<param>) # 发射信号
 连接槽函数
 1. obj.newSignal.connect(slotFunc) # 槽函数捕捉信号即可
 2. Obj(newSignal=slotFunc) # 初始化时直接传递槽函数也可
@@ -150,12 +151,15 @@ class Obj(QObject):
 控制台输出重定向到控件中：
 https://www.cxyzjd.com/article/min_mmax/105307804
 要添加一个flush函数，否则退出时会报错。
-    def flush(self):
-        pass
+	def flush(self):
+		pass
 同时最好关闭时还原：
-    def closeEvent(self, a0: QtGui.QCloseEvent) -> None:
-        sys.stdout = sys.__stdout__
-        sys.stderr = sys.__stderr__
+	def closeEvent(self, a0: QtGui.QCloseEvent) -> None:
+		sys.stdout = sys.__stdout__
+		sys.stderr = sys.__stderr__
 
 优雅的错误处理：使用exception_hook
 https://timlehr.com/python-exception-hooks-with-qt-message-box/
+
+splash screen
+https://doc.qt.io/qtforpython-5/PySide2/QtWidgets/QSplashScreen.html
