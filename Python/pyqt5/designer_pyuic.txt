@@ -1,0 +1,36 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2022-10-20T17:25:30+08:00
+
+====== designer pyuic ======
+Created 星期四 20 十月 2022
+
+doc
+https://doc.qt.io/qt-6/qtdesigner-manual.html
+https://doc.qt.io/qt-6/create-your-first-applications.html
+examples
+https://doc.qt.io/qt-6/examples-widgets.html
+
+pip install pyqt5-tools # designer
+
+新建layout.ui文件，然后用desinger打开。
+MainWindow比Form多了个菜单栏和状态栏
+
+designer: D:\Software\python39\Lib\site-packages\qt5_applications\Qt\bin\designer.exe
+https://zhuanlan.zhihu.com/p/269273821
+利用pyuic5将ui文件转换为py文件
+Scripts\pyuic5.exe
+pyuic5 -o layout.py layout.ui
+
+推荐配置：
+label：horizontal policy设为Fixed
+LineEdit: 文本框的sizeHint()似乎会比较大，建议Horizontal Policy设为Maximum，然后用fixed的Spacer把它挤小
+Form Layout：
+https://blog.csdn.net/liang19890820/article/details/51539339
+https://blog.csdn.net/Vichael_Chan/article/details/100138499
+layoutFieldGrowthPolicy 设为 FieldsStayAtSizeHint 防止文本框过长
+
+修改designer显示语言：
+Lib\site-packages\qt5_applications\Qt\translations
+把designer_en.qm重命名为designer_zh_CN.qm
+

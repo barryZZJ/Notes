@@ -5,17 +5,5 @@ Creation-Date: 2022-10-16T23:10:38+08:00
 ====== ffmpeg ======
 Created 星期日 16 十月 2022
 
-分割视频：
-''ffmpeg -ss 00:00:00 -t 00:00:30 -i test.mp4 -c copy output.mp4''
-	-ss start time offset 可以是时分秒毫秒，也可以是秒数
-	-sseof set the start time offset relative to EOF
-	-t duration 可以是时分秒毫秒，也可以是秒数 (不设置则默认到结尾) 
-	-to stop time
-	-i video file
-	-report 保存日志到txt
-
-获取视频时长
-https://cloud.tencent.com/developer/article/1429267
-ffprobe.exe -v error -select_streams v:0 -show_entries stream=duration -of default=noprint_wrappers=1:nokey=1 input.mp4
 
 

@@ -19,7 +19,7 @@ pyinstaller -F xx.py --clean -n name --icon=xx.ico
 BASE = os.path.dirname(__file__ if not hasattr(sys, 'frozen') else sys.executable)
 os.chdir(BASE)
 '''
-
+注意：python>=3.9不再支持win7
 
 参数
 -p DIR，--path=DIR	设置 Python import模块的路径（和设置 PYTHONPATH 环境变量的作用相似）。也可使用路径分隔符（Windows 使用分号，Linux 使用冒号）来分隔多个路径
