@@ -1,0 +1,17 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2022-10-21T21:44:00+08:00
+
+====== qaac ======
+Created 星期五 21 十月 2022
+
+http://forum.doom9.org/archive/index.php/t-154233.html
+
+https://sites.google.com/site/qaacpage/home
+
+https://github.com/nu774/qaac/wiki
+
+qaac foo.wav
+will generate foo.m4a in the current directory.
+
+需要把QTFiles64.zip解压进去才能用

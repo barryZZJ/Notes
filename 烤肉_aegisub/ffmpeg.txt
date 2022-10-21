@@ -20,6 +20,25 @@ https://norm.press/archives/26.html
 	-i video file
 	-report 保存日志到txt
 
-获取视频时长
-https://cloud.tencent.com/developer/article/1429267
-ffprobe.exe -v error -select_streams v:0 -show_entries stream=duration -of default=noprint_wrappers=1:nokey=1 input.mp4
+倍速播放
+视频的PTS系数为 1/倍速
+e.g. 2倍速：
+ffmpeg -i input.mkv -filter_complex "[0:v]setpts=0.5*PTS[v];[0:a]atempo=2.0[a]" -map "[v]" -map "[a]" output.mkv
+
+拼接：
+https://www.cnblogs.com/huojinfeng/articles/13167730.html
+(方式三中的单引号改成双引号）
+
+提取音频
+ffmpeg -i input-video.avi -vn -acodec copy output-audio.aac
+-vn is no video.
+-acodec copy says use the same audio stream that's already in there. (can be 'aac' 'm4a')(or -c:a copy)
+
+音频转码
+https://www.rondochen.com/convert-mkv-to-mp4-with-ffmpeg/
+
+生成m4a
+ffmpeg -i inputvideo -vn -c:a aac out.m4a
+
+编码格式转换
+https://ffmpeg.org/ffmpeg.html#toc-Video-and-Audio-file-format-conversion

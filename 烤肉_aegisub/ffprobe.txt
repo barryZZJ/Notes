@@ -1,0 +1,18 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2022-10-21T21:55:15+08:00
+
+====== ffprobe ======
+Created 星期五 21 十月 2022
+
+获取视频信息
+https://ffmpeg.org/ffprobe.html
+
+
+获取视频时长
+https://cloud.tencent.com/developer/article/1429267
+ffprobe.exe -v error -select_streams v:0 -show_entries stream=duration -of default=noprint_wrappers=1:nokey=1 input.mp4
+
+-show_streams
+获取音频编码
+ffprobe -select_streams a:0 -show_entries codec_name

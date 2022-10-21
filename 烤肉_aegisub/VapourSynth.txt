@@ -6,3 +6,24 @@ Creation-Date: 2022-10-20T16:47:26+08:00
 Created 星期四 20 十月 2022
 
 http://www.vapoursynth.com/doc/
+
+织梦字幕组
+vspipe.exe "in.vpy" -c y4m - | "bin\x264.exe"
+--demuxer y4m --preset slower --ref 4 --merange 24 --me umh --bframes 10 --aq-mode 3 --aq-strength 0.7 --deblock 0:0 --trellis 2 --psy-rd 0.6:0.1 --crf 21 --output-depth 8 -o "test.mp4" -
+"-" 表示从pipe接受输入
+
+x264_8bit_encode_example
+{{{code: lang="dosbatch" linenumbers="False"
+@ECHO OFF
+setLocal EnableDelayedExpansion
+
+echo Starting x264 8 bit encode 
+echo.
+
+set out=x264_8bit_encode.mkv
+set script="test.vpy"
+set params=--crf 17 --preset medium --output-depth 8
+
+VapourSynth64\vspipe.exe "%script%" -c y4m - | "bin\x264.exe" --demuxer y4m  %params% -o "%out%" -
+pause
+}}}
