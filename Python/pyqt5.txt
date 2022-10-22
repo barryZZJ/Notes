@@ -130,6 +130,9 @@ if __name__ == '__main__':
 }}}
 
 
+=== Events: ===
+https://www.riverbankcomputing.com/static/Docs/PyQt5/api/qtcore/qevent.html
+
 === 自动连接槽函数： ===
 由于setupUi里调用了connectSlotsByName，
 定义on_<object name>_<signal name>(<signal params>)成员函数后，
