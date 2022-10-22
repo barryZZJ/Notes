@@ -16,3 +16,6 @@ ffprobe.exe -v error -select_streams v:0 -show_entries stream=duration -of defau
 -show_streams
 获取音频编码
 ffprobe -select_streams a:0 -show_entries codec_name
+
+
+出错时retcode仍为0

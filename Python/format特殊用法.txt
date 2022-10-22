@@ -1,13 +1,22 @@
 Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
 
 位置键：
+{{{code: lang="python3" linenumbers="False"
 "{0}_{1}".format(a, b)
-名称键：
+}}}
+
+名称键：{{{code: lang="python3" linenumbers="False"
 "{a}_{b}".format(a=a, b=b)
+}}}
+
 
 传入对象用名称键：
 "{date.year}{date.month}".format(date=datetime.datetime(year=2019, month=2))
+ '{var}'.format(var=123)
 
 约束宽度：
 "{a:2d}".format(a=1) # -> " 1"
 "{a:0>2d}".format(a=1) # -> "01"
+
+"{:02}".format(1)  # -> "01"

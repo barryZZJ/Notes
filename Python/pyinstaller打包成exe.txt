@@ -13,12 +13,18 @@ pyinstaller -F xx.py --clean -n name --icon=xx.ico
 如果报错，记得-p添加site-packages目录, e.g. xxx\envs\script\Lib\site-packages 
 可发布文件在dist文件夹中
 
-注意：''__file__''路径在打包后会返回tmp路径，而sys.argv[0] 返回的是文件名没有路径。
-应使用sys.executable (返回的是主入口所在目录）
+=== pyinstaller>4.2路径问题： ===
+打包后python环境/附加文件会在tmp文件夹下，通过sys._MEIPASS访问，__file__返回的也是这个路径下的py文件(但文件不存在)
+exe文件路径：''os.path.dirname(sys.executable)''
+双击运行时，os.getcwd()返回exe所在目录
+
 '''
-BASE = os.path.dirname(__file__ if not hasattr(sys, 'frozen') else sys.executable)
-os.chdir(BASE)
+ISEXE = hasattr(sys, 'frozen')
+BASE = os.path.dirname(sys.executable if ISEXE else __file__)  # exe/py所在路径
+BASE_TMP = sys._MEIPASS if ISEXE else BASE # 打包后运行时系统tmp所在路径，用于读取附加文件
 '''
+
+
 注意：python>=3.9不再支持win7
 
 参数
@@ -33,8 +39,8 @@ os.chdir(BASE)
 -w，--windowed，--noconsolc	运行时不显示命令行窗口（仅对 Windows 有效）
 -c，--nowindowed，--console	运行时显示命令行窗口（仅对 Windows 有效） （默认）
 --log-level LEVEL   TRACE, DEBUG, INFO, WARN, ERROR, CRITICAL.  default: INFO
---add-binary 附加其他exe文件, 访问路径为sys._MEIPASS
---add-data
+--add-data <SRC;DEST or SRC:DEST> Additional non-binary files or folders to be added to the executable. The path separator is platform specific, os.pathsep (which is ; on Windows and : on most unix systems) is used. This option can be used multiple times. 附加其他文件, DEST可以为.或\表示根目录，访问路径为sys._MEIPASS（系统tmp文件夹）
+--add-binary <SRC;DEST or SRC:DEST> Additional binary files to be added to the executable. 附加其他exe文件, DEST可以为.或\表示根目录，访问路径为sys._MEIPASS（系统tmp文件夹）
 -r --resource FILE[,TYPE[,NAME[,LANGUAGE]]]
 
 输出目录设置：
@@ -42,7 +48,7 @@ os.chdir(BASE)
 --workpath WORKPATH    default: ./build
 --specpath DIR    default: ./
 
-判断是否是打包后的可执行文件：
+=== 判断是否是打包后的可执行文件： ===
 hasattr(sys, 'frozen')
 或
 getattr(sys, 'frozen', False)
@@ -57,11 +63,5 @@ for b in a.binaries:
 		break
 后，使用pyinstaller xx.spec重新编译（不需要任何额外参数）
 
-pyinstaller>4.2存在__file__非真实路径问题：
-def app_path():
-	if hasattr(sys, 'frozen'):  # 可执行文件走这里 
-		return os.path.dirname(sys.executable)  # 返回的是python所在的路径
-	return os.path.dirname(__file__)  # 源码走这里
 
-缩小文件大小：
 

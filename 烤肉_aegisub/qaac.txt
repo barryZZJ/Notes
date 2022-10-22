@@ -15,3 +15,40 @@ qaac foo.wav
 will generate foo.m4a in the current directory.
 
 需要把QTFiles64.zip解压进去才能用
+
+Usage: qaac [options] infiles....
+"-" as infile means stdin.
+In ADTS output mode, "-" as outfile means stdout.
+Main options:
+-d <dirname> Output directory, default is cwd
+-a, --abr <bitrate> AAC ABR mode / bitrate
+-V, --tvbr <n> AAC True VBR mode / quality [0-127]
+-v, --cvbr <bitrate> AAC Constrained VBR mode / bitrate
+-c, --cbr <bitrate> AAC CBR mode / bitrate
+--he HE AAC mode (Can't use TVBR)
+-A, --alac ALAC encoding mode
+-q, --quality <n> AAC encoding Quality [0-2]
+-r, --rate <option> Sample rate option (AAC only)
+Specify one of the followings:
+keep: Try to preserve the original rate
+auto: Let QuickTime choose the optimal one
+<number>: Literal rate in Hz
+-s, --silent Don't be verbose
+-n, --nice Give lower process priority
+--downmix <mono|stereo> Downmix to mono/stereo
+--no-optimize Don't optimize MP4 container file after encoding
+--adts ADTS(raw AAC)output, instead of m4a(AAC only)
+--ignorelength Assume WAV input and ignore the data chunk length
+-R, --raw Raw PCM input
+-S, --stat Save bitrate statistics into file
+Options for single input mode only:
+-o <filename> Output filename
+Options for Raw PCM input only:
+--raw-channels <n> Number of channels, default 2
+--raw-rate <n> Sample rate, default 44100
+--raw-format <str> Sample format, default S16L
+Sample format spec:
+1st char: S(igned) | U(nsigned) | F(loat)
+2nd part: Bitwidth
+Last part: L(ittle Endian) | B(ig Endian)
+Cases are ignored. u8b is OK.

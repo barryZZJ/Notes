@@ -7,9 +7,10 @@ subprocess.run(args, *, stdin=None, input=None, stdout=None, stderr=None, captur
 
 * args：表示要执行的命令。必须是一个字符串，字符串参数列表。
 * stdin、stdout 和 stderr：子进程的标准输入、输出和错误。其值可以是 subprocess.PIPE、subprocess.DEVNULL、一个已经存在的文件描述符、已经打开的文件对象或者 None。stderr=stdout 可以合并到 stdout 里一起输出。
-* capture_output: 拦截输出，相当于stdout=PIPE, stderr=PIPE，通过ret.stdout, ret.stderr获取
+* capture_output: 拦截输出，相当于stdout=PIPE, stderr=PIPE，通过ret.stdout, ret.stderr获取 (类型为bytes)
 * timeout：设置命令超时时间。如果命令执行时间超时，子进程将被杀死，并弹出 TimeoutExpired 异常。
-* check：如果该参数设置为 True，并且进程退出状态码不是 0，则弹 出 CalledProcessError 异常。
+* input: The input argument is passed to Popen.communicate() and thus to the subprocess’s stdin. If used it must be a byte sequence, or a string if encoding or errors is specified or text is true. When used, the internal Popen object is automatically created with stdin=PIPE, and the stdin argument may not be used as well.
+* check：如果该参数设置为 True，并且进程退出状态码不是 0，则弹 出 CalledProcessError 异常，arguments包含the exit code, and stdout and stderr
 * encoding: 如果指定了该参数，则 stdin、stdout 和 stderr 可以接收字符串数据，并以该编码方式编码。否则只接收 bytes 类型的数据。
 * shell：如果该参数为 True，将通过操作系统的 shell 执行指定的命令。
 
@@ -23,20 +24,34 @@ if ret.returncode == 0:
 else:
 	print("error:",ret)
 
-===== 执行外部命令并获取输出 =====
+=== 拦截输出 ===
 https://docs.python.org/3.9/library/subprocess.html?highlight=subprocess#subprocess.check_output
 https://python3-cookbook.readthedocs.io/zh_CN/latest/c13/p06_executing_external_command_and_get_its_output.html
-out_bytes = subprocess.check_output([cmd, *args]) -> bytes
-out=out_bytes.decode('utf8')
-如果返回码不为0会报subprocess.CalledProcessError，包含.returncode, .output属性
-执行后的结果仍会输出到stdout和stderr
+ret = run(..., stdout=PIPE, stderr=PIPE, check=True)
+out = ret.stdout.decode('utf8')
 
 拦截stdout和stderr(不输出)：
 	capture_output=True
-分别拦截：
-	stdout=subprocess.PIPE, stderr=subprocess.PIPE
-统一：
-	stdout=PIPE, stderr=stdout
-如果报错，可以通过CalledProcessError.stdout, .stderr # bytes获取
+分别拦截，需要分别通过.stdout, .stderr获取：
+	stdout=PIPE, stderr=PIPE  # bytes
+分别拦截，并合并在一起
+	stdout=PIPE, stderr=stdout  # bytes
+如果返回码不为0会报subprocess.CalledProcessError，.包含.returncode, .output, .stdout, .stderr属性
+
+out_bytes = subprocess.check_output([cmd, *args]) -> bytes
+	相当于run(..., check=True, stdout=PIPE).stdout
+out=out_bytes.decode('utf8')
 
 
+=== 通过pipe通信 ===
+https://stackoverflow.com/questions/13332268/how-to-use-subprocess-command-with-pipes
+	vspipe = subprocess.Popen([VSPIPE, SCRIPT_TMP, '-c', 'y4m', '-'], stdout=PIPE)
+	x264 = subprocess.run([X264, *args, '-o', VS_TMP], stdin=vspipe.stdout, check=True, stdout=PIPE)
+	vspipe.stdout.close()
+Popen 的stdin、stdout都可以看作文件，输入/输出完需要close
+
+=== 经验 ===
+ffprobe: 错误貌似也不会returncode != 0
+ffmpeg: 输出全在stderr
+x264: 运行时输出在stderr
+vspipe: 最终结果提示【Output 34407 frames in 1576.85 seconds (21.82 fps)】在stderr
