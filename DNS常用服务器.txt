@@ -1,0 +1,12 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2022-12-03T21:31:35+08:00
+
+====== DNS常用服务器 ======
+Created 星期六 03 十二月 2022
+
+https://www.zhihu.com/question/34826522/answer/1269091359
+
+{{.\pasted_image.png}}
+
+阿里：223.5.5.5和223.6.6.6

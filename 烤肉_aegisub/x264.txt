@@ -1,0 +1,10 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2022-12-03T23:58:21+08:00
+
+====== x264 ======
+Created 星期六 03 十二月 2022
+
+x264 [options] -o outfile infile
+
+http://www.chaneru.com/Roku/HLS/X264_Settings.htm
