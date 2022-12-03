@@ -1,0 +1,12 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2022-10-30T20:47:54+08:00
+
+====== multiprocessing多进程 ======
+Created 星期日 30 十月 2022
+
+https://docs.python.org/3.9/library/multiprocessing.html
+
+from multiprocessing import Process
+
+与多线程类似，继承Process，重写run函数，外部调用start()

@@ -4,6 +4,8 @@ Creation-Date: 2022-09-08T18:20:06+08:00
 
 netsh winsock reset
 
+刷新dns
+
 ipconfig /displaydns # 显示dns缓存 
 
 ipconfig /flushdns # 刷新DNS记录 

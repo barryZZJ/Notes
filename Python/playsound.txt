@@ -1,0 +1,16 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2022-10-23T14:12:55+08:00
+
+====== playsound ======
+Created 星期日 23 十月 2022
+
+播放音频
+https://pypi.org/project/playsound/
+
+pip install playsound
+
+from playsound import playsound
+playsound('/path/to/a/sound/file/you/want/to/play.mp3')  # 注意路径分隔符不能是正斜杠\
+
+ ptional second argument, block, which is set to True by default. Setting it to False makes the function run asynchronously.

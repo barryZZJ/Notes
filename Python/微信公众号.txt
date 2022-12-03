@@ -39,7 +39,7 @@ https://blog.csdn.net/m0_46109609/article/details/120225531
 做微信公众号API开发已经有一些时间，在这里想和大家分享一下开发中遇到的一些坑。近期我们实现了视频文章的发送功能，通过调用公众号的群发API接口，可以实现实时发送图文或者视频文章的功能。微信网上的开发文档对图文消息有着比较详细的描述，但是对视频文章发送的描述有这样一个步骤，需要把视频通过uploadvideo接口上传到微信端，但是调取这个接口的时候需要提供“media_id”，而“此处media_id需通过素材管理->新增素材来得到”，这里的素材管理和新增素材管理是指临时素材，如果使用永久素材，系统会返回“invalid media id”错误。所以正确的步骤如下：
 
 使用临时素材接口上传视频内容 https://api.weixin.qq.com/cgi-bin/media/upload?access_token=ACCESS_TOKEN&type=video
-使用视频上传接口把视频从临时素材转到 [[%E4%BD%BF%E7%94%A8%E8%A7%86%E9%A2%91%E4%B8%8A%E4%BC%A0%E6%8E%A5%E5%8F%A3%E6%8A%8A%E8%A7%86%E9%A2%91%E4%BB%8E%E4%B8%B4%E6%97%B6%E7%B4%A0%E6%9D%90%E8%BD%AC%E5%88%B0https://api.weixin.qq.com/cgi-bin/media/uploadvideo?access_token=ACCESS_TOKEN|https://api.weixin.qq.com/cgi-bin/media/uploadvideo?access_token=ACCESS_TOKEN]]
+使用视频上传接口把视频从临时素材转到 https://api.weixin.qq.com/cgi-bin/media/uploadvideo?access_token=ACCESS_TOKEN
 使用文章发送端口对视频进行发送 https://api.weixin.qq.com/cgi-bin/message/mass/sendall?access_token=ACCESS_TOKEN
 这里面的第一步，如果使用永久素材端口是会出现错误的，所以需要注意。
 

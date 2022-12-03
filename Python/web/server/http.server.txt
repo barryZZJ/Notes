@@ -1,0 +1,39 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2022-10-28T11:07:24+08:00
+
+====== http.server ======
+Created 星期五 28 十月 2022
+
+python -m http.server 8080
+https://docs.python.org/3/library/http.server.html
+
+代码实现方法：
+继承BaseHTTPRequestHandler
+实现do_GET(), do_POST()等方法
+可以直接返回json
+
+self.path: 开头包含/
+
+注意处理ConnectionResetError [Errno 104] Connection reset by peer
+
+
+{{{code: lang="python3" linenumbers="False"
+from http.server import HTTPServer, BaseHTTPRequestHandler
+import json
+ 
+data = {'result': 'this is a test'}
+host = ('localhost', 8888)
+ 
+class Resquest(BaseHTTPRequestHandler):
+    def do_GET(self):
+        self.send_response(200)
+        self.send_header('Content-type', 'application/json')
+        self.end_headers()
+        self.wfile.write(json.dumps(data).encode())
+ 
+if __name__ == '__main__':
+    server = HTTPServer(host, Resquest)
+    print("Starting server, listen at: %s:%s" % host)
+    server.serve_forever()
+}}}

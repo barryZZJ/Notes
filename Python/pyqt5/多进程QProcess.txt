@@ -1,0 +1,17 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2022-10-30T20:49:34+08:00
+
+====== 多进程QProcess ======
+Created 星期日 30 十月 2022
+
+https://doc.qt.io/qt-6/qprocess.html
+from PyQt5.QtCore import QProcess
+
+缺点是不共享内存，没法使用信号和槽通信。
+
+.start()  参数必须是列表；如果参数包含中文，由于编码问题，需要传入一整个字符串（记得带引号）
+.waitForFinished(-1)  # 被调用程序本身报错，也会返回true
+
+.kill()
+.terminate()  # 区别，子程序可能会提示是否确认关闭

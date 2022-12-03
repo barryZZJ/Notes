@@ -1,0 +1,138 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2022-10-23T16:33:02+08:00
+
+====== 多线程QThread ======
+Created 星期日 23 十月 2022
+
+=== QTimer ===
+单独使用：
+timer = Qtimer()
+timer.start(msec)
+timer.timeout.connect(func)
+timer.stop()
+
+与QThread配合:
+tr = QThread()
+timer = QTimer()
+timer.setInterval(msec)
+timer.moveToThread(tr)
+tr.started.connect(timer.start)
+timer.stop()
+tr.quit()
+
+=== 用QThread ===
+https://doc.qt.io/archives/qt-5.6/qthread.html#details
+非最后手段不推荐.terminate()强制结束线程
+如果执行过程复杂，会阻塞很久，并且需要强制结束，考虑使用多进程QProcess
+
+实现方法有两种：
+1. × 继承QThread。除非调用exec()，否则没有EventLoop，.quit没用。无法接受外界信号。
+https://www.cnblogs.com/linyfeng/p/12239856.html
+
+重写run函数，然后在外部调用其start()方法。run结束后thread即结束。
+
+调用exec()才会开启EventLoop
+
+无限循环的退出方法：
+	外部调用QThread.requestInterruption()
+	内部判断while not self.isInterruptionRequested()
+
+阻塞直到收到信号：
+	QWaitCondition https://doc.qt.io/qt-5/qwaitcondition.html
+	https://stackoverflow.com/questions/9712461/pyside-wait-for-signal-from-main-thread-in-a-worker-thread
+
+2. √ Worker方法。会进行EventLoop，可以接受外界信号，.quit()调用后会等worker结束后结束EventLoop。
+https://realpython.com/python-pyqt-qthread/#using-qthread-to-prevent-freezing-guis
+	1. 定义Worker，继承QObject；
+	2. 实例化QThread()对象
+	3. 使用worker.moveToThread(thread) 把(多个不同的)worker对象放入线程循环
+	4. 连接thread的started信号到worker工作函数，连接其他必要的信号和槽
+	5. qthread.start()  # 内部会调用exec()开启EventLoop
+	6. worker结束后调用qthread.quit()结束EventLoop
+worker可以自定义各种信号
+thread有started, finished信号可连接槽
+worker结束后，thread会继续运行，直到调用.quit()
+https://stackoverflow.com/questions/42679791/how-to-stop-a-qthread-in-qt
+worker中**不可以**有无限循环，否则会抢占EventLoop，使用QTimer代替。https://doc.qt.io/qt-6/qtimer.html
+也可以考虑把大工作拆分成小工作，使得EventLoop有机会提取消息。
+
+注意QThread对象要用self保存，否则外层函数结束了这个thread对象就被删除了
+
+函数执行的情况/日志可以利用signal通知主窗口
+
+.sleep(int)
+.msleep(msint)
+.nsleep(nsint)
+
+.isRunning() 
+.isFinished()
+
+信号：(注意测试时似乎没有收到信号)
+started
+finished
+
+QThreadPool
+https://doc.qt.io/qt-5/qthreadpool.html
+
+.quit() 结束eventloop
+.wait() 等待线程结束
+
+Worker方法代码：
+{{{code: lang="python3" linenumbers="False"
+from PyQt5.QtCore import QObject, QThread, pyqtSignal
+# Snip...
+
+# Step 1: Create a worker class
+class Worker(QObject):
+    finished = pyqtSignal()
+    progress = pyqtSignal(int)
+    def __init__(self):
+    	super(Worker, self).__init__()
+    	self.stopped = False
+    	
+    def stop(self):
+    	self.stopped = True
+
+    def dowork(self):
+        """Long-running task."""
+        for i in range(5):
+            sleep(1)
+            self.progress.emit(i + 1)
+            if self.stopped: break
+        self.finished.emit()
+
+class Window(QMainWindow):
+    # Snip...
+    def runLongTask(self):
+        # Step 2: Create a QThread object
+        self.thread = QThread()
+        # Step 3: Create a worker object
+        self.worker = Worker()
+        # Step 4: Move worker to the thread
+        self.worker.moveToThread(self.thread)
+        # Step 5: Connect signals and slots
+        self.thread.started.connect(self.worker.dowork)
+        self.worker.finished.connect(self.thread.quit)
+        self.worker.finished.connect(self.worker.deleteLater) # Schedules this object for deletion.
+        self.thread.finished.connect(self.thread.deleteLater)
+        self.worker.progress.connect(self.reportProgress)
+        # Step 6: Start the thread
+        self.thread.start()
+
+        # Final resets
+        self.longRunningBtn.setEnabled(False)
+        self.thread.finished.connect(
+            lambda: self.longRunningBtn.setEnabled(True)
+        )
+        self.thread.finished.connect(
+            lambda: self.stepLabel.setText("Long-Running Step: 0")
+        )
+        
+    def stopThread():
+        self.thread.quit()
+        self.thread.wait()
+}}}
+
+
+

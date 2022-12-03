@@ -1,0 +1,8 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2022-10-30T16:16:39+08:00
+
+====== Polling2 ======
+Created 星期日 30 十月 2022
+
+https://polling2.readthedocs.io/en/latest/index.html

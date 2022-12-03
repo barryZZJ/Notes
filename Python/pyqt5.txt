@@ -8,35 +8,22 @@ e.g.
 https://github.com/barryZZJ/dp-opt-cqu
 
 文档：优先参考c++版的qt doc:
-https://www.qt.io/
+https://doc.qt.io/qt-5.15/
 其次，pyside2 和 pyqt5 基本上是一致的，可以参考互相的文档。
 https://stackoverflow.com/questions/60422323/where-is-the-pyqt5-documentation-for-classes-methods-and-modules
 pyqt doc:
 https://doc.bccnsoft.com/docs/PyQt5/
 https://www.riverbankcomputing.com/static/Docs/PyQt5/
 
-=== 显示详细的报错信息： ===
-在Edit Run Configurations里勾选Emulate terminal in output console
+=== Windowflags 设置固定大小、右上角按钮等 ===
+https://doc.qt.io/qt-6/qt.html#WindowType-enum
+https://doc.qt.io/qt-6/qtwidgets-widgets-windowflags-example.html
+self.setFixedSize(MainWindow.width(), MainWindow.height())
+self.setWindowFlags(Qt.WindowMinimizeButtonHint | Qt.WindowCloseButtonHint)
 
-=== 子线程：用QThread ===
-https://doc.qt.io/archives/qt-5.6/qthread.html
-https://www.cnblogs.com/linyfeng/p/12239856.html
-
-=== 定义信号： ===
-trigger = QtCore.pyqtSignal(str) # 自定义信号对象，要定义成静态成员。参数str就代表这个信号可以传一个字符串
-self.trigger.emit(str(i)) #触发自定义信号
-self.work.trigger.connect(self.display) # 把信号连接到外部的槽函数
-注意QThread对象要用self保存，否则外层函数结束了这个thread对象就被删除了
-
-=== msgbox: ===
-https://blog.csdn.net/jia666666/article/details/81540785
-from PyQt5.QtWidgets import QMessageBox
-QMessageBox.information(None, None, "Debug mode is on")
-.critical .warning .question
-
-=== 设置固定大小、右上角按钮 ===
-MainWindow.setFixedSize(MainWindow.width(), MainWindow.height())
-MainWindow.setWindowFlags(Qt.WindowMinimizeButtonHint | Qt.WindowCloseButtonHint)
+Qt.Dialog: no maximize or minimize buttons
+Qt.Popup: 弹出提示窗，没有标题栏，点其他地方后自动关闭
+Qt.Tool = Dialog + Popup
 
 === 关于size： ===
 sizeHint()是系统自动计算出的部件推荐大小，不可改变。如果部件不在布局管理中就为无效的值
@@ -49,130 +36,10 @@ https://blog.csdn.net/LaoYuanPython/article/details/102650862
 
 stretch: 相当于对应方向大小的权重
 
-将后缀.py改成.pyw可以隐藏命令行窗口
+=== 将后缀.py改成.pyw可以隐藏命令行窗口 ===
 
-简单模板：
-{{{code: lang="python3" linenumbers="False"
-import sys
-from PyQt5 import QtCore, QtGui, QtWidgets
-from PyQt5.QtWidgets import QApplication, QDialog, QMessageBox
-from PyQt5.QtCore import Qt
-
-import gui_file_name
-
-if name == 'main':
-	app = QApplication(sys.argv)
-	MainWindow = QDialog() # 或QMainWindow()、QWidget()等等
-	ui = gui_file_name.Ui_MainWindow()
-	ui.setupUi(MainWindow)
-	MainWindow.setFixedSize(MainWindow.width(), MainWindow.height())
-	MainWindow.setWindowFlags(Qt.WindowMinimizeButtonHint|Qt.WindowCloseButtonHint)
-	MainWindow.show()
-	sys.exit(app.exec_()) # 如果有多线程，需要os._exit(app.exec_())
-
-}}}
-
-
-配合designer使用思路：
-x可以把自动生成的Ui类改写成继承自QWidget的类，但是designer的改动不好同步。
-√可以新建一个类既继承QWidget又继承pyuic生成的Ui_Form类。
-初始化时调用self.setupUi
-{{{code: lang="python3" linenumbers="False"
-import sys
-from PyQt5.QtCore import Qt, pyqtSlot
-from PyQt5.QtWidgets import QApplication, QDialog, QWizard, QWizardPage, QMainWindow, QMessageBox
-from layoutMain import Ui_MainWindow  # 由Designer+pyuic生成
-from utils.exception_hook import UncaughtHook
-
-class MainWindow(QMainWindow, Ui_MainWindow):
-    def __init__(self):
-        QMainWindow.__init__(self)
-        self.setupUi(self)
-		self.retranslateUi(self)
-        
-        # window settings
-        # self.setFixedSize(self.width(), self.height())
-        # self.setWindowFlags(Qt.WindowMinimizeButtonHint | Qt.WindowCloseButtonHint)
-
-        # 其他初始化设置
-        ...
-        self.connectSlots()  # 手动连接槽函数
-
-        # exception handling
-        err_hook = UncaughtHook()  # 见下文
-        err_hook._exception_caught.connect(self.on_exception)
-
-    # 手动连接槽函数
-    def connectSlots(self):
-        def on_btnA_clicked():
-            ...
-        self.btnA.clicked.connect(on_btnA_clicked)
-
-    # 自动连接槽函数
-    @pyqtSlot()  # 如果有参数的话，装饰器pyqtSlot()里必须要加上参数类型
-    def on_pushButton_clicked(self):
-        # 命名格式on_Child_SignalName，主窗口只能手动连接槽函数
-        print('button clicked!')
-
-    @pyqtSlot(str)
-    def on_com_mech_currentIndexChanged(self, txt):
-        ...
-
-    def on_exception(self, log_msg):
-        QMessageBox.critical(self, '错误', '{}'.format(log_msg))
-
-if __name__ == '__main__':
-    app = QApplication(sys.argv)
-    mainwindow = MainWindow()
-    mainwindow.show()
-    sys.exit(app.exec_())  # 如果有多线程，需要os._exit(app.exec_())
-
-}}}
-
-
-=== Events: ===
-https://www.riverbankcomputing.com/static/Docs/PyQt5/api/qtcore/qevent.html
-
-=== 自动连接槽函数： ===
-由于setupUi里调用了connectSlotsByName，
-定义on_<object name>_<signal name>(<signal params>)成员函数后，
-可以自动连接槽函数到对应的组件，不需要手动连接。
-格式：
-from PyQt5.QtCore import pyqtSlot
-@pyqtSlot(<paramTypes>)
-def on_<object name>_<signal name>(self, <signal params>):
-	...
-@pyqtSlot(int)
-def on_mainwiz_currentIdChanged(self, id):
-	...
-https://blog.csdn.net/jia666666/article/details/81775614
-https://doc.qt.io/qt-5/qmetaobject.html#connectSlotsByName
-https://doc.bccnsoft.com/docs/PyQt5/signals_slots.html
-
-=== 手动连接槽函数： ===
-signal用.connect方法连接到槽函数
-一：
-designer中不设置，在代码中写：（如果信号带多个参数，对应槽函数包含多个参数即可）
-def connectSlots(ui: Ui_Form):
-	ui.xxButton.clicked.connect(lambda ui: func(ui)) # 或实现函数闭包，.connect(fun(ui))中fun(ui)返回一个函数即可
-xxButton.clicked.connect(funcname) def funcname(txt): ...
-self.connect(self.man_btn, QtCore.SIGNAL('clicked()'), self.manual_slot)
-
-二：
-designer中选择设置信号/槽，把按钮连接到form上，在form那一栏里编辑，添加槽函数。
-新建QDialog的子类，实现刚刚添加的槽函数
-self.chk_modsw.stateChanged['int'].connect(Form.stateChanged) # 0:no, 1:half, 2:check
-
-=== 信号与槽函数： ===
-from PyQt5.QtCore import pyqtSignal, pyqtSlot, QObject
-class Obj(QObject):
-	newSignal = pyqtSignal(<type>) # 如果信号有参数，type里指明参数类型，如str, int
-	def doSomething(self):
-		....
-		self.newSignal.emit(<param>) # 发射信号
-连接槽函数
-1. obj.newSignal.connect(slotFunc) # 槽函数捕捉信号即可
-2. Obj(newSignal=slotFunc) # 初始化时直接传递槽函数也可
+=== 窗口内部拖拽 ===
+https://zetcode.com/gui/pyqt5/dragdrop/
 
 === 控制台输出重定向到控件中： ===
 https://www.cxyzjd.com/article/min_mmax/105307804
@@ -183,40 +50,3 @@ https://www.cxyzjd.com/article/min_mmax/105307804
 	def closeEvent(self, a0: QtGui.QCloseEvent) -> None:
 		sys.stdout = sys.__stdout__
 		sys.stderr = sys.__stderr__
-
-=== 优雅的错误处理：使用exception_hook ===
-https://timlehr.com/python-exception-hooks-with-qt-message-box/
-{{{code: lang="python3" linenumbers="False"
-import sys
-from PyQt5 import QtCore
-from PyQt5.QtCore import pyqtSignal
-
-class UncaughtHook(QtCore.QObject):
-    _exception_caught = pyqtSignal(object)
-
-    def __init__(self, *args, **kwargs):
-        super(UncaughtHook, self).__init__(*args, **kwargs)
-
-        # this registers the exception_hook() function as hook with the Python interpreter
-        sys.excepthook = self.exception_hook
-
-    def exception_hook(self, exc_type, exc_value, exc_traceback):
-        """Function handling uncaught exceptions.
-        It is triggered each time an uncaught exception occurs.
-        """
-        if issubclass(exc_type, KeyboardInterrupt):
-            # ignore keyboard interrupt to support console applications
-            sys.__excepthook__(exc_type, exc_value, exc_traceback)
-        else:
-            # exc_info = (exc_type, exc_value, exc_traceback)
-            log_msg = '\n'.join([''.join(traceback.format_tb(exc_traceback)),
-                                 '{0}: {1}'.format(exc_type.__name__, exc_value)])
-            # log.critical("Uncaught exception:\n {0}".format(log_msg), exc_info=exc_info)
-
-            # trigger message box show
-            self._exception_caught.emit(log_msg)
-}}}
-
-
-=== splash screen ===
-https://doc.qt.io/qtforpython-5/PySide2/QtWidgets/QSplashScreen.html

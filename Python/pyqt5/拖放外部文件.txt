@@ -1,0 +1,29 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2022-10-23T16:34:02+08:00
+
+====== 拖放外部文件 ======
+Created 星期日 23 十月 2022
+
+
+=== 拖放外部文件 ===
+https://www.reddit.com/r/learnpython/comments/97z5dq/pyqt5_drag_and_drop_file_option/
+https://gist.github.com/peace098beat/db8ef7161508e6500ebe
+{{{code: lang="python3" linenumbers="False"
+def txtVidpath_dragEnterEvent(event):
+	if event.mimeData().hasUrls():
+		event.accept()
+	else:
+		event.ignore()
+
+def txtVidpath_dropEvent(event: QDropEvent):
+	data = event.mimeData()  # type: QMimeData
+	urls = data.urls()  # type: list[QtCore.QUrl]  # [PyQt5.QtCore.QUrl('file:///D:/字幕组/测试/[织梦字幕组][测试][02集]/[织梦字幕组][测试][02集][720P][AVC][简日双语].mp4')]
+	scheme = urls[0].scheme()  # type: str
+	if urls and urls[0].scheme() == 'file':
+		filepath = urls[0].path()[1:].replace('/', '\\')
+
+self.txtVidpath.dragEnterEvent=txtVidpath_dragEnterEvent
+self.txtVidpath.dropEvent=txtVidpath_dropEvent
+}}}
+

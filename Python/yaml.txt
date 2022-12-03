@@ -2,7 +2,7 @@ Content-Type: text/x-zim-wiki
 Wiki-Format: zim 0.6
 Creation-Date: 2022-10-18T22:59:53+08:00
 
-====== pyyaml ======
+====== yaml ======
 Created 星期二 18 十月 2022
 
 处理.yaml文件
@@ -35,3 +35,5 @@ except ImportError:
 
 yaml.load(...,Loader)
 yaml.dump(..., Dumper)
+
+解决中文变为\u编码问题：在dump中添加参数allow_unicode=True

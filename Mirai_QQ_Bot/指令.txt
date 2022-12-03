@@ -1,0 +1,24 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2022-11-24T23:38:23+08:00
+
+====== 指令 ======
+Created 星期四 24 十一月 2022
+
+
+更新包： ./mcl -u
+
+https://maven.aliyun.com/repository/public
+
+-c0 开启debug模式
+
+https://mirai.mamoe.net/topic/223/%E6%97%A0%E6%B3%95%E7%99%BB%E5%BD%95%E7%9A%84%E4%B8%B4%E6%97%B6%E5%A4%84%E7%90%86%E6%96%B9%E6%A1%88
+
+code=235:
+https://github.com/mamoe/mirai/issues/2298
+{{.\pasted_image.png}}
+./mcl --update-package net.mamoe:mirai-console-terminal --channel maven-prerelease
+./mcl --update-package net.mamoe:mirai-core-all --channel maven-prerelease
+./mcl --update-package net.mamoe:mirai-console --channel maven-prerelease
+./mcl -u
+

@@ -1,4 +1,0 @@
-Content-Type: text/x-zim-wiki
-
-Django
-Flask

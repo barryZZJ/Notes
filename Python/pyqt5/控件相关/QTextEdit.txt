@@ -1,0 +1,50 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2022-11-10T09:34:36+08:00
+
+====== QTextEdit ======
+Created 星期四 10 十一月 2022
+
+https://doc.qt.io/qt-6/qtextedit.html
+
+用于显示大段HTML或md文档
+
+内容：
+.html
+setHTML(str)
+toHTML() -> htmlstr
+Supported HTML Subset
+https://doc.qt.io/qt-6/richtext-html-subset.html
+
+.markdown
+setMarkdown(str)
+toMarkdown() -> str
+
+.plainText
+setPlainText(str)
+toPlainText()  -> str
+
+插入文本：
+使用QTextCursor
+或直接在当前指针位置插入：insertHtml(), insertPlainText(), append() or paste()
+
+textCursor()
+setTextCursor()
+selectAll()
+copy()
+cut()
+paste()
+clear()
+
+支持redo, undo, zoomIn, zoomOut
+
+设置WordWrap：
+setLineWrapMode
+默认空格处断行，NoWrap, FixedPixelWidth, ...
+
+find() find and select a given string
+
+documentTitle() function will return the text from within HTML <title> tags.
+
+
+QTextDocument provides an isModified() function which will return true if the text has been modified since it was either loaded or since the last call to setModified with false as argument. In addition it provides methods for undo and redo.

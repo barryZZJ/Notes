@@ -1,0 +1,88 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2022-10-23T21:35:25+08:00
+
+====== 控件相关 ======
+Created 星期日 23 十月 2022
+
+彻底删除：
+.deleteLater() 在删除前瞬间会发送destroyed信号
+
+=== QObject ===
+parent参数：
+	The destructor of a parent object destroys all child objects
+	Setting parent to nullptr constructs an object with no parent. If the object is a widget, it will become a top-level window.
+
+=== 窗体 ===
+https://doc.qt.io/qt-5/qwidget.html
+QMainWindow, QWidget
+如果设置了parent，新控件会显示在parent里，而不是新建窗口，并与parent共存亡。
+(子窗体在对象初始化时就被新建了(isHidden==True)，可以把重要操作写在showEvent里）
+isVisible
+isHidden
+注意如果窗体变为野指针会立即关闭并销毁
+
+光标形态：
+QCursor
+https://www.riverbankcomputing.com/static/Docs/PyQt5/api/qtgui/qcursor.html
+http://doc.qt.io/qt-5/qcursor
+from PyQt5.QtCore import Qt
+cursor = widget.cursor() # or QCursor()
+cursor.setShape(Qt.CursorShape.WaitCursor)
+widget.setCursor(cursor)
+widget.unsetCursor()
+
+设置全局光标：https://stackoverflow.com/questions/8218900/how-can-i-change-the-cursor-shape-with-pyqt
+QApplication.setOverrideCursor()
+QApplication.restoreOverrideCursor()
+
+关闭时：
+closeEvent(self, a0)
+	a0.accept()
+	a0.ignore() 
+
+
+=== 调整控件大小 ===
+.resize(473, 162)
+
+=== 设置颜色 ===
+
+== 1. QPalette： ==
+from PyQt5.QtGui import QPalette, QColor
+https://www.riverbankcomputing.com/static/Docs/PyQt5/api/qtgui/qpalette.html
+
+== 2. css ==
+'''
+line_edit.setStyleSheet("QLineEdit { background-color: lightblue; }")
+'''
+
+
+=== QTabWidget ===
+获取当前页面标题文本：
+tab.tabText(tab.currentIndex())
+
+=== QPixmap 显示图片 ===
+https://www.riverbankcomputing.com/static/Docs/PyQt5/api/qtgui/qpixmap.html
+PyQt5.QtGui.QPixmap
+
+qp = QPixmap()
+qp.loadFromData(my_bytes)
+
+配合QLabel：
+勾选scaledContents，图片会缩放至QLabel的大小
+QLabel.setPixmap()
+
+自适应窗口大小
+https://www.cnblogs.com/findumars/p/8001584.html
+https://blog.csdn.net/weixin_46168054/article/details/124777274
+
+=== QTabWidget ===
+.indexOf(widget)
+.widget(index)
+
+def removeTab(self, index):
+	pg = self.tabs.widget(index)
+	if pg is not None:
+		pg.deleteLater()
+	self.tabs.removeTab(index)
+

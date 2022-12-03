@@ -27,6 +27,8 @@ aegisub的配置和样式(C:\Users\85046\AppData\Roaming\Aegisub)
 windows defender排除项
 
 ===== 装好系统后操作： =====
+输入法
+安装RDPWrap
 百度网盘下载备份文件，覆盖本地
 装显卡驱动
 重装各个程序+配置

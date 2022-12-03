@@ -1,0 +1,25 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+
+"{}".format
+https://www.runoob.com/python/att-string-format.html
+（对于小数的宽度的设定包含小数点和小数部分：%06.3f.format(1.24)->01.240）
+
+位置键：
+"{0}, {1}".format(a, b)
+
+名称键：
+"{a}, {b}".format(a='a', b='b')
+
+传入对象用名称键：
+"{date.year}{date.month}".format(date=datetime.datetime(year=2019, month=2))
+ 
+约束宽度：
+"{a:2d}".format(a=1) # -> " 1"
+"{:02}".format(1)  # -> "01"
+
+0填充
+"{a:0>2d}".format(a=1) # -> "01"
+ {id_:>02d}
+
+{:.nf} 保留n位小数

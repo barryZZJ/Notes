@@ -20,3 +20,8 @@ import traceback
 traceback.print_exc()
 
 .format_exc() -> str
+
+自定义exception
+https://www.programiz.com/python-programming/user-defined-exception
+继承Exception
+在init中添加自定义参数，然后调用super即可

@@ -9,8 +9,8 @@ b.hex()
 # base64
 import base64
 # 与bytes字节流互转
-base64.b64encode(bytes)  # bytes
-base64.b64decode(base64_bytes)  # bytes
+base64.b64encode(bytes)  -> bytes
+base64.b64decode(base64_bytes)  -> bytes
 
 
 str.encode, b.decode默认都是utf8
@@ -31,3 +31,27 @@ b = a.encode('unicode_escape')  # b'\\u54c8\\u54c8'
 b.decode('unicode_escape')  # '哈哈'
 
 u'\u54c8\u54c8'  # '哈哈'
+
+百分号（url）编码解码
+https://www.urldecoder.org/
+url 解码: % -> \x
+from urllib.parse import unquote
+unquote(str, encoding=...) -> str
+>>> unquote('%C4%A7%CA%DE')
+'\xc4\xa7\xca\xde'
+
+unquote_plus
+unquote_to_bytes
+加密：
+1. urlencode
+>>> from urllib.parse import urlencode
+>>> data = {
+...     'a': 'test',
+...     'name': '魔兽'
+... }
+>>> print urlencode(data)
+a=test&amp;name=%C4%A7%CA%DE
+or
+>>> from urllib.parse import quote
+>>> quote('魔兽')
+'%C4%A7%CA%DE'

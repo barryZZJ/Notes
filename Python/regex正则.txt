@@ -1,6 +1,7 @@
 Content-Type: text/x-zim-wiki
 Wiki-Format: zim 0.6
 
+https://www.runoob.com/regexp/regexp-syntax.html
 https://docs.python.org/3/library/re.html
 https://zhengze.51240.com/
 https://regexper.com/
@@ -38,3 +39,9 @@ pattern.search()/match()/...
 pattern字符串前加r可以防止 转义字符\ 起作用
 r"\t" -> 输出 "\t"
 
+匹配中文/日文汉字： [\u4e00-\u9fa5]
+匹配日文假名：[\u3040-\u309F\u30A0-\u30FF]
+	[\u3040-\u309F] 日语平假名
+	[\u30A0-\u30FF] 日语片假名
+	
+匹配双字节字符(包括汉字在内)：[^\x00-\xff]

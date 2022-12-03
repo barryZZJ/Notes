@@ -1,0 +1,8 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2022-10-24T01:29:36+08:00
+
+====== 资源管理 ======
+Created 星期一 24 十月 2022
+
+https://doc.qt.io/qt-5/resources.html

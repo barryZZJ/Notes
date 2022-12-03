@@ -1,0 +1,9 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2022-11-06T20:49:06+08:00
+
+====== torrent ======
+Created 星期日 06 十一月 2022
+
+https://pypi.org/project/makeTorrent/ x 有很多bug
+https://py3createtorrent.readthedocs.io/en/latest/user.html

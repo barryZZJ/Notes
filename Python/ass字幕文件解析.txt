@@ -7,7 +7,7 @@ Created 星期三 12 十月 2022
 
 解析ass文件：
 https://pypi.org/project/ass/
-https://pypi.org/project/ass-parser/
+x https://pypi.org/project/ass-parser/
 
-解析ass特效：
+解析ass中的对白，分离特效代码部分：
 https://pypi.org/project/ass-tag-parser/

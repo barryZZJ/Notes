@@ -9,6 +9,7 @@ Wiki-Format: zim 0.6
 主要是方便地实现在目标函数被调用前后执行其他函数
 使用场景：
 授权、日志（记录某个函数被调用了）、异常处理等
+注意：不适用于需要类成员的情况！考虑使用with上下文管理
 
 1.使用functools.wraps。demo：
 https://docs.python.org/3/library/functools.html
@@ -60,7 +61,7 @@ class DecoratorFactory:
 			print("after func()")
 		return decorated
 
-@DecoratorFactory()
+@DecoratorFactory(arg)
 def func():
 	pass
 

@@ -1,4 +1,5 @@
 Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
 
 matplotlib函数详解.docx
 Examples: https://matplotlib.org/stable/gallery/index.html
@@ -64,9 +65,9 @@ Annotations 标注： 可以画在整个图内
 ax.annotate('figure pixels', xy=(10, 10), xycoords='figure pixels')
 ax.annotate('text', xy=(x, y), xycoords='data', xytext=(10, 10), textcoords='offset pixels')
   arrowprops:FancyArrowPatchArgs=dict(arrowstyle="->") 
-    arrowsylte:str or ArrowStyle. -, <-, ->, <->, <|-, -|>, <|-|>, simple, fancy, wedge. widthA=1.0, widthB=1.0
-        ArrowStyle: https://matplotlib.org/stable/api/_as_gen/matplotlib.patches.ArrowStyle.html
-    connectionstyle: angle, angle3, arc, arc3, bar
+	arrowsylte:str or ArrowStyle. -, <-, ->, <->, <|-, -|>, <|-|>, simple, fancy, wedge. widthA=1.0, widthB=1.0
+		ArrowStyle: https://matplotlib.org/stable/api/_as_gen/matplotlib.patches.ArrowStyle.html
+	connectionstyle: angle, angle3, arc, arc3, bar
 https://matplotlib.org/stable/tutorials/text/annotations.html?highlight=connectionpatch#annotating-with-arrow
 https://matplotlib.org/stable/api/_as_gen/matplotlib.patches.ArrowStyle.htm
 
@@ -101,7 +102,7 @@ plt.pie()	饼图
 plt.contour()	等高线图
 plt.boxplot()	箱型图  https://matplotlib.org/stable/api/_as_gen/matplotlib.pyplot.boxplot.html
 plt.violinplot()提琴图  https://matplotlib.org/stable/api/_as_gen/matplotlib.pyplot.violinplot.html
-                https://matplotlib.org/stable/gallery/statistics/customized_violin.html#sphx-glr-gallery-statistics-customized-violin-py
+				https://matplotlib.org/stable/gallery/statistics/customized_violin.html#sphx-glr-gallery-statistics-customized-violin-py
 
 画直线：
 vlines, hlines：指定线段长度
@@ -110,42 +111,42 @@ axvline, axhline：默认横跨一整个图
 跨子图画线：
 1. ConnectionPatch https://matplotlib.org/stable/tutorials/text/annotations.html#using-connectionpatch
    api:   https://matplotlib.org/stable/api/_as_gen/matplotlib.patches.ConnectionPatch.html
-   con = ConnectionPatch(coordsA: str='data', coordsB: str='data')
+   con = ConnectionPatch((x1,y1), (x2,y2), coordsA: str='data', coordsB: str='data', axesA=ax1, axesB=ax3, ls='--', color=colorbsh)
    fig.add_artist(con)
 2. vlines, hlines, axvline, axhline 把min, max超出0, 1, 并使用参数clip_on=False, zorder大于其他图
 
 
 条形图添加数值：
 def auto_text(rects):
-    for rect in rects:
-        ax.text(rect.get_x(), rect.get_height(), rect.get_height(), ha='left', va='bottom')
+	for rect in rects:
+		ax.text(rect.get_x(), rect.get_height(), rect.get_height(), ha='left', va='bottom')
 rect = plt.bar()
 auto_text(rect)
 
 折线图添加数值：
 def auto_text(ax, xs, ys):
-    for x, y in zip(xs, ys):
-        if y != np.inf:
-            ax.text(x, y, y, ha='center', va='bottom')
+	for x, y in zip(xs, ys):
+		if y != np.inf:
+			ax.text(x, y, y, ha='center', va='bottom')
 
 def auto_text(ax, xs, ys, text=None, kwargs=dict(ha='left', va='bottom'), decimal=3):
-    for x, y in zip(xs, ys):
-        if y != np.inf:
-            if text:
-                ax.text(x, y, text, **kwargs)
-            else:
-                ax.text(x, y, np.round(y,decimal), **kwargs)
+	for x, y in zip(xs, ys):
+		if y != np.inf:
+			if text:
+				ax.text(x, y, text, **kwargs)
+			else:
+				ax.text(x, y, np.round(y,decimal), **kwargs)
 
 
 def auto_text_x(ax, xs, ys, texts=None, kwargs=dict(ha='left', va='bottom')):
-    if texts is None:
-        texts = [None] * len(xs)
-    for x, y, text in zip(xs, ys, texts):
-        if x != np.inf:
-            if text is not None:
-                ax.text(x, y, '%.3f' % text, **kwargs)
-            else:
-                ax.text(x, y, '%.3f' % x, **kwargs)
+	if texts is None:
+		texts = [None] * len(xs)
+	for x, y, text in zip(xs, ys, texts):
+		if x != np.inf:
+			if text is not None:
+				ax.text(x, y, '%.3f' % text, **kwargs)
+			else:
+				ax.text(x, y, '%.3f' % x, **kwargs)
 
 图例：
 参数：label
@@ -162,7 +163,7 @@ def auto_text_x(ax, xs, ys, texts=None, kwargs=dict(ha='left', va='bottom')):
 坐标轴最值：xlim(), ylim()
 坐标轴缩放：xscale(), yscale()
 坐标轴标签：xlabel(), ylabel()  loc={'left','center','right'}, labelpad=float (设置负数可以更靠近x轴）
-                    plt.rcParams["xaxis.labellocation"] = 'right'  全局设置xlabel位置
+					plt.rcParams["xaxis.labellocation"] = 'right'  全局设置xlabel位置
 手动调整label位置：transform 可以指定不同的对齐方式，坐标可以为负数，也可超过1
 ax.yaxis.set_label_coords(x, y, transform=None)
 ax.xaxis.set_label_coords(x, y, transform=None)
@@ -191,6 +192,8 @@ ax1.xaxis.set_ticks_position('bottom') {'top', 'bottom', 'both', 'default', 'non
 
 只隐藏坐标轴上的数字/文本
 ax.set_ticklables([])
+
+ax.set_xlim(l, r)  # 设置图像与两边的空隙 
 
 坐标轴逆序：ax.invertxaxis() invertyaxis() 注意set_xlim等方法的左右要反过来
 
@@ -276,9 +279,9 @@ plt.rcParams['font.family'] = 'SimSun' #黑体["SimHei"]
 plt.rcParams["axes.unicode_minus"]=False #正常显示负号
 'weight':'bold',            # 粗细
 参数：
-    fontproperties='SimSun'
+	fontproperties='SimSun'
 或
-    fontdict=dict(family='SimSun')   #'Microsoft YaHei'
+	fontdict=dict(family='SimSun')   #'Microsoft YaHei'
 
 配合xelatex：
 matplotlib.use('pgf')

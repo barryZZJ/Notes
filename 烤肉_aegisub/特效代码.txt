@@ -17,7 +17,7 @@ https://www.bilibili.com/video/av289069676/
 \u<0/1> (取消)下划线
 \s<0/1> (取消)删除线
 \bord<size> 边框
-\shad<depth> 阴影
+\shad<depth> 阴影 \xshad<depth> \yshad<depth> 分量可以为负数
 \an<pos> 1~9对齐方式
 \be<0/int> \blur<float> 边框不为0时模糊边框（外发光），否则模糊文字本身
 \pos(x,y) 整数
@@ -41,6 +41,15 @@ https://www.bilibili.com/video/av289069676/
 
 矢量绘图
 https://cnlang.org/thread-85231-1-1.html
+Square:
+{\p1}m 0 0 l 100 0 100 100 0 100{\p0}
+
+Rounded square:
+{\p1}m 0 0 s 100 0 100 100 0 100 c{\p0}
+(c equals to "p 0 0 100 0 100 100" in this case)
+
+Circle (almost):
+{\p1}m 50 0 b 100 0 100 100 50 100 b 0 100 0 0 50 0{\p0}
 
 渐变/淡入淡出
 \fad(<fadein>,<fadeout>)
@@ -59,6 +68,7 @@ https://cnlang.org/thread-85231-1-1.html
 \t(<t1>,<t2>,<style modifiers>)
 \t(<t1>,<t2>,<accel>,<style modifiers>)
 t1, t2为发生的时间起止，ms，相对时间，可设为0
+可用$start,$end分别表示开始和结束时间
 
 平移：(无法实现变速移动，需要多个字幕效果拼接)
 \move(<x1>,<y1>,<x2>,<y2>)

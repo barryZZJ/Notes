@@ -1,0 +1,46 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2022-10-24T13:35:00+08:00
+
+====== matlab ======
+Created 星期一 24 十月 2022
+
+https://ww2.mathworks.cn/help/releases/R2022b/matlab/getting-started-with-matlab.html
+
+for i = 1:stop
+	...
+end
+start:step:stop
+
+for a = [1 2 3 4 5]
+	...
+end
+
+数组：
+arr = zeros(length(l), 1)
+arr(i) = xxx
+下标从1开始
+range: a:b, a:step:b (含端点)
+
+文件：
+l = dir(path) path可以包含*和**
+
+字符串拼接：
+单引号字符串：['a' 'b' 'c']
+单/双引号字符串：strcat("a", "b", "c")
+
+保存读取：
+save('filename.mat', "var1", "var2") 添加参数'-append'则追加
+ld = load('filename.mat')
+var1 = ld.var1
+var2 = ld.var2
+
+随机：
+rand(size)
+rand(sz1,sz2)
+randi([start, end], size)
+shuffle:
+	YourVector(randperm(length(YourVector))
+
+mean 均值
+

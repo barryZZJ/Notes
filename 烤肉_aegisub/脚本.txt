@@ -6,6 +6,7 @@ Creation-Date: 2022-09-23T23:32:14+08:00
 Created 星期五 23 九月 2022
 
 https://aegi.vmoe.info/docs/3.2/Automation/Lua/
+https://aegi.vmoe.info/docs/3.2/Automation/Lua/Subtitle_file_interface/
 
 aegisub.project_properties()["video_file"]
 aegisub.project_properties().video_position
@@ -19,4 +20,52 @@ if vframe==nil or fr2ms(1)==nil then t_error("Current frame unknown. Probably no
 ms2fr=aegisub.frame_from_ms
 fr2ms=aegisub.ms_from_frame
 
-return value: a new selected_lines table containing indices of the lines to select after the macro returns, and an index of the line to make the new active_line. If set, the new active line index must be one of the lines in the new selected_lines table.
+Return value: The macro processing function can return up to two values: a new selected_lines table containing indices of the lines to select after the macro returns, and an index of the line to make the new active_line. If set, the new active line index must be one of the lines in the new selected_lines table.
+
+function f(subtitles, selected_lines, active_line)
+substitles: object table
+selected_lines: indexes array
+active_line: number
+
+subtitle object https://aegi.vmoe.info/docs/3.2/Automation/Lua/Subtitle_file_interface/
+	.class  # str, == "dialogue" or "info" or "style" or "unknown"
+	.comment  # bool
+	.text  # str
+	
+subtitles[i] = nil
+subtitles.delete(i)
+subtitles.delete(i1, i2, ...)
+subtitles.delete({i1, i2, ...})
+subtitles.deleterange(first, last)
+
+如果设置了aegisub.debug.out("")，会保留日志界面
+
+regex: https://aegi.vmoe.info/docs/3.2/Automation/Lua/Modules/re/
+lua里escape符号要加%
+pat = re.compile()
+text, _ = pat:sub(text, repl)
+tab = pat:match(text)  注意下标从1开始
+
+
+{{{code: lang="lua" linenumbers="False"
+function process_lines(subtitles, selected_lines, active_line)
+	sels = {}
+	local i_dialogue = 1
+
+	for _, i in ipairs(selected_lines) do  -- or for i = 1, #subtitles
+		aegisub.progress.set(i * 100 / #subtitles)
+
+		local l = subtitles[i]  # subtitle object
+		if subtitles[i].class == "dialogue" then
+			aegisub.debug.out(string.format('Processing line %d: "%s"\n', i_dialogue, l.text))
+
+			nl = l
+			subtitles[i] = l
+			table.insert(sels, i)
+		    i_dialogue = i_dialogue + 1
+		end
+	end
+	aegisub.set_undo_point(script_name)
+	return sels
+end
+}}}

@@ -1,4 +1,5 @@
 Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
 
 import json
 
@@ -10,8 +11,11 @@ json.loads(str)
 
 读取文件
 with open() as f:
-    d = json.load(f)
+	d = json.load(f)
 
 写入文件
 with open() as f:
-    json.dump(f)
+	json.dump(f)
+
+解决中文变为unicode码问题：
+dump中添加ensure_ascii=False参数

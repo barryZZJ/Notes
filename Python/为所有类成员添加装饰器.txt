@@ -1,0 +1,19 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2022-10-30T20:35:03+08:00
+
+====== 为所有类成员添加装饰器 ======
+Created 星期日 30 十月 2022
+
+https://blog.csdn.net/weixin_36179862/article/details/102829018
+
+''只需要重写该类的__getattribute__方法即可''
+{{{code: lang="python3" linenumbers="False"
+def __getattribute__(self, item):
+	res = super().__getattribute__(item)
+	if type(res) == "<class 'method'>":  # 类里面的成员分为三种，method（类方法和实例方法），function（实例方法），int,str...（变量成员）
+		# do something before calling res, or even return a new funcname
+		return res
+	return res
+}}}
+

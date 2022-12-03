@@ -14,7 +14,7 @@ https://doc.qt.io/qt-6/examples-widgets.html
 pip install pyqt5-tools # designer
 
 新建layout.ui文件，然后用desinger打开。
-MainWindow比Form多了个菜单栏和状态栏
+MainWindow比QWidget多了个菜单栏和状态栏
 
 designer: D:\Software\python39\Lib\site-packages\qt5_applications\Qt\bin\designer.exe
 https://zhuanlan.zhihu.com/p/269273821
@@ -33,4 +33,67 @@ layoutFieldGrowthPolicy 设为 FieldsStayAtSizeHint 防止文本框过长
 修改designer显示语言：
 Lib\site-packages\qt5_applications\Qt\translations
 把designer_en.qm重命名为designer_zh_CN.qm
+
+=== 配合designer使用样例： ===
+x可以把自动生成的Ui类改写成继承自QWidget的类，但是designer的改动不好同步。
+√可以新建一个类既继承QWidget又继承pyuic生成的Ui_Form类。
+初始化时调用self.setupUi
+{{{code: lang="python3" linenumbers="False"
+import sys
+from PyQt5.QtCore import Qt, pyqtSlot
+from PyQt5.QtWidgets import QApplication, QDialog, QWizard, QWizardPage, QMainWindow, QMessageBox
+from layoutMain import Ui_MainWindow  # 由Designer+pyuic生成
+from utils.exception_hook import UncaughtHook
+
+class MainWindow(QMainWindow, Ui_MainWindow):
+    def __init__(self):
+        QMainWindow.__init__(self)
+        self.setupUi(self)
+		self.retranslateUi(self)
+        
+        # window settings
+        # self.setFixedSize(self.width(), self.height())
+        # self.setWindowFlags(Qt.WindowMinimizeButtonHint | Qt.WindowCloseButtonHint)
+
+        # 其他初始化设置
+        ...
+        self.connectSlots()  # 手动连接槽函数
+
+        # exception handling
+        err_hook = UncaughtHook()  # 见下文
+        err_hook._exception_caught.connect(self.on_exception)
+
+    # 手动连接槽函数
+    def connectSlots(self):
+        def on_btnA_clicked():
+            ...
+        self.btnA.clicked.connect(on_btnA_clicked)
+
+    # 自动连接槽函数
+    @pyqtSlot()  # 如果有参数的话，装饰器pyqtSlot()里必须要加上参数类型
+    def on_pushButton_clicked(self):
+        # 命名格式on_Child_SignalName，主窗口只能手动连接槽函数
+        print('button clicked!')
+
+    @pyqtSlot(str)
+    def on_txtNameCN_textChanged(self, txt):
+        ...
+
+    @pyqtSlot(int)
+    def on_chkWxTag_stateChanged(self, state):
+        self.txtWxTag.setEnabled(state == 2)  # 0, 1, 2
+
+    def on_exception(self, *args, sep=''):
+        log_msg = sep.join(args)
+        QMessageBox.critical(self, '错误', '{}'.format(log_msg))
+        print(log_msg)
+
+if __name__ == '__main__':
+    app = QApplication(sys.argv)
+    mainwindow = MainWindow()
+    mainwindow.show()
+    sys.exit(app.exec_())  # 如果有多线程，需要os._exit(app.exec_())
+
+}}}
+
 

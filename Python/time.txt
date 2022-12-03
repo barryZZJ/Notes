@@ -3,24 +3,37 @@ Wiki-Format: zim 0.6
 
 https://docs.python.org/3/library/time.html
 
-time.time() # 返回时间戳，精确到小数点后7位
+根据秒数转时分秒：见datetime
 
-合成字符串：.strftime(format) -> str
-解析字符串：.strptime(string, format) -> Object
+# 当前时间戳，精确到小数点后7位
+.time() -> float 
 
+# 时间戳，纳秒级
+.time_ns() -> int 
+
+# 时间戳转tuple
+.localtime([secs]) -> struct_time  
+# tuple 转时间戳
+.mktime(struct_time) -> float  
+
+ # 时间戳转str 
+.ctime([secs]) -> str # Sat Mar 28 22:24:24 2016  解析："%a %b %d %H:%M:%S %Y"
+# tuple转str
+.asctime([struct_time]) -> str   # Sat Mar 28 22:24:24 2016
+
+合成字符串：
+.strftime(format[, time_struct]) -> str
 #2016-03-20 11:45:39
 time.strftime("%Y-%m-%d %H:%M:%S", time.localtime()) 
 
-#Thu Jul 15 10:23:46 2021
-time.ctime([secs])==asctime(localtime([secs]))
-time.asctime( time.localtime(time.time()) )
-
+解析字符串：
+.strptime(string, format) -> struct_time
 #Sat Mar 28 22:24:24 2016
 time.strftime("%a %b %d %H:%M:%S %Y", time.localtime())
 
-# 将格式字符串转换为时间戳
+将格式字符串转换为时间戳
 a = "Sat Mar 28 22:24:24 2016"
-print time.mktime(time.strptime(a,"%a %b %d %H:%M:%S %Y"))
+time.mktime(time.strptime(a,"%a %b %d %H:%M:%S %Y"))
 
 %y 两位数的年份表示（00-99）
 %Y 四位数的年份表示（000-9999）

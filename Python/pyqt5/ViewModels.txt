@@ -1,0 +1,31 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2022-11-06T18:33:37+08:00
+
+====== ViewModels ======
+Created 星期日 06 十一月 2022
+
+https://doc.qt.io/qtforpython-5/overviews/model-view-programming.html
+
+=== QTableWidget ===
+https://doc.qt.io/qtforpython-5/PySide2/QtWidgets/QTableWidget.html
+.insertRow(row)  # 在row处插入一行（0开始）
+.insertColumn(col)  # 在col处插入一列（0开始）
+.rowCount()
+.columnCount()
+设置文本：
+.setItem(row, col, QTableWidgetItem)  # row, col 都是从0开始
+设置Widget
+.setCellWidget(row, col, widget)
+
+调整行数/列数
+setRowCount
+setColumnCount
+
+列宽
+self.tableVids.resizeColumnsToContents()
+self.tableVids.setColumnWidth(col, wid)
+self.tableVids.columnWidth(col)
+
+拖放：
+需要同时accept dragEnterEvent和dragMoveEvent

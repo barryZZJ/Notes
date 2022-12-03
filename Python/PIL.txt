@@ -58,3 +58,13 @@ d.point( coords, fill=(r,g,b))
 #a = np.asarray(im) # a默认为只读，需要设置a.flags.writeable=True才能修改a的值。或a.setflags(write=1)（报错，用下面一种）
 a = np.array(im)
 im = Image.fromarray(a)
+
+转二进制
+def image_to_byte_array(image: Image) -> bytes:
+  # BytesIO is a fake file stored in memory
+  imgByteArr = io.BytesIO()
+  # image.save expects a file as a argument, passing a bytes io ins
+  image.save(imgByteArr, format=image.format)
+  # Turn the BytesIO object back into a bytes object
+  imgByteArr = imgByteArr.getvalue()
+  return imgByteArr

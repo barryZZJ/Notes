@@ -1,0 +1,9 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2022-11-04T13:57:39+08:00
+
+====== smb ======
+Created 星期五 04 十一月 2022
+
+owlfiles
+https://apps.microsoft.com/store/detail/owlfiles-file-manager/9MSQ3SZK42KP?hl=en-us&gl=us

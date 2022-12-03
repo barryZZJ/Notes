@@ -24,6 +24,8 @@ if ret.returncode == 0:
 else:
 	print("error:",ret)
 
+指令也可以是一整个字符串，注意路径用引号括起来避免有空格
+
 === 拦截输出 ===
 https://docs.python.org/3.9/library/subprocess.html?highlight=subprocess#subprocess.check_output
 https://python3-cookbook.readthedocs.io/zh_CN/latest/c13/p06_executing_external_command_and_get_its_output.html
@@ -49,6 +51,9 @@ https://stackoverflow.com/questions/13332268/how-to-use-subprocess-command-with-
 	x264 = subprocess.run([X264, *args, '-o', VS_TMP], stdin=vspipe.stdout, check=True, stdout=PIPE)
 	vspipe.stdout.close()
 Popen 的stdin、stdout都可以看作文件，输入/输出完需要close
+
+=== 杀掉进程 ===
+Popen.kill()
 
 === 经验 ===
 ffprobe: 错误貌似也不会returncode != 0

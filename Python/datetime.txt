@@ -42,3 +42,9 @@ datetime.today().strftime("%Y%m%dT%H%M%SZ")
 时间增减：
 st_offset = timedelta(weeks=week-1, days=day-1, hours=st.hour, minutes=st.minute, seconds=st.second)
 first_day_of_semester + st_offset
+
+根据秒数转时分秒：
+>>> str(datetime.timedelta(seconds=666))
+'0:11:06'
+>>>'{:0>8}'.format(str(datetime.timedelta(seconds=666)))
+'00:11:06'

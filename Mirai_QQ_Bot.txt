@@ -5,6 +5,10 @@ Creation-Date: 2022-09-09T10:43:03+08:00
 用户手册
 https://docs.mirai.mamoe.net/UserManual.html
 
+开发文档
+https://mirai-docs.doomteam.fun/docs/dev
+https://docs.mirai.mamoe.net/
+
 论坛
 https://mirai.mamoe.net/
 
@@ -18,7 +22,7 @@ mirai-core
 https://github.com/mamoe/mirai
 
 使用其他语言提供http接口的框架
-（需要安装mirai-api-http插件https://github.com/project-mirai/mirai-api-http
+（需要安装mirai-api-[[http%E6%8F%92%E4%BB%B6https://github.com/project-mirai/mirai-api-http]]
 启动mcl运行服务后，启动代码调用服务接口）
 https://docs.mirai.mamoe.net/#http-%E6%8E%A5%E5%8F%A3
 推荐：（基本都很活跃）

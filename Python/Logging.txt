@@ -5,8 +5,27 @@ Creation-Date: 2022-10-22T12:30:44+08:00
 ====== Logging ======
 Created 星期六 22 十月 2022
 
+import logging
 https://docs.python.org/3/library/logging.html
 
-import logging
+格式：
+https://docs.python.org/3/library/logging.html#logrecord-attributes
+https://docs.python.org/3/library/logging.html#logging.basicConfig
 
-log = logging.Logger()
+默认level为WARNING
+logging.basicConfig()
+
+fmt = '[%(asctime)s] %(message)s'
+datefmt = '%Y-%m-%d %H:%M:%S'
+logging.basicConfig(format=fmt, datefmt=datefmt, level=logging.INFO)
+
+log = logging.getLogger(name)
+log.setLevel(logging.INFO)
+
+.debug
+.info
+.warning
+.error
+
+输出到文件
+logging.basicConfig(filename='example.log', encoding='utf-8', level=logging.DEBUG)

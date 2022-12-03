@@ -1,16 +1,17 @@
 Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
 
 https://docs.python.org/3/library/csv.html
 
 import csv
 
 read:
-with open('eggs.csv', 'w', newline='') as csvfile:
-    reader = csv.reader(csvfile)
-    for row in reader:
-        print(', '.join(row))
+with open('eggs.csv', 'r', newline='') as csvfile:
+	reader = csv.reader(csvfile)
+	for row in reader:
+		print(', '.join(row))
 
 write:
 with open('eggs.csv', 'w', newline='') as csvfile:
-    writer = csv.writer(csvfile)
-    writer.writerow(<iterable>)
+	writer = csv.writer(csvfile)
+	writer.writerow(<iterable>)

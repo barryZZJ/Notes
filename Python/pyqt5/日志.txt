@@ -1,0 +1,32 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2022-10-25T17:29:48+08:00
+
+====== 日志 ======
+Created 星期二 25 十月 2022
+
+https://stackoverflow.com/questions/28655198/best-way-to-display-logs-in-pyqt
+
+{{{code: lang="python3" linenumbers="False"
+import logging
+from PyQt5.QtWidgets import QPlainTextEdit
+
+from utils_gui.conf import Site
+
+fmt = '[%(asctime)s] %(message)s'
+datefmt = '%Y-%m-%d %H:%M:%S'
+
+
+class QLogger(logging.Handler):
+    def __init__(self, site: Site, txtLog: QPlainTextEdit, level=logging.INFO):
+        super().__init__()
+        self.txtLog = txtLog
+        self.setFormatter(logging.Formatter(fmt, datefmt=datefmt))
+        logger = logging.getLogger(site.name)  # 可以从参数中接收logger
+        logger.addHandler(self)
+        logger.setLevel(level)
+
+    def emit(self, record):
+        msg = self.format(record)
+        self.txtLog.appendPlainText(msg)
+}}}

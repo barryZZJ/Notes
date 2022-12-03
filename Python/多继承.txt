@@ -1,4 +1,5 @@
 Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
 
 继承结构时采用广度优先算法
 一个super().__init__()即可调用多个父类初始化函数
@@ -6,17 +7,19 @@ Content-Type: text/x-zim-wiki
 或者：
 class D(A, B, C):
   def __init__(self, args):
-    C.__init__(self, argA) # init C
-    B.__init__(self, argB) # init B
-    A.__init__(self, argC) # init A
+	C.__init__(self, argA) # init C
+	B.__init__(self, argB) # init B
+	A.__init__(self, argC) # init A
 
 或者（注意对应关系）
 https://blog.csdn.net/qq_26442553/article/details/81775449
 class D(A, B, C):
   def __init__(self, args):
-    super(D, self).__init__(argA) # init A
-    super(A, self).__init__(argB) # init B
-    super(B, self).__init__(argC) # init C
+	super(D, self).__init__(argA) # init A
+	super(A, self).__init__(argB) # init B
+	super(B, self).__init__(argC) # init C
 
 super(obj, self)的obj是self的前一个对象
 D <- A <- B <- C
+
+调用父类函数时，按从左到右的顺序查找，执行第一个找到的函数

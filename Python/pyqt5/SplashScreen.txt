@@ -1,0 +1,9 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2022-10-23T16:34:17+08:00
+
+====== SplashScreen ======
+Created 星期日 23 十月 2022
+
+
+https://doc.qt.io/qtforpython-5/PySide2/QtWidgets/QSplashScreen.html

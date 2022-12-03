@@ -2,6 +2,12 @@ Content-Type: text/x-zim-wiki
 Wiki-Format: zim 0.6
 Creation-Date: 2022-09-02T15:29:52+08:00
 
+刷新DNS
+ipconfig /flushdns # 刷新DNS记录 
+
+PATH
+set PATH=%PATH%;C:\your\path\here\
+
 === %~dp0 ===
 将.bat路径(%0)展开到 盘符+路径
 cd /d %~dp0 即cd到当前bat所在路径
@@ -46,6 +52,10 @@ set HTTP_PROXY=localhost:9999
 set HTTPS_PROXY=%HTTP_PROXY%
 
 === 获取当前日期时间 ===
+省流：
+%date:~0,4%-%date:~5,2%-%date:~8,2%_%time:~0,2%-%time:~3,2%-%time:~6,2%
+2022-11-16_20-26-02
+
 如何获取日期呢?
 格式：  %date%
 结果： 2022/09/02 周五

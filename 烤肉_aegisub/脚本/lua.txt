@@ -1,0 +1,49 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2022-11-01T16:02:12+08:00
+
+====== lua ======
+Created 星期二 01 十一月 2022
+
+https://cheatography.com/srgmc/cheat-sheets/lua-scripting-5-1/
+https://devhints.io/lua
+https://www.lua.org/manual/5.1/manual.html
+
+数组：（下标从1开始！不支持负数下标）
+arr = {}
+#arr  ->  len(arr)
+arr[ind]
+arr[#arr]
+table.insert(arr, "foo")  # append
+table.remove(arr[, pos])  # return poped item
+table.concat(x, ", ")  # join x with ","
+切片：
+function table.slice(arr, i, j)
+	return {table.unpack(arr, i or 1, j or [[#arr]])}
+end
+	table.unpack(arr[, i[, j]])  # 返回arr[i],...,arr[j] 默认i==1, j==#arr
+或
+function table.slice(tbl, first, last, step)
+  local sliced = {}
+  for i = first or 1, last or #tbl, step or 1 do
+	sliced[#sliced+1] = tbl[i]
+  end
+  return sliced
+end
+
+for ind, ele in ipairs(arr) do # ind从1开始
+	...
+end
+
+for i = 0, n, step do
+	...
+end
+
+if ... then
+	...
+end
+
+字符串：
+'a' .. 'b'  拼接
+
+

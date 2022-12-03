@@ -32,6 +32,7 @@ lock = Lock()
 lock.acquire()
 lock.release()
 
+1. 继承threading.Thread
 class myThread(Thread):
 	def __init__(self, args):
 		super().__init__()
@@ -44,3 +45,7 @@ class myThread(Thread):
 	self.lock.release() # 解锁
 		pass
 myThread(args).start()
+
+2. tr = Thread(target=func)
+tr.start()
+

@@ -1,0 +1,11 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2022-10-26T21:16:43+08:00
+
+====== uuid ======
+Created 星期三 26 十月 2022
+
+https://docs.python.org/3/library/uuid.html
+
+uuid.uuid4()
+Generate a random UUID
