@@ -45,6 +45,7 @@ lua里escape符号要加%
 pat = re.compile()
 text, _ = pat:sub(text, repl)
 tab = pat:match(text)  注意下标从1开始
+如果要获取满足匹配的个数，用res = exp:find，#res即匹配的数量
 
 
 {{{code: lang="lua" linenumbers="False"

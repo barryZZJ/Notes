@@ -32,10 +32,15 @@ https://mirai.mamoe.net/topic/334/%E7%AE%80%E5%8D%95%E7%9A%84rss%E8%AE%A2%E9%98%
 https://github.com/gnuf0rce/rss-helper
 https://bangumi.moe/rss/search/%E7%BB%87%E6%A2%A6%E5%AD%97%E5%B9%95%E7%BB%84%20%E5%93%86%E5%95%A6A%E6%A2%A6
 
-https://bangumi.moe/rss/search/%E7%BB%87%E6%A2%A6%E5%AD%97%E5%B9%95%E7%BB%84%20%E7%AE%80%E6%97%A5%201080
-https://bangumi.moe/rss/search/%E7%BB%87%E6%A2%A6%E5%AD%97%E5%B9%95%E7%BB%84%20%E7%B9%81%E6%97%A5%201080
-https://bangumi.moe/rss/search/%E7%BB%87%E6%A2%A6%E5%AD%97%E5%B9%95%E7%BB%84%20%E7%AE%80%E6%97%A5%20720
-https://bangumi.moe/rss/search/%E7%BB%87%E6%A2%A6%E5%AD%97%E5%B9%95%E7%BB%84%20%E7%B9%81%E6%97%A5%20720
+四个种子
+/rss add https://bangumi.moe/rss/search/%E7%BB%87%E6%A2%A6%E5%AD%97%E5%B9%95%E7%BB%84%20%E7%AE%80%E6%97%A5%201080 true true
+/rss add https://bangumi.moe/rss/search/%E7%B9%94%E5%A4%A2%E5%AD%97%E5%B9%95%E7%B5%84%20%E7%B9%81%E6%97%A5%201080 false false
+/rss add https://bangumi.moe/rss/search/%E7%BB%87%E6%A2%A6%E5%AD%97%E5%B9%95%E7%BB%84%20%E7%AE%80%E6%97%A5%20720 false false
+/rss add https://bangumi.moe/rss/search/%E7%B9%94%E5%A4%A2%E5%AD%97%E5%B9%95%E7%B5%84%20%E7%B9%81%E6%97%A5%20720 false false
+织梦字幕组 哆啦A梦
+/rss add https://bangumi.moe/rss/search/%E7%BB%87%E6%A2%A6%E5%AD%97%E5%B9%95%E7%BB%84%20%E5%93%86%E5%95%A6A%E6%A2%A6 true true
+织梦字幕组 与猫共度的夜晚
+/rss add https://bangumi.moe/rss/search/%E7%BB%87%E6%A2%A6%E5%AD%97%E5%B9%95%E7%BB%84%20%E4%B8%8E%E7%8C%AB%E5%85%B1%E5%BA%A6%E7%9A%84%E5%A4%9C%E6%99%9A true true
 
 rsshub
 https://docs.rsshub.app/usage.html#sheng-cheng-ding-yue-yuan
