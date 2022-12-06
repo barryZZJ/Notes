@@ -14,4 +14,6 @@ with open('eggs.csv', 'r', newline='') as csvfile:
 write:
 with open('eggs.csv', 'w', newline='') as csvfile:
 	writer = csv.writer(csvfile)
-	writer.writerow(<iterable>)
+	writer.writerow(list)
+	writer.writerows(listoflist)
+

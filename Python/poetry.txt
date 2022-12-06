@@ -1,0 +1,11 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2022-12-06T15:45:43+08:00
+
+====== poetry ======
+Created 星期二 06 十二月 2022
+
+[[python-poetry.org]]
+https://python-poetry.org/docs/basic-usage/
+
+包管理工具

@@ -1,4 +1,7 @@
 Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+
+强制类型转换库：pydantic
 
 type hint / annotation
 
@@ -10,12 +13,12 @@ def f(a: int) -> None :
 
 或 （参见docstring.txt）
 def f(a, **kwargs):
-    '''
-    :type a:int
-    :Keyword Arguments:
-        *   **key1** (*int*, *bytes*) --
-            Description...
-    '''
+	'''
+	:type a:int
+	:Keyword Arguments:
+		* **key1** (*int*, *bytes*) --
+			Description...
+	'''
 
 指定变量：
 a # type: List[str]

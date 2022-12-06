@@ -1,4 +1,17 @@
 Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
 
 字符串键不加引号的赋值方法：
 dict(key=val)
+
+4. 拆分字典 用islice函数
+{{{code: lang="python3" linenumbers="False"
+def splitDict(d, size) -> list[dict]:
+    items = d.items()
+    ds = []
+    for i in range(0, len(d), size):
+        di = dict(islice(items, i, i+size))
+        ds.append(di)
+    return ds
+}}}
+

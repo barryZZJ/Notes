@@ -1,30 +1,64 @@
 Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
 
 https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.to_excel.html
 https://pandas.pydata.org/pandas-docs/stable/user_guide/10min.html
-https://openpyxl.readthedocs.io/en/stable/
-
 pandas read_csv/ read_excel/ to_csv/ to_excel
 
 engine:
 .xls: xlrd for read, xlwt for write (no longer maintained)
 .xlsx: xlsxwriter for write, openpyxl for read/write
+# pip install xxx
 如果没有写入内容直接保存会报IndexError错。
 
 xlsxwriter doc:
 https://xlsxwriter.readthedocs.io/working_with_pandas.html
 
+openpyxl doc:
+https://openpyxl.readthedocs.io/en/stable/#usage-examples
+{{{code: lang="python3" linenumbers="False"
+from openpyxl import load_workbook, workbook
+# read
+wb = load_workbook('input.xlsx', read_only=False)  # type: workbook.Workbook
+wb.sheetnames  # ['Sheet1', 'Sheet2']
+# worksheet
+ws = wb.active  # default is first sheet
+ws = wb['Sheet1']
+for sheet in wb:
+    print(sheet.title)
+# read contents
+for row in ws.iter_rows(min_row=1, max_col=3, max_row=2, values_only=False):
+	for cell in row:
+       print(cell)  # Cell. value if values_only=True
+ws.rows  # list[list[Cell]]
+
+for col in ws.iter_cols(min_row=1, max_col=3, max_row=2, values_only=False):
+    for cell in col:
+        print(cell)  # Cell
+ws.columns  # list[list[Cell]]
+
+for row in ws.values:
+   for value in row:
+     print(value)
+     
+# save
+wb.save('filename.xlsx')
+}}}
+
+
+
+
 自动设置列宽：（如果index=False则set_column时不用+1）
 def adjust_col_width(df, f, sheet_name, has_index=True):
-    worksheet = f.sheets[sheet_name]  # pull worksheet object
-    for idx, col in enumerate(df):  # loop through all columns
-        series = df[col]
-        max_len = max((
-            series.astype(str).map(len).max(),  # len of largest item
-            len(str(series.name))  # len of column name/header
-        ))+1  # adding a little extra space
-        offset = 1 if has_index else 0
-        worksheet.set_column(idx + offset, idx + offset, max_len)  # set column width
+	worksheet = f.sheets[sheet_name]  # pull worksheet object
+	for idx, col in enumerate(df):  # loop through all columns
+		series = df[col]
+		max_len = max((
+			series.astype(str).map(len).max(),  # len of largest item
+			len(str(series.name))  # len of column name/header
+		))+1  # adding a little extra space
+		offset = 1 if has_index else 0
+		worksheet.set_column(idx + offset, idx + offset, max_len)  # set column width
 set_column从0开始
 ############################################################
 example:
@@ -35,36 +69,36 @@ https://xlsxwriter.readthedocs.io/format.html
 {'align': 'right','bold': True, 'bottom':6}
 设置格式(xlsxwriter)
 try:
-    import pandas.io.formats.excel as fmt_xl     # version >= 0.20
+	import pandas.io.formats.excel as fmt_xl     # version >= 0.20
 except ImportError:
-    try:
-        import pandas.formats.format as fmt_xl   # 0.18 <= version < 0.20
-    except ImportError:
-        import pandas.core.format as fmt_xl      # version < 0.18
+	try:
+		import pandas.formats.format as fmt_xl   # 0.18 <= version < 0.20
+	except ImportError:
+		import pandas.core.format as fmt_xl      # version < 0.18
 
 f = pd.ExcelWriter("d:/temp/test.xlsx")
 df.to_excel(f, header=False, startrow=1)
 
 def put_headers(df, f, sheetname):
-    workbook = f.book
-    worksheet = f.sheets[sheetname]
-    header_format = workbook.add_format({
-        'bold': False,
-        'align': 'right',
-        "font_name": "Times New Roman",
-    })
+	workbook = f.book
+	worksheet = f.sheets[sheetname]
+	header_format = workbook.add_format({
+		'bold': False,
+		'align': 'right',
+		"font_name": "Times New Roman",
+	})
 
-    for col, value in enumerate(df.columns.values):
-        worksheet.write(0, col, value, header_format)
+	for col, value in enumerate(df.columns.values):
+		worksheet.write(0, col, value, header_format)
 
 def set_col_format(df, f, sheetname):
-    worksheet = f.sheets[sheetname]
-    fmt = f.book.add_format({
-        'align': 'right',
-        'font_name': "Times New Roman",
-        'num_format': '0.000',
-    })
-    worksheet.set_column(0, len(df), None, fmt)
+	worksheet = f.sheets[sheetname]
+	fmt = f.book.add_format({
+		'align': 'right',
+		'font_name': "Times New Roman",
+		'num_format': '0.000',
+	})
+	worksheet.set_column(0, len(df), None, fmt)
 
 #worksheet.set_column('A:Z', None, fmt)
 #worksheet.set_row(0, None, fmt)
@@ -78,26 +112,26 @@ df['列名'].astype(str)
 df.astype(dtype) # data type, or dict of column name
 
 pandas:
-读取excel(.xls)：.read_excel()
-读取excel(.xlsx):.read_excel(file, engine='openpyxl') (或转存成xls)
 https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.read_excel.html
+读取excel(.xls)：.read_excel()
+读取excel(.xlsx):.read_excel(file, engine='openpyxl', sheet_name=0) (或转存成xls)  # pip install openpyxl
 
 df = pd.read_excel('url.xls', index_col=None, header=None, usecols='A')
 按行读取：
 for i, row in df.iterrows():
-    type(row) # Series
+	type(row) # Series
 
 按列：
 for col in df.items():
-    type(col) # Series
+	type(col) # Series
 
 举例:
 import pandas as pd
 
 file = pd.read_excel('url.xls', index_col=None, header=None, usecols='A')
 for i, row in file.iterrows():
-    url = row[0]
-    file.iloc[i, 0] = new_value(url)
+	url = row[0]
+	file.iloc[i, 0] = new_value(url)
 
 file.to_excel('output.xls', header=False, index=False)
 file.to_excel('output.xlsx', engine='xlsxwriter')

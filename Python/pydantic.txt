@@ -1,0 +1,88 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2022-12-06T15:25:14+08:00
+
+====== pydantic ======
+Created 星期二 06 十二月 2022
+
+https://pydantic-docs.helpmanual.io/
+https://pypi.org/project/pydantic/
+
+pydantic 库是 python 中用于数据接口定义检查与设置管理的库。
+强制类型转换，如果转换失败会报ValidationError
+
+python >= 3.9
+{{{code: lang="python3" linenumbers="False"
+from datetime import datetime
+from typing import Optional
+from pydantic import BaseModel
+
+
+class User(BaseModel):
+    id: int
+    name = 'John Doe'
+    signup_ts: Optional[datetime] = None
+    friends: list[int] = []
+
+
+external_data = {
+    'id': '123',
+    'signup_ts': '2019-06-01 12:22',
+    'friends': [1, 2, '3'],
+}
+user = User(**external_data)
+print(user.id)
+#> 123
+print(repr(user.signup_ts))
+#> datetime.datetime(2019, 6, 1, 12, 22)
+print(user.friends)
+#> [1, 2, 3]
+print(user.dict())
+"""
+{
+    'id': 123,
+    'signup_ts': datetime.datetime(2019, 6, 1, 12, 22),
+    'friends': [1, 2, 3],
+    'name': 'John Doe',
+}
+"""
+}}}
+
+
+错误处理
+{{{code: lang="python3" linenumbers="False"
+from pydantic import ValidationError
+
+try:
+    User(signup_ts='broken', friends=[1, 2, 'not number'])
+except ValidationError as e:
+    print(e.json())
+}}}
+
+{{{code: lang="json" linenumbers="False"
+[
+  {
+    "loc": [
+      "id"
+    ],
+    "msg": "field required",
+    "type": "value_error.missing"
+  },
+  {
+    "loc": [
+      "signup_ts"
+    ],
+    "msg": "invalid datetime format",
+    "type": "value_error.datetime"
+  },
+  {
+    "loc": [
+      "friends",
+      2
+    ],
+    "msg": "value is not a valid integer",
+    "type": "type_error.integer"
+  }
+]
+}}}
+

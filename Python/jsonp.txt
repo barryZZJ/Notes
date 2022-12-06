@@ -1,0 +1,20 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2022-12-06T16:49:43+08:00
+
+====== jsonp ======
+Created 星期二 06 十二月 2022
+
+返回一个函数调用字符串，可以在浏览器里直接用js语言调用。
+但是用python解析需要把外层的函数名和圆括号去掉，然后用json.loads解析内部的json字符串。
+
+{{{code: lang="python3" linenumbers="False"
+import re
+import json
+
+def loads_jsonp(_jsonp):
+    try:
+        return json.loads(re.match('.*?\((.*)\).*', text, re.S).group(1))  # re.S: dot matches newline
+    except:
+    raise ValueError('Invalid Input')
+}}}

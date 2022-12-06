@@ -13,10 +13,11 @@ https://beautifulsoup.readthedocs.io/zh_CN/v4.4.0/
 
 from bs4 import BeautifulSoup
 resp = requests.get()
-soup = BeautifulSoup(resp.content:str, 'lxml'或'html.parser')
+soup = BeautifulSoup(resp.text:str, 'html.parser')  # or 'lxml'
 
 搜索：
-1.find_all(name, attrs, recursive, string, **kwargs )
+1.find_all(name, attrs, recursive, string, **kwargs )  -> list[Tag]
+
 soup.find_all("title")
 # [<title>The Dormouse's story</title>]
 
@@ -32,17 +33,18 @@ soup.find_all(id="link2")
 # [<a class="sister" href="http://example.com/lacie" id="link2">Lacie</a>]
 
 import re
-soup.find(string=re.compile("sisters")).string
+soup.find(string=re.compile("sisters")).string  # 返回的是匹配内容整体
 # 'Once upon a time there were three little sisters; and their names were\n'
 
 只返回一个元素
 （直接soup.<tag_name> 相当于 soup.find(<tag_name>)  如soup.table）
-2. find(name, attrs, recursive, string, **kwargs) == find_all(..., limit=1)
+2. find(name, attrs, recursive, string, **kwargs) == find_all(..., limit=1)   -> Tag
 soup.find(id="link3")
 soup.find(name='input')
 
 3. CSS选择器 https://www.w3school.com.cn/cssref/css_selectors.asp
-.select(str)
+.select_one(str)  -> Tag
+.select(str)  -> list[Tag]
 
 获取文本：
 .getText()
