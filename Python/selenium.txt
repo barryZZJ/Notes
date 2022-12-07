@@ -1,8 +1,8 @@
 Content-Type: text/x-zim-wiki
 Wiki-Format: zim 0.6
 
-https://www.selenium.dev/documentation/
 https://selenium-python.readthedocs.io/
+https://www.selenium.dev/documentation/
 https://www.selenium.dev/selenium/docs/api/py/api.html
 
 selenium 是用来模拟登陆获取cookie的，避免了分析网页执行原理
