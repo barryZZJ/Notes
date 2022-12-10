@@ -1,0 +1,29 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2022-12-08T20:36:16+08:00
+
+====== QFileSystemWatcher监控文件变化 ======
+Created 星期四 08 十二月 2022
+
+https://doc.qt.io/qt-6/qfilesystemwatcher.html
+
+.addPath()  -> bool 添加成功返回True，已经添加过或添加失败返回False
+.addPaths()  -> list[str] 失败的路径
+.removePath()  -> bool  文件夹不存在时会返回False
+.removePaths()  -> list
+
+监控指定文件路径的添加、删除、修改：
+.files() 查看正在监控的文件
+fileChanged  signal  文件发生修改时，返回该文件的路径
+
+监控指定文件夹内容(子文件夹无法监控)的增加、修改、删除：
+.directories() 查看正在监控的目录  存储既可以有绝对路径也可以有相对路径
+directoryChanged  signal 文件夹内容发生变化（文件增删）时，返回被监视的文件夹路径
+
+用法： https://blog.csdn.net/liang19890820/article/details/51849252
+监视文件夹：
+建立一个字典，按路径分类，currFiles[path]=set(被监视目录下的文件)，用于获取具体内容的变动情况
+directoryUpdated:
+某个路径发生变动时，该目录文件转换为集合，使用集合的差运算，
+old-new = deleted, new-old=added
+len(deleted)==len(added)==1为文件重命名，其他情况为文件增、删

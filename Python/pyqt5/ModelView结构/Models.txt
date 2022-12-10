@@ -1,0 +1,50 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2022-12-08T19:46:47+08:00
+
+====== Models ======
+Created 星期四 08 十二月 2022
+
+https://doc.qt.io/qt-6/model-view-programming.html#models
+https://doc.qt.io/qt-6/model-view-programming.html#model-classes
+
+适合list：[[https://doc.qt.io/qt-6/qabstractlistmodel.html|QAbstractListModel]] 
+适合table：[[https://doc.qt.io/qt-6/qabstracttablemodel.html|QAbstractTableModel]] 
+适合tree、list、table：[[https://doc.qt.io/qt-6/qabstractitemmodel.html|QAbstractItemModel]] 
+通用：[[https://doc.qt.io/qt-6/qstandarditemmodel.html|QStandardItemModel]]
+
+.index(row, col[, parentIndex]) -> QModelIndex
+.rowCount(parentIndex)
+.columnCount
+.data(index, role)  # roles: https://doc.qt.io/qt-6/qt.html#ItemDataRole-enum
+
+Indexes 
+https://doc.qt.io/qt-6/model-view-programming.html#model-indexes
+一条index对应一个数据Item
+临时index  [[https://doc.qt.io/qt-6/qmodelindex.html|QModelIndex]]
+永久index  [[https://doc.qt.io/qt-6/qpersistentmodelindex.html|QPersistentModelIndex]] 
+
+model通过row, col寻找一个index
+QModelIndex index = model.index(row, col, ...)
+
+Item roles https://doc.qt.io/qt-6/model-view-programming.html#item-roles
+通过指定index和role获取对应数据
+QVariant value = model->data(index, role);
+
+	* Model indexes give views and delegates information about the location of items provided by models in a way that is independent of any underlying data structures.
+	* Items are referred to by their row and column numbers, and by the model index of their parent items.
+	* Model indexes are constructed by models at the request of other components, such as views and delegates.
+	* If a valid model index is specified for the parent item when an index is requested using index(), the index returned refers to an item beneath that parent item in the model. The index obtained refers to a child of that item.
+	* If an invalid model index is specified for the parent item when an index is requested using index(), the index returned refers to a top-level item in the model.
+	* The role distinguishes between the different kinds of data associated with an item.
+
+Creating New Models 
+https://doc.qt.io/qt-6/model-view-programming.html#creating-new-models
+
+Proxy Models 对原model数据进行排序/过滤
+https://doc.qt.io/qt-6/model-view-programming.html#proxy-models
+QSortFilterProxyModel https://doc.qt.io/qt-6/qsortfilterproxymodel.html
+QAbstractProxyModel https://doc.qt.io/qt-6/qabstractproxymodel.html
+
+Model Subclassing Reference 
+https://doc.qt.io/qt-6/model-view-programming.html#model-subclassing-reference

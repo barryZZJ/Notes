@@ -1,0 +1,9 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2022-12-09T19:18:24+08:00
+
+====== watchdog监视文件变化 ======
+Created 星期五 09 十二月 2022
+
+pip install watchdog
+https://pypi.org/project/watchdog/

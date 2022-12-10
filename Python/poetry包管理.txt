@@ -1,0 +1,25 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2022-12-06T15:45:43+08:00
+
+====== poetry包管理 ======
+Created 星期二 06 十二月 2022
+
+https://python-poetry.org/
+https://python-poetry.org/docs/basic-usage/
+
+包管理工具
+Poetry replaces setup.py, requirements.txt, setup.cfg, MANIFEST.in and Pipfile with a simple pyproject.toml based project format.
+
+需要访问files.pythonhosted.org
+
+pip install poetry
+
+新建管理文件
+poetry init
+
+添加依赖到管理文件
+poetry add packname
+
+从管理文件安装依赖包
+poetry install

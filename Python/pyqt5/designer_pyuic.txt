@@ -38,55 +38,65 @@ Lib\site-packages\qt5_applications\Qt\translations
 x可以把自动生成的Ui类改写成继承自QWidget的类，但是designer的改动不好同步。
 √可以新建一个类既继承QWidget又继承pyuic生成的Ui_Form类。
 初始化时调用self.setupUi
+/layouts: layoutXxx.ui, layoutXxx.py
+/windows: wndXxx.py
 {{{code: lang="python3" linenumbers="False"
 import sys
 from PyQt5.QtCore import Qt, pyqtSlot
-from PyQt5.QtWidgets import QApplication, QDialog, QWizard, QWizardPage, QMainWindow, QMessageBox
-from layoutMain import Ui_MainWindow  # 由Designer+pyuic生成
-from utils.exception_hook import UncaughtHook
+from PyQt5.QtGui import QIcon, QCursor
+from PyQt5.QtWidgets import QApplication, QDialog, QMainWindow, QMessageBox, QLineEdit
+from layouts.layoutMain import Ui_MainWindow  # 由Designer+pyuic生成
+from utils.gui.exception_hook import UncaughtHook  # 见'错误处理'
+
 
 class MainWindow(QMainWindow, Ui_MainWindow):
     def __init__(self):
         QMainWindow.__init__(self)
         self.setupUi(self)
-		self.retranslateUi(self)
-        
+        self.retranslateUi(self)
+
         # window settings
-        # self.setFixedSize(self.width(), self.height())
-        # self.setWindowFlags(Qt.WindowMinimizeButtonHint | Qt.WindowCloseButtonHint)
-
-        # 其他初始化设置
-        ...
+        self.setFixedSize(self.width(), self.height())
+        self.setWindowFlags(Qt.WindowMinimizeButtonHint | Qt.WindowCloseButtonHint)
+    
+        # 其他初始化设置...
         self.connectSlots()  # 手动连接槽函数
-
+    
         # exception handling
         err_hook = UncaughtHook()  # 见下文
         err_hook._exception_caught.connect(self.on_exception)
-
+    
+    
     # 手动连接槽函数
     def connectSlots(self):
         def on_btnA_clicked():
             ...
+    
         self.btnA.clicked.connect(on_btnA_clicked)
-
+    
+    
     # 自动连接槽函数
     @pyqtSlot()  # 如果有参数的话，装饰器pyqtSlot()里必须要加上参数类型
     def on_pushButton_clicked(self):
         # 命名格式on_Child_SignalName，主窗口只能手动连接槽函数
         print('button clicked!')
-
+    
+    
     @pyqtSlot(str)
     def on_txtNameCN_textChanged(self, txt):
         ...
-
+    
+    
     @pyqtSlot(int)
     def on_chkWxTag_stateChanged(self, state):
         self.txtWxTag.setEnabled(state == 2)  # 0, 1, 2
-
+    
+    
     def on_exception(self, *args, sep=''):
         log_msg = sep.join(args)
         QMessageBox.critical(self, '错误', '{}'.format(log_msg))
         print(log_msg)
+
 
 if __name__ == '__main__':
     app = QApplication(sys.argv)
@@ -96,4 +106,15 @@ if __name__ == '__main__':
 
 }}}
 
+{{{code: lang="python3" linenumbers="False"
+import os
+from pathlib import Path
+
+base = 'layouts'
+for f in os.listdir(base):
+    if f.endswith('ui'):
+        p = Path(base, f)
+        print(p)
+        os.system(fr'D:\Coding\Pycharm\PyProjects\venv\publish\Scripts\pyuic5.exe {p} -o {p.with_suffix(".py")}')
+}}}
 

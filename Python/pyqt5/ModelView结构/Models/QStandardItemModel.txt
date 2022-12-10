@@ -1,0 +1,8 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2022-12-08T19:54:35+08:00
+
+====== QStandardItemModel ======
+Created 星期四 08 十二月 2022
+
+https://doc.qt.io/qt-6/qstandarditemmodel.html

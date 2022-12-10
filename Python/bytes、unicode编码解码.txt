@@ -52,7 +52,7 @@ unquote_to_bytes
 >>> print urlencode(data)
 a=test&amp;name=%C4%A7%CA%DE
 
-2. quote
+2. quote(str) -> str
 >>> from urllib.parse import quote
 >>> quote('魔兽')
 '%C4%A7%CA%DE'

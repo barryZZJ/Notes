@@ -1,0 +1,44 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2022-12-08T19:29:41+08:00
+
+====== QFileSystemModel ======
+Created 星期四 08 十二月 2022
+
+https://doc.qt.io/qt-6/qfilesystemmodel.html
+访问并处理文件/目录
+*会同步文件的变化情况
+
+{{{code: lang="python3" linenumbers="False"
+from PyQt5.QtCore import Qt, QDir
+from PyQt5.QtWidgets import QFileSystemModel
+
+self.model = QFileSystemModel()
+self.model.setRootPath(QDir.currentPath())  # 只有执行这一步才会有内容
+self.listView.setModel(self.model)
+self.listView.setRootIndex(self.model.index(QDir.currentPath()))
+}}}
+
+
+使用Index的示例
+https://doc.qt.io/qt-6/model-view-programming.html#using-model-indexes
+{{{code: lang="c-sharp" linenumbers="False"
+auto *model = new QFileSystemModel;
+
+auto onDirectoryLoaded = [model, layout, &window](const QString &directory) {
+    QModelIndex parentIndex = model->index(directory);
+    const int numRows = model->rowCount(parentIndex);
+    for (int row = 0; row < numRows; ++row) {
+        QModelIndex index = model->index(row, 0, parentIndex);
+
+        QString text = model->data(index, Qt::DisplayRole).toString();
+        // Display the text in a widget.
+        auto *label = new QLabel(text, &window);
+        layout->addWidget(label);
+    }
+};
+
+QObject::connect(model, &QFileSystemModel::directoryLoaded, onDirectoryLoaded);
+model->setRootPath(QDir::currentPath());
+}}}
+

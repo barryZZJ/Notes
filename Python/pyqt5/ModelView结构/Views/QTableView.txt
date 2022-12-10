@@ -1,0 +1,17 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2022-12-08T19:47:24+08:00
+
+====== QTableView ======
+Created 星期四 08 十二月 2022
+
+https://doc.qt.io/qt-6/qtableview.html
+
+example
+https://doc.qt.io/qt-6/qtsql-tablemodel-example.html
+https://doc.qt.io/qt-6/qtsql-cachedtable-example.html
+
+.setModel(model)
+.resizeColumnsToContents()
+
+见 [[:Python:pyqt5:ModelView结构:Models:QSqlModel]]

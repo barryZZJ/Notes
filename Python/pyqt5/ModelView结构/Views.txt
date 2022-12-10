@@ -1,0 +1,16 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2022-12-08T19:47:08+08:00
+
+====== Views ======
+Created 星期四 08 十二月 2022
+
+https://doc.qt.io/qt-6/model-view-programming.html#views
+
+https://doc.qt.io/qt-6/model-view-programming.html#view-classes
+
+现成的三个view
+Qt provides three ready-to-use view classes that present data from models in ways that are familiar to most users. QListView can display items from a model as a simple list, or in the form of a classic icon view. 
+QTreeView displays items from a model as a hierarchy of lists, allowing deeply nested structures to be represented in a compact way. 
+QTableView presents items from a model in the form of a table, much like the layout of a spreadsheet application.
+{{.\pasted_image.png}}

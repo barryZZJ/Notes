@@ -1,0 +1,62 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2022-12-08T19:24:42+08:00
+
+====== QTable表格 ======
+Created 星期四 08 十二月 2022
+
+https://doc.qt.io/qt-6/qtablewidget.html
+**QTableWidget**
+Widget是Item-Based，可以代码动态调整；而QTableView是Model-Based，只能从数据库读取
+
+horizontalHeaderVisible
+verticalHeaderVisible
+
+row和col标签均从0开始
+.setItem(row, col, item)  # 该行必须存在
+
+.rowCount()
+.setRowCount  # 直接调整整体行数
+.insertRow(int) # 在row处插入一行（0开始）
+.removeRow(int)
+
+.columnCount()
+.setColumnCount
+.insertColumn(int) # 在col处插入一列（0开始）
+.removeColumn(int)
+self.pageTodo.setColumnWidth(0, self.pageTodo.width())
+
+.item(row, col)  -> QTableWidgetItem
+.cellWidget(row, col)  -> QWidget
+
+.clear()
+.clearContents()
+
+.setCurrentCell(row, col)
+.setCurrentItem(qtablewidgetitem)
+设置文本：
+.setItem(row, col, QTableWidgetItem)  # row, col 都是从0开始
+设置Widget
+.setCellWidget(row, col, widget)
+
+列宽
+self.tableVids.resizeColumnsToContents()
+self.tableVids.setColumnWidth(col, wid)
+self.tableVids.columnWidth(col)
+
+拖放：
+需要同时accept dragEnterEvent和dragMoveEvent
+
+**QTableWidgetItem**
+每一个单元格的控件
+https://doc.qt.io/qt-6/qtablewidgetitem.html
+.row()
+.setText
+text()
+
+**QTableView**
+https://doc.qt.io/qt-6/qtableview.html
+model-based
+详见 [[:Python:pyqt5:ModelView结构:Views:QTableView]]
+
+

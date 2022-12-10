@@ -57,10 +57,6 @@ line_edit.setStyleSheet("QLineEdit { background-color: lightblue; }")
 '''
 
 
-=== QTabWidget ===
-获取当前页面标题文本：
-tab.tabText(tab.currentIndex())
-
 === QPixmap 显示图片 ===
 https://www.riverbankcomputing.com/static/Docs/PyQt5/api/qtgui/qpixmap.html
 PyQt5.QtGui.QPixmap
@@ -76,13 +72,6 @@ QLabel.setPixmap()
 https://www.cnblogs.com/findumars/p/8001584.html
 https://blog.csdn.net/weixin_46168054/article/details/124777274
 
-=== QTabWidget ===
-.indexOf(widget)
-.widget(index)
 
-def removeTab(self, index):
-	pg = self.tabs.widget(index)
-	if pg is not None:
-		pg.deleteLater()
-	self.tabs.removeTab(index)
+
 

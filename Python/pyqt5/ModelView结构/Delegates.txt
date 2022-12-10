@@ -1,0 +1,24 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2022-12-08T19:49:13+08:00
+
+====== Delegates ======
+Created 星期四 08 十二月 2022
+
+https://doc.qt.io/qt-6/model-view-programming.html#delegates
+https://doc.qt.io/qt-6/model-view-programming.html#delegate-classes
+
+QAbstractItemDelegate
+https://doc.qt.io/qt-6/qabstractitemdelegate.html
+
+QStyledItemDelegate
+https://doc.qt.io/qt-6/qstyleditemdelegate.html
+
+QItemDelegate
+https://doc.qt.io/qt-6/qitemdelegate.html
+
+example https://doc.qt.io/qt-6/model-view-programming.html#a-simple-delegate
+createEditor() 生成editor
+setEditorData() 以EditorRole读取model的数据，作为editor的数据
+setModelData() 关闭editor后把editor修改好的数据写回model
+signal: closeEditor

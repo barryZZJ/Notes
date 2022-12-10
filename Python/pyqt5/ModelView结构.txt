@@ -1,0 +1,27 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2022-12-08T19:20:20+08:00
+
+====== ModelView结构 ======
+Created 星期四 08 十二月 2022
+
+https://doc.qt.io/qt-6/model-view-programming.html
+
+数据与显示分离，类似数据库与视图
+Model+View+Delegate
+
+Model 存储数据
+View 展示数据，处理用户输入
+Delegate 修改数据，渲染到view上
+{{.\pasted_image.png}}
+If you wish to take advantage of the features provided by the model/view approach while still using an item-based interface, consider using view classes, such as QListView, QTableView, and QTreeView with QStandardItemModel.
+
+The Model/View Classes 
+https://doc.qt.io/qt-6/model-view-programming.html#the-model-view-classes
+
+examples
+https://doc.qt.io/qt-6/model-view-programming.html#using-models-and-views
+
+Handling Selections in Item Views
+https://doc.qt.io/qt-6/model-view-programming.html#handling-selections-in-item-views
+

@@ -2,7 +2,7 @@ Content-Type: text/x-zim-wiki
 Wiki-Format: zim 0.6
 Creation-Date: 2022-10-23T16:45:09+08:00
 
-====== 文件对话框QFileDialog ======
+====== QFileDialog文件选择框 ======
 Created 星期日 23 十月 2022
 
 from PyQt5.QtWidgets import QFileDialog
@@ -14,29 +14,49 @@ https://blog.csdn.net/humanking7/article/details/80546728
 .directory()
 .absolutePath()
 
+打开文件示例：
 {{{code: lang="python3" linenumbers="False"
 import sys
+import os
 from PyQt5.QtWidgets import QWidget, QFileDialog
 from PyQt5.QtWidgets import QApplication
 
 class FilePicker(QFileDialog):
-    def __init__(self, parent:QWidget=None):
+    def __init__(self, parent: QWidget=None):
         super(FilePicker, self).__init__(parent)
 
-    def pickVideo(self):
+    def pickVideo(self, dir=os.getcwd()) -> str:
         self.setFileMode(QFileDialog.ExistingFile)
-        self.setNameFilter('视频(*.mkv *.mp4 *.flv *.avi *.wmv *.mpg *.avs)')
+        self.setDirectory(dir)
+        self.setNameFilter('*.mkv *.mp4 *.flv *.avi *.wmv *.mpg *.avs')
         if self.exec_():
             # 选中文件, 返回码==1
             # return list of full path
             filenames = self.selectedFiles()
+            return filenames[0].replace('/', '\\')
         # 未选中文件，返回码==0
+        return ''
+
+    def pickFiles(self, dir=os.getcwd()) -> list[str]:
+        self.setFileMode(QFileDialog.ExistingFiles)
+        self.setDirectory(dir)
+        if self.exec_():
+            # 选中文件, 返回码==1
+            # return list of full path
+            filenames = self.selectedFiles()
+            return [filename.replace('/', '\\') for filename in filenames]
+        # 未选中文件，返回码==0
+        return []
 
 
 if __name__ == '__main__':
     app = QApplication(sys.argv)
     window = QWidget()
     window.show()
-    FilePicker(window).pickVideo()
+ 
+    if filepath := FilePicker(window).pickVideo():
+    	lastdir = picker.directory().absolutePath()
+    	...
+    	
     sys.exit(app.exec_())
 }}}

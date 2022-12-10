@@ -1,6 +1,8 @@
 Content-Type: text/x-zim-wiki
 Wiki-Format: zim 0.6
 
+单继承时使用super()可以得到父类对象，调用函数不需要再传入self
+
 继承结构时采用广度优先算法
 一个super().__init__()即可调用多个父类初始化函数
 

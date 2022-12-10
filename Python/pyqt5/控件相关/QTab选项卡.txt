@@ -1,0 +1,22 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2022-12-08T19:14:08+08:00
+
+====== QTab选项卡 ======
+Created 星期四 08 十二月 2022
+
+**QTabWidget** 选项卡控件
+https://doc.qt.io/qt-6/qtabwidget.html
+
+获取当前页面标题文本：
+tab.tabText(tab.currentIndex())
+
+.indexOf(widget)
+.widget(index)
+
+删除选项卡
+def removeTab(self, index):
+	pg = self.tabs.widget(index)
+	if pg is not None:
+		pg.deleteLater()
+	self.tabs.removeTab(index)

@@ -14,7 +14,9 @@ conn = sqlite3.connect("database.db")
 c = conn.cursor()
 
 # CREATE
-c.execute('CREATE TABLE IF NOT EXISTS numbers (id integer primary key ,number varchar(20) NOT NULL)') 
+c.execute('CREATE TABLE IF NOT EXISTS numbers (id integer primary key, number varchar(20) NOT NULL)')
+表名如果包含特殊符号，需要用双引号括起来
+TEXT
 conn.commit()
 
 # SELECT
@@ -32,9 +34,17 @@ conn.close()
 .fetchmany()
 .fetchall()
 
+# INSERT
+INSERT INTO COMPANY (ID,NAME,AGE,ADDRESS,SALARY) VALUES (1, 'Paul', 32, 'California', 20000.00 );
+INSERT INTO COMPANY VALUES (7, 'James', 24, 'Houston', 10000.00 );
+
 实现insert if not exists else update:
-注意使用insert or replace的话，未赋值的域会置默认值
-https://stackoverflow.com/questions/3634984/insert-if-not-exists-else-update
+1.设置主键后，使用insert or replace 如果替换与主键匹配的其他域值 https://stackoverflow.com/a/23673922
+	INSERT OR REPLACE INTO Book(ID, Name) VALUES(1001, 'SQLite');
+	注意未赋值的域会置默认值
+2.使用insert or ignore + update
+3.先update，如果affected rows = 0，则insert
+
 
 注意每次commit都会占用一次磁盘IO，因此可以的话尽量执行一组操作后一次性commit
 

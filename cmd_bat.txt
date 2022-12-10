@@ -50,6 +50,8 @@ curl -JLO url
 set HTTP_PROXY=http://proxy_userid:proxy_password@proxy_ip:proxy_port
 set HTTP_PROXY=localhost:9999
 set HTTPS_PROXY=%HTTP_PROXY%
+查看变量
+set HTTP_PROXY
 
 === 获取当前日期时间 ===
 省流：

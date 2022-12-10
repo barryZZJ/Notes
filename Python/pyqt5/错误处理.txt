@@ -11,6 +11,7 @@ Created 星期日 23 十月 2022
 
 === 优雅的错误处理：使用exception_hook ===
 https://timlehr.com/python-exception-hooks-with-qt-message-box/
+exception_hook.py
 {{{code: lang="python3" linenumbers="False"
 import sys
 import traceback

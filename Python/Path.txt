@@ -9,24 +9,33 @@ https://docs.python.org/3.9/library/pathlib.html
 
 from pathlib import Path
 
-.iterdir()  # iterator 遍历当前目录
+str(Path)  # 转换为当前系统下的路径字符串
+.iterdir()  -> iterator # 遍历当前目录，相当于os.listdir()
 .mkdir(parents=False, exist_ok=False)  # parents: 创建不存在的父级目录
 .exists()
 .is_dir() .is_file()
 .open(mode='r')
 .resolve()  # 处理. ..等字符，返回绝对路径
-.as_posix()  # \\转换为/
-.as_uri()   # 开头加上file://字样
+.as_posix()  # 把\\转换为unix下的/
+.as_uri()   # [[%E5%BC%80%E5%A4%B4%E5%8A%A0%E4%B8%8Afile://%E5%AD%97%E6%A0%B7]]
 .is_absolute()
 .is_relative_to()
 .joinpath()
-.match()
+.match() -> bool  # 格式同glob
 .relative_to()
 .with_name()  # 把最后一级文件名换成新名，如路径不含文件名会报ValueError
 .with_stem()   # 替换文件名，保持相同后缀名
-.with_suffix()
+.with_suffix()  # 替换后缀名（需包含'.'）
 .stat()  # os.stat_result  # .st_size .st_mtime
-.glob() # 通配符匹配. sorted(Path('.').glob('*/*.py'))
+.glob() -> iter[Path] # 使用通配符匹配. Path('.').glob('*/*.py')
+	一个星号匹配一级路径或任意文件名，两个星号匹配任意级(0级以上)路径
+	模拟os.walk：(对于Path.glob，结尾带不带/不影响结果。直接使用glob库时结尾带/表示文件夹）
+	'**'  递归搜索所有子文件夹（含根目录）
+	'*/**'  递归搜索所有子文件夹（不含根目录）
+	'**/*.*' 递归搜索所有子文件
+	'*' 匹配一级文件夹和文件
+	'*.*' 匹配一级文件
+	[f for f in p.iterdir() if f.is_dir()]  # glob不能匹配一级文件夹
 .write_bytes() .read_bytes()
 .write_text() .read_text()
 .rename() .replace()
@@ -37,9 +46,9 @@ from pathlib import Path
 .drive
 .anchor  # 'c:\\'
 .parents  # [0]: 文件所在目录 [1]: 上一级目录 [2]...
-.parent
+.parent  # 文件所在目录或路径的上一级目录
 .name  # 文件名
 .suffix  # 后缀名
 .suffixes  # 后缀名列表，从左往右
-.stem  # 文件名部分（去除后缀名）
+.stem  # 文件名部分（去除后缀名和前面的路径）
 

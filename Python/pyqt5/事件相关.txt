@@ -5,7 +5,6 @@ Creation-Date: 2022-10-23T16:31:34+08:00
 ====== 事件相关 ======
 Created 星期日 23 十月 2022
 
-
 === 查找Signal(触发事件)函数名： ===
 在 https://www.riverbankcomputing.com/static/Docs/PyQt5/ 中搜索对应的控件名如QLineEdit，然后到最下面即可找到
 
@@ -39,30 +38,20 @@ designer中选择设置信号/槽，把按钮连接到form上，在form那一栏
 新建QDialog的子类，实现刚刚添加的槽函数
 self.chk_modsw.stateChanged['int'].connect(Form.stateChanged) # 0:no, 1:half, 2:check
 
-=== 信号与槽函数： ===
-from PyQt5.QtCore import pyqtSignal, pyqtSlot, QObject
-class Obj(QObject):
-	newSignal = pyqtSignal(<type>) # 如果信号有参数，type里指明参数类型，如str, int
+=== 自定义信号与槽函数： ===
+from PyQt5.QtCore import pyqtSignal, pyqtBoundSignal, pyqtSlot, QObject
+class MyObj(QObject):
+	# 要定义成类的静态成员
+	started = pyqtSignal()
+	newSignal = pyqtSignal(<type>)  # 如果信号有参数，type里指明参数类型，如str, int  # type: pyqtBoundSignal
 	def doSomething(self):
 		....
 		self.newSignal.emit(<param>) # 发射信号
-连接槽函数
-1. obj.newSignal.connect(slotFunc) # 槽函数捕捉信号即可
-2. Obj(newSignal=slotFunc) # 初始化时直接传递槽函数也可
-
-也可以连接其他信号
-
-=== 定义信号Signal： ===
-from PyQt5.QtCore import pyqtSignal
-class MyObj:
-	新建：
-	要定义成类的静态成员。参数str就代表这个信号可以传一个字符串
-	trigger = pyqtSignal(str)  # type: pyqtBoundSignal
-	
-	触发：
-	self.trigger.emit("a signal")
 
 连接到外部的槽函数
-myobj.trigger.connect(handleFunc)
-def handleFunc(self, str):
+1. myobj.signalName.connect(slotFunc) # 槽函数捕捉信号即可
+myobj.started.connect(self.onStart)
+def onStart(self, str):
 	...
+2. Obj(signalName=slotFunc) # 初始化时直接传递槽函数也可
+

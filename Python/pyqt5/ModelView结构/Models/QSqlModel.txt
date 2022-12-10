@@ -1,0 +1,73 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2022-12-08T19:33:44+08:00
+
+====== QSqlModel ======
+Created 星期四 08 十二月 2022
+
+QSqlQueryModel 
+https://doc.qt.io/qt-6/qsqlquerymodel.html
+对数据库的只读操作
+
+QSqlTableModel 
+https://doc.qt.io/qt-6/qsqltablemodel.html
+对数据库的读写操作
+(db=QSqlDatabase) # db必须先open
+.setTable('tablename')
+.setEditStrategy
+.setFilter 
+.select() 更新查询结果
+.setHeaderData(col, Qt.Horizontal, 'Dispname')  # 设置在view中的显示名字
+
+example 
+https://doc.qt.io/qt-6/qtsql-tablemodel-example.html
+https://doc.qt.io/qt-6/qtsql-cachedtable-example.html
+{{{code: lang="python3" linenumbers="False"
+db = QSqlDatabase.addDatabase('QSQLITE', pubtype.name)
+db.setDatabaseName('cache.db')
+db.open()
+model = QSqlTableModel(parent, db)
+model.setTable('tablename')
+model.select()
+model.setHeaderData(0, Qt.Horizontal, 'newheader')  # 修改显示的列名
+
+view = QTableView()
+view.setModel(model)
+view.hideColumn(1)  # 隐藏对应列
+view.resizeColumnsToContents()  # 自适应每一列的列宽
+}}}
+
+
+QSqlRelationalTableModel 
+https://doc.qt.io/qt-6/qsqlrelationaltablemodel.html
+在QSqlTableModel的基础上支持外键
+
+QSqlDatabase
+https://doc.qt.io/qt-6/qsqldatabase.html
+用于连接到数据库
+do not keep a copy of the QSqlDatabase around as a member of a class
+db = QSqlDatabase.addDatabase('QSQLITE', connname)
+db.setDatabaseName('test.db')  # 数据库文件名 注意调用open后才会新建文件
+.open() 执行后才会创建文件
+.exec(query) -> QSqlQuery  https://doc.qt.io/qt-6/qsqlquery.html
+.tables()
+.record(tableName) -> QSqlRecord
+.transaction()
+.commit()
+.rollback()
+.lastError()  -> QSqlError https://doc.qt.io/qt-6/qsqlerror.html
+
+继承方法：
+{{{code: lang="python3" linenumbers="False"
+def __init__(self):
+    super().__init__(super().addDatabase('QSQLITE'))
+    self.setDatabaseName(str(PATHS.DB))
+}}}
+
+
+QSqlRecord 
+https://doc.qt.io/qt-6/qsqlrecord.html
+对应数据库或View的一行
+.fieldName(int) -> str 列名
+.field(int) -> QSqlField https://doc.qt.io/qt-6/qsqlfield.html
+
