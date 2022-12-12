@@ -2,7 +2,7 @@ Content-Type: text/x-zim-wiki
 Wiki-Format: zim 0.6
 Creation-Date: 2022-10-23T16:30:45+08:00
 
-====== 错误处理 ======
+====== 错误处理exception hook ======
 Created 星期日 23 十月 2022
 
 
@@ -44,4 +44,13 @@ class UncaughtHook(QtCore.QObject):
 
             # trigger message box show
             self._exception_caught.emit(log_msg)
+
+
+def on_exception(parent, *args, sep=''):
+    log_msg = sep.join(args)
+    QMessageBox.critical(parent, '错误', '{}'.format(log_msg))
+    print(log_msg)
+
+err_hook = UncaughtHook()
+err_hook._exception_caught.connect(self.on_exception)
 }}}

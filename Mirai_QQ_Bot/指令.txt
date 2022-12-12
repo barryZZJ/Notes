@@ -16,6 +16,7 @@ https://mirai.mamoe.net/topic/223/%E6%97%A0%E6%B3%95%E7%99%BB%E5%BD%95%E7%9A%84%
 
 code=235:
 https://github.com/mamoe/mirai/issues/2298
+https://mirrors.huaweicloud.com/repository/maven
 {{.\pasted_image.png}}
 ./mcl --update-package net.mamoe:mirai-console-terminal --channel maven-prerelease
 ./mcl --update-package net.mamoe:mirai-core-all --channel maven-prerelease

@@ -46,7 +46,7 @@ from PyQt5.QtCore import Qt, pyqtSlot
 from PyQt5.QtGui import QIcon, QCursor
 from PyQt5.QtWidgets import QApplication, QDialog, QMainWindow, QMessageBox, QLineEdit
 from layouts.layoutMain import Ui_MainWindow  # 由Designer+pyuic生成
-from utils.gui.exception_hook import UncaughtHook  # 见'错误处理'
+from utils.gui.exception_hook import UncaughtHook, on_exception  # 见'exception hook'
 
 
 class MainWindow(QMainWindow, Ui_MainWindow):
@@ -61,7 +61,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
     
         # exception handling
         err_hook = UncaughtHook()  # 见下文
-        err_hook._exception_caught.connect(self.on_exception)
+        err_hook._exception_caught.connect(lambda msg: on_exception(self, msg))
         
         # 其他初始化设置...
         self.connectSlots()  # 手动连接槽函数
@@ -94,12 +94,6 @@ class MainWindow(QMainWindow, Ui_MainWindow):
     def on_chkWxTag_stateChanged(self, state):
         self.txtWxTag.setEnabled(state == 2)  # 0, 1, 2
     
-    # misc
-    def on_exception(self, *args, sep=''):
-        log_msg = sep.join(args)
-        QMessageBox.critical(self, '错误', '{}'.format(log_msg))
-        print(log_msg)
-
 
 if __name__ == '__main__':
     app = QApplication(sys.argv)
@@ -109,6 +103,7 @@ if __name__ == '__main__':
 
 }}}
 
+buildLayouts:
 {{{code: lang="python3" linenumbers="False"
 import os
 from pathlib import Path
