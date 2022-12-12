@@ -18,6 +18,10 @@ https://doc.qt.io/qt-6/qsqltablemodel.html
 .setFilter 
 .select() 更新查询结果
 .setHeaderData(col, Qt.Horizontal, 'Dispname')  # 设置在view中的显示名字
+修改数据：
+1. 设置EditStrategy
+2. 调用.setData()，会根据strategy确定何时修改数据库数据
+3. 调用.submitAll() 如果策略为OnManualSubmit  （不需要调用.select()）
 
 example 
 https://doc.qt.io/qt-6/qtsql-tablemodel-example.html

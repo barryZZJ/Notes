@@ -52,3 +52,6 @@ soup.find(name='input')
 .string
 获取属性
 [attr]
+
+outerHtml: str(parsed)
+innerHtml: .decode_contents().strip() -> str

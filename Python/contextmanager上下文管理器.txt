@@ -1,4 +1,5 @@
 Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
 
 使用contextlib.contextmanager
 https://docs.python.org/3/library/contextlib.html
@@ -7,22 +8,25 @@ import contextlib
 
 @contextlib.contextmanager
 def log_context(key):
-    log._config.context.append(key)
-    yield
-    log._config.context.pop()
+	log._config.context.append(key)
+	yield
+	log._config.context.pop()
 
 
 @contextlib.contextmanager
 def time_measure(key):
-    start = time.perf_counter()
-    yield var
-    end = time.perf_counter()
-    elapsed = end - start
-    log.data(key, elapsed)
+	start = time.perf_counter()
+	yield var
+	end = time.perf_counter()
+	elapsed = end - start
+	log.data(key, elapsed)
 
 使用：
 with log_context(name):
-        ...
+		...
 
 with time_measure(key) as v:
-    ...
+	...
+	
+或考虑使用装饰器（闭包）
+

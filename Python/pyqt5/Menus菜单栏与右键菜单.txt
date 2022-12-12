@@ -1,0 +1,40 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2022-12-11T13:45:42+08:00
+
+====== Menus菜单栏与右键菜单 ======
+Created 星期日 11 十二月 2022
+
+右键菜单：
+https://doc.qt.io/qt-6/qwidget.html#contextMenuEvent
+
+Qt::ContextMenuPolicy
+https://doc.qt.io/qt-6/qt.html#ContextMenuPolicy-enum
+
+QContextMenuEvent 
+https://doc.qt.io/qt-6/qcontextmenuevent.html
+
+QMenu
+https://doc.qt.io/qt-6/qmenu.html
+.addAction  -> 需要设为成员变量
+.addActions
+.addSeparator
+.addSection
+.exec(event.globalPos(), actions)  # synchronous 可以是局部变量，会阻塞main loop
+.popup(event.globalPos(), actions)  # async 需要存成成员变量
+
+signal
+triggered(action)
+hovered(action
+
+QAction
+https://doc.qt.io/qt-6/qaction.html
+要设置parent才能显示statusTip
+signal
+triggered
+
+example（主要是菜单栏）
+https://doc.qt.io/qt-6/qtwidgets-mainwindows-menus-example.html
+
+实现方法：
+在QWidget.contextMenuEvent()中调用QMenu的popup() / exec()方法弹出菜单

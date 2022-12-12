@@ -51,21 +51,24 @@ from utils.gui.exception_hook import UncaughtHook  # 见'错误处理'
 
 class MainWindow(QMainWindow, Ui_MainWindow):
     def __init__(self):
-        QMainWindow.__init__(self)
+        super().__init__()
         self.setupUi(self)
         self.retranslateUi(self)
 
         # window settings
-        self.setFixedSize(self.width(), self.height())
+        # self.setFixedSize(self.width(), self.height())
         self.setWindowFlags(Qt.WindowMinimizeButtonHint | Qt.WindowCloseButtonHint)
-    
-        # 其他初始化设置...
-        self.connectSlots()  # 手动连接槽函数
     
         # exception handling
         err_hook = UncaughtHook()  # 见下文
         err_hook._exception_caught.connect(self.on_exception)
+        
+        # 其他初始化设置...
+        self.connectSlots()  # 手动连接槽函数
     
+    
+    # utils
+
     
     # 手动连接槽函数
     def connectSlots(self):
@@ -91,7 +94,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
     def on_chkWxTag_stateChanged(self, state):
         self.txtWxTag.setEnabled(state == 2)  # 0, 1, 2
     
-    
+    # misc
     def on_exception(self, *args, sep=''):
         log_msg = sep.join(args)
         QMessageBox.critical(self, '错误', '{}'.format(log_msg))

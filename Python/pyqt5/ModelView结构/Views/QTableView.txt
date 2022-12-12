@@ -15,3 +15,9 @@ https://doc.qt.io/qt-6/qtsql-cachedtable-example.html
 .resizeColumnsToContents()
 
 见 [[:Python:pyqt5:ModelView结构:Models:QSqlModel]]
+
+
+处理选择项：
+.selectedIndexes()  ->  list[QModelIndex]
+
+如果用了proxymodel，返回则是proxyModel的index，但与其是否sort无关。

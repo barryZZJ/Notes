@@ -41,10 +41,16 @@ QVariant value = model->data(index, role);
 Creating New Models 
 https://doc.qt.io/qt-6/model-view-programming.html#creating-new-models
 
-Proxy Models 对原model数据进行排序/过滤
+Proxy Models 对原model数据进行排序/过滤，或者自定义操作，而不修改原始数据
 https://doc.qt.io/qt-6/model-view-programming.html#proxy-models
 QSortFilterProxyModel https://doc.qt.io/qt-6/qsortfilterproxymodel.html
+如需动态修改过滤条件，需要初始化时调用setDynamicSortFilter(True)
+.mapToSource(index) -> Index
+.mapFromSource(Index) -> Index
+
 QAbstractProxyModel https://doc.qt.io/qt-6/qabstractproxymodel.html
+https://www.qt.io/blog/2012/01/12/qt-commercial-support-weekly-10-sorting-filtering-and-advanced-manipulation-with-proxy-models-2
+
 
 Model Subclassing Reference 
 https://doc.qt.io/qt-6/model-view-programming.html#model-subclassing-reference

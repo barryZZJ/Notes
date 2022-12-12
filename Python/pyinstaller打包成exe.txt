@@ -19,7 +19,6 @@ exe文件路径：''os.path.dirname(sys.executable) ''双击运行时，os.getcw
 
 '''
 ISEXE = hasattr(sys, 'frozen')
-BASE = 
 BASE = os.path.dirname(sys.executable if ISEXE else __file__)  # exe/py所在路径
 BASE_TMP = sys._MEIPASS if ISEXE else BASE # 打包后运行时系统tmp(-F)/exe(-D)所在路径，用于读取附加文件
 '''
@@ -51,6 +50,10 @@ BASE_TMP = sys._MEIPASS if ISEXE else BASE # 打包后运行时系统tmp(-F)/exe
 --workpath WORKPATH    default: ./build
 --specpath DIR    default: ./
 
+spec文件：
+设置中文：
+name=u'中文名'
+
 打包pyqt5时可能会弹出warning，
 在xx.spec文件里a=Analysis()后添加：
 for b in a.binaries:
@@ -74,3 +77,11 @@ getattr(sys, 'frozen', False)
 === 生成多个exe ===
 https://www.zacoding.com/en/post/pyinstaller-create-multiple-executables/
 使用pyi-makespec分别生成各自的spec，然后整合在一起共用一个COLLECT函数 (参数与pyinstaller一致）
+
+PyQt5代码示例
+{{{code: lang="powershell" linenumbers="False"
+@echo off
+call "D:\Coding\Pycharm\PyProjects\venv\publish\Scripts\activate.bat"
+pyinstaller PublishAssistant.py -w -y --clean --add-data README.md;./ --add-data bin/;./bin/ --add-data icon.ico;./ -i icon.ico
+}}}
+

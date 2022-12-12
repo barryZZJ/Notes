@@ -11,8 +11,8 @@ https://doc.qt.io/qt-6/qtextedit.html
 
 内容：
 .html
-setHTML(str)
-toHTML() -> htmlstr
+setHTML(str)  以html格式解析，展示解析后的内容
+toHTML() -> htmlstr  把显示内容转换为html后返回
 Supported HTML Subset
 https://doc.qt.io/qt-6/richtext-html-subset.html
 
@@ -21,8 +21,8 @@ setMarkdown(str)
 toMarkdown() -> str
 
 .plainText
-setPlainText(str)
-toPlainText()  -> str
+setPlainText(str)  不解析，原封不动显示
+toPlainText()  -> str  把内容原封不动返回
 
 插入文本：
 使用QTextCursor

@@ -11,6 +11,8 @@ Wiki-Format: zim 0.6
 授权、日志（记录某个函数被调用了）、异常处理等
 注意：不适用于需要类成员的情况！考虑使用with上下文管理
 
+可以多个装饰器连用，从最靠近函数名开始依次装饰
+
 1.使用functools.wraps。demo：
 https://docs.python.org/3/library/functools.html
 https://www.runoob.com/w3cnote/python-func-decorators.html
