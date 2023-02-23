@@ -7,13 +7,13 @@ Created 星期四 08 十二月 2022
 
 QSqlQueryModel 
 https://doc.qt.io/qt-6/qsqlquerymodel.html
-对数据库的只读操作
+对数据库的select操作，只读操作
 
 QSqlTableModel 
 https://doc.qt.io/qt-6/qsqltablemodel.html
-对数据库的读写操作
+对数据库Table的读写操作
 (db=QSqlDatabase) # db必须先open
-.setTable('tablename')  # 注意表名不能含`.`，建议做一层mapping
+.setTable('tablename')  # 注意表名含`.`时
 .setEditStrategy
 .setFilter 
 .select() 更新查询结果
