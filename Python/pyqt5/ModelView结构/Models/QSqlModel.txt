@@ -13,7 +13,7 @@ QSqlTableModel
 https://doc.qt.io/qt-6/qsqltablemodel.html
 对数据库的读写操作
 (db=QSqlDatabase) # db必须先open
-.setTable('tablename')
+.setTable('tablename')  # 注意表名不能含`.`，建议做一层mapping
 .setEditStrategy
 .setFilter 
 .select() 更新查询结果

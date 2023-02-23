@@ -16,7 +16,7 @@ c = conn.cursor()
 
 # CREATE
 c.execute('CREATE TABLE IF NOT EXISTS numbers (id integer primary key, number varchar(20) NOT NULL)')
-表名如果包含特殊符号，需要用双引号括起来（注意经测试虽然有引号，但含.时仍然读取不出来，建议做一下mapping）
+表名如果包含特殊符号，需要用双引号括起来（但PyQt的db似乎不支持特殊符号，建议做一层mapping）
 TEXT
 conn.commit()
 
