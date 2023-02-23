@@ -34,7 +34,10 @@ parser.add_argument("-v", type=bool, default=False) # 这种情况下不带-v则
 
 metavar="xxx" : 改变帮助内容里显示的参数名
 
+# 解析程序参数
 args = parser.parse_args()
+# 解析自定义参数
+args = parser.parse_args(['arg1', '-o', 'arg2'])
 
 获取参数：
 args.some (如果add_argument中为'-'，这里需要使用'_'；大小写保持不变)
@@ -47,3 +50,21 @@ vars(args)，输出字典
 手动处理参数错误的情况（可以用于exe双击执行时自定义处理方式）(python>=3.9)
 https://docs.python.org/3.9/library/argparse.html#exit-on-error
 如果不管用，可以继承并重载parser.error()函数
+
+{{{code: lang="python3" linenumbers="False"
+import argparse
+
+def my_error(message):
+    print("error:", message, file=sys.stderr)
+    sys.exit(1)
+
+parser = argparse.ArgumentParser(description='Process some integers.')
+parser.add_argument('integers', metavar='N', type=int, nargs='+',
+                    help='an integer to be processed')
+parser.error = my_error
+
+args = parser.parse_args()
+print(args.integers)
+
+}}}
+

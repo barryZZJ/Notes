@@ -1,0 +1,8 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2023-02-14T22:27:12+08:00
+
+====== for ======
+Created 星期二 14 二月 2023
+
+在遍历列表时增删元素，会导致遍历出错或跳过元素

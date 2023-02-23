@@ -1,0 +1,33 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2023-02-13T21:27:05+08:00
+
+====== 组策略 ======
+Created 星期一 13 二月 2023
+
+gpedit.msc
+或第三方工具：Policy Plus
+
+家庭版开启组策略：
+{{{code: lang="dosbatch" linenumbers="False"
+@echo off
+
+pushd "%~dp0"
+
+dir /b C:\Windows\servicing\Packages\Microsoft-Windows-GroupPolicy-ClientExtensions-Package~3*.mum >List.txt
+
+dir /b C:\Windows\servicing\Packages\Microsoft-Windows-GroupPolicy-ClientTools-Package~3*.mum >>List.txt
+
+for /f %%i in ('findstr /i . List.txt 2^>nul') do dism /online /norestart /add-package:"C:\Windows\servicing\Packages\%%i"
+
+pause
+}}}
+
+
+或
+
+管理员cmd运行：
+FOR %F IN ("%SystemRoot%\servicing\Packages\Microsoft-Windows-GroupPolicy-ClientTools-Package~*.mum") DO (DISM /Online /NoRestart /Add-Package:"%F")
+
+(DISM /Online /NoRestart /Add-Package:"C:\WINDOWS\servicing\Packages\Microsoft-Windows-GroupPolicy-ClientTools-Package~31bf3856ad364e35~amd64~zh-CN~10.0.19041.2311.mum")
+

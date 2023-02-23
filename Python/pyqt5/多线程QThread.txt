@@ -6,11 +6,16 @@ Creation-Date: 2022-10-23T16:33:02+08:00
 Created 星期日 23 十月 2022
 
 === QTimer ===
+https://doc.qt.io/qt-6/qtimer.html
+可以用来重复poll一个结果
 单独使用：
 timer = Qtimer()
 timer.start(msec)
 timer.timeout.connect(func)
 timer.stop()
+
+只触发一次：
+QTimer.singleShot()
 
 与QThread配合:
 tr = QThread()

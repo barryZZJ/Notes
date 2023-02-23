@@ -2,7 +2,7 @@ Content-Type: text/x-zim-wiki
 Wiki-Format: zim 0.6
 Creation-Date: 2022-10-23T16:31:34+08:00
 
-====== 事件相关 ======
+====== 事件、信号、槽函数 ======
 Created 星期日 23 十月 2022
 
 === 查找Signal(触发事件)函数名： ===
@@ -11,7 +11,7 @@ Created 星期日 23 十月 2022
 === 自动连接槽函数： ===
 由于setupUi里调用了connectSlotsByName，
 定义on_<object name>_<signal name>(<signal params>)成员函数后，
-可以自动连接槽函数到对应的组件，不需要手动连接。
+可以自动连接槽函数到QObject::setObjectName()对应名字的组件（包括子类中的对象），不需要手动连接。
 格式：
 from PyQt5.QtCore import pyqtSlot
 @pyqtSlot(<paramTypes>)
@@ -32,6 +32,15 @@ def connectSlots(ui: Ui_Form):
 	ui.xxButton.clicked.connect(lambda ui: func(ui)) # 或实现函数闭包，.connect(fun(ui))中fun(ui)返回一个函数即可
 xxButton.clicked.connect(funcname) def funcname(txt): ...
 self.connect(self.man_btn, QtCore.SIGNAL('clicked()'), self.manual_slot)
+{{{code: lang="python3" linenumbers="False"
+# 手动连接槽函数
+def connectSlots(self):
+    def on_btnA_clicked():
+        ...
+
+    self.btnA.clicked.connect(on_btnA_clicked)
+}}}
+
 
 二：
 designer中选择设置信号/槽，把按钮连接到form上，在form那一栏里编辑，添加槽函数。

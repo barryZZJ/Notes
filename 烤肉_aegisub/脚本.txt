@@ -7,6 +7,9 @@ Created 星期五 23 九月 2022
 
 https://aegi.vmoe.info/docs/3.2/Automation/Lua/
 https://aegi.vmoe.info/docs/3.2/Automation/Lua/Subtitle_file_interface/
+https://aegi.vmoe.info/docs/3.2/Automation/Lua/Modules/re/
+
+process reporting: https://aegi.vmoe.info/docs/3.0/Automation/Lua/Progress_reporting/
 
 aegisub.project_properties()["video_file"]
 aegisub.project_properties().video_position
@@ -46,7 +49,7 @@ pat = re.compile()
 text, _ = pat:sub(text, repl)
 tab = pat:match(text)  注意下标从1开始
 如果要获取满足匹配的个数，用res = exp:find，#res即匹配的数量
-
+split同样会返回pat括号里的内容
 
 {{{code: lang="lua" linenumbers="False"
 function process_lines(subtitles, selected_lines, active_line)

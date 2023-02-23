@@ -1,0 +1,17 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2023-01-25T17:20:14+08:00
+
+====== 各种文件传输协议 ======
+Created 星期三 25 一月 2023
+
+SMB：适合局域网、传输多个小文件时更快，没有overhead
+FTP：适合局域网、传输大文件（100MB+）更快，因为使用了并行
+SFTP：适合广域网，因为有加密的overhead，传输更慢。相比之下传输大文件更快，因为使用了并行
+
+时间测试对比：
+637MB
+LAN SMB: 3:30
+LAN SFTP: 4:15
+WAN SMB: 5:09
+WAN SFTP: 6:25

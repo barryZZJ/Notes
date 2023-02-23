@@ -12,6 +12,10 @@ https://docs.mirai.mamoe.net/
 论坛
 https://mirai.mamoe.net/
 
+插件下载
+https://mirai.mamoe.net/category/11/%E6%8F%92%E4%BB%B6%E5%8F%91%E5%B8%83?lang=zh-CN&page=1
+https://github.com/project-mirai/awesome-mirai
+
 控制台版使用说明
 https://docs.mirai.mamoe.net/ConsoleTerminal.html#%E5%AE%89%E8%A3%85
 

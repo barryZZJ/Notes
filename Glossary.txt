@@ -44,3 +44,5 @@ surrogate
 引用表 shown, listed
 有害的 detrimental
 组成 be comprised of、constitute、consist of
+预定义的(参数) preconceived
+错综复杂、盘根错节 intricacy

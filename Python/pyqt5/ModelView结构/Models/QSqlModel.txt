@@ -54,6 +54,11 @@ db = QSqlDatabase.addDatabase('QSQLITE', connname)
 db.setDatabaseName('test.db')  # 数据库文件名 注意调用open后才会新建文件
 .open() 执行后才会创建文件
 .exec(query) -> QSqlQuery  https://doc.qt.io/qt-6/qsqlquery.html
+	select结果
+	返回生成器：
+	while res.next(): # 如没有匹配则返回False
+		yield res.value(0)  # 数字与select的内容顺序一致
+
 .tables()
 .record(tableName) -> QSqlRecord
 .transaction()

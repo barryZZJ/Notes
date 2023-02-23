@@ -5,8 +5,12 @@ Creation-Date: 2022-09-06T17:05:34+08:00
 https://aegi.vmoe.info/docs/3.2/ASS_Tags/
 https://www.jianshu.com/p/cfdbfdc6d3a7
 
+TCAX中的所有ASS特效标签
+https://www.bilibili.com/read/cv15616345/
+
 Aegisub 追踪插件 motion mocha
 https://www.bilibili.com/video/av289069676/
+https://github.com/TypesettingTools/Aegisub-Motion
 
 {\rJp_secondary_720p}{\r}
 {\rEng_secondary_720p}{\r}
@@ -16,10 +20,10 @@ https://www.bilibili.com/video/av289069676/
 \i<0/1> (取消)斜体
 \u<0/1> (取消)下划线
 \s<0/1> (取消)删除线
-\bord<size> 边框
+\bord<size> 边框 \xbord<size> \ybord<size>
 \shad<depth> 阴影 \xshad<depth> \yshad<depth> 分量可以为负数
 \an<pos> 1~9对齐方式
-\be<0/int> \blur<float> 边框不为0时模糊边框（外发光），否则模糊文字本身
+\be<0/1/int> \blur<float> 边框不为0时模糊边框（外发光），否则模糊文字本身（要想达到带边框时也整体模糊的效果，可以设置淡入淡出/透明度后，在底下重复一层，并把其\1c改成边框的颜色(两层都不带bord)，看上去效果挺好的）
 \pos(x,y) 整数
 \r<style> 设置新样式 (为空时使用原样式)
 
@@ -27,9 +31,9 @@ https://www.bilibili.com/video/av289069676/
 \fn<fontname> 为空时恢复为原样式的字体
 	圆体：腾祥嘉丽粗圆简 (最粗)、方正粗圆_GBK、猫啃网糖圆体 (测试版)、幼圆 (最细)
 \fs<fontsize> 字号
-\fscx<scale%> \fscy<scale%> 字体缩放 scale:0~100
+\fsc<scale%> \fscx<scale%> \fscy<scale%> 字体缩放 scale:0~100
 \fsp<spacing> 字符间距 -~0~+
-\fsvp<spacing> 行间距，正数为减小缩近行间距，负数为增加拉宽行间距（夹在两行间、需要 VSFilterMod）
+\fsvp<spacing> 行距，正数为减小缩近行间距，负数为增加拉宽行间距（夹在两行间、需要 VSFilterMod）
 \frx<amount> \fry<amount> \frz<amount> \fr<amount> 旋转
 \fax<factor> \fay<factor> 文本剪切变换 0~1
 
@@ -39,8 +43,19 @@ https://www.bilibili.com/video/av289069676/
 边框颜色 \3c&H<bb><gg><rr>&
 阴影颜色 \4c&H<bb><gg><rr>&
 
+透明度
+aa: 00~FF，00表示不透明，FF表示完全透明。如\alpha&H80&
+\alpha&H<aa>
+\1a&H<aa>
+\2a&H<aa>
+\3a&H<aa>
+\4a&H<aa>
+
 矢量绘图
 https://cnlang.org/thread-85231-1-1.html
+像素点：
+{\p1}m 0 0 l 1 0 l 1 1 l 0 1{\p0}
+
 Square:
 {\p1}m 0 0 l 100 0 100 100 0 100{\p0}
 
@@ -57,24 +72,52 @@ Circle (almost):
 
 复杂渐变：
 \fade(<a1>,<a2>,<a3>,<t1>,<t2>,<t3>,<t4>) 
+a: 0~255; t: 相对起始时间ms
+0~t1: a1
+t1~t2: a1->a2
+t2~t3: a2
+t3~t4: a2->a3
+t4~ : a3
 
 遮罩（方形）
 该区域内可见 \clip(<x1>,<y1>,<x2>,<y2>)
 该区域内不可见 \iclip(<x1>,<y1>,<x2>,<y2>)
 
 动画效果
+从原来的渐变到新的
 \t(<style modifiers>)
 \t(<accel>,<style modifiers>)
 \t(<t1>,<t2>,<style modifiers>)
 \t(<t1>,<t2>,<accel>,<style modifiers>)
-t1, t2为发生的时间起止，ms，相对时间，可设为0
+t1, t2为过渡动画发生的时间起止，ms，相对起始时间，可设为0
+不加t1,t2表示改变的过程为整个字幕的时间
 可用$start,$end分别表示开始和结束时间
+accel: 0~1: 先快后慢，1~∞: 先慢后快
 
 平移：(无法实现变速移动，需要多个字幕效果拼接)
 \move(<x1>,<y1>,<x2>,<y2>)
-\move(<x1>,<y1>,<x2>,<y2>,<t1>,<t2>) 在<t1>ms~<t2>ms期间进行平移（t为相对时间，t2可设为0表示字幕结束）
+\move(<x1>,<y1>,<x2>,<y2>,<t1>,<t2>) 在<t1>ms~<t2>ms期间进行平移（t为相对起始时间，t2可设为0表示字幕结束）
 
 卡拉OK轴：\k<f/o><duration>
 \k 一次跳一个字
 \kf 或 \K 有平滑效果，每个字会部分渐变
 \ko 一次跳一个字，同时边框会变
+
+VSFilterMod 新增tags：https://github.com/computerfan/VSFilterMod/wiki/New-Tags
+\fsc 字体缩放
+\frs 倾斜baseline
+\fsvp \fshp 垂直、水平间距
+\z z轴取值
+\distort(u1,v1,u2,v2,u3,v3) 形变
+\rnd \rndx \rndy \rndz 随机偏移
+\$vc 颜色渐变，$=1~4分别对应1c,2c,3c,4c
+\3va 透明度渐变，$=1~4分别对应1c,2c,3c,4c
+\1img 平铺图片(如需要单张图片需要添加符合图片大小的vector clip矢量绘图) $=1~4
+\mover (Polar) \moves3 \moves4 (Spline) 沿不同轨迹运动
+\jitter 各方向重复抖动
+\movevc 移动vector clip遮罩
+\lua(somemethd, args) \somemethod(args)
+\ortho1 改进frz透视效果
+\xblur \yblur 指定模糊方向
+\blend
+

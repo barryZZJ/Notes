@@ -1,0 +1,16 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2023-02-06T18:51:07+08:00
+
+====== MeGUI ======
+Created 星期一 06 二月 2023
+
+用File Indexer手动设置裁剪的帧区间，会生成的clt文件可以把帧数和时间关联上，根据clt文件即可帧裁剪音频（音频只能按时间裁剪，没有帧的概念）
+（详见压制教程.pdf）
+音频输出.m4a
+
+对应vs脚本的索引器：
+# ts源索引器 MeGUI选DGIndex，这里的source是megui输出的d2v文件
+src8 = core.d2v.Source(source)
+# mp4源索引器 MeGUI选L-SMASH Works
+# src8=core.lsmas.LWLibavSource(source,repeat=True,threads=16)

@@ -1,7 +1,9 @@
 Content-Type: text/x-zim-wiki
 Wiki-Format: zim 0.6
 
-matplotlib函数详解.docx
+doc:
+https://matplotlib.org/stable/
+
 Examples: https://matplotlib.org/stable/gallery/index.html
 
 import matplotlib.pyplot as plt
@@ -34,15 +36,17 @@ ax:
 参数：
 zorder=1 修改覆盖顺序，小的在下面，默认第一个在最下面。
 alpha=0.1 设置透明度
-linewidth /lw: float
+linewidth /lw: float 线的粗细
 linestyle /ls {'-', '--', ':', '-.'} https://matplotlib.org/stable/gallery/lines_bars_and_markers/linestyles.html?highlight=linestyle
-marker
+marker 表示的是标记的样式，默认的是'o' https://matplotlib.org/3.5.0/api/markers_api.html#module-matplotlib.markers
 markersize /ms
 edgecolor
 hatch 填充样式
 colors: https://matplotlib.org/stable/gallery/color/color_demo.html
 {'b', 'g', 'r', 'c', 'm', 'y', 'k', 'w'}
  {'tab:blue', 'tab:orange', 'tab:green', 'tab:red', 'tab:purple', 'tab:brown', 'tab:pink', 'tab:gray', 'tab:olive', 'tab:cyan'}
+antialiased 抗锯齿
+label: str 图例显示的字符串
 
 折线图/散点图：plot
 https://matplotlib.org/3.5.0/api/_as_gen/matplotlib.pyplot.plot.html
@@ -148,10 +152,16 @@ def auto_text_x(ax, xs, ys, texts=None, kwargs=dict(ha='left', va='bottom')):
 			else:
 				ax.text(x, y, '%.3f' % x, **kwargs)
 
-图例：
-参数：label
-显示图例：plt.legend()
+图例 Legend https://matplotlib.org/stable/api/_as_gen/matplotlib.pyplot.legend.html#matplotlib.pyplot.legend
+在plot中设置label参数，指定其图例名
+显示图例：plt.legend() plt.legend(label, loc = 0, ncol = 2)
+loc 设置图例显示位置
+ncol 设置显示的列数，当要表示的线段特别多的时候会有用
+
 获取当前axis: ax = plt.gca()
+轴长度plt.axis(xmin, xmax, ymin, ymax)
+显示网格 .grid(True)
+轴分布plt.yscale('linear')
 
 坐标轴ticks(小竖线)的位置：
    xticks(arr, labels, rotation, ha='center', va='top'), yticks()
@@ -162,7 +172,7 @@ def auto_text_x(ax, xs, ys, texts=None, kwargs=dict(ha='left', va='bottom')):
    ax.tick_params()  https://matplotlib.org/stable/api/_as_gen/matplotlib.axes.Axes.tick_params.html
 坐标轴最值：xlim(), ylim()
 坐标轴缩放：xscale(), yscale()
-坐标轴标签：xlabel(), ylabel()  loc={'left','center','right'}, labelpad=float (设置负数可以更靠近x轴）
+坐标轴标题：xlabel(), ylabel()  loc={'left','center','right'}, labelpad=float (设置负数可以更靠近x轴）
 					plt.rcParams["xaxis.labellocation"] = 'right'  全局设置xlabel位置
 手动调整label位置：transform 可以指定不同的对齐方式，坐标可以为负数，也可超过1
 ax.yaxis.set_label_coords(x, y, transform=None)
@@ -323,3 +333,5 @@ plt.rcParams['ps.fonttype'] = 42
 背景网格：https://matplotlib.org/stable/api/_as_gen/matplotlib.pyplot.grid.html
 ax.grid(visible=True, which='major', axis='x'/'y'/'both', color='w')
 ax.set_axisbelow(True)  画在里面
+
+{{.\pasted_image.png}}

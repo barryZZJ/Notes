@@ -10,5 +10,7 @@ $(selector).each(function (index, element) {
 	// element == this
        
 });
+(ind, ele) => {
+}
 
 多个jq对象遍历时，得到的是DOM对象

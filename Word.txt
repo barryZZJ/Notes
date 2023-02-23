@@ -1,8 +1,9 @@
 Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
 
 通配符：https://www.cnblogs.com/whchensir/p/5768030.html
 ? 任意单个字符
-* 任意多个字符
+''* 任意多个字符''
 @ 1个以上前一字符或表达式
 {n,} n个以上前一字符或表达式
 [] 匹配[]内的任意一个

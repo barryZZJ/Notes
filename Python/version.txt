@@ -1,0 +1,12 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2022-12-25T18:25:50+08:00
+
+====== version ======
+Created 星期日 25 十二月 2022
+
+{{{code: lang="python3" linenumbers="False"
+ISEXE = hasattr(sys, 'frozen')
+PROJECT_ROOT = Path(sys.executable).parent if ISEXE else Path(__file__).parents[1]
+VERSION = PROJECT_ROOT.joinpath('VERSION').read_text()
+}}}

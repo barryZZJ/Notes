@@ -1,0 +1,14 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2023-01-19T18:14:10+08:00
+
+====== QtWebView ======
+Created 星期四 19 一月 2023
+
+PyQt5.QtWebKitWidgets.QWebView got deprecated, use PyQt5.QtWebEngineWidgets.QWebEngineView
+pip install PyQtWebEngine
+
+https://www.riverbankcomputing.com/static/Docs/PyQt5/api/qtwebenginewidgets/qwebengineview.html
+https://doc.qt.io/qt-6/qwebengineview.html
+
+

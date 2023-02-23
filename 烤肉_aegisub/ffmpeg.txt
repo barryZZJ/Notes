@@ -15,14 +15,15 @@ https://ffmpeg.org/ffmpeg.html
 封装
 https://norm.press/archives/26.html
 
-分割视频：
+裁剪视频：
 ''ffmpeg -ss 00:00:00 -t 00:00:30 -i test.mp4 -c copy output.mp4''
-	-ss start time offset 可以是时分秒毫秒，也可以是秒数
+	-ss start time offset Format: [HH:]MM:SS[.m...]  or ss[.m...][s|ms|us] 可以是时分秒毫秒，也可以是秒数. '55' '0.2' '200ms'
 	-sseof set the start time offset relative to EOF
 	-t duration 可以是时分秒毫秒，也可以是秒数 (不设置则默认到结尾) 
 	-to stop time
-	-i video file
+	-i video file (要写在-ss之后，可以提高效率)
 	-report 保存日志到txt
+	-c codec for both video and audio
 
 倍速播放
 视频的PTS系数为 1/倍速
@@ -33,10 +34,19 @@ ffmpeg -i input.mkv -filter_complex "[0:v]setpts=0.5*PTS[v];[0:a]atempo=2.0[a]" 
 https://www.cnblogs.com/huojinfeng/articles/13167730.html
 (方式三中的单引号改成双引号）
 
+
+提取视频
+ffmpeg -i test.mp4 -c:v copy out.mp4
+
 提取音频
+ffmpeg -i test.mp4 -c:a copy -vn output.aac
 ffmpeg -i input-video.avi -vn -acodec copy output-audio.aac
 -vn is no video.
 -acodec copy says use the same audio stream that's already in there. (can be 'aac')(or -c:a copy)
+
+音视频合并：
+ffmpeg -i video.mp4 -i audio.aac -c:v copy -c:a copy -map 0:v:0 -map 1:a:0 output.mp4
+ffmpeg -i video.mp4 -i audio.mp3 -c:v copy -c:a aac -map 0:v:0 -map 1:a:0 output.mp4
 
 音频转码
 https://www.rondochen.com/convert-mkv-to-mp4-with-ffmpeg/
@@ -45,7 +55,8 @@ https://www.rondochen.com/convert-mkv-to-mp4-with-ffmpeg/
 ffmpeg -i inputvideo -vn -c:a aac out.m4a
 
 编码格式转换
-https://ffmpeg.org/ffmpeg.html#toc-Video-and-Audio-file-format-conversion
+https://ffmpeg.org/ffmpeg.html#Video-and-Audio-file-format-conversion
+ffmpeg -i input.ts out.mp4
 
 所有输出均在stderr；
 出错时returnCode不为0.

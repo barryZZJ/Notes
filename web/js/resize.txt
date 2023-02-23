@@ -1,0 +1,9 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2023-01-10T21:01:52+08:00
+
+====== resize ======
+Created 星期二 10 一月 2023
+
+https://developer.mozilla.org/en-US/docs/Web/API/Window/resize_event
+https://github.com/cowboy/jquery-throttle-debounce

@@ -1,0 +1,50 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2023-01-25T13:50:55+08:00
+
+====== sftp服务器配置 ======
+Created 星期三 25 一月 2023
+
+===== Xlight FTP Server x =====
+支持中文、支持虚拟文件夹，比较好用，但需要破解，否则用不了SFTP
+
+===== CoreFTPServer x =====
+太硬核了，配置不明白
+
+===== freeFTPd x =====
+优点是可以配置虚拟文件夹，openssh不可以，需要手动切换路径不太方便。
+中文支持情况：文件夹内支持中文（字符集需设为GBK），但虚拟文件夹不支持中文（重启后会变乱码）。
+手动设置开机自启动
+配置虚拟文件夹：
+Folder name: test
+Virtual path: /
+连接到真实文件夹：D:\test
+访问路径：/test
+
+===== OpenSSH =====
+在可选功能中搜索OpenSSH 服务器，安装
+启动该服务，服务名sshd / OpenSSH SSH Server
+同时也会启动ssh协议
+
+配置：
+https://winscp.net/eng/docs/guide_windows_openssh_server
+https://learn.microsoft.com/en-us/windows-server/administration/openssh/openssh_server_configuration
+https://man.openbsd.org/sshd_config
+https://github.com/PowerShell/Win32-OpenSSH/wiki/sshd_config
+配置文件：C:\ProgramData\ssh\sshd_config
+Port 23355
+ListenAddress 0.0.0.0
+#连接后默认文件夹为/C:/Users/<username>，要想修改，添加-d参数：
+# (https://man.openbsd.org/cgi-bin/man.cgi/OpenBSD-current/man8/sftp-server.8?query=sftp-server&sec=8
+Subsystem   sftp    sftp-server.exe -d "D:"
+# 只启动sftp（？）
+ForceCommand internal-sftp
+
+防火墙允许该端口入站，参考OpenSSH SSH Server
+
+用户鉴权使用windows用户，默认管理员用户无法登陆，需要新建一个用户
+
+开机自动启动：服务启动类型设为自动
+
+切换盘符（有的客户端不支持默认显示所有盘符，需要手动指定到对应的盘符）：
+/D:/

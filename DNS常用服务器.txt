@@ -9,4 +9,12 @@ https://www.zhihu.com/question/34826522/answer/1269091359
 
 {{.\pasted_image.png}}
 
-阿里：223.5.5.5和223.6.6.6
+阿里：
+223.5.5.5
+223.6.6.6
+
+
+美国：
+Level3 Public DNS 
+209.244.0.3
+209.244.0.4

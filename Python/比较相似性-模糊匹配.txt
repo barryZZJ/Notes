@@ -1,0 +1,15 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2023-01-13T20:09:16+08:00
+
+====== 比较相似性-模糊匹配 ======
+Created 星期五 13 一月 2023
+
+difflib（自带）
+[[:Python:difflib]]
+
+FuzzyWuzzy
+https://pypi.org/project/fuzzywuzzy/
+
+Deltas
+https://pypi.org/project/deltas/

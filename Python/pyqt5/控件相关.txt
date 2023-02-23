@@ -13,51 +13,6 @@ parent参数：
 	The destructor of a parent object destroys all child objects
 	Setting parent to nullptr constructs an object with no parent. If the object is a widget, it will become a top-level window.
 
-=== 窗体 ===
-https://doc.qt.io/qt-5/qwidget.html
-QMainWindow, QWidget
-如果设置了parent，新控件会显示在parent里，而不是新建窗口，并与parent共存亡。
-(子窗体在对象初始化时就被新建了(isHidden==True)，可以把重要操作写在showEvent里）
-isVisible
-isHidden
-启动窗体：
-.show()  异步，窗体必须是成员变量
-.exec()  同步，可以是局部变量，会阻塞函数，等关闭后才能继续
-
-光标形态：
-QCursor
-https://www.riverbankcomputing.com/static/Docs/PyQt5/api/qtgui/qcursor.html
-http://doc.qt.io/qt-5/qcursor
-from PyQt5.QtCore import Qt
-cursor = widget.cursor() # or QCursor()
-cursor.setShape(Qt.CursorShape.WaitCursor)
-widget.setCursor(cursor)
-widget.unsetCursor()
-
-等待（圆圈）：WaitCursor
-忙（鼠标加圆圈）：BusyCursor
-禁止：ForbiddenCursor
-
-设置全局光标：https://stackoverflow.com/questions/8218900/how-can-i-change-the-cursor-shape-with-pyqt
-QApplication.setOverrideCursor()  -> QCursor or Qt.WaitCursor
-QApplication.restoreOverrideCursor()
-
-from functools import wraps
-def wait_on_heavy_process(func):
-	"""Change global cursor to wait during `func`"""
-	@wraps(func)
-	def decorated(*args, **kwargs):
-		QApplication.setOverrideCursor(Qt.WaitCursor)
-		func(*args, **kwargs)
-		QApplication.restoreOverrideCursor()
-	return decorated
-
-关闭时：
-closeEvent(self, a0)
-	a0.accept()
-	a0.ignore() 
-
-
 === 调整控件大小 ===
 .resize(473, 162)
 

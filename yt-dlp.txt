@@ -1,0 +1,11 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2023-01-19T22:21:19+08:00
+
+====== yt-dlp ======
+Created 星期四 19 一月 2023
+
+download best:
+yt-dlp -f bestvideo[ext=mp4]+bestaudio[ext=m4a] --merge-output-format mp4 %*
+
+

@@ -1,0 +1,13 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2023-01-23T16:59:49+08:00
+
+====== QSettings ======
+Created 星期一 23 一月 2023
+
+https://doc.qt.io/qt-6/qsettings.html
+
+管理程序的设置，保存至硬盘
+
+settings.setValue("editor/wrapMargin", 68);
+int margin = settings.value("editor/wrapMargin", 80).toInt();

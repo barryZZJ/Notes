@@ -5,6 +5,7 @@ Creation-Date: 2022-09-11T10:19:24+08:00
 ====== sqlite数据库操作 ======
 Created 星期日 11 九月 2022
 
+https://docs.python.org/3/library/sqlite3.html
 https://www.runoob.com/sqlite/sqlite-python.html
 https://zhuanlan.zhihu.com/p/103592132
 
@@ -22,12 +23,16 @@ conn.commit()
 # SELECT
 注意如果在循环体中有新的数据库操作，cursor的值会改变，导致循环立即终止，因此需要完整复制一份再遍历
 cursor = c.execute("SELECT id, name, address, salary  from COMPANY")
+循环：
 for row in cursor: # 无论field的输入，都返回元组 
    print "ID = ", row[0]
    print "NAME = ", row[1]
    print "ADDRESS = ", row[2]
    print "SALARY = ", row[3], "\n"
 conn.close()
+生成器：
+while res.next():
+	yield res.value(0)
 
 也可以用while row:=cursor.fetchone()的形式，遍历结束后返回None
 .fetchone()
@@ -44,6 +49,21 @@ INSERT INTO COMPANY VALUES (7, 'James', 24, 'Houston', 10000.00 );
 	注意未赋值的域会置默认值
 2.使用insert or ignore + update
 3.先update，如果affected rows = 0，则insert
+
+# 添加python函数
+https://docs.python.org/3/library/sqlite3.html#sqlite3.Connection.create_function
+（deterministic指参数相同时，函数返回值是否保持不变。默认为False）
+{{{code: lang="python3" linenumbers="False"
+import hashlib
+def md5sum(t):
+    return hashlib.md5(t).hexdigest()
+con = sqlite3.connect(":memory:")
+con.create_function("md5", 1, md5sum)
+for row in con.execute("SELECT md5(?)", (b"foo",)):
+    print(row)
+# ('acbd18db4cc2f85cedef654fccc4a4d8',)
+}}}
+
 
 
 注意每次commit都会占用一次磁盘IO，因此可以的话尽量执行一组操作后一次性commit

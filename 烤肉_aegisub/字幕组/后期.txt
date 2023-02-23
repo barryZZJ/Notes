@@ -2,36 +2,17 @@ Content-Type: text/x-zim-wiki
 Wiki-Format: zim 0.6
 Creation-Date: 2022-11-27T05:21:47+08:00
 
-====== 后期+副组长 ======
+====== 后期 ======
 Created 星期日 27 十一月 2022
 
 后期：
-发视频 要去校对轴有没有出问题该有的特效有没有做 压制
-
-副组长：
-nyaa站下片源
-nyaa.si
-[Ohys-Raws] 下载720源，给翻译 https://ohys.gokoro.me/sat 速度最快 一般一两分钟就会发tv的720p
-[SubsPlease] 下载1080web源，给轴man https://subsplease.org/ 出片估计会晚一点12:02上周是这个时间
-
-ts源提取台本：
-rec.mlsub.net
-账号密码都是：1jones
-预约节目
-记得看日期、并且有"字"字样
-30min 3.5￥
-
-https://jixia.baidui.vip/#/jxdo
-这个是百度网盘直链解析网址 需要搭配idm使用
-https://www.bilibili.com/video/BV1144y1t7NU
-
-源、台本腾讯文档共享发群里
+发视频 要去校对轴有没有出问题、该有的特效有没有做 压制
 
 压制成片，发到小群、大群（、做种群）；
 放到服务器上做种，种子发到做种群+本地辅种
-种子发布bt站，记得改海报，每部番换一个海报
+种子发布bt站
 
-
+x
 海报：分辨率1349x1907
 Z
 https://img30.360buyimg.com/imgzone/jfs/t1/141321/32/30637/399120/635daaaeE1c14939e/d56dc1fb1c06bed4.png

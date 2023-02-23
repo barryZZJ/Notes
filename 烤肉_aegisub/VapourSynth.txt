@@ -14,6 +14,8 @@ http://www.vapoursynth.com/doc/
 vspipe.exe script.vpy -c y4m - | x264.exe --demuxer y4m --preset slower --ref 4 --merange 24 --me umh --bframes 10 --aq-mode 3 --aq-strength 0.7 --deblock 0:0 --trellis 2 --psy-rd 0.6:0.1 --crf 21 --output-depth 8 -o tmp.mp4 -
 "-" 表示从pipe接受输入
 
+vspipe [options] <script> <outfile>
+
 x264_8bit_encode_example
 {{{code: lang="dosbatch" linenumbers="False"
 @ECHO OFF

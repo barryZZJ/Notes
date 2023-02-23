@@ -50,3 +50,9 @@ https://www.cxyzjd.com/article/min_mmax/105307804
 	def closeEvent(self, a0: QtGui.QCloseEvent) -> None:
 		sys.stdout = sys.__stdout__
 		sys.stderr = sys.__stderr__
+		
+=== VerticalLayout内按钮设置靠右对齐 ===
+self.verticalLayout.setAlignment(self.pushButton, Qt.AlignRight)
+
+
+

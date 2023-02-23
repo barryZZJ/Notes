@@ -1,0 +1,49 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2023-01-23T23:45:47+08:00
+
+====== ProxyModels ======
+Created 星期一 23 一月 2023
+
+对原model数据进行排序/过滤，或者新增列等其他自定义操作，而不修改原始数据
+https://doc.qt.io/qt-6/model-view-programming.html#proxy-models
+
+自定义数据：
+重写data(proxyIndex: QModelIndex, role: int=Qt.DisplayRole) -> QVariant
+https://doc.qt.io/qt-6/qabstractitemmodel.html#data
+https://doc.qt.io/qt-6/qidentityproxymodel.html#details
+注意这样只能改显示的内容，而不会动底层的数据和排序、过滤逻辑。所以如果想新增内容还是优先考虑修改sourceModel的数据
+（不需要select数据库，显示内容会即时更新）
+{{{code: lang="python3" linenumbers="False"
+def data(self, index: QModelIndex, role: int = Qt.DisplayRole):
+    if role == Qt.DisplayRole and index.column() == 1:
+        # 加一列文件的修改时间
+        filename = index.siblingAtColumn(0).data(role)
+        relpath = super().data(index, role)
+        filepath = Path(conf.root, relpath, filename)
+        mtime = filepath.stat().st_mtime
+        t = QDateTime(datetime.datetime.fromtimestamp(mtime))
+        return t  # 显示格式为yy/mm/dd h:m
+    return super().data(index, role)
+}}}
+
+
+QSortFilterProxyModel https://doc.qt.io/qt-6/qsortfilterproxymodel.html
+如需动态修改过滤条件，需要初始化时调用setDynamicSortFilter(True)
+排序/过滤后的index与原模型index相互转换：
+.mapToSource(index) -> Index
+.mapFromSource(Index) -> Index
+.mapSelectionToSource()
+.mapSelectionFromSource()
+
+排序：https://doc.qt.io/qt-6/qsortfilterproxymodel.html#sorting
+过滤：https://doc.qt.io/qt-6/qsortfilterproxymodel.html#filtering
+
+QAbstractProxyModel https://doc.qt.io/qt-6/qabstractproxymodel.html
+https://www.qt.io/blog/2012/01/12/qt-commercial-support-weekly-10-sorting-filtering-and-advanced-manipulation-with-proxy-models-2
+
+QIdentityProxyModel 既不sort也不filter，用于对原模型的data()结果进行调整，如把时间戳转换为时间，也可以用于源数据不能修改的情况
+https://doc.qt.io/qt-6/qidentityproxymodel.html
+
+QTransposeProxyModel 生成原模型的转置
+

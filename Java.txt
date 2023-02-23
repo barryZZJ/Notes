@@ -1,0 +1,32 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2023-02-23T19:11:18+08:00
+
+====== Java ======
+Created 星期四 23 二月 2023
+
+开发环境JDK：
+Oracle Java和Red Hat Java都是基于OpenJDK的Java开发工具包，但它们有一些区别：
+Oracle Java是Oracle公司提供的商业版Java，它需要付费订阅才能获得长期支持和更新。
+Red Hat Java是Red Hat公司提供的免费版Java，它提供了与Oracle Java相同或更好的性能、安全性和稳定性。
+https://developers.redhat.com/products/openjdk/download
+https://www.oracle.com/java/technologies/downloads/
+
+跨平台：
+JVM是一个虚拟的计算机，它可以在不同的操作系统上运行，并且可以解释执行Java字节码文件。Java字节码文件是由Java源文件编译而成的，它们包含了一系列的指令，但不依赖于具体的硬件和操作系统。
+
+因此，只要有相应的JVM，就可以在任何平台上运行Java字节码文件，从而实现了跨平台的特性。
+
+Java字节码：
+Java字节码文件是Java编译器编译Java源文件产生的二进制文件，后缀名为.class²。它们包含了一系列的字节码指令，这些指令是JVM可以执行的最小单位。
+
+Java字节码文件的结构由以下几个部分组成：
+
+- 魔数：用于标识该文件是否为一个合法的class文件，固定为0xCAFEBABE。
+- 版本号：用于标识该class文件所遵循的JVM规范版本。
+- 常量池：用于存放常量信息，如类名、方法名、字段名、字符串等。
+- 访问标志：用于标识该class文件是类还是接口，是否为public、abstract、final等。
+- 类索引、父类索引和接口索引集合：用于描述该class文件所表示的类或接口的继承关系和实现关系。
+- 字段表集合：用于描述该class文件所表示的类或接口中声明的所有字段信息。
+- 方法表集合：用于描述该class文件所表示的类或接口中声明的所有方法信息。
+- 属性表集合：用于描述该class文件中附加的一些额外信息，如源代码名称、行号表、局部变量表等。

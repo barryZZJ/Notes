@@ -1,0 +1,8 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2023-01-23T17:58:18+08:00
+
+====== QDialogButtonBox ======
+Created 星期一 23 一月 2023
+
+https://doc.qt.io/qt-6/qdialogbuttonbox.html

@@ -15,7 +15,7 @@ os
 .rmdir() 删除空文件夹
 .removedirs()  删除路径上每一级空文件夹
 
-open:模式
+open:模式 https://www.runoob.com/python/file-methods.html
 r+：可读可写，若文件不存在，报错；w+: 可读可写，若文件不存在，创建
 https://blog.csdn.net/ztf312/article/details/47259805
 r+:
@@ -24,6 +24,12 @@ r+:
 f.seek(0)
 f.truncate(0)
 f.write()
+
+.access 检查是否有访问权限，在open之前使用 -> bool (不适用于正在复制的文件
+https://docs.python.org/3/library/os.html
+os.access("path", os.W_OK)
+F_OK, R_OK, W_OK, X_OK : existence, readability, writability and executability
+（文件不存在会返回False）
 
 os.system(cmd) 执行指令 （更强大的是subprocess）
 	一般无报错返回0

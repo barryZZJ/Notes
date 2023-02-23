@@ -1,12 +1,13 @@
 Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
 
 https://docs.python.org/3/library/configparser.html
 import configparser
 config = configparser.ConfigParser()
 #写
 config['DEFAULT'] = {'ServerAliveInterval': '45',
-                 'Compression': 'yes',
-                 'CompressionLevel': '9'}
+				 'Compression': 'yes',
+				 'CompressionLevel': '9'}
 config['bitbucket.org'] = {}
 config['bitbucket.org']['User'] = 'hg'
 config['topsecret.server.com'] = {}
@@ -15,7 +16,7 @@ topsecret['Port'] = '50022'     # mutates the parser
 topsecret['ForwardX11'] = 'no'  # same here
 config['DEFAULT']['ForwardX11'] = 'yes'
 with open('example.ini', 'w') as configfile:
-    config.write(configfile)
+	config.write(configfile)
 #读
 >>> config.read('example.ini')
 ['example.ini']
@@ -60,7 +61,12 @@ INI文件由节、键、值组成。
 parameters:
 INI所包含的最基本的“元素”就是parameter；每一个parameter都有一个name和一个value，name和value是由等号“=”隔开。name在等号的左边。
 如：
-      name = value
+	  name = value
 
 sections:
 所有的section名称都是独占一行，并且sections名字都被方括号包围着（[ and ])。在section声明后的所有parameters都是属于该section。对于一个section没有明显的结束标志符，一个section的开始就是上一个section的结束，或者是end of the file。Sections一般情况下不能被nested，当然特殊情况下也可以实现sections的嵌套。
+
+默认值：
+https://docs.python.org/3.9/library/configparser.html#customizing-parser-behaviour
+ConfigParser(defaults={key:value})
+conf.read_dict({ section: {key: value}})

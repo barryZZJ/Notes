@@ -17,7 +17,7 @@ chmod 700 ./frps.sh
 https://www.jianshu.com/p/1a30d9ec1775
 
 frps {start|stop|restart|status|config|version}
-log_file = /usr/local/frps/frps.log
+log_file = /usr/local/frps/frps.log （如果没有就restart一下服务）
 watch -n 1 cat /usr/local/frps/frps.log
 如果报错ine 45: [: 2431: binary operator expected，修改/usr/bin/frps，把$PID全部替换为${PID}
 

@@ -30,6 +30,9 @@ https://blog.csdn.net/liang19890820/article/details/51539339
 https://blog.csdn.net/Vichael_Chan/article/details/100138499
 layoutFieldGrowthPolicy 设为 FieldsStayAtSizeHint 防止文本框过长
 
+设置窗口置顶：
+WindowModality - WindowModal只相对于parent置顶，ApplicationModal相对于全局置顶。
+
 修改designer显示语言：
 Lib\site-packages\qt5_applications\Qt\translations
 把designer_en.qm重命名为designer_zh_CN.qm
@@ -60,40 +63,21 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.setWindowFlags(Qt.WindowMinimizeButtonHint | Qt.WindowCloseButtonHint)
     
         # exception handling
-        err_hook = UncaughtHook()  # 见下文
+        err_hook = UncaughtHook()
         err_hook._exception_caught.connect(lambda msg: on_exception(self, msg))
         
         # 其他初始化设置...
         self.connectSlots()  # 手动连接槽函数
     
     
-    # utils
+    """utils"""
 
-    
-    # 手动连接槽函数
-    def connectSlots(self):
-        def on_btnA_clicked():
-            ...
-    
-        self.btnA.clicked.connect(on_btnA_clicked)
-    
-    
+    """slots"""
     # 自动连接槽函数
     @pyqtSlot()  # 如果有参数的话，装饰器pyqtSlot()里必须要加上参数类型
     def on_pushButton_clicked(self):
         # 命名格式on_Child_SignalName，主窗口只能手动连接槽函数
         print('button clicked!')
-    
-    
-    @pyqtSlot(str)
-    def on_txtNameCN_textChanged(self, txt):
-        ...
-    
-    
-    @pyqtSlot(int)
-    def on_chkWxTag_stateChanged(self, state):
-        self.txtWxTag.setEnabled(state == 2)  # 0, 1, 2
-    
 
 if __name__ == '__main__':
     app = QApplication(sys.argv)

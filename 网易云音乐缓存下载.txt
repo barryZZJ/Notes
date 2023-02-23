@@ -1,0 +1,31 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2023-02-13T15:11:26+08:00
+
+====== 网易云音乐缓存下载 ======
+Created 星期一 13 二月 2023
+
+https://segmentfault.com/a/1190000022772403
+
+C:\Users\85046\AppData\Local\Netease\CloudMusic\Cache\Cache
+
+.uc文件每一个 byte 与0xa3做异或，即可得到mp3
+
+{{{code: lang="python3" linenumbers="False"
+# file = sys.argv[1]
+file = '2019583924-128-263b587aa5aa90950a75be396194d53e.uc'
+if not file:
+    exit(0)
+
+buffer = 1024 * 1024
+res = []
+with open(file, 'rb') as f:
+    while out:=f.read1(buffer):
+        for b in out:
+            res.append(b ^ 0xa3)
+
+with open('out.mp3', 'wb') as f:
+    f.write(bytes(res))
+
+}}}
+

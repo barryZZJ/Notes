@@ -1,0 +1,29 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2023-01-13T19:39:15+08:00
+
+====== timeit ======
+Created 星期五 13 一月 2023
+
+计时代码运行时间
+
+{{{code: lang="python3" linenumbers="False"
+import timeit
+timeit.timeit('"-".join(str(n) for n in range(100))', number=10000)
+}}}
+
+
+{{{code: lang="python3" linenumbers="False"
+def f(x):
+    return x**2
+def g(x):
+    return x**4
+def h(x):
+    return x**8
+
+import timeit
+print(timeit.timeit('[func(42) for func in (f,g,h)]', globals=globals()))
+}}}
+
+
+执行多行代码可以用"""定义多行字符串，然后传入。或用分号隔开各个语句。

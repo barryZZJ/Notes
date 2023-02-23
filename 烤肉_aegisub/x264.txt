@@ -8,3 +8,6 @@ Created 星期六 03 十二月 2022
 x264 [options] -o outfile infile
 
 http://www.chaneru.com/Roku/HLS/X264_Settings.htm
+
+https://www.bilibili.com/read/cv4910766/
+

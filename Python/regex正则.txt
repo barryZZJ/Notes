@@ -20,15 +20,18 @@ finditer(pattern, string, flags=0) 同上，但返回生成器
 
 fullmatch(pattern, string, flags=0) 相当于pattern前后加上^和$。Try to apply the pattern to all of the string, returning a match object, or None if no match was found.
 
-sub(pattern, repl, string, count=0, flags=0) repl:替换结果，string:搜索字符串。repl中可以包含'\1'表示第一个括号中的内容。
+sub(pattern, repl, string, count=0, flags=0) repl:替换结果，string:搜索字符串。repl中用'\1'表示第一个括号中的内容。
+repl可以为函数，参数是一个match对象，返回替换后的结果。如
+lambda x: lookupmap[x.group()]
 
 split(pattern, string, maxsplit=0, flags=0) 用 pattern 分开 string 。 如果在 pattern 中捕获到括号，那么所有的组里的文字也会包含在列表里。
 
-如果不匹配返回None，否则
-搜索结果为Match对象：
+如果不匹配返回None，否则搜索结果为Match对象
+
+Match：
 	[i] 获取第i个括号内的匹配结果（0为全部匹配内容）
 	.group() 返回整个匹配内容
-		有括号时：.group(0)获得全部匹配内容；.group(1)获得第一个括号的内容...；
+		pattern有括号时：.group(0)获得全部匹配内容；.group(1)获得第一个括号的内容...；
 	.groups() 返回元组，获得每个括号内容，.groups(arg)把元组中所有未匹配到的None替换为arg
 
 
@@ -45,3 +48,23 @@ r"\t" -> 输出 "\t"
 	[\u30A0-\u30FF] 日语片假名
 	
 匹配双字节字符(包括汉字在内)：[^\x00-\xff]
+
+匹配单个数字：(?<!\d)\d(?!\d)
+匹配连续数字：\d{2,}
+匹配花括号内的内容：\''{[^{}]*\}''
+匹配花括号前的内容：''[^{}]+(?=\{[^{}]*\})  # 不含花括号，且紧跟花括号内容''
+匹配花括号后的内容：''(?<=\{[^{}]*\})[^{}]+  # 前面是花括号内容，后面不含花括号''
+匹配非花括号内的内容：''[^{}]+(?=\{[^{}]*\})|(?<=\{[^{}]*\})[^{}]+  # 上面两个或运算''
+
+非获取匹配：
+(?:xxx) 在查找时不会获取，但替换时会被一并替换
+同上，但替换时不会被替换：
+xxx(?=xxx) 正向肯定预查
+xxx(?!xxx) 正向否定预查
+(?<=xxx)xxx 反向肯定预查
+(?<!xxx)xxx 反向否定预查
+(?>...) xxx 把...当作单独的正则表达式进行匹配。（在查找时不会获取，但替换时会被一并替换）。区别：...禁止backtracking，如(?>.+)c将不会匹配aac，因为括号内的.+用掉了c；(?>big|biggest) cat不匹配biggest cat，因为先匹配了big。
+	...称为atomic group. An "atomic group" is one where the regular expression will never backtrack past. The regular expression engine works by matching each component part of the expression (called an "atom") in turn against the string. When it fails a match, it backtracks to a previous atom that was either a group with an alternation, or one modified by some form of repetition operator (?, *, +, or {n[,m]}). It then alters the match it chose for that atom and tries again
+
+不包含字符串hede：''^((?!hede).)*$''
+不以字符串hede开头：''^(?!hede).*$''

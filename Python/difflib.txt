@@ -1,0 +1,36 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2023-01-13T18:43:49+08:00
+
+====== difflib ======
+Created 星期五 13 一月 2023
+
+https://docs.python.org/zh-cn/3.9/library/difflib.html
+
+>>> diff = ndiff('one\ntwo\nthree\n'.splitlines(keepends=True),
+...              'ore\ntree\nemu\n'.splitlines(keepends=True))
+>>> print(''.join(diff), end="")
+- one
+?  ^
++ ore
+?  ^
+- two
+- three
+?  -
++ tree
++ emu
+
+比较文件、字符串等的相似性，类似git的比较算法：
+
+{{{code: lang="python3" linenumbers="False"
+import difflib
+ 
+def similarity(s1, s2):
+    return difflib.SequenceMatcher(None, s1, s2).quick_ratio()
+ 
+print string_similar('爱尔眼科沪滨医院', '沪滨爱尔眼科医院')
+print string_similar('安定区妇幼保健站', '定西市安定区妇幼保健站')
+print string_similar('广州市医院', '广东省中医院')
+}}}
+
+

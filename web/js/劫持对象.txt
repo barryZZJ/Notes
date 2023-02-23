@@ -1,0 +1,15 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2023-01-13T17:06:55+08:00
+
+====== 劫持对象 ======
+Created 星期五 13 一月 2023
+
+https://blog.huggy.moe/posts/2022/10-abema-unlock/
+
+''Object.defineProperty(__CLIENT_REGION__, 'isAllowed', {''
+''  get: () => true''
+''});''
+劫持了''__CLIENT_REGION__''对象的isAllowed属性的get方法
+
+https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Object/defineProperty

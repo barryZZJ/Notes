@@ -1,4 +1,11 @@
 Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+
+路由表
+route -n
+iptables -L
+netstat -rn
+ip route
 
 wget -N --no-check-certificate 
 

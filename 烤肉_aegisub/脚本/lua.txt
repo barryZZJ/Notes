@@ -9,8 +9,9 @@ https://cheatography.com/srgmc/cheat-sheets/lua-scripting-5-1/
 https://devhints.io/lua
 https://www.lua.org/manual/5.1/manual.html
 
-数组：（下标从1开始！不支持负数下标）
+数组/字典：（下标从1开始！不支持负数下标）
 arr = {}
+arr = { ['key'] = 'val' }
 #arr  ->  len(arr)
 arr[ind]
 arr[#arr]
@@ -35,6 +36,9 @@ for ind, ele in ipairs(arr) do # ind从1开始
 	...
 end
 
+include("unicode.lua")
+for c in unicode.chars(l.text) do
+
 for i = 0, n, step do
 	...
 end
@@ -46,4 +50,11 @@ end
 字符串：
 'a' .. 'b'  拼接
 
+匿名函数：function(s, st, ed) return to_fullwidth[s] end
 
+函数返回多值时，如果左侧只有一个变量，则多余返回值被抛弃
+
+伪三元运算符：
+condition and ifTrue or ifFalse
+若ifTrue不保证为true，可以使用更完备的：
+(condition and {ifTrue} or {ifFalse})[1]

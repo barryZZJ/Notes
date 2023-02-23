@@ -9,3 +9,6 @@ https://docs.python.org/3/library/uuid.html
 
 uuid.uuid4()
 Generate a random UUID
+
+def gen_uuid():
+	return str(uuid.uuid4())

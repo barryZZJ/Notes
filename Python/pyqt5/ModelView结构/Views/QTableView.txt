@@ -21,3 +21,7 @@ https://doc.qt.io/qt-6/qtsql-cachedtable-example.html
 .selectedIndexes()  ->  list[QModelIndex]
 
 如果用了proxymodel，返回则是proxyModel的index，但与其是否sort无关。
+
+处理一行或一列：.headerData()
+QHeaderView
+https://doc.qt.io/qt-6/qheaderview.html

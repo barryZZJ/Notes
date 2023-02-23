@@ -15,11 +15,18 @@ https://www.runoob.com/python/att-string-format.html
 "{date.year}{date.month}".format(date=datetime.datetime(year=2019, month=2))
  
 约束宽度：
-"{a:2d}".format(a=1) # -> " 1"
-"{:02}".format(1)  # -> "01"
+'{:2d}'.format(1) # ' 1'
+'{:<2d}'.format(1) # ' 1'
+'{:>2d}'.format(1) # '1 '
+"{a:2d}".format(a=1) # " 1"
+(d：约束参数为整型)
 
 0填充
-"{a:0>2d}".format(a=1) # -> "01"
+"{:02d}".format(1)  # "01"
+'{:0>2d}'.format(1)  # '01'
+'{:0<2d}'.format(1)  # '10'
+"{a:0>2d}".format(a=1) # "01"
  {id_:>02d}
 
-{:.nf} 保留n位小数
+保留n位小数
+{:.nf}

@@ -1,0 +1,54 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2023-01-14T00:00:14+08:00
+
+====== hash ======
+Created 星期六 14 一月 2023
+
+md5哈希：
+[[:Python:md5哈希]]
+
+pip install imohash
+https://github.com/kalafut/py-imohash
+
+文件快速哈希：（xxhash最快, zlib最慢）
+zlib CRC32哈希
+{{{code: lang="python3" linenumbers="False"
+import zlib
+
+def get_file_crc32(file_path):
+    with open(file_path, 'rb') as f:
+        data = f.read()
+    return hex(zlib.crc32(data) & 0xffffffff)
+
+print(get_file_crc32('example.txt'))
+}}}
+
+
+pip install mmh3
+{{{code: lang="python3" linenumbers="False"
+import mmh3
+
+def get_file_murmur3(file_path):
+    with open(file_path, 'rb') as f:
+        data = f.read()
+    return mmh3.hash(data)
+
+print(get_file_murmur3('example.txt'))
+
+}}}
+
+
+pip install xxhash
+{{{code: lang="python3" linenumbers="False"
+import xxhash
+
+def get_file_xxhash(file_path):
+    with open(file_path, 'rb') as f:
+        data = f.read()
+    return xxhash.xxh64(data).hexdigest()
+
+print(get_file_xxhash('example.txt'))
+}}}
+
+

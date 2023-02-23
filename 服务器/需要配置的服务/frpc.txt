@@ -5,6 +5,7 @@ Creation-Date: 2022-10-10T19:40:25+08:00
 ====== frpc ======
 Created 星期一 10 十月 2022
 
+
 frpc客户端注册映射：
 log_file = /tmp/frpc.log
 内网端口：
@@ -56,3 +57,13 @@ local_port = 8888
 remote_port = 8888
 use_encryption = false
 use_compression = false
+
+加密：
+如果公司内网防火墙对外网访问进行了流量识别与屏蔽，例如禁止了 ssh 协议等，通过设置 use_encryption = true，将 frpc 与 frps 之间的通信内容加密传输，将会有效防止流量被拦截。
+
+开启加密后，数据包会变大。这里的加密是指 frpc 和 frps 之间的通信，一般是为了防止被防火墙或者网关过滤。
+
+压缩：
+如果传输的报文长度较长，通过设置 use_compression = true 对传输内容进行压缩，可以有效减小 frpc 与 frps 之间的网络流量，加快流量转发速度，但是会额外消耗一些 cpu 资源。
+
+压缩针对的是每个包比较大的情况，如果都是小包，可能反而会有负面效果。

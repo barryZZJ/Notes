@@ -1,0 +1,49 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2022-12-13T19:52:05+08:00
+
+====== httpx ======
+Created 星期二 13 十二月 2022
+
+新一代网络请求库，和requests一样方便
+https://www.python-httpx.org/advanced/
+https://zhuanlan.zhihu.com/p/259674921
+
+使用client，类似session，但可以配置好headers等
+base_url：后续的请求可以直接写成 "/path/to/html"，不用写主机名
+
+proxies支持单独配置：https://www.python-httpx.org/advanced/#http-proxying
+''proxies = {''
+''    # Route all traffic through a proxy by default...''
+''    "all://": "http://localhost:8030",''
+''    # But don't use proxies for HTTPS requests to "domain.io"...''
+''    "https://domain.io": None,''
+''    # And use another proxy for requests to "example.com" and its subdomains...''
+''    "all://*example.com": "http://localhost:8031",''
+''    # And yet another proxy if HTTP is used,''
+''    # and the "internal" subdomain on port 5550 is requested...''
+''    "http://internal.example.com:5550": "http://localhost:8032",''
+''}''
+
+httpx.URL
+
+response.raise_for_status()
+
+{{{code: lang="python3" linenumbers="False"
+client = httpx.Client(
+            base_url='http://www.baidu.com',
+            headers={
+                "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:108.0) Gecko/20100101 Firefox/108.0",
+                "cache-control": "no-cache",
+                "DNT": "1",
+                "host": BANGUMI_MOE_HOST.host,
+                "origin": "https://bangumi.moe",
+                "referer": "https://bangumi.moe/",
+            },
+            proxies={
+                "all://": "http://localhost:9999",
+            }
+         )
+client.get('/path')
+client.post('/path', data=payload)
+}}}

@@ -5,4 +5,22 @@ Creation-Date: 2022-10-07T17:27:46+08:00
 ====== MerlinClash ======
 Created 星期五 07 十月 2022
 
+插件下载质壁分离版，或Lite版
+
+安装/重装：
+选择.tar.gz文件后点击上传并安装
+
+安装补丁：
+选择.tar.gz文件后点击上传并安装
+
+
 出错连不上了先去配置页面点一遍各种重建按钮
+
+faq
+https://mcreadme.gitbook.io/mc/faq/faq1#q17
+
+连不上clash管理面板：刷新DNS：ipconfig /flushdns
+
+打开fiddler/clash开代理后再上yacd就能进了，不知道怎么回事
+没开代理导致无法访问192.168.50.1？这是为什么
+可能是DNS污染了？

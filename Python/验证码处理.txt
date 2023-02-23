@@ -1,3 +1,81 @@
 Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
 
+图像识别部分见 [[:Python:OCR-tesseract]]
+
+简单ocr：
 https://blog.csdn.net/qq_29245097/article/details/52833310
+
+{{{code: lang="python3" linenumbers="False"
+from PIL import Image, ImageFilter,ImageEnhance
+import pytesseract
+
+im = Image.open('path')
+im_grey=im.convert('L')#灰度化
+im_peak=im_grey.convert('1')#二值化
+im_filter=im_peak.filter(ImageFilter.MedianFilter)#中值滤波
+# 将验证码图片转换为文本
+text = pytesseract.image_to_string(bw)
+}}}
+
+
+
+基于ML：
+ddddocr （效果好，且更高级）
+	https://github.com/sml2h3/ddddocr
+	普通字符验证码
+{{{code: lang="python3" linenumbers="False"
+import ddddocr
+
+ocr = ddddocr.DdddOcr()  # 可尝试beta=True使用1.2.0之后的版本，不同版本效果看脸
+
+with open("test.jpg", 'rb') as f:
+    image = f.read()
+
+res = ocr.classification(image)
+print(res)
+
+}}}
+	
+	
+	支持滑块验证码和点击汉字验证码
+	
+https://github.com/kerlomz/captcha_trainer
+基于此方案的现成模块：
+muggle-ocr(基于numpy, pillow, tensorflow
+	https://www.cnblogs.com/kerlomz/p/13033262.html
+	https://blog.csdn.net/toopoo/article/details/124358608
+{{{code: lang="python3" linenumbers="False"
+import muggle_ocr
+
+# ModelType.OCR 可识别光学印刷文本，但是只能单行文字，并且排版需要非常好（不能有很多空白）
+sdk = muggle_ocr.SDK(model_type=muggle_ocr.ModelType.OCR)
+with open(r"001.jpg", "rb") as f:
+    image_binary = f.read()
+    text = sdk.predict(image_bytes=image_binary)
+    print(text)
+    
+# ModelType.Captcha 可识别4-6位验证码，使用的训练模型，很精准，但是不能识别大段文字
+sdk = muggle_ocr.SDK(model_type=muggle_ocr.ModelType.Captcha)
+with open(r"001.jpg", "rb") as f:
+    image_binary = f.read()
+    text = sdk.predict(image_bytes=image_binary)
+    print(text)
+    
+   
+"""
+使用自定义模型
+支持基于 https://github.com/kerlomz/captcha_trainer 框架训练的模型
+训练完成后，进入导出编译模型的[out]路径下, 把[graph]路径下的pb模型和[model]下的yaml配置文件放到同一路径下。
+将 conf_path 参数指定为 yaml配置文件 的绝对或项目相对路径即可，其他步骤一致，如下示例：
+"""
+with open(r"test3.jpg", "rb") as f:
+    b = f.read()
+sdk = muggle_ocr.SDK(conf_path="./ocr.yaml")
+text = sdk.predict(image_bytes=b)
+}}}
+
+
+
+
+

@@ -1,0 +1,24 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2023-01-13T23:14:49+08:00
+
+====== bisect二分法查找 ======
+Created 星期五 13 一月 2023
+
+https://docs.python.org/3/library/bisect.html
+
+{{{code: lang="python3" linenumbers="False"
+import bisect
+
+def binary_search(arr, x):
+    i = bisect.bisect_left(arr, x)
+    if i != len(arr) and arr[i] == x:
+        return i
+    else:
+        return -1
+
+arr = [1, 2, 3, 4, 5]
+x = 4
+print(binary_search(arr, x))
+
+}}}

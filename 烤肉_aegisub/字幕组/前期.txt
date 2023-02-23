@@ -1,0 +1,39 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2022-12-21T01:13:56+08:00
+
+====== 前期 ======
+Created 星期三 21 十二月 2022
+
+前期：
+1. nyaa下生肉，1080P 200-300mb的可以pass掉 那种内嵌字幕的也可以pass
+[Ohys-Raws] 下载720源，给翻译 https://ohys.gokoro.me/sat 速度最快 一般一两分钟就会发tv的720p
+[SubsPlease] 下载1080web源，给轴man https://subsplease.org/ 出片会晚一点
+或
+亚马逊下载器
+下个480p就有字幕了 记得在设置里勾选独立下载字幕
+
+ameba：
+http://43.133.21.219:8888/
+xiaoxin
+10086qq..
+在文件中打开终端，用yt-dlp下载
+
+
+2. 录制站下ts源
+rec.mlsub.net
+账号密码都是：1jones
+预约节目
+记得看日期、并且有"字"字样
+30min 3.5￥
+	百度网盘+极下/克隆窝+IDM
+	https://jixia.baidui.vip/#/jxdo
+	这个是百度网盘直链解析网址 需要搭配idm使用
+	https://www.bilibili.com/video/BV1144y1t7NU
+
+3. 导出台本（cap2txt）
+
+4. 处理后发布腾讯文档（网页端右上角点分享）
+
+5. 源、台本腾讯文档共享发群里
+

@@ -5,15 +5,127 @@ Creation-Date: 2022-10-04T17:47:30+08:00
 ====== いろいろ ======
 Created 星期二 04 十月 2022
 
-文筆デビューを飾る
-全編書下ろしによる
-初のエッセイ集
+[[.\いろいろ.docm]]
 
-たおやかでまっすぐな
-ありのままの
-本音
+https://liaocy.net/2018/20180720-wordautofurigana/
+https://www.ka-net.org/blog/?p=7576
+https://zhidao.baidu.com/question/247850898.html
 
-いつも心に太陽を、くちびるに歌を
-懐には一冊の本を
+https://learn.microsoft.com/en-us/office/vba/word/concepts/customizing-word/built-in-dialog-box-argument-lists-word
+https://learn.microsoft.com/en-us/office/vba/api/word.wdworddialog
+https://learn.microsoft.com/en-us/office/vba/api/word.dialogs
+https://learn.microsoft.com/en-us/office/vba/api/word.dialog
 
-はじめに
+https://learn.microsoft.com/en-us/office/vba/api/word.dialog.show
+
+https://learn.microsoft.com/en-us/dotnet/api/microsoft.office.interop.word.find
+
+https://learn.microsoft.com/en-us/dotnet/api/microsoft.office.interop.word.range
+
+doc:
+https://learn.microsoft.com/en-us/office/vba/api/overview/word
+
+{{{code: lang="vbnet" linenumbers="False"
+Option Explicit
+'https://liaocy.net/2018/20180720-wordautofurigana/
+'https://www.ka-net.org/blog/?p=7576
+  
+Public Sub RubySelectedRange()
+  SetPhoneticRange Selection.range
+End Sub
+
+Private Sub SetPhoneticRange(ByVal rng As Word.range)
+  'https://learn.microsoft.com/en-us/dotnet/api/microsoft.office.interop.word.find
+  If Len(rng) = 0 Then
+    Exit Sub
+  End If
+  
+  Dim char As Word.range
+  Dim range As Word.range
+  Dim last As String
+  Dim MAX As Integer
+  MAX = 52
+  
+  Dim i As Integer
+  Dim j As Integer
+  
+  If rng.Characters.Count <= MAX Then
+    Dialogs(wdDialogPhoneticGuide).Show
+  Else
+    Set range = rng.Characters.last.Duplicate
+    For i = rng.Characters.Count To 1 Step -1
+    Set char = rng.Characters(i)
+      If char = rng.Characters.last Then
+        GoTo Skip0
+      ElseIf Len(range) + Len(char) <= MAX Then
+        range.Start = char.Start
+        'range.Select
+      ElseIf range <> last Then
+        last = range
+        range.Select
+        Set range = char.Duplicate
+        Dialogs(wdDialogPhoneticGuide).Show
+        'range.Select
+      End If
+Skip0:
+    Next
+    
+    If range <> last Then
+      last = range
+      range.Select
+      Dialogs(wdDialogPhoneticGuide).Show
+    End If
+  End If
+  
+  Set range = Nothing
+  Application.ScreenUpdating = True
+  Exit Sub
+  
+  Dim sent As Word.range
+  Dim wholesent As Word.range
+  Set wholesent = rng.Sentences.First.Duplicate
+  For Each sent In rng.Sentences
+    ' skip the first loop
+    If sent.End = wholesent.End Then
+      GoTo Skip
+    End If
+
+    If Len(wholesent) + Len(sent) <= MAX Then
+      wholesent.End = sent.End
+    Else
+      If sent.Fields.Count < 1 And sent <> last Then
+        last = wholesent
+        wholesent.Select
+        Set wholesent = sent.Duplicate
+        Dialogs(wdDialogPhoneticGuide).Show
+      End If
+    End If
+Skip:
+  Next
+  If wholesent.Fields.Count < 1 And wholesent <> last Then
+    last = wholesent
+    wholesent.Select
+    Dialogs(wdDialogPhoneticGuide).Show
+  End If
+  
+  Set sent = Nothing
+  Application.ScreenUpdating = True
+  
+  Exit Sub
+  
+  
+
+  For i = 1 To rng.Characters.Count Step 57
+    Set sent = rng.Characters(i).Duplicate
+    sent.End = sent.End + 56
+    'If sent.Fields.Count < 1 Then
+      sent.Select
+      Dialogs(wdDialogPhoneticGuide).Show
+    'End If
+  Next
+
+  
+End Sub
+
+}}}
+

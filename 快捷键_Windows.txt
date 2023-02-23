@@ -1,0 +1,52 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2023-02-13T20:27:50+08:00
+
+====== 快捷键 Windows ======
+Created 星期一 13 二月 2023
+
+shift+关机：真关机，不使用快速启动
+shift+重启：可选择从其他设备中启动
+
+win+i: 设置
+win+shift+s: 截屏
+win+v: 剪贴板
+win+r: msconfig、services.msc、regedit、mstsc、control
+win+l: 锁屏
+win+d: 显示桌面
+win+数字键: 任务栏对应应用
+win+x: 右键开始菜单
+win+a: 系统通知
+win+k: 连接
+win+e: 我的电脑
+win+g: game bar
+win+,: peek桌面
+win+. 或 win+;: 打开emoji面板
+
+
+fn+1 风扇自动/最大切换
+
+word：
+F9 更新选中文本的交叉引用的域
+
+浏览器：
+ctrl + e 用默认引擎搜索
+
+资源管理器：
+F4 定位到地址栏
+
+PowerToys
+https://github.com/microsoft/PowerToys
+win+ctrl+t: 始终置顶
+win+shift+c: 颜色提取
+shift+拖动窗口: 复杂窗口布局 (win+shift+`: 管理页面)
+资源管理器内 alt+p: 预览文件
+win+shift+h: 荧光笔
+win+alt+p: 鼠标十字线
+alt+space: 全局搜索 快速启动 https://learn.microsoft.com/zh-cn/windows/powertoys/run
+win+shift+/: 查看windows快捷键
+win+shift+t: 屏幕OCR
+
+PowerRename
+增强库
+https://www.boost.org/doc/libs/1_74_0/libs/regex/doc/html/boost_regex/syntax/perl_syntax.html#boost_regex.syntax.perl_syntax.lookbehind

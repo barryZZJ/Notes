@@ -22,7 +22,7 @@ Created 星期日 16 十月 2022
 
 	追踪不正确时，调整追踪参数和形状。
 		调整Search Area、Motion、Preprocessing的参数
-		增加新的area，cur holes in existing areas。
+		增加新的area，cut holes in existing areas。
 		新增一层，追踪前景障碍，然后以此为基准mask out foreground obstructions。
 		也可以添加关键帧，so that it tracks only the planar region of a shape.
 			No initial keyframe is set until you first hit Add Key or move a point with Auto-Key turned on.

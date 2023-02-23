@@ -3,6 +3,9 @@ Wiki-Format: zim 0.6
 
 https://docs.python.org/3/library/datetime.html
 
+datetime.datetime(year, month, day, hour=0, minute=0, second=0, microsecond=0, tzinfo=None, *, fold=0)
+
+.fromtimestamp(timestamp, tz=None)
 
 .strftime(format) -> str
 datetime.strptime(string, format) -> Object
@@ -36,8 +39,13 @@ format:
 time_format = "TZID=Asia/Shanghai:{date.year}{date.month:0>2d}{date.day:0>2d}T{date.hour:0>2d}{date.minute:0>2d}{date.second:0>2d}"
 	dt_start = time_format.format(date=DTSTART) # DTSTART: datetime
 
+"20221213T102932Z"
 datetime.today().strftime("%Y%m%dT%H%M%SZ")
 
+"2023/1/7 18:29"
+"%Y/%m/%d %H:%M"
+
+datetime.today().strftime("%Y-%m-%d_%H-%M-%S")
 
 时间增减：
 st_offset = timedelta(weeks=week-1, days=day-1, hours=st.hour, minutes=st.minute, seconds=st.second)

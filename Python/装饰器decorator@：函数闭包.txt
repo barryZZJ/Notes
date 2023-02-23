@@ -19,20 +19,27 @@ https://www.runoob.com/w3cnote/python-func-decorators.html
 注意：@wraps接受一个函数来进行装饰，并加入了复制函数名称、注释文档、参数列表等等的功能。这可以让我们在装饰器里面访问在装饰之前的函数的属性。
 注意2：任何写在decorated函数外的代码都会在函数定义时的@decorator_name/@getDecorator()除执行一次，要想在每次执行func前后执行的代码必须写在decorated里！
 
+{{{code: lang="python3" linenumbers="False"
 from functools import wraps
  
 def decorator_name(func):
 	@wraps(func)
 	def decorated(*args, **kwargs):  # 被装饰后的函数。调用func()实际上是调用decorated()
 		print("before func()")
-		return func(*args, **kwargs)
+		res = func(*args, **kwargs)
+		print("after func()")
+		return res
 	return decorated
- 
+
 @decorator_name  #相当于 func = decorator_name(func)
 def func():
 	return("Function is running")
 
-func() # 相当于 decorator_name(func)()
+func(1, 2, c=3) # 相当于 decorator_name(func)()
+}}}
+
+ 
+
 
 2.带参数的装饰器：再套一层
 def getDecorator(*args, **kwargs):

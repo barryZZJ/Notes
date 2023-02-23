@@ -31,6 +31,8 @@ isinstance(o, t)
 T = TypeVar('T', bound='类名')
 成员函数(sth: Type[T]) -> T:...
 
+Literal["val1", "val2"]
+
 用于numpy：
 from numpy.typing import NDArray
 NDArray[dtype]

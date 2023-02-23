@@ -1,0 +1,28 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2023-01-23T17:47:21+08:00
+
+====== 常用槽函数 ======
+Created 星期一 23 一月 2023
+{{{code: lang="python3" linenumbers="False"
+
+    @pyqtSlot()  # 如果有参数的话，装饰器pyqtSlot()里必须要加上参数类型
+    def on_btn_clicked(self):
+        # 主窗口只能手动连接槽函数
+        print('button clicked!')
+    
+    
+    @pyqtSlot(str)
+    def on_txtNameCN_textChanged(self, txt):
+        ...
+    
+    
+    @pyqtSlot(int)
+    def on_chkWxTag_stateChanged(self, state):
+        self.txtWxTag.setEnabled(state == 2)  # 0, 1, 2
+        
+    @pyqtSlot(bool)
+    def on_radProxyOn_clicked(self, checked: bool):
+        ...
+    
+}}}

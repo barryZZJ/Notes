@@ -20,6 +20,12 @@ fileChanged  signal  文件发生修改时，返回该文件的路径
 .directories() 查看正在监控的目录  存储既可以有绝对路径也可以有相对路径
 directoryChanged  signal 文件夹内容发生变化（文件增删）时，返回被监视的文件夹路径
 
+注意：大文件拷贝时，信号是在拷贝开始时产生的
+临时解决办法检查拷贝是否完成：
+	不断检查文件上次修改时间，超过1s后认为复制完成；
+	不断检查文件大小，一定时间内大小稳定则认为复制完成；
+	或尝试rb+模式打开，如果不报PermissionError，则拷贝完成，如果不存在报FileNotFoundError（注意不能检测到暂停复制的情况。
+
 用法： https://blog.csdn.net/liang19890820/article/details/51849252
 监视文件夹：
 建立一个字典，按路径分类，currFiles[path]=set(被监视目录下的文件)，用于获取具体内容的变动情况

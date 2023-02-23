@@ -1,0 +1,9 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2023-01-10T23:36:52+08:00
+
+====== 监听 ======
+Created 星期二 10 一月 2023
+
+文本框内容发生变化时会触发
+.on('input', func)
