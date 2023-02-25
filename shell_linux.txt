@@ -3,9 +3,15 @@ Wiki-Format: zim 0.6
 
 路由表
 route -n
-iptables -L
 netstat -rn
 ip route
+iptables -L
+
+查网关：
+ip route | grep default | awk '{print $3}'
+netstat -nr | grep '^0.0.0.0' | awk '{print $2}'
+route -n | grep '^0.0.0.0' | awk '{print $2}'
+
 
 wget -N --no-check-certificate 
 
