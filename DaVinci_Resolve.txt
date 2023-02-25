@@ -1,0 +1,8 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2023-02-25T15:43:45+08:00
+
+====== DaVinci Resolve ======
+Created 星期六 25 二月 2023
+
+分割片段：ctrl+\
