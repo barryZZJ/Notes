@@ -1,0 +1,23 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2023-02-26T15:35:27+08:00
+
+====== pyzbar 条形码二维码识别 ======
+Created 星期日 26 二月 2023
+
+https://pypi.org/project/pyzbar/
+{{{code: lang="python3" linenumbers="False"
+from PIL import Image
+from pyzbar.pyzbar import decode
+
+# 读取图像文件
+img = Image.open('qrcode.png')
+
+# 解码二维码
+data = decode(img)
+
+# 输出二维码中的信息
+print(data[0].data.decode('utf-8'))
+
+}}}
+
