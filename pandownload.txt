@@ -1,0 +1,24 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2023-02-26T21:57:44+08:00
+
+====== pandownload ======
+Created 星期日 26 二月 2023
+
+本项目代码参考以下项目
+https://pan.baidu.com/union/doc (主要文档)
+https://github.com/xiuluo/baidu
+https://github.com/scusjs/baiduyun
+https://github.com/ly0/baidupcsapi
+https://github.com/cool2528/baiduCDP
+https://github.com/Angey40/BaiduPCS-Go
+https://github.com/qjfoidnh/BaiduPCS-Go
+https://github.com/GangZhuo/BaiduPCS_NET
+https://github.com/PeterDing/BaiduPCS-Py
+https://github.com/yuantuo666/baiduwp-php
+https://github.com/PanDownloadServer/Server
+https://github.com/yaronzz/BaiduYunToAliYun
+https://github.com/mayunbaba2/BaiduPCS-Go-Web
+https://github.com/gy12346123/BaiduCloudSupport
+https://github.com/88250/baidu-netdisk-downloaderx
+https://github.com/Accelerider/BaiduPanDownloadWinForm

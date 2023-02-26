@@ -1,0 +1,74 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2023-02-26T22:30:49+08:00
+
+====== wrapProperty ======
+Created 星期日 26 二月 2023
+
+There is a concept in JavaScript called "property wrapping" that involves creating a new object that wraps an existing object and intercepts accesses to its properties.
+
+Here's an example implementation of a wrapProperty() function that creates a new object that wraps an existing object and allows you to intercept access to a specific property:
+{{{code: lang="js" linenumbers="False"
+function wrapProperty(obj, propName, getter, setter) {
+  // Create a new object with the same prototype as the original object
+  const wrappedObj = Object.create(Object.getPrototypeOf(obj));
+
+  // Define a getter function for the property that calls the original getter function (if provided)
+  Object.defineProperty(wrappedObj, propName, {
+    get: function() {
+      if (getter) {
+        return getter.call(obj);
+      } else {
+        return obj[propName];
+      }
+    },
+    // Define a setter function for the property that calls the original setter function (if provided)
+    set: function(value) {
+      if (setter) {
+        setter.call(obj, value);
+      } else {
+        obj[propName] = value;
+      }
+    }
+  });
+
+  // Return the wrapped object
+  return wrappedObj;
+}
+}}}
+
+
+Here's an example of how you could use this wrapProperty() function:
+{{{code: lang="js" linenumbers="False"
+// Define an object with a "name" property
+const person = {
+  name: 'Alice'
+};
+
+// Wrap the "name" property of the object to intercept access to it
+const wrappedPerson = wrapProperty(person, 'name', 
+  function() { // getter function
+    console.log('Getting name:', this.name);
+    return this.name;
+  },
+  function(value) { // setter function
+    console.log('Setting name to:', value);
+    this.name = value;
+  }
+);
+
+// Access the "name" property of the wrapped object
+console.log(wrappedPerson.name); // logs "Getting name: Alice" and "Alice"
+
+// Set the "name" property of the wrapped object
+wrappedPerson.name = 'Bob'; // logs "Setting name to: Bob"
+
+// Access the "name" property of the original object
+console.log(person.name); // logs "Bob"
+
+}}}
+
+
+In this example, we define an object person with a name property. We then use wrapProperty() to create a new object wrappedPerson that intercepts access to the name property using a getter and setter function that log messages to the console.
+
+We then access the name property of the wrapped object, which calls the getter function and logs a message to the console. We set the name property of the wrapped object, which calls the setter function and logs a message to the console. Finally, we access the name property of the original object, which returns the updated value of the property.
