@@ -60,3 +60,6 @@ ffmpeg -i input.ts out.mp4
 
 所有输出均在stderr；
 出错时returnCode不为0.
+
+js版
+https://github.com/Kagami/ffmpeg.js
