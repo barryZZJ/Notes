@@ -5,16 +5,12 @@ Creation-Date: 2022-10-30T18:55:10+08:00
 ====== Path ======
 Created 星期日 30 十月 2022
 
-路径各部分命名规范
-https://stackoverflow.com/questions/2235173/what-is-the-naming-standard-for-path-components
-
-
 https://docs.python.org/3.9/library/pathlib.html
 
 from pathlib import Path
 
 str(Path)  # 转换为当前系统下的路径字符串
-.iterdir()  -> iterator # 遍历当前目录，相当于os.listdir()
+.iterdir()  -> iterator[Path] # 遍历指定目录下的文件和文件夹，相当于os.listdir()，绝对还是相对路径取决于对象本身
 .mkdir(parents=False, exist_ok=False)  # parents: 创建不存在的父级目录
 .exists()
 .is_dir() .is_file()
@@ -35,9 +31,9 @@ str(Path)  # 转换为当前系统下的路径字符串
 	一个星号匹配一级路径或任意文件名，两个星号匹配任意级(0级以上)路径
 	[seq] matches any character in seq [!seq] matches any character not in seq
 	模拟os.walk：(对于Path.glob，结尾带不带/不影响结果。直接使用glob库时结尾带/表示文件夹）
-	'**'  递归搜索所有子文件夹（含根目录）
-	'*/**'  递归搜索所有子文件夹（不含根目录）
-	'**/*.*' 递归搜索所有子文件
+	'**'  递归搜索所有文件夹（含根目录）
+	'*/**'  递归搜索所有文件夹（不含根目录）
+	'**/*.*' 递归搜索所有文件（含根目录下）
 	'*' 匹配一级文件夹和文件
 	'*.*' 匹配一级文件
 	[f for f in p.iterdir() if f.is_dir()]  # glob不能匹配一级子文件夹
@@ -53,7 +49,7 @@ str(Path)  # 转换为当前系统下的路径字符串
 .parents  # [0]: 文件所在目录 [1]: 上一级目录 [2]... 盘符 [-1]  （不含文件本身目录）
 .parent  # 文件所在目录或路径的上一级目录
 .name  # 文件名
-.suffix  # 后缀名
+.suffix  # 后缀名 含.
 .suffixes  # 后缀名列表，从左往右
 .stem  # 文件名部分（去除后缀名和前面的路径）
 

@@ -5,3 +5,44 @@ Creation-Date: 2023-02-27T20:33:54+08:00
 ====== 个人路径各部分命名规范 ======
 Created 星期一 27 二月 2023
 
+路径各部分命名规范
+https://stackoverflow.com/questions/2235173/what-is-the-naming-standard-for-path-components
+
+For C:\Users\OddThinking\Documents\My Source\Widget\foo.src
+where root is C:\Users\OddThinking\Documents\My Source\
+
+''A) C:\users\OddThinking\Documents\My Source\Widget\foo.src''
+''                                                   ---''
+''stem''
+
+''B) C:\users\OddThinking\Documents\My Source\Widget\foo.src''
+''                                                   -------''
+''file name / base name''
+
+''C) C:\users\OddThinking\Documents\My Source\Widget\foo.src''
+''                                                       --- (without dot)''
+''extension''
+
+''D) C:\users\OddThinking\Documents\My Source\Widget\foo.src''
+''                                                      ---- (with dot)''
+''suffix''
+
+''E) C:\users\OddThinking\Documents\My Source\Widget\foo.src''
+''   -----------------------------------------''
+''root''
+
+''F) C:\users\OddThinking\Documents\My Source\Widget\foo.src''
+''                                            --------------''
+''relpath or reldirfile or relfile''
+
+''G) C:\users\OddThinking\Documents\My Source\Widget\foo.src''
+''                                            ------''
+''reldir''
+
+''H) C:\users\OddThinking\Documents\My Source\Widget\foo.src''
+''   ------------------------------------------------''
+''dirname or fulldir''
+
+''I) C:\users\OddThinking\Documents\My Source\Widget\foo.src''
+''   -------------------------------------------------------''
+''fullfile or fullpath''
