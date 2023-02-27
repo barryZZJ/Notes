@@ -5,6 +5,10 @@ Creation-Date: 2022-10-30T18:55:10+08:00
 ====== Path ======
 Created 星期日 30 十月 2022
 
+路径各部分命名规范
+https://stackoverflow.com/questions/2235173/what-is-the-naming-standard-for-path-components
+
+
 https://docs.python.org/3.9/library/pathlib.html
 
 from pathlib import Path
