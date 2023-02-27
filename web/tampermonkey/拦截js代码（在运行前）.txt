@@ -1,8 +1,12 @@
 Content-Type: text/x-zim-wiki
 Wiki-Format: zim 0.6
 
+注意原来html页面内置的<script>代码会在加载时立即执行，因此无论如何都无法抢在script的同步代码之前执行，
+除非script内的代码是异步的则可以想办法拦截其中的函数。
+
 // @run-at         document-start
-且设置中的注入模式改为"即时"，可以让脚本在网页script执行前执行
+且设置中的注入模式改为"即时"
+
 1. unsafewindow
 {{{code: lang="js" linenumbers="False"
 // @grant  unsafeWindow
@@ -86,5 +90,9 @@ function NewScript1(){
 }}}
 
 
-3. 拦截对象，考虑使用Object.defineProperty
+3. 提前定义对象，使用Object.defineProperty
 见 [[:web:js:wrapProperty]]
+
+4. MuationObserver
+https://stackoverflow.com/questions/39346747/tampermonkey-script-run-before-page-load
+
