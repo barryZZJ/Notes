@@ -1,0 +1,25 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2023-02-27T16:31:21+08:00
+
+====== MutationObserver ======
+Created 星期一 27 二月 2023
+
+监视DOM的变化
+https://developer.mozilla.org/zh-CN/docs/Web/API/MutationObserver
+
+{{{code: lang="js" linenumbers="False"
+const observer = new MutationObserver(function(mutations) {
+  mutations.forEach(function(mutation) {
+    console.log('A mutation has occurred:', mutation.type);
+  });
+});
+
+const targetNode = document.getElementById('target');
+// which types of mutations t oobserve
+const config = { attributes: true, childList: true, subtree: true };
+observer.observe(targetNode, config);
+
+}}}
+
+
