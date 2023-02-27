@@ -10,6 +10,16 @@ http://avisynth.nl/index.php/Main_Page
 
 http://www.vapoursynth.com/doc/
 
+裁剪  http://www.vapoursynth.com/doc/functions/video/trim.html
+src8 = core.std.Trim(src8,2532,3532)
+std.Trim(vnode clip[, int first=0, int last, int length])
+
+Trim returns a clip with only the frames between the arguments first and last, or a clip of length frames, starting at first. Trim is inclusive so Trim(clip, first=3, last=3) will return one frame. If neither last nor length is specified, no frames are removed from the end of the clip.
+
+Specifying both last and length is considered to be an error. Likewise is calling Trim in a way that returns no frames, as 0 frame clips are not allowed in VapourSynth.
+
+In Python, std.Trim can also be invoked by slicing a clip.
+
 织梦字幕组
 vspipe.exe script.vpy -c y4m - | x264.exe --demuxer y4m --preset slower --ref 4 --merange 24 --me umh --bframes 10 --aq-mode 3 --aq-strength 0.7 --deblock 0:0 --trellis 2 --psy-rd 0.6:0.1 --crf 21 --output-depth 8 -o tmp.mp4 -
 "-" 表示从pipe接受输入

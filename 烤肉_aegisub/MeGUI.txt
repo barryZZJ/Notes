@@ -5,9 +5,11 @@ Creation-Date: 2023-02-06T18:51:07+08:00
 ====== MeGUI ======
 Created 星期一 06 二月 2023
 
-用File Indexer手动设置裁剪的帧区间，会生成clt文件（把帧数和时间关联上），根据clt文件即可帧裁剪音频（因为音频只能按时间裁剪，没有帧的概念）
-（详见压制教程.pdf）
-音频输出.m4a
+用File Indexer手动设置裁剪的帧区间，会生成clt文件（把帧数和时间关联上），根据clt文件即可帧裁剪音频（因为音频只能按时间裁剪，没有帧的概念）（详见压制教程.pdf）
+
+AVS Script Creator可以预览视频，选择要裁剪的时间
+
+使用Audio Cutter
 
 对应vs脚本：
 # ts源索引器 MeGUI选DGIndex，这里的source是megui输出的d2v文件
@@ -15,5 +17,11 @@ source = "xxx.d2v"
 src8 = core.d2v.Source(source)
 
 # mp4源索引器 MeGUI选L-SMASH Works
-source = "xxx.ts"
+source = "xxx.mp4"
 # src8=core.lsmas.LWLibavSource(source,repeat=True,threads=16)
+
+选择好时间后，VS裁剪视频：
+part1 = core.std.Trim(src8,first=1821,last=22738)
+part2 = core.std.Trim(src8,first=25887,last=40331)
+part3 = core.std.Trim(src8,first=43929,last=53213 )
+src8 = part1 + part2 + part3
