@@ -30,26 +30,33 @@ str(Path)  # 转换为当前系统下的路径字符串
 .glob() -> iter[Path] # 使用通配符匹配. Path('.').glob('*/*.py')，返回相对或绝对路径
 	一个星号匹配一级路径或任意文件名，两个星号匹配任意级(0级以上)路径
 	[seq] matches any character in seq [!seq] matches any character not in seq
-	模拟os.walk：(对于Path.glob，结尾带不带/不影响结果。直接使用glob库时结尾带/表示文件夹）
-	'**'  递归搜索所有文件夹（含根目录）
-	'*/**'  递归搜索所有文件夹（不含根目录）
-	'**/*.*' 递归搜索所有文件（含根目录下）
-	'*' 匹配一级文件夹和文件
-	'*.*' 匹配一级文件
-	[f for f in p.iterdir() if f.is_dir()]  # glob不能匹配一级子文件夹
+	(对于Path.glob，结尾带不带/不影响结果。直接使用glob库时结尾带/表示文件夹）
+	非递归：
+	'*' 非递归遍历文件和文件夹
+	'*.*' 非递归遍历文件
+	[f for f in p.iterdir() if f.is_dir()]  非递归遍历文件夹 # glob不能实现
+	
+	递归（含根目录）：
+	'**/*' 递归遍历文件夹和文件 同os.walk
+	'**/*.*' 递归遍历文件
+	'**'  递归遍历文件夹 注意不含文件
+
+	'*/**'  递归遍历文件夹和文件（不含根目录）
+
 .write_bytes() .read_bytes()
 .write_text() .read_text()
 .rename() .replace()
 .rmdir() # 文件夹必须为空
 .touch(exist_ok=True)  # 新建文件
 
-.parts # tuple ('c:\\', 'Program Files', 'PSF')
-.drive
-.anchor  # 'c:\\'
-.parents  # [0]: 文件所在目录 [1]: 上一级目录 [2]... 盘符 [-1]  （不含文件本身目录）
-.parent  # 文件所在目录或路径的上一级目录
-.name  # 文件名
-.suffix  # 后缀名 含.
-.suffixes  # 后缀名列表，从左往右
-.stem  # 文件名部分（去除后缀名和前面的路径）
+example: C:\full\path\to\file.mp4
+.parts # tuple ('C:\\', 'full', 'path', 'to', 'file.mp4')
+.drive # str 'C:'
+.anchor  # str 'C:\\'
+.parents  # Path.parents # list[Path]: [C:/full/path/to, C:/full/path, C:/full, C:/]  （不含文件或文件夹本身）
+.parent  # Path C:\full\path\to 文件所在目录或路径的上一级目录
+.name  # str 'file.mp4' 文件名
+.suffix  # str '.mp4'  or ''
+.suffixes  # ['.mp4'] 后缀名列表，从左往右
+.stem  # str 'file' 文件名部分（去除后缀名和前面的路径）
 
