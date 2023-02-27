@@ -5,6 +5,7 @@ Creation-Date: 2023-02-26T22:30:49+08:00
 ====== wrapProperty ======
 Created 星期日 26 二月 2023
 
+https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Object/defineProperty
 There is a concept in JavaScript called "property wrapping" that involves creating a new object that wraps an existing object and intercepts accesses to its properties.
 
 Here's an example implementation of a wrapProperty() function that creates a new object that wraps an existing object and allows you to intercept access to a specific property:
