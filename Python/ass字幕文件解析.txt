@@ -13,6 +13,8 @@ with open('ass.ass', encoding='utf_8_sig') as f:
 	
 events = sub.events  # type: ass.EventSection
 isinstance(events[0], ass.Dialog)
+dialogues = [event for event in sub.events if isinstance(event, ass.Dialogue)]
+
 
 with open("out.ass", "w", encoding='utf_8_sig') as f:
     doc.dump_file(f)
