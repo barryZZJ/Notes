@@ -1,0 +1,15 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2023-02-28T10:33:56+08:00
+
+====== log带前缀 ======
+Created 星期二 28 二月 2023
+
+每次log的时候都会自动添加一个前缀，并且console里仍可以定位到log所在的位置
+
+const myPrefix = '[Lemonedo Download]';
+const log = console.log.bind(console, myPrefix);
+const debug = console.debug.bind(console, myPrefix);
+const err = console.err.bind(console, myPrefix);
+
+log('Hello, world!');

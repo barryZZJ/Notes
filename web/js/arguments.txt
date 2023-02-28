@@ -1,0 +1,37 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2023-02-28T10:27:06+08:00
+
+====== arguments ======
+Created 星期二 28 二月 2023
+
+https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Functions/arguments
+
+arguments对象是所有（非箭头）函数中都可用的局部变量。你可以使用arguments对象在函数中引用函数的参数。此对象包含传递给函数的每个参数，第一个参数在索引 0 处。（就算没有形参，也能通过arguments获得实参）
+例如，如果一个函数传递了三个参数，你可以以如下方式引用他们：
+function func1(a, b, c) {
+  console.log(arguments[0]);
+  // Expected output: 1
+  console.log(arguments[1]);
+  // Expected output: 2
+  console.log(arguments[2]);
+  // Expected output: 3
+}
+
+就算没有形参，也能通过arguments获得实参：
+function add() {
+	var sum =0,
+		len = arguments.length;
+	for(var i=0; i<len; i++){
+		sum += arguments[i];
+	}
+	return sum;
+}
+add()                           // 0
+add(1)                          // 1
+add(1,2,3,4);                   // 10
+
+参数也可以被设置：
+arguments[1] = 'new value';
+
+arguments对象不是一个 Array 。它类似于Array，但除了 length 属性和索引元素之外没有任何Array属性。例如，它没有 pop 方法。但是它可以被转换为一个真正的Array

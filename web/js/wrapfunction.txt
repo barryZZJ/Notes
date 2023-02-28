@@ -1,0 +1,45 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2023-02-28T10:18:19+08:00
+
+====== wrapfunction ======
+Created 星期二 28 二月 2023
+
+封装现有对象的方法，在其被调用前执行自定义的函数
+
+{{{code: lang="js" linenumbers="False"
+const player = {
+  play() {
+    console.log('Playing...');
+  }
+};
+
+function wrapPlayMethod(obj) {
+  const originalPlayMethod = obj.play.bind(obj); // bind 'this' context to the original method and return a copy of the method
+  
+  obj.play = function() {
+    console.log('Before playing...');
+    originalPlayMethod();
+  }
+}
+
+wrapPlayMethod(player);
+
+player.play(); // Output: Before playing... Playing...
+}}}
+
+
+其中bind用于生成函数的副本，并指定this对应的是哪个对象：
+{{{code: lang="js" linenumbers="False"
+const obj = {
+  name: 'Alice',
+  greet() {
+    console.log(`Hello, my name is ${this.name}.`);
+  }
+};
+
+const boundGreet = obj.greet.bind(obj); // bind 'this' context to obj
+
+boundGreet(); // Output: Hello, my name is Alice.
+
+}}}
