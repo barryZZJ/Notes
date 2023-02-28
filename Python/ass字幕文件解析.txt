@@ -12,6 +12,7 @@ with open('ass.ass', encoding='utf_8_sig') as f:
 	sub = ass.parse(f)
 	
 events = sub.events  # type: ass.EventSection
+events[0].TYPE == 'Dialogue'
 isinstance(events[0], ass.Dialog)
 dialogues = [event for event in sub.events if isinstance(event, ass.Dialogue)]
 

@@ -9,7 +9,7 @@ Created 星期一 27 二月 2023
 
 === MeGUI处理音频： ===
 1. HD Streams Extractor 提取音频aac
-2. File Indexer打开ts源，使用默认的DGIndex，然后点Queue，得到d2v文件（需要保存为utf8编码）（以及音频，但不需要）
+2. File Indexer打开ts源，使用默认的DGIndex，然后点Queue，得到d2v文件（需要保存为utf8编码）（记录输出音频的delay）
 3. AVS Script Creator打开d2v文件，点save，得到avs脚本，视频预览界面关掉
 4. AVS Cutter，打开avs脚本，选择要切的各个分段，记录好帧对应的时间，然后点 do all and close，得到clt文件（或手动点击Save cuts file）
 5. 回到主界面Audio encoding部分，载入音频文件，在Cuts部分载入刚才的clt文件，encoder选AAC，delay会自动填写，点Queue
@@ -55,7 +55,7 @@ res.set_output()
 }}}
 
 
---demuxer y4m --preset veryslow --ref 8 --merange 24 --me umh --bframes 10 --aq-mode 3 --aq-strength 0.7 --deblock 0:0 --trellis 2 --psy-rd 0.6:0.1 --crf 18.5 --output-depth 8 -o "vs.mp4" -
+--demuxer y4m --preset veryslow --ref 8 --merange 24 --me umh --bframes 10 --aq-mode 3 --aq-strength 0.7 --deblock 0:0 --trellis 2 --psy-rd 0.6:0.1 --crf 18.5 --output-depth 8 -o "H:\萌音出演\テレビ\CUT\vs.mp4" -
 
 === FFMPEG封装音视频 ===
 mergeTwoFiles.bat
@@ -88,6 +88,8 @@ pause
 
 
 === 处理字幕： ===
-cut_ass.py
+编辑parts.json，输入各片段的时间
+编辑cut_ass.bat, 设置offset参数为第一步中的delay（负数）
+然后把parts.json和ass拖入即可
 
 
