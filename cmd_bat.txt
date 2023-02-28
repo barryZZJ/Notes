@@ -19,6 +19,7 @@ https://www.cnblogs.com/smwikipedia/archive/2009/03/30/1424749.html
 %~dpn0 D:/path/test
 %~dpnx0 D:/path/test.bat
 %~nx0 test.bat
+%~x0 .bat
 处理变量：（X为变量名）
 %%~dpnX
 
