@@ -21,6 +21,7 @@ with open("out.ass", "w", encoding='utf_8_sig') as f:
 
 }}}
 
+可以给sub.events赋值新数组
 
 x https://pypi.org/project/ass-parser/
 
