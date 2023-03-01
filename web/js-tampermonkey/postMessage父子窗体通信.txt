@@ -5,6 +5,8 @@ Creation-Date: 2023-03-01T10:33:48+08:00
 ====== postMessage父子窗体通信 ======
 Created 星期三 01 三月 2023
 
+由于子窗体iframe无法直接访问父窗体的document，因此需要通过postMessage进行通信
+
 https://developer.mozilla.org/zh-CN/docs/Web/API/Window/postMessage
 支持跨域通信
 
@@ -15,14 +17,25 @@ targetOrigin
 如果你明确的知道消息应该发送到哪个窗口，那么请始终提供一个有确切值的 targetOrigin，而不是 *。不提供确切的目标将导致数据泄露到任何对数据感兴趣的恶意站点。
 
 可以让iframe加载完成后向top发送ready的信息，然后top再postMessage，就可以解决同步问题了。
+window.parent.postMessage()
 
 URL A:
 {{{code: lang="js" linenumbers="False"
 // Get a reference to the iframe in URL B
-const iframe = document.querySelector('iframe[src="URL B"]');
+const iframe = document.querySelector('iframe[src="https://iframe.org"]');
 
 // Send a message to the iframe containing the text you need to pass
-iframe.contentWindow.postMessage('text to pass', 'URL B');
+iframe.contentWindow.postMessage('text to pass', 'https://iframe.org');
+
+// Listen for messages from the iframe
+window.addEventListener('message', event => {
+  // Check if the message came from the iframe
+  if (event.source === iframe.contentWindow) {
+    // The message contains the text we need
+    const textFromIframe = event.data;
+    // Do something with the text...
+  }
+});
 }}}
 
 
@@ -38,4 +51,10 @@ window.addEventListener('message', event => {
   }
 }, false);
 
+// Send a message to the parent window
+window.parent.postMessage('text to pass', 'https://example.com');
 }}}
+
+event.origin
+event.data
+event.source

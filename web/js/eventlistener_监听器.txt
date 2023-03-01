@@ -1,4 +1,5 @@
 Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
 
 document/window/ele.addEventListener('event', function(){}, false);
 ele.onxxx = func
@@ -7,6 +8,9 @@ ele.onxxx = func
 https://www.w3schools.com/tags/ref_eventattributes.asp
 
 onload: 完全加载完（img可以在完全加载之前获取到大小。可以改成添加onmouseover事件）
+
+只监听一次：
+addEventListener第三个参数设为{ once: true }
 
 删除监听器：
 1.使用ele.onxx = func设置的监听器，可以通过ele.onxx = null删除
@@ -43,15 +47,15 @@ const config = { attributes: true, childList: true, subtree: true };
 
 // Callback function to execute when mutations are observed
 const callback = function(mutationList, observer) {
-    // Use traditional 'for loops' for IE 11
-    for(const mutation of mutationList) {
-        if (mutation.type === 'childList') {
-            console.log('A child node has been added or removed.');
-        }
-        else if (mutation.type === 'attributes') {
-            console.log(`The ${mutation.attributeName} attribute was modified.`);
-        }
-    }
+	// Use traditional 'for loops' for IE 11
+	for(const mutation of mutationList) {
+		if (mutation.type === 'childList') {
+			console.log('A child node has been added or removed.');
+		}
+		else if (mutation.type === 'attributes') {
+			console.log(`The ${mutation.attributeName} attribute was modified.`);
+		}
+	}
 };
 
 // Create an observer instance linked to the callback function
@@ -71,22 +75,22 @@ var observeDOM = (function(){
   var MutationObserver = window.MutationObserver || window.WebKitMutationObserver;
 
   return function( obj, callback ){
-    if( !obj || obj.nodeType !== 1 ) return; 
+	if( !obj || obj.nodeType !== 1 ) return; 
 
-    if( MutationObserver ){
-      // define a new observer
-      var observer = new MutationObserver(callback)
+	if( MutationObserver ){
+	  // define a new observer
+	  var observer = new MutationObserver(callback)
 
-      // have the observer observe obj for changes in children
-      observer.observe( obj, { childList:true, subtree:true })
-      return mutationObserver
-    }
+	  // have the observer observe obj for changes in children
+	  observer.observe( obj, { childList:true, subtree:true })
+	  return mutationObserver
+	}
     
-    // browser support fallback
-    else if( window.addEventListener ){
-      obj.addEventListener('DOMNodeInserted', callback, false)
-      obj.addEventListener('DOMNodeRemoved', callback, false)
-    }
+	// browser support fallback
+	else if( window.addEventListener ){
+	  obj.addEventListener('DOMNodeInserted', callback, false)
+	  obj.addEventListener('DOMNodeRemoved', callback, false)
+	}
   }
 })()
 

@@ -1,0 +1,105 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+
+https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Classes
+
+1. 对象
+{{{code: lang="js" linenumbers="False"
+var obj = {
+	value : 0,
+	increment : function (inc) {   
+		this.value += typeof inc === 'number' ? inc :1;
+	}
+}
+
+//function方法
+function Point(x, y) {
+  this.x = x;
+  this.y = y;
+
+  this.something = function(){...}
+  somethingelse(){
+   ...
+  }
+  this.others = functionname; // 创建一个引用，避免每次创建对象时都新建一个函数对象
+}
+
+Point.somethingelse = function(x){...}
+}}}
+
+
+.prototype是可以被类的所有实例共享的对象（可以当成静态对象）
+{{{code: lang="js" linenumbers="False"
+Point.prototype.toString = function () {
+  return '(' + this.x + ', ' + this.y + ')';
+};
+var p = new Point(1, 2);
+
+}}}
+
+
+
+2. class方法声明
+https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Statements/class
+{{{code: lang="js" linenumbers="False"
+class Point {
+  constructor(x, y) {
+	this.x = x;
+	this.y = y;
+  }
+
+  something() {
+	return '(' + this.x + ', ' + this.y + ')';
+  }
+  static create(x, y){
+  	return new Point(x, y);
+  }
+}
+}}}
+
+
+//类的数据类型就是函数，类本身就指向构造函数。
+
+继承：
+{{{code: lang="js" linenumbers="False"
+// Define the superclass
+class Animal {
+  constructor(name) {
+    this.name = name;
+  }
+
+  speak() {
+    console.log(`${this.name} makes a noise.`);
+  }
+}
+
+// Define the subclass
+class Dog extends Animal {
+  constructor(name, breed) {
+    super(name);
+    this.breed = breed;
+  }
+
+  speak() {
+    console.log(`${this.name} barks.`);
+  }
+}
+
+// Create an instance of the superclass
+const animal = new Animal('Animal');
+
+// Call the superclass method
+animal.speak(); // "Animal makes a noise."
+
+// Create an instance of the subclass
+const dog = new Dog('Dog', 'Labrador');
+
+// Call the subclass method
+dog.speak(); // "Dog barks."
+
+// Access properties inherited from the superclass
+console.log(dog.name); // "Dog"
+
+}}}
+
+
