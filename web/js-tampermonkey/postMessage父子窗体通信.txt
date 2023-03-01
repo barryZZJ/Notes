@@ -12,6 +12,8 @@ https://developer.mozilla.org/zh-CN/docs/Web/API/Window/postMessage
 
 otherWindow.postMessage(message, targetOrigin, [transfer]);
 
+消息必须是string，考虑使用JSON.stringify(), JSON.parse()
+
 targetOrigin
 通过窗口的 origin 属性来指定哪些窗口能接收到消息事件，其值可以是字符串"*"（表示无限制）或者一个 URI。在发送消息的时候，如果目标窗口的协议、主机地址或端口这三者的任意一项不匹配 targetOrigin 提供的值，那么消息就不会被发送；只有三者完全匹配，消息才会被发送。
 如果你明确的知道消息应该发送到哪个窗口，那么请始终提供一个有确切值的 targetOrigin，而不是 *。不提供确切的目标将导致数据泄露到任何对数据感兴趣的恶意站点。
