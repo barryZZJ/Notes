@@ -44,6 +44,7 @@ for part in parts[1:]:
     src8 += part
 
 #https://github.com/sekrit-twc/znedi3
+#反交错去撕裂
 src8=core.znedi3.nnedi3(src8,field=1,dh=False,nsize=2,nns=2,qual=1)
 
 src16 = mvf.Depth(src8,depth=16)
