@@ -17,11 +17,12 @@ Created 星期一 27 二月 2023
 
 === VS处理视频： ===
 使用utf8编码的d2v文件
+任务管理器详细信息里把优先级调高
 {{{code: lang="python3" linenumbers="False"
 from vapoursynth import core
 import mvsfunc as mvf
 
-source = r"H:\萌音出演\テレビ\CUT\20230226210000-行列のできる相談所[字]　上白石萌音＆井上芳雄が【美女と野獣】をデュエット-日テレ１_REC00.d2v"
+source = r"H:\萌音出演\テレビ\CUT\20230226210000-行列のできる相談所[字]　上白石萌音＆井上芳雄が【美女と野獣】をデュエット-日テレ１_REC00\20230226210000-行列のできる相談所[字]　上白石萌音＆井上芳雄が【美女と野獣】をデュエット-日テレ１_REC00utf8.d2v"
 src8 = core.d2v.Source(source)
 #字幕档
 #asstSubMod = r"{ass}"
@@ -31,6 +32,7 @@ height=1080
 
 #src8 = core.vivtc.VDecimate(src8)
 parts = []
+parts.append(core.std.Trim(src8, 657, 16684))
 parts.append(core.std.Trim(src8, 27136, 36799))  # also works with src8[st:ed]
 parts.append(core.std.Trim(src8, 40397, 50088))
 parts.append(core.std.Trim(src8, 74011, 75910))
@@ -40,6 +42,9 @@ parts.append(core.std.Trim(src8, 88599, 93563))
 src8 = parts[0]
 for part in parts[1:]:
     src8 += part
+
+#https://github.com/sekrit-twc/znedi3
+src8=core.znedi3.nnedi3(src8,field=1,dh=False,nsize=2,nns=2,qual=1)
 
 src16 = mvf.Depth(src8,depth=16)
 
