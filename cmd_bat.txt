@@ -2,6 +2,9 @@ Content-Type: text/x-zim-wiki
 Wiki-Format: zim 0.6
 Creation-Date: 2022-09-02T15:29:52+08:00
 
+pause on error:
+if %errorlevel% geq 1 pause
+
 刷新DNS
 ipconfig /flushdns # 刷新DNS记录 
 
