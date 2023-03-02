@@ -2,16 +2,20 @@ Content-Type: text/x-zim-wiki
 Wiki-Format: zim 0.6
 Creation-Date: 2023-03-02T12:06:58+08:00
 
-====== 反交错 ======
+====== 2反交错 ======
 Created 星期四 02 三月 2023
 
 VirtualDubMod https://virtualdubmod.sourceforge.net/
 filter: smart deinterlace https://www.rationalqm.us/smart/smart.html
 
-| Column 1       |   |
-|:---------------|:--|
-| b1t1-b2t2-b3t3 |   |
-|                |   |
-|                |   |
-|                |   |
-|                |   |
+| Case | Type              | Op                                           |
+|:-----|:------------------|:---------------------------------------------|
+| 1    | b1t1-b2t2-b3t3... | none                                         |
+| 2    | t1b1-t2b2-t3b3... | swap on input                                |
+| 3    | t1b2-t2b3-t3b4... | phase shift                                  |
+| 4    | b2t1-b3t2-b4t3... | swap on input + phase shift                  |
+| 5    | b1t2-b2t3-b3t4... | phase shift + swap on output                 |
+| 6    | t2b1-t3b2-t4b3... | swap on input + phase shift + swap on output |
+| 7    | t2b2-t3b3-t4b4... | swap on input                                |
+| 8    | b2t2-b3t3-b4t4... | none                                         |
+

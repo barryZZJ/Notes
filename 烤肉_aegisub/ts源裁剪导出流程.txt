@@ -10,6 +10,8 @@ Created 星期一 27 二月 2023
 1. HD Streams Extractor 分离视频m2v和音频aac
 
 === 无损反交错处理（1080i转1080p） ===
+case 6 (三个都勾上)
+
 用potplayer或DGIndex确认ts的scan type为interlacing，如果为progressive则不需要反交错。
 使用DGPulldown处理一遍分离出的m2v视频，不改变帧率，Top field first与视频属性的scan order/field order相同。
 
