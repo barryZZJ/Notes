@@ -73,3 +73,5 @@ jQuery的callback涉及到延时，是异步执行的
 等待多个Promise对象全部完成
 Promise.all([promise1, promise2])
 .then(args=>...)  # args[0]为promise1的结果，args[1]为promise2的结果
+
+Promise.race(iterable) 返回数组中最早resolve的那个结果
