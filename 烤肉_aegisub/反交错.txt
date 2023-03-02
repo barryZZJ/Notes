@@ -9,7 +9,11 @@ https://blog.csdn.net/weixin_34389926/article/details/86036085
 1080i片源有可能无损转为1080p
 
 VirtualDubMod https://virtualdubmod.sourceforge.net/
+vituralmod可以读入但无法输出m2v格式，需要使用frameserver提供给其他支持m2v的编码器
+
 filter: smart deinterlace https://www.rationalqm.us/smart/smart.html
+
+在advanced里勾选disable，然后其他3个选项分别组合，如果都不行则不能无损反交错
 
 | Case | Type              | Op                                           |
 |:-----|:------------------|:---------------------------------------------|
