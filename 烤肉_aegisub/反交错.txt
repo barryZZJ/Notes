@@ -1,0 +1,17 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2023-03-02T12:06:58+08:00
+
+====== 反交错 ======
+Created 星期四 02 三月 2023
+
+VirtualDubMod https://virtualdubmod.sourceforge.net/
+filter: smart deinterlace https://www.rationalqm.us/smart/smart.html
+
+| Column 1       |   |
+|:---------------|:--|
+| b1t1-b2t2-b3t3 |   |
+|                |   |
+|                |   |
+|                |   |
+|                |   |
