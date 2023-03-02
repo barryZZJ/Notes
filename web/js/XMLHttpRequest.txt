@@ -1,6 +1,7 @@
 Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
 
-https://developer.mozilla.org/zh-CN/docs/Web/API/XMLHttpRequest
+https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest
 https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest/HTML_in_XMLHttpRequest
 
 var xhr = new XMLHttpRequest();
