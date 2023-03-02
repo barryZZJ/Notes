@@ -9,12 +9,6 @@ Created 星期一 27 二月 2023
 
 1. HD Streams Extractor 分离视频m2v和音频aac
 
-=== 无损反交错处理（1080i转1080p） ===
-case 6 (三个都勾上)
-
-用potplayer或DGIndex确认ts的scan type为interlacing，如果为progressive则不需要反交错。
-使用DGPulldown处理一遍分离出的m2v视频，不改变帧率，Top field first与视频属性的scan order/field order相同。
-
 === MeGUI处理音频： ===
 1.File Indexer打开ts源，使用默认的DGIndex，然后点Queue，得到d2v文件（需要另外保存一份为utf8编码）（记录输出音频的delay）
 3. AVS Script Creator打开d2v文件，点save，得到avs脚本，视频预览界面关掉
@@ -25,6 +19,11 @@ case 6 (三个都勾上)
 === VS处理视频： ===
 使用utf8编码的d2v文件
 任务管理器详细信息里把优先级调高
+
+== 反交错处理（1080i转1080p） ==
+用potplayer或DGIndex确认ts的scan type为interlacing，如果为progressive则不需要反交错。
+无损反交错处理 [[反交错]]
+有损反交错：core.znedi3.nnedi3
 {{{code: lang="python3" linenumbers="False"
 from vapoursynth import core
 import mvsfunc as mvf
@@ -52,7 +51,7 @@ for part in parts[1:]:
 
 #https://github.com/sekrit-twc/znedi3
 #反交错
-src8=core.znedi3.nnedi3(src8,field=1,dh=False,nsize=2,nns=2,qual=1)
+#src8=core.znedi3.nnedi3(src8,field=1,dh=False,nsize=2,nns=2,qual=1)
 
 src16 = mvf.Depth(src8,depth=16)
 
@@ -74,10 +73,10 @@ res.set_output()
 === 封装音视频 ===
 如果音画不同步尝试重新提取一次音频
 
-=== MeGUI ===
+== MeGUI ==
 Muxer -> MP4 Muxer
 
-=== FFMPEG ===
+== FFMPEG ==
 mergeTwoFiles.bat
 {{{code: lang="sh" linenumbers="False"
 @echo off
