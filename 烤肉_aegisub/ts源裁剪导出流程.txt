@@ -56,7 +56,7 @@ for cut in cuts:
     trimed+=core.std.Trim(src8,first=start,last=end)
 src8=trimed[1:]
 
-#src8 = core.vivtc.VDecimate(src8)
+#src8 = core.vivtc.VDecimate(src8) # 动漫需要抽帧减小体积，综艺不用
 
 src16 = mvf.Depth(src8,depth=16)
 
