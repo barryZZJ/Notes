@@ -21,14 +21,17 @@ Created 星期一 27 二月 2023
 任务管理器详细信息里把优先级调高
 
 == 反交错处理（1080i转1080p） ==
-用potplayer或DGIndex确认ts的scan type为interlacing，如果为progressive则不需要反交错。
-无损反交错处理 [[反交错]]
-有损反交错：core.znedi3.nnedi3
+	用potplayer或DGIndex确认ts的scan type为interlacing，如果为progressive则不需要反交错。
+	无损反交错处理 [[反交错]]
+	有损反交错：core.znedi3.nnedi3
 {{{code: lang="python3" linenumbers="False"
 from vapoursynth import core
 import mvsfunc as mvf
+import xml.etree.ElementTree as ET
 
-source = r"H:\萌音出演\テレビ\CUT\20230226210000-行列のできる相談所[字]　上白石萌音＆井上芳雄が【美女と野獣】をデュエット-日テレ１_REC00\20230226210000-行列のできる相談所[字]　上白石萌音＆井上芳雄が【美女と野獣】をデュエット-日テレ１_REC00utf8.d2v"
+source = r"H:\萌音出演\テレビ\CUT\20230226210000-行列のできる相談所[字]\20230226210000-行列のできる相談所[字]　上白石萌音＆井上芳雄が【美女と野獣】をデュエット-日テレ１_REC00_utf8.d2v"
+clt_file = r"xxx.clt"
+
 src8 = core.d2v.Source(source)
 #字幕档
 #asstSubMod = r"{ass}"
@@ -36,31 +39,33 @@ src8 = core.d2v.Source(source)
 width=1920
 height=1080
 
-#src8 = core.vivtc.VDecimate(src8)
-parts = []
-parts.append(core.std.Trim(src8, 657, 16684))
-parts.append(core.std.Trim(src8, 27136, 36799))  # also works with src8[st:ed]
-parts.append(core.std.Trim(src8, 40397, 50088))
-parts.append(core.std.Trim(src8, 74011, 75910))
-parts.append(core.std.Trim(src8, 79508, 83977))
-parts.append(core.std.Trim(src8, 88599, 93563))
-
-src8 = parts[0]
-for part in parts[1:]:
-    src8 += part
 
 #https://github.com/sekrit-twc/znedi3
-#反交错
+#反交错去撕裂
 #src8=core.znedi3.nnedi3(src8,field=1,dh=False,nsize=2,nns=2,qual=1)
+
+#自动读取clt
+cuts = ET.parse(clt_file).find("AllCuts")
+
+trimed=src8[0]
+#读取切割资讯
+for cut in cuts:
+    start = int(cut.find("startFrame").text)
+    end = int(cut.find("endFrame").text)
+    # also works with src8[st:ed]
+    trimed+=core.std.Trim(src8,first=start,last=end)
+src8=trimed[1:]
+
+#src8 = core.vivtc.VDecimate(src8)
 
 src16 = mvf.Depth(src8,depth=16)
 
-nr = core.knlm.KNLMeansCL(src16, d=1, a=2, s=4, h=1.4)
-debd = core.neo_f3kdb.Deband(nr,12,16,16,16)
-debd = core.neo_f3kdb.Deband(debd,16,32,16,16)
-us = core.resize.Lanczos(debd, width, height)
+src16 = core.knlm.KNLMeansCL(src16, d=1, a=2, s=4, h=1.4)
+src16 = core.neo_f3kdb.Deband(src16,12,16,16,16)
+src16 = core.neo_f3kdb.Deband(src16,16,32,16,16)
+src16 = core.resize.Lanczos(src16, width, height)
 
-res = mvf.Depth(us,depth=8)
+res = mvf.Depth(src16,depth=8)
 
 #res = core.vsfm.TextSubMod(res, asstSubMod)
 
