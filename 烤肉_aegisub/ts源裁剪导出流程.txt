@@ -20,57 +20,12 @@ Created 星期一 27 二月 2023
 使用utf8编码的d2v文件
 任务管理器详细信息里把优先级调高
 
+见tmp_d2v.vpy
+
 == 反交错处理（1080i转1080p） ==
 	用potplayer或DGIndex确认ts的scan type为interlacing，如果为progressive则不需要反交错。
 	无损反交错处理 [[反交错]]
 	有损反交错：core.znedi3.nnedi3
-{{{code: lang="python3" linenumbers="False"
-from vapoursynth import core
-import mvsfunc as mvf
-import xml.etree.ElementTree as ET
-
-source = r"H:\萌音出演\テレビ\CUT\20230226210000-行列のできる相談所[字]\20230226210000-行列のできる相談所[字]　上白石萌音＆井上芳雄が【美女と野獣】をデュエット-日テレ１_REC00_utf8.d2v"
-clt_file = r"xxx.clt"
-
-src8 = core.d2v.Source(source)
-#字幕档
-#asstSubMod = r"{ass}"
-
-width=1920
-height=1080
-
-
-#https://github.com/sekrit-twc/znedi3
-#反交错去撕裂
-#src8=core.znedi3.nnedi3(src8,field=1,dh=False,nsize=2,nns=2,qual=1)
-
-#自动读取clt
-cuts = ET.parse(clt_file).find("AllCuts")
-
-trimed=src8[0]
-#读取切割资讯
-for cut in cuts:
-    start = int(cut.find("startFrame").text)
-    end = int(cut.find("endFrame").text)
-    # also works with src8[st:ed]
-    trimed+=core.std.Trim(src8,first=start,last=end)
-src8=trimed[1:]
-
-#src8 = core.vivtc.VDecimate(src8) # 动漫需要抽帧减小体积，综艺不用
-
-src16 = mvf.Depth(src8,depth=16)
-
-src16 = core.knlm.KNLMeansCL(src16, d=1, a=2, s=4, h=1.4)
-src16 = core.neo_f3kdb.Deband(src16,12,16,16,16)
-src16 = core.neo_f3kdb.Deband(src16,16,32,16,16)
-src16 = core.resize.Lanczos(src16, width, height)
-
-res = mvf.Depth(src16,depth=8)
-
-#res = core.vsfm.TextSubMod(res, asstSubMod)
-
-res.set_output()
-}}}
 
 
 --demuxer y4m --preset veryslow --ref 8 --merange 24 --me umh --bframes 10 --aq-mode 3 --aq-strength 0.7 --deblock 0:0 --trellis 2 --psy-rd 0.6:0.1 --crf 18.5 --output-depth 8 -o "H:\萌音出演\テレビ\CUT\vs.mp4" -

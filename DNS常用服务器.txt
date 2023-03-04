@@ -9,6 +9,10 @@ https://www.zhihu.com/question/34826522/answer/1269091359
 
 {{.\pasted_image.png}}
 
+谷歌
+8.8.8.8
+8.8.4.4
+
 阿里：
 223.5.5.5
 223.6.6.6
@@ -18,3 +22,5 @@ https://www.zhihu.com/question/34826522/answer/1269091359
 Level3 Public DNS 
 209.244.0.3
 209.244.0.4
+
+ipconfig /flushdns

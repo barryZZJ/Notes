@@ -5,6 +5,28 @@ Creation-Date: 2023-03-02T12:06:58+08:00
 ====== 反交错 ======
 Created 星期四 02 三月 2023
 
+见 字幕组后期手册v131024_2.pdf 三、IVTC与deinterlace	
+使用模块：core.vivtc
+https://amusementclub.github.io/doc/plugins/vivtc.html
+https://github.com/vapoursynth/vivtc/blob/master/docs/vivtc.rstf
+动漫需要删除重复帧(VDecimate)，综艺不用
+{{{code: lang="python3" linenumbers="False"
+# 番可能会用到ivtc，把p转i的交错和补的重复帧去掉，综艺应该不需要。
+# https://amusementclub.github.io/doc/plugins/vivtc.html
+def postprocess(n, f, clip, deinterlaced):
+   if f.props['_Combed'] > 0:
+      return deinterlaced
+   else:
+      return clip
+deinterlaced = core.znedi3.nnedi3(src8,field=1,dh=False,nsize=2,nns=2,qual=1)
+matched = core.vivtc.VFM(src8, 1)
+src8 = core.std.FrameEval(matched, partial(postprocess, clip=matched,deinterlaced=deinterlaced), prop_src=matched)
+src8 = core.vivtc.VDecimate(src8)
+
+}}}
+
+
+Misc：
 https://blog.csdn.net/weixin_34389926/article/details/86036085
 1080i片源有可能无损转为1080p
 
