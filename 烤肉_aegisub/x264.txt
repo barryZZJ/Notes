@@ -9,5 +9,7 @@ x264 [options] -o outfile infile
 
 http://www.chaneru.com/Roku/HLS/X264_Settings.htm
 
+简单整理一下x264参数
 https://www.bilibili.com/read/cv4910766/
 
+{{.\pasted_image.png}}
