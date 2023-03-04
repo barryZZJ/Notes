@@ -5,10 +5,16 @@ Creation-Date: 2022-10-20T16:47:26+08:00
 ====== VapourSynth ======
 Created 星期四 20 十月 2022
 
-[[AviSynth]]
-http://avisynth.nl/index.php/Main_Page
-
 http://www.vapoursynth.com/doc/
+https://www.vapoursynth.com/
+
+https://vsdb.top/
+http://www.doom9.org/
+https://www.videohelp.com/
+
+
+== AviSynth ==
+http://avisynth.nl/index.php/Main_Page
 
 裁剪  http://www.vapoursynth.com/doc/functions/video/trim.html
 src8 = core.std.Trim(src8,2532,3532)
