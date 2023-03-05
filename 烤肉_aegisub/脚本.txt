@@ -9,6 +9,8 @@ https://aegi.vmoe.info/docs/3.2/Automation/Lua/
 https://aegi.vmoe.info/docs/3.2/Automation/Lua/Subtitle_file_interface/
 https://aegi.vmoe.info/docs/3.2/Automation/Lua/Modules/re/
 
+http://unanimated.hostfree.pw/ts/scripts-manuals.htm?i=1
+
 process reporting: https://aegi.vmoe.info/docs/3.0/Automation/Lua/Progress_reporting/
 
 aegisub.project_properties()["video_file"]
