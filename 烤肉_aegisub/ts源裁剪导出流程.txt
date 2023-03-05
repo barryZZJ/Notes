@@ -7,17 +7,16 @@ Created 星期一 27 二月 2023
 
 参考织梦字幕组压制 字幕提取流程及教程.pdf
 
-1. HD Streams Extractor 分离视频m2v和音频aac
-
 === MeGUI处理音频： ===
-1.File Indexer打开ts源，使用默认的DGIndex，然后点Queue，得到d2v文件（需要另外保存一份为utf8编码）（记录输出音频的delay）
+1. HD Streams Extractor 分离音频aac
+2. File Indexer打开ts源，使用默认的DGIndex，然后点Queue，得到d2v文件（需要另外保存一份为utf8编码）（记录输出音频的delay）
 3. AVS Script Creator打开d2v文件，点save，得到avs脚本，视频预览界面关掉
-4. AVS Cutter，打开avs脚本，选择要切的各个分段，记录好帧对应的时间，然后点 do all and close，得到clt文件（或手动点击Save cuts file）
+4. AVS Cutter，打开avs脚本，通过set设置要切的各个分段，然后点 do all and close，得到clt文件（或手动点击Save cuts file）
 5. 回到主界面Audio encoding部分，载入音频文件，在Cuts部分载入刚才的clt文件，encoder选AAC，delay会自动填写，点Queue
 6. 得到剪好的音频文件.m4a
 
 === VS处理视频： ===
-使用utf8编码的d2v文件
+使用utf8编码的d2v文件，自动读取clt剪辑视频
 任务管理器详细信息里把优先级调高
 
 见tmp_d2v.vpy
@@ -27,8 +26,8 @@ Created 星期一 27 二月 2023
 	无损反交错处理 [[反交错]]
 	有损反交错：core.znedi3.nnedi3
 
-
 --demuxer y4m --preset veryslow --ref 8 --merange 24 --me umh --bframes 10 --aq-mode 3 --aq-strength 0.7 --deblock 0:0 --trellis 2 --psy-rd 0.6:0.1 --crf 18.5 --output-depth 8 -o "H:\萌音出演\テレビ\CUT\vs.mp4" -
+（preset是用时间换画质{veryslow, slower, slow, medium}，crf是用空间换画质，越小码率越高）
 
 === 封装音视频 ===
 如果音画不同步尝试重新提取一次音频

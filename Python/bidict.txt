@@ -1,0 +1,24 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2023-03-05T13:45:02+08:00
+
+====== bidict ======
+Created 星期日 05 三月 2023
+
+双向字典，实现键和值的双向映射。
+
+{{{code: lang="python3" linenumbers="False"
+from bidict import bidict
+
+pairs = bidict({
+    '《': '》',
+    '<': '>',
+    '「': '」',
+})
+
+print(pairs['《'])  # 输出：》
+print(pairs.inverse['》'])  # 输出：《
+
+}}}
+
+
