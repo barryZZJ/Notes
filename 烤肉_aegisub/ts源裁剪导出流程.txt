@@ -28,6 +28,7 @@ Created 星期一 27 二月 2023
 
 --demuxer y4m --preset veryslow --ref 8 --merange 24 --me umh --bframes 10 --aq-mode 3 --aq-strength 0.7 --deblock 0:0 --trellis 2 --psy-rd 0.6:0.1 --crf 18.5 --output-depth 8 -o "H:\萌音出演\テレビ\CUT\vs.mp4" -
 （preset是用时间换画质{veryslow, slower, slow, medium}，crf是用空间换画质，越小码率越高）
+(veryslow 18.5 码率 < slower 18 √)
 
 === 封装音视频 ===
 如果音画不同步尝试重新提取一次音频

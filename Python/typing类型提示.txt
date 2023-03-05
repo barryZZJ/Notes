@@ -31,6 +31,7 @@ isinstance(o, t)
 T = TypeVar('T', bound='类名')
 成员函数(sth: Type[T]) -> T:...
 
+取备选值中的一个：
 Literal["val1", "val2"]
 
 用于numpy：
