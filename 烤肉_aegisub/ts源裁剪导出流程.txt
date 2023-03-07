@@ -11,7 +11,7 @@ Created 星期一 27 二月 2023
 1. HD Streams Extractor 分离音频aac
 2. File Indexer打开ts源，使用默认的DGIndex，然后点Queue，得到d2v文件（需要另外保存一份为utf8编码）（记录输出音频的delay）
 3. AVS Script Creator打开d2v文件，点save，得到avs脚本，视频预览界面关掉
-4. AVS Cutter，打开avs脚本，通过set设置要切的各个分段，然后点 do all and close，得到clt文件（或手动点击Save cuts file）
+4. AVS Cutter，打开avs脚本，通过set设置要切的各个分段（记得剪掉提供部分的广告），然后点 do all and close，得到clt文件（或手动点击Save cuts file）
 5. 回到主界面Audio encoding部分，载入音频文件，在Cuts部分载入刚才的clt文件，encoder选AAC，delay会自动填写，点Queue
 6. 得到剪好的音频文件.m4a
 
