@@ -11,6 +11,10 @@ set v=val
 pause on error:
 if %errorlevel% geq 1 pause
 
+wait for process to finish:
+CALL my-prog
+START /wait my-prog
+
 刷新DNS
 ipconfig /flushdns # 刷新DNS记录 
 
@@ -32,7 +36,7 @@ https://www.cnblogs.com/smwikipedia/archive/2009/03/30/1424749.html
 处理变量：（X为变量名）
 %%~dpnX
 
-处理多个系统参数：
+处理多个系统参数：（注意包含全角空格的话会被当成两个参数）
 $1, $2, ..., $9 最多课引用九个参数
 %* 所有参数（不含%0）
 ''for %%p in (%*) do (''
