@@ -26,7 +26,8 @@ str(Path)  # 转换为当前系统下的路径字符串
 .with_name()  # 把最后一级文件名换成新名，如路径不含文件名会报ValueError
 .with_stem()   # 替换文件名，保持相同后缀名
 .with_suffix()  # 替换后缀名（需包含'.'）
-.stat()  # os.stat_result %E5%AF%B9%E8%B1%A1https://docs.python.org/zh-cn/3/library/os.html?highlight=os#os.stat_result # .st_size .st_mtime
+.stat()  # os.stat_result https://docs.python.org/zh-cn/3/library/os.html#os.stat_result
+	# .st_size .st_mtime
 .glob() -> iter[Path] # 使用通配符匹配. Path('.').glob('*/*.py')，返回相对或绝对路径
 	一个星号匹配一级路径或任意文件名，两个星号匹配任意级(0级以上)路径
 	[seq] matches any character in seq [!seq] matches any character not in seq
