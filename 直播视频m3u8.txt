@@ -2,6 +2,11 @@ Content-Type: text/x-zim-wiki
 Wiki-Format: zim 0.6
 Creation-Date: 2022-09-03T09:57:51+08:00
 
+
+https://dakaijun.cn/note/1441/
+
+对应ts源
+
 === 抓取直播视频的方案 ===
 https://www.douban.com/note/776237960/?_i=2167435TMUazgK,2169981TMUazgK
 (Potplay法如果有卡顿，“保存流”的结果也是有卡顿的，所以不太行）

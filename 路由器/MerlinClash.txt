@@ -19,8 +19,4 @@ Created 星期五 07 十月 2022
 faq
 https://mcreadme.gitbook.io/mc/faq/faq1#q17
 
-连不上clash管理面板：刷新DNS：ipconfig /flushdns
-
-打开fiddler/clash开代理后再上yacd就能进了，不知道怎么回事
-没开代理导致无法访问192.168.50.1？这是为什么
-可能是DNS污染了？
+连不上clash管理面板：见faq，需要改chrome的flag
