@@ -17,7 +17,7 @@ https://www.jianshu.com/p/07c4dddae43a
 -J Use the header-provided filename
 
 Headers：
--H, --header <header/@file> 设置自定义头，可以重复使用或用分号隔开多个头 e.g. -H "User-Agent: test; charset=utf-8"
+-H, --header <header/@file> 设置自定义头，可以重复使用或用分号隔开多个头 e.g. -H "User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36"
 -b, --cookie <data|filename> Send cookies from string/file
 -A, --user-agent <name>
 -e, --referer <URL>
