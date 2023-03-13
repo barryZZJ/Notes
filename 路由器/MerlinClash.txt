@@ -20,3 +20,14 @@ faq
 https://mcreadme.gitbook.io/mc/faq/faq1#q17
 
 连不上clash管理面板：见faq，需要改chrome的flag
+
+常用后端地址：
+可能是后端通信遇到问题，尝试更换后端，常用后端地址：
+   https://v.id9.cc/                                （推荐）
+   https://sub.maoxiongnet.com/         （推荐）
+   https://sub.xeton.dev/
+   https://api.tshl.us/ 
+   https://sub.id9.cc/
+   https://subconverter.herokuapp.com/
+   https://api.dler.io/
+   https://api.wcc.best/

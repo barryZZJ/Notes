@@ -40,10 +40,11 @@ unquote(str, encoding=...) -> str
 >>> unquote('%C4%A7%CA%DE')
 '\xc4\xa7\xca\xde'
 
-unquote_plus
-unquote_to_bytes
-加密：
-1. urlencode
+unquote_plus() # Like unquote(), but also replace plus signs by spaces, as required for
+unquote_to_bytes()
+
+编码：
+1. urlencode -> str
 >>> from urllib.parse import urlencode
 >>> data = {
 ...     'a': 'test',
@@ -56,3 +57,5 @@ a=test&amp;name=%C4%A7%CA%DE
 >>> from urllib.parse import quote
 >>> quote('魔兽')
 '%C4%A7%CA%DE'
+quote_from_bytes()
+quote_plus() # Like quote(), but also replace ' ' with '+', as required for quoting HTML form values.
