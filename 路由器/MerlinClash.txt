@@ -21,6 +21,8 @@ https://mcreadme.gitbook.io/mc/faq/faq1#q17
 
 连不上clash管理面板：见faq，需要改chrome的flag
 
+规则匹配序号在前的优先（自定义规则中约晚加入的越早匹配）
+
 常用后端地址：
 可能是后端通信遇到问题，尝试更换后端，常用后端地址：
    https://v.id9.cc/                                （推荐）

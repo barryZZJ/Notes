@@ -1,0 +1,32 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2023-03-10T18:18:11+08:00
+
+====== mpd ======
+Created 星期五 10 三月 2023
+
+https://dakaijun.cn/note/1441/
+
+对应 m4s 源
+
+1- List all of the audio and video formats in a MPD:
+yt-dlp --list-formats --allow-unplayable-formats http://www.xxxxblablabla.mpd
+
+2- Download the audio/video stream you want, by entering its ID which is listed by yt-dlp.
+For example, if you want stream 8, the command will be like this:
+./yt-dlp -f 8 --allow-unplayable-formats http://www.xxxxblablabla.mpd
+
+Audio files are always downloaded very slower than video files. Be patient.
+
+mp4decrypt
+https://www.bento4.com/documentation/mp4decrypt/
+
+Powershell command-line template:
+
+./mp4decrypt --key KID:KEY InputFile OutputFile
+
+Example for a video file:
+
+./mp4decrypt --key f22422630a704379b08e7f6ad6b70801:69e2113cbb00435cb 21b79f6d9d2c6e1 encrypted.mp4 decrypted.mp4
+
+ffmpeg -decryption_key 100b6c20940f779a4589152b57d2dacb -i encrypted_media.mp4 -codec copy decrypted_media.mp4
