@@ -5,3 +5,6 @@ Creation-Date: 2023-03-13T21:09:13+08:00
 ====== 流程说明 ======
 Created 星期一 13 三月 2023
 
+https://forum.videohelp.com/threads/401859-How-to-download-mpd-stream-%28DRM-protected%29/page3
+
+https://forum.videohelp.com/threads/404586-how-to-work-out-the-pssh-when-not-shown-in-the-mpd#post2647121
