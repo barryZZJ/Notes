@@ -12,8 +12,6 @@ Aegisub 追踪插件 motion mocha
 https://www.bilibili.com/video/av289069676/
 https://github.com/TypesettingTools/Aegisub-Motion
 
-{\rJp_secondary_720p}{\r}
-{\rEng_secondary_720p}{\r}
 
 对后面的字符应用：
 \b<0/1>(取消)加粗  \b<100k>设置字重值(100~400~900) 400为normal
@@ -26,6 +24,8 @@ https://github.com/TypesettingTools/Aegisub-Motion
 \be<0/1/int> \blur<float> 边框不为0时模糊边框（外发光），否则模糊文字本身（要想达到带边框时也整体模糊的效果，可以设置淡入淡出/透明度后，在底下重复一层，并把其\1c改成边框的颜色(两层都不带bord)，看上去效果挺好的）
 \pos(x,y) 整数
 \r<style> 设置新样式 (为空时使用原样式)
+
+只对阴影blur：\bord2\shad2\3aFF\blur5\4a60
 
 字体相关：
 \fn<fontname> 为空时恢复为原样式的字体
@@ -120,4 +120,7 @@ VSFilterMod 新增tags：https://github.com/computerfan/VSFilterMod/wiki/New-Tag
 \ortho1 改进frz透视效果
 \xblur \yblur 指定模糊方向
 \blend
+
+自定义特效标签/函数
+https://github.com/computerfan/VSFilterMod/wiki/Lua-Extension#custom-tag-realization
 

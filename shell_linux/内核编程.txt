@@ -1,0 +1,48 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2023-03-15T21:28:57+08:00
+
+====== 内核编程 ======
+Created 星期三 15 三月 2023
+
+https://linux-kernel-labs.github.io/refs/heads/master/labs/kernel_modules.html
+
+https://github.com/jmhIcoding/RBOS
+https://github.com/L1B0/LSM-demo
+
+1	配置环境
+	1.1	安装并编译Linux内核，我选择的版本是4.19.276
+	1.2	安装编译环境
+		sudo apt-get install build-essential
+		sudo apt-get install libncurses5-dev
+		sudo apt-get install flex
+		sudo apt-get install bison
+		sudo apt-get install libssl-dev
+	1.3	卸载内核
+		sudo rm -rf  /boot/vmlinuz*4.19.276
+		sudo rm -rf  /boot/initrd*4.19.276
+		sudo rm -rf  /boot/System.map*4.19.276
+		sudo rm -rf  /boot/config*4.19.276
+		sudo rm -rf  /lib/modules/4.19.276/
+		sudo rm -rf  /var/lib/initramfs-tools/4.19.276/
+		sudo update-grub2
+	1.4	[make mrproper] //清除编译过程中产生的所有中间文件
+	1.5	[make clean] //清除上一次产生的编译中间文件
+	1.6	security.c 最后添加EXPORT_SYMBOL(security_add_hooks);EXPORT_SYMBOL(security_hook_heads);
+	1.7	配置 make menuconfig
+		关闭NSA SELinux、[Simplified MAC]、TOMOYO、AppArmor、Yama等其他安全模块
+		在.config里设置CONFIG_SYSTEM_TRUSTED_KEYS的值为空字符串
+	1.8	编译 make -j4（如果卡住需要减少线程数）
+	1.9	安装内核 sudo make modules_install install
+2	修改grub 切换内核
+	sudo nano /etc/default/grub
+	设置 GRUB_TIMEOUT=-1
+	sudo update-grub2
+2.1	重启 sudo reboot
+2.2	在grub中选择高级选项->想要的内核版本
+2.3	查看内核版本 uname -r
+2.4	编译模块：sudo make clean && sudo make
+2.5	插入模块：sudo insmod rbac.ko
+2.6	卸载模块：sudo rmmod rbac.ko
+2.7	查看内核日志：dmesg
+
