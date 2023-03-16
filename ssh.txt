@@ -9,7 +9,8 @@ C:\Users\85046\.ssh
 
 https://www.jianshu.com/p/1e793e386beb
 
-自动连接ssh服务器：
+ssh服务器：
+安装：sudo apt install openssh-server
 把id_rsa.pub里的内容写入~/.ssh/authorized_keys
 并sudo nano /etc/ssh/sshd_config文件，设置
 PubkeyAuthentication yes
