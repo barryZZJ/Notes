@@ -25,7 +25,7 @@ https://www.bilibili.com/read/cv15616345/
 字体相关：
 \fn<fontname> 为空时恢复为原样式的字体
 	圆体：腾祥嘉丽粗圆简 (最粗)、方正粗圆_GBK、方正准圆、方正细圆、猫啃网糖圆体 (测试版)、幼圆 (最细)、
-	UD Digi Kyokasho系列
+	UD Digi Kyokasho系列、ElmerFont（日语）
 \fs<fontsize> 字号
 \fsc<scale%> \fscx<scale%> \fscy<scale%> 字体缩放 scale:0~100
 \fsp<spacing> 字符间距 -~0~+
@@ -85,9 +85,10 @@ t4~ : a3
 \t(<accel>,<style modifiers>)
 \t(<t1>,<t2>,<style modifiers>)
 \t(<t1>,<t2>,<accel>,<style modifiers>)
-t1, t2为过渡动画发生的时间起止，ms，相对起始时间，可设为0
+t1, t2为过渡动画发生的时间起止，ms，相对起始时间
 不加t1,t2表示改变的过程为整个字幕的时间
-可用$start,$end分别表示开始和结束时间（不过aegisub-motion识别不了）
+可设为0分别表示开始和结束时间
+也可用$start,$end分别表示开始和结束时间（不过aegisub-motion识别不了）
 accel: 0~1: 先快后慢，1~∞: 先慢后快
 
 平移：(无法实现变速移动，需要多个字幕效果拼接)
