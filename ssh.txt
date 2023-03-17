@@ -5,6 +5,8 @@ sudo service ssh {start|stop|reload|force-reload|restart|try-restart|status}
 
 ssh -p <port> user@hostip
 
+ssh smbusr@localhost -p 23355
+
 C:\Users\85046\.ssh
 
 https://www.jianshu.com/p/1e793e386beb
@@ -17,3 +19,28 @@ PubkeyAuthentication yes
 AuthorizedKeysFile .ssh/authorized_keys
 
 最后重启ssh服务 sudo service sshd restart
+
+windows ssh 服务器: OpenSSH
+添加功能部分搜索openssh
+安装后服务名：sshd (OpenSSH SSH Server)
+在可选功能中搜索OpenSSH 服务器，安装
+
+配置：
+https://winscp.net/eng/docs/guide_windows_openssh_server
+https://learn.microsoft.com/en-us/windows-server/administration/openssh/openssh_server_configuration
+https://man.openbsd.org/sshd_config
+https://github.com/PowerShell/Win32-OpenSSH/wiki/sshd_config
+配置文件：C:\ProgramData\ssh\sshd_config
+Port 23355
+ListenAddress 0.0.0.0
+#连接后默认文件夹为/C:/Users/<username>，要想修改，添加-d参数：
+# (https://man.openbsd.org/cgi-bin/man.cgi/OpenBSD-current/man8/sftp-server.8?query=sftp-server&sec=8
+Subsystem   sftp    sftp-server.exe -d "D:"
+# 只启动sftp（？）
+ForceCommand internal-sftp
+
+防火墙允许该端口入站
+
+用户鉴权使用windows用户，默认管理员用户无法登陆，需要新建一个用户
+
+开机自动启动：服务启动类型设为自动
