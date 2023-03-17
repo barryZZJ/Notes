@@ -10,6 +10,15 @@ set v=val
 %var%
 %v
 
+set /p var="Prompt:"
+echo %var%
+
+if exp (
+...
+) else (
+...
+)
+
 pause on error:
 if %errorlevel% geq 1 pause
 

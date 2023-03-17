@@ -8,11 +8,6 @@ https://www.jianshu.com/p/cfdbfdc6d3a7
 TCAX中的所有ASS特效标签
 https://www.bilibili.com/read/cv15616345/
 
-Aegisub 追踪插件 motion mocha
-https://www.bilibili.com/video/av289069676/
-https://github.com/TypesettingTools/Aegisub-Motion
-
-
 对后面的字符应用：
 \b<0/1>(取消)加粗  \b<100k>设置字重值(100~400~900) 400为normal
 \i<0/1> (取消)斜体
@@ -44,13 +39,13 @@ https://github.com/TypesettingTools/Aegisub-Motion
 边框颜色 \3c&H<bb><gg><rr>&
 阴影颜色 \4c&H<bb><gg><rr>&
 
-透明度
+透明度（注意要加H，前后都要有&，否则Aegisub-motion识别不出来）
+\alpha&H<aa>&
+\1a&H<aa>&
+\2a&H<aa>&
+\3a&H<aa>&
+\4a&H<aa>&
 aa: 00~FF，00表示不透明，FF表示完全透明。如\alpha&H80&
-\alpha&H<aa>
-\1a&H<aa>
-\2a&H<aa>
-\3a&H<aa>
-\4a&H<aa>
 
 矢量绘图
 https://cnlang.org/thread-85231-1-1.html
@@ -92,7 +87,7 @@ t4~ : a3
 \t(<t1>,<t2>,<accel>,<style modifiers>)
 t1, t2为过渡动画发生的时间起止，ms，相对起始时间，可设为0
 不加t1,t2表示改变的过程为整个字幕的时间
-可用$start,$end分别表示开始和结束时间
+可用$start,$end分别表示开始和结束时间（不过aegisub-motion识别不了）
 accel: 0~1: 先快后慢，1~∞: 先慢后快
 
 平移：(无法实现变速移动，需要多个字幕效果拼接)

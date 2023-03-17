@@ -5,6 +5,12 @@ Creation-Date: 2022-10-16T15:12:06+08:00
 ====== Mocha ======
 Created 星期日 16 十月 2022
 
+Aegisub 追踪插件 Aegisub-Motion mocha
+https://www.bilibili.com/video/av289069676/
+https://github.com/TypesettingTools/Aegisub-Motion
+https://github.com/TypesettingTools/Aegisub-Motion/wiki
+encoder使用x264更精确，但用于Mocha的话需要安装QuickTime
+
 工作流程：https://borisfx.com/documentation/mocha/9.5.0/#_workflow_inside_mocha
 导出：选择第一个(CS3)
 
