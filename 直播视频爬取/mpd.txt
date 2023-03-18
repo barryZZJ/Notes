@@ -27,6 +27,10 @@ Powershell command-line template:
 
 Example for a video file:
 
-./mp4decrypt --key f22422630a704379b08e7f6ad6b70801:69e2113cbb00435cb 21b79f6d9d2c6e1 encrypted.mp4 decrypted.mp4
+./mp4decrypt --key f22422630a704379b08e7f6ad6b70801:69e2113cbb00435cb21b79f6d9d2c6e1 encrypted.mp4 decrypted.mp4
 
 ffmpeg -decryption_key 100b6c20940f779a4589152b57d2dacb -i encrypted_media.mp4 -codec copy decrypted_media.mp4
+
+b1e20fb02eb64b75a61f-917920bae372
+100b6c20940f779a4589152b57d2dacb
+69e2113cbb00435cb21b79f6d9d2c6e1

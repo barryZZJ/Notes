@@ -1,0 +1,65 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2023-03-18T15:44:52+08:00
+
+====== au ======
+Created 星期六 18 三月 2023
+
+up!!!: 似乎是l2以上的drm，没有在liscensing里看到key
+(public) key: 
+GET https://player.live.kkstream.io/static/js/main.720aafdb.chunk.js 
+BitmovinConfig:{key:"b1e20fb0-2eb6-4b75-a61f-917920bae372"
+
+POST https://licensing.bitmovin.com/licensing HTTP/1.1
+{"domain":"player.live.kkstream.io","key":"b1e20fb0-2eb6-4b75-a61f-917920bae372","version":"8.93.0"}
+this "key" is device's public key
+resp:
+{"status":"granted","message":"There you go."}
+
+GET https://db9x6fsyszvf1.cloudfront.net/044db785-b909-4a6d-bcbf-000363c30793/dash.mpd 
+Referer: https://player.live.kkstream.io/
+Origin: https://player.live.kkstream.io
+default_KID=b358e2b1e563ee0a9122aff9c7d53fa1
+pssh(urn:uuid:edef8ba9-79d6-4ace-a3c8-27dcd51d21ed)=
+AAAAQnBzc2gAAAAA7e+LqXnWSs6jyCfc1R0h7QAAACIIARIQs1jiseVj7gqRIq/5x9U/oRoFa2tib3giBWtrYm94
+
+
+default_iv_size=8
+
+request license center with pssh to get (private) decryption key
+
+
+licenseUri:
+https://jon-bv.kkstream.tech/api/v2/key/bb9fe7d253085d81712936a5dc506cdc611c5725
+certificateUri:
+https://jon-bv.kkstream.tech/api/v2/key/bb9fe7d253085d81712936a5dc506cdc611c5725/fairplay_cert
+deviceId:
+4c0642f3-9578-4208-a9c7-9f10a825af1b
+
+key可能就藏在
+POST https://jon-bv.kkstream.tech/api/v2/key/bb9fe7d253085d81712936a5dc506cdc611c5725
+里，request包含下面的pssh，但是响应被加密了
+关键字：license.widevine.com
+5.aa190757.chunk.js中发起post请求
+可以解析一下
+
+pssh widevine:
+Bpsshíï©yÖJÎ£È'ÜÕ!í"³Xâ±åcî
+"¯ùÇÕ?¡kkbox"kkbox
+
+pssh playready:
+"´psshðy@B«æ[à_<WRMHEADER xmlns="http://schemas.microsoft.com/DRM/2007/03/PlayReadyHeader" version="4.0.0.0"><DATA><PROTECTINFO><KEYLEN>16</KEYLEN><ALGID>AESCTR</ALGID></PROTECTINFO><KID>seJYs2PlCu6RIq/5x9U/oQ==</KID><CHECKSUM>1W07EjhRSl4=</CHECKSUM><LA_URL>https://playready.kddi-video.com/playready/rightsmanager.asmx?</LA_URL><LUI_URL>https://playready.kddi-video.com/playready/rightsmanager.asmx?</LUI_URL><DS_ID>UxbOJRBwskmrA5a0bbvNqA==</DS_ID></DATA></WRMHEADER>"
+
+WideVine: google
+PlayReady: Microsoft
+FairPlay: Apple
+
+
+http://getwvkeys.cc/
+https://discord.com/channels/948675767754174465/981542633623130152
+https://github.com/GetWVKeys/getwvkeys
+
+https://cdrm-project.com/api
+
+yt-dlp --proxy https://127.0.0.1:10809 --list-formats --allow-unplayable-formats https://db9x6fsyszvf1.cloudfront.net/044db785-b909-4a6d-bcbf-000363c30793/dash.mpd 
+./yt-dlp

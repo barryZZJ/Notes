@@ -33,3 +33,73 @@ https://mcreadme.gitbook.io/mc/faq/faq1#q17
    https://subconverter.herokuapp.com/
    https://api.dler.io/
    https://api.wcc.best/
+
+自定义规则解码：
+rule_parser.py
+{{{code: lang="python3" linenumbers="False"
+import base64
+from urllib.parse import unquote, quote
+
+
+def decode(line) -> str:
+    parts = []
+    for part in line.split(','):
+        decoded = unquote(base64.b64decode(part))
+        parts.append(decoded)
+    return ','.join(parts)
+
+def encode(line) -> str:
+    parts = []
+    for part in line.split(','):
+        encoded = base64.b64encode(quote(part).encode()).decode()
+        parts.append(encoded)
+    return ','.join(parts)
+
+
+def to_decoded(file):
+    f1 = open(file, 'r', encoding='utf8')
+    res = []
+    for line in f1.readlines():
+        line = line.strip()
+        decoded = decode(line)
+        print(decoded)
+        res.append(decoded)
+        res.append('\n')
+    f1.close()
+    
+    f2 = open(file, 'w', encoding='utf8')
+    f2.writelines(res)
+    f2.close()
+
+def to_encoded(file):
+    f1 = open(file, 'r', encoding='utf8')
+    res = []
+    for line in f1.readlines():
+        line = line.strip()
+        encoded = encode(line)
+        print(encoded)
+        res.append(encoded)
+        res.append('\n')
+    f1.close()
+    
+    f2 = open(file, 'w', encoding='utf8')
+    f2.writelines(res)
+    f2.close()
+}}}
+
+encode/decode:
+{{{code: lang="python3" linenumbers="False"
+#encode:
+from rule_parser import to_encoded
+
+infile = input('custom_rule.yaml to be encoded:\n>')
+
+to_encoded(infile)
+
+# decode:
+from rule_parser import to_decoded
+
+infile = input('custom_rule.yaml to be decoded:\n>')
+
+to_decoded(infile)
+}}}

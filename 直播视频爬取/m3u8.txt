@@ -3,6 +3,8 @@ Wiki-Format: zim 0.6
 Creation-Date: 2022-09-03T09:57:51+08:00
 
 
+https://github.com/nilaoda/N_m3u8DL-CLI
+
 https://dakaijun.cn/note/1441/
 
 对应ts源

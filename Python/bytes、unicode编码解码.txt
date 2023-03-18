@@ -10,6 +10,7 @@ b.hex()
 import base64
 # 与bytes字节流互转
 base64.b64encode(bytes)  -> bytes
+	base64.b64encode('string'.encode()).decode() -> str
 base64.b64decode(base64_bytes)  -> bytes
 
 
