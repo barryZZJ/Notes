@@ -4,6 +4,7 @@ Wiki-Format: zim 0.6
 pip install PyQt5
 pip install pyqt5-tools # designer
 
+
 e.g.
 https://github.com/barryZZJ/dp-opt-cqu
 
@@ -51,6 +52,7 @@ https://www.cxyzjd.com/article/min_mmax/105307804
 		sys.stdout = sys.__stdout__
 		sys.stderr = sys.__stderr__
 		
+
 === VerticalLayout内按钮设置靠右对齐 ===
 self.verticalLayout.setAlignment(self.pushButton, Qt.AlignRight)
 

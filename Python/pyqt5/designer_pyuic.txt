@@ -22,6 +22,14 @@ https://zhuanlan.zhihu.com/p/269273821
 Scripts\pyuic5.exe
 pyuic5 -o layout.py layout.ui
 
+Pycharm配置：
+designer:
+arguments: $FileName$
+working directory: $FileDir$
+pyuic:
+arguments: $FileName$ -o $FileNameWithoutExtension$.py
+working directory: $FileDir$
+
 推荐配置：
 label：horizontal policy设为Fixed
 LineEdit: 文本框的sizeHint()似乎会比较大，建议Horizontal Policy设为Maximum，然后用fixed的Spacer把它挤小
@@ -67,7 +75,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         err_hook._exception_caught.connect(lambda msg: on_exception(self, msg))
         
         # 其他初始化设置...
-        self.connectSlots()  # 手动连接槽函数
+        # self.connectSlots()  # 手动连接槽函数
     
     
     """utils"""

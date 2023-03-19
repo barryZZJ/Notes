@@ -21,7 +21,7 @@ from PyQt5 import QtCore
 from PyQt5.QtCore import pyqtSignal, pyqtBoundSignal
 from PyQt5.QtWidgets import QMessageBox, QWidget
 
-from utils.gui.helpers import restoreOverrideCursor
+#from utils.gui.helpers import restoreOverrideCursor
 
 
 class UncaughtHook(QtCore.QObject):
@@ -34,14 +34,14 @@ class UncaughtHook(QtCore.QObject):
         sys.excepthook = self.exception_hook
 
         # save exceptions to file
-        fmt = '%(asctime)s [%(levelname)s] %(message)s'
-        datefmt = '%Y-%m-%d %H:%M:%S'
-        fmter = logging.Formatter(fmt=fmt, datefmt=datefmt)
-        hdlr = logging.FileHandler(f"log_{datetime.today().strftime('%Y-%m-%d_%H-%M-%S')}.log", encoding='utf8')
-        hdlr.setFormatter(fmter)
+        #fmt = '%(asctime)s [%(levelname)s] %(message)s'
+        #datefmt = '%Y-%m-%d %H:%M:%S'
+        #fmter = logging.Formatter(fmt=fmt, datefmt=datefmt)
+        #hdlr = logging.FileHandler(f"log_{datetime.today().strftime('%Y-%m-%d_%H-%M-%S')}.log", encoding='utf8')
+        #hdlr.setFormatter(fmter)
         self.logger = logging.getLogger('exception_hook')
         self.logger.setLevel(logging.DEBUG)
-        self.logger.addHandler(hdlr)
+        #self.logger.addHandler(hdlr)
 
     def exception_hook(self, exc_type, exc_value, exc_traceback):
         """Function handling uncaught exceptions.
