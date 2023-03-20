@@ -1,4 +1,5 @@
 Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
 
 python 在 Windows下使用AES时要安装的是pycryptodome 模块
 
@@ -7,3 +8,6 @@ pip install pycryptodome
 python 在 Linux下使用AES时要安装的是pycrypto模块
 
 pip install pycrypto
+
+https://pypi.org/project/pycryptodome/
+https://www.pycryptodome.org/
