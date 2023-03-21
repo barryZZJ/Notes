@@ -1,0 +1,9 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2023-03-20T20:03:37+08:00
+
+====== 暴力破解工具 ======
+Created 星期一 20 三月 2023
+
+hashcat
+https://hashcat.net/wiki/
