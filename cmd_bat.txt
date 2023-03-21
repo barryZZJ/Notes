@@ -32,6 +32,11 @@ ipconfig /flushdns # 刷新DNS记录
 PATH
 set PATH=%PATH%;C:\your\path\here\
 
+echo 123> file 末尾会自动换行
+printf 123> file 末尾不会自动换行，替代方案：<nul set /p=%output%>>%output_file%
+>>追加写
+
+
 === %~dp0 ===
 将文件本身的路径(%0)展开到 盘符+路径
 cd /d %~dp0 即cd到当前bat所在文件夹
