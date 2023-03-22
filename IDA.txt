@@ -5,7 +5,7 @@ Creation-Date: 2023-03-21T17:02:45+08:00
 ====== IDA ======
 Created 星期二 21 三月 2023
 
-1. 去.rdata段找感兴趣的字符串
+1. shift+f12或去.rdata段找感兴趣的字符串
 2. 按x跳到引用该字符串的地方进行分析，如果有乱码可以考虑用alt-a修改解码方式为unicode
 
 notes:
@@ -17,6 +17,8 @@ N：函数、变量重命名
 A：数据解析为字符串（默认使用utf8编码）
 alt-A：修改解析字符串的编码方式（选中第一个字节后按下） unicode一个字符占两个字节，终止符为0000也两个字节
 U：取消解析
+
+右键菜单可切换text view和graph view
 
 保存回exe：
 Edit-Patch Program-Apply Patches to Input File
