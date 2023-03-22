@@ -14,7 +14,9 @@ tab / f5：切换c代码（反编译
 shift+f12: 显示所有可打印字符串
 X：显示字符串的所有引用
 N：函数、变量重命名
-alt-a：选中第一个字节后按下，修改解析字符串的编码方式
+A：数据解析为字符串（默认使用utf8编码）
+alt-A：修改解析字符串的编码方式（选中第一个字节后按下） unicode一个字符占两个字节，终止符为0000也两个字节
+U：取消解析
 
 保存回exe：
 Edit-Patch Program-Apply Patches to Input File
