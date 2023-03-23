@@ -21,6 +21,8 @@ printf等函数，如果参数数量不对，可以右键：Add/Delete Variadic 
 
 右键菜单可切换text view和graph view
 
+Patcher：修改一个范围内的汇编代码
+
 保存回exe：
 Edit-Patch Program-Apply Patches to Input File
 Assemble：直接修改汇编代码
