@@ -5,10 +5,15 @@ Creation-Date: 2022-09-23T18:02:37+08:00
 ====== aegisub插件 ======
 Created 星期五 23 九月 2022
 
+插件管理工具
+https://github.com/TypesettingTools/DependencyControl
+
+
 unanimated插件列表 https://github.com/unanimated/luaegisub
 其中的Relocator可以手动设置追踪点 https://www.bilibili.com/video/BV1Yi4y1P7Ko
 Reloactor最新版: http://unanimated.hostfree.pw/ts/relocator.lua
 手册 http://unanimated.hostfree.pw/ts/scripts-manuals.htm
+colourise http://unanimated.hostfree.pw/ts/scripts-manuals.htm#colourise
 
 自动化实现追踪：AegisubMotion+Blender/Mocha
 https://www.bilibili.com/video/av289069676

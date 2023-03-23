@@ -105,7 +105,7 @@ VSFilterMod 新增tags：https://github.com/computerfan/VSFilterMod/wiki/New-Tag
 \frs 倾斜baseline
 \fsvp \fshp 垂直、水平间距
 \z z轴取值
-\distort(u1,v1,u2,v2,u3,v3) 形变
+\distort(u1,v1,u2,v2,u3,v3) 形变 \distort(1,0,1,1,0,1)
 \rnd \rndx \rndy \rndz 随机偏移
 \$vc 颜色渐变，$=1~4分别对应1c,2c,3c,4c
 \3va 透明度渐变，$=1~4分别对应1c,2c,3c,4c
