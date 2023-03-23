@@ -17,6 +17,7 @@ N：函数、变量重命名
 A：数据解析为字符串（默认使用utf8编码）
 alt-A：修改解析字符串的编码方式（选中第一个字节后按下） unicode一个字符占两个字节，终止符为0000也两个字节
 U：取消解析
+printf等函数，如果参数数量不对，可以右键：Add/Delete Variadic Argument
 
 右键菜单可切换text view和graph view
 
@@ -28,6 +29,12 @@ Assemble：直接修改汇编代码
 
 
 也提供了python插件接口
+
+Edit, Other, Reset decompiler information
+	This command deletes decompiler information.
+	It can delete information about global objects (functions, static data, structure/enum types) and/or information local to the current function.
+	Use this command if you inadvertently made some change that made decompilation impossible.
+	It can also be used to reset other information types used by the decompiler. For example, the forced variadic arguments or split expression can be reset.
 
 参考书：
 IDA Pro权威指南
