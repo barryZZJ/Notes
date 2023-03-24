@@ -59,3 +59,5 @@ D:\Software\LaTeX\latex
 
 opencv
 nvidia nsight visual studio edition
+
+字幕组：各个ts源、翻译源
