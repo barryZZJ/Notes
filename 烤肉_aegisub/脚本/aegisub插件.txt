@@ -8,6 +8,8 @@ Created 星期五 23 九月 2022
 插件管理工具
 https://github.com/TypesettingTools/DependencyControl
 
+lyger's tool
+https://github.com/lyger/Aegisub_automation_scripts/
 
 unanimated插件列表 https://github.com/unanimated/luaegisub
 其中的Relocator可以手动设置追踪点 https://www.bilibili.com/video/BV1Yi4y1P7Ko

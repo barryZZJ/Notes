@@ -20,7 +20,16 @@ https://www.bilibili.com/read/cv15616345/
 \pos(x,y) 整数
 \r<style> 设置新样式 (为空时使用原样式)
 
-只对阴影blur：\bord2\shad2\3aFF\blur5\4a60
+只对阴影blur：
+	\bord2\shad2\3aFF\blur5\4a60
+主体和bord同时blur：
+	设置两层，主体在上层不带bord，下层带bord，1c设为跟bord同样的颜色。
+	（只有blur比较小的时候效果好，太大的话颜色会混为一体
+发光效果：
+	The solution is to not use border, and use \blur3 for the bottom layer and \blur0.6-0.8 or so for the top
+
+技巧：
+http://unanimated.hostfree.pw/ts/ts-layers.htm
 
 字体相关：
 \fn<fontname> 为空时恢复为原样式的字体
@@ -112,7 +121,7 @@ VSFilterMod 新增tags：https://github.com/computerfan/VSFilterMod/wiki/New-Tag
 \1img 平铺图片(如需要单张图片需要添加符合图片大小的vector clip矢量绘图) $=1~4
 \mover (Polar) \moves3 \moves4 (Spline) 沿不同轨迹运动
 \jitter 各方向重复抖动
-\movevc 移动vector clip遮罩
+\movevc 移动vector clip遮罩 参数同\move，使用的是相对坐标，原位置是0,0，clip必须是矢量图
 \lua(somemethd, args) \somemethod(args)
 \ortho1 改进frz透视效果
 \xblur \yblur 指定模糊方向
