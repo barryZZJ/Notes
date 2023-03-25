@@ -43,3 +43,7 @@ Edit, Other, Reset decompiler information
 参考书：
 IDA Pro权威指南
 IDA Plug-in Writing in C/C++
+
+编写插件教程
+https://first-plugin-ida.readthedocs.io/en/latest/
+https://reverseengineering.stackexchange.com/questions/1899/creating-ida-pro-debugger-plugins-api-documentation-and-examples
