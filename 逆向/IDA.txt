@@ -23,6 +23,8 @@ printf等函数，如果参数数量不对，可以右键：Add/Delete Variadic 
 
 Patcher：修改一个范围内的汇编代码
 
+edit-export data Shift+E导出选中范围的数据
+
 保存回exe：
 Edit-Patch Program-Apply Patches to Input File
 Assemble：直接修改汇编代码
