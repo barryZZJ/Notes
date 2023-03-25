@@ -27,6 +27,7 @@ edit-export data Shift+E导出选中范围的数据
 
 保存回exe：
 Edit-Patch Program-Apply Patches to Input File
+注意补丁是直接应用到exe，如果要撤销修改，需要重新使用原版exe
 Assemble：直接修改汇编代码
 
 需要翻墙下载pdb函数符号表才能解析一些函数sub的名字，也可以下载好pdb表文件手动load
