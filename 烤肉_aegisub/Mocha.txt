@@ -34,7 +34,8 @@ encoder使用x264更精确，但用于Mocha的话需要安装QuickTime
 			No initial keyframe is set until you first hit Add Key or move a point with Auto-Key turned on.
 		使用AdjustTrack，或手动设置追踪点
 
-tracking参数: https://borisfx.com/documentation/mocha/9.5.0/#tracking_basics
+追踪入门：https://borisfx.com/documentation/mocha/9.5.0/#tracking_basics
+tracking参数: 
 https://borisfx.com/documentation/mocha/9.5.0/#_tracking_parameters
 	Preprocessing:
 		Input Channel: 默认的亮度即可，如果效果不好可以尝试其他信道
@@ -65,8 +66,10 @@ https://borisfx.com/documentation/mocha/9.5.0/#_tracking_parameters
 	会影响导出的tracking data，因此需要匹配到待追踪平面后再导出数据。
 	The Surface and Grid have no keyframes; they are simply guides that let you check the accuracy of your track. Note that the position of the Surface WILL affect the exported tracking data, so you MUST position the corners of the Surface before exporting tracking data.
 
-AdjustTrack: https://borisfx.com/documentation/mocha/9.5.0/#_adjusttrack_classic
-用于对追踪数据进行微调，彻底清除偏移
+AdjustTrack:
+https://borisfx.com/documentation/mocha/9.5.0/#adjust_track
+https://borisfx.com/documentation/mocha/9.5.0/#_adjusttrack_classic
+用于对追踪数据进行微调，彻底清除抖动和偏移
 作用：根据参考点调整tracking data的位置
 	开始前：
 		1. 追踪已完成，发现有抖动
