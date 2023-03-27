@@ -71,7 +71,7 @@ pause
 === 处理字幕： ===
 Caption2AssNorubi提取不带rubi的ass字幕，得到_norubi
 SubCleanerテレビ.bat对字幕做清理、合并、去时间重叠，得到_cleaned
-cut_ass.bat 设置offset参数为第一步中HD Streams Extractor或File Indexer取出的音频的delay（负数），拖入_cleaned.ass和.clt，按输出裁剪字幕，得到_cut
+cut_ass.bat 设置offset参数为第一步中HD Streams Extractor预览中的delay或File Indexer取出的音频的delay（负数），拖入_cleaned.ass和.clt，按输出裁剪字幕，得到_cut
 编辑cut_ass.bat, 
 然后把parts.json和ass拖入即可
 
