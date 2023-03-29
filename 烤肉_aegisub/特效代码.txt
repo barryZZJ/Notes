@@ -120,7 +120,7 @@ VSFilterMod 新增tags：https://github.com/computerfan/VSFilterMod/wiki/New-Tag
 \$vc 颜色渐变，$=1~4分别对应1c,2c,3c,4c
 \3va 透明度渐变，$=1~4分别对应1c,2c,3c,4c
 \1img 平铺图片(如需要单张图片需要添加符合图片大小的vector clip矢量绘图) $=1~4
-\mover (Polar) \moves3 \moves4 (Spline) 沿不同轨迹运动
+\mover (Polar) 沿极坐标平移 \moves3 \moves4 (Spline) 沿不同轨迹运动
 \jitter 各方向重复抖动
 \movevc 移动vector clip遮罩 参数同\move，使用的是相对坐标，原位置是0,0，clip必须是矢量图
 \lua(somemethd, args) \somemethod(args)
