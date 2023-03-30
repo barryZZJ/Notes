@@ -1,0 +1,22 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2023-03-30T11:30:09+08:00
+
+====== v2ray ======
+Created 星期四 30 三月 2023
+
+https://guide.v2fly.org/prep/install.html
+
+更新：
+cd ~/v2ray
+bash install-release.sh
+
+手动运行：
+	v2ray run -c ~/v2ray/configs/jp4Direct.json
+	yy服务器配置文件：~/v2ray/configs
+可以使用 v2ray help 查看具体命令。
+
+系统服务运行：
+	systemctl {start|stop|restart|status} v2ray
+	配置文件位于 /usr/local/etc/v2ray/
+

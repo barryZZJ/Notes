@@ -124,7 +124,8 @@ VSFilterMod 新增tags：https://github.com/computerfan/VSFilterMod/wiki/New-Tag
 \jitter 各方向重复抖动
 \movevc 移动vector clip遮罩 参数同\move，使用的是相对坐标，原位置是0,0，clip必须是矢量图
 \lua(somemethd, args) \somemethod(args)
-\ortho1 改进frz透视效果
+\ortho0 frx fry使用透视投影（且改进了原版）
+\ortho1 frx fry使用正交投影（原版没有）
 \xblur \yblur 指定模糊方向
 \blend
 

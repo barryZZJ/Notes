@@ -35,15 +35,24 @@ config.json: "mirai_repo" -> https://repo.mirai.mamoe.net/keep/mcl
 
 3. 启动命令行server端
 ./mcl
-配置qq号，登录 
+	
+	nohup ./mcl &
+	结束：ps -aux|grep mcl
+	kill <pid>
+配置qq号，登录
+	/autoLogin
+	/login
 验证：
 1. 自动验证工具 https://github.com/KasukuSakura/mirai-login-solver-sakura
-2. Aoki https://github.com/MrXiaoM/Aoki
-3. 抓包 参考README https://github.com/project-mirai/mirai-login-solver-selenium
-4. 手机连电脑用chrome的network抓包
+下载插件和apk
+2. 安装插件后登录，会弹出token值，复制下来输入apk里，过验证即可
+/*
+Aoki登录工具 https://github.com/MrXiaoM/Aoki
+抓包 参考README https://github.com/project-mirai/mirai-login-solver-selenium
+手机连电脑用chrome的network抓包
 	chrome debug https://developer.chrome.com/docs/devtools/remote-debugging/
 	（手机需打开USB调试，勾选仅充电模式下允许ADB调试，并打开chrome）
-
+*/
 https://mirai.mamoe.net/topic/223/%E6%97%A0%E6%B3%95%E7%99%BB%E5%BD%95%E7%9A%84%E4%B8%B4%E6%97%B6%E5%A4%84%E7%90%86%E6%96%B9%E6%A1%88/31?lang=zh-CN
 
 ?
