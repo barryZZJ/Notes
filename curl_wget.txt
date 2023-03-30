@@ -10,11 +10,12 @@ https://www.jianshu.com/p/07c4dddae43a
 -d, --data <data> 使用POST方法发送
 --data-urlencode 使用POST方法，并自动url编码
 -F, --form <name=string> 提交MIME data multipart POST (H)
--c, --cookie-jar <filename> 把访问后获得的cookie保存到文件
+-c, --cookie-j	car <filename> 把访问后获得的cookie保存到文件
 -o, --output <file>
 -O 不用手写文件名
 -L follow redirects
 -J Use the header-provided filename
+--proxy http://127.0.0.1:10809
 
 Headers：
 -H, --header <header/@file> 设置自定义头，可以重复使用或用分号隔开多个头 e.g. -H "User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36"

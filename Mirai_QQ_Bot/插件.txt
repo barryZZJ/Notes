@@ -36,6 +36,7 @@ Rss订阅插件
 https://mirai.mamoe.net/topic/602/rssbot%E6%8F%92%E4%BB%B6-%E8%87%AA%E5%8A%A8%E6%8E%A8%E9%80%81rss%E6%9B%B4%E6%96%B0%E5%86%85%E5%AE%B9
 https://mirai.mamoe.net/topic/334/%E7%AE%80%E5%8D%95%E7%9A%84rss%E8%AE%A2%E9%98%85%E6%8F%92%E4%BB%B6-%E5%B7%B2%E6%B7%BB%E5%8A%A0rsshub%E6%94%AF%E6%8C%81-%E7%95%AA%E5%89%A7%E8%AE%A2%E9%98%85bt%E7%A7%8D%E5%AD%90%E8%87%AA%E5%8A%A8%E4%B8%8A%E4%BC%A0
 	https://github.com/gnuf0rce/rss-helper
+https://mirai.mamoe.net/topic/2041/rss_subscribe-%E8%AE%A2%E9%98%85rss%E6%9B%B4%E6%96%B0%E7%9A%84%E6%8F%92%E4%BB%B6
 
 rsshub
 https://docs.rsshub.app/usage.html#sheng-cheng-ding-yue-yuan

@@ -1,0 +1,31 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2023-03-30T17:12:11+08:00
+
+====== RSS ======
+Created 星期四 30 三月 2023
+
+使用RSSHub订阅主流媒体
+实例：
+https://docs.rsshub.app/usage.html#sheng-cheng-ding-yue-yuan
+具体格式：
+https://docs.rsshub.app/social-media.html#twitter
+部署：
+https://docs.rsshub.app/install/#docker-bu-shu
+	配置：
+	https://docs.rsshub.app/install/#pei-zhi
+''docker run -d --name rsshub -p 1200:1200 -e PROXY_URI=socks://127.0.0.1:10808 -e ACCESS_KEY=MZuQe72YXjyyf7MgAP3z -e IG_USERNAME=barryjackson118 -e IG_PASSWORD=zzjzzj0123 diygod/rsshub''
+''docker stop rsshub''
+''docker rm rsshub''
+
+tv王国：
+https://www.tvkingdom.jp/rss/schedulesBySearch.action?stationPlatformId=0&condition.keyword=%E4%B8%8A%E7%99%BD%E7%9F%B3%E8%90%8C%E9%9F%B3&submit=%E6%A4%9C%E7%B4%A2&stationAreaId=23&submit.x=&submit.y=  (need vpn?)
+
+twitter：
+''@mone_tohoent''
+https://rsshub.app/twitter/user/mone_tohoent (need vpn)
+https://rss.app/feeds/2pCmvkcgOXlYLlEd.xml (x)
+
+instagram:
+''@mone_kamishiraishi''
+https://rss.app/feeds/m3eLlZccuJLV43Hw.xml
