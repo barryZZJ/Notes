@@ -11,6 +11,10 @@ https://guide.v2fly.org/prep/install.html
 cd ~/v2ray
 bash install-release.sh
 
+导出配置文件：
+v2rayN客户端选中一个节点，右键-导出所选服务器为客户端配置，保存到json
+需要编辑一下，outbounds里只保留tag为proxy的那一项，并且删掉routing字典
+
 手动运行：
 	v2ray run -c ~/v2ray/configs/jp4Direct.json
 	yy服务器配置文件：~/v2ray/configs
@@ -20,3 +24,4 @@ bash install-release.sh
 	systemctl {start|stop|restart|status} v2ray
 	配置文件位于 /usr/local/etc/v2ray/
 
+如果出现 Connection reset by peer ，需要把服务器的防火墙设为允许机场的ip

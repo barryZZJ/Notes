@@ -6,3 +6,10 @@ Creation-Date: 2023-03-30T21:21:04+08:00
 Created 星期四 30 三月 2023
 
 https://docs.docker.com/engine/install/ubuntu/#install-using-the-repository
+
+与宿主机通信
+https://blog.csdn.net/DisMisPres/article/details/127279708
+docker容器内默认情况下与主机进行了隔离，无法通过 127.0.0.1 或 localhost 访问到主机
+解决方法：
+1. docker run 添加 --network host 参数即可
+2. ip addr show docker0 查询虚拟网卡的ip，发现为172.17.0.1，使用这个ip即可

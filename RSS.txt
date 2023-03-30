@@ -6,16 +6,21 @@ Creation-Date: 2023-03-30T17:12:11+08:00
 Created 星期四 30 三月 2023
 
 使用RSSHub订阅主流媒体
-实例：
+
+使用实例：
 https://docs.rsshub.app/usage.html#sheng-cheng-ding-yue-yuan
 具体格式：
 https://docs.rsshub.app/social-media.html#twitter
+通用参数：
+https://docs.rsshub.app/parameter.html
+
 部署：
 https://docs.rsshub.app/install/#docker-bu-shu
 	配置：
 	https://docs.rsshub.app/install/#pei-zhi
-''-e ACCESS_KEY=MZuQe72YXjyyf7MgAP3z -e PROXY_URI=socks://127.0.0.1:10808''
-''docker run -d --name rsshub -p 1200:1200 -e PROXY_URI=https://127.0.0.1:10809 -e IG_USERNAME=barryzzj@gmail.com -e IG_PASSWORD=zzjzzj0123 diygod/rsshub''
+(容器内127.0.0.1不能指向你的clash，需要换成你机器的内网IP) ip addr show docker0查询为172.17.0.1
+''-e ACCESS_KEY=MZuQe72YXjyyf7MgAP3z ''
+''docker run -d --name rsshub -p 1200:1200 --network host -e PROXY_URI=socks://127.0.0.1:10808 -e IG_USERNAME=barryjackson118 -e IG_PASSWORD=zzjzzj0123 -e REQUEST_TIMEOUT=10000 diygod/rsshub''
 ''docker stop rsshub''
 ''docker rm rsshub''
 

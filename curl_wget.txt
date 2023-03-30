@@ -15,7 +15,9 @@ https://www.jianshu.com/p/07c4dddae43a
 -O 不用手写文件名
 -L follow redirects
 -J Use the header-provided filename
---proxy http://127.0.0.1:10809
+--proxy [http://]127.0.0.1:10809
+--proxy socks5://127.0.0.1:10808
+--socks5 127.0.0.1:10808
 
 Headers：
 -H, --header <header/@file> 设置自定义头，可以重复使用或用分号隔开多个头 e.g. -H "User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36"
