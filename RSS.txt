@@ -20,7 +20,7 @@ https://docs.rsshub.app/install/#docker-bu-shu
 	https://docs.rsshub.app/install/#pei-zhi
 (容器内127.0.0.1不能指向你的clash，需要换成你机器的内网IP) ip addr show docker0查询为172.17.0.1
 ''-e ACCESS_KEY=MZuQe72YXjyyf7MgAP3z ''
-''docker run -d --name rsshub -p 1200:1200 --network host -e PROXY_URI=socks://127.0.0.1:10808 -e IG_USERNAME=barryjackson118 -e IG_PASSWORD=zzjzzj0123 -e REQUEST_TIMEOUT=10000 diygod/rsshub''
+''docker run -d --name rsshub -p 1200:1200 --network host -e PROXY_URI=socks://127.0.0.1:10808 -e IG_USERNAME=barryzzj@gmail.com -e IG_PASSWORD=ZZJzzj0123 -e REQUEST_TIMEOUT=10000 diygod/rsshub''
 ''docker stop rsshub''
 ''docker rm rsshub''
 
