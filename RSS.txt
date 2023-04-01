@@ -21,9 +21,9 @@ https://docs.rsshub.app/install/#docker-bu-shu
 (容器内127.0.0.1不能指向你的clash，需要换成你机器的内网IP) ip addr show docker0查询为172.17.0.1
 ''-e ACCESS_KEY=MZuQe72YXjyyf7MgAP3z ''
 ''docker run -d --name rsshub -p 1200:1200 --network host -e PROXY_URI=socks://127.0.0.1:10808 -e IG_COOKIE="mid=ZCbO8AALAAFpN44rcnJvsxKug5EI; ig_did=47DFC1B2-B680-4EBC-BE81-B67E9EA665D1; ig_nrcb=1; dpr=1.25; ds_user_id=49148305989; shbid="5022\05449148305989\0541711800994:01f7e31bf0859bb510c4519307d8ca72ecf1b4b4e26929d1dfac4fdad27bfc92caf83478"; shbts="1680264994\05449148305989\0541711800994:01f74ae1f90bbe640ea0f1aa1f531f1602cbf2dc9642f8a269096548dbf58014fe7363e7"; datr=puAmZNVojNJ-LJqKjqZBeXmq; csrftoken=fVuMaHtFDNClfsJWRAhlLGSx754yyW56; sessionid=49148305989%3AHKaTgRTflNNLds%3A1%3AAYdVO0_qLnEod9bcDGOdeF4tMUdhECoEucCCxOjqcw;" -e REQUEST_TIMEOUT=10000 diygod/rsshub''
+''-e IG_USERNAME=barryzzj@gmail.com -e IG_PASSWORD=ZZJZZJ01234 -e IG_PROXY=socks://127.0.0.1:10808 ''
 
-
-''docker run -d --name rsshub -p 1200:1200 --network host -e PROXY_URI=socks://127.0.0.1:10808 -e IG_USERNAME=barryzzj@gmail.com -e IG_PASSWORD=ZZJZZJ01234 -e IG_PROXY=socks://127.0.0.1:10808 -e REQUEST_TIMEOUT=10000 diygod/rsshub''
+''docker run -d --name rsshub -p 1200:1200 --network host -e PROXY_URI=socks://127.0.0.1:10808 -e CACHE_EXPIRE=120 -e REQUEST_TIMEOUT=10000 diygod/rsshub''
 ''docker stop rsshub''
 ''docker rm rsshub''
 
@@ -32,9 +32,13 @@ https://www.tvkingdom.jp/rss/schedulesBySearch.action?stationPlatformId=0&condit
 
 twitter：
 ''@mone_tohoent''
+http://127.0.0.1:1200/twitter/user/mone_tohoent (need vpn)
 https://rsshub.app/twitter/user/mone_tohoent (need vpn)
 https://rss.app/feeds/2pCmvkcgOXlYLlEd.xml (x)
 
 instagram:
 ''@mone_kamishiraishi''
+[[http://]][[http://127.0.0.1:1200/twitter/user/mone_tohoent|127.0.0.1:1200]][[/instagram/user/mone_kamishiraishi]]
 https://rss.app/feeds/m3eLlZccuJLV43Hw.xml
+
+
