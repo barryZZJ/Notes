@@ -19,25 +19,30 @@ https://docs.rsshub.app/install/#docker-bu-shu
 	配置：
 	https://docs.rsshub.app/install/#pei-zhi
 (容器内127.0.0.1不能指向你的clash，需要换成你机器的内网IP) ip addr show docker0查询为172.17.0.1
-''-e ACCESS_KEY=MZuQe72YXjyyf7MgAP3z ''
-''docker run -d --name rsshub -p 1200:1200 --network host -e PROXY_URI=socks://127.0.0.1:10808 -e IG_COOKIE="mid=ZCbO8AALAAFpN44rcnJvsxKug5EI; ig_did=47DFC1B2-B680-4EBC-BE81-B67E9EA665D1; ig_nrcb=1; dpr=1.25; ds_user_id=49148305989; shbid="5022\05449148305989\0541711800994:01f7e31bf0859bb510c4519307d8ca72ecf1b4b4e26929d1dfac4fdad27bfc92caf83478"; shbts="1680264994\05449148305989\0541711800994:01f74ae1f90bbe640ea0f1aa1f531f1602cbf2dc9642f8a269096548dbf58014fe7363e7"; datr=puAmZNVojNJ-LJqKjqZBeXmq; csrftoken=fVuMaHtFDNClfsJWRAhlLGSx754yyW56; sessionid=49148305989%3AHKaTgRTflNNLds%3A1%3AAYdVO0_qLnEod9bcDGOdeF4tMUdhECoEucCCxOjqcw;" -e REQUEST_TIMEOUT=10000 diygod/rsshub''
-''-e IG_USERNAME=barryzzj@gmail.com -e IG_PASSWORD=ZZJZZJ01234 -e IG_PROXY=socks://127.0.0.1:10808 ''
-
-''docker run -d --name rsshub -p 1200:1200 --network host -e PROXY_URI=socks://127.0.0.1:10808 -e CACHE_EXPIRE=120 -e REQUEST_TIMEOUT=10000 diygod/rsshub''
+''-e ACCESS_KEY=MZuQe72YXjyyf7MgAP3z -e IG_USERNAME=barryjackson118 -e IG_PASSWORD=zzjzzj01234 -e IG_PROXY=socks://127.0.0.1:10808 ''
+''docker run -d --name rsshub -p 1200:1200 --network host -e PROXY_URI=socks://127.0.0.1:10808 -e CACHE_EXPIRE=1200 -e REQUEST_TIMEOUT=10000 diygod/rsshub''
 ''docker stop rsshub''
 ''docker rm rsshub''
+
+''docker run -d --name rsshub_chrome -p 1200:1200 --network host -e PROXY_URI=socks://127.0.0.1:10808 -e CACHE_EXPIRE=1200 -e REQUEST_TIMEOUT=10000 -e IG_USERNAME=barryjackson118 -e IG_PASSWORD=zzjzzj01234 -e IG_PROXY=socks://127.0.0.1:10808 diygod/rsshub:chromium-bundled''
+''docker stop rsshub_chrome''
+''docker rm rsshub_chrome''
 
 tv王国：
 https://www.tvkingdom.jp/rss/schedulesBySearch.action?stationPlatformId=0&condition.keyword=%E4%B8%8A%E7%99%BD%E7%9F%B3%E8%90%8C%E9%9F%B3&submit=%E6%A4%9C%E7%B4%A2&stationAreaId=23&submit.x=&submit.y=  (need vpn?)
 
 twitter：
 ''@mone_tohoent''
-http://127.0.0.1:1200/twitter/user/mone_tohoent (need vpn)
-https://rsshub.app/twitter/user/mone_tohoent (need vpn)
+43.248.189.36:23200
+http://yy.barryzzj.asia:23200/twitter/user/mone_tohoent
+http://127.0.0.1:1200/twitter/user/mone_tohoent
+https://rsshub.app/twitter/user/mone_tohoent
 https://rss.app/feeds/2pCmvkcgOXlYLlEd.xml (x)
 
 instagram:
 ''@mone_kamishiraishi''
+[[http://]][[http://yy.barryzzj.asia:23200/twitter/user/mone_tohoent|yy.barryzzj.asia:23200]][[/picuki/profile/mone_kamishiraishi/1]]
+[[http://]][[http://127.0.0.1:1200/twitter/user/mone_tohoent|127.0.0.1:1200]][[/picuki/profile/mone_kamishiraishi/1]] (server need diygod/rsshub:chromium-bundled; reader need vpn; /10 does not work)
 [[http://]][[http://127.0.0.1:1200/twitter/user/mone_tohoent|127.0.0.1:1200]][[/instagram/user/mone_kamishiraishi]]
 https://rss.app/feeds/m3eLlZccuJLV43Hw.xml
 

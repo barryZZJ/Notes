@@ -26,10 +26,33 @@ https://github.com/bissli/smart-webdriver-manager
 
 ubuntu配置环境:
 https://blog.csdn.net/shjsfx/article/details/106006255
-	#下面的两行代码一般是不需要的，至少经过我的测试在windows上是不需要的。但经过我的测试在Ubuntu上如果不加的话等下就会报错WebDriverException: unknown error: DevToolsActivePort file doesn't exist while trying to initiate Chrome Browser，所以要加上
-	chrome_options.add_argument('--no-sandbox')
-	chrome_options.add_argument('--disable-dev-shm-usage')
+#下面的两行代码一般是不需要的，至少经过我的测试在windows上是不需要的。但经过我的测试在Ubuntu上如果不加的话等下就会报错WebDriverException: unknown error: DevToolsActivePort file doesn't exist while trying to initiate Chrome Browser，所以要加上
+opt.add_argument('--no-sandbox')
+opt.add_argument('--disable-dev-shm-usage')
+{{{code: lang="python3" linenumbers="False"
+from selenium import webdriver
+from selenium.webdriver.common.by import By
+from selenium.webdriver.chrome.service import Service
+from selenium.webdriver.support.wait import WebDriverWait
 
+def initbrowser():
+    opt = webdriver.ChromeOptions()
+    opt.add_argument('user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/105.0.0.0 Safari/537.36')
+    opt.add_argument('--headless')  # 无界面
+    opt.add_argument('--no-sandbox')
+    opt.add_argument('--disable-dev-shm-usage')
+
+    browser = webdriver.Chrome(options=opt)
+    browser.implicitly_wait(30)
+    wait = WebDriverWait(browser, 30)
+    return browser, wait
+   
+wait.until(lambda browser: 'dashboard' in browser.current_url)
+}}}
+
+
+Windows:
+{{{code: lang="python3" linenumbers="False"
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.chrome.service import Service
@@ -37,11 +60,19 @@ from selenium.webdriver.chrome.service import Service
 opt = webdriver.ChromeOptions()
 opt.add_argument('--headless')  # 无界面
 opt.add_argument('user-agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/104.0.0.0 Safari/537.36"') # 设置请求头的User-Agent
-opt.binary_location = path.chrome
+opt.add_argument('--disable-extensions')
+opt.binary_location = 'chrome.exe'
 
-s = Service(path.chromedriver)  # 设置chromeDriver路径，解决executable_path has been deprecated warning.
-browser = webdriver.Chrome(options=option, service=s)
+s = Service('chromedriver.exe')  # 设置chromeDriver路径，解决executable_path has been deprecated warning.
+service.creationflags = CREATE_NO_WINDOW
+
+browser = webdriver.Chrome(options=opt, service=s)
+browser.implicitly_wait(30) 
+wait = WebDriverWait(browser, 30)
+
 browser.get("https://www.baidu.com")
+wait.until(lambda browser: 'dashboard' in browser.current_url)
+
 browser.close()  # 关闭当前选项卡
 browser.quit()  # 完全关闭浏览器
 
@@ -50,6 +81,9 @@ if browser.service.process:
 	running
 else:
 	quitted
+
+}}}
+
 
 退出后再访问browser的属性的话会报：
 selenium.common.exceptions.InvalidSessionIdException: Message: invalid session id
@@ -83,7 +117,8 @@ html.send_keys(Keys.CONTROL, Keys.SUBTRACT)
 html.send_keys(Keys.CONTROL, Keys.ADD)
 
 * 等待网页完全加载
-browser.implicitly_wait() # 定义browser后立即执行一次（每个session只需执行一次），可以保证网页完全加载/元素被找到
+browser.implicitly_wait(sec:float) # 定义browser后立即执行一次（每个session只需执行一次），可以保证网页完全加载/元素被找到
+等待元素加载见 WebDriverWait
 
 * 定位元素
 # 在iframe内的元素无法直接找到，见下面的iframe处理
@@ -159,14 +194,24 @@ select = Select(elem)
 .deselect_all()
 
 * 执行js脚本
+https://selenium-python.readthedocs.io/api.html?highlight=script#selenium.webdriver.remote.webdriver.WebDriver.execute_script
 .execute_script("arguments[0]", *args)
-返回值需要return才能获取到
+运行同步脚本，返回值需要return才能获取到
 
-* 等待元素加载 WebDriverWait
+.execute_async_script(script:str,*args)
+运行异步脚本
+	.set_script_timeout(time_to_wait: float) 设置等待时间
+
+* 等待加载 WebDriverWait
 from selenium.webdriver.support.wait import WebDriverWait
-	https://selenium-python.readthedocs.io/api.html#module-selenium.webdriver.support.wait
-	* element = WebDriverWait(driver, 10).until(lambda browser: browser.find_element(By.ID, "someId"))
-	* .until方法条件为js脚本的document.readyState返回'complete'
+https://selenium-python.readthedocs.io/api.html#module-selenium.webdriver.support.wait
+等待元素加载
+element = WebDriverWait(driver, 10).until(lambda browser: browser.find_element(By.ID, "someId"))
+等待网页加载
+WebDriverWait(driver, 30).until(lambda browser: browser.execute_script("return document.readyState") == 'complete')
+
+.until
+.until_not
 
 可以使用进阶的Polling库 https://polling2.readthedocs.io/en/latest/examples.html
 
@@ -202,6 +247,12 @@ alert_is_present
 
 Custom Wait Conditions
 设置''__call__()''返回所需内容或False
+
+* 获取html
+网页html：
+browser.page_source -> str
+其他html：
+https://stackoverflow.com/questions/35905517/how-to-get-innerhtml-of-whole-page-in-selenium-driver
 
 * Event Firing https://selenium-python.readthedocs.io/api.html#module-selenium.webdriver.support.event_firing_webdriver
 from selenium.webdriver.support.events import EventFiringWebDriver, AbstractEventListener
@@ -265,3 +316,19 @@ driver = webdriver.Chrome(service=service)
 * 选项卡切换
 browser.switch_to.window(windowname)
 browser.switch_to.new_window('tab')
+
+* proxy
+from selenium import webdriver
+from selenium.webdriver.common.proxy import Proxy, ProxyType
+
+def genProxyCap():
+	prox = Proxy()
+	prox.proxy_type = ProxyType.MANUAL
+	prox.http_proxy = "127.0.0.1:10809"
+	prox.ssl_proxy = "127.0.0.1:10809"
+
+	capabilities = webdriver.DesiredCapabilities.CHROME
+	prox.add_to_capabilities(capabilities)
+	return capabilities
+
+driver = webdriver.Chrome(desired_capabilities=genProxyCap())
