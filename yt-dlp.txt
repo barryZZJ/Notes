@@ -9,3 +9,10 @@ download best:
 yt-dlp -f bestvideo[ext=mp4]+bestaudio[ext=m4a] --merge-output-format mp4 %*
 
 
+字幕：
+显示字幕
+yt-dlp --list-subs URL
+下载字幕
+https://downsub.com
+yt-dlp --write-auto-subs --sub-langs "ja-orig,zh-Hans" --convert-subs "ass" https://www.youtube.com/watch?v=cIRIa0n1OY8
+（yt-dlp下载的字幕同一句话会出现多次，不推荐）
