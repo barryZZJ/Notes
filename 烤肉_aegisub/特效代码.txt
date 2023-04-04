@@ -35,7 +35,9 @@ http://unanimated.hostfree.pw/ts/ts-layers.htm
 字体相关：
 \fn<fontname> 为空时恢复为原样式的字体
 	圆体：腾祥嘉丽粗圆简 (最粗)、方正粗圆_GBK、方正准圆、方正细圆、猫啃网糖圆体 (测试版)、幼圆 (最细)、
-	UD Digi Kyokasho系列、ElmerFont（日语）
+		MYoungHKS-Xbold (蒙纳简粗俏皮)、藏进兔兔云朵里、Aa云朵甜啵啵
+		UD Digi Kyokasho系列、ElmerFont（日语）
+	行书：KsoShinryuSou（KSO心龍爽）
 \fs<fontsize> 字号
 \fsc<scale%> \fscx<scale%> \fscy<scale%> 字体缩放 scale:0~100
 \fsp<spacing> 字符间距 -~0~+
@@ -110,10 +112,29 @@ accel: 0~1: 先快后慢，1~∞: 先慢后快
 \kf 或 \K 有平滑效果，每个字会部分渐变
 \ko 一次跳一个字，同时边框会变
 
+Effect栏输入：
+delay越小越快；fadeaway默认为0
+上下滚动：
+Scroll up;<y1|0>;<y2|0>;<delay(1-100)>[;fadeawayheight]
+   The text/picture will scroll up the screen. 
+		  The y1 and y2 values define a vertical region on the screen in which
+   the text will scroll. The values are in pixels, and it doesn't matter
+   which value (top or bottom) comes first. If the values are zeroes then
+   the text will scroll up the full height of the screen.
+	  The delay value can be a number from 1 to 100, and it slows down the
+   speed of the scrolling - zero means no delay and the scrolling will be
+   as fast as possible.
+Scroll down;<y1|0>;<y2|0>;<delay(1-100)>[;fadeawayheight]
+左右滚动：
+Banner;<delay(1-100)>[;lefttoright(0|1)][;<fadeawaywidth]
+   Text will be forced into a single line, regardless of length, and scrolled from right to left accross the screen.
+   When delay is greater than 0, moving one pixel will take (1000/delay) second.
+e.g. Banner;5;0;50
+
 VSFilterMod 新增tags：https://github.com/computerfan/VSFilterMod/wiki/New-Tags
 \fsc 字体缩放
-\frs 倾斜baseline
-\fsvp \fshp 垂直、水平间距
+\frs 每个字的baseline旋转
+\fsvp \fshp 调节垂直、水平baseline位置
 \z z轴取值
 \distort(u1,v1,u2,v2,u3,v3) 形变 \distort(1,0,1,1,0,1)
 \rnd \rndx \rndy \rndz 随机偏移
