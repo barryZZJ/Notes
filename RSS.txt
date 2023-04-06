@@ -28,6 +28,12 @@ https://docs.rsshub.app/install/#docker-bu-shu
 ''docker stop rsshub_chrome''
 ''docker rm rsshub_chrome''
 
+自建：
+https://docs.rsshub.app/joinus/new-rss/before-start.html#chuang-jian-ming-ming-kong-jian
+安装：npm ci --production
+在.env中配置参数，然后
+npm start
+
 tv王国：
 https://www.tvkingdom.jp/rss/schedulesBySearch.action?stationPlatformId=0&condition.keyword=%E4%B8%8A%E7%99%BD%E7%9F%B3%E8%90%8C%E9%9F%B3&submit=%E6%A4%9C%E7%B4%A2&stationAreaId=23&submit.x=&submit.y=  (need vpn?)
 
