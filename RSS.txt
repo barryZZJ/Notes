@@ -31,25 +31,58 @@ https://docs.rsshub.app/install/#docker-bu-shu
 自建：
 https://docs.rsshub.app/joinus/new-rss/before-start.html#chuang-jian-ming-ming-kong-jian
 安装：npm ci --production
-在.env中配置参数，然后
+在.env中配置参数：
+'''
+PROXY_URI=socks://127.0.0.1:10808
+CACHE_EXPIRE=600
+REQUEST_TIMEOUT=10000
+YOUTUBE_KEY=AIzaSyBHsdkUIoFzUqDjON9DoNBAlL3Qqhfyh5Q
+
+IG_USERNAME=barryjackson118
+IG_PASSWORD=zzjzzj01234
+IG_PROXY=socks://127.0.0.1:10808
+'''
+
+然后
 npm start
 
 tv王国：
 https://www.tvkingdom.jp/rss/schedulesBySearch.action?stationPlatformId=0&condition.keyword=%E4%B8%8A%E7%99%BD%E7%9F%B3%E8%90%8C%E9%9F%B3&submit=%E6%A4%9C%E7%B4%A2&stationAreaId=23&submit.x=&submit.y=  (need vpn?)
 
+rsshub:
+[[http://]][[http://yy.barryzzj.asia:23200/twitter/user/mone_tohoent|yy.barryzzj.asia:23200]]
+[[http://]][[http://yy.barryzzj.asia:23200/twitter/user/mone_tohoent|127.0.0.1:1200]]
+https://rsshub.app
+
 twitter：
 ''@mone_tohoent''
-43.248.189.36:23200
-http://yy.barryzzj.asia:23200/twitter/user/mone_tohoent
-http://127.0.0.1:1200/twitter/user/mone_tohoent
-https://rsshub.app/twitter/user/mone_tohoent
+/twitter/user/mone_tohoent
 https://rss.app/feeds/2pCmvkcgOXlYLlEd.xml (x)
 
 instagram:
 ''@mone_kamishiraishi''
-[[http://]][[http://yy.barryzzj.asia:23200/twitter/user/mone_tohoent|yy.barryzzj.asia:23200]][[/picuki/profile/mone_kamishiraishi/1]]
-[[http://]][[http://127.0.0.1:1200/twitter/user/mone_tohoent|127.0.0.1:1200]][[/picuki/profile/mone_kamishiraishi/1]] (server need diygod/rsshub:chromium-bundled; reader need vpn; /10 does not work)
-[[http://]][[http://127.0.0.1:1200/twitter/user/mone_tohoent|127.0.0.1:1200]][[/instagram/user/mone_kamishiraishi]]
+/picuki/profile/mone_kamishiraishi/1 (server need diygod/rsshub:chromium-bundled; reader need vpn; /10 does not work)
+/instagram/user/mone_kamishiraishi
 https://rss.app/feeds/m3eLlZccuJLV43Hw.xml
 
+youtube:
+@mensnon-no
+/youtube/channel/UC0sKRWLg-w8bpP7knY8-Bmw?filter=上白石萌音
 
+kamishiraimimone:（TODO
+/kamishiraishimone/gallery
+/kamishiraishimone/radio
+
+微博：
+routeParams: 
+/readable=1&authorNameBold=1&showAuthorInTitle=1&showAuthorAvatarInDesc=1&showEmojiForRetweet=1
+
+上白石萌音超话：
+/weibo/super_index/1008082723e18062523c6636a9842a6f6f0e7d/sort_time
+用户：
+上白石萌音动态：
+/weibo/user/6936476058
+上白石萌音Lemonedo：
+/weibo/user/7398760727
+桐桐：
+/weibo/user/5904358413
