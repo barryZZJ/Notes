@@ -32,11 +32,16 @@ https://docs.rsshub.app/install/#docker-bu-shu
 https://docs.rsshub.app/joinus/new-rss/before-start.html#chuang-jian-ming-ming-kong-jian
 安装：npm ci --production
 在.env中配置参数：
+https://docs.rsshub.app/install/#pei-zhi
 '''
+PORT=1200
 PROXY_URI=socks://127.0.0.1:10808
 CACHE_EXPIRE=600
 REQUEST_TIMEOUT=10000
 YOUTUBE_KEY=AIzaSyBHsdkUIoFzUqDjON9DoNBAlL3Qqhfyh5Q
+
+DEBUG_INFO=false
+NO_LOGFILES=true
 
 IG_USERNAME=barryjackson118
 IG_PASSWORD=zzjzzj01234
