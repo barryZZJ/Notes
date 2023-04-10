@@ -1,4 +1,5 @@
 Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
 
 https://segmentfault.com/a/1190000007535316
 
@@ -7,17 +8,39 @@ async 会将其后的函数的返回值封装成一个 Promise 对象，
 
 function resolveAfter2Seconds(x) {
   return new Promise(resolve => {
-    setTimeout(() => {
-      resolve(x);
-    }, 2000);
+	setTimeout(() => {
+	  resolve(x);
+	}, 2000);
   });
 };
 
-而 await 会等待这个 Promise 完成，并得到其 resolve 的结果为返回值。
+在async函数中使用 await otherFunc() 会等待原本为异步的 otherFunc() 的 Promise 完成，并得到其 resolve 的结果为返回值，
+就好像同步执行otherFunc()一样
 
 传统方式使用then链，而async不需要，看起来像是同步函数一样。
 
 简单例子：
+1.
+{{{code: lang="js" linenumbers="False"
+function fetchData(url) {
+  return fetch(url) // fetch returns a promise
+    .then(response => response.json()) // convert response to JSON
+    .then(data => data) // return data
+    .catch(error => error); // handle error
+}
+// 改写后：
+async function fetchData(url) {
+  try {
+    let response = await fetch(url); // wait for fetch to resolve
+    let data = await response.json(); // wait for JSON conversion
+    return data; // return data
+  } catch (error) {
+    return error; // handle error
+  }
+}
+}}}
+
+2.
 
 // async function expression assigned to a variable
 var add1 = async function(x) {
@@ -32,17 +55,17 @@ add1(10).then(v => { // 调用add1返回的promise对象
 
 
 (async () => {
-    concurrentFuncs         // 多个不带await的函数同时执行
-    await sequentialFuncs   // 多个带await的函数按顺序执行
+	concurrentFuncs         // 多个不带await的函数同时执行
+	await sequentialFuncs   // 多个带await的函数按顺序执行
 })()
 
 直接执行
 (async function(){
-    await func
+	await func
 })()
 
 function func(){
-    return new Promise( resolve => {...}, reject => {...} );
+	return new Promise( resolve => {...}, reject => {...} );
 }
 
 
