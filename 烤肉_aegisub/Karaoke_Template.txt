@@ -47,12 +47,41 @@ repeat <n>或loop <n>: 模板会(对每个syllable)重复执行n次，n必须是
 https://aeg-dev.github.io/AegiSite/docs/3.2/automation/karaoke_templater/code_execution_environment/
 _G.xxx : standard library for loaded modules https://aeg-dev.github.io/AegiSite/docs/3.2/automation/lua/modules/
 
-retime(mode, startadjust, endadjust) https://aeg-dev.github.io/AegiSite/docs/3.2/automation/karaoke_templater/code_execution_environment/#retime
+[[#retime]]
+retime(mode, startadjust, endadjust) 
+
 maxloop(maxj)
+
+[[#remember-and-recall]]
+remember(name, value)
+recall(name)
+
+
+math.randomseed(os.time())
+math.random(m=0, n=1) -> 不带参时[0,1)，否则[m,n] 浮点伪随机数
 
 ===== Inline Variables ($-variables) =====
 https://aeg-dev.github.io/AegiSite/docs/3.2/automation/karaoke_templater/inline_variables/
+使用$var引用
 !!之间当作lua程序处理
+
+==== Automatic variants ====
+In pre-line templates the automatic inline variables refer to the line variants, and everywhere else they refer to the syllable variants.
+
+start, end, mid
+	start and and midway time for line/syllable; absolute for lines and relative for syllables
+dur, kdur
+	duration in milliseconds and centiseconds of line/syllable
+i
+	line or syllable index
+left, center, right
+	left, center and right edges of line/syllable, absolute from left screen edge
+top, middle, bottom
+	top middle and bottom edges of line/syllable, absolute from top screen edge
+x, y
+	x and y position of line/syllable when using default alignment
+width, height
+	width and height of line/syllable in pixels, this is rounded and might not match exactly with the positioning variables
 
 ==== Line variants ====
 layer
@@ -95,24 +124,6 @@ sx, sy
 	syllable absolute x and y position in default alignment, suitable for using directly in \pos and \move
 swidth, sheight
 	syllable width and height in pixelsthis is rounded and might not match exactly with the positioning variables
-
-==== Automatic variants ====
-In pre-line templates the automatic inline variables refer to the line variants, and everywhere else they refer to the syllable variants.
-
-start, end, mid
-	start and and midway time for line/syllable; absolute for lines and relative for syllables
-dur, kdur
-	duration in milliseconds and centiseconds of line/syllable
-i
-	line or syllable index
-left, center, right
-	left, center and right edges of line/syllable, absolute from left screen edge
-top, middle, bottom
-	top middle and bottom edges of line/syllable, absolute from top screen edge
-x, y
-	x and y position of line/syllable when using default alignment
-width, height
-	width and height of line/syllable in pixels, this is rounded and might not match exactly with the positioning variables
 
 ===== Data structures =====
 https://aeg-dev.github.io/AegiSite/docs/3.2/automation/lua/modules/karaskel.lua/#data-structures
