@@ -24,9 +24,13 @@ https://docs.rsshub.app/install/#docker-bu-shu
 ''docker stop rsshub''
 ''docker rm rsshub''
 
-''docker run -d --name rsshub_chrome -p 1200:1200 --network host -e PROXY_URI=socks://127.0.0.1:10808 -e CACHE_EXPIRE=1200 -e REQUEST_TIMEOUT=10000 -e IG_USERNAME=barryjackson118 -e IG_PASSWORD=zzjzzj01234 -e IG_PROXY=socks://127.0.0.1:10808 diygod/rsshub:chromium-bundled''
+''docker run -d --name rsshub_chrome -p 1200:1200 --network host -e PROXY_URI=socks://127.0.0.1:10808 -e CACHE_EXPIRE=1200 -e REQUEST_TIMEOUT=10000 -e YOUTUBE_KEY=AIzaSyBHsdkUIoFzUqDjON9DoNBAlL3Qqhfyh5Q -e DEBUG_INFO=false -e IG_USERNAME=barryjackson118 -e IG_PASSWORD=zzjzzj01234 -e IG_PROXY=socks://127.0.0.1:10808 diygod/rsshub:chromium-bundled''
 ''docker stop rsshub_chrome''
 ''docker rm rsshub_chrome''
+
+彻底删除：
+docker image rm diygod/rsshub
+docker image rm diygod/rsshub:chromium-bundled
 
 自建：
 https://docs.rsshub.app/joinus/new-rss/before-start.html#chuang-jian-ming-ming-kong-jian
