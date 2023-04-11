@@ -7,18 +7,20 @@ Created 星期三 21 十二月 2022
 
 前期：
 1. nyaa下生肉，1080P 200-300mb的可以pass掉 那种内嵌字幕的也可以pass
-[Ohys-Raws] 下载720源，给翻译 https://ohys.gokoro.me/sat 速度最快 一般一两分钟就会发tv的720p
-[SubsPlease] 下载1080web源，给轴man https://subsplease.org/ 出片会晚一点
+
+[Ohys-Raws] https://ohys.gokoro.me/sat 下载720源，给翻译  速度最快 一般一两分钟就会发tv的720p
+[SubsPlease] https://subsplease.org/ 下载1080web源，给轴man 出片会晚一点
 或
 亚马逊下载器
 下个480p就有字幕了 记得在设置里勾选独立下载字幕
-
+或
 ameba：
 http://43.133.21.219:8888/
 xiaoxin
 10086qq..
 在文件中打开终端，用yt-dlp下载
-
+或
+破解版StreamFab
 
 2. 录制站下ts源
 rec.mlsub.net
