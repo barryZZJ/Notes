@@ -1,0 +1,12 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2023-04-12T16:10:26+08:00
+
+====== puppeteer ======
+Created 星期三 12 四月 2023
+
+https://github.com/puppeteer/puppeteer
+https://pptr.dev/
+
+获取文本：
+await el.evaluate(el => el.textContent)
