@@ -9,6 +9,26 @@ https://www.jianshu.com/p/cfdbfdc6d3a7
 TCAX中的所有ASS特效标签
 https://www.bilibili.com/read/cv15616345/
 
+水波效果：
+可以考虑基于karaoke template把一个字切成多个分片，然后从不同距离处move回原始位置，这样能形成一个sin函数的效果
+
+只对阴影blur：
+	\bord2\shad2\3aFF\blur5\4a60
+主体和bord同时blur：
+	设置两层，主体在上层不带bord，下层带bord，1c设为跟bord同样的颜色。
+	（只有blur比较小的时候效果好，太大的话颜色会混为一体
+发光效果：
+	The solution is to not use border, and use \blur3 for the bottom layer and \blur0.6-0.8 or so for the top
+	
+圆体：腾祥嘉丽粗圆简 (最粗)、方正粗圆_GBK、方正准圆、方正细圆、猫啃网糖圆体 (测试版)、幼圆 (最细)、
+	MYoungHKS-Xbold (蒙纳简粗俏皮)、藏进兔兔云朵里、Aa云朵甜啵啵
+	UD Digi Kyokasho系列、ElmerFont（日语）
+行书：KsoShinryuSou（KSO心龍爽）
+
+技巧：
+http://unanimated.hostfree.pw/ts/ts-layers.htm
+
+
 对后面的字符应用：
 \b<0/1>(取消)加粗  \b<100k>设置字重值(100~400~900) 400为normal
 \i<0/1> (取消)斜体
@@ -21,23 +41,9 @@ https://www.bilibili.com/read/cv15616345/
 \pos(x,y) 整数
 \r<style> 设置新样式 (为空时使用原样式)
 
-只对阴影blur：
-	\bord2\shad2\3aFF\blur5\4a60
-主体和bord同时blur：
-	设置两层，主体在上层不带bord，下层带bord，1c设为跟bord同样的颜色。
-	（只有blur比较小的时候效果好，太大的话颜色会混为一体
-发光效果：
-	The solution is to not use border, and use \blur3 for the bottom layer and \blur0.6-0.8 or so for the top
-
-技巧：
-http://unanimated.hostfree.pw/ts/ts-layers.htm
-
 字体相关：
 \fn<fontname> 为空时恢复为原样式的字体
-	圆体：腾祥嘉丽粗圆简 (最粗)、方正粗圆_GBK、方正准圆、方正细圆、猫啃网糖圆体 (测试版)、幼圆 (最细)、
-		MYoungHKS-Xbold (蒙纳简粗俏皮)、藏进兔兔云朵里、Aa云朵甜啵啵
-		UD Digi Kyokasho系列、ElmerFont（日语）
-	行书：KsoShinryuSou（KSO心龍爽）
+
 \fs<fontsize> 字号
 \fsc<scale%> \fscx<scale%> \fscy<scale%> 字体缩放 scale:0~100
 \fsp<spacing> 字符间距 -~0~+

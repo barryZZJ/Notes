@@ -48,6 +48,7 @@ https://aeg-dev.github.io/AegiSite/docs/3.2/automation/karaoke_templater/code_ex
 _G.xxx : standard library for loaded modules https://aeg-dev.github.io/AegiSite/docs/3.2/automation/lua/modules/
 
 [[#retime]]
+It adjusts the start and end time of the output line in various ways.
 retime(mode, startadjust, endadjust) 
 
 maxloop(maxj)

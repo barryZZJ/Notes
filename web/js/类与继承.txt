@@ -3,6 +3,7 @@ Wiki-Format: zim 0.6
 
 https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Classes
 
+
 1. 对象
 {{{code: lang="js" linenumbers="False"
 var obj = {
@@ -55,8 +56,11 @@ class Point {
   	return new Point(x, y);
   }
 }
+var p = new Point(1,2);
 }}}
 
+
+若成员需要取自async函数，需要额外定义一个async init()方法，在其中对this属性赋值，然后手动调用这个方法
 
 //类的数据类型就是函数，类本身就指向构造函数。
 

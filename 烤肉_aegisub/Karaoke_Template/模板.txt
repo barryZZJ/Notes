@@ -1,0 +1,9 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2023-04-12T11:11:49+08:00
+
+====== 模板 ======
+Created 星期三 12 四月 2023
+
+随机生成透明区域（目前为整行文字的区域，待优化
+\iclip(!remember("l", j==1 and $si==1 and math.random($lleft,$lright) or recall("l"))!, !remember("t", j==1 and $si==1 and math.random($ltop,$lbottom) or recall("t"))!, !remember("r", j==1 and $si==1 and math.random(recall("l"),$lright) or recall("r"))!, !remember("b", j==1 and $si==1 and math.random(recall("t"),$lbottom) or recall("b"))!)
