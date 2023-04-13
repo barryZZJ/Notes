@@ -46,3 +46,17 @@ https://github.com/L1B0/LSM-demo
 2.6	卸载模块：sudo rmmod rbac.ko
 2.7	查看内核日志：dmesg
 
+Makefile:
+obj-m:=ModuleName.o
+
+default:
+	make -C /lib/modules/$(shell uname -r)/build M=$(PWD) modules
+
+clean:
+	make -C /lib/modules/$(shell uname -r)/build M=$(PWD) clean
+
+install:
+	sudo insmod babyrootkit.ko
+
+remove:
+	sudo rmmod babyrootkit

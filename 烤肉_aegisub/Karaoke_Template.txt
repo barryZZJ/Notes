@@ -57,9 +57,9 @@ maxloop(maxj)
 remember(name, value)
 recall(name)
 
-
+https://www.runoob.com/manual/lua53doc/manual.html#pdf-math.random
 math.randomseed(os.time())
-math.random(m=0, n=1) -> 不带参时[0,1)，否则[m,n] 浮点伪随机数
+math.random(m=0, n=1) -> 不带参时[0,1)浮点数，否则[m,n] 整数
 
 ===== Inline Variables ($-variables) =====
 https://aeg-dev.github.io/AegiSite/docs/3.2/automation/karaoke_templater/inline_variables/
