@@ -5,19 +5,32 @@ Creation-Date: 2022-11-01T16:02:12+08:00
 ====== lua ======
 Created 星期二 01 十一月 2022
 
+https://www.runoob.com/manual/lua53doc/manual.html
 https://cheatography.com/srgmc/cheat-sheets/lua-scripting-5-1/
 https://devhints.io/lua
 https://www.lua.org/manual/5.1/manual.html
 
-数组/字典：（下标从1开始！不支持负数下标）
+数组（下标从1开始！不支持负数下标）
 arr = {}
 arr = { ['key'] = 'val' }
 #arr  ->  len(arr)
 arr[ind]
 arr[#arr]
+
+字典：
+可以包含函数，但其第一个参数必须是self:
+mytable = { x = 2, y = function(self,a,b) .. end }
+mytable.x
+mytable['x']
+
+mytable.y(mytable, a, b)
+mytable:y(a, b)
+
+
 table.insert(arr, "foo")  # append
 table.remove(arr[, pos])  # return poped item
 table.concat(x, ", ")  # join x with ","
+
 切片：
 function table.slice(arr, i, j)
 	return {table.unpack(arr, i or 1, j or [[#arr]])}
@@ -32,6 +45,7 @@ function table.slice(tbl, first, last, step)
   return sliced
 end
 
+循环
 for ind, ele in ipairs(arr) do # ind从1开始
 	...
 end
@@ -58,3 +72,8 @@ end
 condition and ifTrue or ifFalse
 若ifTrue不保证为true，可以使用更完备的：
 (condition and {ifTrue} or {ifFalse})[1]
+
+math.random()
+
+tostring()
+tonumber()

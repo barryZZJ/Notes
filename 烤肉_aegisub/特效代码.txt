@@ -68,6 +68,8 @@ aa: 00~FF，00表示不透明，FF表示完全透明。如\alpha&H80&
 矢量绘图
 https://aegi.vmoe.info/docs/3.2/ASS_Tags/#section-3
 https://cnlang.org/thread-85231-1-1.html
+\p<0/1/n> n表示缩放倍数，越大图片越小
+\pbo y方向的偏移像素值
 像素点：
 {\p1}m 0 0 l 1 0 l 1 1 l 0 1{\p0}
 
