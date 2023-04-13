@@ -13,6 +13,17 @@ Created 星期五 07 十月 2022
 安装补丁：
 选择.tar.gz文件后点击上传并安装
 
+初始化hosts：
+hosts:
+#开启MC后，可使用域名登陆路由器后台
+  router.asus.com: 192.168.50.1
+  #google中国重新定向
+  services.googleapis.cn: 74.125.193.94
+  #win网络状态检查
+  ipv6.msftconnecttest.com: 2a01:111:2003::52
+  www.msftconnecttest.com: 13.107.4.52
+
+
 
 出错连不上了先去配置页面点一遍各种重建按钮
 
