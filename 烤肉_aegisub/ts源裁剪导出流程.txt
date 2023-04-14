@@ -35,7 +35,8 @@ preset选择ax264 ts
 === 处理字幕 ===
 1. ts拖入Caption2AssNorubi.bat，得到提取不带rubi的_norubi
 2. _norubi拖入SubCleanerテレビ 对字幕做清理、合并、去时间重叠，得到_cleaned
-3. cut_ass.bat设置offset参数为第一步中HD Streams Extractor预览中的delay或File Indexer取出的音频的delay（负数），拖入_cleaned.ass和.clt，按成片裁剪字幕，得到_cut
+3. cut_ass.bat设置offset参数为第一步中【HD Streams Extractor预览中的delay】+【File Indexer取出的音频的delay】（负数），拖入_cleaned.ass和.clt，按成片裁剪字幕，得到_cut
+4. 用aegisub打开，导入裁好的音频检查字幕时间。如果允许的话可以重新轴一遍
 
 === 测试效果 ===
 PotPlayer打开视频，拖入音频+字幕
