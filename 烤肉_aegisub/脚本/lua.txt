@@ -62,7 +62,7 @@ if ... then
 end
 
 字符串：
-'a' .. 'b'  拼接
+'a' .. 'b'  拼接(不是加号）
 
 匿名函数：function(s, st, ed) return to_fullwidth[s] end
 

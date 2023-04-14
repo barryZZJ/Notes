@@ -21,10 +21,11 @@ https://www.bilibili.com/read/cv15616345/
 	The solution is to not use border, and use \blur3 for the bottom layer and \blur0.6-0.8 or so for the top
 	
 圆体：腾祥嘉丽粗圆简 (最粗)、方正粗圆_GBK、方正准圆、方正细圆、猫啃网糖圆体 (测试版)、幼圆 (最细)、
-	MYoungHKS-Xbold (蒙纳简粗俏皮)、藏进兔兔云朵里、Aa云朵甜啵啵
+	MYoungHKS-Xbold (蒙纳简粗俏皮)、藏进兔兔云朵里、Aa云朵甜啵啵、方正兰亭圆_GBK_中
 	UD Digi Kyokasho系列、ElmerFont（日语）
-行书：KsoShinryuSou（KSO心龍爽）
+行书：KsoShinryuSou（KSO心龍爽）、
 方正雅宋家族：纤、细、标｜准、中、中粗、粗、大、特
+毛笔：gongfannufangti、云峰飞云体
 
 技巧：
 http://unanimated.hostfree.pw/ts/ts-layers.htm
@@ -48,7 +49,8 @@ http://unanimated.hostfree.pw/ts/ts-layers.htm
 \fs<fontsize> 字号
 \fsc<scale%> \fscx<scale%> \fscy<scale%> 字体缩放 scale:0~100
 \fsp<spacing> 字符间距 -~0~+
-\fsvp<spacing> 行距，正数为减小缩近行间距，负数为增加拉宽行间距（夹在两行间、需要 VSFilterMod）
+\fsvp<spacing> 调节垂直间距（行距），正数为减小缩近行间距，负数为增加拉宽行间距（夹在两行间、需要 VSFilterMod）
+\fshpMspacing> 调节水平间距（字间距），需要VSFilterMod
 \frx<amount> \fry<amount> \frz<amount> \fr<amount> 旋转
 \fax<factor> \fay<factor> 文本剪切变换 0~1
 

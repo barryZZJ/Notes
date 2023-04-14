@@ -45,9 +45,21 @@ subtitles.deleterange(first, last)
 
 如果设置了aegisub.debug.out("")，会保留日志界面
 
+lua标准库自带string的一些操作：但是没有re库完善
+https://www.runoob.com/manual/lua53doc/manual.html#pdf-string.find
+:find(pat)
+:match(pat)
+:gmatch(pat)
+:gsub(pat)
+
 regex: https://aegi.vmoe.info/docs/3.2/Automation/Lua/Modules/re/
 lua里escape符号要加%
 pat = re.compile()
+re.sub
+re.match re.find
+	find: 匹配多次，不捕获subgroup。返回match table数组，每个元素是一次匹配结果
+	match: 只匹配一次，捕获subgroup。返回match table数组，[1]是整个匹配结果，后续的是捕获的subgroup
+	无匹配则返回nil
 text, _ = pat:sub(text, repl)
 tab = pat:match(text)  注意下标从1开始
 如果要获取满足匹配的个数，用res = exp:find，#res即匹配的数量
@@ -75,3 +87,7 @@ function process_lines(subtitles, selected_lines, active_line)
 	return sels
 end
 }}}
+
+
+剪贴板 clipboard
+https://aegi.vmoe.info/docs/3.2/Automation/Lua/Modules/clipboard/
