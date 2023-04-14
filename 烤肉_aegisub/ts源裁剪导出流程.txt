@@ -18,7 +18,7 @@ Created 星期一 27 二月 2023
 === VS处理视频： ===
 打开tmp_d2v.vpy
 修改source和clt_file，使用utf8编码的d2v文件，自动读取clt剪辑视频
-可以考虑使用FadeIn, FadeOut滤镜实现转场
+可以考虑使用FadeIn, FadeOut滤镜实现转场（但是音频没法淡入淡出）
 任务管理器详细信息里把优先级调高
 
 == 反交错处理（1080i转1080p） ==
@@ -33,9 +33,9 @@ preset选择ax264 ts
 注意把焦点切换到别的窗口，否则不小心再次按到start就得重新压制了
 
 === 处理字幕 ===
-1. ts拖入Caption2AssNorubi.bat，得到_norubi
-2. 拖入SubCleanerテレビ，得到_cleaned
-3. .ass+.clt拖入cut_ass.bat，得到_cut
+1. ts拖入Caption2AssNorubi.bat，得到提取不带rubi的_norubi
+2. _norubi拖入SubCleanerテレビ 对字幕做清理、合并、去时间重叠，得到_cleaned
+3. cut_ass.bat设置offset参数为第一步中HD Streams Extractor预览中的delay或File Indexer取出的音频的delay（负数），拖入_cleaned.ass和.clt，按成片裁剪字幕，得到_cut
 
 === 测试效果 ===
 PotPlayer打开视频，拖入音频+字幕
@@ -76,11 +76,5 @@ pause
 }}}
 
 
-=== 处理字幕： ===
-Caption2AssNorubi提取不带rubi的ass字幕，得到_norubi
-SubCleanerテレビ.bat对字幕做清理、合并、去时间重叠，得到_cleaned
-cut_ass.bat 设置offset参数为第一步中HD Streams Extractor预览中的delay或File Indexer取出的音频的delay（负数），拖入_cleaned.ass和.clt，按输出裁剪字幕，得到_cut
-编辑cut_ass.bat, 
-然后把parts.json和ass拖入即可
 
 
