@@ -10,6 +10,7 @@ https://aegi.vmoe.info/docs/3.2/Automation/Karaoke_Templater/
 https://aegi.vmoe.info/docs/3.2/Automation/Lua/Modules/karaskel.lua/#karaoke-and-furigana-syllable-tables
 
 ===== Effect =====
+https://aeg-dev.github.io/AegiSite/docs/3.2/automation/karaoke_templater/template_modifiers/
 template <modifier=syl>: 模板行
 code <modifier=once>: 代码行
 空白、且样式相同: timed karaoke line
@@ -40,7 +41,7 @@ pre-line [name]: 只用于template行，在[name]相同的line模板输出结果
 syl: 对每个音节执行，每个音节生成一行(必须是k轴)
 furi
 all: 对所有样式都执行
-char: 对每个character而不是每个syllable执行(必须是k轴)
+syl char: 对每个character而不是每个syllable执行(必须是k轴)
 fx <name>: 对inline-fx为<name>的syllable进行额外处理
 fxgroup <name>
 keeptags
@@ -60,8 +61,7 @@ https://aeg-dev.github.io/AegiSite/docs/3.2/automation/karaoke_templater/code_ex
 
 使用_G变量访问lua标准库以及aegisub导入的库 https://aegisub.org/docs/latest/automation/lua/modules/
 	_G.table.sort相当于table.sort
-	https://aegisite.vercel.app/docs/latest/automation/lua/modules/karaskel.lua/#dialogue-line-table
-	_G.line 获取当前行的信息
+	_G.line 获取当前行的信息 https://aegisite.vercel.app/docs/latest/automation/lua/modules/karaskel.lua/#dialogue-line-table
 
 lua标准库：http://www.lua.org/manual/5.1/manual.html#5
 标准库中的函数如tostring(), tonumber()均需要通过_G才能获取
@@ -72,7 +72,16 @@ lua标准库：http://www.lua.org/manual/5.1/manual.html#5
 [[#retime]]
 It adjusts the start and end time of the output line in various ways.
 retime(mode, startadjust, endadjust)
-
+Possible _mode_s:
+* abs or set - Both startadjust and endadjust are used as absolute time values to set the start and end time of the line directly.
+* preline - Intended to make effects that happen before the actual line start. Both start and end time of the line are set to the start time of the line, then startadjust is added to the start time and endadjust added to the end time. Usually startadjust should be negative here and endadjust be zero.
+* line - Use the regular line timings and just add startadjust to the start time and endadjust to the end time.
+* start2syl - Intended to make the look of the syllable from the start of the line until it is highlighted. The start time of the line is kept and the end time is set to the start time of the syllable. Use startadjust and endadjust to offset the times.
+* presyl - Similar to preline but for the syllable timing instead.
+* syl - From start of syllable to end of syllable.
+* postsyl - Similar to presyl but the base timing is the syllable end time instead of start time. You will usually want to use a zero addstart and positive addend here.
+* syl2end - The time from the end of the syllable to the end of line, similar to start2syl.
+* postline - Similar to postsyl but for the line timing instead.
 relayer(newlayer)
 restyle(newstyle)
 
