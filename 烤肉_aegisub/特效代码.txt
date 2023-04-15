@@ -14,21 +14,21 @@ https://www.bilibili.com/read/cv15616345/
 
 只对阴影blur：
 	\bord2\shad2\3aFF\blur5\4a60
-主体和bord同时blur：
-	1.模糊程度较大：上下层都不带bord，主体在上层，下层的1c跟3c同色，然后同时使用blur
+主体和bord同时blur：主体在上层，边框在下层，
+	1.模糊程度较大（7以上）：上下层都不带bord，下层的1c设为跟3c同色，然后同时使用blur
 	2.中间过渡：bord慢慢变大
 	3.模糊程度较小：只有下层带bord，且1c设为跟3c同色。
 	（只有blur比较小的时候效果好，太大的话颜色会混为一体
 	
 浅浅的发光效果：
-	The solution is to not use border, and use \blur3 for the bottom layer and \blur0.6-0.8 or so for the top
+	两层，都\bord0,下层\blur3，上层\blur0.6-0.8
 	
-圆体：腾祥嘉丽粗圆简 (最粗)、方正粗圆_GBK、方正准圆、方正细圆、猫啃网糖圆体 (测试版)、幼圆 (最细)、
+圆体：腾祥嘉丽粗圆简 (最粗)、方正粗圆_GBK、方正准圆_GBK、方正细圆、猫啃网糖圆体 (测试版)、幼圆 (最细)、
 	MYoungHKS-Xbold (蒙纳简粗俏皮)、藏进兔兔云朵里、Aa云朵甜啵啵、方正兰亭圆_GBK_中
 	UD Digi Kyokasho系列、ElmerFont（日语）
 行书：KsoShinryuSou（KSO心龍爽）、
 方正雅宋家族：纤、细、标｜准、中、中粗、粗、大、特
-毛笔：gongfannufangti、云峰飞云体、潮字社凌渡鲲鹏繁
+毛笔：gongfannufangti（无繁体)、云峰飞云体（无繁体)、潮字社凌渡鲲鹏繁（含繁体）
 
 技巧：
 http://unanimated.hostfree.pw/ts/ts-layers.htm
