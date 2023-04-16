@@ -14,3 +14,8 @@ Created 星期日 27 十一月 2022
 所有成片放到服务器上做种，种子辅种网站+发到做种群
 种子发布bt站
 
+京东图床：
+给京东客服https://jdcs.jd.com/jdchat/custom.action?entry=jd_fwztc 发图片，在network中找到jpg的request，
+把图片链接的''https://dd-static.jd.com/ddimg/jfs ''换成 ''https://img30.360buyimg.com/imgzone/jfs''
+''https://img30.360buyimg.com/imgzone/jfs''/t1/187891/8/34091/2198087/643b68adFa70f0951/07314a76fb786825.png
+

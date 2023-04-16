@@ -68,6 +68,7 @@ Response.status_code
 Response.encoding
 Response.content
 Response.text
+Response.raise_for_status() # Raises HTTPError, if one occurred
 
 
 jsondata = json.loads(poststr)
@@ -75,7 +76,44 @@ jsondata = json.loads(poststr)
 resp = re.post(url, headers=headers, cookies=cookies, json=jsondata)
 
 以form表单格式发送multipart文件(对应curl -F参数)
+使用files参数，传入一个dict
+example:
+files = {'file': open(path, 'rb')}
+你可以显式地设置文件名，文件类型和请求头：
+files = {'file': ('report.xls', open('report.xls', 'rb'), 'application/vnd.ms-excel', {'Expires': '0'})}
+发送字符串
+files = {'file': ('report.csv', 'some,data,to,send\nanother,row,to,send\n')}
+files = {'file': (None, 'some,data,to,send\nanother,row,to,send\n')}
+
+r.post(url, files=files)
+
+爬虫结果：
+{'file': open(path, 'rb')}
+	[Name] Content-Disposition: form-data; name="file"; filename="8b4595a1f889868dfef358516c647ea96caf1e56.jpg"
+	[Value] <file>
+	
+	Raw:
+	--f058de89ff48ed570bdcb567310f373f
+	Content-Disposition: form-data; name="file"; filename="8b4595a1f889868dfef358516c647ea96caf1e56.jpg"
+
+{'upload': ('undefined', open(str(filepath), 'rb'), 'image/jpeg')}
+	[Name]Content-Disposition: form-data; name="upload"; filename="undefined" Content-Type: image/jpeg
+	[Value]<file>
+
+
+{'aid': (None, 'R9OxFcXK')}
+	[Name]Content-Disposition: form-data; name="aid"
+	[Value]R9OxFcXK
+	Raw:
+	--b39c12ee858adc7ec0622d1a2193429e
+	Content-Disposition: form-data; name="aid"
+	
+	R9OxFcXK
+	
+用法：
 https://requests.readthedocs.io/en/latest/user/quickstart/#post-a-multipart-encoded-file
-https://toolbelt.readthedocs.io/en/latest/
+在一个请求中发送多个文件：
 https://requests.readthedocs.io/en/latest/user/advanced/#post-multiple-multipart-encoded-files
+
+https://toolbelt.readthedocs.io/en/latest/
 https://requests.readthedocs.io/en/latest/user/advanced/#streaming-uploads

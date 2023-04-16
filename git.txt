@@ -18,7 +18,7 @@ work on the current change:
 		git add .
 	-revert 撤销commit
 	-rm
-	git rm -r --cached dir_name 删除已add的文件
+	git rm -r --cached dir_name 删除本地已add的文件
 
 examine the history and state:
 	-log: Show commit logs
@@ -184,3 +184,5 @@ git branch -d temp
 只合并某一个文件
 git checkout -p BRANCHNAME FILENAME
 远程分支应该写origin/BRANCHNAME，否则默认是本地分支
+
+代理
