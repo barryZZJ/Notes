@@ -55,7 +55,7 @@ https://www.runoob.com/manual/lua53doc/manual.html#pdf-string.find
 regex: https://aegi.vmoe.info/docs/3.2/Automation/Lua/Modules/re/
 lua里escape符号要加%
 pat = re.compile()
-re.sub(str, pat, repl)
+re.sub(str, pat, repl)[1]
 re.match re.find
 	find: 匹配多次，不捕获subgroup。返回match table数组，每个元素是一次匹配结果
 	match: 只匹配一次，捕获subgroup。返回match table数组，[1]是整个匹配结果，后续的是捕获的subgroup
