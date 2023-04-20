@@ -19,6 +19,10 @@ if exp (
 ...
 )
 
+comparison:
+''==''
+
+
 pause on error:
 if %errorlevel% geq 1 pause
 

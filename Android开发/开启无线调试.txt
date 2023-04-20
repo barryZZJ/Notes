@@ -1,0 +1,18 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2023-04-19T16:22:48+08:00
+
+====== 开启无线调试 ======
+Created 星期三 19 四月 2023
+
+打开USB调试
+打开允许仅充电时调试
+
+设置监听端口：adb tcpip 5555
+//有线连接电脑，adb devices 确认连接成功
+
+连接设备：adb connect <设备ip>:5555
+
+完成，AndroidStudio中可以识别到
+
+断开设备：adb disconnect HOST:PORT
