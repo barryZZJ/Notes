@@ -22,13 +22,7 @@ https://www.bilibili.com/read/cv15616345/
 	
 浅浅的发光效果：
 	两层，都\bord0,下层\blur3，上层\blur0.6-0.8
-	
-圆体：腾祥嘉丽粗圆简 (最粗)、方正粗圆_GBK、方正准圆_GBK、方正细圆、猫啃网糖圆体 (测试版)、幼圆 (最细)、
-	MYoungHKS-Xbold (蒙纳简粗俏皮)、藏进兔兔云朵里、Aa云朵甜啵啵、方正兰亭圆_GBK_中
-	UD Digi Kyokasho系列、ElmerFont（日语）
-行书：KsoShinryuSou（KSO心龍爽）、
-方正雅宋家族：纤、细、标｜准、中、中粗、粗、大、特
-毛笔：gongfannufangti（无繁体)、云峰飞云体（无繁体)、潮字社凌渡鲲鹏繁（含繁体）
+
 
 技巧：
 http://unanimated.hostfree.pw/ts/ts-layers.htm
