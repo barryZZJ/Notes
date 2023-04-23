@@ -8,8 +8,9 @@ Created 星期三 19 四月 2023
 打开USB调试
 打开允许仅充电时调试
 
+有线连接电脑:
+adb devices 确认连接成功
 设置监听端口：adb tcpip 5555
-//有线连接电脑，adb devices 确认连接成功
 
 连接设备：adb connect <设备ip>:5555
 
