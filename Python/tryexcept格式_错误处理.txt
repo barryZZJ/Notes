@@ -13,7 +13,7 @@ except (Err1, Err2) as err:
 	# 要想在其他地方raise：http://nedbatchelder.com/blog/200711/rethrowing_exceptions_in_python.html
 except Exception as e:
 	# 所有错误，兜底
-	type(ex).__name__ # 显示错误类型, type: str
+	type(e).__name__ # 显示错误类型, type: str
 else:
 	# 无错误时执行
 finally:

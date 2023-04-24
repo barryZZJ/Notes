@@ -23,6 +23,45 @@ watch -n 1 cat /usr/local/frps/frps.log
 
 # frps configuration:
 /usr/local/frps/frps.ini:
+{{{code: lang="ini" linenumbers="False"
+# [common] is integral section
+[common]
+# A literal address or host name for IPv6 must be enclosed
+# in square brackets, as in "[::1]:80", "[ipv6-host]:http" or "[ipv6-host%zone]:80"
+bind_addr = 0.0.0.0
+bind_port = 5443
+# udp port used for kcp protocol, it can be same with 'bind_port'
+# if not set, kcp is disabled in frps
+#kcp_bind_port = 5443
+# if you want to configure or reload frps by dashboard, dashboard_port must be set
+dashboard_port = 6443
+# dashboard assets directory(only for debug mode)
+dashboard_user = zhouzejun2
+dashboard_pwd = zzjzzj0123
+# assets_dir = ./static
+vhost_http_port = 80
+vhost_https_port = 443
+# console or real logFile path like ./frps.log
+log_file = ./frps.log
+# debug, info, warn, error
+log_level = info
+log_max_days = 3
+# auth token
+token = Gg3f3GDRhQE9YjtT
+# It is convenient to use subdomain configure for http、https type when many people use one frps server together.
+subdomain_host = barryzzj.xyz
+# only allow frpc to bind ports you list, if you set nothing, there won't be any limit
+#allow_ports = 1-65535
+# pool_count in each proxy will change to max_pool_count if they exceed the maximum value
+max_pool_count = 50
+# if tcp stream multiplexing is used, default is true
+tcp_mux = true
+[plugin.monitor]
+addr = 127.0.0.1:9900
+path = /monitor
+ops = Ping
+}}}
+
 ================================================
 You Server IP      : 43.143.3.229
 Bind port          : 5443
@@ -42,4 +81,15 @@ frps Dashboard     : http://barryzzj.xyz:6443/
 Dashboard user     : zhouzejun2
 Dashboard password : zzjzzj0123
 ================================================
+
+服务器插件
+server plugin 服务端插件，需要编辑frps.ini
+	https://gofrp.org/docs/features/common/server-plugin/
+	https://github.com/fatedier/frp/blob/dev/doc/server_plugin.md
+	https://github.com/zfb132/frp_info
+Ping测试：
+每30秒发送一次POST请求：（问题是offline的时候收不到POST请求）
+127.0.0.1 - - [24/Apr/2023 18:15:31] "POST /monitor?op=Ping&version=0.1.0 HTTP/1.1" 200 -
+内容：
+{'version': '0.1.0', 'op': 'Ping', 'content': {'user': {'user': 'asus', 'metas': None, 'run_id': '30851056423c5ee7'}}}
 

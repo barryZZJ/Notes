@@ -64,82 +64,9 @@ tcp_bbr                20480  14
 
 
 3. Frp
-frps服务端：（服务器防火墙记得开放对应端口）（不要开kcp，否则会用不了）
-# 一键配置脚本：
-mkdir frps
-cd frps
-wget https://raw.githubusercontent.com/MvsCode/frps-onekey/master/install-frps.sh
-mv install-frps.sh frps.sh
-chmod 700 ./frps.sh
-./frps.sh install  {install|uninstall|update|config}
-# 手动配置：
-https://www.jianshu.com/p/1a30d9ec1775
-
-frps {start|stop|restart|status|config|version}
-log_file = /usr/local/frps/frps.log
-watch -n 1 cat /usr/local/frps/frps.log
-如果报错ine 45: [: 2431: binary operator expected，修改/usr/bin/frps，把$PID全部替换为${PID}
-
-# frps configuration:
-/usr/local/frps/frps.ini:
-================================================
-You Server IP      : 43.143.3.229
-Bind port          : 5443
-KCP support        : false
-vhost http port    : 80
-vhost https port   : 443
-Dashboard port     : 6443
-token              : Gg3f3GDRhQE9YjtT
-subdomain_host     : barryzzj.xyz
-tcp_mux            : true
-Max Pool count     : 50
-Log level          : info
-Log max days       : 3
-Log file           : enable
-================================================
-frps Dashboard     : http://barryzzj.xyz:6443/
-Dashboard user     : zhouzejun2
-Dashboard password : zzjzzj0123
-================================================
-
-frpc客户端注册映射：
-log_file = /tmp/frpc.log
-内网端口：
-frps: 5443
-frps-dashboard: 6443
-ssh: 22
-RDP: 3389
-splashtop: 6783
-smb: 445 -> 23336
-router: 8888 -> 23337
-
-# frpc configuration
-[common]
-server_addr = [2001:19f0:4400:75a2:5400:04ff:fe1c:3d4a]
-server_port = 23333
-token = tXuaco4ZUx8qkiSa
-log_file = /tmp/frpc.log
-log_level = info
-log_max_days = 3
-tcp_mux = true
-protocol = tcp
-login_fail_exit = true
-tls_enable=true
-user = zhouzejun2
-[rdp]
-type = tcp
-local_ip = 192.168.50.201
-local_port = 3389
-remote_port = 23334
-use_encryption = false
-use_compression = true
-[splashtop]
-type = tcp
-local_ip = 192.168.50.201
-local_port = 6783
-remote_port = 23335
-use_encryption = false
-use_compression = true
+doc：https://gofrp.org/docs/
+frps: [[:服务器:需要配置的服务:frps]]
+frpc: [[:服务器:需要配置的服务:frpc]]
 
 
 4. mirai QQ机器人

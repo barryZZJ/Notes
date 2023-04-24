@@ -1,5 +1,10 @@
 Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
 
+扣除黑色背景：https://www.bilibili.com/video/av71157215/
+进入通道选项卡，ctrl+shift+单击所有通道，回到图层，选中图像，ctrl+j，完成
+
+抠寸照：
 1、导入图片、复制（ctrl+J），关闭原图层图片作为备用图层
 
 2、点击通道，点击通道图层，选择色差度最大的一个，我这选择蓝色
