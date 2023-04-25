@@ -20,3 +20,5 @@ Miraicle
 https://github.com/Excaive/miraicle
 doc: https://excaive.github.io/miraicle/docs/guides/intro
 
+msg.sender
+msg.plain -> str

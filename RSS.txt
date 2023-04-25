@@ -75,10 +75,12 @@ instagram:
 https://rss.app/feeds/m3eLlZccuJLV43Hw.xml
 
 youtube:
-@mensnon-no
+mensnon-no
 /youtube/channel/UC0sKRWLg-w8bpP7knY8-Bmw?filter=上白石萌音
+bosanimaru
+/youtube/channel/UCq3QYqi71H9E55DBmyu14Zw?filter=ぼさにまる
 
-kamishiraimimone:（TODO
+kamishiraimimone:
 /kamishiraishimone/gallery
 /kamishiraishimone/radio
 

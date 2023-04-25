@@ -12,4 +12,8 @@ http://www.chaneru.com/Roku/HLS/X264_Settings.htm
 简单整理一下x264参数
 https://www.bilibili.com/read/cv4910766/
 
+https://slhck.info/video/2017/03/01/rate-control.html
+--bitrate <integer> constant bitrate (CBR)
+--crf Constant Rate Factor (CRF)(variable bitrate)
+
 {{.\pasted_image.png}}
