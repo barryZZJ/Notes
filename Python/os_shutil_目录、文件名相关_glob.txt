@@ -9,6 +9,7 @@ shutil https://docs.python.org/3.9/library/shutil.html
 .copytree(old, new) 只能是目录
 .move(old, new)
 .which
+.rename(src, dst)
 
 os
 .remove() 删除文件
