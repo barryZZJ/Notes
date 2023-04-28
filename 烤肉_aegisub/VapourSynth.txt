@@ -12,6 +12,14 @@ https://vsdb.top/
 http://www.doom9.org/
 https://www.videohelp.com/
 
+处理音频
+vspipe -o 1 -c wav audio.vpy - | qaac ...
+audio.vpy:
+from vapoursynth import core
+src = r"{src}"
+audio = core.bas.Source(src)
+audio.set_output(1)
+
 
 == AviSynth ==
 http://avisynth.nl/index.php/Main_Page

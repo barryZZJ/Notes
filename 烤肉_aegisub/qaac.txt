@@ -14,7 +14,7 @@ https://github.com/nu774/qaac/wiki
 qaac foo.wav
 will generate foo.m4a in the current directory.
 
-qaac --ignorelength --threading -V 91 --no-delay input.mp4 -o output.m4a
+qaac --ignorelength --threading -V 91 --no-delay input.aac -o output.m4a
 
 需要把QTFiles64.zip解压进去才能用
 

@@ -194,7 +194,7 @@ select = Select(elem)
 .deselect_all()
 
 * 执行js脚本
-https://selenium-python.readthedocs.io/api.html?highlight=script#selenium.webdriver.remote.webdriver.WebDriver.execute_script
+https://selenium-python.readthedocs.io/api.html#selenium.webdriver.remote.webdriver.WebDriver.execute_script
 .execute_script("arguments[0]", *args)
 运行同步脚本，返回值需要return才能获取到
 

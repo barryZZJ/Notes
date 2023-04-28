@@ -1,0 +1,11 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2023-04-28T13:46:20+08:00
+
+====== ChatGPT登陆 ======
+Created 星期五 28 四月 2023
+
+清空cookie
+开全局
+刷新
+登陆

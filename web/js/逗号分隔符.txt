@@ -1,0 +1,13 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2023-04-28T23:31:14+08:00
+
+====== 逗号分隔符 ======
+Created 星期五 28 四月 2023
+
+function f(){
+	var a,b;
+	return a=1,b=2
+}
+
+// f() returns 2

@@ -15,6 +15,10 @@ s = requests.Session()
 不显示对应的warning: from requests.packages import urllib3; urllib3.disable_warnings()
 配置fiddler证书：https://gist.github.com/Firenza/0fa8cc4e5d03c0f0efc8919f3d53ff58
 
+报ssl错处理：
+https://blog.csdn.net/iKaChu/article/details/106787413
+需要把base64版的fiddler证书手动拷入本地python库certifi文件夹的的cacert.pem里
+
 参数：
 url
 params:dict
@@ -61,8 +65,6 @@ proxies = {
    'http': 'http://127.0.0.1:9999',
    'https': 'http://127.0.0.1:9999',
 }
-报ssl错处理：
-https://blog.csdn.net/iKaChu/article/details/106787413
 
 Response.status_code
 Response.encoding

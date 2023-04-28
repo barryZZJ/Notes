@@ -52,8 +52,13 @@ IG_PASSWORD=zzjzzj01234
 IG_PROXY=socks://127.0.0.1:10808
 '''
 
-然后
-npm start
+在lib/v2中新建文件夹，包含router.js, maintainer.js等
+router: 所在文件夹是第一级路径，因此代码内不用包含一级路径
+
+启动：
+正常：npm start
+调试：npm run dev
+
 
 tv王国：
 https://www.tvkingdom.jp/rss/schedulesBySearch.action?stationPlatformId=0&condition.keyword=%E4%B8%8A%E7%99%BD%E7%9F%B3%E8%90%8C%E9%9F%B3&submit=%E6%A4%9C%E7%B4%A2&stationAreaId=23&submit.x=&submit.y=  (need vpn?)
@@ -83,6 +88,11 @@ bosanimaru
 kamishiraimimone:
 /kamishiraishimone/gallery
 /kamishiraishimone/radio
+/kamishiraishimone/schedule
+/kamishiraishimone/news/:category?
+
+Misonoza:
+/misonoza/new/topics
 
 微博：
 routeParams: 
