@@ -17,7 +17,10 @@ os
 .removedirs()  删除路径上每一级空文件夹
 
 open:模式 https://www.runoob.com/python/file-methods.html
-r+：可读可写，若文件不存在，报错；w+: 可读可写，若文件不存在，创建
+r: 指针在开头。不存在报FileNotFoundError
+w: 删除原有内容，指针在开头。不存在则创建
+a: 指针在结尾。不存在则创建
++: 既可读也可写，不改变指针位置
 https://blog.csdn.net/ztf312/article/details/47259805
 r+:
 # read ...

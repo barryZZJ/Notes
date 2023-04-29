@@ -25,13 +25,13 @@ b = a.encode('raw_unicode_escape')  # b'\xe5\x93\x88\xe5\x93\x88'
 b.decode()  # '哈哈'
 
 
-unicode形式的字符串解码:
-'unicode_escape' 把unicode形式的字符串转成bytes
-a = '\u54c8\u54c8'
-b = a.encode('unicode_escape')  # b'\\u54c8\\u54c8'
-b.decode('unicode_escape')  # '哈哈'
+unicode形式的字符串使用'unicode_escape'编码
+编码:
+b = '哈哈'
+a = b.encode('unicode_escape').decode('utf8') # '\\u54c8\\u54c8'
+a.encode('utf8').decode('unicode_escape')  # '哈哈'
 
-u'\u54c8\u54c8'  # '哈哈'
+或 u'\u54c8\u54c8'  # '哈哈'
 
 百分号（url）编码解码
 https://www.urldecoder.org/
