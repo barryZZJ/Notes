@@ -44,7 +44,7 @@ ffmpeg -i input-video.avi -vn -acodec copy output-audio.aac
 -vn is no video.
 -acodec copy says use the same audio stream that's already in there. (can be 'aac')(or -c:a copy)
 
-音视频合并：
+音视频封装：
 ffmpeg -i video.mp4 -i audio.aac -c:v copy -c:a copy -map 0:v:0 -map 1:a:0 output.mp4
 ffmpeg -i video.mp4 -i audio.mp3 -c:v copy -c:a aac -map 0:v:0 -map 1:a:0 output.mp4
 
