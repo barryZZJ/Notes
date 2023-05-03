@@ -185,4 +185,3 @@ git branch -d temp
 git checkout -p BRANCHNAME FILENAME
 远程分支应该写origin/BRANCHNAME，否则默认是本地分支
 
-代理

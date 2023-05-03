@@ -1,4 +1,5 @@
 Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
 
 
 多行字符串：`（撇号）；
@@ -8,3 +9,11 @@ Content-Type: text/x-zim-wiki
 var name = 'letian'
 var s = `Hello ${name}`
 console.log(s)
+
+正则 regex：
+patter用/.../括起来
+.match(regexp) -> Array|null [0]为整个匹配
+.matchAll(regexp)
+.search(regexp) -> int : index or -1
+.replace(regexp|substr, repl|func) -> str
+.replaceAll()

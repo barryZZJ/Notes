@@ -1,0 +1,18 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2023-05-02T16:37:47+08:00
+
+====== got ======
+Created 星期二 02 五月 2023
+
+设置proxy：
+命令行：set NODE_TLS_REJECT_UNAUTHORIZED=0
+
+const { HttpsProxyAgent } = require('hpagent');
+const { data: data } = await got(baseUrl, {
+	agent: {
+		https: new HttpsProxyAgent({
+			proxy: 'http://127.0.0.1:9999'
+		})
+	}
+});

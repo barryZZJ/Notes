@@ -55,6 +55,10 @@ IG_PROXY=socks://127.0.0.1:10808
 在lib/v2中新建文件夹，包含router.js, maintainer.js等
 router: 所在文件夹是第一级路径，因此代码内不用包含一级路径
 
+parseDate()函数
+支持"yyyy/mm/dd"格式
+不支持"xx年xx月xx日"格式
+
 启动：
 正常：npm start
 调试：npm run dev
@@ -92,7 +96,17 @@ kamishiraimimone:
 /kamishiraishimone/news/:category?
 
 Misonoza:
-/misonoza/new/topics
+/misonoza/new/topics?filter=千と千尋の神隠し
+公演ご案内ラインアップ｜御園座
+/misonoza/lineup?filter=千と千尋の神隠し
+
+Misonoza-ticket:
+御園座オンラインチケット
+/misonoza-ticket/events?filter=千と千尋の神隠し
+
+e-tix:
+御園座｜オンラインチケット販売
+/e-tix/misonoza?filter=千と千尋の神隠し
 
 微博：
 routeParams: 
