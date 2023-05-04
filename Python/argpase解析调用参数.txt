@@ -48,8 +48,13 @@ args.msg
 vars(args)，输出字典
 
 手动处理参数错误的情况（可以用于exe双击执行时自定义处理方式）(python>=3.9)
-https://docs.python.org/3.9/library/argparse.html#exit-on-error
-如果不管用，可以继承并重载parser.error()函数
+1. https://docs.python.org/3.9/library/argparse.html#exit-on-error
+argparse.ArgumentParser(exit_on_error=False)
+catch argparse.ArgumentError
+2. https://docs.python.org/3.9/library/argparse.html#exiting-methods
+修改parser.error
+3. 继承并重载parser.error()函数
+
 
 {{{code: lang="python3" linenumbers="False"
 import argparse

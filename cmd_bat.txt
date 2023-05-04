@@ -13,6 +13,9 @@ set v=val
 set /p var="Prompt:"
 echo %var%
 
+set /a var=expression
+如果包含&& || %，表达式要用引号括起来
+
 if exp (
 ...
 ) else (
@@ -22,6 +25,11 @@ if exp (
 comparison:
 ''==''
 
+
+logical:
+&&
+||
+% modulus
 
 pause on error:
 if %errorlevel% geq 1 pause
