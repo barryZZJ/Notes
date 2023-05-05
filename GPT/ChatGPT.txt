@@ -1,0 +1,11 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2023-05-05T15:22:30+08:00
+
+====== ChatGPT ======
+Created 星期五 05 五月 2023
+
+用 ChatGPT 写代码过程中经常由于文本太长被截断。 [为了防止输入 contine 后，下文不按照代码格式展示] ，你可以尝试输入：
+
+```
+Continue
