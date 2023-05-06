@@ -20,7 +20,7 @@ finditer(pattern, string, flags=0) 同上，但返回生成器
 
 fullmatch(pattern, string, flags=0) 相当于pattern前后加上^和$。Try to apply the pattern to all of the string, returning a match object, or None if no match was found.
 
-sub(pattern, repl, string, count=0, flags=0) repl:替换结果，string:搜索字符串。repl中用'\1'表示第一个括号中的内容。
+sub(pattern, repl, string, count=0, flags=0) repl:替换结果，string:搜索字符串。repl中用r'\1'表示第一个括号中的内容。
 repl可以为函数，参数是一个match对象，返回替换后的结果。如
 lambda x: lookupmap[x.group()]
 

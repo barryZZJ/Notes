@@ -16,7 +16,10 @@ echo %var%
 set /a var=expression
 如果包含&& || %，表达式要用引号括起来
 
-if exp (
+拖入参数：
+如果路径含空格，则会用引号括起来，否则不含引号
+
+if %1 == "" (
 ...
 ) else (
 ...
@@ -47,22 +50,6 @@ set PATH=%PATH%;C:\your\path\here\
 echo 123> file 末尾会自动换行
 printf 123> file 末尾不会自动换行，替代方案：<nul set /p=%output%>>%output_file%
 >>追加写
-
-
-=== %~dp0 ===
-将文件本身的路径(%0)展开到 盘符+路径
-cd /d %~dp0 即cd到当前bat所在文件夹
-其他相关指令：
-https://www.cnblogs.com/smwikipedia/archive/2009/03/30/1424749.html
-示例：(0可以换成其他数字，对应不同的参数）
-%~f0 D:/path/test.bat
-%~dp0 D:/path/
-%~dpn0 D:/path/test
-%~dpnx0 D:/path/test.bat
-%~nx0 test.bat
-%~x0 .bat
-处理变量：（X为变量名）
-%%~dpnX
 
 处理多个系统参数：（注意包含全角空格的话会被当成两个参数）
 $1, $2, ..., $9 最多课引用九个参数

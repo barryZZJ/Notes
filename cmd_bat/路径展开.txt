@@ -1,0 +1,22 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2023-05-06T18:17:55+08:00
+
+====== 路径展开 ======
+Created 星期六 06 五月 2023
+
+
+=== %~dp0 ===
+将文件本身的路径(%0)展开到 盘符+路径
+cd /d %~dp0 即cd到当前bat所在文件夹
+其他相关指令：
+https://www.cnblogs.com/smwikipedia/archive/2009/03/30/1424749.html
+示例：(0可以换成其他数字，对应不同的参数）
+%~f0 D:/path/test.bat
+%~dp0 D:/path/
+%~dpn0 D:/path/test
+%~dpnx0 D:/path/test.bat
+%~nx0 test.bat
+%~x0 .bat
+处理变量：（X为变量名）
+%%~dpnX

@@ -1,0 +1,8 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2023-05-06T18:16:51+08:00
+
+====== 进程、端口 ======
+Created 星期六 06 五月 2023
+
+netstat -ano | findstr <PORT/PID>
