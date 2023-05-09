@@ -1,0 +1,8 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2023-05-08T14:55:16+08:00
+
+====== 版本管理 ======
+Created 星期一 08 五月 2023
+
+VERSION = ROOT.joinpath('VERSION').read_text()

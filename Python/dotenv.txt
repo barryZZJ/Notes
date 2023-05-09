@@ -1,0 +1,15 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2023-05-08T13:48:16+08:00
+
+====== dotenv ======
+Created 星期一 08 五月 2023
+
+https://pypi.org/project/python-dotenv/
+
+读取.env文件到环境变量中
+
+.env:
+KEY=VALUE
+
+os.environ.get('KEY')

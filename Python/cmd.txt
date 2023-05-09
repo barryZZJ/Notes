@@ -1,0 +1,13 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2023-05-08T21:49:33+08:00
+
+====== cmd ======
+Created 星期一 08 五月 2023
+
+https://docs.python.org/3/library/cmd.html
+
+实现交互式命令行
+
+改进：
+https://pypi.org/project/cmd2/

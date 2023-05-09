@@ -1,0 +1,8 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2023-05-08T22:07:22+08:00
+
+====== loguru easy logging ======
+Created 星期一 08 五月 2023
+
+https://pypi.org/project/loguru/

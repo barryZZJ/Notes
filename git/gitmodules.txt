@@ -1,5 +1,23 @@
 Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+
+
+https://git-scm.com/book/zh/v2/Git-%E5%B7%A5%E5%85%B7-%E5%AD%90%E6%A8%A1%E5%9D%97
+
+git submodule add 仓库链接
+
+会生成一个.gitmodules文件：
 
 [submodule "cqu_auth"]
 	path = cqu_auth
 	url = git@github.com:barryZZJ/CQU_Authenticator.git
+
+拉取上游更新：
+git submodule update --remote --merge
+变基到上游更新：
+git submodule update --remote --rebase
+
+本地改动后推送：
+手动进入子模块推送
+或 git push --recurse-submodules=on-demand
+可以通过设置 git config push.recurseSubmodules on-demand 让它成为默认行为。

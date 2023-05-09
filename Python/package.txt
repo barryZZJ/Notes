@@ -1,0 +1,26 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2023-05-08T21:10:09+08:00
+
+====== package ======
+Created 星期一 08 五月 2023
+
+注意所有import要使用相对路径，即以`.`开头
+
+创建一个''__init__.py''，内容可包括：
+
+Import submodules: If your package includes submodules, you can import them in the __init__.py file so that they're available when the package is imported. For example:
+''from . import module1''
+''from .subpackage import module2''
+''__all__ = ['module1', 'module2']  # 设置外部可见的类、函数''
+
+Define package-level variables or functions: You can define variables or functions that are available to all modules in the package. For example:
+''PACKAGE_VARIABLE = 'foo'''
+
+''def package_function():''
+''    print('Hello, world!')''
+These variables and functions can be accessed from other modules in the package using the same syntax as importing submodules.
+
+Add version information: You can include version information for your package in the __init__.py file using a special __version__ variable:
+''__version__ = '0.1.0'''
+This variable can be accessed from other modules in the package using the same syntax as importing submodules.

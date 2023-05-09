@@ -1,7 +1,23 @@
 Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
 
+===== urllib =====
 Parse a URL into 6 components: 
 <scheme>://<netloc>/<path>;<params>?<query>#<fragment>
 
 from urllib.parse import urlparse
 p = urlparse(url, allow_fragments=False)
+
+===== httpx =====
+from httpx import URL
+url = URL("https://www.baidu.com:8080/path/to/index.html?query=result#header")
+.scheme #  'https'
+.host  # 'www.baidu.com'
+.port  # int: 8080
+.path  # '/path/to/index.html'
+.query  # b'query=result'
+.raw_path  # b'/path/to/index.html?query=result'
+.fragment  # header
+.is_ssl
+.is_absolute_url
+.is_relative_url

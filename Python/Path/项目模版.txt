@@ -1,0 +1,37 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2023-05-08T14:42:13+08:00
+
+====== 项目模版 ======
+Created 星期一 08 五月 2023
+
+{{{code: lang="python3" linenumbers="False"
+from pathlib import Path
+from addict import Addict
+import sys
+
+
+ISEXE = hasattr(sys, 'frozen')
+"""是否为打包程序"""
+
+ROOT = Path(sys.executable).parent if ISEXE else Path(__file__).parents[1]
+"""项目根路径"""
+
+PATHS = Addict(
+    DB=ROOT / 'cache.db',  # 缓存数据库
+    CONFIGS=ROOT / 'configs.json',  # 配置文件
+    ICON=ROOT / 'icon.ico',  # 图标
+    LOG=ROOT / 'logs',  # 日志文件
+    LOGFILE=ROOT / 'logs' / f"log_{datetime.today().strftime('%Y-%m-%d_%H-%M-%S')}.log",
+    SRC=Addict(
+        PUBMORE=ROOT / 'src' / 'act_edit',
+        PUBDIRECT=ROOT / 'src' / 'act_publish',
+        MAKEBT=ROOT / 'src' / 'act_makebt',
+        MOVETO=ROOT / 'src' / 'act_moveto',
+        OPEN=ROOT / 'src' / 'act_folder',
+    )  # 资源文件
+)
+
+VERSION = ROOT.joinpath('VERSION').read_text()
+}}}
+
