@@ -80,6 +80,8 @@ twitter：
 /twitter/user/mone_tohoent
 https://rss.app/feeds/2pCmvkcgOXlYLlEd.xml (x)
 
+/twitter/user/sentochihiro_st
+
 instagram:
 ''@mone_kamishiraishi''
 /picuki/profile/mone_kamishiraishi/1 (server need diygod/rsshub:chromium-bundled; reader need vpn; /10 does not work)
@@ -97,6 +99,9 @@ kamishiraimimone:
 /kamishiraishimone/radio
 /kamishiraishimone/schedule
 /kamishiraishimone/news/:category?
+
+tiktok:
+/tiktok/user/@mone_tohoent
 
 Misonoza:
 /misonoza/new/topics?filter=千と千尋の神隠し

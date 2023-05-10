@@ -1,0 +1,8 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2023-05-09T11:16:11+08:00
+
+====== 软链接 ======
+Created 星期二 09 五月 2023
+
+ln -s src dest
