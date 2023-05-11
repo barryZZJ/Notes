@@ -15,6 +15,8 @@ os
 .remove() 删除文件
 .rmdir() 删除空文件夹
 .removedirs()  删除路径上每一级空文件夹
+.rename(src, dir)
+
 
 open:模式 https://www.runoob.com/python/file-methods.html
 r: 指针在开头。不存在报FileNotFoundError
@@ -55,6 +57,7 @@ os.getcwd()
 os.path.dirname(__file__)
 
 os.path （考虑使用pathlib.Path [[Path]]）
+.exists()
 
 .getsize() 文件字节数（实际大小，非占用空间）
 

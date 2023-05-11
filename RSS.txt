@@ -82,13 +82,16 @@ https://rss.app/feeds/2pCmvkcgOXlYLlEd.xml (x)
 
 /twitter/user/sentochihiro_st
 
+
 instagram:
 ''@mone_kamishiraishi''
 /picuki/profile/mone_kamishiraishi/1 (server need diygod/rsshub:chromium-bundled; reader need vpn; /10 does not work)
 /instagram/user/mone_kamishiraishi
 https://rss.app/feeds/m3eLlZccuJLV43Hw.xml
 
-youtube:
+youtube:(html搜索/channel/)
+上白石萌音
+/youtube/channel/UCdzLYBOVmmOoHyA_E5VXbwg
 mensnon-no
 /youtube/channel/UC0sKRWLg-w8bpP7knY8-Bmw?filter=上白石萌音
 bosanimaru
@@ -100,7 +103,7 @@ kamishiraimimone:
 /kamishiraishimone/schedule
 /kamishiraishimone/news/:category?
 
-tiktok:
+tiktok:(代码有bug，未添加
 /tiktok/user/@mone_tohoent
 
 Misonoza:

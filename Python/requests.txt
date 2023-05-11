@@ -23,7 +23,8 @@ https://blog.csdn.net/iKaChu/article/details/106787413
 url
 params:dict
 headers:dict
-cookies:dict
+[[cookies:dict]]
+timeout: int 秒
 
 正则替换headers：
 (\S+) *: *(.+)
