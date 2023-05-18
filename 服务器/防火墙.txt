@@ -1,0 +1,100 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2023-05-18T11:02:29+08:00
+
+====== 防火墙 ======
+Created 星期四 18 五月 2023
+
+frps 相关：
+设为只能国内+日本访问
+
+https://www.cnblogs.com/ranriqing/p/16693099.html
+https://www.ipdeny.com/
+https://www.cnblogs.com/faberbeta/p/ipset.html
+
+ipset
+{{{code: lang="sh" linenumbers="False"
+wget http://www.ipdeny.com/ipblocks/data/countries/cn.zone
+wget http://www.ipdeny.com/ipblocks/data/countries/jp.zone
+
+for i in `cat cn.zone`; do echo "ipset add cnjplocal $i" >>ipset_result.sh; done
+for i in `cat jp.zone`; do echo "ipset add cnjplocal $i" >>ipset_result.sh; done
+chmod +x ipset_result.sh
+
+ipset create cnjplocal hash:net hashsize 10000 maxelem 1000000
+sh ipset_result.sh
+
+ipset list cnjplocal
+ipset list cnjplocal | wc -l
+
+ipset add cnjplocal 10.0.0.0/8
+ipset add cnjplocal 172.16.0.0/12
+ipset add cnjplocal 192.168.0.0/16
+# 允许akijapan
+ipset add cnjplocal 112.30.144.0/21
+ipset add cnjplocal 183.213.192.0/20
+ipset add cnjplocal 222.186.46.0/24
+ipset add cnjplocal 111.38.37.0/24
+
+ipset save cnjplocal > /root/ipset/ipset_cnjplocal.conf
+ipset restore < /root/ipset/ipset_cnjplocal.conf
+}}}
+
+
+iptables
+{{{code: lang="sh" linenumbers="False"
+iptables -F  # 清除预设链中规则
+iptables -X  # 清除自定义链中规则
+
+iptables -A INPUT -i lo -j ACCEPT                                  # 允许来自本机的全部连接
+iptables -A INPUT -m state --state RELATED,ESTABLISHED -j ACCEPT   # 允许已建立的连接不中断
+iptables -A INPUT -p icmp --icmp-type echo-request -j ACCEPT       # 允许icmp协议，即允许ping服务器
+iptables -A INPUT -m set ! --match-set cnjplocal src -j DROP       # 匹配cnjplocal链，其他IP则直接丢弃包
+
+#iptables -A INPUT -p udp --dport 7000:60000 -j ACCEPT              # 允许UDP协议的7000:60000端口
+#iptables -A INPUT -p tcp --dport 7000:60000 -j ACCEPT              # 允许TCP协议的7000:60000端口
+
+iptables -A INPUT -j ACCEPT                                        # 未匹配以上规则的请求都允许，DROP则都丢弃
+iptables -A OUTPUT -j ACCEPT                                       # 允许全部出网数据包
+iptables -A FORWARD -j DROP                                        # 不允许Iptables的FORWARD转发
+
+iptables-save > /root/ipset/iptables.conf
+/usr/sbin/iptables-restore < /root/ipset/iptables.conf
+}}}
+
+
+查看
+{{{code: lang="sh" linenumbers="False"
+iptables -L
+Chain INPUT (policy ACCEPT)
+target     prot opt source               destination         
+
+Chain FORWARD (policy DROP)
+target     prot opt source               destination         
+DOCKER-USER  all  --  anywhere             anywhere            
+DOCKER-ISOLATION-STAGE-1  all  --  anywhere             anywhere            
+ACCEPT     all  --  anywhere             anywhere             ctstate RELATED,ESTABLISHED
+DOCKER     all  --  anywhere             anywhere            
+ACCEPT     all  --  anywhere             anywhere            
+ACCEPT     all  --  anywhere             anywhere            
+
+Chain OUTPUT (policy ACCEPT)
+target     prot opt source               destination         
+
+Chain DOCKER (1 references)
+target     prot opt source               destination         
+
+Chain DOCKER-ISOLATION-STAGE-1 (1 references)
+target     prot opt source               destination         
+DOCKER-ISOLATION-STAGE-2  all  --  anywhere             anywhere            
+RETURN     all  --  anywhere             anywhere            
+
+Chain DOCKER-ISOLATION-STAGE-2 (1 references)
+target     prot opt source               destination         
+DROP       all  --  anywhere             anywhere            
+RETURN     all  --  anywhere             anywhere            
+
+Chain DOCKER-USER (1 references)
+target     prot opt source               destination         
+RETURN     all  --  anywhere             anywhere
+}}}

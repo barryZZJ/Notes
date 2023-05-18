@@ -23,7 +23,7 @@ hosts:
   ipv6.msftconnecttest.com: 2a01:111:2003::52
   www.msftconnecttest.com: 13.107.4.52
 
-
+连接配置页面：设置端口转发
 
 出错连不上了先去配置页面点一遍各种重建按钮
 
