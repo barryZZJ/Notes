@@ -15,6 +15,7 @@ https://mirrors.huaweicloud.com/repository/maven
 
 -c0 开启debug模式
 
+持续更新：
 https://mirai.mamoe.net/topic/223/%E6%97%A0%E6%B3%95%E7%99%BB%E5%BD%95%E7%9A%84%E4%B8%B4%E6%97%B6%E5%A4%84%E7%90%86%E6%96%B9%E6%A1%88
 
 修改登陆协议：
@@ -25,6 +26,7 @@ code=45：
 
 code=235，版本过低：
 删除bot/qq号/device.json后重新登陆试试
+fix-protocol-version插件：
 https://github.com/cssxsh/fix-protocol-version
 https://github.com/mamoe/mirai/issues/2298
 https://mirrors.huaweicloud.com/repository/maven

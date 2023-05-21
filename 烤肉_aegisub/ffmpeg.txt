@@ -15,7 +15,9 @@ https://ffmpeg.org/ffmpeg.html
 封装
 https://norm.press/archives/26.html
 
-裁剪视频：
+lossless codec like -c:v ffv1 which preserves the quality of the input video.
+
+裁剪视频：(不能精确到毫秒不知道为什么）
 ''ffmpeg -ss 00:00:00 -t 00:00:30 -i test.mp4 -c copy output.mp4''
 	-ss start time offset Format: [HH:]MM:SS[.m...]  or ss[.m...][s|ms|us] 可以是时分秒毫秒，也可以是秒数. '55' '0.2' '200ms'
 	-sseof set the start time offset relative to EOF
@@ -33,6 +35,15 @@ ffmpeg -i input.mkv -filter_complex "[0:v]setpts=0.5*PTS[v];[0:a]atempo=2.0[a]" 
 拼接：
 https://www.cnblogs.com/huojinfeng/articles/13167730.html
 (方式三中的单引号改成双引号）
+法1：（会重新编码）
+ffmpeg -i 1.mp4 -i 2.mp4 -i 3.mp4 -filter_complex "[0:v] [0:a] [1:v] [1:a] [2:v] [2:a] concat=n=3:v=1:a=1 [v] [a]" -map "[v]" -map "[a]"  output.mp4
+法2：（要求片源格式完全一致，不重新编码，经测试时间可能会不精确）
+(echo file '1.mp4' & echo file '2.mp4' )>list.txt
+ffmpeg -safe 0 -f concat -i list.txt -c copy output.mp4
+法3：（要求片源格式完全一致，不重新编码，同上不精确）
+ffmpeg -i input1.mp4 -c copy -bsf:v h264_mp4toannexb -f mpegts intermediate1.ts
+ffmpeg -i input2.mp4 -c copy -bsf:v h264_mp4toannexb -f mpegts intermediate2.ts
+ffmpeg -i "concat:intermediate1.ts|intermediate2.ts" -c copy -bsf:a aac_adtstoasc output.mp4
 
 
 提取视频

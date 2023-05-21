@@ -1,0 +1,15 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2023-05-21T16:09:54+08:00
+
+====== mcl ======
+Created 星期日 21 五月 2023
+
+https://github.com/iTXTech/mirai-console-loader/blob/master/cli.md
+
+指定 mirai-console 版本（指定的版本必须为该Channel中存在的版本）
+./mcl --update-package net.mamoe:mirai-console --channel stable --version 2.14.0
+
+设置 jvm 参数：
+编辑mcl：
+$JavaLibrary "-Dmlss.port=33169" -jar mcl.jar
