@@ -1,0 +1,10 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2023-05-22T11:52:28+08:00
+
+====== rsspush ======
+Created 星期一 22 五月 2023
+
+https://github.com/easychen/rsspush
+
+Web 应用，它可以监测RSS变动，并发送最新内容到微信、Webhook 和 Telegram, Discord, Slack, Amazon SNS, Gotify 等数十个消息通道。

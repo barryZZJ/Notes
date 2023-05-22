@@ -10,6 +10,8 @@ Created 星期五 07 十月 2022
 安装/重装：
 选择.tar.gz文件后点击上传并安装
 
+（需要在/koolshare/merlinclash里mkdir dashboard
+
 安装补丁：
 选择.tar.gz文件后点击上传并安装
 

@@ -77,4 +77,15 @@ linux x86架构下载amd64_musl
 5. v2ray客户端
 见 [[:v2ray]]
 
-6. ipset + iptables 防火墙
+6. ipset + iptables 防火墙(x 会影响web管理)
+
+7. 各种自动化任务
+搭建PushDeer
+rss订阅 (rsspush)
+雨云签到
+心动日剧签到
+frpc_monitor （可改成注册crontab
+rss_monitor（可改成注册crontab
+
+
+
