@@ -1,0 +1,17 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2023-05-22T18:39:15+08:00
+
+====== flask ======
+Created 星期一 22 五月 2023
+
+''from flask import Flask''
+
+''app = Flask(__name__)''
+
+''@app.route('/WW_verify_Ua7WxLfBndo8F2SR.txt')''
+''def verify_file():''
+''    return 'WW_verify_Ua7WxLfBndo8F2SR.txt'''
+
+''if __name__ == '__main__':''
+''    app.run(port=23080)''

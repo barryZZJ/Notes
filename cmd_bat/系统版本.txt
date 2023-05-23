@@ -1,0 +1,8 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2023-05-22T22:04:21+08:00
+
+====== 系统版本 ======
+Created 星期一 22 五月 2023
+
+systeminfo

@@ -8,3 +8,15 @@ Created 星期一 22 五月 2023
 https://github.com/easychen/rsspush
 
 Web 应用，它可以监测RSS变动，并发送最新内容到微信、Webhook 和 Telegram, Discord, Slack, Amazon SNS, Gotify 等数十个消息通道。
+
+http://yy.barryzzj.asia:23800/task/list
+
+启动：
+docker-compose up -d
+
+关闭：
+docker-compose down
+
+卸载：
+docker ps -a
+docker rm <container_id>

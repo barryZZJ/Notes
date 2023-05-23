@@ -7,6 +7,8 @@ Parse a URL into 6 components:
 
 from urllib.parse import urlparse
 p = urlparse(url, allow_fragments=False)
+https://docs.python.org/3/library/urllib.parse.html
+path的结果带/
 
 ===== httpx =====
 from httpx import URL

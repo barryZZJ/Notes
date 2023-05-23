@@ -5,6 +5,9 @@ sudo service ssh {start|stop|reload|force-reload|restart|try-restart|status}
 
 ssh -p <port> user@hostip
 
+密钥登陆
+ssh -i ~/.ssh/id_rsa_test user@host
+
 ssh smbusr@localhost -p 23355
 
 C:\Users\85046\.ssh

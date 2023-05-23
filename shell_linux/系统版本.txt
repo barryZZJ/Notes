@@ -1,0 +1,15 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2023-05-22T22:00:26+08:00
+
+====== 系统版本 ======
+Created 星期一 22 五月 2023
+
+内核版本：
+cat /proc/version
+uname -a
+
+系统版本
+lsb_release -a
+cat /etc/redhat-release，这种方法只适合Redhat系的Linux
+cat /etc/issue，此命令也适用于所有的Linux发行版。 

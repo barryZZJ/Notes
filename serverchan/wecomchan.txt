@@ -1,0 +1,22 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2023-05-22T18:30:29+08:00
+
+====== wecomchan ======
+Created 星期一 22 五月 2023
+
+https://github.com/easychen/wecomchan
+
+搭建：
+https://github.com/easychen/wecomchan/blob/main/go-wecomchan/README.md
+
+企业微信：
+谢耳朵
+企业ID
+wwe6768b0e3c2acb6c
+
+应用：
+Mone酱
+AgentId 1000002
+Secret 8iUehEJPTWLUXShAmHoU_HoWfKJBI28roU8ANSRm6u0
+

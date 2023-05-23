@@ -5,68 +5,6 @@ Creation-Date: 2023-03-30T17:12:11+08:00
 ====== RSS ======
 Created 星期四 30 三月 2023
 
-使用RSSHub订阅主流媒体
-
-使用实例：
-https://docs.rsshub.app/usage.html#sheng-cheng-ding-yue-yuan
-具体格式：
-https://docs.rsshub.app/social-media.html#twitter
-通用参数：
-https://docs.rsshub.app/parameter.html
-
-部署：
-https://docs.rsshub.app/install/#docker-bu-shu
-	配置：
-	https://docs.rsshub.app/install/#pei-zhi
-(容器内127.0.0.1不能指向你的clash，需要换成你机器的内网IP) ip addr show docker0查询为172.17.0.1
-''-e ACCESS_KEY=MZuQe72YXjyyf7MgAP3z -e IG_USERNAME=barryjackson118 -e IG_PASSWORD=zzjzzj01234 -e IG_PROXY=socks://127.0.0.1:10808 ''
-''docker run -d --name rsshub -p 1200:1200 --network host -e PROXY_URI=socks://127.0.0.1:10808 -e CACHE_EXPIRE=1200 -e REQUEST_TIMEOUT=10000 diygod/rsshub''
-''docker stop rsshub''
-''docker rm rsshub''
-
-''docker run -d --name rsshub_chrome -p 1200:1200 --network host -e PROXY_URI=socks://127.0.0.1:10808 -e CACHE_EXPIRE=1200 -e REQUEST_TIMEOUT=10000 -e YOUTUBE_KEY=AIzaSyBHsdkUIoFzUqDjON9DoNBAlL3Qqhfyh5Q -e DEBUG_INFO=false -e IG_USERNAME=barryjackson118 -e IG_PASSWORD=zzjzzj01234 -e IG_PROXY=socks://127.0.0.1:10808 diygod/rsshub:chromium-bundled''
-''docker stop rsshub_chrome''
-''docker rm rsshub_chrome''
-
-彻底删除：
-docker image rm diygod/rsshub
-docker image rm diygod/rsshub:chromium-bundled
-
-自建：
-https://docs.rsshub.app/joinus/new-rss/before-start.html#chuang-jian-ming-ming-kong-jian
-安装：npm ci --production
-在.env中配置参数：
-https://docs.rsshub.app/install/#pei-zhi
-'''
-PORT=1200
-PROXY_URI=socks://127.0.0.1:10808
-CACHE_EXPIRE=600
-CACHE_CONTENT_EXPIRE=86400
-REQUEST_TIMEOUT=10000
-YOUTUBE_KEY=AIzaSyBHsdkUIoFzUqDjON9DoNBAlL3Qqhfyh5Q
-KAMISHIRAISHIMONE_USERNAME=850462618@qq.com
-KAMISHIRAISHIMONE_PASSWORD=zzjzzj0123
-//
-DEBUG_INFO=false
-NO_LOGFILES=true
-
-IG_USERNAME=barryjackson118
-IG_PASSWORD=zzjzzj01234
-IG_PROXY=socks://127.0.0.1:10808
-'''
-
-在lib/v2中新建文件夹，包含router.js, maintainer.js等
-router: 所在文件夹是第一级路径，因此代码内不用包含一级路径
-
-parseDate()函数
-支持"yyyy/mm/dd"格式
-不支持"xx年xx月xx日"格式
-
-启动：
-正常：npm start
-调试：npm run dev
-
-
 tv王国：
 https://www.tvkingdom.jp/rss/schedulesBySearch.action?stationPlatformId=0&condition.keyword=%E4%B8%8A%E7%99%BD%E7%9F%B3%E8%90%8C%E9%9F%B3&submit=%E6%A4%9C%E7%B4%A2&stationAreaId=23&submit.x=&submit.y=  (need vpn?)
 
