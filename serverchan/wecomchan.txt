@@ -6,9 +6,16 @@ Creation-Date: 2023-05-22T18:30:29+08:00
 Created 星期一 22 五月 2023
 
 https://github.com/easychen/wecomchan
+https://work.weixin.qq.com/
 
 搭建：
 https://github.com/easychen/wecomchan/blob/main/go-wecomchan/README.md
+
+sendkey:
+PMFl5jw4alxou1vdRe5k
+
+curl --location --request GET 'http://localhost:8080/wecomchan?sendkey=PMFl5jw4alxou1vdRe5k&msg=文本&msg_type=text'
+curl --location --request POST 'http://localhost:8080/wecomchan?sendkey={%E4%BD%A0%E7%9A%84sendkey}&msg_type=image' --form 'media=@"test.jpg"'
 
 企业微信：
 谢耳朵

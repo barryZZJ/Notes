@@ -1,0 +1,9 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2023-05-23T11:15:57+08:00
+
+====== nmap ======
+Created 星期二 23 五月 2023
+
+扫描端口：
+nmap -p 80,1-100 192.168.0.1

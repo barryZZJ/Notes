@@ -27,11 +27,14 @@ Headers：
 
 
 GET
-$curl http://www.yahoo.com/login.cgi?user=nickname&password=12345
+curl http://www.yahoo.com/login.cgi?user=nickname&password=12345
 
 POST
-$curl -d "user=nickname&password=12345" http://www.yahoo.com/login.cgi
+curl -d "user=nickname&password=12345" http://www.yahoo.com/login.cgi
+curl -X POST -d "title=<title_value>&desp=<desp_value>&link=<link_value>&task_id=<task_id_value>&task_title=<task_title_value>" http://localhost:12345
 
+curl --location --request GET 'http://localhost:8080/wecomchan?sendkey=PMFl5jw4alxou1vdRe5k&msg=%E6%96%87%E6%9C%AC&msg_type=text'
+curl --location --request POST 'http://localhost:8080/wecomchan?sendkey={%E4%BD%A0%E7%9A%84sendkey}&msg_type=image' --form 'media=@"test.jpg"'
 
 发送http请求工具：
 windows：curl

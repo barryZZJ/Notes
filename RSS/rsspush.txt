@@ -5,11 +5,41 @@ Creation-Date: 2023-05-22T11:52:28+08:00
 ====== rsspush ======
 Created 星期一 22 五月 2023
 
+（不知道为什么不会自动查找订阅，这样就没卵用了，而且提供的参数也不多，考虑用别的了。
 https://github.com/easychen/rsspush
 
 Web 应用，它可以监测RSS变动，并发送最新内容到微信、Webhook 和 Telegram, Discord, Slack, Amazon SNS, Gotify 等数十个消息通道。
 
 http://yy.barryzzj.asia:23800/task/list
+
+add:
+http://172.16.2.73:1200
+
+如何推送到WebHook
+2022.09.04.09.28+ 以后的镜像支持推送到web hook。如果Sendkey以http开头，则被识别为一个webhook。
+
+  SCT1U....
+  https://mywebhook.com
+RSSPush 会将更新信息以 FORM-ENCODED 编码方式 POST 到这个地址，包含以下信息：
+
+title/text: 最新文章的标题
+desp: 文章的详细内容
+link: 文章的链接
+task_id: 任务ID
+task_title: 任务标题
+
+[[http://]][[http://172.16.2.73:1200|172.16.2.73]][[:8080/wecomchan?sendkey=PMFl5jw4alxou1vdRe5k&msg=文本&msg_type=text]]
+{{{code: lang="json" linenumbers="False"
+{
+    "urk":"http://172.16.2.73:8080/wecomchan",
+    "values":[
+        {"sendkey":"PMFl5jw4alxou1vdRe5k"},
+        {"msg_type":"text"},
+        {"msg":"来自{{task_title}}的更新：%0A标题：{{title}}%0A%0A内容：{{desp}}%0A%0A查看详情：{{link}}"}
+    ]
+}
+}}}
+
 
 启动：
 docker-compose up -d

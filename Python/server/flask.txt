@@ -7,7 +7,7 @@ Created 星期一 22 五月 2023
 
 ''from flask import Flask''
 
-''app = Flask(__name__)''
+''app = Flask(__name__)  # __main__''
 
 ''@app.route('/WW_verify_Ua7WxLfBndo8F2SR.txt')''
 ''def verify_file():''
@@ -15,3 +15,10 @@ Created 星期一 22 五月 2023
 
 ''if __name__ == '__main__':''
 ''    app.run(port=23080)''
+
+WARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.
+
+需要使用gunicorn运行：
+pip install gunicorn
+
+gunicorn pyfilename:appname -b 0.0.0.0:12345

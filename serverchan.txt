@@ -17,3 +17,7 @@ https://sctapi.ftqq.com/SCT164400THDN7R51ck5uOz8H3MAhIejfR.send
 title 必填
 desp 选填
 
+其他选择：
+https://v2ex.com/t/760749
+
+https://github.com/songquanpeng/message-pusher

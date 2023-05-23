@@ -5,17 +5,21 @@ Creation-Date: 2023-03-30T17:12:11+08:00
 ====== RSS ======
 Created 星期四 30 三月 2023
 
+TODO:
+https://www.funity.jp/tickets/mone/showlist
+
 tv王国：
 https://www.tvkingdom.jp/rss/schedulesBySearch.action?stationPlatformId=0&condition.keyword=%E4%B8%8A%E7%99%BD%E7%9F%B3%E8%90%8C%E9%9F%B3&submit=%E6%A4%9C%E7%B4%A2&stationAreaId=23&submit.x=&submit.y=  (need vpn?)
 
 rsshub:
 [[http://]][[http://yy.barryzzj.asia:23200/twitter/user/mone_tohoent|yy.barryzzj.asia:23200]]
 [[http://]][[http://yy.barryzzj.asia:23200/twitter/user/mone_tohoent|127.0.0.1:1200]]
+http://172.16.2.73:1200
 https://rsshub.app
 
 twitter：
 ''@mone_tohoent''
-/twitter/user/mone_tohoent
+/twitter/user/mone_tohoent/readable=1&showAuthorInTitle=1&showEmojiForRetweetAndReply=1&showRetweetTextInTitle=0&showQuotedInTitle=1
 https://rss.app/feeds/2pCmvkcgOXlYLlEd.xml (x)
 
 /twitter/user/sentochihiro_st
@@ -61,7 +65,7 @@ e-tix:
 routeParams: 
 /readable=1&authorNameBold=1&showAuthorInTitle=1&showAuthorAvatarInDesc=1&showEmojiForRetweet=1
 
-上白石萌音超话：
+上白石萌音超话：x
 /weibo/super_index/1008082723e18062523c6636a9842a6f6f0e7d/sort_time
 用户：
 上白石萌音动态：
