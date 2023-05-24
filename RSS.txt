@@ -18,10 +18,12 @@ http://172.16.2.73:1200
 https://rsshub.app
 
 twitter：
-''@mone_tohoent''
-/twitter/user/mone_tohoent/readable=1&showAuthorInTitle=1&showEmojiForRetweetAndReply=1&showRetweetTextInTitle=0&showQuotedInTitle=1
-https://rss.app/feeds/2pCmvkcgOXlYLlEd.xml (x)
+routeParam:
+/readable=1&showEmojiForRetweetAndReply=1&showRetweetTextInTitle=0&showQuotedInTitle=1
+可选：&showAuthorInTitle=1
 
+''@mone_tohoent''
+/twitter/user/mone_tohoent
 /twitter/user/sentochihiro_st
 
 
@@ -63,9 +65,9 @@ e-tix:
 
 微博：
 routeParams: 
-/readable=1&authorNameBold=1&showAuthorInTitle=1&showAuthorAvatarInDesc=1&showEmojiForRetweet=1
-
-上白石萌音超话：x
+/readable=1&authorNameBold=1&showEmojiForRetweet=1&showRetweetTextInTitle=0&showEmojiInDescription=0&preferMobileLink=1
+超话使用：&showAuthorInTitle=1
+上白石萌音超话：
 /weibo/super_index/1008082723e18062523c6636a9842a6f6f0e7d/sort_time
 用户：
 上白石萌音动态：

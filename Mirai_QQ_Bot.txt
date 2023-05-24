@@ -37,3 +37,6 @@ https://github.com/jerrita/saaya
 https://github.com/YiriMiraiProject/YiriMirai
 https://github.com/Excaive/miraicle (用过)
 garia-自定义插件py框架x不适配httpv2
+
+第三方二维码登录库
+https://github.com/MrXiaoM/mirai-console-dev-qrlogin
