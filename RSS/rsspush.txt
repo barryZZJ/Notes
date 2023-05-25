@@ -5,6 +5,7 @@ Creation-Date: 2023-05-22T11:52:28+08:00
 ====== rsspush ======
 Created 星期一 22 五月 2023
 
+注意docker环境下ip隔离的问题！
 （不知道为什么不会自动查找订阅，这样就没卵用了，而且提供的参数也不多，考虑用别的了。
 https://github.com/easychen/rsspush
 
@@ -29,17 +30,6 @@ task_id: 任务ID
 task_title: 任务标题
 
 [[http://]][[http://172.16.2.73:1200|172.16.2.73]][[:8080/wecomchan?sendkey=PMFl5jw4alxou1vdRe5k&msg=文本&msg_type=text]]
-{{{code: lang="json" linenumbers="False"
-{
-    "urk":"http://172.16.2.73:8080/wecomchan",
-    "values":[
-        {"sendkey":"PMFl5jw4alxou1vdRe5k"},
-        {"msg_type":"text"},
-        {"msg":"来自{{task_title}}的更新：%0A标题：{{title}}%0A%0A内容：{{desp}}%0A%0A查看详情：{{link}}"}
-    ]
-}
-}}}
-
 
 启动：
 docker-compose up -d

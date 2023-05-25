@@ -1,0 +1,28 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2023-05-25T12:31:35+08:00
+
+====== 支持自建的RSS阅读工具 ======
+Created 星期四 25 五月 2023
+
+TODO:
+FreshRSS
+Tiny Tiny RSS
+FeedBin
+Fever
+
+
+手机App：	
+| App         | 通知+后台更新 | 自定义顺序 | 图片下载 | 内嵌视频 | 隐藏缩略图 |
+|:------------|:--------|:------|:-----|:-----|:------|
+| Rolly       | ×       | √     | √    | √    | 单独    |
+| Feeder      | √       | ×     | ×    | ×    | 整体    |
+| FeedMe      |         |       |      |      |       |
+| FolioReader |         |       | ×    |      |       |
+| Feedly      |         |       |      |      |       |
+|             |         |       |      |      |       |
+|             |         |       |      |      |       |
+
+
+苹果系：
+NetNewsWire

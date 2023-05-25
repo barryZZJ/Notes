@@ -14,16 +14,23 @@ https://github.com/easychen/wecomchan/blob/main/go-wecomchan/README.md
 sendkey:
 PMFl5jw4alxou1vdRe5k
 
-curl --location --request GET 'http://localhost:8080/wecomchan?sendkey=PMFl5jw4alxou1vdRe5k&msg=文本&msg_type=text'
+curl --location --request GET 'http://localhost:8080/wecomchan?sendkey=PMFl5jw4alxou1vdRe5k&msg=%E6%96%87%E6%9C%AC&msg_type=text'
 curl --location --request POST 'http://localhost:8080/wecomchan?sendkey={%E4%BD%A0%E7%9A%84sendkey}&msg_type=image' --form 'media=@"test.jpg"'
 
 企业微信：
 谢耳朵
-企业ID
+企业ID(cid)
 wwe6768b0e3c2acb6c
 
 应用：
 Mone酱
-AgentId 1000002
-Secret 8iUehEJPTWLUXShAmHoU_HoWfKJBI28roU8ANSRm6u0
+AgentId(aid) 1000002
+Secret(secret) 8iUehEJPTWLUXShAmHoU_HoWfKJBI28roU8ANSRm6u0
 
+{
+	"bot": {
+		"cid": "wwe6768b0e3c2acb6c",
+		"aid": "1000002",
+		"secret": "8iUehEJPTWLUXShAmHoU_HoWfKJBI28roU8ANSRm6u0"
+	}
+}

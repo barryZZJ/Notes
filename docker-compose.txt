@@ -1,0 +1,38 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2023-05-26T00:07:41+08:00
+
+====== docker-compose ======
+Created 星期五 26 五月 2023
+
+
+同时管理一系列容器，读取目录下的docker-compose.yml配置文件
+在有docker-compose.yml的目录下或用-f指定yml文件
+
+端口映射：
+本机端口:容器端口
+
+注意默认与宿主机隔离
+要想访问localhost的其他端口：
+在yml对应服务下添加：
+network_mode: "host"
+此时端口映射不再有用
+
+start and restart all the services defined in docker-compose.yml
+前台启动：
+docker-compose up
+后台启动：
+docker-compose up -d
+
+关闭：
+docker-compose stop
+重启
+docker-compose start
+
+卸载：
+docker-compose down
+-v remove all volumes
+
+确认是否删除成功：
+docker ps -a
+docker rm <container_id>

@@ -7,6 +7,7 @@ Created 星期四 30 三月 2023
 
 https://docs.docker.com/engine/install/ubuntu/#install-using-the-repository
 
+注意默认无法与宿主机通信
 与宿主机通信
 https://blog.csdn.net/DisMisPres/article/details/127279708
 docker容器内默认情况下与主机进行了隔离，无法通过 127.0.0.1 或 localhost 访问到主机
@@ -14,20 +15,5 @@ docker容器内默认情况下与主机进行了隔离，无法通过 127.0.0.1 
 1. docker run 添加 --network host 参数即可
 2. ip addr show docker0 查询虚拟网卡的ip，发现为172.17.0.1，使用这个ip即可
 
-docker-compose:
-同时管理一系列容器，读取目录下的docker-compose.yml配置文件
-启动：
-docker-compose up -d
--f xxx.yml
-start and restart all the services defined in docker-compose.yml
-
-关闭：
-docker-compose stop
-重启
-docker-compose start
-
-卸载：
-docker-compose down
--v remove all volumes
 
 docker ps -a

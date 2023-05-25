@@ -1,0 +1,27 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2023-05-25T19:03:16+08:00
+
+====== setup ======
+Created 星期四 25 五月 2023
+
+from setuptools import setup, find_packages
+
+setup(
+	name='crontab_manager',
+	version='0.1',
+	author='Barry ZZJ',
+	description='register python file to crontab',
+	packages=find_packages(),
+	install_requires=[
+		# list any dependencies your package requires
+		'argparse',
+		'python-crontab'
+	],
+)
+
+安装：
+pip install crontab_manager
+或
+python setup.py sdist bdist_wheel
+pip install dist/*.whl

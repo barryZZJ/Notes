@@ -31,7 +31,10 @@ instagram:
 ''@mone_kamishiraishi''
 /picuki/profile/mone_kamishiraishi/1 (server need diygod/rsshub:chromium-bundled; reader need vpn; /10 does not work)
 /instagram/user/mone_kamishiraishi
-https://rss.app/feeds/m3eLlZccuJLV43Hw.xml
+
+/picuki/profile/officeshimarl_kita/1
+/picuki/profile/nhkpb_kmbook/1
+
 
 youtube:(html搜索/channel/)
 上白石萌音

@@ -1,0 +1,37 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2023-05-25T18:15:53+08:00
+
+====== crontab ======
+Created 星期四 25 五月 2023
+
+pip install python-crontab
+
+https://pypi.org/project/python-crontab/
+
+{{{code: lang="python3" linenumbers="False"
+from crontab import CronTab
+
+# Define a function to register a python file to crontab
+def register(file, check_interval):
+    # Create a CronTab object for the current user
+    cron = CronTab(user=True)
+    # Create a new cron job with the file name and the check interval
+    job = cron.new(command=file)
+    job.minute.every(check_interval)
+    # Write the cron job to crontab
+    cron.write()
+    # Print a success message
+    print(f"Registered {file} to crontab with {check_interval} minutes interval.")
+
+# Define a function to unregister a python file from crontab
+def unregister(file):
+    # Create a CronTab object for the current user
+    cron = CronTab(user=True)
+    # Find and remove the cron job that matches the file name
+    cron.remove_all(command=file)
+    # Write the changes to crontab
+    cron.write()
+    # Print a success message
+    print(f"Unregistered {file} from crontab.")
+}}}

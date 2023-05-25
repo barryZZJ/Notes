@@ -1,0 +1,11 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2023-05-25T19:03:32+08:00
+
+====== 直接运行 ======
+Created 星期四 25 五月 2023
+
+新建''__main__.py''文件后，运行
+python -m <package_name>
+
+<package_name>需在当前目录下，或已经过pip安装

@@ -1,0 +1,14 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2023-05-25T17:11:18+08:00
+
+====== bfg ======
+Created 星期四 25 五月 2023
+
+https://docs.github.com/zh/authentication/keeping-your-account-and-data-secure/removing-sensitive-data-from-a-repository
+
+删除敏感文件
+bfg --delete-files YOUR-FILE-WITH-SENSITIVE-DATA
+或
+bfg --replace-text passwords.txt
+git push --force

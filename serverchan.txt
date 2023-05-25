@@ -18,6 +18,12 @@ title 必填
 desp 选填
 
 其他选择：
+推送服务
+gotify
+https://gotify.net/
+
+apprise
+
 https://v2ex.com/t/760749
 
 https://github.com/songquanpeng/message-pusher
