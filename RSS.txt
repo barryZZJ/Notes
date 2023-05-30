@@ -23,9 +23,9 @@ routeParam:
 /readable=1&showEmojiForRetweetAndReply=1&showRetweetTextInTitle=0&showQuotedInTitle=1
 可选：&showAuthorInTitle=1
 
-''@mone_tohoent''
 /twitter/user/mone_tohoent
 /twitter/user/sentochihiro_st
+/twitter/user/850462618Doe
 
 
 instagram:

@@ -17,6 +17,8 @@ https://docs.python.org/3/library/logging.html#logging.basicConfig
 .warning
 .error
 
+只支持一个参数
+
 默认level为WARNING
 
 设置logging默认配置（也作用于logger）：

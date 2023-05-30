@@ -5,6 +5,12 @@ Creation-Date: 2023-01-18T21:21:23+08:00
 ====== config文件处理模版 ======
 Created 星期三 18 一月 2023
 
+1. dynaconf
+https://pypi.org/project/dynaconf/
+
+
+else: customize:
+
 {{{code: lang="python3" linenumbers="False"
 from pathlib import Path
 from addict import Dict

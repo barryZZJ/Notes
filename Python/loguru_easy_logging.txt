@@ -6,3 +6,36 @@ Creation-Date: 2023-05-08T22:07:22+08:00
 Created 星期一 08 五月 2023
 
 https://pypi.org/project/loguru/
+
+''from'''' loguru import logger''
+''logger''''.debug("That's it, beautiful and simple logging!")''
+''# 2023-05-30 22:42:33.572 | DEBUG    | __main__:<module>:1 - That's it, beautiful and simple logging!''
+
+支持多个参数，但用法是str.format，不是print
+
+Change level:
+https://loguru.readthedocs.io/en/stable/resources/recipes.html#changing-the-level-of-an-existing-handler
+默认level是debug
+logger.remove(0)
+logger.add(sys.stderr, level="WARNING")
+
+
+File logging：
+''logger.add("file_{time}.log")''
+
+logger.add('log.log', rotation='1 day', retention='3 days')
+
+rotation: 到期后自动重命名 ''file.%Y-%m-%d_%H-%M-%S_%f.log''
+''logger.add("file.log", rotation="500 MB")    # Automatically rotate too big file''
+''logger.add("file.log", rotation="12:00")     # New file is created each day at noon''
+''logger.add("file.log", rotation="1 week")    # Once the file is too old, it's rotated''
+
+retention：到期后删除旧log 可以和rotation混用
+''logger.add("file.log", retention="10 days")  # Cleanup after some time''
+
+''logger.add("file.log", compression="zip")    # Save some loved space''
+
+
+Pretty logging with colors
+logger.add(sys.stdout, colorize=True, format="<green>{time}</green> <level>{message}</level>")
+

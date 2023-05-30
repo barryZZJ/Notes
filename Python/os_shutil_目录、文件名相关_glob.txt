@@ -116,8 +116,6 @@ def numericalSort(value):
 	parts[1::2] = map(int, parts[1::2])
 	return parts
 
-glob模块查找文件路径用
-
 os.writelines(iterable) 需要手动加换行符，否则默认就是把每个元素依次写入
 
 pathlib
@@ -127,3 +125,13 @@ https://docs.python.org/3/library/pathlib.html
 os.environ
 os.environ.get('PATH') -> str
 os.get_exec_path()
+
+glob模块查找文件路径用
+支持转义字符：* ? []
+https://docs.python.org/zh-cn/3/library/glob.html
+glob.glob(pathname, *, root_dir=None, dir_fd=None, recursive=False, include_hidden=False) -> [str]
+返回路径列表，可绝对可相对，取决于输入
+glob.glob('./[0-9].*') # ['./1.gif', './2.txt']
+
+.iglob -> iterator
+

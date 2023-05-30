@@ -5,6 +5,8 @@ Creation-Date: 2023-05-22T11:52:28+08:00
 ====== rsspush ======
 Created 星期一 22 五月 2023
 
+ADMIN_KEY=8C5Oz0AUPYdwuasZRI9j
+
 注意docker环境下ip隔离的问题！
 （不知道为什么不会自动查找订阅，这样就没卵用了，而且提供的参数也不多，考虑用别的了。
 https://github.com/easychen/rsspush
@@ -19,8 +21,6 @@ http://172.16.2.73:1200
 如何推送到WebHook
 2022.09.04.09.28+ 以后的镜像支持推送到web hook。如果Sendkey以http开头，则被识别为一个webhook。
 
-  SCT1U....
-  https://mywebhook.com
 RSSPush 会将更新信息以 FORM-ENCODED 编码方式 POST 到这个地址，包含以下信息：
 
 title/text: 最新文章的标题
