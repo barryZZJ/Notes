@@ -65,6 +65,7 @@ tab = pat:match(text)  注意下标从1开始
 如果要获取满足匹配的个数，用res = exp:find，#res即匹配的数量
 split同样会返回pat括号里的内容
 
+tab[i]['str'] 为匹配结果
 match table格式:
 {
 	{
