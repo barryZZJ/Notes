@@ -33,6 +33,9 @@ https://docs.rsshub.app/install/#docker-bu-shu
 docker image rm diygod/rsshub
 docker image rm diygod/rsshub:chromium-bundled
 
+部署其他平台：
+Vercel：免费，但需要翻墙才能访问
+
 自建：
 https://docs.rsshub.app/joinus/new-rss/before-start.html#chuang-jian-ming-ming-kong-jian
 安装：npm ci --production

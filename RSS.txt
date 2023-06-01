@@ -16,7 +16,11 @@ https://www.tvkingdom.jp/rss/schedulesBySearch.action?stationPlatformId=0&condit
 [[http://]][[http://yy.barryzzj.asia:23200/twitter/user/mone_tohoent|yy.barryzzj.asia:23200]]
 [[http://]][[http://yy.barryzzj.asia:23200/twitter/user/mone_tohoent|127.0.0.1:1200]]
 http://172.16.2.73:1200
+https://rsshub-barryzzj.vercel.app (need vpn
 https://rsshub.app
+其他免费服务器 https://github.com/AboutRSS/ALL-about-RSS#-free-servers
+https://rsshub.feeded.xyz
+https://rsshub.rssforever.com
 
 twitter：
 routeParam:
@@ -45,27 +49,9 @@ mensnon-no
 bosanimaru
 /youtube/channel/UCq3QYqi71H9E55DBmyu14Zw?filter=ぼさにまる
 
-kamishiraimimone:
-/kamishiraishimone/gallery
-/kamishiraishimone/radio
-/kamishiraishimone/schedule
-/kamishiraishimone/news/:category?
-
 tiktok:(代码有bug，未添加
 /tiktok/user/@mone_tohoent
 
-Misonoza:
-/misonoza/new/topics?filter=千と千尋の神隠し
-公演ご案内ラインアップ｜御園座
-/misonoza/lineup?filter=千と千尋の神隠し
-
-Misonoza-ticket:
-御園座オンラインチケット
-/misonoza-ticket/events?filter=千と千尋の神隠し
-
-e-tix:
-御園座｜オンラインチケット販売
-/e-tix/misonoza?filter=千と千尋の神隠し
 
 微博：
 routeParams: 
@@ -80,3 +66,25 @@ routeParams:
 /weibo/user/7398760727
 桐桐：
 /weibo/user/5904358413
+
+
+自定义路由：
+kamishiraimimone:
+/kamishiraishimone/gallery
+/kamishiraishimone/radio
+/kamishiraishimone/schedule
+/kamishiraishimone/news/:category?
+
+Misonoza:
+/misonoza/new/topics?filter=千と千尋の神隠し
+公演ご案内ラインアップ｜御園座
+/misonoza/lineup?filter=千と千尋の神隠し
+
+Misonoza-ticket:
+御園座オンラインチケット
+/misonoza-ticket/events?filter=千と千尋の神隠し
+
+e-tix:
+御園座｜オンラインチケット販売
+/e-tix/misonoza?filter=千と千尋の神隠し
+
