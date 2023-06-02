@@ -25,20 +25,11 @@ https://rsshub.rssforever.com
 twitter：
 routeParam:
 /readable=1&showEmojiForRetweetAndReply=1&showRetweetTextInTitle=0&showQuotedInTitle=1
-可选：&showAuthorInTitle=1
+可选(x：&showAuthorInTitle=1
 
 /twitter/user/mone_tohoent
 /twitter/user/sentochihiro_st
 /twitter/user/850462618Doe
-
-
-instagram:
-''@mone_kamishiraishi''
-/picuki/profile/mone_kamishiraishi/1 (server need diygod/rsshub:chromium-bundled; reader need vpn; /10 does not work)
-/instagram/user/mone_kamishiraishi
-
-/picuki/profile/officeshimarl_kita/1
-/picuki/profile/nhkpb_kmbook/1
 
 
 youtube:(html搜索/channel/)
@@ -48,11 +39,13 @@ mensnon-no
 /youtube/channel/UC0sKRWLg-w8bpP7knY8-Bmw?filter=上白石萌音
 bosanimaru
 /youtube/channel/UCq3QYqi71H9E55DBmyu14Zw?filter=ぼさにまる
+猫猫（需要日本VPN
+/youtube/channel/UCgizvo71txkDWEjcGGc3VPQ?filter=夜は猫といっしょ
 
 tiktok:(代码有bug，未添加
 /tiktok/user/@mone_tohoent
 
-
+可用自建：
 微博：
 routeParams: 
 /readable=1&authorNameBold=1&showEmojiForRetweet=1&showRetweetTextInTitle=0&showEmojiInDescription=0&preferMobileLink=1
@@ -67,6 +60,13 @@ routeParams:
 桐桐：
 /weibo/user/5904358413
 
+需要自建
+instagram: (VPN
+/instagram/user/mone_kamishiraishi (x)
+''@mone_kamishiraishi''
+/picuki/profile/mone_kamishiraishi/1 (server need diygod/rsshub:chromium-bundled; reader need vpn; /10 does not work)
+/picuki/profile/officeshimarl_kita/1
+/picuki/profile/nhkpb_kmbook/1
 
 自定义路由：
 kamishiraimimone:

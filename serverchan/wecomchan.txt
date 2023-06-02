@@ -22,8 +22,12 @@ curl --location --request POST 'http://localhost:8080/wecomchan?sendkey={%E4%BD%
 企业ID(cid)
 wwe6768b0e3c2acb6c
 
+配置：
+1. 设置可信域名（OAuth） [[yy.barryzzj.asia:23222]]
+2. 设置可信IP 103.45.162.59
+
 应用：
-Mone酱
+Monitor酱
 AgentId(aid) 1000002
 Secret(secret) 8iUehEJPTWLUXShAmHoU_HoWfKJBI28roU8ANSRm6u0
 
@@ -32,5 +36,23 @@ Secret(secret) 8iUehEJPTWLUXShAmHoU_HoWfKJBI28roU8ANSRm6u0
 		"cid": "wwe6768b0e3c2acb6c",
 		"aid": "1000002",
 		"secret": "8iUehEJPTWLUXShAmHoU_HoWfKJBI28roU8ANSRm6u0"
+	}
+}
+
+Mone酱
+{
+	"bot": {
+		"cid": "wwe6768b0e3c2acb6c",
+		"aid": "1000003",
+		"secret": "bmnz09Okgz_DEVHW1JCD_0rY_26fUDb_Z7o41LxwWk4"
+	}
+}
+
+其他通知
+{
+	"bot": {
+		"cid": "wwe6768b0e3c2acb6c",
+		"aid": "1000004",
+		"secret": "pQGeLCxxf_3W35C_VRuASDtInJ7g9a-ao4WLqbin3pc"
 	}
 }

@@ -1,0 +1,8 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2023-06-01T22:54:58+08:00
+
+====== systemctl ======
+Created 星期四 01 六月 2023
+
+systemctl {start|stop|status|reset-failed|restart|disable|enable} <service>

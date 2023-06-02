@@ -82,11 +82,14 @@ linux x86架构下载amd64_musl
 7. 各种自动化任务
 PushDeer(x)
 rss订阅 (rsspush)
+wecombots/rsspush_adapter
 雨云签到
 心动日剧签到
 v2rayConfRotation
-frpc_monitor
-rss_monitor
+wecombots/frpc_monitor
+wecombots/rss_monitor
+FreshRss
+
 
 
 
