@@ -8,3 +8,9 @@ Created 星期四 01 六月 2023
 http://freshrss.github.io/FreshRSS/
 
 注意URL里不能有中文，要用UTF8编码后的%xx
+
+api地址
+http://yy.barryzzj.asia:28800/api/greader.php
+
+barryzzj
+nV0bq4PXEd
