@@ -75,6 +75,10 @@ kamishiraimimone:
 /kamishiraishimone/schedule
 /kamishiraishimone/news/:category?
 
+tver: (x)
+/tver/talents/:talentid
+/tver/talents/t03736e
+
 Misonoza:
 /misonoza/new/topics?filter=千と千尋の神隠し
 公演ご案内ラインアップ｜御園座

@@ -67,6 +67,8 @@ IG_PROXY=socks://127.0.0.1:10808
 在lib/v2中新建文件夹，包含router.js, maintainer.js等
 router: 所在文件夹是第一级路径，因此代码内不用包含一级路径
 
+路径中获得的参数不带`/`
+
 parseDate()函数
 支持"yyyy/mm/dd"格式
 不支持"xx年xx月xx日"格式
