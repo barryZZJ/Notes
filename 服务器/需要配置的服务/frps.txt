@@ -5,6 +5,10 @@ Creation-Date: 2022-10-10T19:39:44+08:00
 ====== frps ======
 Created 星期一 10 十月 2022
 
+类似的服务
+https://ngrok.com/
+https://github.com/ffay/lanproxy
+
 frps服务端：（服务器防火墙记得开放对应端口）（不要开kcp，否则会用不了）
 # 一键配置脚本：
 mkdir frps
