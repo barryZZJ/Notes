@@ -17,7 +17,7 @@ PS：不带参数运行时不会显示，因此代码需要判断，如果没有
 	https://stackoverflow.com/questions/3853722/how-to-insert-newlines-on-argparse-help-text
 
 # 位置参数（必须参数）
-parser.add_argument("some", help="helpful text", type=int)
+parser.add_argumdeent("some", help="helpful text", type=int)
 add_argument参数：
 nargs:  '+' 可获取多个参数，返回一个列表；整数：读取指定个数的参数
 help 帮助说明

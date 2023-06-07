@@ -1,0 +1,9 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2023-06-07T12:42:41+08:00
+
+====== click ======
+Created 星期三 07 六月 2023
+
+类似argparse，但是通过装饰器注册指令
+

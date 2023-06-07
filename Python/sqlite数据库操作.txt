@@ -13,9 +13,16 @@ import sqlite3
 
 conn = sqlite3.connect("database.db")
 c = conn.cursor()
+conn.close()
 
 # CREATE
-c.execute('CREATE TABLE IF NOT EXISTS numbers (id integer primary key, number varchar(20) NOT NULL)')
+c.execute('CREATE TABLE IF NOT EXISTS numbers (id integer primary key, name text NOT NULL)')
+多个主键：CREATE TABLE something (
+  column1 INTEGER NOT NULL,
+  column2 INTEGER NOT NULL,
+  value,
+  PRIMARY KEY ( column1, column2)
+);
 表名如果包含特殊符号，需要用双引号括起来（但PyQt的db似乎不支持特殊符号，建议做一层mapping）
 TEXT
 conn.commit()
@@ -44,7 +51,7 @@ INSERT INTO COMPANY (ID,NAME,AGE,ADDRESS,SALARY) VALUES (1, 'Paul', 32, 'Califor
 INSERT INTO COMPANY VALUES (7, 'James', 24, 'Houston', 10000.00 );
 
 实现insert if not exists else update:
-1.设置主键后，使用insert or replace 如果替换与主键匹配的其他域值 https://stackoverflow.com/a/23673922
+1.设置主键后，使用insert or replace。默认其他域会变为默认值。替换与主键匹配的其他域值 https://stackoverflow.com/a/23673922
 	INSERT OR REPLACE INTO Book(ID, Name) VALUES(1001, 'SQLite');
 	注意未赋值的域会置默认值
 2.使用insert or ignore + update

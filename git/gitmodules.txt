@@ -4,7 +4,7 @@ Wiki-Format: zim 0.6
 
 https://git-scm.com/book/zh/v2/Git-%E5%B7%A5%E5%85%B7-%E5%AD%90%E6%A8%A1%E5%9D%97
 
-git submodule add 仓库链接
+git submodule add 仓库链接 [path]
 
 会生成一个.gitmodules文件：
 
@@ -21,3 +21,13 @@ git submodule update --remote --rebase
 手动进入子模块推送
 或 git push --recurse-submodules=on-demand
 可以通过设置 git config push.recurseSubmodules on-demand 让它成为默认行为。
+
+克隆项目
+git clone --recurse-submodules
+或：
+git submodule update --init --recursive
+
+删除：
+git rm <path-to-submodule>
+rm -rf .git/modules/<path-to-submodule>
+git config --remove-section submodule.<path-to-submodule>.
