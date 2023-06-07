@@ -7,11 +7,14 @@ Created 星期一 08 五月 2023
 
 https://pypi.org/project/loguru/
 
-''from'''' loguru import logger''
-''logger''''.debug("That's it, beautiful and simple logging!")''
+''from loguru import logger''
+''logger.debug("That's it, beautiful and simple logging!")''
 ''# 2023-05-30 22:42:33.572 | DEBUG    | __main__:<module>:1 - That's it, beautiful and simple logging!''
 
 支持多个参数，但用法是str.format，不是print
+
+只要在一个地方logger.add过，在其他地方import的logger也可以用
+也可以直接import其他地方的logger
 
 Change level:
 https://loguru.readthedocs.io/en/stable/resources/recipes.html#changing-the-level-of-an-existing-handler
@@ -35,6 +38,8 @@ retention：到期后删除旧log 可以和rotation混用
 
 ''logger.add("file.log", compression="zip")    # Save some loved space''
 
+同时使用：
+logger.add('file.log', rotation='1 day', retention='3 days')
 
 Pretty logging with colors
 logger.add(sys.stdout, colorize=True, format="<green>{time}</green> <level>{message}</level>")

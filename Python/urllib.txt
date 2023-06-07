@@ -1,0 +1,24 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2023-06-07T00:19:36+08:00
+
+====== urllib ======
+Created 星期三 07 六月 2023
+
+urldecode:
+from urllib.parse import unquote
+unquote(str, encoding=...) -> str
+>>> unquote('%C4%A7%CA%DE')
+'\xc4\xa7\xca\xde'
+
+unquote_plus() # Like unquote(), but also replace plus signs by spaces, as required for
+unquote_to_bytes()
+
+urlencode:
+>>> from urllib.parse import urlencode
+>>> data = {
+...     'a': 'test',
+...     'name': '魔兽'
+... }
+>>> print urlencode(data)
+a=test&amp;name=%C4%A7%CA%DE

@@ -5,6 +5,10 @@ Creation-Date: 2023-05-22T18:39:15+08:00
 ====== flask ======
 Created 星期一 22 五月 2023
 
+https://flask.palletsprojects.com/en/latest/
+https://dormousehole.readthedocs.io/en/latest/
+
+
 ''from flask import Flask''
 
 ''app = Flask(__name__)  # __main__''
@@ -14,11 +18,39 @@ Created 星期一 22 五月 2023
 ''    return 'WW_verify_Ua7WxLfBndo8F2SR.txt'''
 
 ''if __name__ == '__main__':''
-''    app.run(port=23080)''
+''    app.run(host='0.0.0.0', port=23080)''
 
 WARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.
 
-需要使用gunicorn运行：
+route:
+<key>
+<type:key> types: {string, int, float, path, uuid}
+默认只处理GET
+@app.route('/login', methods=['GET', 'POST']
+
+@app.get()
+@app.post()
+
+url_for(func_name)  生成指定函数名对应的url，名称参数作为URL路径（如果是route变量）或query string
+
+request object: https://flask.palletsprojects.com/en/latest/api/#flask.Request
+request.method  # str 'GET' 'POST'
+request.form[key] POST参数
+request.args.get('key', '') query string
+
+启动：1. 直接运行py文件
+2. flask --app pyname run -p PORT -h 0.0.0.0  文件名为app.py时不用加--app参数
+
+abort(404) raise一个HTTPException，后面的代码不会运行 （服务器不会停止
+
+=== blueprints ===
+方便路径模块化
+所有bp最后全部在app.py中import，然后app.register_blueprint
+https://flask.palletsprojects.com/en/latest/tutorial/views/
+
+
+
+===== 需要使用gunicorn运行： =====
 pip install gunicorn
 
 gunicorn pyfilename:FlaskApplication -b 0.0.0.0:12345

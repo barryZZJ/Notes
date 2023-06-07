@@ -56,3 +56,22 @@ Mone酱
 		"secret": "pQGeLCxxf_3W35C_VRuASDtInJ7g9a-ao4WLqbin3pc"
 	}
 }
+
+订阅酱
+{
+	"bot": {
+		"cid": "wwe6768b0e3c2acb6c",
+		"aid": "1000005",
+		"secret": "FKG9pTXtp5j784Td7_W7gDbW5OxddbZ52ARemCwbao0"
+	}
+}
+
+织梦订阅酱
+{
+	"bot": {
+		"cid": "wwe6768b0e3c2acb6c",
+		"aid": "1000006",
+		"secret": "fqfthf1lACTvsulRHpqBsTp4sqsSJ8wCCT7_UNmzgwQ"
+	}
+}
+
