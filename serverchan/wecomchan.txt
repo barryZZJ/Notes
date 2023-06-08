@@ -66,12 +66,4 @@ Mone酱
 	}
 }
 
-织梦订阅酱
-{
-	"bot": {
-		"cid": "wwe6768b0e3c2acb6c",
-		"aid": "1000006",
-		"secret": "fqfthf1lACTvsulRHpqBsTp4sqsSJ8wCCT7_UNmzgwQ"
-	}
-}
 
