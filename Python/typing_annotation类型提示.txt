@@ -34,6 +34,10 @@ T = TypeVar('T', bound='类名')
 取备选值中的一个：
 Literal["val1", "val2"]
 
+自定义类型
+from typing import TypeAlias
+network = TypeAlias(str, name='network')
+
 用于numpy：
 from numpy.typing import NDArray
 NDArray[dtype]
