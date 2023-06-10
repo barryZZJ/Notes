@@ -42,3 +42,32 @@ network = TypeAlias(str, name='network')
 from numpy.typing import NDArray
 NDArray[dtype]
 https://numpy.org/doc/stable/reference/typing.html#numpy.typing.NDArray
+
+TYPE_CHECKING:
+用于代码编写时IDE识别库，而不真正import
+if TYPE_CHECKING:
+	import expensive_mod
+
+def fun(arg: 'expensive_mod.SomeType') -> None:
+	local_var: expensive_mod.AnotherType = other_fun()
+
+overload:
+https://docs.python.org/3/library/typing.html#typing.overload
+用于IDE自动识别，可以定义多个@overload装饰的函数和一个不带的函数
+''from typing import overload''
+
+''class Duck:''
+
+''    @overload''
+''    def quack(self) -> None: ...''
+
+''    @overload''
+''    def quack(self, mark: str) -> None: ...''
+
+''    # 以上两个方法最终会被这个方法覆盖掉''
+''    def quack(self, arg=None):''
+''        if arg:''
+''            print(f"GaGaGa: {arg}")''
+''        else:''
+''            print("GaGaGa!")''
+
