@@ -12,14 +12,14 @@ log_file = /tmp/frpc.log
 frps: 5443
 frps-dashboard: 6443
 ssh: 22
-RDP: 3389
+RDP: 23389 (默认为3389)
 splashtop: 6783
 smb: 445 -> 23336
 router: 8888 -> 23337
 
 # frpc configuration Router: /tmp/upload/.frpc.ini
 本地端口->远程端口：
-rdp: 192.168.50.201:3389 -> 3389
+rdp: 192.168.50.201:23389 -> 23389
 smb: 192.168.50.201:445
 ssh: 192.168.50.201:23355
 [common]
@@ -36,8 +36,8 @@ user = asus
 [winrdp]
 type = tcp
 local_ip = 192.168.50.201
-local_port = 3389
-remote_port = 3389
+local_port = 23389
+remote_port = 23389
 use_encryption = false
 use_compression = true
 [smb]
