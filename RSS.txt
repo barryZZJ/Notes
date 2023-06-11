@@ -30,6 +30,7 @@ routeParam:
 /twitter/user/mone_tohoent
 /twitter/user/sentochihiro_st
 /twitter/user/850462618Doe
+/twitter/user/TVer_info/<routeParam>?filter=上白石萌音
 
 
 youtube:(html搜索/channel/)

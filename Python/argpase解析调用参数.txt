@@ -55,6 +55,7 @@ catch argparse.ArgumentError
 修改parser.error
 3. 继承并重载parser.error()函数
 
+注意不会包含两边的双引号（会包含两边的单引号）
 
 {{{code: lang="python3" linenumbers="False"
 import argparse

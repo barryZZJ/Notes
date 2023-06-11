@@ -1,0 +1,11 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2023-06-10T18:36:00+08:00
+
+====== sys ======
+Created 星期六 10 六月 2023
+
+系统参数
+sys.argv
+
+注意不会包含两边的双引号（会包含两边的单引号）
