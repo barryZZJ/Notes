@@ -58,6 +58,8 @@ https://www.w3school.com.cn/cssref/css_selectors.asp
 .string
 获取属性
 [attr]
+获取内容列表
+.contents -> list[str | Tag]
 
 outerHtml: str(parsed) 或 parsed.prettify()
-innerHtml: .decode_contents().strip() -> str
+innerHtml: .decode_contents().strip() -> str  或  ''.join(str(tag) for tag in my_div.contents) -> str

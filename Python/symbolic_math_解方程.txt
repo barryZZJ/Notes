@@ -9,16 +9,36 @@ SymPy
 https://docs.sympy.org/latest/index.html
 https://docs.sympy.org/latest/guides/solving/solve-equation-algebraically.html
 
+Eq == Equality: https://docs.sympy.org/latest/modules/core.html#sympy.core.relational.Equality
+
+solve: old, powerful
+solveset(equation, variable=None, domain=S.Complexes): new, solves univariate equations -> Set
+https://docs.sympy.org/latest/modules/solvers/solveset.html
+	linsolve(): solves system of linear equations,
+	nonlinsolve(): which solves systems of non linear equations.
+获取结果：Set.args -> list
+
 ''from sympy import symbols, Eq, solve''
 ''x = symbols('x')''
 ''equation = Eq(x**2 - 5*x + 6, 0)''
 ''solutions = solve(equation, x)''
 ''print(solutions)''
 
-solve: old, powerful
-solveset: new, solves univariate equations https://docs.sympy.org/latest/modules/solvers/solveset.html
-linsolve(): solves system of linear equations,
-nonlinsolve(): which solves systems of non linear equations.
+''solution = solveset(Eq(9+1, x), x) -> set # {10}''
+int(solution.args[0])x
+
+''solution = solve(Eq(9+1, x), x) # [10]''
+int(solution[0])
+
+基于字符串表达式：
+''from sympy import symbols, Eq, solve''
+''equation = "x**2 - 5*x + 6"''
+''x = symbols('x')''
+''expr = eval(equation)''
+''equation = Eq(expr, 0)''
+''solutions = solve(equation, x)''
+''print(solutions)''
+
 
 ''from sympy.abc import x, y''
 ''from sympy import solve''
@@ -27,5 +47,5 @@ nonlinsolve(): which solves systems of non linear equations.
 
 ''from sympy import solveset''
 ''from sympy.abc import x, y''
-''solveset(x**2 - y, x)''
+''solveset(x**2 - y, x) -> Set''
 # ''{-sqrt(y), sqrt(y)}''
