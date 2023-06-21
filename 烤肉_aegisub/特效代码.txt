@@ -125,6 +125,8 @@ Effect栏输入：
 delay越小越快；fadeaway默认为0
 上下滚动：
 Scroll up;<y1|0>;<y2|0>;<delay(1-100)>[;fadeawayheight]
+Scroll down;<y1|0>;<y2|0>;<delay(1-100)>[;fadeawayheight]
+eg: Scroll up;0;1080;100
    The text/picture will scroll up the screen. 
 		  The y1 and y2 values define a vertical region on the screen in which
    the text will scroll. The values are in pixels, and it doesn't matter
@@ -133,7 +135,7 @@ Scroll up;<y1|0>;<y2|0>;<delay(1-100)>[;fadeawayheight]
 	  The delay value can be a number from 1 to 100, and it slows down the
    speed of the scrolling - zero means no delay and the scrolling will be
    as fast as possible.
-Scroll down;<y1|0>;<y2|0>;<delay(1-100)>[;fadeawayheight]
+
 左右滚动：
 Banner;<delay(1-100)>[;lefttoright(0|1)][;<fadeawaywidth]
    Text will be forced into a single line, regardless of length, and scrolled from right to left accross the screen.

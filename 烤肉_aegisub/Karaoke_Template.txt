@@ -9,6 +9,8 @@ https://aeg-dev.github.io/AegiSite/docs/3.2/automation/karaoke_templater/
 https://aegi.vmoe.info/docs/3.2/Automation/Karaoke_Templater/
 https://aegi.vmoe.info/docs/3.2/Automation/Lua/Modules/karaskel.lua/#karaoke-and-furigana-syllable-tables
 
+!：如果因为特效对白太多导致卡顿，可以临时切换成k轴模式，或者不在音频栏中全部显示所有对白
+
 ===== Effect =====
 https://aeg-dev.github.io/AegiSite/docs/3.2/automation/karaoke_templater/template_modifiers/
 template <modifier=syl>: 模板行
