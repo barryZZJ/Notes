@@ -1,0 +1,31 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2023-06-21T20:08:01+08:00
+
+====== symbolic math 解方程 ======
+Created 星期三 21 六月 2023
+
+SymPy
+https://docs.sympy.org/latest/index.html
+https://docs.sympy.org/latest/guides/solving/solve-equation-algebraically.html
+
+''from sympy import symbols, Eq, solve''
+''x = symbols('x')''
+''equation = Eq(x**2 - 5*x + 6, 0)''
+''solutions = solve(equation, x)''
+''print(solutions)''
+
+solve: old, powerful
+solveset: new, solves univariate equations https://docs.sympy.org/latest/modules/solvers/solveset.html
+linsolve(): solves system of linear equations,
+nonlinsolve(): which solves systems of non linear equations.
+
+''from sympy.abc import x, y''
+''from sympy import solve''
+''solve(x**2 - y, x, dict=True)''
+# ''[{x: -sqrt(y)}, {x: sqrt(y)}]''
+
+''from sympy import solveset''
+''from sympy.abc import x, y''
+''solveset(x**2 - y, x)''
+# ''{-sqrt(y), sqrt(y)}''
