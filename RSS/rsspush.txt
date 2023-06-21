@@ -27,7 +27,7 @@ link: 文章的链接
 task_id: 任务ID
 task_title: 任务标题
 
-[[http://]][[http://172.16.2.73:1200|172.16.2.73]][[:8080/wecomchan?sendkey=PMFl5jw4alxou1vdRe5k&msg=文本&msg_type=text]]
+''http://172.16.2.73:8080/wecomchan?sendkey=PMFl5jw4alxou1vdRe5k&msg=文本&msg_type=text''
 
 docker：
 docker pull easychen/rsspush
