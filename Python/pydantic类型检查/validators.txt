@@ -1,0 +1,10 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2023-06-18T19:12:46+08:00
+
+====== validators ======
+Created 星期日 18 六月 2023
+
+https://docs.pydantic.dev/latest/usage/validators/
+
+可以自定义验证和转换函数

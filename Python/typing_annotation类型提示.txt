@@ -1,12 +1,27 @@
 Content-Type: text/x-zim-wiki
 Wiki-Format: zim 0.6
 
+
+cheatsheet https://mypy.readthedocs.io/en/stable/cheat_sheet_py3.html
+
 强制类型转换库：pydantic
 
 type hint / annotation
 
+https://docs.python.org/3/library/typing.html
+
 from typing import List, Tuple, Optional, Union, Any, Callable, overload
-# Callable[[int], str] is a function of (int) -> str.
+
+变长数组：
+Tuple[str, ...]
+
+T = TypeVar('T')
+Type[T] 表示类型T
+Type[str]
+type 表示任意类型
+
+Callable[[int], str] is a function of (int) -> str.
+Callable[...,str]  -> function of (*args, **kwargs) -> str
 
 指定参数：
 def f(a: int) -> None :
@@ -27,12 +42,29 @@ a # type: List[str]
 检测：
 isinstance(o, t)
 
-返回类型是自己：
+通用模板类型(如函数返回类型是自己：
 T = TypeVar('T', bound='类名')
 成员函数(sth: Type[T]) -> T:...
 
+在类中注解自身：
+def f(arg: Type['ClassName']) -> "ClassName"
+
+
 取备选值中的一个：
 Literal["val1", "val2"]
+
+TypedDict
+类似pydantic的module的方式，只用于类型检查，运行时为dict类型.
+''class Point2D(TypedDict):''
+''    x: int''
+''    y: int''
+''    label: str''
+''Point2D = TypedDict('Point2D', {'x': int, 'y': int, 'label': str})''
+''Point2D = TypedDict('Point2D', x=int, y=int, label=str)''
+''a: Point2D = {'x': 1, 'y': 2, 'label': 'good'}  # OK''
+''b: Point2D = {'z': 3, 'label': 'bad'}           # Fails type check''
+
+''assert Point2D(x=1, y=2, label='first') == dict(x=1, y=2, label='first')''
 
 自定义类型
 from typing import TypeAlias
@@ -42,6 +74,15 @@ network = TypeAlias(str, name='network')
 from numpy.typing import NDArray
 NDArray[dtype]
 https://numpy.org/doc/stable/reference/typing.html#numpy.typing.NDArray
+
+获取注解：
+get_type_hints
+https://docs.python.org/3/library/typing.html#typing.get_type_hints
+recursively replaces all Annotated[T, ...] with T
+可以读取类/函数的参数类型
+get_origin
+get_args
+is_typeddict
 
 TYPE_CHECKING:
 用于代码编写时IDE识别库，而不真正import

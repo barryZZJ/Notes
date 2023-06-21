@@ -15,6 +15,9 @@ f().then((val) => console.log(val));
 console.log(2);
 // 先输出2再输出1
 
+配合await使用：
+await new Promise(...) //返回resolve()内的结果
+
 // 要想.then，一定要在内部调用resolve
 function f2(callback){
    // 异步，且执行完会调用callback

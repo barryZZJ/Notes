@@ -8,11 +8,11 @@ Created 星期一 27 二月 2023
 参考织梦字幕组压制 字幕提取流程及教程.pdf
 
 === MeGUI处理音频： ===
-1. HD Streams Extractor 分离音频aac
+1. HD Streams Extractor 分离音频aac，记下音频偏移量
 2. File Indexer打开ts源，使用默认的DGIndex，然后点Queue，得到d2v文件（需要另外保存一份为utf8编码）（记录输出音频的delay）
 3. AVS Script Creator打开d2v文件，点save，得到avs脚本，视频预览界面关掉
 4. AVS Cutter，打开avs脚本，通过set设置要切的各个分段（记得剪掉提供部分的广告），然后点 do all and close，得到clt文件（或手动点击Save cuts file）
-5. 回到主界面Audio encoding部分，载入HD音频文件，在Cuts部分载入刚才的clt文件，encoder选AAC，delay会自动填写，点Queue
+5. 回到主界面Audio encoding部分，载入HD音频文件，在Cuts部分载入刚才的clt文件，encoder选QAAC，delay会自动填写（否则的话填写第一步的偏移量），点Queue
 6. 得到剪好的音频文件.m4a
 
 === VS处理视频： ===
@@ -27,7 +27,7 @@ Created 星期一 27 二月 2023
 	有损反交错：core.znedi3.nnedi3
 
 preset选择ax264 ts
---demuxer y4m --preset veryslow --ref 8 --merange 24 --me umh --bframes 10 --aq-mode 3 --aq-strength 0.7 --deblock 0:0 --trellis 2 --psy-rd 0.6:0.1 --crf 18.5 --output-depth 8 -o "H:\萌音出演\テレビ\CUT\vs.mp4" -
+--demuxer y4m --preset slow --ref 8 --merange 24 --me umh --bframes 10 --aq-mode 3 --aq-strength 0.7 --deblock 0:0 --trellis 2 --psy-rd 0.6:0.1 --crf 18 --output-depth 8 -o "H:\萌音出演\テレビ\Recorded\230323-ＬＩＦＥ！\vs.mp4" -
 （preset是用时间换画质{veryslow, slower, slow, medium}，crf是用空间换画质，越小码率越高）
 (veryslow 18.5 码率 < slow 18 √)
 注意把焦点切换到别的窗口，否则不小心再次按到start就得重新压制了
@@ -35,8 +35,18 @@ preset选择ax264 ts
 === 处理字幕 ===
 1. ts拖入Caption2AssNorubi.bat，得到提取不带rubi的_norubi
 2. _norubi拖入SubCleanerテレビ 对字幕做清理、合并、去时间重叠，得到_cleaned
-3. cut_ass.bat设置offset参数为第一步中【HD Streams Extractor预览中的delay】+【File Indexer取出的音频的delay】（负数），拖入_cleaned.ass和.clt，按成片裁剪字幕，得到_cut
+3. cut_ass.bat设置offset参数为第一步中【HD Streams Extractor预览中的delay】/【File Indexer取出的音频的delay】（负数），拖入_cleaned.ass和.clt，按成片裁剪字幕，得到_cut
 4. 用aegisub打开，导入裁好的音频检查字幕时间。如果允许的话可以重新轴一遍
+
+DEBUG：
+音频只有第一段能对上，后面错位：使用FileIndexer的lw(core.lsmas.LWLibavSource)/ffms(core.lsmas.LWLibavSource)索引器提取音频
+（有几种电视台是不能用dg的例如bs11就不可以 得用lw）
+其他
+音频不能精准裁剪：使用HD Streams Extractor提取音频
+**终极解决办法**：原片直接压制一遍（vs或小丸），然后再裁剪、二压
+
+=== 手动裁剪音频： ===
+
 
 === 测试效果 ===
 PotPlayer打开视频，拖入音频+字幕

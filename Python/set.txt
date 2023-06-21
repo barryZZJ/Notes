@@ -1,0 +1,18 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2023-06-16T15:28:42+08:00
+
+====== set ======
+Created 星期五 16 六月 2023
+
+
+.add(T)
+.update(iterable)
+.remove(T) -> None
+.discard(T) -> None  # No error if element doesn't exist
+.pop()  # Removes and returns an arbitrary element
+
+print(2 in my_set)  # Output: True
+print(4 not in my_set)  # Output: True
+
+只能通过for in遍历获取set里的元素

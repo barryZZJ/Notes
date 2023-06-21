@@ -1,0 +1,194 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2023-06-14T16:48:07+08:00
+
+====== 自建 ======
+Created 星期三 14 六月 2023
+
+vercel 版 https://vercel.com/barryzzj/rsshub
+
+twitter developer keys (consumer keys):（好像等级不对用不了）
+850462618Doe
+API Key: 9PEOfZW8zKE3VgILThDaJEDbT
+API Key Secret: 5vQI6shBlEwib9ExVofU98X6DFBI4POyfUsHhDXWxEOx4sovUo
+
+Bazinga97678986
+API Key: giJRYWROS4eueczaoGAO5S0MM
+API Key Secret: vV3EBuoV48PXBkwYpwvIsNoz4Bn07efLYdXvh7RLiZb9e1zeCs
+
+youtube api key:
+barryzzj: 
+AIzaSyBHsdkUIoFzUqDjON9DoNBAlL3Qqhfyh5Q
+barryzzj2681:
+AIzaSyBawzTVZaGiGCzGnivD-H_TDFKAqKoeFHc
+
+自建：
+https://docs.rsshub.app/joinus/new-rss/before-start.html#chuang-jian-ming-ming-kong-jian
+删除.git/config -> hooksPath = .husky
+安装：npm ci --production
+在.env中配置参数：
+https://docs.rsshub.app/install/#pei-zhi
+'''
+PORT=1200
+PROXY_URI=socks://127.0.0.1:10808
+CACHE_TYPE=redis
+CACHE_EXPIRE=1800
+CACHE_CONTENT_EXPIRE=86400
+REQUEST_TIMEOUT=30000
+YOUTUBE_KEY=AIzaSyBHsdkUIoFzUqDjON9DoNBAlL3Qqhfyh5Q,AIzaSyBawzTVZaGiGCzGnivD-H_TDFKAqKoeFHc
+KAMISHIRAISHIMONE_USERNAME=850462618@qq.com
+KAMISHIRAISHIMONE_PASSWORD=zzjzzj0123
+// 获取详情的数量，-1 表示无限
+// magazine类, default 5
+// news / schedule类, default 1
+KAMISHIRAISHIMONE_DETAIL_MAX_MAGAZINE=-1
+KAMISHIRAISHIMONE_DETAIL_MAX_NEWS=5
+// max_async_jobs, default 1, -1表示无限
+KAMISHIRAISHIMONE_MAX_ASYNC_JOBS_MAGAZINE=5
+KAMISHIRAISHIMONE_MAX_ASYNC_JOBS_NEWS=1
+PICUKI_MAX_ASYNC_JOBS=2
+WEIBO_MAX_ASYNC_JOBS=5
+//YOUTUBE_MAX_ASYNC_JOBS=x
+//TWITTER_MAX_ASYNC_JOBS=x
+//
+HOTLINK_TEMPLATE=https://i3.wp.com/${host}${pathname}
+HOTLINK_INCLUDE_PATHS=/weibo,/picuki,/twitter
+//
+//ALLOW_USER_HOTLINK_TEMPLATE=true
+//
+DEBUG_INFO=false
+//NO_LOGFILES=true
+
+IG_USERNAME=barryjackson118
+IG_PASSWORD=6xlWaJ7Jaa
+IG_PROXY=socks://127.0.0.1:10808
+'''
+
+在lib/v2中新建文件夹，包含router.js, maintainer.js等
+router: 所在文件夹是第一级路径，因此代码内不用包含一级路径
+
+路径中获得的参数不带`/`
+
+parseDate()函数
+支持"yyyy/mm/dd"格式
+不支持"xx年xx月xx日"格式
+
+注意.map()函数体内不支持异步函数！
+需要去掉map，使用for of，配合await+Promise/async使用：
+''    const trs = $('table.magazine-table>tbody>tr').toArray().slice(0, mailmagazine_max);''
+''    const items = [];''
+''    for (const tr of trs) {''
+''        const item = await (async () => {''
+''            ...''
+''            return {''
+''                title,''
+''                link: `${urls.baseUrl}${href}`,''
+''                pubDate: parseDate(datetime),''
+''                description,''
+''            };''
+''        })();''
+''        items.push(item);''
+''    }''
+
+cache:
+https://docs.rsshub.app/joinus/use-cache.html
+ctx.cache.tryGet(key, getValueFunc [, maxAge [, refresh ]])  // maxAge默认为CACHE_CONTENT_EXPIRE
+ctx.cache.tryGet(item.link, async () => {return xxx})  // 外界需要有await
+config.cache.contentExpire  // == CACHE_CONTENT_EXPIRE 时间长
+config.cache.routeExpire  // == CACHE_EXPIRE 时间短
+高级用法：
+
+ctx.cache.get(key [, refresh ])（如果cache在redis，返回结果是个Pormise，所以加个await保证兼容性）
+// 如果无匹配，返回undefined
+// 否则返回set时的value（据文档，如果使用tryGet赋值，需要加一层JSON.parse()，还没测试）
+ctx.cache.set(key, value [, maxAge ])
+''    const items = await Promise.all(''
+''        list.map((item) =>''
+''            ctx.cache.tryGet(item.link, async () => {''
+''                const { data: response } = await got(item.link);''
+''                const $ = cheerio.load(response);''
+                
+''                item.description = $('.comment-body').first().html();''
+
+''                return item;''
+''            })''
+''        )''
+''    );''
+使用顺序请求避免DDOS（这样的话也不能用map，要改为for of才能用await），注意items的命名和最终返回的一致：
+''    // 顺序获取，防止太多请求DDOS''
+''    let { detail_max } = config.kamishiraishimone;''
+''    detail_max = parseInt(detail_max);''
+''    let items = [];''
+''    for (const item of items_.slice(0, detail_max)) {''
+''        const promise = ctx.cache.tryGet(item.link, async () => {''
+''            await sleep(100);''
+''            const desc_body = await browser.fetchBody(item.link);''
+''            const desc$ = cheerio.load(desc_body);''
+''            item.description = desc$('table.magazine-table>tbody>tr:last-child>td').html();''
+''            return item;''
+''        });''
+''        items.push(await promise);''
+''    }''
+''    items = items.concat(items_.slice(detail_max));''
+
+
+cache配置：
+CACHE_TYPE: 缓存类型，可为 memory 和 redis，设为空可以禁止缓存，默认为 memory
+CACHE_EXPIRE: 路由缓存过期时间，单位为秒，默认 5 * 60
+CACHE_CONTENT_EXPIRE: 内容缓存过期时间，每次访问会重新计算过期时间，单位为秒，默认 1 * 60 * 60
+REDIS_URL: Redis 连接地址（redis 缓存类型时有效），默认为 redis://localhost:6379/
+MEMORY_MAX: 最大缓存数量（memory 缓存类型时有效），默认 256
+
+启动：
+正常：npm start
+调试：npm run dev
+
+debug:
+json:
+创建自定义对象。
+将对象赋值给 ctx.state.json。
+访问相应的路由 + .debug.json 来查看您的对象。
+示例：
+const info = utils.fetchAllCharacters(res.data, base);
+ctx.state.json = {
+	info,
+	key: 'str',
+};
+
+debug.html
+为了快速测试 ctx.state.data 中的 description 是否正确，你可以利用 debug.html 机制来获取相关条目的 HTML，该链接可以直接在浏览器中打开以预览渲染结果。
+使用方式：访问相应的路由 + .{index}.debug.html，其中 {index} 为你的 ctx.state.data.item 中的项目序号（从 0 开始），即返回对应路由结果中的 ctx.state.data.item[index].description 信息。
+
+图片反代
+方便国内不挂VPN就查看图片；方便查看微博等具有反盗链的图片（只要没有referer就可以查看，但是有些阅读器会自动添加referer）
+1. 环境变量配置
+https://docs.rsshub.app/install/#pei-zhi-tu-pian-chu-li
+''HOTLINK_TEMPLATE=https://i3.wp.com/${host}${pathname}''
+''HOTLINK_INCLUDE_PATHS=/weibo,/picuki,/twitter''
+''HOTLINK_EXCLUDE_PATHS=''
+
+docker-compose作为environment设置时,由于${xxxx}默认会被docker-compse解析,需要配置两个$$,具体如下:
+	environment:
+		HOTLINK_TEMPLATE: 'https://images.weserv.nl/url=$${href}'
+
+2. 通用参数配置
+https://docs.rsshub.app/parameter.html#duo-mei-ti-chu-li
+用法：需要环境变量ALLOW_USER_HOTLINK_TEMPLATE=true，在订阅url后添加通用参数
+?image_hotlink_template=https://images.weserv.nl?url=${href_ue}
+?image_hotlink_template=https://i3.wp.com/${host}${pathname}
+
+可用的反代服务器
+https://images.weserv.nl?url=${href_ue}
+https://i0.wp.com/docs.rsshub.app/logo.png
+https://i1.wp.com/blog.skk.moe/img/suka-favicon.png
+https://i2.wp.com/rixcloud.com/static/img/hulu-comment.8038550.png
+https://i3.wp.com/i.loli.net/2019/04/23/5cbeb7e41414c.png
+
+pnpm:
+安装npm install -g pnpm
+安装新包
+pnpm install xxx
+更新pnpm-lock.yaml：
+pnpm install
+重新生成pnpm-lock.yaml：
+pnpm install --no-frozen-lockfile

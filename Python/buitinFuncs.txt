@@ -1,3 +1,19 @@
 Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
 
-divmod(x,y) #（x//y, x%y)
+
+
+https://docs.python.org/3/library/functions.html
+
+divmod(x,y) -> (x//y, x%y)
+
+filter(function, iterable) -> iterator
+keep element if function is True
+if function is None, keep element if element is not false
+
+map(function, iterable, *iterables) -> iterator
+相当于有返回值的foreach，apply function to every item of iterable
+e.g.:
+list(map(lambda x: x*2, [1, 2, 3, 4, 5]))  # [2,4,6,8,10]
+list(map(lambda x,y:x+y, [1, 2, 3, 4, 5], [10, 20, 30, 40, 50]))  # [11, 22, 33, 44, 55]
+

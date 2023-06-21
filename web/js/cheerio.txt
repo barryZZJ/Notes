@@ -1,0 +1,49 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2023-06-14T18:07:30+08:00
+
+====== cheerio ======
+Created 星期三 14 六月 2023
+
+https://cheerio.js.org/docs/intro
+https://github.com/cheeriojs/cheerio
+
+const cheerio = require('cheerio');
+const $ = cheerio.load('<h2 class="title">Hello world</h2>');
+
+selecting using $: same as jquery
+https://cheerio.js.org/docs/basics/selecting
+https://learn.jquery.com/using-jquery-core/selecting-elements/
+$('tag') -> Cheerio
+
+Cheerio object:
+.find() -> Cheerio  https://cheerio.js.org/docs/api/classes/Cheerio
+.children() -> Cheerio
+.contents()
+.toString() -> string  outerHTML 字符串
+.toArray() -> [] 转换为普通数组
+注意：
+.html() / .text() 等默认只作用于找到的第一个结果
+获取其他结果：
+.get() -> T[]
+.get(i) -> T
+√:$(item.get(i)).text()
+×:item.get(i).text()
+要想遍历所有结果：
+.toArray().map(child=>{ child=$(child); ... } );
+.each https://cheerio.js.org/docs/api/classes/Cheerio#each
+
+对象不能直接log，并且toString(对象)的结果是 [object Undefined]
+debug需要用对象.toString()或.html()
+
+
+$('h2.title').text('Hello there!');
+$('h2').addClass('welcome');
+
+.html(): innerHTML
+// set
+$('div').html('<p>Hello, World!</p>');
+// get
+const html = $('div').html();
+
+

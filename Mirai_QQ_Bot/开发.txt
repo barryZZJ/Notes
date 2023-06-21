@@ -10,11 +10,11 @@ https://docs.mirai.mamoe.net/#http-%E6%8E%A5%E5%8F%A3
 
 py框架推荐（基本都很活跃）
 readme.md里有易懂的demo：
-https://github.com/GraiaProject/Ariadne
+https://github.com/GraiaProject/Ariadne (复杂，支持指令解析
 https://github.com/wyapx/Elaina
 https://github.com/jerrita/saaya
 https://github.com/YiriMiraiProject/YiriMirai
-https://github.com/Excaive/miraicle √
+https://github.com/Excaive/miraicle √(简单
 
 Miraicle
 https://github.com/Excaive/miraicle

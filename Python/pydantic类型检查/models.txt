@@ -1,0 +1,119 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2023-06-18T19:11:37+08:00
+
+====== models ======
+Created 星期日 18 六月 2023
+
+https://docs.pydantic.dev/latest/usage/models/
+
+各种类型转换https://docs.pydantic.dev/latest/usage/types/
+
+动态定义模型
+https://docs.pydantic.dev/latest/usage/models/#dynamic-model-creation
+
+必须参数/可选参数：
+https://docs.pydantic.dev/latest/usage/models/#required-fields
+# | 格式需要3.10+
+class Model(BaseModel):
+	a: int | None  # optional
+	b: int | None = ...  # required
+	c: int | None = Field(...)  # required
+
+动态默认值：
+https://docs.pydantic.dev/latest/usage/models/#field-with-dynamic-default-value
+
+model.parse_obj()
+parse_obj_as(model, obj)
+parse_raw_as
+
+.parse_obj(dict)
+.dict()
+
+Model signature:
+alias:
+https://docs.pydantic.dev/latest/usage/models/#reserved-names
+_id: int = Field(..., alias='id')
+(pydantic prefers aliases over names)
+
+custom init:
+''    def __init__(self, id: int = 1, *, bar: str, **data) -> None:''
+''        """My custom init!"""''
+''        super().__init__(id=id, bar=bar, **data)''
+
+const:
+MY_CONST: str = Field('CONST', const=True)  # 此成员不能在内部函数引用，且外部不能通过类名引用
+__''MY_CONST__'': str = 'CONST'  # 以魔法方式命名的变量名不会被pydantic解析
+排除项：
+Class variables which begin with an underscore and attributes annotated with typing.ClassVar will be automatically excluded from the model.
+
+支持多级继承
+''from pydantic import BaseModel''
+
+''class BaseMessage(BaseModel):''
+''    sender: str''
+''    receiver: str''
+
+''class TextMessage(BaseMessage):''
+''    content: str''
+
+''class ImageMessage(BaseMessage):''
+''    url: str''
+''    caption: str''
+
+''text_msg = TextMessage(sender="Alice", receiver="Bob", content="Hello!")''
+''image_msg = ImageMessage(sender="Alice", receiver="Bob", url="example.com/image.jpg", caption="Check this out!")''
+
+
+{{{code: lang="python3" linenumbers="False"
+class MyTeam(BaseModel):
+	id: str = Field(alias="_id")
+	admin_id: str
+	icon: str = None
+	member_ids: List[str]
+	name: str
+	regDate: str
+	tag_id: str
+
+MyTeam.parse_obj({...})  ->  忽略多余参数
+MyTeam.parse_raw("{...}")
+}}}
+
+
+python >= 3.9
+{{{code: lang="python3" linenumbers="False"
+from datetime import datetime
+from typing import Optional
+from pydantic import BaseModel
+
+
+class User(BaseModel):
+    id: int
+    name = 'John Doe'
+    signup_ts: Optional[datetime] = None
+    friends: list[int] = []
+
+
+external_data = {
+    'id': '123',
+    'signup_ts': '2019-06-01 12:22',
+    'friends': [1, 2, '3'],
+}
+user = User(**external_data)
+print(user.id)
+#> 123
+print(repr(user.signup_ts))
+#> datetime.datetime(2019, 6, 1, 12, 22)
+print(user.friends)
+#> [1, 2, 3]
+print(user.dict())
+"""
+{
+    'id': 123,
+    'signup_ts': datetime.datetime(2019, 6, 1, 12, 22),
+    'friends': [1, 2, 3],
+    'name': 'John Doe',
+}
+"""
+}}}
+

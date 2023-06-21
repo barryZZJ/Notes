@@ -10,6 +10,8 @@ import regex
 或
 import re
 
+escape(str) -> str 把可能跟正则表达式冲突的字符都转义
+
 *可以通过把想要获取的地方用括号括起来
 search(pattern, string, flags=0) 检查字符串的任意位置，返回第一个匹配 Scan through string looking for a match to the pattern, returning a match object, or None if no match was found.
 

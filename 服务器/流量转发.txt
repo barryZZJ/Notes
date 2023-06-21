@@ -1,0 +1,9 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2023-06-11T11:50:42+08:00
+
+====== 流量转发 ======
+Created 星期日 11 六月 2023
+
+基于Nginx，把访问a.com的请求转发到b.com：
+https://help.aliyun.com/document_detail/206119.html

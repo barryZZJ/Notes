@@ -24,7 +24,7 @@ url
 params:dict
 headers:dict
 [[cookies:dict]]
-timeout: int 秒
+timeout: int 秒 None表示无限等待
 
 正则替换headers：
 (\S+) *: *(.+)

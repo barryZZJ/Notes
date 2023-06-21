@@ -5,6 +5,8 @@ Creation-Date: 2023-05-25T19:03:16+08:00
 ====== setup ======
 Created 星期四 25 五月 2023
 
+https://packaging.python.org/en/latest/guides/distributing-packages-using-setuptools/
+
 from setuptools import setup, find_packages
 
 setup(
@@ -25,3 +27,18 @@ pip install crontab_manager
 或
 python setup.py sdist bdist_wheel
 pip install dist/*.whl
+
+自动构建可执行文件，放在<PythonRoot>\Scripts中：
+	# To provide executable scripts, use entry points in preference to the
+	# "scripts" keyword. Entry points provide cross-platform support and allow
+	# `pip` to create the appropriate form of executable for the target
+	# platform.
+	#
+	# For example, the following would provide a command called `sample` which
+	# executes the function `main` from this package when invoked:
+	entry_points={  # Optional
+		'console_scripts': [
+			'ddns=run:main',
+		],
+	},
+

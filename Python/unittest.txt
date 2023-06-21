@@ -8,4 +8,36 @@ Created 星期二 20 九月 2022
 https://docs.python.org/3/library/unittest.html
 
 设置复用成员：
+https://docs.python.org/3/library/unittest.html#unittest.TestCase.setUp
 def setUp(self)
+
+
+''import unittest''
+
+''class Calculator:''
+''    def __init__(self):''
+''        self.result = 0''
+
+''    def add(self, a, b):''
+''        self.result = a + b''
+
+''class CalculatorTest(unittest.TestCase):''
+''    def setUp(self):''
+''        self.calculator = Calculator()''
+
+''    def test_addition(self):''
+''        self.calculator.add(2, 3)''
+''        self.assertEqual(self.calculator.result, 5)''
+
+''    def test_subtraction(self):''
+''        self.calculator.add(5, 3)''
+''        self.assertEqual(self.calculator.result, 8)''
+
+''if __name__ == '__main__':''
+''    unittest.main()''
+
+命令行执行
+python -m unittest test_module1 test_module2
+python -m unittest test_module.TestClass
+python -m unittest test_module.TestClass.test_method
+python -m unittest tests/test_something.py

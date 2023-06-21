@@ -5,8 +5,31 @@ Creation-Date: 2023-04-12T16:10:26+08:00
 ====== puppeteer ======
 Created 星期三 12 四月 2023
 
-https://github.com/puppeteer/puppeteer
+doc:
 https://pptr.dev/
+https://github.com/puppeteer/puppeteer
+
+.goto(url)  url should always be a full url with scheme like https://
 
 获取文本：
 await el.evaluate(el => el.textContent)
+
+cookies:
+const cookies = await page.cookies();
+const cookiestr = JSON.stringify(cookies);
+
+const cookies = JSON.parse(cookiestr);
+await page.setCookie(...cookies);
+默认多个page之间是共享cookie的，不想的话可以开无痕窗口browser.createIncognitoBrowserContext()
+
+await page.goto(item.link, {
+	waitUntil: 'domcontentloaded',
+})
+
+await page.waitForNavigation();
+
+page用完记得关：
+page.close()
+
+浏览器最终也要关
+

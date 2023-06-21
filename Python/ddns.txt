@@ -1,0 +1,19 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2023-06-20T00:07:41+08:00
+
+====== ddns ======
+Created 星期二 20 六月 2023
+
+https://pypi.org/project/ddns/
+
+服务商支持:
+ DNSPOD
+ 阿里 DNS
+ DNS.COM(@loftor-git)
+ DNSPOD 国际版
+ CloudFlare(@tongyifan)
+ HE.net(@NN708) (不支持自动创建记录)
+ 华为云(@cybmp3)
+
+ipv4、ipv6填自己的域名

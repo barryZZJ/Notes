@@ -13,6 +13,7 @@ tv王国：(need vpn)
 https://www.tvkingdom.jp/rss/schedulesBySearch.action?stationPlatformId=0&condition.keyword=%E4%B8%8A%E7%99%BD%E7%9F%B3%E8%90%8C%E9%9F%B3&submit=%E6%A4%9C%E7%B4%A2&stationAreaId=23&submit.x=&submit.y=
 
 ==== rsshub: ====
+自建：
 [[http://]][[http://yy.barryzzj.asia:23200/twitter/user/mone_tohoent|yy.barryzzj.asia:23200]]
 [[http://]][[http://yy.barryzzj.asia:23200/twitter/user/mone_tohoent|127.0.0.1:1200]]
 http://172.16.2.73:1200
@@ -21,8 +22,11 @@ https://rsshub.app
 其他免费服务器 https://github.com/AboutRSS/ALL-about-RSS#-free-servers
 https://rsshub.feeded.xyz
 https://rsshub.rssforever.com
+https://rss.shab.fun
+https://rsshub.now.sh
+https://johnrosen1.com/rsshub
 
-twitter：
+twitter：(using vercel)
 routeParam:
 /readable=1&showEmojiForRetweetAndReply=1&showRetweetTextInTitle=0&showQuotedInTitle=1
 可选(x：&showAuthorInTitle=1
@@ -43,7 +47,7 @@ bosanimaru
 猫猫（需要日本VPN
 /youtube/channel/UCgizvo71txkDWEjcGGc3VPQ?filter=夜は猫といっしょ
 
-tiktok:(代码有bug，未添加
+tiktok:√ ( need pupeteer
 /tiktok/user/@mone_tohoent
 
 可用自建：
@@ -65,7 +69,8 @@ routeParams:
 instagram: (VPN
 /instagram/user/mone_kamishiraishi (x)
 ''@mone_kamishiraishi''
-/picuki/profile/mone_kamishiraishi/1 (server need diygod/rsshub:chromium-bundled; reader need vpn; /10 does not work)
+picuki (need pupeeter)(server need diygod/rsshub:chromium-bundled; reader need vpn;)(/10 does not work)
+/picuki/profile/mone_kamishiraishi/1 
 /picuki/profile/officeshimarl_kita/1
 /picuki/profile/nhkpb_kmbook/1
 
@@ -75,6 +80,8 @@ kamishiraimimone:
 /kamishiraishimone/radio
 /kamishiraishimone/schedule
 /kamishiraishimone/news/:category?
+/kamishiraishimone/mail_magazine/lemomail
+/kamishiraishimone/mail_magazine/official
 
 tver: (x)
 /tver/talents/:talentid

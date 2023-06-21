@@ -1,0 +1,8 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2023-06-15T21:30:08+08:00
+
+====== 判断变量是否为函数 ======
+Created 星期四 15 六月 2023
+
+callable(...) -> bool

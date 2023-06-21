@@ -12,20 +12,26 @@ C:\Users\85046\AppData\Local\Netease\CloudMusic\Cache\Cache
 .uc文件每一个 byte 与0xa3做异或，即可得到mp3
 
 {{{code: lang="python3" linenumbers="False"
-# file = sys.argv[1]
-file = '2019583924-128-263b587aa5aa90950a75be396194d53e.uc'
-if not file:
-    exit(0)
+import sys
+import os
 
-buffer = 1024 * 1024
-res = []
-with open(file, 'rb') as f:
-    while out:=f.read1(buffer):
-        for b in out:
-            res.append(b ^ 0xa3)
+def decode(file:str, outfile:str):
+    buffer = 1024 * 1024
+    res = []
+    with open(file, 'rb') as f:
+        while out:=f.read1(buffer):
+            for b in out:
+                res.append(b ^ 0xa3)
 
-with open('out.mp3', 'wb') as f:
-    f.write(bytes(res))
+    with open(outfile, 'wb') as f:
+        f.write(bytes(res))
 
+for file in sys.argv[1:]:
+    if os.path.isfile(file) and file.endswith('uc'):
+        out = os.path.splitext(file)[0] + '.mp3'
+        print(os.path.basename(file), '->', os.path.basename(out))
+        decode(file, out)
+
+os.system('pause')
 }}}
 

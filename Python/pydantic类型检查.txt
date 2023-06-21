@@ -11,65 +11,8 @@ https://pypi.org/project/pydantic/
 pydantic 库是 python 中用于数据接口定义检查与设置管理的库。
 强制类型转换，如果转换失败会报ValidationError
 
-{{{code: lang="python3" linenumbers="False"
-class BaseModel(PydanticBaseModel):
-    def __new__(cls, *args, **kwargs) -> Self:
-        cls.update_forward_refs()
-        return super(BaseModel, cls).__new__(cls)
-
-    class Config(BaseConfig, PydanticBaseModel.Config):
-        pass
-        
-class MyTeam(BaseModel):
-	id: str = Field(alias="_id")
-	admin_id: str
-	icon: str = None
-	member_ids: List[str]
-	name: str
-	regDate: str
-	tag_id: str
-
-MyTeam.parse_obj({...})  ->  忽略多余参数
-MyTeam.parse_raw("{...}")
-}}}
-
-
-python >= 3.9
-{{{code: lang="python3" linenumbers="False"
-from datetime import datetime
-from typing import Optional
-from pydantic import BaseModel
-
-
-class User(BaseModel):
-    id: int
-    name = 'John Doe'
-    signup_ts: Optional[datetime] = None
-    friends: list[int] = []
-
-
-external_data = {
-    'id': '123',
-    'signup_ts': '2019-06-01 12:22',
-    'friends': [1, 2, '3'],
-}
-user = User(**external_data)
-print(user.id)
-#> 123
-print(repr(user.signup_ts))
-#> datetime.datetime(2019, 6, 1, 12, 22)
-print(user.friends)
-#> [1, 2, 3]
-print(user.dict())
-"""
-{
-    'id': 123,
-    'signup_ts': datetime.datetime(2019, 6, 1, 12, 22),
-    'friends': [1, 2, 3],
-    'name': 'John Doe',
-}
-"""
-}}}
+datetime类型自动转换：
+https://docs.pydantic.dev/latest/usage/types/#datetime-types
 
 
 错误处理

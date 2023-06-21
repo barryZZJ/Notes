@@ -1,0 +1,9 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2023-06-18T21:21:54+08:00
+
+====== qbittorrent ======
+Created 星期日 18 六月 2023
+
+webui api
+https://github.com/qbittorrent/qBittorrent/wiki/WebUI-API-(qBittorrent-4.1)

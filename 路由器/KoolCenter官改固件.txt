@@ -14,3 +14,11 @@ https://www.koolcenter.com/
 固件下载服务器：
 https://fw.koolcenter.com/
 
+dns备份
+  nameserver:
+	- https://223.5.5.5/dns-query
+	- tls://101.101.101.101:853
+	- https://1.12.12.12/dns-query
+改为：
+119.29.29.29
+223.5.5.5

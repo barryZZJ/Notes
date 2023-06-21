@@ -49,7 +49,8 @@ r = os.popen(cmd)
 for line in r.readlines():
 	print (line)
 
-.makedirs(多级路径)
+.mkdir()
+.makedirs('多级路径', exist_ok=True)
 
 获取当前活动目录:
 os.getcwd()

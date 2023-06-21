@@ -6,6 +6,10 @@ https://docs.python.org/3/library/itertools.html
 accumulate
 itertools
 
+提取序列的每个元素，构造一个一维序列：
+chain()
+chain.from_iterable()
+
 1.无限迭代器：
 count(start [,step])  count(10) --> 10 11 12 13 14 ...
 for t in count(): <==> t=0 while t: t+=1

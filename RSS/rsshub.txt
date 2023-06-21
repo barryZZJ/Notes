@@ -5,7 +5,6 @@ Creation-Date: 2023-05-22T23:21:01+08:00
 ====== rsshub ======
 Created 星期一 22 五月 2023
 
-
 使用RSSHub订阅主流媒体
 
 使用实例：
@@ -15,7 +14,7 @@ https://docs.rsshub.app/social-media.html#twitter
 通用参数：
 https://docs.rsshub.app/parameter.html
 
-部署：
+=== 部署： ===
 https://docs.rsshub.app/install/#docker-bu-shu
 	配置：
 	https://docs.rsshub.app/install/#pei-zhi
@@ -35,72 +34,10 @@ docker image rm diygod/rsshub:chromium-bundled
 
 部署其他平台：
 Vercel：免费，但需要翻墙才能访问
-
-自建：
-https://docs.rsshub.app/joinus/new-rss/before-start.html#chuang-jian-ming-ming-kong-jian
-安装：npm ci --production
-在.env中配置参数：
-https://docs.rsshub.app/install/#pei-zhi
-'''
-PORT=1200
-PROXY_URI=socks://127.0.0.1:10808
-CACHE_EXPIRE=600
-CACHE_CONTENT_EXPIRE=86400
-REQUEST_TIMEOUT=10000
-YOUTUBE_KEY=AIzaSyBHsdkUIoFzUqDjON9DoNBAlL3Qqhfyh5Q
-KAMISHIRAISHIMONE_USERNAME=850462618@qq.com
-KAMISHIRAISHIMONE_PASSWORD=zzjzzj0123
-//
-HOTLINK_TEMPLATE=https://i3.wp.com/${host}${pathname}
-HOTLINK_INCLUDE_PATHS=/weibo,/picuki,/twitter
-//
-ALLOW_USER_HOTLINK_TEMPLATE=true
-//
-DEBUG_INFO=false
-NO_LOGFILES=true
-
-IG_USERNAME=barryjackson118
-IG_PASSWORD=zzjzzj01234
-IG_PROXY=socks://127.0.0.1:10808
-'''
-
-在lib/v2中新建文件夹，包含router.js, maintainer.js等
-router: 所在文件夹是第一级路径，因此代码内不用包含一级路径
-
-路径中获得的参数不带`/`
-
-parseDate()函数
-支持"yyyy/mm/dd"格式
-不支持"xx年xx月xx日"格式
-
-启动：
-正常：npm start
-调试：npm run dev
-
-图片反代
-方便国内不挂VPN就查看图片；方便查看微博等具有反盗链的图片（只要没有referer就可以查看，但是有些阅读器会自动添加referer）
-1. 环境变量配置
-https://docs.rsshub.app/install/#pei-zhi-tu-pian-chu-li
-''HOTLINK_TEMPLATE=https://i3.wp.com/${host}${pathname}''
-''HOTLINK_INCLUDE_PATHS=/weibo,/picuki,/twitter''
-''HOTLINK_EXCLUDE_PATHS=''
-
-docker-compose作为environment设置时,由于${xxxx}默认会被docker-compse解析,需要配置两个$$,具体如下:
-	environment:
-		HOTLINK_TEMPLATE: 'https://images.weserv.nl/url=$${href}'
-
-2. 通用参数配置
-https://docs.rsshub.app/parameter.html#duo-mei-ti-chu-li
-用法：需要环境变量ALLOW_USER_HOTLINK_TEMPLATE=true，在订阅url后添加通用参数
-?image_hotlink_template=https://images.weserv.nl?url=${href_ue}
-?image_hotlink_template=https://i3.wp.com/${host}${pathname}
-
-可用的反代服务器
-https://images.weserv.nl?url=${href_ue}
-https://i0.wp.com/docs.rsshub.app/logo.png
-https://i1.wp.com/blog.skk.moe/img/suka-favicon.png
-https://i2.wp.com/rixcloud.com/static/img/hulu-comment.8038550.png
-https://i3.wp.com/i.loli.net/2019/04/23/5cbeb7e41414c.png
+报错ERR_PNPM_LOCKFILE_MISSING_DEPENDENCY  Broken lockfile: no entry for '/japanese-date-converter/2.0.0' in pnpm-lock.yaml
+解决方法：
+1. pnpm install --no-frozen-lockfile 重新生成pnpm-lock.yaml
+2. 手动把对应的包加入package.json
 
 
 

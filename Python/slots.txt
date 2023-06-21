@@ -1,0 +1,13 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2023-06-15T10:39:33+08:00
+
+====== slots ======
+Created 星期四 15 六月 2023
+
+在类内定义静态变量''__slots__=("attr1",...)''
+效果：属性白名单，不能访问其他属性
+优点：
+1. 代码鲁棒性
+2. 提高属性访问速度
+3. 节省内存
