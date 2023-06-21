@@ -2,6 +2,9 @@ Content-Type: text/x-zim-wiki
 Wiki-Format: zim 0.6
 Creation-Date: 2022-09-02T15:29:52+08:00
 
+
+连接多个指令用&
+
 傻瓜教程：
 
 变量（注意等号两边不能有空格）：
