@@ -6,3 +6,24 @@ Creation-Date: 2023-06-21T10:52:34+08:00
 Created 星期三 21 六月 2023
 
 https://docs.python.org/3/library/asyncio.html
+
+对象：
+coroutine
+Future (== Promise)
+Task (subclass of Future, 协程执行的最小单元)
+
+''import asyncio''
+
+''async def main():''
+''    print('Hello ...')''
+''    await asyncio.sleep(1)''
+''    print('... World!')''
+
+''asyncio.run(main())''
+
+.run(coroutine object)：启动一个event loop，不断执行队列里的task，event loop获得控制权的时候会选一个task执行。
+.create_task()：封装task，注册到event loop
+
+await coroutine：进入coroutine并执行，如果其yield：block+回到Event loop；如果其return：保存返回值，当前任务加入event loop，等待下次获得控制权后继续执行。
+await task：获取返回值
+
