@@ -15,13 +15,13 @@ C:\Users\Barry\AppData\Roaming\JetBrains
 C:\Users\85046\Documents\WeChat Files
 QQ文件
 微信文件
+Python Pyprojects venv 虚拟环境
 
 logs:
 C:\ProgramData\Intel\Intel Extreme Tuning Utility\Logs （超大）
 C:\Users\Barry\AppData\Roaming\MySQL\Workbench\log
 
 C:\Users\Barry\AppData\Local\Microsoft\vscode-cpptools\ipch  (C_Cpp.intelliSenseCacheSize)
-C:\Users\Barry\AppData\Roaming\od 腾讯交友
 JAVA_ERROR_IN_IDEA.HPROF / JB IDE: File - Invalidate and Restart
 python第三方库
 C:/users
