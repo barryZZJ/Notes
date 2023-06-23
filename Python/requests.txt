@@ -45,8 +45,8 @@ requests.get('http://httpbin.org/get', params=payload)
 
 post(url, data=None, json=None, **kwargs)
 :param data: (optional) Dictionary, list of tuples, bytes, or file-like
-		object to send in the body of the :class:`Request`.
-:param json: (optional) json data to send in the body of the :class:`Request`.
+		object to send in the body of the :class:`Request`.  （如果是手动构造的json字符串，需要手动在header添加Content-Type为application/json)
+:param json: (optional) json data to send in the body of the :class:`Request`. （是一个字典，不是字符串）
 :param \*\*kwargs: Optional arguments that ``request`` takes.
 
 设置cookies: dict
