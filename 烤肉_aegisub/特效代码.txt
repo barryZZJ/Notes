@@ -47,7 +47,7 @@ http://unanimated.hostfree.pw/ts/ts-layers.htm
 \fsc<scale%> \fscx<scale%> \fscy<scale%> 字体缩放 scale:0~100
 \fsp<spacing> 字符间距 -~0~+
 \fsvp<spacing> 调节垂直间距（行距），正数为减小缩近行间距，负数为增加拉宽行间距（夹在两行间、需要 VSFilterMod）
-\fshpMspacing> 调节水平间距（字间距），需要VSFilterMod
+\fshp<spacing> 调节水平间距（字间距），需要VSFilterMod
 \frx<amount> \fry<amount> \frz<amount> \fr<amount> 旋转
 \fax<factor> \fay<factor> 文本剪切变换 0~1
 

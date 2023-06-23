@@ -7,10 +7,72 @@ Created 星期三 21 六月 2023
 
 https://docs.python.org/3/library/asyncio.html
 
-对象：
-coroutine
-Future (== Promise)
-Task (subclass of Future, 协程执行的最小单元)
+await coroutine/task：block当前函数，交还控制权给event loop
+
+**asyncio**
+.run(coroutine object)：启动一个event loop，不断执行队列里的task，event loop获得控制权的时候会选一个task执行。全部执行完毕后返回返回值。
+！如果不在主线程，执行完run后需要配置一个新的loop：asyncio.set_event_loop(asyncio.new_event_loop())，而且这个loop要run起来，默认是没有运行的。
+！原因：首次调用get_event_loop()时会自动建立一个loop，而调用.run会新建loop并覆盖asyncio默认的loop，运行完run后loop将close，此时如果不是主线程将无法自动产生新的loop
+
+.gather(*coroutines) -> Awaitable: ==Promise.all，等所有coroutine都await，相当于同时做多个子任务
+
+.create_task(coro) -> Task：把coro封装成task，注册到event loop，等待未来被运行，且不阻塞当前任务
+.sleep(delaysec) -> Coroutine  # 设为0可以避免当前task长时间独占loop
+
+.to_thread(func) -> Coroutine  # Asynchronously run function func in a separate thread. 用于IO bound任务，避免阻塞loop。可以结合.gather与其他task并行
+https://docs.python.org/3.9/library/asyncio-task.html#id10
+
+任务加入其他线程的loop：https://docs.python.org/3.9/library/asyncio-task.html#id11
+.run_coroutine_threadsafe(coro, loop) -> Future  
+	# Submit a coroutine to the given event loop. This function is meant to be called from a different OS thread than the one where the event loop is running.
+
+**Task (Future的子类)**: https://docs.python.org/3.9/library/asyncio-task.html#task-object
+协程执行的最小单元
+
+底层API：
+**Future: **https://docs.python.org/3.9/library/asyncio-future.html#asyncio.Future
+相当于Promise
+A Future represents an eventual result of an asynchronous operation. awaitable
+获取方法：
+loop = asyncio.get_running_loop() #Return the running event loop in the //current// OS thread.
+fut = loop.create_future() -> Future
+
+.result()  # get the result if Future is //done//. otherwise raise InvalidStateError
+.done() -> bool # is done (had result, or cancelled, or exception)
+.cancelled() -> bool # is cancelled
+.set_result(result) # mark as done
+if not fut.cancelled():
+	fut.set_result(42)
+.add_done_callback(calback)  # Add a callback to be run when the Future is done. The callback is called with the Future object as its only argument.
+.remove_done_callback
+.cancel
+.get_loop()
+
+
+**Loop:**
+https://docs.python.org/3.9/library/asyncio-eventloop.html
+asyncio.get_running_loop()
+asyncio.get_event_loop() Get the current event loop. create a new on if not exist and is in main thread
+
+loop running https://docs.python.org/3.9/library/asyncio-eventloop.html#id1
+.run_untile_complete
+.run_forever()
+.stop() .close()
+.is_running() .is_closed()
+
+Scheduling callbacks
+.call_soon()  Schedule the callback to be called with args arguments at the next iteration of the event loop.
+.call_soon_threadsafe() Must be used to schedule callbacks //from another thread//.
+Scheduling delayed callbacks
+.call_later(delaysec
+.call_at(when
+
+.create_future() -> Future
+.create_task() -> Task
+
+execute code in thread or process pool:
+https://docs.python.org/3.9/library/asyncio-eventloop.html#asyncio.loop.run_in_executor
+.run_in_executor(executer, func, *args) -> awaitable  # executer can be None
 
 ''import asyncio''
 
@@ -20,10 +82,3 @@ Task (subclass of Future, 协程执行的最小单元)
 ''    print('... World!')''
 
 ''asyncio.run(main())''
-
-.run(coroutine object)：启动一个event loop，不断执行队列里的task，event loop获得控制权的时候会选一个task执行。
-.create_task()：封装task，注册到event loop
-
-await coroutine：进入coroutine并执行，如果其yield：block+回到Event loop；如果其return：保存返回值，当前任务加入event loop，等待下次获得控制权后继续执行。
-await task：获取返回值
-

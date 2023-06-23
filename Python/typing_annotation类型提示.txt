@@ -42,8 +42,12 @@ a # type: List[str]
 检测：
 isinstance(o, t)
 
-通用模板类型(如函数返回类型是自己：
-T = TypeVar('T', bound='类名')
+自定义类型
+T = TypeVar('T', bound=TypeName)  # 绑定T到TypeName，是固定的。
+
+模板类型(如函数返回类型是自己：
+T = TypeVar('T')  # 通用类型，用于类定义，继承自Generic[T]，字类需要指定T的类型。
+T = TypeVar('T', bound='类名')  # 绑定T到类名，是固定的。
 成员函数(sth: Type[T]) -> T:...
 
 在类中注解自身：
@@ -66,9 +70,10 @@ TypedDict
 
 ''assert Point2D(x=1, y=2, label='first') == dict(x=1, y=2, label='first')''
 
-自定义类型
+类型别名
 from typing import TypeAlias
 network = TypeAlias(str, name='network')
+TypeAlias(OTHER_TYPE, name='other')
 
 用于numpy：
 from numpy.typing import NDArray

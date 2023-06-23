@@ -40,9 +40,9 @@ class myThread(Thread):
 		self.lock = Lock()
 
 	def run(self): # 线程在创建后会直接运行run函数
-	self.lock.aquire() # 加锁
-	# ...
-	self.lock.release() # 解锁
+		self.lock.aquire() # 加锁
+		# ...
+		self.lock.release() # 解锁
 		pass
 myThread(args).start()
 

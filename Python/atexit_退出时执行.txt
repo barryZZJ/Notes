@@ -1,0 +1,21 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2023-06-24T01:05:55+08:00
+
+====== atexit 退出时执行 ======
+Created 星期六 24 六月 2023
+
+register cleanup functions to be called on Python interpreter exit
+
+import atexit
+def on_app_exit():
+	print("Terminating separate process...")
+	process.terminate()
+atexit.register(on_app_exit)
+
+def close_running_threads():
+	for thread in the_threads:
+		thread.join()
+	print "Threads complete, ready to finish"
+#Register the function to be called on exit
+atexit.register(close_running_threads)

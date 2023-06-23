@@ -17,7 +17,7 @@ conn.close()
 
 # CREATE
 c.execute('CREATE TABLE IF NOT EXISTS numbers (id integer primary key, name text NOT NULL)')
-自增：INTEGER AUTOINCREMENT，默认从1开始
+自增：使用内置的ROWID列 https://sqlite.org/autoinc.html，默认从1开始
 多个主键：CREATE TABLE something (
   column1 INTEGER NOT NULL,
   column2 INTEGER NOT NULL,

@@ -10,3 +10,42 @@ https://docs.python.org/3.9/library/multiprocessing.html
 from multiprocessing import Process
 
 与多线程类似，继承Process，重写run函数，外部调用start()
+
+通信方式：
+multiprocessing.Queue(), Pipe
+https://docs.python.org/3.9/library/multiprocessing.html#pipes-and-queues
+生产者、消费者模型，把queue作为参数传递，.put、.get赋值取值，可以阻塞
+
+Shared memory
+Value, Array
+
+.join
+.terminate
+
+带asyncio的类不能直接运行，可以套一层lambda : asyncio.run()
+
+{{{code: lang="python3" linenumbers="False"
+import multiprocessing
+
+def callback_function(value):
+    print("Callback function executed with value:", value)
+
+def register_callback(queue):
+    # Get the function from the queue
+    callback_func = queue.get()
+    # Invoke the callback function with a value
+    callback_func("Hello from the registered callback!")
+
+if __name__ == '__main__':
+    # Create a multiprocessing.Queue to pass the callback function
+    queue = multiprocessing.Queue()
+    # Create a Process object that executes the register_callback function
+    process = multiprocessing.Process(target=register_callback, args=(queue,))
+    # Start the process
+    process.start()
+    # Put the callback_function into the queue
+    queue.put(callback_function)
+    # Wait for the process to finish
+    process.join()
+
+}}}

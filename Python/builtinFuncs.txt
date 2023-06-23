@@ -17,3 +17,5 @@ e.g.:
 list(map(lambda x: x*2, [1, 2, 3, 4, 5]))  # [2,4,6,8,10]
 list(map(lambda x,y:x+y, [1, 2, 3, 4, 5], [10, 20, 30, 40, 50]))  # [11, 22, 33, 44, 55]
 
+isinstance  # 注意不同路径下导入同一个对象可能结果为False！
+issubclass
