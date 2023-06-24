@@ -5,8 +5,17 @@ Creation-Date: 2023-01-14T00:00:14+08:00
 ====== hash ======
 Created 星期六 14 一月 2023
 
-md5哈希：
+python自带的hash(obj) -> int 只能保证在同一个解释器进程里一致。要保证一致性需要使用md5或sha-256！
+
+md5哈希：128bit
 [[:Python:md5哈希]]
+def md5(s: str) -> str:
+	return hashlib.md5(s.encode()).hexdigest() # 返回值为小写16进制字符串
+
+sha256哈希：256bit
+def sha256(s: str) -> str:
+	return hashlib.sha256(s.encode()).hexdigest() # 返回值为小写16进制字符串
+
 
 pip install imohash
 https://github.com/kalafut/py-imohash

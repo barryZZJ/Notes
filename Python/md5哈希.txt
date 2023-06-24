@@ -4,8 +4,11 @@ Wiki-Format: zim 0.6
 import hashlib
 
 # 字符串生成MD5
-def md5(s):
-	return hashlib.md5(s.encode()).hexdigest()  # 返回值字母为小写
+def md5(s: str) -> str:
+	return hashlib.md5(s.encode()).hexdigest() # 返回值为小写16进制字符串
+
+def md5int(s: str) -> int:
+	return int(hashlib.md5(s.encode()).hexdigest(), 16)
 
 def genearteMD5(str):
 	# 创建md5对象
