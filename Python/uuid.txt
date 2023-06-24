@@ -12,3 +12,5 @@ Generate a random UUID
 
 def gen_uuid():
 	return str(uuid.uuid4())
+
+str(uuid.UUID('some string'))
