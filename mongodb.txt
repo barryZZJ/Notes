@@ -1,0 +1,8 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2023-06-25T18:46:43+08:00
+
+====== mongodb ======
+Created 星期日 25 六月 2023
+
+https://www.mongodb.com/docs/v6.0/tutorial/install-mongodb-on-ubuntu/
