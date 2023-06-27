@@ -5,6 +5,7 @@ Creation-Date: 2023-03-05T13:45:02+08:00
 ====== bidict ======
 Created 星期日 05 三月 2023
 
+https://bidict.readthedocs.io/en/main/
 双向字典，实现键和值的双向映射。
 
 {{{code: lang="python3" linenumbers="False"

@@ -72,8 +72,9 @@ TypedDict
 
 类型别名
 from typing import TypeAlias
-network = TypeAlias(str, name='network')
-TypeAlias(OTHER_TYPE, name='other')
+T = TypeVar('T')
+ALIAS = T
+ALIAS: TypeAlias = T
 
 用于numpy：
 from numpy.typing import NDArray
