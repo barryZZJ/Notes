@@ -14,6 +14,9 @@ C:\Users\85046\.ssh
 
 https://www.jianshu.com/p/1e793e386beb
 
+生成密钥
+ssh-keygen -t rsa -b 2048
+
 ssh服务器：
 安装：sudo apt install openssh-server
 把id_rsa.pub里的内容写入~/.ssh/authorized_keys
