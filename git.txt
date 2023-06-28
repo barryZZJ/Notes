@@ -16,10 +16,14 @@ start a working area:
 work on the current change:
 	-add：将修改添加到暂存区
 		git add .
-	-revert 撤销commit
-	-rm
-	git rm -r --cached dir_name 删除本地已add的文件
-
+	-rm -r --cached dir_name 移出暂存区
+	-restore <file> 回滚硬盘上的修改 / -restore --staged <file> 移出暂存区
+	-checkout HEAD <file> 完全删除文件（永久消失）
+	-reset --soft HEAD~1 回到倒数第二个commit，改动保留在暂存区
+	-reset [--mixed] HEAD~1 回到倒数第二个commit，改动移出暂存区，在硬盘中
+	-reset --hard HEAD~1 回到倒数第二个commit，完全删除本地改动
+	-revert HEAD~1 添加一个相反的commit
+	
 examine the history and state:
 	-log: Show commit logs
 		git log
@@ -102,7 +106,7 @@ https://www.yiibai.com/git/git_stash_operation.html
 	1. 将<newbranch>合并入<master>:
 	   git switch master
 	   [git status]
-	   git merge newbranch
+	   git merge newbranch 【使用rebase代替merge，rebase结果是一条线,mege结果是两条线】
 
 	2. 冲突解决：
 	   merge时会提示有冲突，用git status查看哪些文件发生了冲突。（如file.txt发生了冲突）
