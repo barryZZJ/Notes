@@ -39,7 +39,7 @@ preset选择ax264 ts
 4. 用aegisub打开，导入裁好的音频检查字幕时间。如果允许的话可以重新轴一遍
 
 DEBUG：
-音频只有第一段能对上，后面错位：使用FileIndexer的lw(core.lsmas.LWLibavSource)/ffms(core.lsmas.LWLibavSource)索引器提取音频
+音频只有第一段能对上，后面错位：使用FileIndexer的lw(core.lsmas.LWLibavSource)/ffms(core.ffms2.Source)索引器提取音频
 （有几种电视台是不能用dg的例如bs11就不可以 得用lw）
 其他
 音频不能精准裁剪：使用HD Streams Extractor提取音频

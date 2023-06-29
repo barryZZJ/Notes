@@ -7,6 +7,7 @@ Created 星期三 12 十月 2022
 
 解析ass文件：
 https://pypi.org/project/ass/
+pip install ass
 {{{code: lang="python3" linenumbers="False"
 with open('ass.ass', encoding='utf_8_sig') as f:
 	sub = ass.parse(f)
