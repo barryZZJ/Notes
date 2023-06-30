@@ -43,7 +43,7 @@ soup.find(string=re.compile("sisters")).string  # 返回的是匹配内容整体
 
 === 2.只返回一个元素 ===
 （直接soup.<tag_name> 相当于 soup.find(<tag_name>)  如soup.table）
-find(name, attrs, recursive, string, **kwargs) == find_all(..., limit=1)   -> Tag
+find(name, attrs, recursive, string, **kwargs) == find_all(..., limit=1)   -> Optional[Tag]
 soup.find(id="link3")
 soup.find(name='input')
 

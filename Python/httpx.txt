@@ -46,6 +46,7 @@ proxies支持单独配置：https://www.python-httpx.org/advanced/#http-proxying
 ''    # and the "internal" subdomain on port 5550 is requested...''
 ''    "http://internal.example.com:5550": "http://localhost:8032",''
 ''}''
+socks5://ip:port
 
 {{{code: lang="python3" linenumbers="False"
 client = httpx.Client(
