@@ -1,0 +1,62 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2023-07-04T16:14:15+08:00
+
+播出结束后出BD源，需要调轴
+m2ts文件全部拖入potplayer中会自动排序
+
+只需要平移即可，但OPED需要特别检查
+
+需要先用小丸默认参数压一下BD源，否则BD源aegisub加载很慢
+
+{{~\AppData\Roaming\Tencent\QQ\Temp\U{$8C~T2L$X9A{M{4I9GGKR.JPG}}
+
+
+{{{code: lang="python3" linenumbers="False"
+from vapoursynth import core
+import mvsfunc as mvf
+
+#索引
+source = r"{src}"
+src8 = core.lsmas.LWLibavSource(source,repeat=True,threads=16)
+#字幕档
+asstSubMod = r"{ass}"
+
+width={w}
+height={h}
+
+#src8 = core.vivtc.VDecimate(src8)
+
+src16 = mvf.Depth(src8,depth=16)
+
+nr = core.knlm.KNLMeansCL(src16, d=1, a=2, s=4, h=1.4)
+debd = core.neo_f3kdb.Deband(nr,12,16,16,16)
+debd = core.neo_f3kdb.Deband(debd,16,32,16,16)
+us = core.resize.Lanczos(debd, width, height)
+
+nr16 = core.rgvs.RemoveGrain(src16,[20,11])
+noise16 = core.std.MakeDiff(src16,nr16)
+db = core.f3kdb.Deband(nr16,8,64,48,48,0,0,output_depth=16)
+db = core.f3kdb.Deband(debd,16,48,32,32,0,0,output_depth=16)
+db = mvf.LimitFilter(db, src16, thr=0.4, thrc=0.3, elast=3.0)
+res = core.std.MergeDiff(db, noise16)
+
+nr16 = core.bilateral.Bilateral(src16, sigmaS=1.5,sigmaR=0.015, algorithm=2)
+noise = core.std.MakeDiff(src16,nr16)
+blur = core.rgvs.RemoveGrain(nr16, 11)
+diff = core.std.MakeDiff(nr16,blur)
+diff = core.rgvs.Repair(diff,noise,1)
+res = core.std.MergeDiff(nr16,diff)
+
+#转1080P
+res = core.fmtc.resample(debd,width,height)
+res = mvf.Depth(us,depth=8)
+
+#上字幕（要上就把下面句子取消注解）
+res = core.vsfm.TextSubMod(res, asstSubMod)
+
+#最后输出
+res.set_output()
+}}}
+
+
