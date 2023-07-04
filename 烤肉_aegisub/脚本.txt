@@ -33,9 +33,12 @@ selected_lines: indexes array
 active_line: number
 
 subtitle object https://aegi.vmoe.info/docs/3.2/Automation/Lua/Subtitle_file_interface/
+line table: https://aegi.vmoe.info/docs/3.2/Automation/Lua/Modules/karaskel.lua/#dialogue-line-table
 	.class  # str, == "dialogue" or "info" or "style" or "unknown"
 	.comment  # bool
 	.text  # str
+	.start_time # number 毫秒
+	.end_time # number 毫秒
 	
 subtitles[i] = nil
 subtitles.delete(i)
@@ -44,6 +47,7 @@ subtitles.delete({i1, i2, ...})
 subtitles.deleterange(first, last)
 
 如果设置了aegisub.debug.out("")，会保留日志界面
+（可以省略string.format函数，直接传入参数）
 
 lua标准库自带string的一些操作：但是没有re库完善
 https://www.runoob.com/manual/lua53doc/manual.html#pdf-string.find

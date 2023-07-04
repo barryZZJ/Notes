@@ -73,7 +73,20 @@ condition and ifTrue or ifFalse
 若ifTrue不保证为true，可以使用更完备的：
 (condition and {ifTrue} or {ifFalse})[1]
 
-math.random()
+math库数学运算：
+.abs
+.min(x, ...)
+.max(x, ...)
+.random()
 
 tostring()
 tonumber()
+
+多个返回值：支持，且语法同python
+
+string format:
+string.format(pattern, args)
+控制字符与c标准printf基本一致
+%d - int
+%s - str
+%c - chat

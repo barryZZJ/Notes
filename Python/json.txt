@@ -18,7 +18,7 @@ with open() as f:
 	json.dump(obj, f)  # indent=4可以格式化文件
 
 解决中文变为unicode码问题：
-dump中添加ensure_ascii=False参数
+dump中添加 ensure_ascii=False参数
 
 
 {{{code: lang="python3" linenumbers="False"
