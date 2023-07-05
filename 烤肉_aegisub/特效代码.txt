@@ -9,6 +9,9 @@ https://www.jianshu.com/p/cfdbfdc6d3a7
 TCAX中的所有ASS特效标签
 https://www.bilibili.com/read/cv15616345/
 
+笔记
+https://github.com/kira-96/ASS-file
+
 水波效果：
 可以考虑基于karaoke template把一个字切成多个分片，然后从不同距离处move回原始位置，这样能形成一个sin函数的效果
 
@@ -121,28 +124,33 @@ accel: 0~1: 先快后慢，1~∞: 先慢后快
 \kf 或 \K 有平滑效果，每个字会部分渐变
 \ko 一次跳一个字，同时边框会变
 
+(原厂自带功能)
 Effect栏输入：
-delay越小越快；fadeaway默认为0
 上下滚动：
-Scroll up;<y1|0>;<y2|0>;<delay(1-100)>[;fadeawayheight]
-Scroll down;<y1|0>;<y2|0>;<delay(1-100)>[;fadeawayheight]
+Scroll up;<y1|0>;<y2|0>;<delay(1-100)>[;fadeawayheight=0]
+Scroll down;<y1|0>;<y2|0>;<delay(1-100)>[;fadeawayheight=0]
 eg: Scroll up;0;1080;100
    The text/picture will scroll up the screen. 
-		  The y1 and y2 values define a vertical region on the screen in which
+  - y1, y2: starting and ending position (in pixels)
+		 The y1 and y2 values define a vertical region on the screen in which
    the text will scroll. The values are in pixels, and it doesn't matter
    which value (top or bottom) comes first. If the values are zeroes then
    the text will scroll up the full height of the screen.
+  - delay 1~100, the higher the slower
 	  The delay value can be a number from 1 to 100, and it slows down the
    speed of the scrolling - zero means no delay and the scrolling will be
    as fast as possible.
+  - fadeawayheight 从屏幕上下边缘起渐变的宽度，默认为0没有渐变（！VSFiltersubMod不支持！）
 
 左右滚动：
-Banner;<delay(1-100)>[;lefttoright(0|1)][;<fadeawaywidth]
+Banner;<delay(1-100)>[;lefttoright=(0|1)][;<fadeawaywidth=0]
    Text will be forced into a single line, regardless of length, and scrolled from right to left accross the screen.
    When delay is greater than 0, moving one pixel will take (1000/delay) second.
+   - fadeawaywidth 从屏幕两侧边缘起渐变的宽度，默认为0没有渐变
 e.g. Banner;5;0;50
 
 VSFilterMod 新增tags：https://github.com/computerfan/VSFilterMod/wiki/New-Tags
+https://cwlrin.wiki/wp-content/uploads/2021/02/vsfiltermod-%E6%89%8B%E5%86%8C.pdf
 \fsc 字体缩放
 \frs 每个字的baseline旋转
 \fsvp \fshp 调节垂直、水平baseline位置
@@ -154,7 +162,7 @@ VSFilterMod 新增tags：https://github.com/computerfan/VSFilterMod/wiki/New-Tag
 \1img 平铺图片(如需要单张图片需要添加符合图片大小的vector clip矢量绘图) $=1~4
 \mover (Polar) 沿极坐标平移 \moves3 \moves4 (Spline) 沿不同轨迹运动
 \jitter 各方向重复抖动
-\movevc 移动vector clip遮罩 参数同\move，使用的是相对坐标，原位置是0,0，clip必须是矢量图
+\movevc() + \[i]clip() 移动同一行中的clip/iclip遮罩，参数同\move，clip使用绝对坐标，movevc使用是相对坐标，clip所在的原位置是0,0。clip必须使用矢量代码
 \lua(somemethd, args) \somemethod(args)
 \ortho0 frx fry使用透视投影（且改进了原版）
 \ortho1 frx fry使用正交投影（原版没有）

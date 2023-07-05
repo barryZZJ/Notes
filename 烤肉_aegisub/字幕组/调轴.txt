@@ -2,12 +2,20 @@ Content-Type: text/x-zim-wiki
 Wiki-Format: zim 0.6
 Creation-Date: 2023-07-04T16:14:15+08:00
 
+
 播出结束后出BD源，需要调轴
-m2ts文件全部拖入potplayer中会自动排序
 
-只需要平移即可，但OPED需要特别检查
+1. m2ts文件全部拖入potplayer中会自动排序，提取出正片部分BD源
+2. 用小丸默认参数压一下BD源
+3. 导入aegisub，检查：
+	4. 全局是否需要平移；
+	5. OP、ED需要特别检查“staff、译制 织梦字幕组 and 免责证明 招募广告”对帧的情况（开始帧和结束帧）没有的需要补上
+	6. 检查所有屏幕字对帧情况
+	7. 检查OP、ED字体有没有安装
+译制 织梦字幕组
+本作品仅供学习交流 禁止使用于商业用途
+字幕组长期招收 日翻 时间轴 后期 美工 代码 有意请加群 862987948
 
-需要先用小丸默认参数压一下BD源，否则BD源aegisub加载很慢
 
 {{~\AppData\Roaming\Tencent\QQ\Temp\U{$8C~T2L$X9A{M{4I9GGKR.JPG}}
 
