@@ -159,7 +159,15 @@ https://cwlrin.wiki/wp-content/uploads/2021/02/vsfiltermod-%E6%89%8B%E5%86%8C.pd
 \rnd \rndx \rndy \rndz 随机偏移
 \$vc 颜色渐变，$=1~4分别对应1c,2c,3c,4c
 \$va 透明度渐变，$=1~4分别对应1c,2c,3c,4c
-\1img 平铺图片(如需要单张图片需要添加符合图片大小的vector clip矢量绘图) $=1~4 （注意只支持png**编码**的图片）（图片的位置不太正，需要比预期的位置往上移动2个像素才行）
+\$img(path[,xoffset,yoffset]) 平铺图片 (如需要单张图片需要添加符合图片大小的vector clip矢量绘图) $=1~4 
+	注意只支持png**编码**的图片
+	图片的位置不太正，需要比预期的位置往上移动2个像素才行
+	path必须是'/'才能用offset。
+	也可以作为文字的背景
+$=1
+$=2 对应k轴未唱的字
+$=3 border
+$=4 shad
 \mover (Polar) 沿极坐标平移 \moves3 \moves4 (Spline) 沿不同轨迹运动
 \jitter 各方向重复抖动
 \movevc() + \[i]clip() 移动同一行中的clip/iclip遮罩，参数同\move，clip使用绝对坐标，movevc使用是相对坐标，clip所在的原位置是0,0。clip必须使用矢量代码
