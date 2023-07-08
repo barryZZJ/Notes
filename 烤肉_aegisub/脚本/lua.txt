@@ -50,6 +50,8 @@ for ind, ele in ipairs(arr) do # ind从1开始
 	...
 end
 
+for k, v in pairs(dict) do
+
 include("unicode.lua")
 for c in unicode.chars(l.text) do
 

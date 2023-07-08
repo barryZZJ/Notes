@@ -13,6 +13,9 @@ http://unanimated.hostfree.pw/ts/scripts-manuals.htm?i=1
 
 process reporting: https://aegi.vmoe.info/docs/3.0/Automation/Lua/Progress_reporting/
 
+显示对话框 aegisub.dialog
+https://aegisub.org/docs/latest/automation/lua/dialogs/#display-dialog-functions
+
 aegisub.project_properties()["video_file"]
 aegisub.project_properties().video_position
 
@@ -46,6 +49,7 @@ subtitles.delete(i1, i2, ...)
 subtitles.delete({i1, i2, ...})
 subtitles.deleterange(first, last)
 
+debug: https://aegisub.org/docs/latest/automation/lua/progress_reporting/#debug-output
 如果设置了aegisub.debug.out("")，会保留日志界面
 （可以省略string.format函数，直接传入参数）
 
@@ -60,9 +64,9 @@ regex: https://aegi.vmoe.info/docs/3.2/Automation/Lua/Modules/re/
 lua里escape符号要加%
 pat = re.compile()
 re.sub(str, pat, repl)[1]
-re.match re.find
-	find: 匹配多次，不捕获subgroup。返回match table数组，每个元素是一次匹配结果
-	match: 只匹配一次，捕获subgroup。返回match table数组，[1]是整个匹配结果，后续的是捕获的subgroup
+re.match(str,pat) re.find(str,pat)
+	find: 匹配多次，不捕获subgroup。返回match table数组，每个元素是一个匹配结果的**match table**
+	match: 只匹配一次，捕获subgroup。返回match table数组，[1]是整个匹配结果的**match table**，后续的是捕获的subgroup的**match table**
 	无匹配则返回nil
 text, _ = pat:sub(text, repl)
 tab = pat:match(text)  注意下标从1开始
@@ -70,7 +74,7 @@ tab = pat:match(text)  注意下标从1开始
 split同样会返回pat括号里的内容
 
 tab[i]['str'] 为匹配结果
-match table格式:
+**match table**格式:
 {
 	{
 		["str"] = "b",
