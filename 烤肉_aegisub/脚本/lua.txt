@@ -18,6 +18,14 @@ arr[ind]
 arr[#arr]
 
 字典：
+键名默认解析为字符串
+table1 = {key=1, y=2}
+table1.key; table1.y;
+
+数字或字符串作为键需要套上[]
+table2 = {[1] = ..., ["stringAsKey"] = ...}
+table2[1]; table2["stringAsKey"]
+
 可以包含函数，但其第一个参数必须是self:
 mytable = { x = 2, y = function(self,a,b) .. end }
 mytable.x
@@ -67,6 +75,8 @@ end
 'a' .. 'b'  拼接(不是加号）
 
 匿名函数：function(s, st, ed) return to_fullwidth[s] end
+
+可选参数：如果定义了形参，没有传实参，则形参为nil
 
 函数返回多值时，如果左侧只有一个变量，则多余返回值被抛弃
 
