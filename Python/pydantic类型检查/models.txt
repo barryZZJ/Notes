@@ -7,7 +7,7 @@ Created 星期日 18 六月 2023
 
 https://docs.pydantic.dev/latest/usage/models/
 
-各种类型转换https://docs.pydantic.dev/latest/usage/types/
+各种类型转换 https://docs.pydantic.dev/latest/usage/types/
 
 动态定义模型
 https://docs.pydantic.dev/latest/usage/models/#dynamic-model-creation
@@ -23,18 +23,25 @@ class Model(BaseModel):
 动态默认值：
 https://docs.pydantic.dev/latest/usage/models/#field-with-dynamic-default-value
 
-model.parse_obj()
-parse_obj_as(model, obj)
-parse_raw_as
+解析数据：
+Model.parse_obj(dict) -> deprecated, use .model_validate
+.parse_raw(str) -> deprecated, use .model_validate_json
+.parse_file
 
-.parse_obj(dict)
-.dict()
+保存：
+不支持直接dump为json
+model.dict() -> deprecated, use model_dump(mode='json')  # 如果mode='python'，则有些值如URL, datetime可能直接是对象
+.json -> deprecated, use model_dump_json
+
+pydantic.parse_obj_as(model, obj)
+pydantic.parse_raw_as
+
 
 Model signature:
 alias:
-https://docs.pydantic.dev/latest/usage/models/#reserved-names
+https://docs.pydantic.dev/latest/usage/fields/#field-aliases
 _id: int = Field(..., alias='id')
-(pydantic prefers aliases over names)
+(pydantic prefers aliases over names，在解析时会使用alias的key)
 
 custom init:
 ''    def __init__(self, id: int = 1, *, bar: str, **data) -> None:''
@@ -43,7 +50,7 @@ custom init:
 
 const:
 MY_CONST: str = Field('CONST', const=True)  # 此成员不能在内部函数引用，且外部不能通过类名引用
-__''MY_CONST__'': str = 'CONST'  # 以魔法方式命名的变量名不会被pydantic解析
+''__MY_CONST__'': str = 'CONST'  # 以魔法方式命名的变量名不会被pydantic解析
 排除项：
 Class variables which begin with an underscore and attributes annotated with typing.ClassVar will be automatically excluded from the model.
 

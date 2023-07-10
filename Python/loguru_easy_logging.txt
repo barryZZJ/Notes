@@ -11,6 +11,9 @@ https://pypi.org/project/loguru/
 ''logger.debug("That's it, beautiful and simple logging!")''
 ''# 2023-05-30 22:42:33.572 | DEBUG    | __main__:<module>:1 - That's it, beautiful and simple logging!''
 
+string format use {} instead of %
+logger.info("If you're using Python {}, prefer {feature} of course!", 3.6, feature="f-strings")
+
 支持多个参数，但用法是str.format，不是print
 
 只要在一个地方logger.add过，在其他地方import的logger也可以用
@@ -19,6 +22,8 @@ https://pypi.org/project/loguru/
 Change level:
 https://loguru.readthedocs.io/en/stable/resources/recipes.html#changing-the-level-of-an-existing-handler
 默认level是debug
+logger.add(sys.stderr, format="{time} {level} {message}", filter="my_module", level="INFO")
+#or?
 logger.remove(0)
 logger.add(sys.stderr, level="WARNING")
 

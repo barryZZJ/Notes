@@ -63,6 +63,6 @@ client = httpx.Client(
                 "all://": "http://localhost:9999",
             }
          )
-client.get('/path')
+client.get('/path', params=payload)
 client.post('/path', data=payload)
 }}}

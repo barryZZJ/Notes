@@ -1,0 +1,12 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2023-07-10T18:02:13+08:00
+
+====== fields ======
+Created 星期一 10 七月 2023
+
+https://docs.pydantic.dev/latest/usage/fields/
+
+alias
+default
+default_factory

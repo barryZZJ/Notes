@@ -5,6 +5,8 @@ Creation-Date: 2023-05-26T00:07:41+08:00
 ====== docker-compose ======
 Created 星期五 26 五月 2023
 
+安装：
+
 
 同时管理一系列容器，读取目录下的docker-compose.yml配置文件
 在有docker-compose.yml的目录下或用-f指定yml文件
@@ -33,7 +35,7 @@ start and restart all the services defined in docker-compose.yml
 前台启动：
 docker-compose up
 后台启动：
-docker-compose up -d
+docker-compose up -d --remove-orphans
 查看日志（后台启动时）：
 docker-compose logs -f --timestamps
 
@@ -43,9 +45,14 @@ docker-compose stop
 docker-compose start
 
 卸载：
-docker-compose down
+docker-compose down --remove-orphans
 -v remove all volumes
 
 确认是否删除成功：
 docker ps -a
 docker rm <container_id>
+
+更新：
+yml里image应以:latest结尾
+docker-compose pull
+

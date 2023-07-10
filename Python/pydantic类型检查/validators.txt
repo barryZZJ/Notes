@@ -7,4 +7,80 @@ Created 星期日 18 六月 2023
 
 https://docs.pydantic.dev/latest/usage/validators/
 
-可以自定义验证和转换函数
+raises pydantic.ValidationError
+
+可以自定义验证函数，保证值合法
+field_validator(field, *fields, mode: ['before', 'after', 'plain'] = 'after')
+
+可以自定义转换/传入值解析函数
+https://docs.pydantic.dev/latest/usage/validators/#wrap-validators
+添加装饰器（见下）field_validator(<fieldname>, mode='before')，然后手动解析，return解析结果即可
+
+实现不支持的数据类型：
+''__get_pydantic_core_schema__ ''?
+
+复用：
+https://docs.pydantic.dev/latest/usage/validators/#reuse-validators
+
+
+{{{code: lang="python3" linenumbers="False"
+from pydantic_core.core_schema import FieldValidationInfo
+
+from pydantic import BaseModel, ValidationError, field_validator
+
+
+class UserModel(BaseModel):
+    name: str
+    username: str
+    password1: str
+    password2: str
+
+    @field_validator('name')
+    def name_must_contain_space(cls, v):
+        if ' ' not in v:
+            raise ValueError('must contain a space')
+        return v.title()
+
+    @field_validator('password2')
+    def passwords_match(cls, v, info: FieldValidationInfo):
+        if 'password1' in info.data and v != info.data['password1']:
+            raise ValueError('passwords do not match')
+        return v
+
+    @field_validator('username')
+    def username_alphanumeric(cls, v):
+        assert v.isalnum(), 'must be alphanumeric'
+        return v
+
+
+user = UserModel(
+    name='samuel colvin',
+    username='scolvin',
+    password1='zxcvbn',
+    password2='zxcvbn',
+)
+print(user)
+"""
+name='Samuel Colvin' username='scolvin' password1='zxcvbn' password2='zxcvbn'
+"""
+
+try:
+    UserModel(
+        name='samuel',
+        username='scolvin',
+        password1='zxcvbn',
+        password2='zxcvbn2',
+    )
+except ValidationError as e:
+    print(e)
+    """
+    2 validation errors for UserModel
+    name
+      Value error, must contain a space [type=value_error, input_value='samuel', input_type=str]
+    password2
+      Value error, passwords do not match [type=value_error, input_value='zxcvbn2', input_type=str]
+    """
+}}}
+
+
+
