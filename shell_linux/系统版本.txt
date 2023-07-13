@@ -13,3 +13,6 @@ uname -a
 lsb_release -a
 cat /etc/redhat-release，这种方法只适合Redhat系的Linux
 cat /etc/issue，此命令也适用于所有的Linux发行版。 
+
+系统架构：
+uname -m

@@ -4,3 +4,13 @@ Creation-Date: 2022-09-15T13:04:27+08:00
 
 ====== 路由器 ======
 Created 星期四 15 九月 2022
+
+设置服务
+service <service> {start|stop|reload|force-reload|restart|try-restart|status}
+
+wifi电脑ip：192.168.50.201
+插线电脑ip：192.168.50.200
+
+该ip后需要改的配置：
+DMZ
+frpc插件

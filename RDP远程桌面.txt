@@ -1,0 +1,15 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2023-07-14T00:42:07+08:00
+
+====== RDP远程桌面 ======
+Created 星期五 14 七月 2023
+
+0. 非专业版：下载RDP Wrap，按照教程破解远程桌面
+
+mstsc.exe登录远程桌面
+本地账户使用用户名，微软账户用邮箱。
+密码不能是PIN码，修改方法：https://zhuanlan.zhihu.com/p/537738910
+注意两台电脑重名时电脑名的前缀。
+
+每次系统更新时都需要手动更新rdpwrap.ini

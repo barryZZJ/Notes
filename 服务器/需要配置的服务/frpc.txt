@@ -5,6 +5,9 @@ Creation-Date: 2022-10-10T19:40:25+08:00
 ====== frpc ======
 Created 星期一 10 十月 2022
 
+路由器frpc插件：
+/koolshare/bin/frpc
+不要开定时重新注册，否则到时候会断开一下连接
 
 frpc客户端注册映射：
 log_file = /tmp/frpc.log
@@ -22,10 +25,53 @@ router: 8888 -> 23337
 rdp: 192.168.50.201:23389 -> 23389
 smb: 192.168.50.201:445
 ssh: 192.168.50.201:23355
+
+**frpc.ini** 
+本地用：
+# frpc configuration
 [common]
 server_addr = yy.barryzzj.asia
 server_port = 23354
 token = 0wEmW_L7c_02NyinNLv2
+tls_enable = true
+log_file = frpc.log
+log_level = info
+log_max_days = 1
+tcp_mux = true
+protocol = tcp
+login_fail_exit = true
+user = laptop
+# connections will be established in advance, default value is zero
+pool_count = 3
+[winrdp]
+type = tcp
+local_ip = 127.0.0.1
+local_port = 23389
+remote_port = 23389
+use_encryption = false
+use_compression = true
+[smb]
+type = tcp
+local_ip = 127.0.0.1
+local_port = 445
+remote_port = 445
+use_encryption = true
+use_compression = true
+[ssh]
+type = tcp
+local_ip = 127.0.0.1
+local_port = 23355
+remote_port = 23355
+use_encryption = true
+use_compression = true
+
+**路由器用：**
+# frpc configuration
+[common]
+server_addr = yy.barryzzj.asia
+server_port = 23354
+token = 0wEmW_L7c_02NyinNLv2
+tls_enable = true
 log_file = /tmp/frpc.log
 log_level = info
 log_max_days = 1
@@ -33,6 +79,7 @@ tcp_mux = true
 protocol = tcp
 login_fail_exit = true
 user = asus
+pool_count = 3
 [winrdp]
 type = tcp
 local_ip = 192.168.50.201
@@ -54,6 +101,19 @@ local_port = 23355
 remote_port = 23355
 use_encryption = true
 use_compression = true
+
+注册为windows服务，开机自启动：
+https://gist.github.com/imyelo/b6c3d3d9383f7d5623f06a0c11052530
+注册：
+: 1. download [nssm](https://github.com/kirillkovalenko/nssm) and set its diretory into the global PATH environment value
+: 2. replace the path below with where you placed frpc
+nssm install frpc "D:\Tools\frpc\frpc.exe" "-c D:\Tools\frpc\frpc.ini"
+nssm set frpc DisplayName "frp client"
+nssm start frpc
+
+删除
+nssm stop frpc
+nssm remove frpc
 
 加密：
 如果公司内网防火墙对外网访问进行了流量识别与屏蔽，例如禁止了 ssh 协议等，通过设置 use_encryption = true，将 frpc 与 frps 之间的通信内容加密传输，将会有效防止流量被拦截。

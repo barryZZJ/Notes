@@ -10,23 +10,32 @@ https://ngrok.com/
 https://github.com/ffay/lanproxy
 
 frps服务端：（服务器防火墙记得开放对应端口）（不要开kcp，否则会用不了）
-# 一键配置脚本：
+# 一键配置脚本：https://github.com/MvsCode/frps-onekey
 mkdir frps
 cd frps
 wget https://raw.githubusercontent.com/MvsCode/frps-onekey/master/install-frps.sh
 mv install-frps.sh frps.sh
 chmod 700 ./frps.sh
 ./frps.sh install  {install|uninstall|update|config}
-# 手动配置：
-https://www.jianshu.com/p/1a30d9ec1775
 
+# 手动配置：
+1. 下载frps，放入/usr/bin
+2. 写好配置文件（见下），放入/usr/local/frps/frps.ini
+3. 注册为服务：
+https://gofrp.org/docs/setup/systemd/
+systemctl start frps
+systemctl enable frps
+frp官网：
+https://gofrp.org/docs/
+
+/etc/init.d/frps {start|stop|restart|status|config|version}
 frps {start|stop|restart|status|config|version}
-log_file = /usr/local/frps/frps.log （如果没有就restart一下服务）
-watch -n 1 cat /usr/local/frps/frps.log
 如果报错ine 45: [: 2431: binary operator expected，修改/usr/bin/frps，把$PID全部替换为${PID}
 
 # frps configuration:
-/usr/local/frps/frps.ini:
+/usr/local/frps/frps.ini
+log_file: /tmp/frps.log (./frps.log == /usr/local/frps/frps.log)（如果没有就restart一下服务）
+watch -n 1 cat /usr/local/frps/frps.log
 {{{code: lang="ini" linenumbers="False"
 # [common] is integral section
 [common]
@@ -46,12 +55,12 @@ dashboard_pwd = zzjzzj0123
 vhost_http_port = 80
 vhost_https_port = 443
 # console or real logFile path like ./frps.log
-log_file = ./frps.log
+log_file = /tmp/frps.log
 # debug, info, warn, error
 log_level = info
 log_max_days = 10
 # auth token
-token = HY$hh^WiUv+oUuCtXLB$
+token = 0wEmW_L7c_02NyinNLv2
 # It is convenient to use subdomain configure for http、https type when many people use one frps server together.
 subdomain_host = barryzzj.xyz
 # only allow frpc to bind ports you list, if you set nothing, there won't be any limit
