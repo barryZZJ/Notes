@@ -30,8 +30,10 @@ Model.parse_obj(dict) -> deprecated, use .model_validate
 
 保存：
 不支持直接dump为json
-model.dict() -> deprecated, use model_dump(mode='json')  # 如果mode='python'，则有些值如URL, datetime可能直接是对象
+model.dict() -> deprecated, use model_dump(mode='json', by_alias=True)  # 如果mode='python'，则有些值如URL, datetime可能直接是对象
+参数：by_alias 默认为False，使用field name作为存储的key；为True时使用alias name作为存储的key
 .json -> deprecated, use model_dump_json
+
 
 pydantic.parse_obj_as(model, obj)
 pydantic.parse_raw_as
