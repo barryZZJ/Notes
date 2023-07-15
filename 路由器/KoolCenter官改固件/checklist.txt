@@ -6,13 +6,15 @@ x每天定时连接校园网（连接校园网脚本drcom.sh）
 x每59min自动连接校园网+自动添加cru指令(drcominit.sh，并执行一次即可）
 x卸载：删除/koolshare/init.d/S97drcom.sh，删除cru任务(crud.sh)
 
-x阿里ddns：
+x阿里ddns：https://github.com/risfeng/aliyun-ddns-shell
 nvram get wan0_ipaddr
-修改查ip命令5默认指令(/koolshare/scripts/aliddns_update.sh) √
-修改界面命令5(/koolshare/webs/Module_aliddns.asp) √
+	需要修改代码，否则每次都要重新写
+	修改查ip命令5默认指令(/koolshare/scripts/aliddns_update.sh) √
+	修改界面命令5(/koolshare/webs/Module_aliddns.asp) √
 阿里云解析
 Ali Access Key ID LTAI5tMA6ZeMo7zf9MoEniPv
 Ali Access Key Secret o3koSCiXlLAjaZnFoosSPK1OiWw9lG
+需要授予 AliyunDNSFullAccess
 
 删除/jffs下的uu.tar.gz
 删除/tmp下的uu文件夹

@@ -9,6 +9,9 @@ Created 星期一 10 十月 2022
 https://ngrok.com/
 https://github.com/ffay/lanproxy
 
+frp官网：
+https://gofrp.org/docs/
+
 frps服务端：（服务器防火墙记得开放对应端口）（不要开kcp，否则会用不了）
 # 一键配置脚本：https://github.com/MvsCode/frps-onekey
 mkdir frps
@@ -18,15 +21,15 @@ mv install-frps.sh frps.sh
 chmod 700 ./frps.sh
 ./frps.sh install  {install|uninstall|update|config}
 
-# 手动配置：
+手动配置：
 1. 下载frps，放入/usr/bin
 2. 写好配置文件（见下），放入/usr/local/frps/frps.ini
 3. 注册为服务：
 https://gofrp.org/docs/setup/systemd/
-systemctl start frps
+/etc/systemd/system/frps.service
+4. systemctl start frps
 systemctl enable frps
-frp官网：
-https://gofrp.org/docs/
+
 
 /etc/init.d/frps {start|stop|restart|status|config|version}
 frps {start|stop|restart|status|config|version}
