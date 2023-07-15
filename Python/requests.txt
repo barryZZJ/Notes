@@ -79,8 +79,9 @@ jsondata = json.loads(poststr)
 resp = re.post(url, headers=headers, cookies=cookies, json=jsondata)
 
 以form表单格式发送multipart文件(对应curl -F参数)
-使用files参数，传入一个dict
-example:
+使用files参数，传入一个dict: 'name': file-like-objects (or {'name': file-tuple})
+file-tuple can be a 2-tuple ('filename', fileobj), 3-tuple ('filename', fileobj, 'content_type') or a 4-tuple ('filename', fileobj, 'content_type', custom_headers), where 'content_type' is a string defining the content type of the given file and custom_headers a dict-like object containing additional headers to add for the file.
+**Example**:
 files = {'file': open(path, 'rb')}
 你可以显式地设置文件名，文件类型和请求头：
 files = {'file': ('report.xls', open('report.xls', 'rb'), 'application/vnd.ms-excel', {'Expires': '0'})}
@@ -90,7 +91,7 @@ files = {'file': (None, 'some,data,to,send\nanother,row,to,send\n')}
 
 r.post(url, files=files)
 
-爬虫结果：
+对应的实际效果：
 {'file': open(path, 'rb')}
 	[Name] Content-Disposition: form-data; name="file"; filename="8b4595a1f889868dfef358516c647ea96caf1e56.jpg"
 	[Value] <file>
