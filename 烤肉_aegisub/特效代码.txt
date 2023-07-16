@@ -48,6 +48,11 @@ http://unanimated.hostfree.pw/ts/ts-layers.htm
 
 \fs<fontsize> 字号
 \fsc<scale%> \fscx<scale%> \fscy<scale%> 字体缩放 scale:0~100
+使用vsfiltermod时，\fscx \fscy指令存在bug，会忽略小数点影响观感，解决办法是替换掉这两个指令：
+1. 换成\fsc: \\fscy([\d.]+)\\fscx([\d.]+)
+2. 勾选linear
+3. 不使用vsfiltermod
+
 \fsp<spacing> 字符间距 -~0~+
 \fsvp<spacing> 调节垂直间距（行距），正数为减小缩近行间距，负数为增加拉宽行间距（夹在两行间、需要 VSFilterMod）
 \fshp<spacing> 调节水平间距（字间距），需要VSFilterMod
@@ -62,7 +67,7 @@ http://unanimated.hostfree.pw/ts/ts-layers.htm
 
 透明度（注意要加H，前后都要有&，否则Aegisub-motion识别不出来）
 \alpha&H<aa>&
-\1a&H<aa>&
+\1a&H<aa>& 注意1a为FF时shad也会隐藏，绕过的办法是1a设为FE
 \2a&H<aa>&
 \3a&H<aa>&
 \4a&H<aa>&
@@ -156,12 +161,13 @@ https://cwlrin.wiki/wp-content/uploads/2021/02/vsfiltermod-%E6%89%8B%E5%86%8C.pd
 \fsvp \fshp 调节垂直、水平baseline位置
 \z z轴取值
 \distort(u1,v1,u2,v2,u3,v3) 形变 \distort(1,0,1,1,0,1)
-\rnd \rndx \rndy \rndz 随机偏移
+\rnd<arg> \rndx \rndy \rndz 每个像素随机偏移<arg>个像素，可接\t
 \$vc(lt, rt, lb, rb) 颜色渐变，$=1~4分别对应1c,2c,3c,4c 【复杂的颜色渐变可以考虑替换成\1img】
 \$va 透明度渐变，$=1~4分别对应1c,2c,3c,4c
 \$img(path[,xoffset,yoffset]) 平铺图片 (如需要单张图片需要添加符合图片大小的vector clip矢量绘图) $=1~4 
 	注意只支持png**编码**的图片
 	图片的位置不太正，需要比预期的位置往上移动2个像素才行
+	只能平移，要想缩放需要做成矢量代码
 	path必须是'/'才能用offset。
 	也可以作为文字的背景
 	不能使用\alpha，可以改成\t+\clip
@@ -176,7 +182,7 @@ $=4 shad
 \ortho0 frx fry使用透视投影（且改进了原版）
 \ortho1 frx fry使用正交投影（原版没有）
 \xblur \yblur 指定模糊方向
-\blend
+\blend 图片与**视频画面**blend
 
 自定义特效标签/函数
 https://github.com/computerfan/VSFilterMod/wiki/Lua-Extension#custom-tag-realization

@@ -11,13 +11,6 @@ https://github.com/TypesettingTools/Aegisub-Motion
 https://github.com/TypesettingTools/Aegisub-Motion/wiki
 encoder使用x264更精确，但用于Mocha的话需要安装QuickTime
 
-BUG:
-使用vsfiltermod时，\fscx \fscy指令存在bug，缓慢缩放的情况渲染有问题，会一顿一顿的，解决办法是替换掉这两个指令：
-1. 换成\fsc
-2. 勾选linear
-3. 不使用vsfiltermod
-
-
 工作流程：https://borisfx.com/documentation/mocha/9.5.0/#_workflow_inside_mocha
 导出：选择第一个(CS3)
 
