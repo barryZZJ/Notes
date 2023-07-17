@@ -49,7 +49,7 @@ http://unanimated.hostfree.pw/ts/ts-layers.htm
 \fs<fontsize> 字号
 \fsc<scale%> \fscx<scale%> \fscy<scale%> 字体缩放 scale:0~100
 使用vsfiltermod时，\fscx \fscy指令存在bug，会忽略小数点影响观感，解决办法是替换掉这两个指令：
-1. 换成\fsc: \\fscy([\d.]+)\\fscx([\d.]+)
+1. 换成\fsc: \\fscy([\d.]+)\\fscx([\d.]+)  ->  \\fsc$1
 2. 勾选linear
 3. 不使用vsfiltermod
 

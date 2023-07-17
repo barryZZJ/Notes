@@ -25,8 +25,7 @@ WARNING: This is a development server. Do not use it in a production deployment.
 === 注册路由： ===
 https://flask.palletsprojects.com/en/latest/api/#url-route-registrations
 route:
-<key>
-<type:key> types: {string, int, float, path, uuid}
+添加参数：<key>、<type:key> types: {string, int, float, path, uuid}
 默认只处理GET
 @app.route('/login', methods=['GET', 'POST']
 @app.get()
@@ -61,6 +60,7 @@ abort(404) raise一个HTTPException，后面的代码不会运行 （服务器�
 所有bp最后全部在app.py中import，然后app.register_blueprint
 https://flask.palletsprojects.com/en/latest/tutorial/views/
 
+from flask import current_app
 
 
 ===== 需要使用gunicorn运行： =====
