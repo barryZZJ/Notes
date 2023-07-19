@@ -17,7 +17,7 @@ conn.close()
 
 # CREATE
 c.execute('CREATE TABLE IF NOT EXISTS numbers (id integer primary key, name text NOT NULL)')
-自增：使用内置的ROWID列 https://sqlite.org/autoinc.html，默认从1开始
+自增：使用内置的ROWID列 https://sqlite.org/autoinc.html%EF%BC%8C%E9%BB%98%E8%AE%A4%E4%BB%8E1%E5%BC%80%E5%A7%8B
 多个主键：CREATE TABLE something (
   column1 INTEGER NOT NULL,
   column2 INTEGER NOT NULL,
@@ -30,9 +30,9 @@ conn.commit()
 
 # SELECT
 注意如果在循环体中有新的数据库操作，cursor的值会改变，导致循环立即终止，因此需要完整复制一份再遍历
-cursor = c.execute("SELECT id, name, address, salary  from COMPANY")
+cursor = c.execute("SELECT id, name, address, salary from COMPANY")
 循环：
-for row in cursor: # 无论field的输入，都返回元组 
+for row in cursor: # 无论field的输入，都返回元组，数据类型取决于表定义时使用的类型
    print "ID = ", row[0]
    print "NAME = ", row[1]
    print "ADDRESS = ", row[2]

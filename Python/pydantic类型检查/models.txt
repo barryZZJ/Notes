@@ -14,16 +14,26 @@ https://docs.pydantic.dev/latest/usage/models/#dynamic-model-creation
 
 必须参数/可选参数：
 https://docs.pydantic.dev/latest/usage/models/#required-fields
-# | 格式需要3.10+
+
+(for v2.0:
 class Model(BaseModel):
-	a: int | None  # optional
-	b: int | None = ...  # required
-	c: int | None = Field(...)  # required
+	# required
+	a: int
+	c: int = Field(...)
+	d: Optional[int]  # can be None
+	# optional, can be None
+	b: int = 1
+	e: Optional[int] = None
+	f: Optional[int] = 1
+	
+int类型默认strict=False
+v2定义str不能传入int
 
 动态默认值：
 https://docs.pydantic.dev/latest/usage/models/#field-with-dynamic-default-value
 
 解析数据：
+Model(**kwargs)
 Model.parse_obj(dict) -> deprecated, use .model_validate
 .parse_raw(str) -> deprecated, use .model_validate_json
 .parse_file
