@@ -1,0 +1,14 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2023-07-18T21:10:41+08:00
+
+====== fiddler ======
+Created 星期二 18 七月 2023
+
+给python配置fiddler证书：https://gist.github.com/Firenza/0fa8cc4e5d03c0f0efc8919f3d53ff58
+
+允许局域网连接：
+Options - Connections - Allow remote computers to connect.
+给手机抓包：
+https://www.cnblogs.com/mmz-tester/p/11125007.html
+想办法在手机上装CA证书和WLAN证书即可解密https

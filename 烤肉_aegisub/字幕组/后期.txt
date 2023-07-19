@@ -24,3 +24,4 @@ zm_sub@outlook.com
 把图片链接的''https://dd-static.jd.com/ddimg/jfs ''换成 ''https://img30.360buyimg.com/imgzone/jfs''
 ''https://img30.360buyimg.com/imgzone/jfs''/t1/187891/8/34091/2198087/643b68adFa70f0951/07314a76fb786825.png
 
+京东商品页查看高清图：把n5改为imgzone

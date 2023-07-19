@@ -9,7 +9,8 @@ Created 星期五 14 七月 2023
 
 mstsc.exe登录远程桌面
 本地账户使用用户名，微软账户用邮箱。
-密码不能是PIN码，修改方法：https://zhuanlan.zhihu.com/p/537738910
-注意两台电脑重名时电脑名的前缀。
+如果两台电脑用户名重名，需要加上电脑名的前缀，如DESKTOP-U34PB9D\YCX（设置——系统——关于——设备名称）。
+
+密码可以是PIN码，修改为普通密码的方法：https://zhuanlan.zhihu.com/p/537738910
 
 每次系统更新时都需要手动更新rdpwrap.ini
