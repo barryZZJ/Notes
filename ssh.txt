@@ -3,38 +3,55 @@ Wiki-Format: zim 0.6
 
 sudo service ssh {start|stop|reload|force-reload|restart|try-restart|status}
 
+=== SSH客户端： ===
 ssh -p <port> user@hostip
+-l user # == 'user@'
+-i 指定私钥文件路径
+-o IdentitiesOnly=yes（默认no, 会把私钥全试一遍）
+-v DEBUG1
+-vvv DEBUG3
+-F config文件
 
-密钥登陆
-ssh -i ~/.ssh/id_rsa_test user@host
+远端登录本机：
+ssh -p 23355 sshadmin@127.0.0.1
+ssh -p 23355 barry@127.0.0.1
+ 
+ssh客户端配置：https://www.jianshu.com/p/1e793e386beb
+C:\Users\85046\.ssh\config
+{{{code: lang="ini" linenumbers="False"
+Host dorm
+    HostName dorm.barryzzj.asia
+    User barry
+    IdentityFile "C:\Users\barryoffice\.ssh\id_rsa"
+    IdentitiesOnly yes
+    Port 23355
+    ServerAliveInterval 60
+}}}
 
-ssh smbusr@localhost -p 23355
+ssh dorm
 
-C:\Users\85046\.ssh
+生成密钥 https://learn.microsoft.com/en-us/windows-server/administration/openssh/openssh_keymanagement#user-key-generation
+ssh-keygen -t rsa
+-t ecdsa
+生成不同名字的可以用于登录不同服务器
 
-https://www.jianshu.com/p/1e793e386beb
-
-生成密钥
-ssh-keygen -t rsa -b 2048
-
-ssh服务器：
-安装：sudo apt install openssh-server
-把id_rsa.pub里的内容写入~/.ssh/authorized_keys
-并sudo nano /etc/ssh/sshd_config文件，设置
+=== ssh服务器： ===
+Linux:
+1. 安装：sudo apt install openssh-server
+2. 把id_rsa.pub里的内容写入~/.ssh/authorized_keys
+3. sudo nano /etc/ssh/sshd_config文件，设置
 PubkeyAuthentication yes
 AuthorizedKeysFile .ssh/authorized_keys
-
-最后重启ssh服务 sudo service sshd restart
+4. 最后重启ssh服务 sudo service sshd restart
 
 windows ssh 服务器: OpenSSH
-添加功能部分搜索openssh
-安装后服务名：sshd (OpenSSH SSH Server)
-在可选功能中搜索OpenSSH 服务器，安装
-
-配置：
+1. 添加功能部分搜索openssh
+2. 安装后服务名：**sshd** (OpenSSH SSH Server)
+3. 在可选功能中搜索OpenSSH 服务器，安装
+4. 配置：
 https://winscp.net/eng/docs/guide_windows_openssh_server
-https://learn.microsoft.com/en-us/windows-server/administration/openssh/openssh_server_configuration
-https://man.openbsd.org/sshd_config
+windows条目说明：https://learn.microsoft.com/en-us/windows-server/administration/openssh/openssh_server_configuration
+linux条目说明：https://man.openbsd.org/sshd_config
 https://github.com/PowerShell/Win32-OpenSSH/wiki/sshd_config
 配置文件：C:\ProgramData\ssh\sshd_config
 Port 23355
@@ -44,9 +61,59 @@ ListenAddress 0.0.0.0
 Subsystem   sftp    sftp-server.exe -d "D:"
 # 只启动sftp（？）
 ForceCommand internal-sftp
+5. 防火墙添加入站规则（注意修改端口号）：
+管理员Powershell：''New-NetFirewallRule -Name sshd -DisplayName 'OpenSSH Server (sshd)' -Enabled True -Direction Inbound -Protocol TCP -Action Allow -LocalPort 22''
+或手动添加：
+OpenSSH SSH Server (sshd)
+程序：%SystemRoot%\system32\OpenSSH\sshd.exe
+协议：TCP
+端口：23355
+6. 启动sshd服务并设为开机自动启动：服务(sshd)启动类型设为自动
 
-防火墙允许该端口入站
+**其他配置选项说明：**
+Log:
+LogLevel INFO | DEBUG | DEBUG3
+日志文件 SyslogFacility：
+默认 AUTH，日志在事件查看器-应用程序和服务日志-OpenSSH
+设为 LOCAL0 则日志在%programdata%\ssh\logs
 
-用户鉴权使用windows用户，默认管理员用户无法登陆，需要新建一个用户
+不允许密码登录：
+PasswordAuthentication no
 
-开机自动启动：服务启动类型设为自动
+允许通过密钥登录：https://learn.microsoft.com/en-us/windows-server/administration/openssh/openssh_keymanagement#deploying-the-public-key
+（电脑名不要和用户名相同，否则会bug）
+1. 配置文件：
+# 禁止密码登录，保证安全性
+PasswordAuthentication no
+# 开启密钥文件登录
+PubkeyAuthentication yes
+# 设置白名单（不在的不能连，其他的如AllowGroups, DenyUsers https://learn.microsoft.com/en-us/windows-server/administration/openssh/openssh_server_configuration#allowgroups-allowusers-denygroups-denyusers%EF%BC%89
+AllowUsers barry sshadmin
+# 针对不同用户的不同设置
+Match User sshadmin
+	PasswordAuthentication yes
+
+配置客户端密钥登陆：https://learn.microsoft.com/en-us/windows-server/administration/openssh/openssh_server_configuration#authorizedkeysfile
+1. 客户端生成密钥 ssh-keygen -t rsa
+2. 服务端新建 AuthorizedKeysFile 的目录，想登录哪个用户就在哪个目录下配置：
+【windows】【使用默认配置
+''AuthorizedKeysFile	.ssh/authorized_keys''
+''Match Group administrators''
+''      AuthorizedKeysFile __PROGRAMDATA__/ssh/administrators_authorized_keys''
+的情况下：】
+**普通用户：**
+在C:\Users\<username>下新建.ssh文件夹，权限只有System和当前用户完全控制。
+在.ssh内新建authorized_keys，权限同上
+**管理员用户：（上面的authorized_keys不会启用）**
+在%programdata%\ssh下新建administrators_authorized_keys文件。权限只有System和administrators组完全控制。
+	代码设置authorized_keys文件权限：icacls.exe "%programdata%\ssh\administrators_authorized_keys" /inheritance:r /grant "Administrators:F" /grant "SYSTEM:F"
+重启sshd服务
+【linux】 ~/.ssh/autorized_keys
+3. 在 AuthorizedKeysFile 中写入客户端生成的公钥(.pub)，设置不同用户识别的密钥文件（不用重启sshd服务）
+
+默认不允许密码登录默认管理员用户，解决：
+新建一个管理员用户sshadmin，ssh -p 23355 sshadmin@127.0.0.1，用密码登录；
+或按上面配置客户端密钥登录后，ssh -p 23355 BARRY\barry@127.0.0.1，可直接登录。
+（Windows不可用：sshd_config中的 PermitRootLogin prohibit-password改为 yes）
+
+
