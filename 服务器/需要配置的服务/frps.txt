@@ -36,7 +36,7 @@ frps {start|stop|restart|status|config|version}
 如果报错ine 45: [: 2431: binary operator expected，修改/usr/bin/frps，把$PID全部替换为${PID}
 
 # frps configuration:
-/usr/local/frps/frps.ini
+/usr/local/frps/frps.ini 配置文件具体说明见frpc_full.ini
 log_file: /tmp/frps.log (./frps.log == /usr/local/frps/frps.log)（如果没有就restart一下服务）
 watch -n 1 cat /usr/local/frps/frps.log
 {{{code: lang="ini" linenumbers="False"
@@ -109,3 +109,9 @@ Ping测试：
 内容：
 {'version': '0.1.0', 'op': 'Ping', 'content': {'user': {'user': 'asus', 'metas': None, 'run_id': '30851056423c5ee7'}}}
 
+
+其他服务：
+提供简单的文件访问服务
+https://gofrp.org/docs/examples/static-file/
+内网web服务
+https://gofrp.org/docs/examples/vhost-http/

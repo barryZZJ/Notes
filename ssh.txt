@@ -77,43 +77,141 @@ LogLevel INFO | DEBUG | DEBUG3
 默认 AUTH，日志在事件查看器-应用程序和服务日志-OpenSSH
 设为 LOCAL0 则日志在%programdata%\ssh\logs
 
-不允许密码登录：
-PasswordAuthentication no
+DEBUG:
+关闭sshd服务，自己在管理员命令行运行sshd -d 或 sshd -ddd
 
-允许通过密钥登录：https://learn.microsoft.com/en-us/windows-server/administration/openssh/openssh_keymanagement#deploying-the-public-key
+**配置密钥登录：**https://learn.microsoft.com/en-us/windows-server/administration/openssh/openssh_keymanagement#deploying-the-public-key
 （电脑名不要和用户名相同，否则会bug）
-1. 配置文件：
 # 禁止密码登录，保证安全性
 PasswordAuthentication no
 # 开启密钥文件登录
 PubkeyAuthentication yes
 # 设置白名单（不在的不能连，其他的如AllowGroups, DenyUsers https://learn.microsoft.com/en-us/windows-server/administration/openssh/openssh_server_configuration#allowgroups-allowusers-denygroups-denyusers%EF%BC%89
 AllowUsers barry sshadmin
-# 针对不同用户的不同设置
+# 针对不同用户的不同设置可以使用Match https://learn.microsoft.com/en-us/windows-server/administration/openssh/openssh_server_configuration#match
 Match User sshadmin
 	PasswordAuthentication yes
-
-配置客户端密钥登陆：https://learn.microsoft.com/en-us/windows-server/administration/openssh/openssh_server_configuration#authorizedkeysfile
-1. 客户端生成密钥 ssh-keygen -t rsa
-2. 服务端新建 AuthorizedKeysFile 的目录，想登录哪个用户就在哪个目录下配置：
-【windows】【使用默认配置
+#设置密钥文件存储位置
 ''AuthorizedKeysFile	.ssh/authorized_keys''
+#并保留（在最下面）：
 ''Match Group administrators''
 ''      AuthorizedKeysFile __PROGRAMDATA__/ssh/administrators_authorized_keys''
-的情况下：】
-**普通用户：**
-在C:\Users\<username>下新建.ssh文件夹，权限只有System和当前用户完全控制。
-在.ssh内新建authorized_keys，权限同上
-**管理员用户：（上面的authorized_keys不会启用）**
-在%programdata%\ssh下新建administrators_authorized_keys文件。权限只有System和administrators组完全控制。
-	代码设置authorized_keys文件权限：icacls.exe "%programdata%\ssh\administrators_authorized_keys" /inheritance:r /grant "Administrators:F" /grant "SYSTEM:F"
-重启sshd服务
-【linux】 ~/.ssh/autorized_keys
-3. 在 AuthorizedKeysFile 中写入客户端生成的公钥(.pub)，设置不同用户识别的密钥文件（不用重启sshd服务）
 
-默认不允许密码登录默认管理员用户，解决：
-新建一个管理员用户sshadmin，ssh -p 23355 sshadmin@127.0.0.1，用密码登录；
-或按上面配置客户端密钥登录后，ssh -p 23355 BARRY\barry@127.0.0.1，可直接登录。
+**添加客户端密钥：**https://learn.microsoft.com/en-us/windows-server/administration/openssh/openssh_server_configuration#authorizedkeysfile
+1. 客户端生成密钥 ssh-keygen -t rsa
+2. 服务端新建 AuthorizedKeysFile 对应的文件：
+【windows】
+【普通用户】''.ssh/authorized_keys，''相对于%userprofile%（C:\用户\<username>），想登录哪个用户就在哪个目录下配置：
+2.1 新建.ssh文件夹（可以酌情调一下权限，经测试不影响）
+2.2 在.ssh内新建authorized_keys文件**（注意权限和所有者！）**：
+高级权限：取消继承、**只有System和该用户**完全控制（如果有其他用户则会导致Authentication Refused），**所有者必须也为该用户**，才可密钥登陆。
+【管理员用户】路径为%programdata%\ssh\administrators_authorized_keys
+2.3 高级权限：取消继承、**只有System和Administrators组**完全控制，所有者必须为**Administrators**组。
+	管理员命令行设置文件权限：icacls.exe "%programdata%\ssh\administrators_authorized_keys" /inheritance:r /grant "Administrators:F" /grant "SYSTEM:F"
+【linux】在~/.ssh/autorized_keys下做相同操作，chmod 600即可
+重启sshd服务
+在 AuthorizedKeysFile 中写入客户端生成的公钥(.pub)（若权限不足，需临时修改所有者或以对应用户登录再修改）（更新后不用重启sshd服务）
+windows：手动放入
+linux：ssh-copy-id user@host -p <port>
+
 （Windows不可用：sshd_config中的 PermitRootLogin prohibit-password改为 yes）
 
+完整配置文件备份：
+{{{code: lang="ini" linenumbers="False"
+# This is the sshd server system-wide configuration file.  See
+# sshd_config(5) for more information.
 
+# The strategy used for options in the default sshd_config shipped with
+# OpenSSH is to specify options with their default value where
+# possible, but leave them commented.  Uncommented options override the
+# default value.
+
+Port 23355
+#AddressFamily any
+ListenAddress 0.0.0.0
+#ListenAddress ::
+
+#HostKey __PROGRAMDATA__/ssh/ssh_host_rsa_key
+#HostKey __PROGRAMDATA__/ssh/ssh_host_dsa_key
+#HostKey __PROGRAMDATA__/ssh/ssh_host_ecdsa_key
+#HostKey __PROGRAMDATA__/ssh/ssh_host_ed25519_key
+
+# Ciphers and keying
+#RekeyLimit default none
+
+# Logging
+SyslogFacility AUTH
+# SyslogFacility LOCAL0
+LogLevel INFO
+
+# Authentication:
+
+#LoginGraceTime 2m
+PermitRootLogin yes
+#StrictModes yes
+#MaxAuthTries 6
+#MaxSessions 10
+
+PubkeyAuthentication yes
+
+# The default is to check both .ssh/authorized_keys and .ssh/authorized_keys2
+# but this is overridden so installations will only check .ssh/authorized_keys
+# AuthorizedKeysFile	.ssh/authorized_keys
+AuthorizedKeysFile	.ssh/authorized_keys
+
+#AuthorizedPrincipalsFile none
+
+# For this to work you will also need host keys in %programData%/ssh/ssh_known_hosts
+#HostbasedAuthentication no
+# Change to yes if you don't trust ~/.ssh/known_hosts for
+# HostbasedAuthentication
+#IgnoreUserKnownHosts no
+# Don't read the user's ~/.rhosts and ~/.shosts files
+#IgnoreRhosts yes
+
+# To disable tunneled clear text passwords, change to no here!
+# PasswordAuthentication yes
+PasswordAuthentication no
+#PermitEmptyPasswords no
+
+# GSSAPI options
+#GSSAPIAuthentication no
+
+#AllowAgentForwarding yes
+#AllowTcpForwarding yes
+#GatewayPorts no
+#PermitTTY yes
+#PrintMotd yes
+#PrintLastLog yes
+#TCPKeepAlive yes
+#UseLogin no
+#PermitUserEnvironment no
+#ClientAliveInterval 0
+#ClientAliveCountMax 3
+#UseDNS no
+#PidFile /var/run/sshd.pid
+#MaxStartups 10:30:100
+#PermitTunnel no
+#ChrootDirectory /
+#VersionAddendum none
+
+# no default banner path
+#Banner none
+
+# override default of no subsystems
+Subsystem	sftp	sftp-server.exe -d "D:"
+
+# Example of overriding settings on a per-user basis
+#Match User anoncvs
+#	AllowTcpForwarding no
+#	PermitTTY no
+#	ForceCommand cvs server
+
+AllowUsers barry sshadmin
+
+Match User sshadmin
+    PasswordAuthentication yes
+
+Match Group administrators
+    AuthorizedKeysFile __PROGRAMDATA__/ssh/administrators_authorized_keys
+}}}
