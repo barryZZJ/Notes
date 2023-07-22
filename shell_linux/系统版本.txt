@@ -16,3 +16,4 @@ cat /etc/issue，此命令也适用于所有的Linux发行版。
 
 系统架构：
 uname -m
+

@@ -1,0 +1,12 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2023-07-22T18:17:13+08:00
+
+====== 内存 ======
+Created 星期六 22 七月 2023
+
+cat /proc/meminfo
+
+sudo atop
+
+free -h

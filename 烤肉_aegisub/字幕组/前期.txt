@@ -39,3 +39,6 @@ rec.mlsub.net
 
 5. 源、台本腾讯文档共享发群里
 
+mkv提取字幕：
+【小丸工具箱-抽取-使用第三方工具抽取】== 打开gMKVExtractGUI
+修改ass样式和分辨率

@@ -1,0 +1,28 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2023-07-22T17:04:58+08:00
+
+====== Linux装机 ======
+Created 星期六 22 七月 2023
+
+设置代理
+
+远程桌面：Remmina
+
+中文输入法
+ubuntu 18:
+sudo apt install ibus ibus-clutter ibus-gtk ibus-gtk3 ibus-qt4
+im-config -s ibus
+sudo apt install ibus-pinyin
+sudo ibus-setup
+在输入法中添加ibus即可
+https://github.com/ibus/ibus
+
+ubuntu 22 集成了ibus
+首先添加中文语言支持 sudo apt-get install ibus ibus-clutter ibus-gtk ibus-gtk3 ibus-qt4
+其次，只需sudo apt install ibus-libpinyin
+然后在输入法中添加即可
+
+apt换源
+https://zhuanlan.zhihu.com/p/142014944
+

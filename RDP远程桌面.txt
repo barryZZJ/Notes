@@ -14,3 +14,7 @@ mstsc.exe登录远程桌面
 密码可以是PIN码，修改为普通密码的方法：https://zhuanlan.zhihu.com/p/537738910
 
 每次系统更新时都需要手动更新rdpwrap.ini
+
+专业版配置方法：
+https://learn.microsoft.com/zh-CN/windows-server/remote/remote-desktop-services/clients/change-listening-port
+

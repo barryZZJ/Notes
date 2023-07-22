@@ -1,0 +1,13 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2023-07-22T18:10:22+08:00
+
+====== 信工所 ======
+Created 星期六 22 七月 2023
+
+工位设备信息
+资产编号：DE-1568
+硬盘序列号: WFL2ZJ9E
+MAC:00:D8:61:91:94:08
+主机序列号: M70CQMB9
+
