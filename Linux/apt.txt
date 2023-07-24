@@ -1,0 +1,54 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2023-07-23T17:32:31+08:00
+
+====== apt ======
+Created 星期日 23 七月 2023
+
+https://www.runoob.com/linux/linux-comm-apt.html
+
+一键更新所有软件：
+sudo apt update && sudo apt upgrade -y
+
+从文件安装：
+https://www.cnblogs.com/smfx1314/p/10661365.html
+0. 安装.deb
+sudo apt install xxx.deb
+sudo dpkg -i xxx.deb
+
+1. 安装rpm包
+ubuntu需要把.rpm改为.deb
+fakeroot alien xxx.rpm
+sudo dpkg -i xxx.deb
+// 安装方法：rpm -ivh example-1.2.3-1.rpm
+// 查看安装目录： rpm -ql example-1.2.3-1
+// 卸载：rpm -e example-1.2.3-1
+
+2. 安装tar包
+安装方法：
+（1）解压tar包： tar -xvf example-1.2.3-1.tar -C 解压路径
+（2）进入到解压后的目录下：cd  example-1.2.3-1
+（3）再依次执行：
+[root@jmwang example-1.2.3-1]# ./configure（有的版本无此命令，则可跳过这一步骤）
+[root@jmwang example-1.2.3-1]# make
+[root@jmwang example-1.2.3-1]# make install
+[root@jmwang example-1.2.3-1]# make clear（非必需）
+[root@jmwang example-1.2.3-1]# make distclear（非必需）
+这样就完成了tar包的安装。
+
+3. 安装tar.gz(tgz)包
+安装方法：
+（1）解压tar.gz包： tar -zxvf example-1.2.3-1.tar.gz
+（2）后方法和example-1.2.3-1.tar包一样
+
+4. 安装tar.bz2包
+安装方法一：
+（1）先解压tar.bz2包，执行 bunzip2 example-1.2.3-1.tar.bz2命令解压得到tar包。
+（2）后方法和example-1.2.3-1.tar包一样
+
+安装方法二：（推荐）
+	直接执行 tar -jxvf example-1.2.3-1.tar.bz2命令解压即可。
+
+PS：tar命令的两个参数解释：
+-z ：是否同时具有 gzip 的属性？亦即是否需要用 gzip 压缩？
+-j ：是否同时具有 bzip2 的属性？亦即是否需要用 bzip2 压缩？

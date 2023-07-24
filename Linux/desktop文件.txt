@@ -1,0 +1,13 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2023-07-23T17:33:59+08:00
+
+====== desktop文件 ======
+Created 星期日 23 七月 2023
+
+设置快捷方式 (.desktop)
+usr/share/applications
+https://blog.csdn.net/wuyujin1997/article/details/104655385
+
+双击执行sh
+https://blog.csdn.net/m0_65304012/article/details/127432802

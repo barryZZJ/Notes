@@ -1,0 +1,30 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2023-07-23T17:39:10+08:00
+
+====== Linux ======
+Created 星期日 23 七月 2023
+
+=== 常用程序 ===
+gedit 文本编辑GUI工具
+nano 命令行文本编辑
+nautilus 资源管理器
+cat 显示文件内容
+touch 创建文件
+nano / vim 编辑文件
+ln 建立链接
+find
+ps 显示进程 -l
+
+wget -N --no-check-certificate 
+
+find https://www.runoob.com/linux/linux-comm-find.html
+find . -name "*.c"
+
+tmux
+
+cp, mv, mkdir, rm (-i)
+ls, ll
+which
+
+man 查看手册

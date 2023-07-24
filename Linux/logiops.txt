@@ -1,0 +1,93 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2023-07-23T18:11:00+08:00
+
+====== logiops ======
+Created 星期日 23 七月 2023
+
+https://github.com/PixlOne/logiops
+
+更新设置：
+systemctl restart logid
+
+参考配置：
+/etc/logid.cfg
+{{{code: lang="markdown" linenumbers="False"
+devices = (
+{
+    name = "Wireless Mouse MX Master 3";
+    smartshift = 
+    {
+        on = true;
+        threshold = 255;
+        torque = 50;
+    };
+    hiresscroll = 
+    {
+        hires = true;
+        invert = false;
+        target = false;
+    };
+    dpi = 800;
+
+
+    buttons = (
+        {
+            cid = 0xc3;
+            action =
+            {
+                type = "Gestures";
+                gestures = (
+                    {
+                        direction = "Up";
+                        mode = "NoPress";
+                    },
+                    {
+                        direction = "Down";
+                        mode = "NoPress";
+                    },
+                    {
+                        direction = "Left";
+                        mode = "OnRelease";
+                        threshold = 5;
+                        action =
+                        {
+                            type = "Keypress";
+                            keys = ["KEY_LEFTMETA", "KEY_LEFT"];
+                        };
+                    },
+                    {
+                        direction = "Right";
+                        mode = "OnRelease";
+                        threshold = 5;
+                        action =
+                        {
+                            type = "Keypress";
+                            keys = ["KEY_LEFTMETA", "KEY_RIGHT"];
+                        }
+                    },
+                    {
+                        direction = "None"
+                        mode = "OnRelease";
+                        action = 
+                        {
+                            type = "Keypress";
+                            keys = ["KEY_LEFTMETA"];
+                        }
+                    }
+                );
+            };
+        },
+        {
+            cid = 0xc4;
+            action =
+            {
+                type = "Keypress";
+                keys = ["KEY_MUTE"];
+            };
+        }
+    );
+}
+);
+
+}}}

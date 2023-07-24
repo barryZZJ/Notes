@@ -1,9 +1,9 @@
 Content-Type: text/x-zim-wiki
 Wiki-Format: zim 0.6
-Creation-Date: 2023-07-22T17:04:58+08:00
+Creation-Date: 2023-07-23T17:25:13+08:00
 
-====== Linux装机 ======
-Created 星期六 22 七月 2023
+====== 装机 ======
+Created 星期日 23 七月 2023
 
 设置代理
 
@@ -22,7 +22,18 @@ ubuntu 22 集成了ibus
 首先添加中文语言支持 sudo apt-get install ibus ibus-clutter ibus-gtk ibus-gtk3 ibus-qt4
 其次，只需sudo apt install ibus-libpinyin
 然后在输入法中添加即可
+【需要切换系统为中文，否则无法在gedit中输入中文】
 
 apt换源
 https://zhuanlan.zhihu.com/p/142014944
 
+远程桌面到windows各种软件体验：
+https://www.jianshu.com/p/1110c763be97
+结论：使用freeRDP
+
+logitech鼠标驱动
+https://github.com/PixlOne/logiops
+
+修改firefox的user agent
+浏览器地址栏 about:config
+general.useragent.override

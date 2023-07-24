@@ -1,0 +1,9 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2023-07-23T17:38:43+08:00
+
+====== net 套件 ======
+Created 星期日 23 七月 2023
+
+apt-get install inetutils-ping
+apt-get install net-tools

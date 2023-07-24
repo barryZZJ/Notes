@@ -1,0 +1,16 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+
+====== Linux shell ======
+
+shell语言：
+https://www.jianshu.com/p/da49f71b9fc8
+
+阻止标准输出 + 阻止错误输出
+xxx > /dev/null 2>&1
+
+输出到文件 "xxx > file.txt"
+追加到文件 "xxx >> file.txt"
+文件内容作为输入 "xxx < file.txt"
+
+

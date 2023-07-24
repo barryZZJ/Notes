@@ -1,0 +1,17 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2023-07-23T17:35:35+08:00
+
+====== 网络相关 ======
+Created 星期日 23 七月 2023
+
+路由表
+route -n
+netstat -rn
+ip route
+iptables -L
+
+查网关：
+ip route | grep default | awk '{print $3}'
+netstat -nr | grep '^0.0.0.0' | awk '{print $2}'
+route -n | grep '^0.0.0.0' | awk '{print $2}'

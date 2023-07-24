@@ -1,0 +1,8 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2023-07-23T17:36:36+08:00
+
+====== 分析开机时间 ======
+Created 星期日 23 七月 2023
+
+systemd-analyze blame 分析开机时间

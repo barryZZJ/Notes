@@ -1,0 +1,9 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2023-07-23T17:42:30+08:00
+
+====== 模拟windows ======
+Created 星期日 23 七月 2023
+
+deepin wine
+https://zhuanlan.zhihu.com/p/91327545

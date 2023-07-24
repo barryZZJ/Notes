@@ -1,0 +1,12 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2023-07-23T17:40:55+08:00
+
+====== 快捷键 ======
+Created 星期日 23 七月 2023
+
+win + space 切换输入法
+
+ctrl + alt + t: terminal
+控制台中
+复制粘贴：ctrl + shift + c/v

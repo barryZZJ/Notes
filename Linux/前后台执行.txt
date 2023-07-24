@@ -1,0 +1,13 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2023-07-23T17:37:10+08:00
+
+====== 前后台执行 ======
+Created 星期日 23 七月 2023
+
+在后台执行指令：结尾加 & 号
+把前台指令转移到后台：<ctrl-z>； bg
+(fg转回前台）
+
+但仍跟终端共存活，解决方案：nohup
+nohup <command> &
