@@ -1,0 +1,11 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2023-07-24T16:27:29+08:00
+
+====== gnome-terminal ======
+创建日期 星期一 24 七月 2023
+
+
+新建一个terminal，并执行指令：
+#! /bin/bash
+gnome-terminal -- bash -c "systemctl status serviceqaxsafe; exec bash"

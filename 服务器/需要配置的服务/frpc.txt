@@ -106,7 +106,7 @@ use_compression = true
 https://gist.github.com/imyelo/b6c3d3d9383f7d5623f06a0c11052530
 注册：
 : 1. download [nssm](https://github.com/kirillkovalenko/nssm) and set its diretory into the global PATH environment value
-: 2. replace the path below with where you placed frpc
+: 2. replace the path below with where you placed frpc【管理员权限】
 nssm install frpc "D:\Tools\frpc\frpc.exe" "-c D:\Tools\frpc\frpc.ini"
 nssm set frpc DisplayName "frp client"
 nssm start frpc

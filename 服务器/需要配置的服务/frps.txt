@@ -11,6 +11,7 @@ https://github.com/ffay/lanproxy
 
 frp官网：
 https://gofrp.org/docs/
+https://github.com/fatedier/frp
 
 frps服务端：（服务器防火墙记得开放对应端口）（不要开kcp，否则会用不了）
 # 一键配置脚本：https://github.com/MvsCode/frps-onekey
@@ -19,7 +20,10 @@ cd frps
 wget https://raw.githubusercontent.com/MvsCode/frps-onekey/master/install-frps.sh
 mv install-frps.sh frps.sh
 chmod 700 ./frps.sh
-./frps.sh install  {install|uninstall|update|config}
+sudo ./frps.sh install  {install|uninstall|update|config}
+
+/etc/init.d/frps {start|stop|restart|status|config|version}
+如果报错ine 45: [: 2431: binary operator expected，修改/usr/bin/frps，把$PID全部替换为${PID}
 
 手动配置：
 1. 下载frps，放入/usr/bin
@@ -30,14 +34,15 @@ https://gofrp.org/docs/setup/systemd/
 4. systemctl start frps
 systemctl enable frps
 
+更新：
+替换服务器的 /usr/local/frps/frps和/usr/bin/frps，给+x权限，然后重启服务即可。frpc的proxy断开后会自动重连【与login_fail_exit无关】
+yy服务器使用版本：linux_386
 
-/etc/init.d/frps {start|stop|restart|status|config|version}
-frps {start|stop|restart|status|config|version}
-如果报错ine 45: [: 2431: binary operator expected，修改/usr/bin/frps，把$PID全部替换为${PID}
+systemctl {start|stop|status|restart|...} frps
 
 # frps configuration:
 /usr/local/frps/frps.ini 配置文件具体说明见frpc_full.ini
-log_file: /tmp/frps.log (./frps.log == /usr/local/frps/frps.log)（如果没有就restart一下服务）
+log_file: /tmp/frps.log (相对路径相对于/usr/local/frps/)（如果没有就restart一下服务）
 watch -n 1 cat /usr/local/frps/frps.log
 {{{code: lang="ini" linenumbers="False"
 # [common] is integral section

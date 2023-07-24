@@ -1,0 +1,21 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2023-07-24T14:32:34+08:00
+
+====== 挂载sftp ======
+Created 星期一 24 七月 2023
+
+sudo sshfs -p 23355 -o IdentityFile=/home/barryoffice/.ssh/id_ecdsa -o allow_other barry@dorm.barryzzj.asia:/d:/ /mnt/d/
+
+自动挂载：
+开机自动执行上述命令。
+试过autosshfs、改fstab，都不行，也可能是配置不对
+
+注意不能有sudo要不然要输密码，所以去掉allow_other
+#! /bin/bash
+sshfs -p 23355 -o IdentityFile=/home/barryoffice/.ssh/id_ecdsa barry@dorm.barryzzj.asia:/d:/ ~/mnt/d/
+sshfs -p 23355 -o IdentityFile=/home/barryoffice/.ssh/id_ecdsa barry@dorm.barryzzj.asia:/e:/ ~/mnt/e/
+sshfs -p 23355 -o IdentityFile=/home/barryoffice/.ssh/id_ecdsa barry@dorm.barryzzj.asia:/h:/ ~/mnt/h/
+
+取消挂载：
+umount /path/to/mount

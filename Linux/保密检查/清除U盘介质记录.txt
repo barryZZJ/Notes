@@ -1,0 +1,11 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2023-07-24T17:38:00+08:00
+
+====== 清除U盘介质记录 ======
+创建日期 星期一 24 七月 2023
+
+查找
+sudo dmesg|grep usb
+清除
+sudo dmesg -c

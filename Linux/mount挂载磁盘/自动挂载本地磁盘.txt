@@ -2,7 +2,7 @@ Content-Type: text/x-zim-wiki
 Wiki-Format: zim 0.6
 Creation-Date: 2023-07-23T17:32:02+08:00
 
-====== 自动挂载磁盘 ======
+====== 自动挂载本地磁盘 ======
 Created 星期日 23 七月 2023
 
 https://www.cnblogs.com/fieldtianye/p/9295986.html
