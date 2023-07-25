@@ -1,0 +1,15 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2023-07-25T17:31:24+08:00
+
+====== vmware配置备份 ======
+创建日期 星期二 25 七月 2023
+
+{{./pasted_image.png}}
+{{./pasted_image001.png}}
+{{./pasted_image002.png}}
+虚拟机
+6144MB
+1 processor 6 core
+
+

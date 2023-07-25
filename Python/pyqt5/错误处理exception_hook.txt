@@ -5,6 +5,8 @@ Creation-Date: 2022-10-23T16:30:45+08:00
 ====== 错误处理exception hook ======
 Created 星期日 23 十月 2022
 
+自定义错误类型看情况可继承自Exception / BaseException
+其中Exception继承自BaseException
 
 === 显示详细的报错信息： ===
 在Edit Run Configurations里勾选Emulate terminal in output console

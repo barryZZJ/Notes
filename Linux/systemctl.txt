@@ -7,5 +7,12 @@ Created 星期四 01 六月 2023
 
 systemctl {start|stop|status|reset-failed|restart|disable|enable} <service>
 
+sudo systemctl kill -s SIGKILL serviceqaxsafe.service
+
+sudo systemctl daemon-reload
+
+sudo systemctl stop serviceqaxsafe.service
+
 禁用服务（启用用unmask），比disable更强力：
-sudo systemctl mask plymouth-quit-wait.service
+sudo systemctl mask serviceqaxsafe.service
+Masking a service will create a symbolic link from the service unit file to /dev/null, effectively preventing the service from being started manually or automatically.

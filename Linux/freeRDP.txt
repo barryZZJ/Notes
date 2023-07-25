@@ -5,6 +5,7 @@ Creation-Date: 2023-07-23T17:23:53+08:00
 ====== freeRDP ======
 Created 星期日 23 七月 2023
 
+rdp客户端
 https://github.com/awakecoding/FreeRDP-Manuals/blob/master/User/FreeRDP-User-Manual.markdown
 
 参数设置：https://www.mankier.com/1/xfreerdp

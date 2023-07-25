@@ -1,0 +1,14 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2023-07-25T14:04:51+08:00
+
+====== 关机90秒 ======
+创建日期 星期二 25 七月 2023
+
+sudo gedit /etc/systemd/system.conf
+
+DefaultTimeoutStopSec=10s
+并去掉注释
+
+sudo systemctl daemon-reload
+

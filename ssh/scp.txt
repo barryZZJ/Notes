@@ -1,0 +1,18 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2023-07-25T15:20:39+08:00
+
+====== scp ======
+Created 星期二 25 七月 2023
+
+https://www.runoob.com/linux/linux-comm-scp.html
+scp src dst
+
+-P port
+-r recursive
+-v verbo
+-i 私钥文件
+user@ip:path
+
+windows path:
+xx.xx.xx.xx:/H:/xxx

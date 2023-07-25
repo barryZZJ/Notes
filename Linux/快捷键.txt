@@ -10,3 +10,5 @@ win + space 切换输入法
 ctrl + alt + t: terminal
 控制台中
 复制粘贴：ctrl + shift + c/v
+
+terminal中ctrl + r:搜索历史指令

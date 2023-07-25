@@ -6,4 +6,8 @@ Creation-Date: 2023-07-22T18:22:44+08:00
 Created 星期六 22 七月 2023
 
 硬盘序列号
+wmic diskdrive get serialnumber
+
+linux:
 lsblk --nodeps -no serial /dev/sda
+（所有程序-磁盘里能看到）

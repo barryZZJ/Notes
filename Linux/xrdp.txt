@@ -1,0 +1,29 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2023-07-25T08:57:31+08:00
+
+====== xrdp ======
+创建日期 星期二 25 七月 2023
+
+rdp服务端
+https://github.com/neutrinolabs/xrdp
+
+NOTE：
+ubuntu 22.04开始自带RDP服务器，在设置-共享：
+开启右上角开关；
+开启远程桌面和远程控制，修改密码即可。
+而且用户不会顶掉，会在两个电脑屏幕同时显示。
+
+sudo apt install xrdp
+
+service: xrdp
+
+配置文件
+/etc/xrdp/xrdp.ini
+
+log: (默认为xrdp.log，不知道在哪，在ini可以手动修改
+/etc/xrdp/xrdp.log
+
+开放防火墙：
+sudo ufw allow from 192.168.33.0/24 to any port 3389
+sudo ufw allow 3389

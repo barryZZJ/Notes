@@ -5,5 +5,7 @@ Creation-Date: 2022-11-04T13:57:39+08:00
 ====== smb ======
 Created 星期五 04 十一月 2022
 
-owlfiles
+windows自带的文件共享不支持修改端口！
+
+其他方案：owlfiles
 https://apps.microsoft.com/store/detail/owlfiles-file-manager/9MSQ3SZK42KP?hl=en-us&gl=us

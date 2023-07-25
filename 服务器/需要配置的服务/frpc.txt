@@ -12,13 +12,6 @@ Created 星期一 10 十月 2022
 frpc客户端注册映射：
 log_file = /tmp/frpc.log
 服务器NAT：
-frps: 5443
-frps-dashboard: 6443
-ssh: 22
-RDP: 23389 (默认为3389)
-splashtop: 6783
-smb: 445 -> 23336
-router: 8888 -> 23337
 
 # frpc configuration Router: /tmp/upload/.frpc.ini
 本地端口->远程端口：
