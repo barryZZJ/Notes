@@ -17,3 +17,6 @@ flatpak run com.freerdp.FreeRDP /v:dorm.barryzzj.asia:23389 /u:barry /p:8504 /sm
 
 动态分辨率，随窗口大小自适应（响应慢）：
 flatpak run com.freerdp.FreeRDP /v:dorm.barryzzj.asia:23389 /u:barry /p:8504 /dynamic-resolution /home-drive +sound +clipboard -heartbeat
+
+debug:
+当没有声音的时候，注销/重启宿主机。
