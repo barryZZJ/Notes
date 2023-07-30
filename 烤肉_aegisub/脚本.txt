@@ -31,8 +31,8 @@ fr2ms=aegisub.ms_from_frame
 Return value: The macro processing function can return up to two values: a new selected_lines table containing indices of the lines to select after the macro returns, and an index of the line to make the new active_line. If set, the new active line index must be one of the lines in the new selected_lines table.
 
 function f(subtitles, selected_lines, active_line)
-substitles: object table
-selected_lines: indexes array
+substitles: user data object （可当作table使用，但不是table，不能用table.xxx函数）
+selected_lines: indexes array  （永远是数组）
 active_line: number
 
 subtitle object https://aegi.vmoe.info/docs/3.2/Automation/Lua/Subtitle_file_interface/
