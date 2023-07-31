@@ -1,0 +1,18 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2023-07-30T17:38:21+08:00
+
+====== vlookup ======
+Created 星期日 30 七月 2023
+
+VLOOKUP(lookup_value, table_array, col_index_num, [range_lookup])
+
+A	B
+Apple	Fruit
+Banana	Fruit
+Carrot	Vegetable
+Tomato	Vegetable
+Potato	Vegetable
+
+=VLOOKUP("Carrot", A:B, 2, FALSE)  # ==the cell will display "Vegetable," 
+在A:B中搜索"Carrot"，返回第2列，FALSE为精确查找

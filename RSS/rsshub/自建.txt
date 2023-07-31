@@ -30,7 +30,6 @@ https://docs.rsshub.app/joinus/new-rss/before-start.html#chuang-jian-ming-ming-k
 https://docs.rsshub.app/install/#pei-zhi
 '''
 PORT=1200
-PROXY_URI=socks://127.0.0.1:10808
 CACHE_TYPE=redis
 CACHE_EXPIRE=1800
 CACHE_CONTENT_EXPIRE=86400
@@ -56,11 +55,16 @@ HOTLINK_INCLUDE_PATHS=/weibo,/picuki,/twitter
 //
 //ALLOW_USER_HOTLINK_TEMPLATE=true
 //
-DEBUG_INFO=false
+//DEBUG_INFO=false
 //NO_LOGFILES=true
 
 IG_USERNAME=barryjackson118
 IG_PASSWORD=6xlWaJ7Jaa
+'''
+
+'''
+//no need for vercel:
+PROXY_URI=socks://127.0.0.1:10808
 IG_PROXY=socks://127.0.0.1:10808
 '''
 

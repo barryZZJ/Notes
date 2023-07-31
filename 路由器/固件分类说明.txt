@@ -1,6 +1,20 @@
 Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
 
-梅林固件merlin：外国作者制作（不支持ax56u v2）
-官改固件：KoolCenter制作
 
-梅林改版固件：merlin + 官改
+
+说明：
+https://fw.koolcenter.com/KoolCenter_Merlin_New_Gen_386/1.%20%E6%A2%85%E6%9E%97386%E6%94%B9%E7%89%88%E5%9B%BA%E4%BB%B6%E5%88%B7%E6%9C%BA%E9%A1%BB%E7%9F%A5.html
+384、386、388是大版本号，数字越大版本越新
+
+官方固件Asuswrt
+
+官改固件：KoolCenter制作 = 官方固件 + 软件中心
+
+https://www.asuswrt-merlin.net/
+(原版)梅林固件merlin：外国作者制作（不支持ax56u v2），官方固件的基础上大改
+https://github.com/gnuton/asuswrt-merlin.ng
+G版梅林固件：补全了更多机型，功能一致
+
+梅林改版固件 = merlin + 软件中心
+
