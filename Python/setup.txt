@@ -7,3 +7,11 @@ Created 星期六 15 十月 2022
 
 python setup.py build
 python setup.py install
+
+或直接pip install .
+
+开发模式：方便修改代码，不用重新安装
+https://stackoverflow.com/questions/19048732/python-setup-py-develop-vs-install
+python setup.py develop
+或
+pip install -e <path/url>

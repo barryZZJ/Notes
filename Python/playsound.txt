@@ -9,8 +9,10 @@ Created 星期日 23 十月 2022
 https://pypi.org/project/playsound/
 
 pip install playsound
+（如果报错OSError code not found，需要先pip install --upgrade wheel）
 
 from playsound import playsound
 playsound('/path/to/a/sound/file/you/want/to/play.mp3')  # 注意路径分隔符不能是正斜杠\
 
  ptional second argument, block, which is set to True by default. Setting it to False makes the function run asynchronously.
+
