@@ -1,0 +1,44 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2023-08-09T16:01:41+08:00
+
+====== 自建git服务器 ======
+Created 星期三 09 八月 2023
+
+https://stackoverflow.com/questions/8390828/how-can-i-have-github-on-my-own-server
+
+
+纯git
+https://www.inmotionhosting.com/support/website/git/git-server/
+https://cloudzy.com/blog/install-git-server/
+
+轻量级、开源：
+Gitea
+https://about.gitea.cn/
+Gitea it's an open-source project. It's cross-platform and lightweight. You can use it without any cost. originally forked from Gogs(http://gogs.io). It is lightweight code hosting solution written in Golang and released under the MIT license. It works on Windows, macOS, Linux, ARM and more.
+
+Gogs
+http://gogs.io/
+Gogs is a self-hosted and open source project having around 32k stars on github. You can set up the Gogs at no cost.
+
+开源、企业级：
+GitLab
+https://about.gitlab.com/install/
+GitLab is a free, open-source and a web-based Git-repository manager software. It has a wiki, issue tracking, and other features. The code was originally written in Ruby, with some parts later rewritten in Golang. GitLab Community Edition (CE) is an open-source end-to-end software development platform with built-in version control, issue tracking, code review, CI/CD, and more. Self-host GitLab CE on your own servers, in a container, or on a cloud provider.
+doc:
+https://docs.gitlab.com/omnibus/index.html
+
+成熟企业级方案，用户多时收费：
+JetBrains Space
+https://lp.jetbrains.com/space-source-code-management
+
+其他：
+~~Bitbucket~~(not supported anymore)
+https://www.atlassian.com/software/bitbucket/pricing
+
+Gitolite
+https://github.com/sitaramc/gitolite/wiki/
+
+GitList
+https://gitlist.org/
+

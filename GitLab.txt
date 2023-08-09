@@ -1,0 +1,91 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2023-08-09T16:55:56+08:00
+
+====== GitLab ======
+Created 星期三 09 八月 2023
+
+自建
+https://about.gitlab.com/install/
+注意要选择ce(community)版本，默认是ee(enterprise)版本。
+区别是，不付费的话，ee提供的功能和ce相同。
+激活教程：https://docs.gitlab.com/ee/administration/license.html
+
+doc:
+https://docs.gitlab.com/omnibus/index.html
+
+修改external url：
+https://docs.gitlab.com/omnibus/settings/configuration.html#configure-the-external-url-for-gitlab
+
+root
+QEW13mPob8kQcxIeGd+t31kChTTWygNFheBywKC7HJo=
+
+sudo gitlab-ctl restart
+
+**Backup**:
+https://docs.gitlab.com/ee/administration/backup_restore/backup_gitlab.html#command-line-interface
+sudo apt-get install rsync
+cli:
+sudo gitlab-backup create #SKIP=tar
+配置备份文件路径：config/gitlab.yml
+默认备份至/var/opt/gitlab/backups,
+文件名为 [TIMESTAMP]_gitlab_backup.tar
+e.g.  1493107454_2018_04_25_10.6.4-ce_gitlab_backup.tar
+
+manually backup configs:
+https://docs.gitlab.com/omnibus/settings/backups.html#backup-and-restore-omnibus-gitlab-configuration
+/etc/gitlab/gitlab-secrets.json
+/etc/gitlab/gitlab.rb
+/etc/gitlab/ssl
+/etc/gitlab/trusted-certs
+
+设置cron定时任务
+https://docs.gitlab.com/ee/administration/backup_restore/backup_gitlab.html#configuring-cron-to-make-daily-backups
+https://docs.gitlab.com/omnibus/settings/backups.html#backup-and-restore-omnibus-gitlab-configuration
+
+发送备份至mount：
+https://docs.gitlab.com/ee/administration/backup_restore/backup_gitlab.html#upload-to-locally-mounted-shares
+
+**Restore:**
+https://docs.gitlab.com/ee/administration/backup_restore/restore_gitlab.html
+
+配置邮箱：
+https://docs.gitlab.com/omnibus/settings/smtp.html#example-configurations
+/etc/gitlab/gitlab.rb
+sudo gitlab-ctl reconfigure
+sudo gitlab-rails console
+Notify.test_email('zhouzejun@iie.ac.cn', 'Hello World', 'This is a test message').deliver_now
+测试：
+qq邮箱：
+gitlab_rails['smtp_address'] = "smtp.qq.com"
+gitlab_rails['smtp_port'] = 465
+gitlab_rails['smtp_user_name'] = "850462618@qq.com"
+gitlab_rails['smtp_password'] = "rnnrhjzdocinbcfe"
+gitlab_rails['smtp_authentication'] = "login"
+gitlab_rails['smtp_enable_starttls_auto'] = false
+gitlab_rails['smtp_tls'] = true
+gitlab_rails['smtp_domain'] = "smtp.qq.com"
+gitlab_rails['gitlab_email_from'] = '850462618@qq.com'
+gitlab_rails['gitlab_email_display_name'] = 'NSP GitLab Admin'
+user['git_user_name'] = "GitLab"
+user['git_user_email'] = "850462618@qq.com"
+
+cstnet:
+[[TODO]] 发送地址改为NspGitLab@iie.ac.cn
+// "Mail from" must equal authorized user
+gitlab_rails['smtp_enable'] = true
+gitlab_rails['smtp_address'] = "mail.cstnet.cn"
+gitlab_rails['smtp_port'] = 465
+gitlab_rails['smtp_user_name'] = "zhouzejun@iie.ac.cn"
+gitlab_rails['smtp_password'] = "E$~U^X%yB*2&gKI@"
+gitlab_rails['smtp_authentication'] = "login"
+gitlab_rails['smtp_enable_starttls_auto'] = false
+gitlab_rails['smtp_ssl'] = true
+gitlab_rails['smtp_force_ssl'] = true
+gitlab_rails['smtp_tls'] = true
+gitlab_rails['smtp_domain'] = "mail.cstnet.cn"
+gitlab_rails['gitlab_email_from'] = 'zhouzejun@iie.ac.cn'
+gitlab_rails['gitlab_email_display_name'] = 'NSP GitLab'
+gitlab_rails['gitlab_email_reply_to'] = 'noreply@git.barryzzj.asia'
+user['git_user_name'] = "GitLab"
+user['git_user_email'] = "noreply@git.barryzzj.asia"

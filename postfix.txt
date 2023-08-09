@@ -1,0 +1,12 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2023-08-09T20:22:26+08:00
+
+====== postfix ======
+Created 星期三 09 八月 2023
+
+doc:
+http://www.postfix.org/STANDARD_CONFIGURATION_README.html
+
+无真实域名时的配置：
+http://www.postfix.org/STANDARD_CONFIGURATION_README.html#fantasy

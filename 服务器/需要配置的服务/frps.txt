@@ -22,6 +22,8 @@ mv install-frps.sh frps.sh
 chmod 700 ./frps.sh
 sudo ./frps.sh install  {install|uninstall|update|config}
 
+配置文件：/usr/local/frps/frps.ini
+
 /etc/init.d/frps {start|stop|restart|status|config|version}
 如果报错ine 45: [: 2431: binary operator expected，修改/usr/bin/frps，把$PID全部替换为${PID}
 
