@@ -18,3 +18,4 @@ mstsc.exe登录远程桌面
 专业版配置方法：
 https://learn.microsoft.com/zh-CN/windows-server/remote/remote-desktop-services/clients/change-listening-port
 
+win11貌似不能多用户同时登陆，会顶掉，目前解决办法是装rdpwrap
