@@ -17,10 +17,16 @@ https://docs.gitlab.com/omnibus/index.html
 修改external url：
 https://docs.gitlab.com/omnibus/settings/configuration.html#configure-the-external-url-for-gitlab
 
+访问网址：
+内网：http://gitlan.barryzzj.asia
+外网：http://gitwan.barryzzj.asia:28888
+
 root
 QEW13mPob8kQcxIeGd+t31kChTTWygNFheBywKC7HJo=
 
+sudo gitlab-ctl start
 sudo gitlab-ctl restart
+sudo gitlab-ctl stop
 
 **Backup**:
 https://docs.gitlab.com/ee/administration/backup_restore/backup_gitlab.html#command-line-interface
@@ -48,6 +54,9 @@ https://docs.gitlab.com/ee/administration/backup_restore/backup_gitlab.html#uplo
 
 **Restore:**
 https://docs.gitlab.com/ee/administration/backup_restore/restore_gitlab.html
+
+**Uninstall:**
+https://docs.gitlab.com/omnibus/installation/#uninstall-the-linux-package-omnibus
 
 配置邮箱：
 https://docs.gitlab.com/omnibus/settings/smtp.html#example-configurations

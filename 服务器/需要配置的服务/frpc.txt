@@ -5,6 +5,30 @@ Creation-Date: 2022-10-10T19:40:25+08:00
 ====== frpc ======
 Created 星期一 10 十月 2022
 
+linux安装：
+1. https://github.com/fatedier/frp
+2. frpc放入/usr/bin
+3. 注册为服务：
+apt install systemd
+sudo nano /etc/systemd/system/frpc.service
+[Unit]
+Description=Frp Client
+After=network.target
+Wants = network.target
+
+[Service]
+Type=simple
+Restart=on-failure
+RestartSec=60s
+ExecStart=/usr/bin/frpc -c /home/barryoffice/frp/frpc_imserver.ini
+
+[Install]
+WantedBy=multi-user.target
+
+4. sudo systemctl daemon-reload
+systemctl start frpc
+systemctl enable frpc
+
 路由器frpc插件：
 /koolshare/bin/frpc
 不要开定时重新注册，否则到时候会断开一下连接

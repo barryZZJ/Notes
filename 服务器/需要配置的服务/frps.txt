@@ -21,6 +21,7 @@ wget https://raw.githubusercontent.com/MvsCode/frps-onekey/master/install-frps.s
 mv install-frps.sh frps.sh
 chmod 700 ./frps.sh
 sudo ./frps.sh install  {install|uninstall|update|config}
+（记得修改配置的log_file为/usr/local/frps/frps.log)
 
 配置文件：/usr/local/frps/frps.ini
 
@@ -32,8 +33,25 @@ sudo ./frps.sh install  {install|uninstall|update|config}
 2. 写好配置文件（见下），放入/usr/local/frps/frps.ini
 3. 注册为服务：
 https://gofrp.org/docs/setup/systemd/
-/etc/systemd/system/frps.service
-4. systemctl start frps
+apt install systemd
+sudo nano /etc/systemd/system/frps.service
+[Unit]
+# 服务名称，可自定义
+Description = frp server
+After = network.target syslog.target
+Wants = network.target
+
+[Service]
+Type = simple
+# 启动frps的命令，需修改为您的frps的安装路径
+ExecStart = /usr/bin/frps -c /usr/local/frps/frps.ini
+
+[Install]
+WantedBy = multi-user.target
+
+
+sudo systemctl daemon-reload
+systemctl start frps
 systemctl enable frps
 
 更新：

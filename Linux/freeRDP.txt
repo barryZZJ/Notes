@@ -13,11 +13,15 @@ https://github.com/awakecoding/FreeRDP-Manuals/blob/master/User/FreeRDP-User-Man
 -toggle-fullscreen                Disable Alt+Ctrl+Enter to toggle fullscreen
 
 参考设置：
-固定分辨率+调整窗口大小时缩放（响应快）：
+固定分辨率1920x1080+调整窗口大小时缩放（响应快）：
 flatpak run com.freerdp.FreeRDP /v:dorm.barryzzj.asia:23389 /u:barry /p:8504 /smart-sizing:1366x768 /size:1920x1080 /home-drive +sound +clipboard -heartbeat
 
 动态分辨率，随窗口大小自适应（响应慢）：
 flatpak run com.freerdp.FreeRDP /v:dorm.barryzzj.asia:23389 /u:barry /p:8504 /dynamic-resolution /home-drive +sound +clipboard -heartbeat
+/usb:id,dev:12d1:107e
+/usb:auto
+[/dvc:urbdrc,dbg,dev:0529:0001]
+(使用lsusb查看deviceid，貌似不支持安卓手机)
 
 debug:
 当没有声音的时候，注销/重启宿主机。

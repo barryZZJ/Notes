@@ -1,7 +1,7 @@
 Content-Type: text/x-zim-wiki
 Wiki-Format: zim 0.6
 
-====== Linux shell ======
+====== Linux指令 ======
 
 shell语言：
 https://www.jianshu.com/p/da49f71b9fc8
