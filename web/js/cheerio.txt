@@ -9,7 +9,11 @@ https://cheerio.js.org/docs/intro
 https://github.com/cheeriojs/cheerio
 
 const cheerio = require('cheerio');
-const $ = cheerio.load('<h2 class="title">Hello world</h2>');
+const $ = cheerio.load('<h2 class="title">Hello world</h2>', {other: options});
+解析xml需要添加参数：
+{ xmlMode: true }
+否则有些tag可能无法读取
+
 
 selecting using $: same as jquery
 https://cheerio.js.org/docs/basics/selecting

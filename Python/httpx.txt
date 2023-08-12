@@ -20,6 +20,7 @@ https://www.python-httpx.org/api/#url
 Client
 https://www.python-httpx.org/api/#client
 client=httpx.Client()
+timeout: 单位是秒，默认5
 
 AsyncClient
 https://www.python-httpx.org/api/#asyncclient
@@ -33,6 +34,9 @@ https://www.python-httpx.org/api/#response
 
 status code:
 httpx.codes.OK
+
+Exceptions:
+基础error：httpx.RequestError
 
 proxies支持单独配置：https://www.python-httpx.org/advanced/#http-proxying
 ''proxies = {''

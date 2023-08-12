@@ -9,3 +9,9 @@ Created 星期三 28 九月 2022
 在腾讯云、阿里云上可以买一些期限一年的域名，最便宜
 godaddy
 freenom
+
+域名更新后要做的事：
+修改freshrss订阅地址、rss_monitor地址
+修改远程桌面网址
+修改自建gitlab
+买一个稳定的域名
