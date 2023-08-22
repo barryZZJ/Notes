@@ -1,0 +1,26 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2023-08-22T15:41:45+08:00
+
+====== maven ======
+Created 星期二 22 八月 2023
+
+构建jar：
+mvn package
+
+新构建的jar无法运行，在pom.xml中的build-plugins中添加这个plugin：
+''        <plugin>''
+''            <groupId>org.apache.maven.plugins</groupId>''
+''            <artifactId>maven-jar-plugin</artifactId>''
+''            <version>3.2.0</version> <!-- Use the latest version -->''
+''            <configuration>''
+''                <archive>''
+''                    <manifest>''
+''                        <mainClass>com.example.MainClassName</mainClass>''
+''                    </manifest>''
+''                </archive>''
+''            </configuration>''
+''        </plugin>''
+
+运行jar：
+java -jar path.jar

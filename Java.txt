@@ -5,6 +5,9 @@ Creation-Date: 2023-02-23T19:11:18+08:00
 ====== Java ======
 Created 星期四 23 二月 2023
 
+doc:
+https://www.matools.com/api/java8
+
 开发环境JDK：
 Oracle Java和Red Hat Java都是基于OpenJDK的Java开发工具包，但它们有一些区别：
 Oracle Java是Oracle公司提供的商业版Java，它需要付费订阅才能获得长期支持和更新。

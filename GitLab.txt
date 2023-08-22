@@ -98,3 +98,6 @@ gitlab_rails['gitlab_email_display_name'] = 'NSP GitLab'
 gitlab_rails['gitlab_email_reply_to'] = 'noreply@git.barryzzj.asia'
 user['git_user_name'] = "GitLab"
 user['git_user_email'] = "noreply@git.barryzzj.asia"
+
+配置SSH：
+https://docs.gitlab.com/ee/user/ssh.html#configure-ssh-to-point-to-a-different-directory
