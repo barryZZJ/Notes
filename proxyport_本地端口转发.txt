@@ -5,11 +5,3 @@ Creation-Date: 2023-07-25T10:24:58+08:00
 ====== proxyport 本地端口转发 ======
 Created 星期二 25 七月 2023
 
-netsh interface portproxy add v4tov4 listenaddress=localaddress listenport=localport connectaddress=destinationaddress connectport=destinationport
-
-localaddress: The local IP address on which you want to listen for incoming connections.
-localport: The local port on which you want to listen for incoming connections.
-destinationaddress: The IP address of the destination system (where you want to forward the traffic).
-destinationport: The port on the destination system where you want to forward the traffic.
-
-netsh interface portproxy add v4tov4 listenaddress=192.168.222.2 listenport=445 connectaddress=192.168.50.200 connectport=23345

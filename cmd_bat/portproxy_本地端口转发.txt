@@ -1,0 +1,20 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2023-08-23T12:24:50+08:00
+
+====== portproxy 本地端口转发 ======
+Created 星期三 23 八月 2023
+
+添加：
+netsh interface portproxy add v4tov4 listenport=445 listenaddress=127.0.0.1 connectport=1399 connectaddress=SERVER_IP
+删除：
+add改为delete
+
+netsh interface portproxy add v4tov4 listenaddress=localaddress listenport=localport connectaddress=destinationaddress connectport=destinationport
+
+localaddress: The local IP address on which you want to listen for incoming connections.
+localport: The local port on which you want to listen for incoming connections.
+destinationaddress: The IP address of the destination system (where you want to forward the traffic).
+destinationport: The port on the destination system where you want to forward the traffic.
+
+netsh interface portproxy add v4tov4 listenaddress=192.168.222.2 listenport=445 connectaddress=192.168.50.200 connectport=23345

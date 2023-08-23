@@ -1,0 +1,21 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2023-08-23T12:27:15+08:00
+
+====== 共享文件夹 ======
+Created 星期三 23 八月 2023
+
+网络位置 是针对的是广域网！
+是用来打开网站、FTP站点或者网络位置
+网络驱动器是针对的是局域网！
+
+445端口被禁：
+法1：远程smb端口映射到本地445，然后映射网络驱动器
+https://blog.csdn.net/babytang008/article/details/120489133
+缺点：需要关闭本地的smb服务
+
+法2：安装sshfs-win挂载sftp（端口22可以访问）
+https://segmentfault.com/a/1190000023726408
+
+法3：搭建ftp服务器，指定端口（待确定21端口能否访问）
+https://cloud.tencent.com/developer/article/2104876
