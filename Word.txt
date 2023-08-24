@@ -1,6 +1,8 @@
 Content-Type: text/x-zim-wiki
 Wiki-Format: zim 0.6
 
+
+替换：
 通配符：https://www.cnblogs.com/whchensir/p/5768030.html
 ? 任意单个字符
 ''* 任意多个字符''
@@ -11,6 +13,8 @@ Wiki-Format: zim 0.6
 ^p 段落标记
 
 引用第i个括号中的内容：\i
+
+英文引号替换为中文引号：下方格式——字体——中文和西文都设为宋体即可。
 
 多图排版：
 使用分栏功能
