@@ -1,0 +1,8 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2023-08-26T16:32:48+08:00
+
+====== 笔记工具 ======
+Created 星期六 26 八月 2023
+
+obsidian 基于 markdown

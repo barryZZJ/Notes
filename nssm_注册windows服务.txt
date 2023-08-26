@@ -1,0 +1,28 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2023-08-26T13:54:25+08:00
+
+====== nssm 注册windows服务 ======
+Created 星期六 26 八月 2023
+
+注册为windows服务，使得开机自启动
+https://github.com/kirillkovalenko/nssm
+https://nssm.cc/commands
+
+GUI:
+nssm install <servicename>
+
+cli:（管理员权限）
+nssm install <servicename> <application> [<options>]
+e.g.: nssm install frpc "D:\Tools\frpc\frpc.exe" "-c D:\Tools\frpc\frpc.ini"
+
+nssm set frpc DisplayName "frp client"
+
+set startup directory:
+nssm set <servicename> AppDirectory <path>
+
+nssm start frpc
+
+删除
+nssm stop frpc
+nssm remove frpc

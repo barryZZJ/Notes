@@ -83,6 +83,9 @@ echo. 输出换行
 
 cmd [[/c]] ... 执行字符串指定的命令然后终止
 cmd [[/k]] ... 执行字符串指定的命令但保留
+/q  # == echo off
+不显示输出：
+>nul 2>nul cmd /c <some command>
 
 输出log到txt：
 xxx.bat > log.txt (>覆盖写, >>追加写) 
