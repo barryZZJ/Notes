@@ -5,14 +5,22 @@ Creation-Date: 2023-08-23T12:24:50+08:00
 ====== portproxy 本地端口转发 ======
 Created 星期三 23 八月 2023
 
+https://learn.microsoft.com/zh-cn/windows-server/networking/technologies/netsh/netsh-interface-portproxy#add-v4tov4
 https://blog.csdn.net/dogquill/article/details/50143925
 
+把发给listen的数据转发给connect
 添加：
-netsh interface portproxy add v4tov4 listenport=445 listenaddress=127.0.0.1 connectport=23345 connectaddress=REMOTE_IP
+服务端：
+netsh interface portproxy add v4tov4 listenport=23345 listenaddress=192.168.50.200 connectport=445 connectaddress=127.0.0.1
+用户端：
+netsh interface portproxy add v4tov4 listenport=445 listenaddress=127.0.0.1 connectport=23345 connectaddress=dorm.barryzzj.top
 删除：
 add改为delete，去掉connectport和connectaddress
-
+netsh interface portproxy delete v4tov4 listenport=445 listenaddress=192.168.50.200
+显示：
 netsh interface portproxy show all
+
+注意关闭对应的防火墙
 
 netsh interface portproxy add v4tov4 listenaddress=<localaddress> listenport=<localport> connectaddress=<destinationaddress> connectport=<destinationport>
 

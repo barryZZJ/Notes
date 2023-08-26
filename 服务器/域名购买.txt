@@ -10,6 +10,13 @@ Created 星期三 28 九月 2022
 godaddy
 freenom
 
+阿里云价格：
+https://wanwang.aliyun.com/help/price.html?spm=5176.20907348.J_3224652020.1.7eea538aAmFplE
+腾讯云价格：
+https://buy.cloud.tencent.com/domain/price?type=overview
+
+.top是最实惠价格也最稳定的
+
 域名更新后要做的事：
 修改freshrss订阅地址、rss_monitor地址
 修改远程桌面网址
