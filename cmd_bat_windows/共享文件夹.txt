@@ -5,6 +5,8 @@ Creation-Date: 2023-08-23T12:27:15+08:00
 ====== 共享文件夹 ======
 Created 星期三 23 八月 2023
 
+在网络共享中心启动公用文件夹共享，然后共享文件夹需放在非NTFS目录，即可不用密码访问
+
 网络位置 是针对的是广域网！
 是用来打开网站、FTP站点或者网络位置
 网络驱动器是针对的是局域网！
@@ -29,6 +31,7 @@ Set-SmbServerConfiguration -EnableSMB2Protocol $false
 法2：安装sshfs-win挂载sftp（端口22可以访问）
 https://segmentfault.com/a/1190000023726408
 https://github.com/winfsp/sshfs-win
+https://superuser.com/questions/1542287/windows-connect-to-sftp-server-using-windows-file-explorer
 
 GUI:
 rclone 支持挂载SMB、FTP、SFTP等各种协议
