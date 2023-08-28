@@ -2,7 +2,7 @@ Content-Type: text/x-zim-wiki
 Wiki-Format: zim 0.6
 Creation-Date: 2023-06-21T20:08:01+08:00
 
-====== symbolic math 解方程 ======
+====== SymPy 解方程 ======
 Created 星期三 21 六月 2023
 
 SymPy

@@ -1,0 +1,48 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2023-08-28T16:35:54+08:00
+
+====== Jython ======
+Created 星期一 28 八月 2023
+
+https://www.jython.org/
+仅支持python 2.7
+
+安装python库：
+java -jar jython-standalone.jar setup.py install
+
+配置：
+1.py文件放入src/main/python
+
+2.pom.xml:
+''<dependencies>''
+''    <!-- Other dependencies -->''
+''    <dependency>''
+''        <groupId>org.python</groupId>''
+''        <artifactId>jython-standalone</artifactId>''
+''        <version>2.7.3</version> <!-- Replace with the latest version -->''
+''    </dependency>''
+''</dependencies>''
+
+''<build>''
+''  <resources>''
+''    <resource>''
+''      <directory>src/main/python</directory>''
+''      <includes>''
+''        <include>**/*.py</include>''
+''      </includes>''
+''    </resource>''
+''  </resources>''
+	''<!-- Other build configurations -->''
+''</build>''
+
+3.代码
+''import org.python.util.PythonInterpreter;''
+
+''public class JythonExample {''
+''    public static void main(String[] args) {''
+''        PythonInterpreter interpreter = new PythonInterpreter();''
+''        interpreter.exec("print('Hello from Jython!')");''
+''    }''
+''}''
+
