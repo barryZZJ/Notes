@@ -1,0 +1,18 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2023-08-30T15:55:35+08:00
+
+====== 调用python ======
+Created 星期三 30 八月 2023
+
+简单交互：
+ProcessBuilder 直接生成子进程，通过sysarg传参，读取stdout获取结果
+JSON-RPC，轻量级封装了HTTP，传输数据为json
+Socket x（太底层，需要处理各种乱七八糟的情况）
+
+高级一点：
+RESTful API，python搭一个flask服务器，java发起http请求
+rpc框架： Apache Thrift、gRPC。通过使用通用的rpc语言，方便在客户端调用服务端的函数。局限性：受限于框架，不能调用第三方库等。
+
+
+
