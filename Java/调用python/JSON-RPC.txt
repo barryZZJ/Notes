@@ -10,17 +10,28 @@ jsonrpcserver / jsonrpcclient
 
 https://www.jsonrpcserver.com/en/stable/
 
-''from jsonrpcserver import method, serve''
+''from jsonrpcserver import method, serve, Result, Success, Error''
+
+''@method''
+''def ping() -> Result:''
+''    return Success('pong')''
 
 ''@method''
 ''def add(a, b):''
-''    return a + b''
+''    return Success(a + b)''
 
-''if __name__ == "__main__":''
-''    serve()''
+''@method''
+''def subtract(a, b):''
+''    return Success(a - b)''
+
+''if __name__ == '__main__':''
+''    serve(port=5000)''
 
 Java端：
-https://github.com/briandilley/jsonrpc4j
+server: https://github.com/briandilley/jsonrpc4j
+
+client: https://www.javadoc.io/doc/com.thetransactioncompany/jsonrpc2-base/latest/com/thetransactioncompany/jsonrpc2/JSONRPC2Request.html
+com.thetransactioncompany:jsonrpc2-client
 
 ''import com.github.krukow.clj_lang.IPersistentMap;''
 ''import com.github.krukow.clj_lang.PersistentHashMap;''
