@@ -1,0 +1,62 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2023-09-01T15:10:40+08:00
+
+====== ProcessBuilder ======
+Created 星期五 01 九月 2023
+
+生成进程，获取输出
+
+''import java.io.IOException;''
+
+''public class RunPythonInVenv {''
+''    public static void main(String[] args) {''
+''        try {''
+''            // Specify the path to the Python executable inside the virtual environment''
+''            String venvPath = "pyvenv/Scripts/python.exe";''
+            
+''            // Create a ProcessBuilder to run the Python script with the argument''
+''            ProcessBuilder processBuilder = new ProcessBuilder(venvPath, "your_python_script.py", "5000");''
+            
+''            // Redirect the output to the console''
+''            processBuilder.redirectOutput(ProcessBuilder.Redirect.INHERIT);''
+            
+''            // Start the process''
+''            Process process = processBuilder.start();''
+            
+''            // Wait for the process to finish''
+''            int exitCode = process.waitFor();''
+            
+''            // Check the exit code to determine if it was successful''
+''            if (exitCode == 0) {''
+''                System.out.println("Python script executed successfully.");''
+''            } else {''
+''                System.err.println("Python script execution failed with exit code: " + exitCode);''
+''            }''
+''        } catch (IOException | InterruptedException e) {''
+''            e.printStackTrace();''
+''        }''
+''    }''
+''}''
+
+skip ProcessBuilder, capture stdout and stderr to String:
+''            Process process = Runtime.getRuntime().exec(makeCommand(script, args));''
+
+''            // Capture stdout''
+''            InputStream stdout = process.getInputStream();''
+''            BufferedReader stdoutReader = new BufferedReader(new InputStreamReader(stdout));''
+
+''            // Capture stderr''
+''            InputStream stderr = process.getErrorStream();''
+''            BufferedReader stderrReader = new BufferedReader(new InputStreamReader(stderr));''
+
+''            String line;''
+''            System.out.println("Standard Output:");''
+''            while ((line = stdoutReader.readLine()) != null) {''
+''                System.out.println(line);''
+''            }''
+
+''            System.out.println("Standard Error:");''
+''            while ((line = stderrReader.readLine()) != null) {''
+''                System.out.println(line);''
+''            }''
