@@ -23,8 +23,9 @@ curl --location --request POST 'http://localhost:8080/wecomchan?sendkey={%E4%BD%
 wwe6768b0e3c2acb6c
 
 配置：
-1. 设置可信域名（OAuth） [[yy.barryzzj.asia:23222]]
-2. 设置可信IP 103.45.162.59
+1. 设置可信域名（OAuth）
+[[yy.barryzzj.asia:23222]]
+3. 设置可信IP 103.45.162.59;43.248.185.248;183.242.254.168
 
 应用：
 Monitor酱

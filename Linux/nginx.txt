@@ -1,0 +1,31 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2023-09-03T14:25:35+08:00
+
+====== nginx ======
+Created 星期日 03 九月 2023
+
+可以作为反向代理（转发流量）
+（有点鸡肋，大部分web app都基于/path的格式，就找不到了）
+
+# https://www.nginx.com/resources/wiki/start/
+# https://www.nginx.com/resources/wiki/start/topics/tutorials/config_pitfalls/
+# https://wiki.debian.org/Nginx/DirectoryStructure
+
+/etc/nginx/sites-available/example.com:
+''server {''
+''    listen 18000;''
+''    server_name barryzzj.top;''
+
+''    location /rsshub {''
+''        rewrite ^/rsshub(.*)$ $1 break;''
+''        proxy_pass http://localhost:1200;''
+''    }''
+
+''    # Add any other server configurations as needed.''
+''}''
+
+
+sudo ln -s /etc/nginx/sites-available/example.com /etc/nginx/sites-enabled/
+sudo nginx -t
+sudo systemctl reload nginx
