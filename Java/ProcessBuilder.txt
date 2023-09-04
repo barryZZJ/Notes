@@ -24,7 +24,7 @@ Created 星期五 01 九月 2023
 ''            // Start the process''
 ''            Process process = processBuilder.start();''
             
-''            // Wait for the process to finish''
+''            // Wait for the process to finish (this step may be blocking)''
 ''            int exitCode = process.waitFor();''
             
 ''            // Check the exit code to determine if it was successful''
