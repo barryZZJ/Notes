@@ -1,0 +1,12 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2023-09-05T15:29:43+08:00
+
+====== 版本控制 ======
+Created 星期二 05 九月 2023
+
+
+https://zhuanlan.zhihu.com/p/610468270?utm_id=0
+
+pandoc
+https://github.com/ciryiping/git_pandoc_word

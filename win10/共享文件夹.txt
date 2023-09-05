@@ -1,0 +1,10 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2023-09-05T18:38:15+08:00
+
+====== 共享文件夹 ======
+Created 星期二 05 九月 2023
+
+1. 网络和共享中心允许无密码的共享，注意专用和通用网络
+2. 文件夹属性——共享，同时安全里给everyone的权限（非NTFS不支持安全选项，默认均有权限）
+

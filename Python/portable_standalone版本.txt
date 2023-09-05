@@ -1,0 +1,14 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2023-09-05T11:02:29+08:00
+
+====== portable standalone版本 ======
+Created 星期二 05 九月 2023
+
+https://blog.csdn.net/lizongti/article/details/123142634
+
+从官网下载Embeded版本python
+然后从 https://bootstrap.pypa.io/get-pip.py 下载get-pip
+使用embeded版本的python安装pip：python get-pip.py
+设置python自动寻找pip：修改python39._pth，去掉import site前的注释符号
+使用pip：python -m pip ...

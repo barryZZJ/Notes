@@ -1,0 +1,38 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2023-09-05T10:25:28+08:00
+
+====== classpath ======
+Created 星期二 05 九月 2023
+
+各种resource文件应放入src/main/resources，在pom中注册后，会即时自动拷贝到target/classes中
+
+在pom中添加资源文件夹：
+<build>
+  <resources>
+	<resource>
+	  <directory>src/main/python</directory>
+	  <includes>
+		<include>**/*.py</include>
+	  </includes>
+	</resource>
+  </resources>
+  <!-- ... -->
+</build>
+
+路径：
+/开头找的是/target/classes
+相对路径则是当前.class文件在target中的路径
+
+https://www.geeksforgeeks.org/loading-resources-from-classpath-in-java-with-example/
+getResource()
+''URL url = obj.getClass().getClassLoader().getResource(fileName);''
+''//注意直接用url.getPath()开头会多一个/，导致无法获取正确路径，需要用Paths''
+''String path = Paths.get(res.toURI()).toString();''
+
+''File file = new File(url.toURI());''
+''file.exists();''
+
+
+getResourceAsStream
+''InputStream instr = obj.getClass().getClassLoader().getResourceAsStream(fileName);''

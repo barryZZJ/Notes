@@ -1,0 +1,7 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2023-09-05T18:38:08+08:00
+
+====== win10 ======
+Created 星期二 05 九月 2023
+
