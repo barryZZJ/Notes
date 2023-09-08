@@ -26,8 +26,9 @@ class Model(BaseModel):
 	e: Optional[int] = None
 	f: Optional[int] = 1
 	
-int类型默认strict=False
-v2定义str不能传入int
+int类型默认Field(strict=False)，即可以传入'45'等
+v2定义str不能传入int型，需要把变量类型改为int
+https://docs.pydantic.dev/latest/usage/fields/#strict-mode
 
 动态默认值：
 https://docs.pydantic.dev/latest/usage/models/#field-with-dynamic-default-value
