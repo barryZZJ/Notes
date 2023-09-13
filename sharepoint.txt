@@ -1,0 +1,16 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2023-09-13T16:22:32+08:00
+
+====== sharepoint ======
+Created 星期三 13 九月 2023
+
+联系方式：
+https://www.office365china.net/h-pd-44.html
+
+收费说明：
+国际版：https://www.microsoft.com/zh-cn/microsoft-365/sharepoint/compare-sharepoint-plans
+国内版：https://www.microsoft.com/zh-cn/microsoft-365/business-china-offers#midpagesecondarymessaging
+
+管理后台：
+https://admin.microsoft.com/?auth_upn=zhouzejun%40nspprivacy.onmicrosoft.com&source=applauncher#/catalog/offer-details/sharepoint-plan-1-/CEF7A763-4FE3-4A2C-858E-CB2D1C057C06
