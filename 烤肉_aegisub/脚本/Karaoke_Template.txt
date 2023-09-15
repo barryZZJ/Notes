@@ -212,7 +212,7 @@ width, height
 	width and height of line/syllable in pixels, this is rounded and might not match exactly with the positioning variables
 
 **Line variants**
-【这里获取到的都是orgline的，要想获得修改后的，使用!line.start_time!,!line.duration!等】
+【这里获取到的都是orgline的，要想获得修改后的，使用!line.start_time!,!line.duration!等】【但是line.left等位置不能获取被\pos修改后的，而且就算在样式里改frz也获取不到】
 【位置相关的参数都是整数，要想获取小数，使用!line.width!等line对象的属性】
 layer
 	line layer
