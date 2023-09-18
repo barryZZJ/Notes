@@ -163,7 +163,7 @@ https://cwlrin.wiki/wp-content/uploads/2021/02/vsfiltermod-%E6%89%8B%E5%86%8C.pd
 \frs 每个字的baseline旋转
 \fsvp \fshp 调节垂直、水平baseline位置
 \z z轴取值
-\distort(u1,v1,u2,v2,u3,v3) 形变 \distort(1,0,1,1,0,1)
+\distort(u1,v1,u2,v2,u3,v3) 形变 \distort(1,0,1,1,0,1) （左上为原点，从右上开始顺时针依次）
 \rnd<arg> \rndx \rndy \rndz 每个像素随机偏移<arg>个像素，可接\t
 \$vc(lt, rt, lb, rb) 颜色渐变，$=1~4分别对应1c,2c,3c,4c 【复杂的颜色渐变可以考虑替换成\1img】
 \$va(lt, rt, lb, rb) 透明度渐变，$=1~4分别对应1c,2c,3c,4c
@@ -182,7 +182,7 @@ $=4 shad
 \jitter 各方向重复抖动
 \movevc() + \[i]clip() 移动同一行中的clip/iclip遮罩，参数同\move，clip使用绝对坐标，movevc使用是相对坐标，clip所在的原位置是0,0。clip必须使用矢量代码
 \lua(somemethd, args) \somemethod(args)
-\ortho0 frx fry使用透视投影（且改进了原版）
+\ortho0 frx fry使用透视投影（默认，且改进了原版）
 \ortho1 frx fry使用正交投影（原版没有）
 \xblur \yblur 指定模糊方向
 \blend 图片与**视频画面**blend

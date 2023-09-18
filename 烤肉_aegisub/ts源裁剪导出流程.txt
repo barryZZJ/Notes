@@ -90,7 +90,7 @@ RubiStyle='&H00FFFFFF,&H000000FF,&H00000000,&H00000000,0,0,0,0,100,100,0,0,1,2,0
 
 DEBUG：
 音频只有第一段能对上，后面错位：更换索引，使用FileIndexer的lw(core.lsmas.LWLibavSource)/ffms(core.ffms2.Source)索引器提取音频
-（有几种电视台是不能用dg的例如bs11就不可以 得用lw）
+（有几种电视台是不能用dg的例如bs就不可以 得用lw）
 其他
 音频不能精准裁剪：使用HD Streams Extractor提取音频
 **终极解决办法**：原片直接压制一遍（vs或小丸），然后再裁剪、二压
