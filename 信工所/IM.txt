@@ -1,0 +1,15 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2023-09-19T10:10:43+08:00
+
+====== IM ======
+Created 星期二 19 九月 2023
+
+IP  地  址：116.213.101.142
+登录方式：SSH   22333端口（root登录已禁用）
+用  户  名：root
+密        码：BCCbcc135@$^
+用  户  名：admin
+密        码：Welcome123$%^
+
+服务器运行 NSP_IM/newtest/nspimser
