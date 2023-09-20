@@ -1,0 +1,8 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2023-09-20T10:19:48+08:00
+
+====== 设备序列号 ======
+Created 星期三 20 九月 2023
+
+sudo dmidecode -t 1

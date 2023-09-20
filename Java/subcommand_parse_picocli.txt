@@ -1,0 +1,11 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2023-09-20T17:01:11+08:00
+
+====== subcommand parse picocli ======
+Created 星期三 20 九月 2023
+
+支持多级嵌套指令
+
+https://picocli.info/
+https://stackoverflow.com/questions/41426125/java-command-line-parser-with-subcommands-that-have-similiar-options
