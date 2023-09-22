@@ -1,0 +1,42 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2023-09-21T15:02:23+08:00
+
+====== jar ======
+Created 星期四 21 九月 2023
+
+
+maven command: package
+
+运行jar：
+java -jar path.jar
+
+uri in jar: ''jar:file:/E:/Coding2/im_modules/im-modules/target/im-modules-0.0.1-jar-with-dependencies.jar!/py39/Scripts/python.exe''
+
+''package com.iie.utils;''
+
+''import java.io.IOException;''
+''import java.io.InputStream;''
+''import java.nio.file.Files;''
+''import java.nio.file.Path;''
+''import java.nio.file.StandardCopyOption;''
+
+''public class JarExtractor {''
+''    public static String extractResource(String resPath) throws IOException {''
+''        // Create a temporary directory''
+''        Path tempDir = Files.createTempDirectory("temp");''
+        
+''        // Get the input stream for the executable within the JAR''
+''        InputStream inputStream = JarExtractor.class.getResourceAsStream(resPath);''
+''        if (inputStream == null) {''
+''            throw new IOException("Executable not found in JAR");''
+''        }''
+        
+''        // Define the target path for the extracted executable''
+''        Path targetPath = tempDir.resolve(resPath);''
+        
+''        // Copy the executable from the JAR to the temporary directory''
+''        Files.copy(inputStream, targetPath, StandardCopyOption.REPLACE_EXISTING);''
+''        return targetPath.toString();''
+''    }''
+''}''

@@ -15,3 +15,18 @@ https://commons.apache.org/proper/commons-cli/apidocs/org/apache/commons/cli/Opt
 
 
 import org.apache.commons.cli.*;
+
+	  <plugin>
+		<artifactId>maven-assembly-plugin</artifactId>
+		<configuration>
+		  <archive>
+			<manifest>
+			  <mainClass>Your main class here</mainClass>
+			</manifest>
+		  </archive>
+		  <descriptorRefs>
+			<descriptorRef>jar-with-dependencies</descriptorRef>
+		  </descriptorRefs>
+		</configuration>
+	  </plugin>
+mvn clean compile assembly:single

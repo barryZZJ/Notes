@@ -25,5 +25,4 @@ mvn package
 ''            </configuration>''
 ''        </plugin>''
 
-运行jar：
-java -jar path.jar
+

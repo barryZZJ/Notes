@@ -26,13 +26,15 @@ Created 星期二 05 九月 2023
 
 https://www.geeksforgeeks.org/loading-resources-from-classpath-in-java-with-example/
 getResource()
-''URL url = obj.getClass().getClassLoader().getResource(fileName);''
+''URL url = getClass().getResource(fileName);''
 ''//注意直接用url.getPath()开头会多一个/，导致无法获取正确路径，需要用Paths''
 ''String path = Paths.get(res.toURI()).toString();''
 
 ''File file = new File(url.toURI());''
 ''file.exists();''
 
-
 getResourceAsStream
-''InputStream instr = obj.getClass().getClassLoader().getResourceAsStream(fileName);''
+''InputStream instr = getClass().getResourceAsStream(fileName);''
+
+打包到jar后路径会变
+https://stackoverflow.com/questions/22605666/java-access-files-in-jar-causes-java-nio-file-filesystemnotfoundexception
