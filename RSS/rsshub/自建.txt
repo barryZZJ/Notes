@@ -168,7 +168,7 @@ debug.html
 方便国内不挂VPN就查看图片；方便查看微博等具有反盗链的图片（只要没有referer就可以查看，但是有些阅读器会自动添加referer）
 【两种方法不能同时使用！】
 1. 环境变量配置
-https://docs.rsshub.app/install/#pei-zhi-tu-pian-chu-li
+https://docs.rsshub.app/zh/install/#%E5%9B%BE%E7%89%87%E5%A4%84%E7%90%86
 ''HOTLINK_TEMPLATE=https://i3.wp.com/${host}${pathname}''
 ''HOTLINK_INCLUDE_PATHS=/weibo,/picuki,/twitter''
 ''HOTLINK_EXCLUDE_PATHS=''
@@ -186,7 +186,7 @@ https://docs.rsshub.app/parameter.html#duo-mei-ti-chu-li
 可用的反代服务器 图床 https://github.com/DIYgod/RSSHub/issues/2769
 # duckduckgo必须翻墙才能使用
 https://proxy.duckduckgo.com/iu/?u=${href}
-# weserv不支持微博图片，支持picuki
+# weserv不支持微博图片，支持picuki【加上后缀 _ue 则会对其进行 URL 编码】
 https://images.weserv.nl?url=${href}
 # wp不支持twitter图片，支持picuki，国内访问貌似快一些
 https://i0.wp.com/${host}${pathname}

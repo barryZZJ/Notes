@@ -85,6 +85,9 @@ kamishiraimimone:
 /kamishiraishimone/mail_magazine/lemomail
 /kamishiraishimone/mail_magazine/official
 
+tvkingdom:
+/tvkingdom/search/上白石萌音
+
 tver: (x)
 /tver/talents/:talentid
 /tver/talents/t03736e

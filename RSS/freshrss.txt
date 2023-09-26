@@ -15,3 +15,6 @@ http://yy.barryzzj.asia:28800/api/greader.php
 
 barryzzj
 nV0bq4PXEd
+
+update:
+docker-compose pull

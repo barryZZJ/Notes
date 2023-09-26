@@ -26,9 +26,9 @@ Created 星期二 05 九月 2023
 
 https://www.geeksforgeeks.org/loading-resources-from-classpath-in-java-with-example/
 getResource()
-''URL url = getClass().getResource(fileName);''
-''//注意直接用url.getPath()开头会多一个/，导致无法获取正确路径，需要用Paths''
-''String path = Paths.get(res.toURI()).toString();''
+''URL url = getClass().getResource(fileName); // 静态方法使用ClassName.class替换getClass()''
+''//注意直接用url.getPath()开头会多一个/，导致无法获取正确路径，需要用Paths转换一下''
+''String path = Paths.get(url.toURI()).toString();''
 
 ''File file = new File(url.toURI());''
 ''file.exists();''

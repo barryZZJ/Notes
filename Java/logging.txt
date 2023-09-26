@@ -1,0 +1,43 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2023-09-25T10:06:38+08:00
+
+====== logging ======
+Created 星期一 25 九月 2023
+
+''import java.util.logging.Level;''
+''import java.util.logging.Logger;''
+
+''public class GlobalLogger {''
+''    private static final Logger logger = Logger.getLogger(GlobalLogger.class.getName());''
+
+''    static {''
+''        logger.setLevel(Level.INFO); // Set the default log level for the logger''
+''    }''
+
+''    public static Logger getLogger() {''
+''        return logger;''
+''    }''
+''}''
+
+
+''import java.util.logging.Logger;''
+
+''public class SomeModule {''
+''    private static final Logger logger = GlobalLogger.getLogger();''
+
+''    public void doSomething() {''
+''        // Log messages using the global logger''
+''        logger.info("This is an informational message.");''
+''        logger.warning("This is a warning message.");''
+''        logger.severe("This is a severe error message.");''
+''    }''
+''}''
+.severe
+.warning
+.info
+.config
+.fine
+.finer
+.finest
+

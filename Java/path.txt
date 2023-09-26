@@ -5,6 +5,11 @@ Creation-Date: 2023-09-21T15:41:00+08:00
 ====== path ======
 Created 星期四 21 九月 2023
 
+java.nio.file.Path
+java.nio.file.Paths
+
+Paths.get(str)
+
 返回项目根目录或jar所在目录
 
 ''package com.iie.utils;''

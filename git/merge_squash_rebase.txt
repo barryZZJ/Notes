@@ -21,3 +21,8 @@ details are retained at the cost of “verboseness”.
 
 merge 不能保持 master 分支干净，保持了所有的 commit history，
 In merge mode, an ugly sideway out-and-in retains all details in developing the feature.
+
+pull时使用rebase：
+git pull --rebase
+pull时默认使用rebase：
+git config --global pull.rebase true
