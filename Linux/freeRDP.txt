@@ -12,7 +12,6 @@ https://github.com/awakecoding/FreeRDP-Manuals/blob/master/User/FreeRDP-User-Man
 参数设置：https://www.mankier.com/1/xfreerdp
 -toggle-fullscreen                Disable Alt+Ctrl+Enter to toggle fullscreen
 
-参考设置：
 固定分辨率1920x1080+调整窗口大小时缩放（响应快）：
 flatpak run com.freerdp.FreeRDP /v:dorm.barryzzj.asia:23389 /u:barry /p:8504 /smart-sizing:1366x768 /size:1920x1080 /home-drive +sound +clipboard -heartbeat
 
@@ -26,3 +25,12 @@ flatpak run com.freerdp.FreeRDP /v:dorm.barryzzj.asia:23389 /u:barry /p:8504 /dy
 
 debug:
 当没有声音的时候，注销/重启宿主机。
+
+script：
+rdp-onemon:
+#! /bin/sh
+flatpak run com.freerdp.FreeRDP /v:dorm.barryzzj.asia:23389 /u:barry /p:8504 /dynamic-resolution /size:1920x1080 /home-drive /network:lan +sound +clipboard -heartbeat
+
+rdp-multimon:
+#! /bin/sh
+flatpak run com.freerdp.FreeRDP /v:dorm.barryzzj.asia:23389 /u:barry /p:8504 /dynamic-resolution /home-drive /network:lan /multimon +sound +clipboard -heartbeat -toggle-fullscreen
