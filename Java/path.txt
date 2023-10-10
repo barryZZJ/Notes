@@ -7,48 +7,55 @@ Created 星期四 21 九月 2023
 
 java.nio.file.Path
 java.nio.file.Paths
+Files
 
 Paths.get(str)
+Path.toString()
+
+Files.createTempDirectory
+Files.createDirectories
 
 返回项目根目录或jar所在目录
 
-''package com.iie.utils;''
+{{{code: lang="java" linenumbers="False"
+package com.iie.utils;
 
-''import java.io.File;''
-''import java.io.UnsupportedEncodingException;''
-''import java.net.URLDecoder;''
+import java.io.File;
+import java.io.UnsupportedEncodingException;
+import java.net.URLDecoder;
 
 
-''public class Path {''
-''    public static String getProjectRootPath() {''
-''        String runningJarPath = getRunningJarPath();''
+public class PathUtils {
+    public static String getProjectRootPath() {
+        String runningJarPath = getRunningJarPath();
 
-''        if (runningJarPath != null) {''
-''            return new File(runningJarPath).getParent();''
-''        } else {''
-''            String resourcePath = Path.class.getResource("/").getPath();''
-''            return new File(resourcePath).getParentFile().getParentFile().getAbsolutePath();''
+        if (runningJarPath != null) {
+            return new File(runningJarPath).getParent();
+        } else {
+            String resourcePath = Path.class.getResource("/").getPath(); // 开头会多一个斜杠：/E:/...，用File可以正确解析，但是用Paths.get()则会出错，要用File().toPath()
+            return new File(resourcePath).getParentFile().getParentFile().getAbsolutePath();
+        }
+    }
 
-''        }''
-''    }''
+    private static String getRunningJarPath() {
+        try {
+            String jarPath = Path.class.getProtectionDomain().getCodeSource().getLocation().getPath();
+            jarPath = URLDecoder.decode(jarPath, "UTF-8");
 
-''    private static String getRunningJarPath() {''
-''        try {''
-''            String jarPath = Path.class.getProtectionDomain().getCodeSource().getLocation().getPath();''
-''            jarPath = URLDecoder.decode(jarPath, "UTF-8");''
+            // Check if the application is running from a JAR file
+            if (jarPath.endsWith(".jar")) {
+                return jarPath;
+            }
+        } catch (UnsupportedEncodingException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
 
-''            // Check if the application is running from a JAR file''
-''            if (jarPath.endsWith(".jar")) {''
-''                return jarPath;''
-''            }''
-''        } catch (UnsupportedEncodingException e) {''
-''            e.printStackTrace();''
-''        }''
-''        return null;''
-''    }''
+    public static void main(String[] args) {
+        String projectRootPath = getProjectRootPath();
+        System.out.println("Project Root Path: " + projectRootPath);
+    }
+}
+}}}
 
-''    public static void main(String[] args) {''
-''        String projectRootPath = getProjectRootPath();''
-''        System.out.println("Project Root Path: " + projectRootPath);''
-''    }''
-''}''

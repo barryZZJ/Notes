@@ -1,0 +1,75 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2023-10-08T09:13:03+08:00
+
+====== builderClass default param ======
+Created 星期日 08 十月 2023
+
+https://en.wikipedia.org/wiki/Builder_pattern
+
+https://stackoverflow.com/questions/997482/does-java-support-default-parameter-values
+
+通过定义builder类，实现可选参数。如果没有必须参数，可以不用定义builder类
+
+{{{code: lang="java" linenumbers="False"
+public class User {
+    private final String username;
+    private final String email;
+    private final String firstName;
+    private final String lastName;
+    private final int age;
+
+    private User(Builder builder) {
+        this.username = builder.username;
+        this.email = builder.email;
+        this.firstName = builder.firstName;
+        this.lastName = builder.lastName;
+        this.age = builder.age;
+    }
+
+    public static class Builder {
+    	// required
+        private final String username;
+        private final String email;
+        // optional
+        private String firstName = "";
+        private String lastName = "";
+        private int age = 0;
+
+		// required args here
+        public Builder(String username, String email) {
+            this.username = username;
+            this.email = email;
+        }
+		
+		// optional args below
+        public Builder firstName(String firstName) {
+            this.firstName = firstName;
+            return this;
+        }
+
+        public Builder lastName(String lastName) {
+            this.lastName = lastName;
+            return this;
+        }
+
+        public Builder age(int age) {
+            this.age = age;
+            return this;
+        }
+
+        public User build() {
+            return new User(this);
+        }
+    }
+
+    public static void main(String[] args) {
+        User user = new User.Builder("johndoe", "johndoe@example.com")
+                .firstName("John")
+                .lastName("Doe")
+                .age(30)
+                .build();
+    }
+}
+
+}}}

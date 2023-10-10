@@ -27,6 +27,7 @@ QEW13mPob8kQcxIeGd+t31kChTTWygNFheBywKC7HJo=
 sudo gitlab-ctl start
 sudo gitlab-ctl restart
 sudo gitlab-ctl stop
+sudo gitlab-ctl status
 
 **Backup**:
 https://docs.gitlab.com/ee/administration/backup_restore/backup_gitlab.html#command-line-interface

@@ -21,8 +21,8 @@ Created 星期二 05 九月 2023
 </build>
 
 路径：
-/开头找的是/target/classes
-相对路径则是当前.class文件在target中的路径
+"/"开头 对应"/target/classes"
+相对路径 对应当前.class文件在target中的路径
 
 https://www.geeksforgeeks.org/loading-resources-from-classpath-in-java-with-example/
 getResource()

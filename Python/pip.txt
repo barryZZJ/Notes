@@ -11,3 +11,7 @@ python -m pip install --upgrade pip
 
 proxy:
 --proxy <proxy>             Specify a proxy in the form scheme://[user:passwd@]proxy.server:port
+
+install:
+-e, --editable <path/url>
+Install a project in editable mode (i.e. setuptools “develop mode”) from a local project path or a VCS url.

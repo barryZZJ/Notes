@@ -1,0 +1,48 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2023-09-28T10:26:00+08:00
+
+====== log4j ======
+Created 星期四 28 九月 2023
+
+install:
+https://logging.apache.org/log4j/2.x/maven-artifacts.html#Using_Log4j_in_your_Apache_Maven_build
+
+doc:
+https://logging.apache.org/log4j/2.x/javadoc/log4j-api/index.html
+
+usage:
+https://blog.csdn.net/lrenjun/article/details/8178875
+
+
+maven:
+''<dependencies>''
+''  <dependency>''
+''    <groupId>org.apache.logging.log4j</groupId>''
+''    <artifactId>log4j-api</artifactId>''
+''    <version>2.20.0</version>''
+''  </dependency>''
+''  <dependency>''
+''    <groupId>org.apache.logging.log4j</groupId>''
+''    <artifactId>log4j-core</artifactId>''
+''    <version>2.20.0</version>''
+''  </dependency>''
+''</dependencies>''
+
+
+''import org.apache.logging.log4j.LogManager;''
+''import org.apache.logging.log4j.Logger;''
+
+''public class Logging {''
+''    public static final Logger logger = LogManager.getLogger();''
+''}''
+
+logger.trace("trace level");
+logger.debug("debug level");
+logger.info("info level");
+logger.warn("warn level");
+logger.error("error level");
+logger.fatal("fatal level");
+
+默认error，配置需要配置文件
+https://blog.csdn.net/lrenjun/article/details/8178875#3--%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6

@@ -24,7 +24,7 @@ https://github.com/kira-96/ASS-file
 	（只有blur比较小的时候效果好，太大的话颜色会混为一体
 	
 浅浅的发光效果：
-	两层，都\bord0,下层\blur3，上层\blur0.6-0.8
+	同一颜色做两层，都\bord0,下层\blur3，上层\blur0.6-0.8
 
 
 技巧：

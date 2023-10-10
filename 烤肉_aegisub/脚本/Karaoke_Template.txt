@@ -5,7 +5,7 @@ Creation-Date: 2023-01-29T22:11:49+08:00
 ====== Karaoke Template ======
 Created 星期日 29 一月 2023
 
-https://aeg-dev.github.io/AegiSite/docs/3.2/automation/karaoke_templater/
+https://aegisub.org/docs/latest/automation/karaoke_templater/
 https://aegi.vmoe.info/docs/3.2/Automation/Karaoke_Templater/
 https://aegi.vmoe.info/docs/3.2/Automation/Lua/Modules/karaskel.lua/#karaoke-and-furigana-syllable-tables
 
