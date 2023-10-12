@@ -1,0 +1,469 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2023-10-12T19:43:23+08:00
+
+====== 宏 ======
+Created 星期四 12 十月 2023
+
+vb编辑器：alt+f11
+
+
+{{{code: lang="vbnet" linenumbers="False"
+Dim WordApp As Object ' Word.Application
+Dim WordDoc As Object ' Word.Document
+Dim StyleBill As Object
+
+Dim isBeijing As Boolean
+Dim deviceCnt As Integer
+Dim rowStart As Integer
+Dim colStart As String
+Dim rowsPerDevice As Integer
+Dim sysName As String
+Dim companyName As String
+
+Dim iYear As Integer
+Dim rowYear As Integer
+Dim yearstr As String
+Dim rowComputerPerYear As Integer
+
+
+Dim runHoursPeak As Integer, runHoursHigh As Integer, runHoursNormal As Integer, runHoursLow As Integer
+
+Dim runDaysPerServer(1 To 3, 1 To 3) As Integer ' (1, iYear): month 7-8; (2, iYear): month 1-6、9-12; (3, iYear): (1,iYear) + (2, iYear); if not Beijing then only 3 is used
+Dim runDaysPerComputer(1 To 3, 1 To 3) As Integer
+
+Dim runHoursPerServer(1 To 2, 1 To 3) As Integer ' (1, iYear): month 7-8; (2, iYear): month 1-6、9-12; if not Beijing then only 1 is used
+Dim runHoursPerComputer(1 To 2, 1 To 3) As Integer
+
+Dim rowDevice As Integer
+Dim pwr As Integer, svrCnt As Integer
+Dim rowMonth As Integer
+Dim runHours As Integer
+
+Function makePara(isBold As Boolean) As Object
+    With WordDoc.Paragraphs
+      .Add
+      Set Para = .Last
+      With Para
+        .Range.Style = StyleBill
+        .FirstLineIndent = WordApp.CentimetersToPoints(0.85)
+        .Range.ParagraphFormat.LineSpacingRule = 1 ' https://learn.microsoft.com/en-us/office/vba/api/publisher.pblinespacingrule
+        .Range.Font.Bold = isBold
+        .Range.Font.Size = 12 ' 小四
+        .Range.Font.Name = "宋体"
+        .Range.Font.Name = "Times New Roman"
+        
+      End With
+    End With
+    Set makePara = Para
+End Function
+
+Function round2(value As Double) As String
+  round2 = Format(Round(value, 2), "0.00")
+End Function
+
+Function round4(value As Double) As String
+  round4 = Format(Round(value, 4), "0.0000")
+End Function
+
+Function ColShift(ByVal offset As Integer) As String
+    inputLetter = colStart
+    Dim charCode As Integer
+    Dim shiftedChar As String
+    
+    ' Check if inputLetter is a single character
+    If Len(inputLetter) <> 1 Then
+        ColShift = "Invalid Input"
+        Exit Function
+    End If
+    
+    ' Get the ASCII code of the input letter
+    charCode = Asc(inputLetter)
+    
+    ' Check if the character is a letter (A-Z or a-z)
+    If (charCode >= 65 And charCode <= 90) Or (charCode >= 97 And charCode <= 122) Then
+        ' Shift the character code by the offset
+        charCode = charCode + offset
+        
+        ' Check if the result is outside the A-Z or a-z range
+        If (charCode < 65 And charCode > 90) Or (charCode < 97 And charCode > 122) Then
+            ' Wrap around if necessary
+            If charCode > 90 Then
+                charCode = 64 + (charCode - 90)
+            ElseIf charCode < 65 Then
+                charCode = 91 + (charCode - 65)
+            ElseIf charCode > 122 Then
+                charCode = 96 + (charCode - 122)
+            ElseIf charCode < 97 Then
+                charCode = 123 + (charCode - 97)
+            End If
+        End If
+        
+        ' Convert the shifted character code back to a character
+        shiftedChar = Chr(charCode)
+        
+        ColShift = shiftedChar
+    Else
+        ColShift = "Not a letter"
+    End If
+End Function
+
+Function addHeaderFirstPara(iYear As Integer) As String
+
+    With makePara(isBold:=False)
+      If iYear = 1 Then
+        .Range.InsertAfter "根据课题的进度安排，在课题执行期第一年主要进行课题所有研究内容的需求分析、方案的初步设计。"
+        .Range.InsertAfter "在方案设计后，会对部分研究内容的功能模块进行开发环境的搭建、少量的开发测试等。"
+        .Range.InsertAfter "本课题的" & sysName & "处于开发和技术验证阶段，"
+      ElseIf iYear = 2 Then
+        .Range.InsertAfter "在课题执行期第二年，根据项目的进度安排，" & sysName & "进入软件系统完善攻坚阶段，需进行较完善的测试与验证，集中进行分项测试与联调，"
+      Else
+        .Range.InsertAfter "在课题执行期第三年，根据项目的进度安排，进入最后的研发系统的迭代完善、集成联试、压力测试阶段，将建立最完整的测试与验证环境。主要任务是迭代完善、优化部署、集成联调、压力测试，"
+      End If
+      .Range.InsertAfter "因此课题执行期" & yearstr & "服务器运行" & runDaysPerServer(3, iYear) & "天，"
+          
+        If runHoursPerServer(1, iYear) = 24 Then
+          .Range.InsertAfter "放在机房运行，"
+        End If
+        .Range.InsertAfter "每天运行" & runHoursPerServer(1, iYear) & "小时，"
+        .Range.InsertAfter "开发计算机运行" & runDaysPerComputer(3, iYear) & "天，每天运行" & runHoursPerComputer(1, iYear) & "小时。课题执行期" & yearstr & "需要运行的设备及相应燃料动力费如下。"
+      
+    End With
+      
+
+End Function
+
+Function addHeaderSecondPara(iYear As Integer) As String
+
+  If isBeijing Then
+    With makePara(isBold:=False)
+      .Range.InsertAfter companyName & yearstr
+  
+      For iMonth = 1 To 2
+        For i = 1 To 2
+            If i = 1 Then
+                Device = 0
+            Else
+                Device = deviceCnt - 1
+            End If
+        
+            rowMonth = (rowYear + Device * rowsPerDevice + iMonth - 1)
+              
+            runHoursPeak = Range(ColShift(7) & rowMonth).value
+            runHoursHigh = Range(ColShift(9) & rowMonth).value
+            runHoursNormal = Range(ColShift(11) & rowMonth).value
+            runHoursLow = Range(ColShift(13) & rowMonth).value
+            If Device = 0 Then
+                .Range.InsertAfter Range(ColShift(2) & rowMonth) & "所有服务器计划运行" & runDaysPerServer(iMonth, iYear) & "天，"
+                .Range.InsertAfter "每天运行" & runHoursPerServer(iMonth, iYear) & "小时"
+            Else
+                .Range.InsertAfter "，所有开发计算机计划运行" & runDaysPerComputer(iMonth, iYear) & "天，"
+                .Range.InsertAfter "每天运行" & runHoursPerComputer(iMonth, iYear) & "小时"
+            End If
+            .Range.InsertAfter "（"
+            If runHoursPeak <> 0 Then
+              .Range.InsertAfter "尖峰时段运行" & runHoursPeak & "小时、"
+            End If
+            If runHoursHigh <> 0 Then
+              .Range.InsertAfter "高峰时段运行" & runHoursHigh & "小时、"
+            End If
+            If runHoursNormal <> 0 Then
+              .Range.InsertAfter "平段运行" & runHoursNormal & "小时"
+            End If
+            If runHoursLow <> 0 Then
+              .Range.InsertAfter "、低谷时段运行" & runHoursLow & "小时"
+            End If
+            .Range.InsertAfter "）"
+            Device = deviceCnt - 1
+        Next i
+        If iMonth = 1 Then
+          .Range.InsertAfter "；"
+        Else
+          .Range.InsertAfter "。"
+        End If
+
+      Next iMonth
+    End With
+  'Else
+    ' skip
+    '.Range.InsertAfter "所有服务器计划运行" & runDaysPerServer(3, iYear) & "天，"
+    '.Range.InsertAfter "每天运行" & runHoursPerServer(1, iYear) & "小时"
+    '.Range.InsertAfter "，所有开发计算机计划运行" & runDaysPerComputer(3, iYear) & "天，"
+    '.Range.InsertAfter "每天运行" & runHoursPerComputer(1, iYear) & "小时。"
+
+  End If
+  
+  addYearPara = ""
+End Function
+
+Function addDeviceMeasurementPara(Device As Integer, item As Integer) As String
+    addDeviceMeasurementPara = ""
+    rowDevice = (rowYear + Device * rowsPerDevice)
+    If isBeijing Then
+        '带month的变量对应的都是一个单行
+        
+        svrSystem = Range(ColShift(19) & rowDevice)
+        svrSpec = Range(ColShift(20) & rowDevice)
+        
+        pwr = Range(ColShift(4) & rowDevice).value * 1000
+        
+        svrCnt = Range(ColShift(3) & rowDevice)
+    Else
+    
+        svrSystem = Range(ColShift(10) & rowDevice)
+        svrSpec = Range(ColShift(11) & rowDevice)
+        
+        pwr = Range(ColShift(5) & rowDevice).value * 1000
+        
+        svrCnt = Range(ColShift(2) & rowDevice)
+    End If
+    
+    With makePara(isBold:=False)
+      .Range.InsertAfter "（" & item & "）" & svrSystem & "，按照" & svrSpec & "功率测算，功耗为" & pwr & "瓦/台，共" & svrCnt & "台。"
+      
+      ' bold for svrSystem
+      offset = Len("（" & item & "）")
+      WordDoc.Range(.Range.Start + offset, .Range.Start + offset + Len(svrSystem)).Font.Bold = True
+    
+    End With
+    
+    
+    If isBeijing Then
+        With makePara(isBold:=False)
+          .Range.InsertAfter "测算方法：" & pwr & "瓦/台*" & svrCnt & "台*（"
+          WordDoc.Range(.Range.Start, .Range.Start + 4).Font.Bold = True
+          
+          For iMonth = 1 To 2
+          
+            rowMonth = (rowYear + Device * rowsPerDevice + iMonth - 1) ' for Col D
+        
+            monthstr = Range(ColShift(2) & rowMonth) '7月、8月 / 1-6月、9-12月
+            
+            runDays = Range(ColShift(6) & rowMonth)
+                              
+            
+            runHours = Range(ColShift(5) & rowMonth).value
+            
+            runHoursPeak = Range(ColShift(7) & rowMonth).value
+            runHoursHigh = Range(ColShift(9) & rowMonth).value
+            runHoursNormal = Range(ColShift(11) & rowMonth).value
+            runHoursLow = Range(ColShift(13) & rowMonth).value
+            
+            priceMonth = round2(Range(ColShift(15) & rowMonth))
+            pricePeak = round4(Range(ColShift(8) & rowMonth))
+            priceHigh = round4(Range(ColShift(10) & rowMonth))
+            priceNormal = round4(Range(ColShift(12) & rowMonth))
+            priceLow = round4(Range(ColShift(14) & rowMonth))
+          
+            
+            
+            .Range.InsertAfter "（"
+            If iMonth = 1 Then
+              .Range.InsertAfter runHoursPeak & "小时/天*" & pricePeak & "元/千瓦时+"
+            End If
+            
+            .Range.InsertAfter runHoursHigh & "小时/天*" & priceHigh & "元/千瓦时+" & runHoursNormal & "小时/天*" & priceNormal & "元/千瓦时"
+            If runHoursLow <> 0 Then
+              .Range.InsertAfter "+" & runHoursLow & "小时/天*" & priceLow & "元/千瓦时"
+            End If
+            .Range.InsertAfter "）*" & runDays & "天"
+            
+            If iMonth = 1 Then
+              .Range.InsertAfter "+"
+            End If
+           
+          Next iMonth
+          .Range.InsertAfter "）=" & priceMonth & "万元。"
+        End With
+    Else
+      For iMonth = 1 To 1
+        rowMonth = (rowYear + Device * 1 + iMonth - 1) ' for Col D
+    
+        runDays = Range(ColShift(3) & rowMonth)
+        
+        runHours = Range(ColShift(4) & rowMonth).value
+        
+        priceHour = round4(Range(ColShift(6) & rowMonth))
+        
+        rowDevice = (rowYear + Device * rowsPerDevice)
+        
+        priceMonth = round2(Range(ColShift(7) & rowMonth))
+
+        With makePara(isBold:=False)
+          .Range.InsertAfter "测算方法：" & pwr & "瓦/台*" & svrCnt & "台*" & runHours & "小时/天*" & priceHour & "元/千瓦时*" & runDays & "天=" & priceMonth & "万元。"
+          WordDoc.Range(.Range.Start, .Range.Start + 4).Font.Bold = True
+        End With
+
+      Next iMonth
+      
+    End If
+
+
+End Function
+
+Function addSumPerYearPara() As String
+  addSumPerYearPara = ""
+  If isBeijing Then
+    With makePara(isBold:=False)
+      .Range.InsertAfter "（1）至（" & deviceCnt & "）燃料动力费小计："
+      
+      For Device = 0 To deviceCnt - 2
+        rowDevice = (rowYear + Device * rowsPerDevice)
+        .Range.InsertAfter round2(Range(ColShift(16) & rowDevice)) & "万元+"
+      Next Device
+      rowDevice = (rowYear + (deviceCnt - 1) * rowsPerDevice)
+      .Range.InsertAfter round2(Range(ColShift(16) & rowDevice)) & "万元"
+      .Range.InsertAfter "=" & round2(Range(ColShift(17) & rowYear)) & "万元。"
+    End With
+  Else
+    With makePara(isBold:=False)
+      .Range.InsertAfter "（1）至（" & deviceCnt & "）燃料动力费小计："
+      
+      For Device = 0 To deviceCnt - 1
+        rowDevice = (rowYear + Device * rowsPerDevice)
+        .Range.InsertAfter round2(Range(ColShift(7) & rowDevice)) & "万元"
+        If Device <> deviceCnt - 1 Then
+          .Range.InsertAfter "+"
+        End If
+      Next Device
+      .Range.InsertAfter "=" & round2(Range(ColShift(8) & rowYear)) & "万元。"
+    End With
+  End If
+End Function
+
+Function addSumTotalPara() As String
+  addSumTotalPara = ""
+  Dim colTotalByYear As Integer
+  If isBeijing Then
+    colTotalByYear = 17
+  Else
+    colTotalByYear = 8
+  End If
+
+  With makePara(False)
+      .Range.InsertAfter companyName & "三年课题执行期，共计燃料动力费："
+      
+      For iYear = 1 To 3
+        rowYear = rowStart + (iYear - 1) * (deviceCnt * rowsPerDevice)
+        priceDeviceYear = round2(Range(ColShift(colTotalByYear) & rowYear))
+        
+        .Range.InsertAfter priceDeviceYear & "万元"
+        If iYear <> 3 Then
+          .Range.InsertAfter "+"
+        End If
+      Next iYear
+      
+       rowYear = rowStart + 3 * (deviceCnt * rowsPerDevice)
+      .Range.InsertAfter "=" & round2(Range(ColShift(colTotalByYear) & rowYear)) & "万元。"
+  End With
+End Function
+
+Sub makeEBill()
+    ' Create a new Word application
+    Set WordApp = CreateObject("Word.Application")
+    
+    ' Add a new document
+    Set WordDoc = WordApp.Documents.Add
+    
+    Set StyleBill = WordDoc.Styles.Add(Name:="Bill")
+    
+    ' ===================== arguments
+    isBeijing = Range("A7").value = "Y"
+    deviceCnt = Range("C7")
+    
+    rowStart = Range("B7")
+    colStart = Range("G7")
+    rowsPerDevice = Range("D7")
+    
+    sysName = Range("E7")
+    companyName = Range("F7")
+    
+    ' ====================
+    
+    'With makePara(isBold:=False)
+      '.Range.InsertAfter "改动：行距1.5；"
+    'End With
+    
+    
+    ' header
+    With makePara(isBold:=True)
+      .Range.InsertAfter "2.3.x " & companyName & "燃料动力费"
+     
+    End With
+    
+    For iYear = 1 To 3
+      
+      With makePara(isBold:=True)
+      
+        rowYear = rowStart + (iYear - 1) * (deviceCnt * rowsPerDevice)
+        
+        yearstr = Range(ColShift(0) & rowYear) '第X年
+      
+        .Range.InsertAfter iYear & "）课题执行期" & yearstr
+        
+      End With
+    
+      rowComputerPerYear = rowYear + (deviceCnt - 1) * rowsPerDevice
+      If isBeijing Then
+        runDaysPerServer(1, iYear) = Range(ColShift(6) & rowYear).value
+        runDaysPerServer(2, iYear) = Range(ColShift(6) & (rowYear + 1)).value
+        runDaysPerServer(3, iYear) = runDaysPerServer(1, iYear) + runDaysPerServer(2, iYear)
+        
+        runDaysPerComputer(1, iYear) = Range(ColShift(6) & rowComputerPerYear).value
+        runDaysPerComputer(2, iYear) = Range(ColShift(6) & (rowComputerPerYear + 1)).value
+        runDaysPerComputer(3, iYear) = runDaysPerComputer(1, iYear) + runDaysPerComputer(2, iYear)
+        
+        runHoursPerServer(1, iYear) = Range(ColShift(5) & rowYear).value
+        runHoursPerServer(2, iYear) = Range(ColShift(5) & (rowYear + 1)).value
+        
+        runHoursPerComputer(1, iYear) = Range(ColShift(5) & rowComputerPerYear).value
+        runHoursPerComputer(2, iYear) = Range(ColShift(5) & (rowComputerPerYear + 1)).value
+      Else
+        runDaysPerServer(3, iYear) = Range(ColShift(3) & rowYear).value
+        runDaysPerComputer(3, iYear) = Range(ColShift(3) & rowComputerPerYear).value
+        
+        runHoursPerServer(1, iYear) = Range(ColShift(4) & rowYear).value
+        runHoursPerComputer(1, iYear) = Range(ColShift(4) & rowComputerPerYear).value
+      End If
+      
+      addHeaderFirstPara iYear
+      
+      Dim item As Integer
+      
+      addHeaderSecondPara iYear
+      
+      'Dim priceDevicePerMonth() As String
+      'ReDim priceDevicePerMonth(0 To deviceCnt - 1) As String
+      
+      item = 1
+      Dim Device As Integer
+      
+      For Device = 0 To deviceCnt - 1
+
+        addDeviceMeasurementPara Device, item
+        
+        'priceDevicePerMonth(Device) = round2(Range("R" & rowMonth).value)
+        
+        item = item + 1
+        
+      Next Device
+      
+      
+      addSumPerYearPara
+    Next iYear
+    
+    addSumTotalPara
+    
+    With makePara(isBold:=True)
+      .Range.InsertAfter "4）" & companyName & "燃料动力费汇总"
+    End With
+    
+    ' Make Word visible (optional)
+    WordApp.Visible = True
+    
+    ' Release the Word objects
+    Set WordDoc = Nothing
+    Set WordApp = Nothing
+End Sub
+
+}}}
