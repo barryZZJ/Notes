@@ -7,6 +7,62 @@ Created 星期四 12 十月 2023
 
 vb编辑器：alt+f11
 
+{{{code: lang="vbnet" linenumbers="False"
+Dim WordApp As Object ' Word.Application
+Dim WordDoc As Object ' Word.Document
+
+Function makePara() As Object
+  With WordDoc.Paragraphs
+    .Add
+    Set Para = .Last
+    With Para
+      .Range.Font.Size = 10.5 ' 五号
+      .Range.Font.Name = "仿宋"
+      .Range.Font.Name = "Times New Roman"
+    End With
+  End With
+  Set makePara = Para
+End Function
+
+
+Sub output()
+  ' Create a new Word application
+  Set WordApp = CreateObject("Word.Application")
+  ' Add a new document
+  Set WordDoc = WordApp.Documents.Add
+  
+  rowEnd = 31
+  colName = "E"
+  colPatname = "F"
+  colApplyDate = "U"
+  colApplyNo = "G"
+  colGrantDate = "T"
+  colGrantNo = "I"
+  For Row = 2 To rowEnd Step 1
+    With makePara()
+      inventors = Range(colName & Row).Value
+      patname = Range(colPatname & Row).Value
+      applyDate = Range(colApplyDate & Row).Value
+      applyNo = Range(colApplyNo & Row).Value
+      grantDate = Range(colGrantDate & Row).Value
+      grantNo = Range(colGrantNo & Row).Value
+      .Range.InsertAfter inventors & ". " & patname & ". 申请时间：" & applyDate & "，申请号：" & applyNo & ". 授权时间：" & grantDate & "，授权号：" & grantNo
+    End With
+    
+  Next Row
+  
+  ' Make Word visible (optional)
+  WordApp.Visible = True
+  
+  ' Release the Word objects
+  Set WordDoc = Nothing
+  Set WordApp = Nothing
+End Sub
+
+
+
+}}}
+
 
 {{{code: lang="vbnet" linenumbers="False"
 Dim WordApp As Object ' Word.Application
