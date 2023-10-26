@@ -22,6 +22,8 @@ https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.read_excel.htm
 读取excel(.xlsx):.read_excel(file, engine='openpyxl') (或转存成xls)
 【详见excel操作.txt】
 
+pd.set_option('display.expand_frame_repr', False)  # 强制print时显示所有内容，否则可能会省略部分行/列
+
 # 都不是in-place，需要重新赋值
 df.insert(index,col_label,value) pd.concat([a,b])
 df.drop(index=?, column=?, inplace=True) 删除指定行和/或列
@@ -36,7 +38,6 @@ Series:
 遍历：
 1. 直接遍历
 2. .items() (index, value)对
-3. 
 
 DataFrame:
 按行：
@@ -88,6 +89,11 @@ for col in df:
 
 numpy:
 https://numpy.org/doc/stable/reference/index.html
+取值：arr[rowind, colind]
+取3行：arr[0:3]
+取3列：arr[:, 0:3]
+取几格：arr[ [0, 1], [2, 0] # 取[0,2], [1,0]
+
 降序排列：arr[::-1].sort()
 变换维度：
 atleast_1d()

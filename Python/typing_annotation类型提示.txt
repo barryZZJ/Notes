@@ -56,6 +56,16 @@ def f(arg: Type['ClassName']) -> "ClassName"
 
 取备选值中的一个：
 Literal["val1", "val2"]
+此时传入参数必须是具体的字符串常量，而不能是变量。解决方法：@overload一个函数定义，参数类型指定为str
+e.g.:
+''def open(path: _PathType,''
+''         mode: Literal["r", "w", "a", "x", "r+", "w+", "a+", "x+"],''
+''         ) -> IO[Text]: ...''
+
+''# Fallback overload for when the user isn't using literal types''
+''@overload''
+''def open(path: _PathType, mode: str) -> IO[Any]: ...''
+
 
 TypedDict
 类似pydantic的module的方式，只用于类型检查，运行时为dict类型.
@@ -100,7 +110,8 @@ def fun(arg: 'expensive_mod.SomeType') -> None:
 
 overload:
 https://docs.python.org/3/library/typing.html#typing.overload
-用于IDE自动识别，可以定义多个@overload装饰的函数和一个不带的函数
+类方法可以定义多个@overload装饰的函数和一个不带的函数，用于IDE静态解析，而不是真的执行。
+（另一个可以真的执行不同函数的来自from overloading import overload https://peps.python.org/pep-3124/ ）
 ''from typing import overload''
 
 ''class Duck:''
