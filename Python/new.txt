@@ -1,0 +1,58 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2023-10-27T16:45:40+08:00
+
+====== new ======
+Created 星期五 27 十月 2023
+
+def ''__new__(cls, *args)''
+
+魔法函数new，是静态方法，new 返回一个实例，然后这个实例作为init的第一个参数调用init，
+通常用于继承内置对象，可以修改immutable对象的值
+函数体通常需要调用父类的new函数
+
+
+https://zhuanlan.zhihu.com/p/35943253
+
+
+examples:
+{{{code: lang="python3" linenumbers="False"
+class SingletonClass(object):
+  def __new__(cls):
+    if not hasattr(cls, 'instance'):
+      cls.instance = object.__new__(cls)
+    return cls.instance
+   
+singleton = SingletonClass()
+new_singleton = SingletonClass()
+ 
+print(singleton is new_singleton)  # True, both variables reference the same instance
+ 
+singleton.singl_variable = "Singleton Variable"
+print(new_singleton.singl_variable)  # "Singleton Variable"
+}}}
+
+
+{{{code: lang="python3" linenumbers="False"
+class CustomArray(np.ndarray):
+    def __new__(cls, input_array):
+        # Create a new instance of CustomArray using the input_array
+        obj = np.asarray(input_array).view(cls)
+        return obj
+}}}
+
+
+{{{code: lang="python3" linenumbers="False"
+class Upperstr(str):
+    def __new__(cls,value=""):
+        print(cls)
+        print(value)
+        return str.__new__(cls,value.upper())
+
+    # def __init__(self,m1):
+    #     self.m1 = m1.upper()
+    
+u = Upperstr("hello")
+print(u)
+}}}
+

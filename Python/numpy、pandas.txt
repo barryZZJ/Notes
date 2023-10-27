@@ -89,6 +89,13 @@ for col in df:
 
 numpy:
 https://numpy.org/doc/stable/reference/index.html
+继承:
+''class CustomArray(np.ndarray):''
+''    def __new__(cls, a):''
+''        # Create a new instance of CustomArray using the input_array''
+''        obj = np.asarray(a).view(cls)''
+''        return obj''
+
 取值：arr[rowind, colind]
 取3行：arr[0:3]
 取3列：arr[:, 0:3]
@@ -174,3 +181,7 @@ apply_along_axis Apply a function to 1-D slices along the given axis.
 apply_over_axis Apply a function repeatedly over multiple axes.
 
 unravel_index 获取下标在多维数组中的位置
+
+typing:
+https://numpy.org/devdocs/reference/typing.html#numpy.typing.NDArray
+
