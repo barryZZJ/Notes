@@ -42,11 +42,15 @@ a # type: List[str]
 检测：
 isinstance(o, t)
 
-自定义类型
-T = TypeVar('T', bound=TypeName)  # 绑定T到TypeName，是固定的。
 
-模板类型(如函数返回类型是自己：
+模板类型，用于overload，如果有多个参数都使用该模板类型，则要求他们类型一致：
 T = TypeVar('T')  # 通用类型，用于类定义，继承自Generic[T]，字类需要指定T的类型。
+T = TypeVar('T', bound=TypeName)  # 绑定T到TypeName，是固定的。不支持Union
+
+T = TypeVar('T')  # Can be anything
+S = TypeVar('S', bound=str)  # Can be any subtype of str
+A = TypeVar('A', str, bytes)  # Must be exactly str or bytes
+
 T = TypeVar('T', bound='类名')  # 绑定T到类名，是固定的。
 成员函数(sth: Type[T]) -> T:...
 

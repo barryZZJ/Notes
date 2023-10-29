@@ -6,6 +6,10 @@ Creation-Date: 2022-09-20T19:34:30+08:00
 Created 星期二 20 九月 2022
 
 https://docs.python.org/3/library/unittest.html
+放在包内，新建一个tests文件夹，
+文件命名：test_xxx.py
+类命名：Testxxx
+函数命名：test_xxx
 
 设置复用成员：
 https://docs.python.org/3/library/unittest.html#unittest.TestCase.setUp
@@ -35,6 +39,8 @@ def setUp(self)
 
 ''if __name__ == '__main__':''
 ''    unittest.main()''
+
+
 
 命令行执行
 python -m unittest test_module1 test_module2
