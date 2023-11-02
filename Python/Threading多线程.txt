@@ -4,33 +4,9 @@ Wiki-Format: zim 0.6
 https://www.runoob.com/python/python-multithreading.html
 https://docs.python.org/3.9/library/threading.html#module-threading
 
-默认多线程时无法响应Ctrl+C，因为只有主线程停止，而子线程没有停止。
-解决办法：
-1. 各个子线程设置setDaemon(True)，主线程最后加一个while True循环，主线程响应退出信号时顺带销毁子线程（强杀）。
-
-
-守护线程：
-子线程.setDaemon(True) 代表让子线程跟随主线程销毁
-必须在start()方法调用之前设置
-设置后主线程（进程）结束了，不管子线程是否完成，必须也跟着结束。不设置的话，主线程结束后，子线程也还在执行。
-
-阻塞主线程.join():代表主线程要等待子线程执行完再继续执行
-主线程中调用子线程的join(timeout)方法。
-在start()之后调用。
-主线程/进程等子线程结束后才会继续执行，如果不join，主线程/进程就会直接继续。
-
-
-共享变量：
-对全局变量加锁解锁实现
-
 from threading import Thread, Lock
 t = Thread(target=func, args=[args])
 t.start()
-
-锁：
-lock = Lock()
-lock.acquire()
-lock.release()
 
 1. 继承threading.Thread
 class myThread(Thread):
@@ -49,3 +25,34 @@ myThread(args).start()
 2. tr = Thread(target=func)
 tr.start()
 
+默认多线程时无法响应Ctrl+C，因为只有主线程停止，而子线程没有停止。
+解决办法：
+1. 各个子线程设置setDaemon(True)，主线程最后加一个while True循环，主线程响应退出信号时顺带销毁子线程（强杀）。
+
+
+守护线程：
+子线程.setDaemon(True) 代表让子线程跟随主线程销毁
+必须在start()方法调用之前设置
+设置后主线程（进程）结束了，不管子线程是否完成，必须也跟着结束。不设置的话，主线程结束后，子线程也还在执行。
+
+阻塞主线程.join():代表主线程要等待子线程执行完再继续执行
+主线程中调用子线程的join(timeout)方法。
+在start()之后调用。
+主线程/进程等子线程结束后才会继续执行，如果不join，主线程/进程就会直接继续。
+
+
+
+锁：
+lock = Lock()
+lock.acquire()
+lock.release()
+
+共享变量：
+对全局变量加锁解锁实现：
+result_lock = threading.Lock()
+results = []
+Thread(target=my_thread_function, args=(results, result_lock))
+# in def my_thread_function(results, lock):
+lock.acquire()
+results.append(thread_result)
+lock.release()
