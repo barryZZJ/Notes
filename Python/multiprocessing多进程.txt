@@ -10,13 +10,14 @@ https://docs.python.org/3.9/library/multiprocessing.html
 from multiprocessing import Process
 
 与多线程类似，继承Process，重写run函数，外部调用start()
+要写在if __name__ == '__main__':里
 
 交换数据：
 https://docs.python.org/3.9/library/multiprocessing.html#exchanging-objects-between-processes
-multiprocessing.Queue、 Pipe
+multiprocessing.Queue（见文末）、 Pipe
 https://docs.python.org/3.9/library/multiprocessing.html#sharing-state-between-processes
 https://docs.python.org/3.9/library/multiprocessing.html#pipes-and-queues
-生产者、消费者模型，把queue作为参数传递，.put、.get赋值取值，可以阻塞
+生产者、消费者模型，把queue作为参数传递，.put、.get放入值、Z取值，可以阻塞
 
 锁：
 https://docs.python.org/3.9/library/multiprocessing.html#synchronization-between-processes
@@ -24,18 +25,21 @@ l = Lock()
 l.acquire()
 l.release()
 
-共享数据：
-1.Shared memory
+共享数据（只占用一份内存，节约内存）：
+1.Server process
+Manager对象，可以传递dict, list，值可以是任意对象。
+key必须为hashable, immutable
+https://docs.python.org/3.9/library/multiprocessing.html#multiprocessing.Manager
+https://docs.python.org/3.9/library/multiprocessing.html#multiprocessing.managers.SyncManager
+
+2.Shared memory
 https://docs.python.org/3.9/library/multiprocessing.html#sharing-state-between-processes
 定义Value, Array对象，作为参数传递，只能传递C数据类型
 ''    num = Value('d', 0.0)''
 ''    arr = Array('i', range(10))''
 数据类型对应字母：https://docs.python.org/3.9/library/array.html#module-array
 
-2.Server process
-Manager对象，可以传递dict, list之类的内置python对象
-key必须为hashable, immutable, value可以为任意类型
-https://docs.python.org/3.9/library/multiprocessing.html#multiprocessing.Manager
+
 NOTE：就算不作为参数传递，也可以被其他进程访问到。
 '''
 manager = Manager()
