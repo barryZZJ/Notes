@@ -53,6 +53,21 @@ name
 -Icon字符串值表示ico文件路径
 -Extended字符串值表示需要按住shift才能显示
 ->command 默认字符串值表示执行命令
+
+vscode:
+在新窗口中打开：
+[HKEY_CLASSES_ROOT\Directory\Background\shell\vscode]
+"E:\CodingSoftware\VSCodePortable\VSCode-win32-x64-1.84.0\Code.exe" "%V%"
+[计算机\HKEY_CLASSES_ROOT\Directory\shell\vscode]
+"E:\CodingSoftware\VSCodePortable\VSCode-win32-x64-1.84.0\Code.exe" "%1"
+加入当前工作区
+[HKEY_CLASSES_ROOT\Directory\Background\shell\vscode2]
+"D:\Software\VSCode\Microsoft VS Code\Code.exe" -a "%V%"
+[计算机\HKEY_CLASSES_ROOT\Directory\shell\vscode2]
+"E:\CodingSoftware\VSCodePortable\VSCode-win32-x64-1.84.0\Code.exe" -a "%1%"
+在code中打开
+[计算机\HKEY_CLASSES_ROOT\*\shell\vscode]
+
  
  {{.\3.png}}
 {{.\4.png}}

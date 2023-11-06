@@ -1,0 +1,24 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2023-11-06T15:44:12+08:00
+
+====== pycharm ======
+Created 星期一 06 十一月 2023
+
+添加排除项：
+文件夹：
+%APPDATA%\JetBrains
+%LOCALAPPDATA%\JetBrains
+
+进程名：
+idea64.exe
+webstorm64.exe
+datagrip64.exe
+clion64.exe
+rider64.exe
+datagrip64.exe
+goland64.exe
+phpstorm64.exe
+pycharm64.exe
+rubymine64.exe
+studio64.exe
