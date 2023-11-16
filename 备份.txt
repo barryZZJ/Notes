@@ -1,0 +1,8 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2023-11-16T15:50:03+08:00
+
+====== 备份 ======
+Created 星期四 16 十一月 2023
+
+文件备份，比如用 rclone 13, Duplicacy 11, syncthing 10 等工具多端同步备份
