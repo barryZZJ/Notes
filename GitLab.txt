@@ -18,12 +18,13 @@ https://docs.gitlab.com/omnibus/index.html
 https://docs.gitlab.com/omnibus/settings/configuration.html#configure-the-external-url-for-gitlab
 
 访问网址：
-内网：http://gitlan.barryzzj.asia
-外网：http://gitwan.barryzzj.asia:28888
+内网：http://gitlan.barryzzj.top
+外网：http://gitwan.barryzzj.top:28888
 
 root
 QEW13mPob8kQcxIeGd+t31kChTTWygNFheBywKC7HJo=
 
+sudo gitlab-ctl reconfigure
 sudo gitlab-ctl start
 sudo gitlab-ctl restart
 sudo gitlab-ctl stop

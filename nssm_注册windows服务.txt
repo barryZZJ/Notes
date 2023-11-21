@@ -14,15 +14,15 @@ nssm install <servicename>
 
 cli:（管理员权限）
 nssm install <servicename> <application> [<options>]
-e.g.: nssm install frpc "D:\Tools\frpc\frpc.exe" "-c D:\Tools\frpc\frpc.ini"
+e.g.: nssm install frpc_yy "G:\Portable\Frp内网穿透\frpc.exe" "-c G:\Portable\Frp内网穿透\frpc_yy.ini"
 
-nssm set frpc DisplayName "frp client"
+nssm set frpc_yy DisplayName "frp client"
 
 set startup directory:
 nssm set <servicename> AppDirectory <path>
 
-nssm start frpc
+nssm start frpc_yy
 
 删除
-nssm stop frpc
-nssm remove frpc
+nssm stop frpc_yy
+nssm remove frpc_yy

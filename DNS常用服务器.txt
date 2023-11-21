@@ -24,3 +24,8 @@ Level3 Public DNS
 209.244.0.4
 
 ipconfig /flushdns
+
+
+dns服务商
+ns1.alidns.com
+ns2.alidns.com
