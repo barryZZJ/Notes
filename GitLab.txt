@@ -11,6 +11,10 @@ https://about.gitlab.com/install/
 区别是，不付费的话，ee提供的功能和ce相同。
 激活教程：https://docs.gitlab.com/ee/administration/license.html
 
+网址：
+内网：git / gitlan.barryzzj.top
+外网：gitwan.barryzzj.top (走的是组里服务器的frp）
+
 doc:
 https://docs.gitlab.com/omnibus/index.html
 
