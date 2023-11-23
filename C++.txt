@@ -274,3 +274,10 @@ setbit(x,y) x|=(1<<y)
 clrbit(x,y) x&=(1<<y)
 reversebit(x,y) x^=(1<<y)
 getbit(x,y) (x>>y) & 1
+
+switch语法：
+switch(expression){
+	   case const:
+			   break;
+	   default:
+}

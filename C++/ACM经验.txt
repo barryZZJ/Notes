@@ -5,6 +5,12 @@ Creation-Date: 2023-11-23T10:06:20+08:00
 ====== ACM经验 ======
 Created 星期四 23 十一月 2023
 
+18级无基础 cf 思维题
+https://cn.vjudge.net/contest/267078
+
+有基础 dp
+https://cn.vjudge.net/contest/267090
+
 ACM经验
 int 2^31-1（10^9多一点）
 
