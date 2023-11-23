@@ -1,0 +1,13 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2023-11-23T10:04:06+08:00
+
+====== 随机数 ======
+Created 星期四 23 十一月 2023
+
+stdlib.h
+ctime
+rand()%x生成0～x-1的随机整数，
+rand()返回0～RAND_MAX之间的随机数
+rand()%len+a返回[a, a+len-1]的随机整数
+srand((int)time(NULL))

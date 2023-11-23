@@ -1,0 +1,52 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2023-11-23T10:06:20+08:00
+
+====== ACM经验 ======
+Created 星期四 23 十一月 2023
+
+ACM经验
+int 2^31-1（10^9多一点）
+
+结构体不用构造函数，初始化时直接用大括号，里面是每个成员的值。
+node s = {val1, val2, ...}
+数据规模与对应算法：
+n≤300 O(n^3)
+n≤5000 O(n^2)
+n≤10^5 O(n√n)
+n≤10^6 O(nlogn)
+n≤10^20+ O(logn)
+输入来源：
+#ifndef ONLINE_JUDGE
+    freopen("input.txt", "r", stdin);
+#else
+  // online submission...
+#endif
+读取一行：
+string s;
+getline(cin, s)
+（第一个getline之前要加getchar() 否则会读取换行符）
+istringstream is = istringstream(s)
+is>>xxx
+
+dfs可以搜索连通分支个数
+
+质数筛：
+1，初始化2是质数
+2，从3到N，令偶数为false，奇数为true
+3，i从3到sqrt(N)，如果i是质数，则i*i+2ni不是质数
+
+使用foreach语法时记得加引用符号 (auto &val : vec)，此时val是值类型的引用（如int&），这时对val的修改会保留。
+
+对iterator类型的值直接修改（如*it = 5）会保留。
+
+引用符号不能乱用，
+从STL中取出的元素被pop掉后这个引用就乱了；
+引用变量被赋了新值，会同样赋给STL中的相同位置。
+
+给日期，小时分钟等数据，用时间戳形式储存
+
+输出最后不能有空格：
+bool flag=0;
+printf("%s%d", flag? " ":"", ans[i]);
+flag=1;

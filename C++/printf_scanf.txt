@@ -1,0 +1,21 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2023-11-23T10:02:43+08:00
+
+====== printf scanf ======
+Created 星期四 23 十一月 2023
+
+printf（和scanf都不支持string类型）
+指定最短宽度
+"%2d"空格补全
+"%02d"用0补全
+
+指定小数位数
+"%.2f"
+
+字符%c
+字符串%s
+
+要想用scanf读string：
+string s; s.resize(10);
+scanf("%s", &s[0])

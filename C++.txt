@@ -14,3 +14,263 @@ freopen(outputfilepath, "w", stdout);
 <algorithm>
 equal(first1, end1, first2);
 比较数组是否相同
+
+#include<bits/stdc++.h> 
+
+四舍五入round()
+
+求数组最大值和最小值：<algorithm>
+*max_element(* start, * end[, cmp]) 通过函数或结构体指定比较方式
+*min_element(* start, * end)
+求最值的下标：
+max_element()-v.begin() (- 数组名)
+
+分数类
+<ratio>
+ratio
+要想实现结构体之间的min，需要在结构体外重载两个对象参数的小于号。
+
+<cstring>
+memset(数组，初值，数组大小sizeof(类型)*数组长度）只能初始化char型数组
+初始化任意数组：fill(*first, *last, val)
+
+输出putchar
+swap
+
+include<string>使用string
+
+string.erase(pos, len)删掉子字符串
+string.substr(pos, len)获取子字符串
+
+stdlib.h
+system("pause")
+exit(0)
+
+cin,scanf不能读取空格符
+读取一行：
+char*:
+gets(char*)（前面加一个getchar()，只用加一次）
+cin.getline(char*,n [, delim='\0'])
+<string>:
+getline(cin,string, [,'\0'])（第一个getline之前要加getchar() 否则会读取换行符）
+
+输出一行：puts(char*) 自带换行符
+输出一个字符：putchar(char)
+
+读取/分割字符串
+<sstream>
+istringstream is(STRING/CHAR[] )
+for (i ; is>>string segment; i++)
+或is>>part1>>part2...
+或while(is>>part)
+
+CHAR:
+pch = strtok(str, separator);(分割separator中任意一个匹配的字符)
+while (pch != NULL)
+{
+printf("%s\n", pch);
+pch = strtok(NULL, " ,.-");
+}
+
+长度：
+STRING.length() /.size()
+string可以直接读取成数组
+<string.h>或cstring
+strlen(char *)
+
+数组长度：
+sizeof(arr)/sizeof(type)
+
+子字符串：
+STRING.substr(pos,len)（没有len直接读取到结尾）（pos从0开始）
+
+字符串复制
+char转string：直接赋值 string = char
+strcpy(CHAR,STRING.c_str)
+strcpy(CHAR*,CHAR*)
+
+字符串连接/字符串拼接
+strcat(*dest,*src)
+
+STRING+=to_string(char*)
+
+stringstream out;
+out << CHAR* << endl;
+STRING out.str()
+
+
+判断数字：
+isdigit(CHAR)
+判断字母
+isalpha(ch) 小写2，大写1，其他0
+
+大小写转换：
+(char)toupper(char or int)
+(char)tolower(char or int)
+
+
+字符串反转：
+<algorothm> revers(s.begin(), s.end())
+<string.h> strrev(CHAR*)（linux没有）
+
+string/vector:
+reverse(VECTOR.begin(),VECTOR.end());
+
+字符串比较：
+单个字符可以直接==
+strcmp(CHAR1*,CHAR2*)（只能用CHAR*）
+str1.compare(str2) 相等返回0(STRING)
+str1<str2返回负数 否则返回正数
+可以用STR1.c_str()转换成char
+
+STRING1.compare(STRING2)==0
+
+查找字符串
+STRING stack
+size_t stack.find(STRING needle, pos)
+
+  int pos=0;
+  int count=0;
+  while((pos=stack.find(needle,pos))!=string::npos){
+      count++;
+      pos++;
+  }
+(或复制给int与-1比较）
+.find_first_of(string/char* needle, pos) 返回needle中任意一个字符第一次出现的位置
+.find_last_not_of
+
+extern char *strstr(char *stack, const char *needle);返回needle第一次在stack中出现的地址
+
+强制类型转换
+①(type)expression
+②static_cast<TYPE>EXPRESSION
+
+进制转换
+1， 2～36进制转10进制：
+①long stoi/ long atoi 
+②long strtol(const char *nptr, char **endptr, int base)
+返回把nptr作为base进制数转换的结果，非法字符及后面的内容赋值给endptr
+char *end;
+int res=strtol("102s02", &end, 2) //res=2, end="2s02"
+2，10进制转为其他进制：
+①itoa(int val, char *s, int radix)（linux下未定义）
+把val转换成radix进制数存入s中
+    char s[10]; itoa(3, s, 2); //s="11"
+②sprintf(char* s, const char* format, 参数)
+把参数按指定格式存入s中（同printf）
+%o - 八进制，%x - 十进制
+③手写
+
+int转CHAR*
+sprintf(CHAR*,''%d'',INT)
+itoa(INT 十进制数, CHAR* 转换后的字符,int 进制数) <cstdlib>（linux中没有定义，用sprintf代替）
+
+int转string
+to_string(INT)
+
+单个数字int转char
+char a = '0'+1
+
+CHAR*转int
+int atoi(CHAR *) 忽略空格，直到第一个不为数字的字符为止
+
+CHAR转int
+int a = CHAR-'0'
+
+char转string （不能用to_string，会当成int）
+string s(1, char)
+或
+string s; s.push_back(char)
+
+string转int
+int stoi(string)
+int atoi(string.c_str())
+或 atoi(&string[0]) 或 atoi(&string.at(0))
+取某一位转int：
+int atoi(&string.substr(pos, size))
+string[0]-'0'
+for(auto &c:s) c-'0'（不能用atoi(&c)）
+
+转成string：
+自带的to_string()
+string s= CHAR[]
+或
+int num
+ostringstream o
+o<<num
+string s ＝ o.str()
+
+string转成别的
+int m
+istringstream i(str)
+i>>m
+
+正则regex
+正则表达式可以用圆括号分成若干区域
+匹配开头 true fale
+regex_match(string, regex(pattern))  true
+regex_match(string, smatch sm, regex(pattern)) 匹配结果存储在sm里
+regex_match(char[], cmatch cm, regex(pattern)) 匹配结果存储在cm里
+（sm，cm对应的分别是string, char*）
+（pattern的特殊符号不用加\）
+for(auto x: sm) cout<<x
+
+regex_search 寻找所有可能
+regex_search(string, regex(pattern)) 
+regex_search(string, smatch sm, regex(pattern)) 匹配结果存储在sm里
+regex_search(char[], cmatch cm, regex(pattern)) 匹配结果存储在cm里
+while( regex_search (s, sm, e)){
+    for(auto x: sm) cout<<x;
+    s＝m.suffix().str();
+}
+
+sm匹配到的内容 :sm[0]
+第n个括号里的内容：sm[n]
+
+regex::icase不分大小写
+
+* 0,   +1,  ?0,1   \d 0-9  \w A-Za-z0-9_  
+[.]匹配点号
+
+regex_replace(string, regex(p), fmt)
+$n（n最多两位）:第n个括号里的内容 $&：整个字符串
+
+输出退格：（只退光标不删内容）
+cout<<'\b'
+
+排序：
+<algorithm>
+sort(first,last) 排序[first,last)的元素，first指向首元素指针，last（不含）指向尾元素指针+1
+第三个参数传一个函数指针或结构体都行
+bool compare(int a, int b) return a<b;
+（不等式为真的时候前者在前 / 若要前者在前，应返回真）
+
+<algorithm>
+find(first, last, val) 返回在[first, last)中第一个等于val的指针，没有则返回last
+all_of
+any_of
+accumulate
+
+
+集合运算
+（存结果的vector要分配初始空间，两个集合要排好序）
+交集: it=set_intersection(first, first+5, second, second+5, v.begin())
+并集: it=set_union(同上);
+返回最后一个元素的指针
+v.resize(it-v.begin())；//共有it-v.begin()个元素）
+
+c++11 lambda表达式（匿名函数）：
+完整格式：
+[capture list] (param list) -> return type {function body}
+		capture list：函数中需要用到的外部变量需要捕获
+值捕获：[a]；引用捕获：[&a]；
+自动推断值捕获：[=]；自动推断引用捕获：[&]。
+	   参数部分可省
+	   返回类型部分可省
+[](int a, int b){ return a < b; }
+
+位操作
+setbit(x,y) x|=(1<<y)
+clrbit(x,y) x&=(1<<y)
+reversebit(x,y) x^=(1<<y)
+getbit(x,y) (x>>y) & 1

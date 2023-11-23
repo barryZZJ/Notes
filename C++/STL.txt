@@ -1,0 +1,127 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2023-11-23T10:05:36+08:00
+
+====== STL ======
+Created 星期四 23 十一月 2023
+
+string字符串：
+erase(pos, len) 删除子字符串 （len默认到最后一个字符）
+erase(first, last) / erase(it)
+substr(pos, len)截取子字符串（len默认到最后一个字符）
+比较：直接用==，或用compare
+按位输出：s[0]或s.at(0)，是char类型
+string不能直接printf，要用cout（或者printf s.c_str()）
+不能直接scanf
+int find(char/char*/string, pos=0)
+rfind( , pos=npos)
+find_first_of
+find_last_of( , pos=npos)
+find_first_not_of
+find_last_not_of
+(npos==-1)
+
+typedef pair<> P
+pair<int, int> p
+p.first; p.second;
+pair<> p1(v1,v2)
+make_pair(v3,v4)
+
+集合set（不包含重复元素）
+insert(val)
+iterator find(val)
+erase(iterator pos)/(val)
+size()
+可以用auto遍历
+
+
+字典map / 哈希表unordered_map
+map<string, int> m1={ {"a", 1},  ...}
+m1[key]=val
+m1.insert({key, val})
+m1.insert( make_pair(key, val) )
+m1.emplace(key, val)
+遍历方法：
+for(auto& [k,v]:mp)
+map<>::iterator it = m.begin()
+it->first it->second（second可修改）
+查找（返回iterator）
+it=m.find(val); if(it != m.end()) cout<<it->second;
+或m[key]（不存在时输出value的类型的默认值，如int型为0，string为""）
+
+哈希表用于自定义类型：
+struct hasher{
+  bool operator()(const E& e) const{return hash<string>()(e.string);}
+};
+struct cmp{
+  bool operator()(const E&e1, const E&e2) const{return e1.string==e2.string;}
+};
+unordered_map<E, int, hasher, cmp>
+
+
+queue：先进先出
+--------------------
+push()→                                      →pop()
+--------------------
+back                                      front
+
+#include <queue>
+queue<TYPE> q;
+.back()最后一个元素
+.front()第一个元素
+.empty() bool
+.push(VAL)
+.pop() void pop掉第一个元素
+.size()元素个数
+
+
+优先队列
+priority_queue<int, vector<int>, less<int>>
+comp是一个struct，里面有唯一一个函数
+bool operator ()(xxx, xxx)
+默认比较方式是小于，是最大堆；改成大于号则是最小堆。（先写好不等式，不等式为真的时候后者优先 / 若要后者优先，则应返回真）
+
+
+stack栈：先进后出
+--------------------
+push→                                          ┊
+←pop                                            ┊
+--------------------
+top
+
+#include <stack>
+stack<TYPE> s;
+void .pop()
+void .push(val)
+bool .empty()
+.top()栈顶元素
+.size()
+while(!s.empty()){
+    s.top()
+    s.pop()
+}
+
+
+VECTOR：（动态数组）
+#include vector
+vector<int> n(size); 填充size个0（不带size的话默认是空）
+vector<int> a(size, val); 填充size个值为val的元素
+for(auto t = a.begin() ; t != a.end(); t++)
+    cout<<*t;
+for(vector<int>::iterator t = a.begin() ; t != a.end(); t++)
+    cout<<*t;
+
+a[50]
+.front()
+.back()
+.push_back(num) emplace_back
+.at(index)
+.erase(iterator it) (first, last)
+.pop_back
+.clear
+.resize(len,num)
+.insert(it, val) / (it, first, last) /emplace
+.size()
+.end()指向尾元素之后一个位置
+
+也可以用指针 new 出动态数组
