@@ -1,0 +1,15 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2023-12-14T18:48:22+08:00
+
+====== 系统迁移 ======
+Created 星期四 14 十二月 2023
+
+https://juejin.cn/post/6952523655838433311
+https://blog.csdn.net/weixin_41668394/article/details/128967454
+https://zhuanlan.zhihu.com/p/529864504
+
+所电脑分区：
+128GB, GPT
+efi: 537MB
+Ext4文件系统：127GB
