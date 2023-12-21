@@ -67,14 +67,15 @@ df['row_i':'row_j'] 用切片可以获取行
 
 遍历：
 按行：
-for i, row in df.iterrows(): 
+for i, row in df.iterrows():
+	# i是index，row是一行所有元素组成的Series对象 
 	type(row) # Series
 
 for row in df.values:
-	type(row) # array
+	type(row) # ndarray
 
 for row in df.itertuples():
-	type(row) # 类似Series
+	type(row) # namedtuples，类似Series
 
 按列：
 for col in df.items():
