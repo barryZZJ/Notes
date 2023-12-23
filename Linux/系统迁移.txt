@@ -11,5 +11,33 @@ https://zhuanlan.zhihu.com/p/529864504
 
 所电脑分区：
 128GB, GPT
-efi: 537MB
-Ext4文件系统：127GB
+efi (FAT 32): 537MB， 536870912bytes
+Ext4文件系统：127GB, 127497404416 bytes
+
+1. 做一个ubuntu启动盘，进去选try ubuntu
+2. disk / gparted 进去给新硬盘分区，新硬盘分区个数与系统盘保持一致，大小大于等于系统盘分区。efi分区用gparted标注为boot和esp两个flag
+3. unmount两个硬盘
+4. 拷贝系统分区：sudo dd if=/dev/系统盘分区（只要最大的那个分区，装的linux，不要启动盘分区） of=/dev/新硬盘对应分区
+监视进度：
+sudo watch -n 5 killall -USR1 dd
+输入后在dd页面即可看到进度
+5. 等dd结束后，安装boot-repair修复引导
+联网后：
+sudo add-apt-repository ppa:yannubuntu/boot-repair
+sudo apt-get update
+sudo apt-get install -y boot-repair
+sudo boot-repair
+选择"推荐模式修复"（必须在高级选项——grub location里选择硬盘位置）
+
+可能的另一种方案：
+1. u盘装pe
+2. 进dg给新硬盘分区，新硬盘分区个数与系统盘保持一致，大小大于等于系统盘分区（GPT格式，包含ESP分区）
+3. 拷贝系统分区：制作linux系统所在**分区**的镜像（只要最大的那个分区），然后还原到新硬盘对应分区；或者选择克隆分区。
+4. 最后修复引导，过程同上
+遇到问题：
+boot-repair gpt detected please create a bios-boot partition
+解决：
+disk里添加一个1MB的分区，选择no filesystem，然后用gparted标注bios_grub flag（不是efi分区）
+【或：重新用UEFI方式进U盘】
+
+

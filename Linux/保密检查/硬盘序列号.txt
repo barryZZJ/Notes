@@ -11,3 +11,5 @@ wmic diskdrive get serialnumber
 linux:
 lsblk --nodeps -no serial /dev/sda
 （所有程序-磁盘里能看到）
+
+X3AYLS4GS
