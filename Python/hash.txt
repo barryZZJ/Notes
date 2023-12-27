@@ -10,11 +10,13 @@ python自带的hash(obj) -> int 只能保证在同一个解释器进程里一致
 md5哈希：128bit
 [[:Python:md5哈希]]
 def md5(s: str) -> str:
-	return hashlib.md5(s.encode()).hexdigest() # 返回值为小写16进制字符串
+	"""返回值为小写16进制字符串"""
+	return hashlib.md5(s.encode()).hexdigest()
 
 sha256哈希：256bit
 def sha256(s: str) -> str:
-	return hashlib.sha256(s.encode()).hexdigest() # 返回值为小写16进制字符串
+	"""返回值为小写16进制字符串"""
+	return hashlib.sha256(s.encode()).hexdigest()
 
 
 pip install imohash
