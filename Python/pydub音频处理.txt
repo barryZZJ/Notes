@@ -1,0 +1,33 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2023-12-28T17:05:34+08:00
+
+====== pydub音频处理 ======
+Created 星期四 28 十二月 2023
+
+pip install pydub
+
+''from pydub import AudioSegment''
+''from pydub.generators import Sine''
+
+''def add_beep(input_file, output_file, start_time, duration, beep_frequency=1000, beep_amplitude=0.5):''
+''    # Load the input audio file''
+''    audio = AudioSegment.from_file(input_file, format="wav")''
+
+''    # Generate beep audio''
+''    beep = Sine(beep_frequency).to_audio_segment(duration=duration * 1000).amplify(beep_amplitude)''
+
+''    # Add the beep to the specified start time''
+''    start_time_ms = int(start_time * 1000)''
+''    audio = audio.overlay(beep, position=start_time_ms)''
+
+''    # Export the result to a new file''
+''    audio.export(output_file, format="wav")''
+
+''if __name__ == "__main__":''
+''    input_file = "input.wav"  # Replace with your input file''
+''    output_file = "output.wav"  # Replace with your desired output file''
+''    start_time = 5  # Replace with the start time in seconds''
+''    duration = 1  # Replace with the duration of the beep in seconds''
+
+''    add_beep(input_file, output_file, start_time, duration)''

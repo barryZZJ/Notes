@@ -1,0 +1,13 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2023-12-28T16:34:08+08:00
+
+====== opencv ======
+Created 星期四 28 十二月 2023
+
+pip install opencv-python
+import cv2
+
+https://docs.opencv.org/4.x/
+
+VideoWriter.fourcc
