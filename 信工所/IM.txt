@@ -16,3 +16,10 @@ IP  地  址：116.213.101.142
 
 注册：
 验证码00000
+
+配环境：
+server:
+- sudo apt-get install libmysqlclient-dev
+- sudo apt install mysql-server
+- 改db.ini的ip为127.0.0.1
+- ./nspimser
