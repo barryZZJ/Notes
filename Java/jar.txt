@@ -5,8 +5,24 @@ Creation-Date: 2023-09-21T15:02:23+08:00
 ====== jar ======
 Created 星期四 21 九月 2023
 
-
+插件窗口：JAVA PROJECTS
+右键——Maven——Run Maven Commands...——Custom——clean compile assembly:single
 maven command: package
+
+	  <plugin>
+		<artifactId>maven-assembly-plugin</artifactId>
+		<configuration>
+		  <archive>
+			<manifest>
+			  <mainClass>Your main class here</mainClass>
+			</manifest>
+		  </archive>
+		  <descriptorRefs>
+			<descriptorRef>jar-with-dependencies</descriptorRef>
+		  </descriptorRefs>
+		</configuration>
+	  </plugin>
+mvn clean compile assembly:single
 
 运行jar：
 java -jar path.jar

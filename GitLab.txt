@@ -13,7 +13,7 @@ https://about.gitlab.com/install/
 
 网址：
 内网：git / gitlan.barryzzj.top
-外网：gitwan.barryzzj.top (走的是组里服务器的frp）
+外网：gitwan.barryzzj.top (走的是组里服务器的frp，现在已经down了）
 
 doc:
 https://docs.gitlab.com/omnibus/index.html
