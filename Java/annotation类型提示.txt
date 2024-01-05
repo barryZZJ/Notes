@@ -1,0 +1,18 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2024-01-05T10:26:06+08:00
+
+====== annotation类型提示 ======
+Created 星期五 05 一月 2024
+
+@Nullable
+指明一个参数可以为null，就不用重复定义函数了，但是调用的时候必须得传入null
+import javax.annotation.Nullable;
+func(@Nullable String arg)
+
+<dependency>
+  <groupId>com.google.code.findbugs</groupId>
+  <artifactId>jsr305</artifactId>
+  <version>3.0.2</version>
+</dependency>
+

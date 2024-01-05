@@ -9,6 +9,7 @@ Created 星期四 21 九月 2023
 右键——Maven——Run Maven Commands...——Custom——clean compile assembly:single
 maven command: package
 
+定制化打包插件：
 	  <plugin>
 		<artifactId>maven-assembly-plugin</artifactId>
 		<configuration>
@@ -23,6 +24,28 @@ maven command: package
 		</configuration>
 	  </plugin>
 mvn clean compile assembly:single
+
+保留docstring：https://maven.apache.org/plugins/maven-javadoc-plugin/usage.html
+<build>
+	<plugins>
+		<plugin>
+			<groupId>org.apache.maven.plugins</groupId>
+			<artifactId>maven-javadoc-plugin</artifactId>
+			<version>3.6.3</version>
+			<configuration>
+				<show>private</show>
+			</configuration>
+			<executions>
+				<execution>
+					<id>attach-javadocs</id>
+					<goals>
+						<goal>jar</goal>
+					</goals>
+				</execution>
+			</executions>
+		</plugin>
+	</plugins>
+</build>
 
 运行jar：
 java -jar path.jar
