@@ -12,3 +12,6 @@ https://docs.oracle.com/javase/7/docs/api/javax/swing/package-summary.html
 tutorial:
 https://www.javatpoint.com/java-swing
 https://docs.oracle.com/javase/tutorial/uiswing/
+
+dialog:
+https://docs.oracle.com/javase/tutorial/uiswing/components/dialog.html
