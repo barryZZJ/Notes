@@ -1,0 +1,9 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2024-01-08T09:36:42+08:00
+
+====== String ======
+Created 星期一 08 一月 2024
+
+.split(regex)
+.trim()
