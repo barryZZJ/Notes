@@ -1,0 +1,13 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2024-01-09T11:01:15+08:00
+
+====== 远程畅玩 ======
+Created 星期二 09 一月 2024
+
+开放端口：
+流式传输使用 UDP 端口 27031 和 27036，以及 TCP 端口 27036 和 27037。 
+
+input dialog
+“Would you like to accept secure desktop input from Steam?”
+宿主机管理员模式启动steam即可
