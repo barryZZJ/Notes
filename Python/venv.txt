@@ -20,6 +20,9 @@ call venv\Scripts\activate.bat
 source venv/bin/activate # (完整路径，~要改成/<user>)
 deactivate
 
+更新系统python路径（移动了系统的python可执行文件时，一般用不到）：
+python -m venv --upgrade path_to_venv
+
 克隆虚拟环境：
 https://github.com/edwardgeorge/virtualenv-clone
 pip install virtualenv-clone
