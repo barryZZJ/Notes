@@ -1,0 +1,18 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2024-01-12T10:29:23+08:00
+
+====== 变长形参 ======
+Created 星期五 12 一月 2024
+
+func(Object... args)
+
+如果只传入一个数组对象，则自动解包：
+Object[] myObjects = { "Hello", 42, 3.14 };
+func(myObjects) //args.length == 3
+
+如果数组对象跟其他参数并列，则不能解包，作为args的一个元素：
+func("before", myObjects) // args.length == 2
+func(myObjects, "after) // args.length == 2
+要想自动解包，可以使用Arrays.copyOf + System.arraycopy得到一个新的数组
+或者考虑使用new ArrayList<>(Arrays.asList(...)) + List.addAll
