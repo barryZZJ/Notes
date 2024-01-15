@@ -13,6 +13,11 @@ pandas.DataFrame( data, index, columns, dtype, copy)
 data：一组数据(ndarray、series, map, lists, dict, List[dict] 等类型)
 index：索引值，或者可以称为行标签。
 columns：列标签，默认为 RangeIndex (0, 1, 2, …, n) 。
+DataFrame子类在pycharm debugger中查看：
+@property
+def df(self):
+	# use this to view the base class, needed for debugging in some IDEs.
+	return pd.DataFrame(self)
 
 读取csv：df=pd.read_csv(path,header=None)
 保存csv：df.to_csv(path,header=True,index=False)是否保存列名和索引

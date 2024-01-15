@@ -1,0 +1,9 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2024-01-15T10:51:59+08:00
+
+====== custom type renderer ======
+Created 星期一 15 一月 2024
+
+https://www.jetbrains.com/help/pycharm/2022.1/customizing-views.html
+自定义debugger中展示变量的方法
