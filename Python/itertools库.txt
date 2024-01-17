@@ -44,3 +44,5 @@ def splitDict(d, size) -> list[dict]:
     return ds
 }}}
 
+
+product() 笛卡尔积，相当于多重循环

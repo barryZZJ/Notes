@@ -20,7 +20,8 @@ call venv\Scripts\activate.bat
 source venv/bin/activate # (完整路径，~要改成/<user>)
 deactivate
 
-更新系统python路径（移动了系统的python可执行文件时，一般用不到）：
+使用别人的虚拟环境时需要本地安装相同版本的python，
+然后更新虚拟环境中的系统python路径：
 python -m venv --upgrade path_to_venv
 
 克隆虚拟环境：
