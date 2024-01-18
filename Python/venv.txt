@@ -22,7 +22,7 @@ deactivate
 
 使用别人的虚拟环境时需要本地安装相同版本的python，
 然后更新虚拟环境中的系统python路径：
-python -m venv --upgrade path_to_venv
+python -m venv --upgrade path_to_venv_root
 
 克隆虚拟环境：
 https://github.com/edwardgeorge/virtualenv-clone
