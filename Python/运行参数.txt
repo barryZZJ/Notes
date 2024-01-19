@@ -1,0 +1,8 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2024-01-19T10:55:54+08:00
+
+====== 运行参数 ======
+Created 星期五 19 一月 2024
+
+-O 跳过assert语句
