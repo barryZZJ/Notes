@@ -4,7 +4,7 @@ Wiki-Format: zim 0.6
 （在macOS中运行则会生成mac程序）
 
 打包成exe：
-https://pyinstaller.readthedocs.io/en/stable/
+https://pyinstaller.org/en/stable/index.html
 pip install pyinstaller
 
 cmd中：
@@ -16,7 +16,7 @@ pyinstaller -F xx.py --clean -n name --icon=xx.ico
 === pyinstaller>4.2路径问题： ===
 打包成单个文件后，python环境/附加文件会在tmp文件夹下，__file__返回的也是这个路径下的py文件(但文件不存在)
 exe文件路径：''os.path.dirname(sys.executable) ''双击运行时，os.getcwd()返回exe所在目录
-
+--runtime-tmpdir PATH指定tmp文件夹
 '''
 ISEXE = hasattr(sys, 'frozen')
 BASE = os.path.dirname(sys.executable if ISEXE else __file__)  # exe else 该py文件所在路径
