@@ -1,0 +1,20 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2024-01-22T10:57:12+08:00
+
+====== 注意事项 ======
+Created 星期一 22 一月 2024
+
+用ipad需要打开Citrix X1 Mouse Support，此时使用远程桌面时就会调整鼠标灵敏度
+
+（可以选择跳过geforce登录）
+
+需要启动Nvidia network service 才行
+但是只有老版本GeForce才有这个服务
+
+老版本下载：
+https://pan.baidu.com/s/1rVr7ser4iyYeGL0asulMrA
+txof
+
+GeForce Experience（3.20.2.34）后请直接登录进入并打开串流功能。
+不然的话下次打开会强制升级到最新版本

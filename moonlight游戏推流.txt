@@ -1,0 +1,67 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2024-01-22T09:54:52+08:00
+
+====== moonlight游戏推流 ======
+Created 星期一 22 一月 2024
+
+可以当作高端RDP来用，但是不支持多屏幕，所以只适合游戏，不适合办公
+
+https://moonlight-stream.org/
+wiki:
+https://github.com/moonlight-stream/moonlight-docs/wiki/Setup-Guide
+
+博客：
+https://elmagnifico.tech/2022/01/16/Nvidia-Shield-3080ti-Moonlight/
+
+客户端：
+https://github.com/moonlight-stream/moonlight-qt/releases
+客户端需要从snap商店安装，如果是appimage会有黑屏问题
+
+服务端：不用装那个tool
+Nvidia SHIELD服务已经停止使用，需要改用sunshine：
+https://github.com/LizardByte/Sunshine/releases
+https://elmagnifico.tech/2023/03/14/Sunshine-moonlight/
+https://app.lizardbyte.dev/Sunshine/?lng=en
+doc:
+https://docs.lizardbyte.dev/projects/sunshine/en/latest/?lng=en
+
+需要连接显示器才能串流：
+解法1：显示器切换到别的输入源，然后等自动待机
+解法2：https://blog.csdn.net/wangrui1573/article/details/129009383
+
+
+===== 控制 =====
+**PC client**
+
+PC clients support keyboard, mouse, and touchscreen input and up to 4 game controllers (with mappings for most common gamepads included).
+
+Ctrl+Alt+Shift+Q - Quit the streaming session (leaving the game running on the host PC)
+Ctrl+Alt+Shift+Z - Toggle mouse and keyboard capture
+Ctrl+Alt+Shift+X - Toggle between full-screen and windowed mode
+Ctrl+Alt+Shift+S - Open performance stats overlay (not supported on Steam Link or Raspberry Pi)
+Ctrl+Alt+Shift+M - Toggle mouse mode (pointer capture or direct control)
+Ctrl+Alt+Shift+V - Type clipboard text on the host
+Ctrl+Alt+Shift+D - Minimize the stream window
+Ctrl+Alt+Shift+C - Toggle local cursor display in remote desktop mouse mode (remote cursor will always show up due to GameStream limitations)
+Ctrl+Alt+Shift+L - Toggle locking the mouse pointer to the video area (requires "Optimize mouse for remote desktop instead of games" checkbox enabled)
+
+**Touchscreen controls**
+
+Moonlight for Android, iOS, and PC use the touch screen as a way of controlling the mouse cursor. Multi-touch devices can emulate more mouse functions than single-touch devices. There are two modes of touchscreen operation that you can choose between in Moonlight - one uses the touchscreen as a trackpad and the other emulates direct touchscreen input.
+
+Trackpad mode:
+Move cursor: Swiping across the screen moves the mouse cursor in the direction of the swipe.
+Left click: Tap with one finger.
+Right click: While holding one finger down, tap a second finger.
+Click and drag: Long press with one finger, then start to drag after holding for about half a second.
+Scroll: Drag 2 fingers vertically.
+Show Keyboard: Tap with three fingers (Android and iOS only).
+
+Touchscreen mode:
+Move cursor and left click: Tap the location where you would like to left click.
+Right click: Long press the location where you would like to right click.
+Click and drag: Tap a location and drag your finger across the screen.
+Show Keyboard: Tap with three fingers (Android and iOS only).
+Zoom: Pinch with 2 fingers (iOS only).
+Pan: Drag with 2 fingers (iOS only).
