@@ -32,6 +32,7 @@ https://docs.lizardbyte.dev/projects/sunshine/en/latest/?lng=en
 
 
 ===== 控制 =====
+https://github.com/moonlight-stream/moonlight-docs/wiki/Setup-Guide#keyboardmousegamepad-input-options
 **PC client**
 
 PC clients support keyboard, mouse, and touchscreen input and up to 4 game controllers (with mappings for most common gamepads included).
