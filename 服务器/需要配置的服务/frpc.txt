@@ -43,8 +43,10 @@ rdp: 192.168.50.201:23389 -> 23389
 smb: 192.168.50.201:445
 ssh: 192.168.50.201:23355
 
+配置文件可以参考frpc_full.ini
 **frpc.ini** 
-本地用：
+
+=== 本地用： ===
 # frpc configuration
 [common]
 server_addr = yy.barryzzj.asia
@@ -82,7 +84,7 @@ remote_port = 23355
 use_encryption = true
 use_compression = true
 
-**路由器用：**
+=== **路由器用：** ===
 # frpc configuration
 [common]
 server_addr = yy.barryzzj.asia
@@ -117,6 +119,20 @@ local_ip = 192.168.50.201
 local_port = 23355
 remote_port = 23355
 use_encryption = true
+use_compression = true
+[vpnpptp]
+type = tcp
+local_ip = 192.168.50.1
+local_port = 1723
+remote_port = 1723
+use_encryption = false
+use_compression = true
+[vpnopen]
+type = udp
+local_ip = 192.168.50.1
+local_port = 1194
+remote_port = 1194
+use_encryption = false
 use_compression = true
 
 注册为windows服务，开机自启动：

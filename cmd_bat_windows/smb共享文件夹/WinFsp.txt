@@ -8,3 +8,5 @@ Created 星期日 27 八月 2023
 https://winfsp.dev/
 
 魔改windows，使其支持连接各种文件系统
+
+给windows打补丁，使其支持自定义的文件系统，包括我们需要的可以自定义端口的SMB协议，有了它才能使用下面的Rclone。

@@ -1,0 +1,21 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2024-01-31T10:13:17+08:00
+
+====== 客户端 ======
+Created 星期三 31 一月 2024
+
+windows自带的文件共享不支持修改端口！
+
+解决方案：
+自建VPN服务器，从而公网访问内网客户端，绕开端口转发！
+
+owlfiles
+https://apps.microsoft.com/store/detail/owlfiles-file-manager/9MSQ3SZK42KP?hl=en-us&gl=us
+
+WinFsp https://winfsp.dev/
+给windows打补丁，使其支持自定义的文件系统，包括我们需要的可以自定义端口的SMB协议，有了它才能使用下面的Rclone。
+
+Rclone https://rclone.org/
+一个基于命令行的云存储管理工具，其中包括了我们需要的挂载磁盘功能（即映射驱动器）。支持SMB、SFTP、HTTP、WebDAV、FTP等各种协议，也支持Dropbox、Google Drive、Microsoft OneDrive、Yandex等各种云盘（可惜不支持百度网盘）。
+

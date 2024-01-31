@@ -1,0 +1,30 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2024-01-31T09:28:36+08:00
+
+====== 自建VPN ======
+Created 星期三 31 一月 2024
+
+“无论您在何处，都可以通过虚拟专用网 (VPN) 服务器来访问您家里的网络内容”
+
+理论知识：
+目的是即使在外网也能访问路由器的子网，Hamachi, ZeroTier, vLan就是实现这样的功能。可以用来传文件、游戏局域网联机等，只需要路由器开放一个VPN Server端口。
+在路由器上搭建VPN服务器，**连接到该VPN服务器后，相当于加入了路由器的子网**。
+需要路由器暴露到公网
+
+如果VPN服务器禁止与其他内网客户端通信，就需要设置端口转发。
+
+教程：https://www.asus.com/support/faq/1050842/
+路由器——VPN——VPN服务器
+PPTP性能最好
+PPTP：https://www.asus.com/support/faq/114892/
+端口：TCP 1723
+GRE 端口：OTHER 47
+
+OpenVPN：https://www.asus.com/support/faq/1008713/
+端口：UDP 1194
+
+IPSec VPN：https://www.asus.com/support/faq/1044190/
+端口：UDP 500， UDP 4500
+
+如果设置了DMZ，需要开启端口转发，把VPN服务器的端口转发给路由器ip的相同端口

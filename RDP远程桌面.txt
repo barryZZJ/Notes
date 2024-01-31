@@ -18,11 +18,14 @@ mstsc.exe登录远程桌面
 专业版配置方法：
 https://learn.microsoft.com/zh-CN/windows-server/remote/remote-desktop-services/clients/change-listening-port
 
-win11貌似不能多用户同时登陆，会顶掉，目前解决办法是装rdpwrap
-win10配置多用户登录：
+专业版也不能多用户同时登陆，会顶掉，目前解决办法是装rdpwrap
+win10配置多会话/多用户登录：
 https://blog.51cto.com/gyj110/6010498
 （完事之后需要重启一下计算机）
 
 快速添加用户：
 计算机管理 系统工具—》本地用户和组—》用户
 把用户加入Remote Desktop Users组
+
+修改端口：
+https://learn.microsoft.com/zh-CN/windows-server/remote/remote-desktop-services/clients/change-listening-port

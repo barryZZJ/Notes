@@ -1,0 +1,176 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2024-01-31T10:50:52+08:00
+
+====== 自制教程 ======
+Created 星期三 31 一月 2024
+
+file:///E:\%E4%BF%A1%E5%B7%A5%E6%89%80\%E6%96%87%E4%BB%B6\NSP%E9%9A%90%E7%A7%81%E7%BB%84%E5%85%B1%E4%BA%AB%E7%A9%BA%E9%97%B4%E9%85%8D%E7%BD%AE
+
+
+# NSP隐私组共享空间配置教程-内外网通用【进阶】
+
+内网环境下（在工位或宿舍）请优先参考【简单】版教程，如果用不了再使用本方案。
+
+本方案的最终目的为**让windows支持指定SMB客户端端口**，【简单】方案是本方案的子集，所以本方案内外网通吃。
+
+## 背景说明
+
+[太长不想看，直接教我怎么配就完了](#配置)
+
+**简单又不简单：**
+
+在【简单】版教程中，我们说过，Windows中SMB客户端原生不支持指定其他端口。如果由于各种限制条件，我们必须使用其他端口，但又想享受原生支持带来的便利，就可以采用下面这套WinFsp+Rclone+NSSM的方案：
+
+- [WinFsp](https://winfsp.dev/)%EF%BC%9A%E7%BB%99windows%E6%89%93%E8%A1%A5%E4%B8%81%EF%BC%8C%E4%BD%BF%E5%85%B6%E6%94%AF%E6%8C%81%E8%87%AA%E5%AE%9A%E4%B9%89%E7%9A%84%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F%EF%BC%8C%E5%8C%85%E6%8B%AC%E6%88%91%E4%BB%AC%E9%9C%80%E8%A6%81%E7%9A%84%E5%8F%AF%E4%BB%A5%E8%87%AA%E5%AE%9A%E4%B9%89%E7%AB%AF%E5%8F%A3%E7%9A%84SMB%E5%8D%8F%E8%AE%AE%EF%BC%8C%E6%9C%89%E4%BA%86%E5%AE%83%E6%89%8D%E8%83%BD%E4%BD%BF%E7%94%A8%E4%B8%8B%E9%9D%A2%E7%9A%84Rclone。
+- [Rclone](https://rclone.org/)%EF%BC%9A%E4%B8%80%E4%B8%AA%E5%9F%BA%E4%BA%8E%E5%91%BD%E4%BB%A4%E8%A1%8C%E7%9A%84%E4%BA%91%E5%AD%98%E5%82%A8%E7%AE%A1%E7%90%86%E5%B7%A5%E5%85%B7%EF%BC%8C%E5%85%B6%E4%B8%AD%E5%8C%85%E6%8B%AC%E4%BA%86%E6%88%91%E4%BB%AC%E9%9C%80%E8%A6%81%E7%9A%84%E6%8C%82%E8%BD%BD%E7%A3%81%E7%9B%98%E5%8A%9F%E8%83%BD%EF%BC%88%E5%8D%B3%E6%98%A0%E5%B0%84%E9%A9%B1%E5%8A%A8%E5%99%A8%EF%BC%89%E3%80%82%E6%94%AF%E6%8C%81SMB%E3%80%81SFTP%E3%80%81HTTP%E3%80%81WebDAV%E3%80%81FTP%E7%AD%89%E5%90%84%E7%A7%8D%E5%8D%8F%E8%AE%AE%EF%BC%8C%E4%B9%9F%E6%94%AF%E6%8C%81Dropbox%E3%80%81Google Drive、Microsoft OneDrive、Yandex等各种云盘（可惜不支持百度网盘）。
+- [NSSM](https://nssm.cc/commands)%EF%BC%9Athe Non-Sucking Service Manager，可以把任意指令注册为服务，方便设置为开机自启动。
+
+这个方案简单来说就是给Windows套了一层皮，在我们无感使用的同时，又能让windows支持指定端口。
+
+> 如【简单】版中所述，外网情况下只能使用本方案是因为，目前走的是我自己租的公网服务器，由于限制不能开放445端口，所以我把服务器的23345端口连接到了寝室电脑的445端口。通过外网连接时相当于从我租的服务器绕了一圈回到寝室电脑。
+
+
+
+## 开干
+
+接下来的方案我准备了内网（lan）和外网（wan）两个版本，如果【简单】方案可用的话，请忽略本方案中的内网部分。
+
+> 服务器现有的配置：
+>
+> - 所里内网：通过`nspsharelan.barryzzj.top:23345`可以连接到我寝室的445；
+> - 外网：通过`nspsharewan.barryzzj.top:23345`可以连接到我寝室的445。
+
+1. 解压`NSP隐私组共享空间进阶配置包v1.zip`至固态硬盘（如果有的话，这样速度更快）（注意解压后的目录以后将不能再修改，请妥善选择）
+
+2. 安装WinFsp：双击`winfsp-2.0.23075.msi`，找个地方安装即可。
+
+3. 测试`rclone`可用性：
+
+   双击`rclone.exe`，如果弹出`This is a command line tool. You need to open cmd.exe and run it from there.`表示正常，否则请解压`rclone-32位.zip`，替换掉目录中的`rclone.exe`、`rclone.1`（原本使用的是64位）。
+
+   > 其他操作系统下载：https://rclone.org/downloads/
+
+4. 测试能否手动把共享空间挂载到本地磁盘：
+
+   - 走所里内网：
+
+	  运行`mountlan.bat`（**不要**以管理员身份启动），会弹出一个命令行窗口。打开我的电脑，会多出一个名为`nspsharelan nspshare`的Y盘，双击打开看能否访问，并测试是否有写入权限。测试完成后关闭命令行窗口。
+
+   ![image-20230828000932666](2NSP隐私组共享空间配置教程-内外网通用【进阶】v1.assets/image-20230828000932666.png)
+
+   ![image-20230826170207029](NSP隐私组共享空间配置教程.assets/image-20230826170207029.png)
+
+   - 走外网：
+
+	  > 目前方案走的是我自己购置的服务器，带宽比较低，所以会很慢，大文件最好拷贝到本地再进行读写。（蹲一手谁有/愿意提供高带宽公网服务器）
+
+	  运行`mountwan.bat`（**不要**以管理员身份启动），会弹出一个命令行窗口。打开我的电脑，这时会多出一个名为`nspsharewan nspshare (\\server)`的X盘，双击打开看能否访问，并测试是否有写入权限。注意操作可能会比较卡，是正常的。测试完成后关闭命令行窗口。
+
+	  ![image-20230826163500124](NSP隐私组共享空间配置教程.assets/image-20230826163500124.png)
+
+   - 注意事项：
+
+	  1. 对共享空间的改动至少需要**2秒**才能同步到云端，云端发生改动后至少需要**5秒**才能同步到本地。如需修改，参见[修改同步时间](#修改同步时间)。
+      
+	  2. 如果盘符Y、X已经使用，需要[修改挂载盘符](#修改挂载盘符)。
+   
+5. （可选-推荐）注册为服务（开机自动挂载磁盘）：
+
+   > 如果你不需要开机自动挂载，也推荐注册一下，注册服务后也能禁止开机自动挂载（下方5.4），而且手动刷新也更方便。
+
+   如果你确定不需要注册服务，则每次开机后手动执行第二步的脚本，手动挂载即可（命令行窗口不能关闭）。
+
+   > **现在转移文件夹还来得及：**
+   >
+   > 注册服务后，解压后的文件将不能再移动，否则服务将无法工作，需要卸载旧的服务再重新注册。
+
+   1. 注册服务：
+
+	  - 内网：右键`registerservice-nspsharelan.bat`，**以管理员身份运行**，提示`Service "nspsharelan" installed successfully!`即注册成功。
+	  - 外网：右键`registerservice-nspsharewan.bat`，**以管理员身份运行**，提示`Service "nspsharewan" installed successfully!`即注册成功。
+	  - 注册后默认即为开机自动启动。
+
+	  > 注册服务后需要重新打开任务管理器才能显示新注册的服务。
+
+   2. 启动服务（挂载磁盘）：
+
+	  任务管理器—服务—找到`nspsharelan`或`nspsharewan`，右键—开始
+
+	  ![image-20230826174741136](NSP隐私组共享空间配置教程.assets/image-20230826174741136.png)
+
+   **服务管理：**
+
+   - 停止服务（卸载磁盘）：
+
+	 任务管理器—服务—找到`nspsharelan`或`nspsharewan`，右键—停止
+
+   - 重启服务：
+
+	 任务管理器—服务—找到`nspsharelan`或`nspsharewan`，右键—重新启动
+
+   - 禁止开机自启动（禁止开机自动挂载磁盘）：
+
+	 - 任务管理器—服务，最下面“打开服务”（或win+r，输入`services.msc`）
+
+	 - 找到`nspsharelan`或`nspsharewan`，右键—属性—启动类型改为手动（改回自动即可开机自启动）
+
+	   ![image-20230826174956373](NSP隐私组共享空间配置教程.assets/image-20230826174956373.png)
+
+	 - 以后只需手动启动服务（上方5.2），即可手动挂载磁盘。
+
+   - 卸载服务（一般用不到，需要[高级设置](#高级设置)修改参数时才会用到）：
+
+	 - 卸载局域网磁盘挂载服务：右键`removeservice-nspsharelan.bat`，**以管理员身份运行。**
+
+	 - 卸载外网磁盘挂载服务：右键`removeservice-nspsharewan.bat`，**以管理员身份运行。**
+
+6. 手动刷新/重新挂载：
+
+   如果共享空间里的文件没有及时更新，请稍等几秒，或者通过重新挂载的方式手动刷新。
+
+   - 注册过服务：见第5步中的重启服务。
+
+   - 没有注册为服务：关闭命令行窗口，重新运行`mountlan.bat`或`mountwan.bat`。
+
+如遇到问题，请找zzj提供技术支持。
+
+**PS：**如需自建共享文件夹，或把共享文件夹映射到公网，可找zzj提供技术支持。
+
+
+
+## 高级设置
+
+请根据实际情况[确定配置文件](#确定配置文件)，修改对应的bat。
+
+rclone文档：https://rclone.org/docs/
+
+### 修改挂载盘符
+
+如果盘符号Y、X被占用，修改`nspsharelan:nspshare Y:`或`nspsharewan:nspshare X:`中的`Y`或`X`为其它空闲盘符。
+
+### 修改同步时间
+
+原理说明：对共享空间的改动都是存在本地cache中的，达到指定的timeout后才会和云端同步，下面的参数就是修改各种timeout。
+
+本地编辑后同步到云端：
+
+`--vfs-write-back <seconds>`：Time to writeback files after last use (default 5s)
+
+云端改动后同步到本地（`poll-interval`必须小于`dir-cache-time`）：
+
+`--dir-cache-time <seconds>`：Time to cache directory entries for (default 5m0s)
+
+`--poll-interval <seconds>`：Time to wait between polling for changes. Must be smaller than `dir-cache-time`. Only on supported remotes. Set to 0 to disable (default 1m0s)
+
+[[%E8%AF%A6%E8%A7%81https://rclone.org/commands/rclone_mount/#vfs-directory-cache]]
+
+#### 确定配置文件
+
+如果已经注册为服务，需要先卸载服务，然后修改`registerservice-nspsharelan.bat`或`registerservice-nspsharewan.bat`，再重新注册。
+
+如果没有注册服务，则修改`mountlan.bat`或`mountwan.bat`。
+
+## Changelog
+
+- v1 - 2023/8/26 首次编写
