@@ -83,6 +83,20 @@ local_port = 23355
 remote_port = 23355
 use_encryption = true
 use_compression = true
+[range:moonlighttcp]
+type = tcp
+local_ip = 127.0.0.1
+local_port = 47984,47989,48010
+remote_port = 47984,47989,48010
+use_encryption = false
+use_compression = true
+[range:moonlightudp]
+type = udp
+local_ip = 127.0.0.1
+local_port = 47998,47999,48000
+remote_port = 47998,47999,48000
+use_encryption = false
+use_compression = false
 
 === **路由器用：** ===
 # frpc configuration
@@ -140,7 +154,7 @@ https://gist.github.com/imyelo/b6c3d3d9383f7d5623f06a0c11052530
 注册：
 : 1. download [nssm](https://github.com/kirillkovalenko/nssm) and set its diretory into the global PATH environment value
 : 2. replace the path below with where you placed frpc【管理员权限】
-nssm install frpc "D:\Tools\frpc\frpc.exe" "-c D:\Tools\frpc\frpc.ini"
+nssm install frpc_yy "G:\Portable\Frp内网穿透\frpc.exe" "-c D:\Tools\frpc\frpc.ini"
 nssm set frpc DisplayName "frp client"
 nssm start frpc
 

@@ -29,7 +29,7 @@ sudo ./frps.sh install  {install|uninstall|update|config}
 如果报错ine 45: [: 2431: binary operator expected，修改/usr/bin/frps，把$PID全部替换为${PID}
 
 手动配置：
-1. 下载frps，放入/usr/bin
+1. 下载frps，放入/usr/bin ln -s frps /usr/bin
 2. 写好配置文件（见下），放入/usr/local/frps/frps.ini
 3. 注册为服务：
 https://gofrp.org/docs/setup/systemd/
@@ -86,11 +86,11 @@ vhost_https_port = 443
 log_file = /tmp/frps.log
 # debug, info, warn, error
 log_level = info
-log_max_days = 10
+log_max_days = 3
 # auth token
 token = 0wEmW_L7c_02NyinNLv2
 # It is convenient to use subdomain configure for http、https type when many people use one frps server together.
-subdomain_host = barryzzj.xyz
+subdomain_host = barryzzj.top
 # only allow frpc to bind ports you list, if you set nothing, there won't be any limit
 #allow_ports = 1-65535
 # pool_count in each proxy will change to max_pool_count if they exceed the maximum value
