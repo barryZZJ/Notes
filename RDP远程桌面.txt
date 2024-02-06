@@ -29,3 +29,7 @@ https://blog.51cto.com/gyj110/6010498
 
 修改端口：
 https://learn.microsoft.com/zh-CN/windows-server/remote/remote-desktop-services/clients/change-listening-port
+
+禁止远程关机：
+gpedit.msc——计算机配置——windows设置——安全设置——本地策略——用户权利指派
+从远程系统强制关机
