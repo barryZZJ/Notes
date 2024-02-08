@@ -1,0 +1,9 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2024-02-08T01:33:33+08:00
+
+====== 论文 ======
+Created 星期四 08 二月 2024
+
+摘要：精炼的语言体现出文章的所有工作量
+总结：只总结贡献/结果，不提具体细节
