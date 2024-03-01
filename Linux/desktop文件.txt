@@ -11,3 +11,10 @@ https://blog.csdn.net/wuyujin1997/article/details/104655385
 
 双击执行sh
 https://blog.csdn.net/m0_65304012/article/details/127432802
+
+[Desktop Entry]
+Name=RDP
+Exec=/home/barryoffice/rdp
+Terminal=false
+Type=Application
+Icon=/home/barryoffice/icon/rdp.png

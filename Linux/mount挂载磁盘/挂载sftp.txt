@@ -13,12 +13,22 @@ sudo sshfs -p 23355 -o IdentityFile=/home/barryoffice/.ssh/id_ecdsa -o allow_oth
 
 注意不能有sudo要不然要输密码，所以去掉allow_other
 #! /bin/bash
-mkdir -p ~/mnt/d/
-mkdir -p ~/mnt/e/
-mkdir -p ~/mnt/h/
-sshfs -p 23355 -o IdentityFile=/home/barryoffice/.ssh/id_ecdsa barry@dorm.barryzzj.asia:/d:/ ~/mnt/d/
-sshfs -p 23355 -o IdentityFile=/home/barryoffice/.ssh/id_ecdsa barry@dorm.barryzzj.asia:/e:/ ~/mnt/e/
-sshfs -p 23355 -o IdentityFile=/home/barryoffice/.ssh/id_ecdsa barry@dorm.barryzzj.asia:/h:/ ~/mnt/h/
+mkdir -p /home/barryoffice/mnt/d/
+mkdir -p /home/barryoffice/mnt/e/
+mkdir -p /home/barryoffice/mnt/h/
+mkdir -p /home/barryoffice/mnt/nspshare/
+mkdir -p /home/barryoffice/mnt/IM_server_20180104/
+#/usr/bin/sshfs -p 23355 -o IdentityFile=/home/barryoffice/.ssh/id_ecdsa barry@dorm.barryzzj.top:/d:/ /home/barryoffice/mnt/d/
+/usr/bin/sshfs -p 23355 -o IdentityFile=/home/barryoffice/.ssh/id_ecdsa barry@dorm.barryzzj.top:/e:/ /home/barryoffice/mnt/e/
+/usr/bin/sshfs -p 23355 -o IdentityFile=/home/barryoffice/.ssh/id_ecdsa barry@dorm.barryzzj.top:/h:/ /home/barryoffice/mnt/h/
+/usr/bin/sshfs -p 23355 -o IdentityFile=/home/barryoffice/.ssh/id_ecdsa barry@dorm.barryzzj.top:/f:/ /home/barryoffice/mnt/f/
+/usr/bin/sshfs -p 23355 -o IdentityFile=/home/barryoffice/.ssh/id_ecdsa barry@dorm.barryzzj.top:/g:/ /home/barryoffice/mnt/g/
+/usr/bin/sshfs -p 23355 -o IdentityFile=/home/barryoffice/.ssh/id_ecdsa barry@dorm.barryzzj.top:/f:/nspshare/ /home/barryoffice/mnt/nspshare/
+/usr/bin/sshfs -p 23355 -o IdentityFile=/home/barryoffice/.ssh/id_ecdsa barry@dorm.barryzzj.top:/f:/nspshare/zzj/IM_from_lhy/IM/NSP_IM20180104/ /home/barryoffice/mnt/IM_server_20180104/
+
+
+使用-o allow_other需要更改文件/etc/fuse.conf，将#user_allow_other 的#删除。
+
 
 取消挂载：
 umount /path/to/mount

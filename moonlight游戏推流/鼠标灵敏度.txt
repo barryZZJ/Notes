@@ -1,0 +1,12 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2024-03-01T18:25:42+08:00
+
+====== 鼠标灵敏度 ======
+Created 星期五 01 三月 2024
+
+主机：
+{{.\pasted_image.png}}
+
+moonlight:
+{{.\pasted_image001.png}}

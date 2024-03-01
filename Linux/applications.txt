@@ -1,0 +1,11 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2024-03-01T09:22:06+08:00
+
+====== applications ======
+Created 星期五 01 三月 2024
+
+把.desktop文件创建link到~/.local/share/applications/后即可在所有应用程序中显示，
+然后就能 pin 到 doc k栏
+
+ln -s xxx.desktop ~/.local/share/applications
