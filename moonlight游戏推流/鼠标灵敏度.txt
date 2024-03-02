@@ -6,7 +6,9 @@ Creation-Date: 2024-03-01T18:25:42+08:00
 Created 星期五 01 三月 2024
 
 主机：
-{{.\pasted_image.png}}
+10级，开鼠标加速
+
 
 moonlight:
-{{.\pasted_image001.png}}
+15级，开鼠标加速
+

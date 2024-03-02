@@ -7,6 +7,8 @@ Created 星期日 23 七月 2023
 
 设置快捷方式 (.desktop)
 usr/share/applications
+放入 ~/.local/share/applications 可以在库中显示
+图标默认放在~/.local/share/icon，Icon域即可不加路径和后缀名
 https://blog.csdn.net/wuyujin1997/article/details/104655385
 
 双击执行sh
@@ -17,4 +19,5 @@ Name=RDP
 Exec=/home/barryoffice/rdp
 Terminal=false
 Type=Application
-Icon=/home/barryoffice/icon/rdp.png
+Icon=rdp
+Categories=Game;
