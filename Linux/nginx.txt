@@ -12,7 +12,7 @@ Created 星期日 03 九月 2023
 # https://www.nginx.com/resources/wiki/start/topics/tutorials/config_pitfalls/
 # https://wiki.debian.org/Nginx/DirectoryStructure
 
-/etc/nginx/sites-available/example.com:
+/etc/nginx/sites-available/barryzzj.top:
 ''server {''
 ''    listen 18000;''
 ''    server_name barryzzj.top;''
