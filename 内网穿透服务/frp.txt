@@ -1,0 +1,12 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2024-03-11T10:57:57+08:00
+
+====== frp ======
+Created 星期一 11 三月 2024
+
+[[:服务器:需要配置的服务:frps]]
+[[:服务器:需要配置的服务:frpc]]
+
+
+基于中转服务器，原理是数据转发，带宽受限于服务器

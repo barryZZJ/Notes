@@ -7,5 +7,12 @@ Created 星期六 25 二月 2023
 
 FRP或者NPS都可以，或者像Ngrok这种的内网穿透服务就是不太稳定
 
-
 即端口转发
+
+测试：https://blog.csdn.net/aa3615058/article/details/125623251
+psping：用于测试延迟，抖动
+	psping ip:port
+iperf3：用于测试下载速度，上传速度
+	-c ip
+	-c ip -R
+speedTestX：docker版，上传、下载、延迟、抖动

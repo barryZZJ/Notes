@@ -1,0 +1,18 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2024-03-11T10:45:41+08:00
+
+====== zerotier ======
+Created 星期一 11 三月 2024
+
+虚拟局域网，所有用户都要安装客户端ZeroTier-One
+
+通过 udp 打洞从而建立 p2p 通信。当使用moon服务器时可以实现tcp中继，此时同frp转发。
+
+https://github.com/zerotier/ZeroTierOne
+
+zerotier，搭建moon服务器加速
+https://www.key-iot.com/news/77783.html
+
+楼主速度很慢，我猜原因可能是 zerotier 先尝试连接 udp，连接成功便没有尝试中继。
+如果要强制中继，应该参考[官方说明](https://github.com/zerotier/ZeroTierOne/tree/master/service) 拉黑除 moon 之外的所有 path

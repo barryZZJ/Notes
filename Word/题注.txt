@@ -1,0 +1,9 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2024-03-11T11:19:51+08:00
+
+====== 题注 ======
+Created 星期一 11 三月 2024
+
+为表格、图片添加编号：
+使用题注功能，并且可以自定义标签名（“图”、“表”等）
