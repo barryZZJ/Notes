@@ -1,0 +1,15 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2024-03-13T15:12:18+08:00
+
+====== LaTeX ======
+Created 星期三 13 三月 2024
+
+安装
+https://www.tug.org/texlive/
+bin文件夹添加到PATH即可
+
+编译使用：
+UTF8使用pdftex
+GBK使用xetex
+

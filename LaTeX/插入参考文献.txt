@@ -1,4 +1,5 @@
 Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
 
 引用：
 引用多个文献：\cite{ref1,ref2} 注意不能有空格
@@ -54,6 +55,6 @@ ieeetr，国际电气电子工程师协会期刊样式；
 acm，美国计算机学会期刊样式；
 siam，美国工业和应用数学学会期刊样式；
 apalike，美国心理学学会期刊样式；
-
+gbt7714-numerical，国标 https://github.com/zepinglee/gbt7714-bibtex-style （需要在导言区调用\usepackage{gbt7714}）
 
 pdflatex->bibtex->pdflatex x2
