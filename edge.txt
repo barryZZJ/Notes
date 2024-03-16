@@ -5,4 +5,9 @@ Creation-Date: 2024-03-13T17:24:26+08:00
 ====== edge ======
 Created 星期三 13 三月 2024
 
+调出 bing AI copilot 侧边栏方法：
+在全局模式下
+1. 来回切换显示语言并重启
+2. 添加新的profile
+
 {{.\pasted_image.png}}

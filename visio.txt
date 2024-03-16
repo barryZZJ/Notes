@@ -1,0 +1,9 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2024-03-16T14:02:47+08:00
+
+====== visio ======
+Created 星期六 16 三月 2024
+
+镜像翻转：
+位置——旋转形状
