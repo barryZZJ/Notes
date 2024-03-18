@@ -1,0 +1,10 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2024-03-18T21:33:33+08:00
+
+====== 副屏ipad ======
+Created 星期一 18 三月 2024
+
+ipad作为副屏，可以用moonlight+虚拟显示器实现
+
+[[:虚拟显示器]]
