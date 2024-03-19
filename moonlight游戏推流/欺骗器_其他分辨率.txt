@@ -5,25 +5,18 @@ Creation-Date: 2024-03-18T21:09:01+08:00
 ====== 欺骗器 其他分辨率 ======
 Created 星期一 18 三月 2024
 
-分辨率不一致时，可以使用欺骗器，自定义欺骗器的分辨率，并设为主显示器即可
+分辨率不一致时，可以使用欺骗器，自定义欺骗器的分辨率，并设为主显示器即可（Sunshine支持手动指定推流哪个显示器，默认是主显示器）
 
-虚拟显示器（可能是软件版欺骗器？）：https://github.com/ge9/IddSampleDriver?tab=readme-ov-file
-自动切换主屏幕：https://github.com/Nonary/MonitorSwapAutomation
+=== 虚拟显示器 ===
+虚拟出其他显示器，类似软件版欺骗器
+[[:虚拟显示器]]
 
-Get 5 virtual monitors for the price of zero!
-Steps (for experienced pros only!!!)
-Download the latest release as a zip file, and extract all.
+=== 自动切换分辨率 ===
+For a fully automated resolution change on stream start and stream end: https://github.com/Nonary/ResolutionAutomation
+G:\ResolutionMatcher
 
-put option.txt to C:\IddSampleDriver\option.txt
+=== 自动切换显示器 ===
+For a fully automated display swap on stream start and stream end: https://github.com/Nonary/MonitorSwapAutomation/releases/tag/production
+（Sunshine支持手动指定推流哪个显示器）
 
-As an administrator, Run the *.bat file to add the driver certificate as a trusted root certificate. (I'm getting reports that the bat might not work, run the command from an elevated command prompt from the extracted folder).
 
-Don't install the inf. Open device manager, click on any device, then click on the "Action" menu and click "Add Legacy Hardware"
-
-Select "Add hardware from a list (Advanced)" and then select Display adapters
-
-Click "Have Disk..." and click the "Browse..." button. Navigate to the extracted files and select the inf file.
-
-You are done! Go to display settings to customize the resolution of the additional displays. These displays show up in Oculus and should be able to be streamed from.
-
-You can enable/disable the display adapter to toggle the monitors.

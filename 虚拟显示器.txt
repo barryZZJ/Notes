@@ -5,12 +5,14 @@ Creation-Date: 2024-03-18T21:38:19+08:00
 ====== 虚拟显示器 ======
 Created 星期一 18 三月 2024
 
+自动切换屏幕：
+[[:moonlight游戏推流:欺骗器_其他分辨率]]
 
-虚拟显示器（可能是软件版欺骗器？）：
+=== IddSampleDriver ===
 https://github.com/ge9/IddSampleDriver?tab=readme-ov-file
-
 Get 5 virtual monitors for the price of zero!
 Steps (for experienced pros only!!!)
+{{{code: lang="markdown" linenumbers="False"
 Download the latest release as a zip file, and extract all.
 
 put option.txt to C:\IddSampleDriver\option.txt
@@ -26,9 +28,8 @@ Click "Have Disk..." and click the "Browse..." button. Navigate to the extracted
 You are done! Go to display settings to customize the resolution of the additional displays. These displays show up in Oculus and should be able to be streamed from.
 
 You can enable/disable the display adapter to toggle the monitors.
+}}}
 
-自动切换主屏幕（sunshine脚本）：
-https://github.com/Nonary/MonitorSwapAutomation
 
-另一个虚拟显示器
+=== 另一个虚拟显示器 ===
 https://www.amyuni.com/forum/viewtopic.php?t=3030
