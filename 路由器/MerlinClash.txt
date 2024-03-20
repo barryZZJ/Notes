@@ -8,13 +8,20 @@ Created 星期五 07 十月 2022
 帮助文档
 https://mcreadme.gitbook.io/mc/
 
+/koolshare/merlinclash
+
 插件下载
-质壁分离版：在线安装内核+在线规则转换+在线控制面板
-Lite版：质壁分离总是下载内核失败的使用
-适配ARM V7 AX32版
+//质壁分离版：在线安装内核+在线规则转换+在线控制面板
+//Lite版：质壁分离总是下载内核失败的使用
+ARM v7 386（旧版）
+ARM  V7 AX32（新版，优先选择）
+Lite版本同AX32合并，小JFFS机型请直接安装AX32版本，安装脚本会根据机型选择安装功能。（但经过测试每隔10分钟就会触发路由器重启，用不了，可能是订阅+更新geoip之类的之后总空间超了），
+只要删掉/jffs/uu.tar.gz就有空间装10M的版本了。
 
 安装/重装：
 选择.tar.gz文件后点击上传并安装
+更新需要保证jfss有5M以上剩余空间
+如果空间不足可以删掉/jffs里的uu.tar.gz（每次重启都会新建出来）
 
 （需要在/koolshare/merlinclash里mkdir dashboard
 

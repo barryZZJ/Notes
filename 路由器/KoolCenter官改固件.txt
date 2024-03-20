@@ -8,6 +8,16 @@ Created 星期四 15 九月 2022
 AX56Uv2固件(386)下载：
 https://fw.koolcenter.com/KoolCenter_ASUS_Official_Mod/RT-AX56U_V2/
 
+重要指令：
+重启软件中心
+sh /koolshare/perp/perp.sh
+重置软件中心（所有插件都会被删除！）
+koolshare-reset
+
+/jffs
+/jffs/.koolshare  or  /koolshare
+rm /jffs/uu.tar.gz
+
 KoolCenter：
 https://www.koolcenter.com/
 
