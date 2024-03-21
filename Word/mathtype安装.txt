@@ -1,0 +1,34 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2024-03-21T15:12:02+08:00
+
+====== mathtype安装 ======
+Created 星期四 21 三月 2024
+
+在wiris官网下载https://store.wiris.com/zh/products/mathtype/download
+不要在中国代理商地方下载
+
+手动运行mathtype.exe测试是否能打开，如果打不开，可能是字体问题
+https://www.cnblogs.com/yuehouse/p/10521345.html
+备份fonts里的字体，然后把能删的全删掉，再运行试试
+已知会有影响的字体：
+GongFanNuFangTi （龚帆怒放体(淘宝搜龚帆字库可买单字授权)常规）
+しねきゃぷしょん (可爱儿童字体)常规
+不知道什么原因，别的名字里带括号的不会影响。
+
+7.x激活码：
+防火墙入站规则添加C:\Program Files (x86)\MathType\System\MathTypeLib.exe，禁止连接
+然后断网激活
+名字 any
+邮箱 any
+序列号 4VN8B-C86SQ-Z9R0C-27M97-15HUA
+
+重置试用期：
+\HKEY_CURRENT_USER\SOFTWARE\Install Options
+删掉options6.9
+
+debug:
+mathpage.wll未找到：
+在安装目录找到，放到WORD.EXE同级目录下。
+
+

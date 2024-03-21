@@ -1,0 +1,23 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2024-03-21T20:08:58+08:00
+
+====== 快捷键 ======
+Created 星期四 21 三月 2024
+
+微小位移：选中后，Ctrl+方向
+空格：[ Ctrl+Alt+Space ]或[ Ctrl+Shift+Space ]可适当增加空格。
+
+插入模板（如上标、下标）时，按住ctrl可以替换原模板，不按则在原来的基础上新增(wrap around)。
+注意要选中完整的一列{{.\pasted_image.png}}，不能只是下标
+
+ctrl+tab：插入tab
+界面尺子上的几个箭头可以控制tab的长度，不同箭头可能表示tab的起点、终点
+https://docs.wiris.com/mathtype/en/user-interfaces/mathtype-7-interface/main-tutorials.html#enter--piece---1
+
+按住alt拖动鼠标可以添加/删除快捷方式
+
+直接拖动公式到快速访问栏，双击直接编辑它，右键可以删除
+
+卡顿：
+显示输入框很慢时，尝试重启word解决
