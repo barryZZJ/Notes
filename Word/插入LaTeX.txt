@@ -1,0 +1,16 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2024-03-22T17:03:08+08:00
+
+====== 插入LaTeX ======
+Created 星期五 22 三月 2024
+
+安装 TeXsword 插件，可以用来插入任意LaTeX环境，如伪代码
+https://sourceforge.net/projects/texsword/
+教程 https://zhuanlan.zhihu.com/p/98751842
+
+要求安装好LaTeX环境
+
+安装过程也是极为简单，复制解压后的 texsword.dotm 文件到 C:\Users\{YOUR_USER_NAME}\AppData\Roaming\Microsoft\Word\STARTUP（路径请根据实际情况自行修改） 找不到地址可以用everything搜
+
+文件夹下面之后重启 Word 即可。

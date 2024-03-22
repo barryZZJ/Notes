@@ -5,7 +5,8 @@ Creation-Date: 2024-03-21T15:12:02+08:00
 ====== mathtype安装 ======
 Created 星期四 21 三月 2024
 
-在wiris官网下载https://store.wiris.com/zh/products/mathtype/download
+在wiris官网下载
+https://store.wiris.com/zh/products/mathtype/download/windows?dmw=nomodal&utm_source=novacheck&utm_medium=mathtypewin7&utm_campaign=trial&utm_term=mt7certificate&utm_content=updatenow-zh
 不要在中国代理商地方下载
 
 手动运行mathtype.exe测试是否能打开，如果打不开，可能是字体问题
@@ -31,4 +32,7 @@ debug:
 mathpage.wll未找到：
 在安装目录找到，放到WORD.EXE同级目录下。
 
+更新后需要重新把mathpage.wll放到
+C:\Program Files\Microsoft Office\root\Office16
 
+符号不显示：Style-Define-extra math 选择euclid extra
