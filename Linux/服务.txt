@@ -1,0 +1,41 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2024-03-25T09:57:43+08:00
+
+====== 服务 ======
+创建日期 星期一 25 三月 2024
+
+注册为服务：
+apt install systemd
+sudo nano /etc/systemd/system/frpc.service
+
+[Unit]
+Description=Frp Client
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+Restart=on-failure
+RestartSec=60s
+ExecStart=/usr/bin/frpc -c /home/barryoffice/frp/frpc_yy.ini
+
+[Install]
+WantedBy=multi-user.target
+
+修改后需要 sudo systemctl daemon-reload
+systemctl start frpc
+自启动：systemctl enable frpc
+
+单次运行脚本：
+[Unit]
+Description=SSHFS Mount Service
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=oneshot
+ExecStart=/path/to/sshfs_mount.sh
+
+[Install]
+WantedBy=multi-user.target

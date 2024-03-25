@@ -1,0 +1,13 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2024-03-25T10:35:00+08:00
+
+====== 开机自动登录 ======
+创建日期 星期一 25 三月 2024
+
+https://cloud.tencent.com/developer/article/2152391
+
+https://blog.csdn.net/deephacking/article/details/134108938
+
+取消开机后需要再输入密钥环密码：
+密码和密钥：右键，更改密码，设置为空白密码
