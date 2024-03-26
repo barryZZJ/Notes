@@ -19,9 +19,11 @@ Wants=network-online.target
 
 [Service]
 Type=simple
-Restart=on-failure
-RestartSec=60s
+Restart=always    
+RestartSec=10
+#ExecStartPre=/bin/sleep 30    # Add a delay of 30 seconds before starting
 ExecStart=/usr/bin/frpc -c /home/barryoffice/frp/frpc_yy.ini
+WorkingDirectory=/home/barryoffice/frp
 
 [Install]
 WantedBy=multi-user.target

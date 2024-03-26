@@ -5,22 +5,23 @@ Creation-Date: 2023-07-25T08:57:31+08:00
 ====== xrdp ======
 创建日期 星期二 25 七月 2023
 
-ubuntu 22.04开始自带RDP服务器，在设置-共享：
-开启右上角开关；
-开启远程桌面和远程控制，修改密码即可。
+ubuntu 22.04开始自带RDP服务器，在设置-共享：开启右上角开关；开启远程桌面和远程控制，修改密码即可。
 而且用户不会顶掉，会在两个电脑屏幕同时显示。
+比xrdp方便。
 （需要取消密钥环，否则没法开机自动连接远程桌面）
+目前的bug是不显示光标
+临时的解决办法是打开辅助功能里的缩放，然后倍率调成1.0，就不影响正常使用了
 --------------------
 
 rdp服务端
 https://github.com/neutrinolabs/xrdp
 
 sudo apt install xrdp
-
-service: xrdp
+sudo systemctl start xrdp
 
 配置文件
 /etc/xrdp/xrdp.ini
+/etc/xrdp/sesman.ini
 
 log: (默认为xrdp.log，不知道在哪，在ini可以手动修改
 /etc/xrdp/xrdp.log

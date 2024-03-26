@@ -8,7 +8,6 @@ Creation-Date: 2024-03-25T09:57:43+08:00
 注册为服务：
 apt install systemd
 sudo nano /etc/systemd/system/frpc.service
-
 [Unit]
 Description=Frp Client
 After=network-online.target
@@ -16,12 +15,16 @@ Wants=network-online.target
 
 [Service]
 Type=simple
-Restart=on-failure
-RestartSec=60s
+Restart=always    
+RestartSec=10
+#ExecStartPre=/bin/sleep 30    # Add a delay of 30 seconds before starting
 ExecStart=/usr/bin/frpc -c /home/barryoffice/frp/frpc_yy.ini
+WorkingDirectory=/home/barryoffice/frp
 
 [Install]
 WantedBy=multi-user.target
+
+Restart=on-failure/always(结束后自动重启)
 
 修改后需要 sudo systemctl daemon-reload
 systemctl start frpc

@@ -1,0 +1,29 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2023-10-07T22:55:37+08:00
+
+====== WOL wake on lan 网络唤醒 ======
+Created 星期六 07 十月 2023
+
+https://zhuanlan.zhihu.com/p/29100706
+https://newsupport.lenovo.com.cn/commonProblemsDetail.html?noteid=417843
+
+1. BIOS打开PICE设备唤醒（关键！）
+2. 设备管理器——网卡——属性：
+高级：魔术封包唤醒开启、Wake on magic packet when system...开启、关机 网络唤醒开启
+电源管理：允许此设备唤醒计算机
+3. 电源选项——选择电源按钮的功能——更改当前不可用的设置——取消“启用快速启动”
+4. 防火墙允许UDP9入站
+
+外网唤醒：
+1. 路由器开启端口转发UDP9
+2. arp绑定：https://chenhe.me/post/asus-arp-binding/
+自启脚本 /jffs/scripts/services-start 中添加下面代码并chmod a+rx
+arp -s 192.168.50.200 04:7C:16:DB:FF:E8
+（并手动执行一遍）
+3. 执行arp查看arp表，如果标有[PERM]即成功
+4. 内网穿透需要放在路由器上，且不能加密和压缩
+
+主机正常关机后，几分钟内可以外网WOL，一段时间就不可以，这是路由ARP没绑定，要看路由是否有此功能。
+
+关机、休眠中都可以启动
