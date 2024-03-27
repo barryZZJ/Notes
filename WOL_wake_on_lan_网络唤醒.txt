@@ -27,3 +27,8 @@ arp -s 192.168.50.200 04:7C:16:DB:FF:E8
 主机正常关机后，几分钟内可以外网WOL，一段时间就不可以，这是路由ARP没绑定，要看路由是否有此功能。
 
 关机、休眠中都可以启动
+
+
+ubuntu配置方法：
+1. 使用mncli https://pimylifeup.com/ubuntu-enable-wake-on-lan/
+2. 安装ethtool https://sparkydogx.github.io/2019/01/16/ubuntu-wake-on-lan/
