@@ -1,0 +1,10 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2024-04-01T10:37:33+08:00
+
+====== 绕过校园网认证 ======
+Created 星期一 01 四月 2024
+
+方法：OpenVPN
+
+{{file:///F:/temp/WeChat%20Files/wxid_iy5ejuzfavoq21/FileStorage/Temp/36065e7fdceb2da5b0c5961e56e293d.jpg}}
