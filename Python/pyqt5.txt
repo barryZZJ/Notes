@@ -4,6 +4,8 @@ Wiki-Format: zim 0.6
 pip install PyQt5
 pip install pyqt5-tools # designer
 
+运行后报错：this application failed to start because no qt platform plugin could be initialized
+环境变量添加QT_PLUGIN_PATH 为 .\venv\Lib\site-packages\PyQt5\Qt5\plugins
 
 e.g.
 https://github.com/barryZZJ/dp-opt-cqu

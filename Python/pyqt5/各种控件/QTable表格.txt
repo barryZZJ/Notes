@@ -9,17 +9,24 @@ https://doc.qt.io/qt-6/qtablewidget.html
 **QTableWidget**
 Widget是Item-Based，可以代码动态调整；而QTableView是Model-Based，只能从数据库读取
 
+行/列标题
 horizontalHeaderVisible
 verticalHeaderVisible
 
 row和col标签均从0开始
 .setItem(row, col, item)  # 该行必须存在
 
+行
+.row(QTableWidgetItem)
+.rowAt(y)
 .rowCount()
 .setRowCount  # 直接调整整体行数
 .insertRow(int) # 在row处插入一行（0开始）
 .removeRow(int)
 
+列
+.column(QTableWidgetItem)
+.columnAt(x)
 .columnCount()
 .setColumnCount
 .insertColumn(int) # 在col处插入一列（0开始）
@@ -28,21 +35,25 @@ self.pageTodo.setColumnWidth(0, self.pageTodo.width())
 
 .item(row, col)  -> QTableWidgetItem
 .cellWidget(row, col)  -> QWidget
+设置文本（设置之前需要先insert对应的行和列）：
+.setItem(row, col, QTableWidgetItem)  # row, col 都是从0开始
+设置Widget
+.setCellWidget(row, col, widget)
 
 .clear()
 .clearContents()
 
 .setCurrentCell(row, col)
 .setCurrentItem(qtablewidgetitem)
-设置文本：
-.setItem(row, col, QTableWidgetItem)  # row, col 都是从0开始
-设置Widget
-.setCellWidget(row, col, widget)
 
 列宽
 self.tableVids.resizeColumnsToContents()
 self.tableVids.setColumnWidth(col, wid)
 self.tableVids.columnWidth(col)
+
+最后行宽/列宽
+horizontalHeadersStretchLastSection
+verticalHeadersStretchLastSection
 
 拖放：
 需要同时accept dragEnterEvent和dragMoveEvent

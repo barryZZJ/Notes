@@ -24,6 +24,18 @@ from PyQt5.QtWidgets import QApplication
 class FilePicker(QFileDialog):
     def __init__(self, parent: QWidget=None):
         super(FilePicker, self).__init__(parent)
+    
+    def pickFile(self, dir=os.getcwd(), namefilter='*.csv') -> str:
+        self.setFileMode(QFileDialog.ExistingFile)
+        self.setDirectory(dir)
+        self.setNameFilter(namefilter)
+        if self.exec_():
+            # 选中文件, 返回码==1
+            # return list of full path
+            filenames = self.selectedFiles()
+            return filenames[0].replace('/', '\\')
+        # 未选中文件，返回码==0
+        return ''
 
     def pickVideo(self, dir=os.getcwd()) -> str:
         self.setFileMode(QFileDialog.ExistingFile)
@@ -53,9 +65,10 @@ if __name__ == '__main__':
     app = QApplication(sys.argv)
     window = QWidget()
     window.show()
- 
-    if filepath := FilePicker(window).pickVideo():
-    	lastdir = picker.directory().absolutePath()
+    picker = FilePicker(window)
+
+    if filepath := picker.pickVideo():
+        lastdir = picker.directory().absolutePath()
     	...
     	
     sys.exit(app.exec_())
