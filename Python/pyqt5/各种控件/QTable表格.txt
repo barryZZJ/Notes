@@ -21,7 +21,7 @@ row和col标签均从0开始
 .rowAt(y)
 .rowCount()
 .setRowCount  # 直接调整整体行数
-.insertRow(int) # 在row处插入一行（0开始）
+.insertRow(int row) # 在row处插入一行（0开始）
 .removeRow(int)
 
 列
@@ -29,7 +29,7 @@ row和col标签均从0开始
 .columnAt(x)
 .columnCount()
 .setColumnCount
-.insertColumn(int) # 在col处插入一列（0开始）
+.insertColumn(int col) # 在col处插入一列（0开始）
 .removeColumn(int)
 self.pageTodo.setColumnWidth(0, self.pageTodo.width())
 
