@@ -23,8 +23,11 @@ GRE 端口：OTHER 47
 
 OpenVPN：https://www.asus.com/support/faq/1008713/
 端口：UDP 1194
+比IPSec更安全
 
-IPSec VPN：https://www.asus.com/support/faq/1044190/
+L2TP/IPSec VPN：https://www.asus.com/support/faq/1044190/
+https://github.com/hwdsl2/docker-ipsec-vpn-server
+比OpenVPN更快
 端口：UDP 500， UDP 4500
 
 如果设置了DMZ，需要开启端口转发，把VPN服务器的端口转发给路由器ip的相同端口

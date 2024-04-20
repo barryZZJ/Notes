@@ -1,0 +1,38 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2024-04-20T10:44:35+08:00
+
+====== IPSec ======
+Created 星期六 20 四月 2024
+
+https://github.com/hwdsl2/docker-ipsec-vpn-server
+
+docker pull hwdsl2/ipsec-vpn-server
+
+quick start:
+docker run \
+	--name ipsec-vpn-server \
+	--restart=always \
+	-v ikev2-vpn-data:/etc/ipsec.d \
+	-v /lib/modules:/lib/modules:ro \
+	-p 6443:500/udp \
+	-p 24489:4500/udp \
+	-d --privileged \
+	hwdsl2/ipsec-vpn-server
+
+login detail:
+docker logs ipsec-vpn-server
+docker cp ipsec-vpn-server:/etc/ipsec.d/vpn-gen.env ./
+
+start with env file:
+docker run \
+	--name ipsec-vpn-server \
+	--env-file ./vpn.env \
+	--restart=always \
+	-v ikev2-vpn-data:/etc/ipsec.d \
+	-v /lib/modules:/lib/modules:ro \
+	-p 500:500/udp \
+	-p 4500:4500/udp \
+	-d --privileged \
+	hwdsl2/ipsec-vpn-server
+
