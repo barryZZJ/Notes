@@ -12,7 +12,7 @@ https://fw.koolcenter.com/KoolCenter_Merlin_New_Gen_386/1.%20%E6%A2%85%E6%9E%973
 官改固件：KoolCenter制作 = 官方固件 + 软件中心
 
 https://www.asuswrt-merlin.net/
-(原版)梅林固件merlin：外国作者制作（不支持ax56u v2），官方固件的基础上大改
+(原版)梅林固件merlin：外国作者制作（不支持ax56u v2），官方固件的基础上大改，UI与原版一致。
 https://github.com/gnuton/asuswrt-merlin.ng
 G版梅林固件：补全了更多机型，功能一致
 
