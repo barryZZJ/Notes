@@ -16,3 +16,6 @@ Potato	Vegetable
 
 =VLOOKUP("Carrot", A:B, 2, FALSE)  # ==the cell will display "Vegetable," 
 在A:B中搜索"Carrot"，返回第2列，FALSE为精确查找
+
+变为数字：D1*1
+变为字符：D1&""
