@@ -5,6 +5,9 @@ Creation-Date: 2024-03-21T15:12:02+08:00
 ====== mathtype安装 ======
 Created 星期四 21 三月 2024
 
+破解版
+https://raincandy.tech/mathtypebykurumi/
+
 在wiris官网下载
 https://store.wiris.com/zh/products/mathtype/download/windows?dmw=nomodal&utm_source=novacheck&utm_medium=mathtypewin7&utm_campaign=trial&utm_term=mt7certificate&utm_content=updatenow-zh
 不要在中国代理商地方下载
@@ -36,3 +39,6 @@ mathpage.wll未找到：
 C:\Program Files\Microsoft Office\root\Office16
 
 符号不显示：Style-Define-extra math 选择euclid extra
+
+mt extra过期：
+在Fonts里重复搜索并删除“mt extra"（不包括mt extra tiger），然后去mathtype的Fonts/TrueType里重新安装mtextra.ttf
