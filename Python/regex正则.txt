@@ -6,6 +6,12 @@ https://docs.python.org/3/library/re.html
 https://zhengze.51240.com/
 https://regexper.com/
 常用正则：https://www.jb51.net/tools/regex.htm
++ 一次或多次
+''*'' 零次或多次
+？ 零次或一次
+^ 开头
+$ 结尾
+
 import regex
 或
 import re
