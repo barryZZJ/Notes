@@ -1,0 +1,9 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2024-05-06T09:46:31+08:00
+
+====== zotero ======
+Created 星期一 06 五月 2024
+
+移动到group里，并避免笔记的跳转链接失效：
+导出为zotero RDF，再导入
