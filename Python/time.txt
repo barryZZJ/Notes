@@ -16,7 +16,7 @@ https://docs.python.org/3/library/time.html
 # tuple 转时间戳
 .mktime(struct_time) -> float  
 
- # 时间戳转str 
+ # 时间戳转str 当前时间
 .ctime([secs]) -> str # Sat Mar 28 22:24:24 2016  解析："%a %b %d %H:%M:%S %Y"
 # tuple转str
 .asctime([struct_time]) -> str   # Sat Mar 28 22:24:24 2016

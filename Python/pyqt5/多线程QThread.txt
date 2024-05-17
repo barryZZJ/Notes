@@ -81,7 +81,8 @@ QThreadPool
 https://doc.qt.io/qt-5/qthreadpool.html
 
 .quit() 结束eventloop
-.wait() 等待线程结束
+.wait() 等待线程结束（只能外部调用）
+
 
 Worker方法代码：
 {{{code: lang="python3" linenumbers="False"

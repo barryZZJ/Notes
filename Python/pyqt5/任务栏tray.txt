@@ -1,0 +1,26 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2024-05-17T18:16:11+08:00
+
+====== 任务栏tray ======
+Created 星期五 17 五月 2024
+
+# 将窗口添加到任务栏
+注意图标文件必须存在，否则不显示在任务栏
+
+如果主窗口隐藏，需要下面代码避免app退出。
+app.setQuitOnLastWindowClosed(False)
+{{{code: lang="python3" linenumbers="False"
+	self.tray_icon = QSystemTrayIcon(self)
+	self.tray_icon.setIcon(QIcon("raw/icon.png"))
+	tray_menu = QMenu(self)
+	exit_action = QAction("Exit", self)
+	exit_action.triggered.connect(self.close)
+	tray_menu.addAction(exit_action)
+	self.tray_icon.setContextMenu(tray_menu)
+	self.tray_icon.show()
+
+    def closeEvent(self, event):
+        self.tray_icon.hide()
+        event.accept()
+}}}

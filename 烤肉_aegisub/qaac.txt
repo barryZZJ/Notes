@@ -15,6 +15,7 @@ qaac foo.wav
 will generate foo.m4a in the current directory.
 
 qaac --ignorelength --threading -V 91 --no-delay input.aac -o output.m4a
+读取pipe：qaac --ignorelength --threading -V 91 --no-delay - -o "{M4A_TMP}"
 
 需要把QTFiles64.zip解压进去才能用
 

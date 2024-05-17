@@ -8,6 +8,8 @@ Created 星期四 20 十月 2022
 https://ffmpeg.org/
 https://ffmpeg.org/ffmpeg.html
 
+-y                  overwrite output files
+
 输出到pipe
 	-f muxer  # ffmpeg -muxers查看所有的muxer，如wav, eac3，并且要在-i后面
 	- 表示输出到pipe
