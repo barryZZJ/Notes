@@ -7,11 +7,17 @@ Wiki-Format: zim 0.6
 https://pyinstaller.org/en/stable/index.html
 pip install pyinstaller
 
-cmd中：
-pyinstaller -F xx.py --clean -n name --icon=xx.ico
+cmd中自动化：
+@echo off
+call "E:\Coding2\PyProjects\venv\zmsub\Scripts\activate.bat"
+pyinstaller compresser.py -y --clean --add-data src;./src -F --clean -n name --icon=xx.ico
 
 如果报错，记得-p添加site-packages目录, e.g. xxx\envs\script\Lib\site-packages 
 可发布文件在dist文件夹中
+
+如果依赖外部文件，需要用--add-data添加
+
+打包时报“无法成功完成操作，因为文件包含病毒或潜在的垃圾软件。”，需要把实时防护关掉
 
 === pyinstaller>4.2路径问题： ===
 打包成单个文件后，python环境/附加文件会在tmp文件夹下，__file__返回的也是这个路径下的py文件(但文件不存在)

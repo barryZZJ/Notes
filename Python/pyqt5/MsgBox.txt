@@ -14,7 +14,7 @@ QMessageBox.information(None, None, "Debug mode is on")
 .warning 
 .question
 
-图标会跟随Parent，不需要单独设置
+图标会跟随app.setWindowIcon（或者parent的？不确定），不需要单独设置
 
 定时关闭：
 msg_box = QMessageBox()
