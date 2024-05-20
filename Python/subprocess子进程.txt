@@ -27,10 +27,13 @@ else:
 指令也可以是一整个字符串，注意路径用引号括起来避免有空格
 
 === 拦截输出 ===
-https://docs.python.org/3.9/library/subprocess.html?highlight=subprocess#subprocess.check_output
+https://docs.python.org/3.9/library/subprocess.html#subprocess.check_output
 https://python3-cookbook.readthedocs.io/zh_CN/latest/c13/p06_executing_external_command_and_get_its_output.html
-ret = run(..., stdout=PIPE, stderr=PIPE, check=True)
-out = ret.stdout.decode('utf8')
+stdout_bytes = subprocess.check_output([cmd, *args]) -> bytes
+stdout_text = stdout_bytes.decode('utf8')
+相当于run(..., check=True, stdout=PIPE).stdout：
+out_bytes = run(..., stdout=PIPE, stderr=PIPE, check=True) -> bytes
+out_text = out_bytes.stdout.decode('utf8')
 
 拦截stdout和stderr(不输出)：
 	capture_output=True
@@ -39,10 +42,6 @@ out = ret.stdout.decode('utf8')
 分别拦截，并合并在一起
 	stdout=PIPE, stderr=stdout  # bytes
 如果返回码不为0会报subprocess.CalledProcessError，.包含.returncode, .output, .stdout, .stderr属性
-
-out_bytes = subprocess.check_output([cmd, *args]) -> bytes
-	相当于run(..., check=True, stdout=PIPE).stdout
-out=out_bytes.decode('utf8')
 
 
 === 通过pipe通信 ===
