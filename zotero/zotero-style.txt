@@ -1,0 +1,12 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2024-05-21T13:55:59+08:00
+
+====== zotero-style ======
+Created 星期二 21 五月 2024
+
+https://github.com/MuiseDestiny/zotero-style
+
+配置文献标签：
+Publication Tags
+Fields（填自定义数据集的数据集缩写）: CCF, ccf, myCCF, BarCCF

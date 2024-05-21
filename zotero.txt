@@ -7,3 +7,7 @@ Created 星期一 06 五月 2024
 
 移动到group里，并避免笔记的跳转链接失效：
 导出为zotero RDF，再导入
+
+重命名规则：https://www.zotero.org/support/file_renaming
+zotfile: {%a_}{%y_}{%t}
+zotero7: ''{{ firstCreator suffix="_" }}{{ year suffix="_" }}{{ title truncate="100" }}''
