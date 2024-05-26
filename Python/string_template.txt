@@ -1,0 +1,16 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2024-05-26T12:34:19+08:00
+
+====== string template ======
+Created 星期日 26 五月 2024
+
+更安全的 string placeholder 方法
+
+''from string import Template''
+
+''t = Template('My name is $name and I am $age years old')''
+''print(t.substitute(name='Alice', age=25))''
+
+''# Output:''
+''# 'My name is Alice and I am 25 years old'''

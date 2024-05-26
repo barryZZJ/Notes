@@ -30,3 +30,7 @@ https://www.runoob.com/python/att-string-format.html
 
 保留n位小数
 {:.nf}
+
+对齐：
+print(f'{"Left":<10} | {"Center":^10} | {"Right":>10}')
+# 'Left       |   Center   |      Right'
