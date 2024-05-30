@@ -29,7 +29,23 @@ https://blog.51cto.com/gyj110/6010498
 
 修改端口：
 https://learn.microsoft.com/zh-CN/windows-server/remote/remote-desktop-services/clients/change-listening-port
+https://engr-z.com/513.html
 
 禁止远程关机：
 gpedit.msc——计算机配置——windows设置——安全设置——本地策略——用户权利指派
 从远程系统强制关机
+
+查看登录日志
+win+r: eventvwr
+依次展开 应用和服务日志 > Microsoft > Windows > TerminalServices-LocalSessionManager > Operational。
+
+一些优化：
+刷新率
+https://learn.microsoft.com/zh-cn/troubleshoot/windows-server/remote/frame-rate-limited-to-30-fps
+https://www.testufo.com/framerates#count=1&background=stars&pps=960
+
+显卡加速、RemoteFX USB重定向
+https://blog.csdn.net/csdn_life18/article/details/108250846
+
+H264 编码：
+https://engr-z.com/513.html

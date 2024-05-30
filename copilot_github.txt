@@ -1,0 +1,37 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2024-05-30T14:08:18+08:00
+
+====== copilot github ======
+Created 星期四 30 五月 2024
+
+https://code.visualstudio.com/docs/copilot/getting-started-chat
+
+使用方法：
+1. 注释：根据指令生成代码
+2. inline chat (ctrl+i)，比注释更有效
+3. ghost text，写完上一行后按回车
+4. chat panel，对话功能
+
+https://docs.github.com/zh/copilot/using-github-copilot/using-github-copilot-code-suggestions-in-your-editor
+按tab接受推荐
+按esc拒绝推荐
+切换推荐结果：alt + ] , alt + [
+ctrl+enter：在新标签页中显示所有推荐
+ctrl + →：accept next word
+ctrl + alt + →：accept next word （需要配置 editor.action.inlineSuggest.acceptNextLine ）
+
+提问更高效：选中区域、打开文件、''@workspace'' 限制提问范围为当前工作区
+''/fix'' 修改bug
+''/explain'' 解释代码
+''/doc'' 生成注释文档
+''/tests'' 生成单元测试
+添加 chat variable
+''#file''
+''#editor''
+''#selection''
+...
+
+
+''@workspace /new <comment>'' 生成新的工作区，包含对应的文件结构
+
