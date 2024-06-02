@@ -1,0 +1,10 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2024-06-02T18:01:35+08:00
+
+====== vrchat ======
+Created 星期日 02 六月 2024
+
+导入模型：
+双击.unitipackage，选择导入
+在Assets文件夹里找到prefab结尾的文件或场景文件，拖入左方场景即可。
