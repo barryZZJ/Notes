@@ -6,12 +6,16 @@ Creation-Date: 2024-05-30T14:08:18+08:00
 Created 星期四 30 五月 2024
 
 https://code.visualstudio.com/docs/copilot/getting-started-chat
+https://github.com/features/copilot/getting-started
 
 使用方法：
 1. 注释：根据指令生成代码
 2. inline chat (ctrl+i)，比注释更有效
 3. ghost text，写完上一行后按回车
 4. chat panel，对话功能
+
+ctrl shift i
+ctrl alt i 呼出chat页面
 
 https://docs.github.com/zh/copilot/using-github-copilot/using-github-copilot-code-suggestions-in-your-editor
 按tab接受推荐

@@ -5,6 +5,8 @@ Creation-Date: 2023-08-30T16:00:57+08:00
 ====== JSON-RPC ======
 Created 星期三 30 八月 2023
 
+（避免在java内建立python的rpc server，否则线程管理很麻烦，判断服务器是否建立完成也很麻烦）
+
 Python端：
 jsonrpcserver / jsonrpcclient
 
@@ -14,18 +16,18 @@ https://www.jsonrpcserver.com/en/stable/
 
 ''@method''
 ''def ping() -> Result:''
-''    return Success('pong')''
+	''return Success('pong')''
 
 ''@method''
 ''def add(a, b):''
-''    return Success(a + b)''
+	''return Success(a + b)''
 
 ''@method''
 ''def subtract(a, b):''
-''    return Success(a - b)''
+	''return Success(a - b)''
 
 ''if __name__ == '__main__':''
-''    serve(port=5000)''
+	''serve(port=5000)''
 
 Java端：
 server: https://github.com/briandilley/jsonrpc4j
@@ -44,26 +46,26 @@ com.thetransactioncompany:jsonrpc2-client
 
 ''public class RpcClient {''
 
-''    public static void main(String[] args) {''
-''        // Create a new JSON-RPC 2.0 client''
-''        JSONRPC2Session client = new JSONRPC2Session(new URL("http://localhost:5000"));''
+	''public static void main(String[] args) {''
+		''// Create a new JSON-RPC 2.0 client''
+		''JSONRPC2Session client = new JSONRPC2Session(new URL("http://localhost:5000"));''
         
-''        try {''
-''            // Construct the request''
-''            List<Object> params = Arrays.asList(3, 5);''
-''            JSONRPC2Request request = new JSONRPC2Request("add", params, 1);''
+		''try {''
+			''// Construct the request''
+			''List<Object> params = Arrays.asList(3, 5);''
+			''JSONRPC2Request request = new JSONRPC2Request("add", params, 1);''
             
-''            // Send the request''
-''            JSONRPC2Response response = client.send(request);''
+			''// Send the request''
+			''JSONRPC2Response response = client.send(request);''
             
-''            // Print the response''
-''            if (response.indicatesSuccess()) {''
-''                System.out.println("Result: " + response.getResult());''
-''            } else {''
-''                System.out.println("Error: " + response.getError());''
-''            }''
-''        } catch (Exception e) {''
-''            e.printStackTrace();''
-''        }''
-''    }''
+			''// Print the response''
+			''if (response.indicatesSuccess()) {''
+				''System.out.println("Result: " + response.getResult());''
+			''} else {''
+				''System.out.println("Error: " + response.getError());''
+			''}''
+		''} catch (Exception e) {''
+			''e.printStackTrace();''
+		''}''
+	''}''
 ''}''

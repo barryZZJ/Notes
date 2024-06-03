@@ -1,0 +1,55 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2024-06-03T11:32:29+08:00
+
+====== ProcessBuilder ======
+Created 星期一 03 六月 2024
+{{{code: lang="python3" linenumbers="False"
+# your_python_script.py
+import json
+
+def your_function():
+    # Your function logic here
+    return {"result": "Hello, World"}
+
+if __name__ == "__main__":
+    result = your_function()
+    print(json.dumps(result))
+}}}
+
+{{{code: lang="java" linenumbers="False"
+import java.io.*;
+import javax.json.*;
+
+public class Main {
+    public static void main(String[] args) throws IOException {
+        ProcessBuilder pb = new ProcessBuilder("python", "path_to_your_python_script.py");
+        Process p = pb.start();
+
+        // Read from the standard output
+        BufferedReader stdInput = new BufferedReader(new InputStreamReader(p.getInputStream()));
+        // Read from the error output
+        BufferedReader stdError = new BufferedReader(new InputStreamReader(p.getErrorStream()));
+
+        String ret;
+        while ((ret = stdInput.readLine()) != null) {
+            // Parse JSON
+            try {
+                JsonReader jsonReader = Json.createReader(new StringReader(ret));
+                JsonObject jsonObject = jsonReader.readObject();
+                jsonReader.close();
+
+                System.out.println("Python script output: " + jsonObject.getString("result"));
+            } catch (JsonParsingException e) {
+                System.out.println("Failed to parse JSON: " + ret);
+            }
+        }
+
+        // Print any error messages
+        while ((ret = stdError.readLine()) != null) {
+            System.out.println("Python script error: " + ret);
+        }
+    }
+}
+}}}
+

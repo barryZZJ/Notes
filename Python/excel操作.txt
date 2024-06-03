@@ -60,7 +60,9 @@ def adjust_col_width(df, f, sheet_name, has_index=True):
 		offset = 1 if has_index else 0
 		worksheet.set_column(idx + offset, idx + offset, max_len)  # set column width
 set_column从0开始
+
 ############################################################
+df.to_excel: https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.to_excel.html
 example:
 https://xlsxwriter.readthedocs.io/example_pandas_header_format.html
 https://xlsxwriter.readthedocs.io/example_pandas_column_formats.html
