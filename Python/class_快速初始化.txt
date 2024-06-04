@@ -1,0 +1,17 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2024-06-04T11:50:44+08:00
+
+====== class 快速初始化 ======
+Created 星期二 04 六月 2024
+
+dataclass 标准库
+{{{code: lang="python3" linenumbers="False"
+from dataclasses import dataclass
+
+@dataclass
+class Student:
+	name: str
+	age: int
+stu = Student('John', 12)
+}}}
