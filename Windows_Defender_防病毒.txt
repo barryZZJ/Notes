@@ -1,0 +1,15 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2024-06-05T09:49:23+08:00
+
+====== Windows Defender 防病毒 ======
+Created 星期三 05 六月 2024
+
+gpedit.msc
+计算机配置——管理模板——Windows组件——Microsoft Defender 防病毒
+关闭 Microsoft Defender 防病毒：直接彻底关闭
+——扫描：可以配置CPU占用率、定时扫描时间等
+
+计划任务程序
+任务计划程序库——Microsoft——Windows——Windows Defender
+禁用 Windows Defender Scheduled Scan
