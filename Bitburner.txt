@@ -1,0 +1,21 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2024-06-07T15:28:42+08:00
+
+====== Bitburner ======
+Created 星期五 07 六月 2024
+
+hack, grow, weaken
+scan
+scan-analyze [depth=1]
+
+analyze
+
+run xx.js
+kill
+
+scp file host
+
+backdoor
+
+free

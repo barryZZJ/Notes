@@ -1,0 +1,16 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2024-06-07T13:52:33+08:00
+
+====== go ======
+Created 星期五 07 六月 2024
+
+编译型语言，面向过程
+
+go run xxx.go
+
+go build xxx.go
+
+包管理
+go mod init example.com/myproject
+go mod tidy 根据import内容下载对应的包
