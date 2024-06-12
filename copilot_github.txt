@@ -23,7 +23,7 @@ https://docs.github.com/zh/copilot/using-github-copilot/using-github-copilot-cod
 切换推荐结果：alt + ] , alt + [
 ctrl+enter：在新标签页中显示所有推荐
 ctrl + →：accept next word
-ctrl + alt + →：accept next word （需要配置 editor.action.inlineSuggest.acceptNextLine ）
+ctrl + alt + →：accept next line （需要配置 editor.action.inlineSuggest.acceptNextLine ）
 
 提问更高效：选中区域、打开文件、''@workspace'' 限制提问范围为当前工作区
 ''/fix'' 修改bug
