@@ -11,3 +11,11 @@ Created 星期一 06 五月 2024
 重命名规则：https://www.zotero.org/support/file_renaming
 zotfile: {%a_}{%y_}{%t}
 zotero7: ''{{ firstCreator suffix="_" }}{{ year suffix="_" }}{{ title truncate="100" }}''
+
+Note Templates 修改往笔记添加注释时的行为
+https://www.zotero.org/support/note_templates
+禁止自动添加Citation，并且不新建段落：
+extensions.zotero.annotations.noteTemplates.highlight
+''{{highlight}}{{if comment}}<p>{{comment}}</p>{{endif}}''	
+
+''{{highlight quotes='false'}}'' 可以不显示引号，但也会没法跳转
