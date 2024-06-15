@@ -108,4 +108,4 @@ string.format(pattern, args)
 控制字符与c标准printf基本一致
 %d - int
 %s - str
-%c - chat
+%c - char
