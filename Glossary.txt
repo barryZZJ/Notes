@@ -47,5 +47,6 @@ surrogate
 预定义的(参数) preconceived
 错综复杂、盘根错节 intricacy
 综述：sok, survey, review, overview, taxonomy
+解释、详细描述：delineate、elaborate
 
 To the best of our knowledge, no study has analyzed...

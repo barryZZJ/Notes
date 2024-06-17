@@ -10,3 +10,7 @@ https://github.com/MuiseDestiny/zotero-style
 配置文献标签：
 Publication Tags
 Fields（填自定义数据集的数据集缩写）: CCF, ccf, myCCF, BarCCF
+
+青草绿 黑夜
+''#d3ddbf''
+''canvas{filter: none !important;} .textLayer {   background-color: None !important; }''
