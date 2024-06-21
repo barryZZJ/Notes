@@ -1,0 +1,10 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2024-06-21T10:37:58+08:00
+
+====== 统计代码行数 ======
+Created 星期五 21 六月 2024
+
+powershell：
+(Get-ChildItem -Recurse -Filter "*.py" | Get-Content | Measure-Object -Line).Lines
+只忽略空行
