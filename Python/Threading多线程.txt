@@ -58,3 +58,40 @@ Thread(target=my_thread_function, args=(results, result_lock))
 lock.acquire()
 results.append(thread_result)
 lock.release()
+
+错误处理：
+不能获取其他线程的错误，因此需要手动保存，手动在join函数处raise：
+''import threading''
+
+''class ExceptionThread(threading.Thread):''
+	''def __init__(self, *args, **kwargs):''
+		''threading.Thread.__init__(self, *args, **kwargs)''
+		''self._exception = None''
+
+	''def run(self):''
+		''try:''
+			''if self._target:''
+				''self._target(*self._args, **self._kwargs)''
+		''except Exception as e:''
+			''self._exception = e''
+
+	''def join(self, *args, **kwargs):''
+		''super(ExceptionThread, self).join(*args, **kwargs)''
+		''if self._exception:''
+			''raise self._exception''
+''def task1():''
+	''# Some code that may raise an exception''
+	''raise ValueError("An error occurred in task1")''
+
+''def task2():''
+	''# Some code that may raise an exception''
+	''raise ValueError("An error occurred in task2")''
+
+''thread1 = ExceptionThread(target=task1)''
+
+''thread1.start()''
+''try:''
+	''thread1.join()''
+''except Exception as e:''
+	''print(f"Caught exception from thread1: {e}")''
+
