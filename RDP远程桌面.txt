@@ -8,14 +8,26 @@ Created 星期五 14 七月 2023
 0. 非专业版：下载RDP Wrap，按照教程破解远程桌面
 
 mstsc.exe登录远程桌面
-本地账户使用用户名，微软账户用邮箱。
-如果两台电脑用户名重名，需要加上电脑名的前缀，如DESKTOP-BARRY\YCX（设置——系统——关于——设备名称）。
 
-密码可以是PIN码，修改为普通密码的方法：https://zhuanlan.zhihu.com/p/537738910
+登录问题debug：
+设置——账户信息：
+微软有两类账户：本地账户和Microsoft账户
+有两类密码：普通账户的密码和Windows Hello PIN码
 
-每次系统更新时都需要手动更新rdpwrap.ini
+1. RDP登录必须用普通账户密码，不支持PIN码
+修改为普通密码的方法：设置——账户——登陆选项
+	1. 直接删除PIN（如果是灰色的，把下面的“要求 MIcrosoft 账户使用 Windows Hello 登录”这个选项关掉） https://zhuanlan.zhihu.com/p/537738910
+	  https://www.bilibili.com/read/cv13721356/
+	1. 临时关闭PIN。将“需要通过Windows Hello登录Microsoft帐户”设置为“关”，windows+L锁屏，用普通密码登录，这个时候就可以以网络级别身份验证登录远程桌面了 https://blog.csdn.net/slvayf/article/details/129376371
+		
 
-专业版配置方法：
+2. 本地账户使用用户名，微软账户用邮箱（不确定，如果不能登录就改为本地账户）
+
+3. 如果两台电脑用户名重名，登录时需要加上电脑名的前缀，如DESKTOP-BARRY\YCX（设置——系统——关于——设备名称）。
+
+* 每次系统更新时都需要手动更新rdpwrap.ini
+
+1. 专业版配置方法：
 https://learn.microsoft.com/zh-CN/windows-server/remote/remote-desktop-services/clients/change-listening-port
 
 专业版也不能多用户同时登陆，会顶掉，目前解决办法是装rdpwrap
@@ -23,6 +35,7 @@ win10配置多会话/多用户登录：
 https://blog.51cto.com/gyj110/6010498
 （完事之后需要重启一下计算机）
 
+===== ############################################################### =====
 快速添加用户：
 计算机管理 系统工具—》本地用户和组—》用户
 把用户加入Remote Desktop Users组
