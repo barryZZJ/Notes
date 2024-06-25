@@ -8,6 +8,8 @@ Created 星期五 02 九月 2022
 禁用Windows search服务
 禁用CDPUserSvc
 
+磁盘右键——属性——磁盘清理
+
 C盘：
 JB旧版缓存: 
 C:\Users\Barry\AppData\Local\JetBrains; \logs
@@ -16,13 +18,22 @@ C:\Users\85046\Documents\WeChat Files
 QQ文件
 微信文件
 Python Pyprojects venv 虚拟环境
+pip cache: AppData\Local\pip\cache
+java dependencies: C:\Users\85046\.m2
+
+VRChat cache C:\Users\85046\AppData\LocalLow\VRChat\VRChat\Cache-xxx
 
 logs:
 C:\ProgramData\Intel\Intel Extreme Tuning Utility\Logs （超大）
 C:\Users\Barry\AppData\Roaming\MySQL\Workbench\log
+C:\Windows\System32\AMD\EeuDumps（超大）
+
+驱动程序（慎删）
+https://blog.csdn.net/icbm/article/details/79826925
+C:\Windows\System32\DriverStore
 
 C:\Users\Barry\AppData\Local\Microsoft\vscode-cpptools\ipch  (C_Cpp.intelliSenseCacheSize)
-JAVA_ERROR_IN_IDEA.HPROF / JB IDE: File - Invalidate and Restart
+全局搜索: JAVA_ERROR_IN_IDEA.HPROF / java_error_in_pycharm64.hprof
 python第三方库
 C:/users
 vscode插件 C:\Users\Barry\.vscode\extensions
