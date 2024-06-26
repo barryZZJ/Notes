@@ -9,3 +9,5 @@ Created 星期二 04 六月 2024
 
 HKEY_CURRENT_USER\Control Panel\Desktop\WindowMetrics
 lconSpacing和IconVerticalSpacing改-1125
+
+Choose any value between -480 to -2730 where -480 represents the minimum spacing and -2780 represents the maximum spacing.
