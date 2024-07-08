@@ -9,6 +9,8 @@ rdp客户端
 https://github.com/FreeRDP/FreeRDP/wiki
 https://github.com/awakecoding/FreeRDP-Manuals/blob/master/User/FreeRDP-User-Manual.markdown
 
+sudo apt install freerdp2-x11
+
 参数设置：https://www.mankier.com/1/xfreerdp
 -toggle-fullscreen                Disable Alt+Ctrl+Enter to toggle fullscreen
 
@@ -24,7 +26,7 @@ flatpak run com.freerdp.FreeRDP /v:dorm.barryzzj.asia:23389 /u:barry /p:8504 /dy
 (使用lsusb查看deviceid，貌似不支持安卓手机)
 
 debug:
-当没有声音的时候，注销/重启宿主机。
+当没有声音的时候，可以用moonlight顶一下账号，再rdp登陆回来。或者注销/重启宿主机。
 
 script：
 rdp-onemon:

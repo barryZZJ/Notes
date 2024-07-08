@@ -1,0 +1,8 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2024-07-08T15:46:32+08:00
+
+====== 黑屏问题 ======
+创建日期 星期一 08 七月 2024
+
+安装flatpak版会黑屏，改为从snap store安装即可解决
