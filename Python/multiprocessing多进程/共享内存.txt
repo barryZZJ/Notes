@@ -1,0 +1,55 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2024-07-10T17:11:04+08:00
+
+====== 共享内存 ======
+Created 星期三 10 七月 2024
+
+替代方案：读写同一个外部文件。注意用锁保证安全。
+
+只占用一份内存，节约内存
+
+1. Value, Array对象 
+https://docs.python.org/3.9/library/multiprocessing.html#sharing-state-between-processes
+只能传基本的C类型。传numpy数组替代方案：使用np.save，把共享内存改为共享外存，缺点是会增加很多IO时间。
+
+定义Value, Array对象，作为参数传递，只能传递C数据类型
+	''num = Value('d', 0.0)''
+	''arr = Array('i', range(10))''
+数据类型对应字母：https://docs.python.org/3.9/library/array.html#module-array
+
+2. SharedMemory对象。python3.8。只能linux使用，windows有bug
+https://docs.python.org/3.9/library/multiprocessing.shared_memory.html
+
+【BUG】：windows下共享内存代码有bug，shm.close()的行为不符合预期，会导致共享内存提前释放，从而其他进程无法读取共享内存。传numpy数组替代方案：使用np.save，把共享内存改为共享外存，缺点是会增加很多IO时间。
+
+要想传numpy数组，可以使用buffer实现，本质上是对字节流的编码/解码：
+{{{code: lang="python3" linenumbers="False"
+def create_shared_array(arr):
+    # Create a new shared memory block
+    shm = shared_memory.SharedMemory(create=True, size=arr.nbytes)
+    # Create a NumPy array using the shared memory
+    shared_arr = np.ndarray(arr.shape, dtype=arr.dtype, buffer=shm.buf)
+    shared_arr[:] = arr[:]  # Copy the data into the shared array
+    return shm.name, arr.shape, arr.dtype
+    
+
+def worker_function(args):
+    shm_name, arr_shape, arr_dtype, chunk, id_, path_results = args
+    # Attach to the existing shared memory block
+    shm = shared_memory.SharedMemory(name=shm_name)
+    # Reconstruct the NumPy array from the shared memory
+    arr = np.ndarray(arr_shape, dtype=arr_dtype, buffer=shm.buf)
+    ...
+    shm.close()
+
+def do_multiprocess():
+	shm_name, arr_shape, arr_dtype = create_shared_array(arr)
+	args = [(shm_name, arr_shape, arr_dtype, chunk) for chunk in chunks]
+		
+	with multiprocessing.Pool(processes=num_processes) as pool:
+		pool.map(worker_function, args)
+	shm = shared_memory.SharedMemory(name=shm_name)
+	shm.close()
+	shm.unlink()
+}}}

@@ -1,0 +1,70 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2024-07-10T17:27:31+08:00
+
+====== 进程间通信 ======
+Created 星期三 10 七月 2024
+
+1. 读写同一个外部文件。注意用锁保证安全。
+
+2. [[共享内存]] 。只能传基本C类型。
+
+3. Queue、Pipe 生产者消费者模型【生成副本，不节约内存】
+https://docs.python.org/3.9/library/multiprocessing.html#exchanging-objects-between-processes
+https://docs.python.org/3.9/library/multiprocessing.html#pipes-and-queues
+把queue作为参数传递，.put、.get放入值、取值，可以阻塞。传递pickle后的字节流，可以是任意支持pickle的对象。
+
+{{{code: lang="python3" linenumbers="False"
+import multiprocessing
+
+def callback_function(value):
+    print("Callback function executed with value:", value)
+
+def register_callback(queue):
+    # Get the function from the queue
+    callback_func = queue.get()
+    # Invoke the callback function with a value
+    callback_func("Hello from the registered callback!")
+
+if __name__ == '__main__':
+    # Create a multiprocessing.Queue to pass the callback function
+    queue = multiprocessing.Queue()
+    # Create a Process object that executes the register_callback function
+    process = multiprocessing.Process(target=register_callback, args=(queue,))
+    # Start the process
+    process.start()
+    # Put the callback_function into the queue
+    queue.put(callback_function)
+    # Wait for the process to finish
+    process.join()
+
+}}}
+
+3. Server process。数据存在server，各进程对数据的操作会同步给server【会给每个进程生成一个副本，不节约内存】
+定义Manager对象，可以传递dict, list，值可以是任意对象。
+key必须为hashable, immutable
+https://docs.python.org/3.9/library/multiprocessing.html#multiprocessing.Manager
+https://docs.python.org/3.9/library/multiprocessing.html#multiprocessing.managers.SyncManager
+
+NOTE：就算不作为参数传递，也可以被其他进程访问到。
+'''
+manager = Manager()
+shared_dict = manager.dict()
+Process(target=f, args=(shared_dict,))
+'''
+
+
+''with Manager() as manager:''
+	''d = manager.dict()''
+	''l = manager.list(range(10))''
+
+	''p = Process(target=f, args=(d, l))''
+	''p.start()''
+	''p.join()''
+
+	''print(d)''
+	''print(l)''
+
+.join
+.terminate
+

@@ -1,0 +1,27 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2024-07-10T17:13:32+08:00
+
+====== 锁 ======
+Created 星期三 10 七月 2024
+
+https://docs.python.org/3.9/library/multiprocessing.html#synchronization-between-processes
+l = Lock()
+1. with块
+with l:
+	synchronized job...
+
+2. 手动加解锁
+l.acquire()
+l.release()
+
+与pool结合使用：
+{{{code: lang="python3" linenumbers="False"
+def init_worker(lock):
+    global shared_lock
+    shared_lock = lock
+
+lock = multiprocessing.Lock()
+with multiprocessing.Pool(processes=num_processes, initializer=init_worker, initargs=(lock,)) as pool:
+    rets = pool.map(worker_function, args) # 在worker_function里调用shared_lock
+}}}

@@ -4,7 +4,8 @@ Wiki-Format: zim 0.6
 https://www.runoob.com/python/python-multithreading.html
 https://docs.python.org/3.9/library/threading.html#module-threading
 
-使用Python多线程并**不会**显著提高CPU利用率，因为全局解释器锁（Global Interpreter Lock，GIL）的存在，要想提高效率应考虑多进程。
+对于CPU-bound的任务，使用Python多线程并**不会**显著提高CPU利用率，因为全局解释器锁（Global Interpreter Lock，GIL）的存在，要想提高效率应考虑多进程。
+多线程只会提升IO-bound的任务的效率，因为可以解决IO等待时间
 
 from threading import Thread, Lock
 t = Thread(target=func, args=[args])

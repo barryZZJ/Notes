@@ -7,85 +7,72 @@ Created 星期日 30 十月 2022
 
 https://docs.python.org/3.9/library/multiprocessing.html
 
-from multiprocessing import Process
-
-与多线程类似，继承Process，重写run函数，外部调用start()
-要写在if __name__ == '__main__':里
-
-交换数据：
-https://docs.python.org/3.9/library/multiprocessing.html#exchanging-objects-between-processes
-multiprocessing.Queue（见文末）、 Pipe
-https://docs.python.org/3.9/library/multiprocessing.html#sharing-state-between-processes
-https://docs.python.org/3.9/library/multiprocessing.html#pipes-and-queues
-生产者、消费者模型，把queue作为参数传递，.put、.get放入值、Z取值，可以阻塞
-
-锁：
-https://docs.python.org/3.9/library/multiprocessing.html#synchronization-between-processes
-l = Lock()
-l.acquire()
-l.release()
-
-共享数据（只占用一份内存，节约内存）：
-1.Server process
-Manager对象，可以传递dict, list，值可以是任意对象。
-key必须为hashable, immutable
-https://docs.python.org/3.9/library/multiprocessing.html#multiprocessing.Manager
-https://docs.python.org/3.9/library/multiprocessing.html#multiprocessing.managers.SyncManager
-
-2.Shared memory
-https://docs.python.org/3.9/library/multiprocessing.html#sharing-state-between-processes
-定义Value, Array对象，作为参数传递，只能传递C数据类型
-''    num = Value('d', 0.0)''
-''    arr = Array('i', range(10))''
-数据类型对应字母：https://docs.python.org/3.9/library/array.html#module-array
-
-
-NOTE：就算不作为参数传递，也可以被其他进程访问到。
-'''
-manager = Manager()
-shared_dict = manager.dict()
-Process(target=f, args=(shared_dict,))
-'''
-
-
-''with Manager() as manager:''
-''    d = manager.dict()''
-''    l = manager.list(range(10))''
-
-''    p = Process(target=f, args=(d, l))''
-''    p.start()''
-''    p.join()''
-
-''    print(d)''
-''    print(l)''
-
-.join
-.terminate
+要写在''if __name__ == "__main__":''里
 
 带asyncio的类不能直接运行，可以套一层lambda : asyncio.run()
 
-{{{code: lang="python3" linenumbers="False"
-import multiprocessing
+baseline串行，单参数：
+''somlist1 = [arg1a, arg1b, ...]''
+''s = 0''
+''for arg1 in somelist1:''
+	''s += foo(arg1)''
 
-def callback_function(value):
-    print("Callback function executed with value:", value)
+baseline串行，多参数：
+''somlist2 = [(arg1a, arg2a, arg3a), (arg1b, arg2b, arg3b), ...]''
+''s = 0''
+''for arg1, arg2, arg3 in somelist2:''
+	''s += foo(arg1, arg2, arg3)''
 
-def register_callback(queue):
-    # Get the function from the queue
-    callback_func = queue.get()
-    # Invoke the callback function with a value
-    callback_func("Hello from the registered callback!")
+1. 简单快捷的实现多进程 Pool
+与worker函数配合，worker需要返回单次循环的结果。map获取的是每个worker返回值构成的列表。
 
-if __name__ == '__main__':
-    # Create a multiprocessing.Queue to pass the callback function
-    queue = multiprocessing.Queue()
-    # Create a Process object that executes the register_callback function
-    process = multiprocessing.Process(target=register_callback, args=(queue,))
-    # Start the process
-    process.start()
-    # Put the callback_function into the queue
-    queue.put(callback_function)
-    # Wait for the process to finish
-    process.join()
+单个参数用pool.map，多个参数用pool.starmap更方便，区别是拆分参数的方式，详见 https://docs.python.org/3/library/multiprocessing.html#multiprocessing.pool.Pool.map
 
-}}}
+【注意：传参时会构造副本，如果想节约内存需要使用sharedMemory，见 [[+共享内存]] 】
+
+from multiprocessing import Pool, cpu_count
+
+1.1 pool会自动根据核数和列表长度分配任务，不用手动分chunk。此时worker函数是一次循环。
+worker接受单个参数，用map，somelist里的每个元素是一个参数，每个参数传给worker：
+''somlist1 = [arg1a, arg1b, ...]''
+''def worker1(arg1):''
+	''s = foo(arg1)''
+	''return s''
+''with Pool(processes=cpu_count()) as pool:''
+	''rets = pool.map(worker1, somelist1)''
+''s = np.sum(rets)''
+
+worker接受多个参数，用starmap，somlist里的每个元素是个元组，每个元组作为参数传给worker：
+''somlist2 = [(arg1a, arg2a, arg3a), (arg1b, arg2b, arg3b), ...]''
+''def worker2(arg1, arg2, arg3):''
+	''s = foo(arg1, arg2, arg3)''
+	''return s''
+''with Pool(processes=cpu_count()) as pool:''
+	''rets = pool.starmap(worker2, somelist2)''
+''s = np.sum(rets)''
+【此时也可以用map，需要在worker里解包，如''pool.map(worker1, somelist2)''，worker1里''arg1, arg2, arg3 = args''】
+
+1.2 手动指定每个核干的活的数量，需要手动把任务分成一个个chunk。此时worker为总循环的子集。
+单个参数：
+''somlist1 = [arg1a, arg1b, ...]''
+''def worker1(chunks):''
+	''for arg1 in chunks:''
+		''foo(arg1)''
+''chunks = np.array_split(somelist1, cpu_count())''
+''with Pool(processes=cpu_count()) as pool:''
+	''pool.map(worker, chunks)''
+
+多个参数：
+''somlist2 = [(arg1a, arg2a, arg3a), (arg1b, arg2b, arg3b), ...]''
+''def worker2(arg1, arg2, arg3):''
+	''foo(arg1, arg2, arg3)''
+''chunks = np.array_split(somelist2, cpu_count())''
+''with Pool(processes=cpu_count()) as pool:''
+	''pool.starmap(worker2, chunks)''
+
+
+2. 经典 Process
+与多线程类似，继承Process，重写run函数，外部调用start()
+from multiprocessing import Process
+''multiprocessing.Process(target=worker1, args=somelist1).start()''
+
