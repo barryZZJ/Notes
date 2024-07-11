@@ -15,8 +15,5 @@ Created 星期一 18 三月 2024
 For a fully automated resolution change on stream start and stream end: https://github.com/Nonary/ResolutionAutomation
 G:\ResolutionMatcher
 
-=== 自动切换显示器 ===
-For a fully automated display swap on stream start and stream end: https://github.com/Nonary/MonitorSwapAutomation/releases/tag/production
-（Sunshine支持手动指定推流哪个显示器）
 
 

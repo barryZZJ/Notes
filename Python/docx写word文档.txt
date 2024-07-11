@@ -1,0 +1,31 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2024-07-11T12:45:02+08:00
+
+====== docx写word文档 ======
+Created 星期四 11 七月 2024
+
+https://python-docx.readthedocs.org/en/latest/
+
+pip install python-docx
+
+from docx import Document
+
+def write_to_word(title, content, filepath):
+	# Create a new Document
+	doc = Document()
+	# Add a title
+	doc.add_heading(title, level=1)
+	# Add the content
+	doc.add_paragraph(content)
+	# Save the document
+	doc.save(filepath)
+
+# Example usage
+title = "Sample Title"
+content = "This is the sample content for the Word document."
+filepath = "sample_document.docx"
+write_to_word(title, content, filepath)
+
+>>> document = Document("dark-and-stormy.docx")
+>>> document.paragraphs[0].text

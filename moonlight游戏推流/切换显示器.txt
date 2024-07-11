@@ -1,0 +1,12 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2024-07-11T10:55:09+08:00
+
+====== 切换显示器 ======
+Created 星期四 11 七月 2024
+
+如果只是想把窗口移动到当前的显示器，使用 win + shift + arrow
+
+=== 自动切换显示器 ===
+For a fully automated display swap on stream start and stream end: https://github.com/Nonary/MonitorSwapAutomation/releases/tag/production
+（Sunshine支持手动指定推流哪个显示器）
