@@ -7,6 +7,10 @@ Created 星期四 30 三月 2023
 
 https://guide.v2fly.org/prep/install.html
 
+linux安装：
+curl -O https://raw.githubusercontent.com/v2fly/fhs-install-v2ray/master/install-release.sh
+systemctl enable v2ray; systemctl start v2ray
+
 更新：
 cd ~/v2ray
 bash install-release.sh

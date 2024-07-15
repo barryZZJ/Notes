@@ -13,4 +13,6 @@ https://blog.csdn.net/lucky_ricky/article/details/74330806
 //在最后一行添上：
 export PATH=$PATH:/xxx/xxx  ///xxx/xxx位需要加入的环境变量地址 等号两边没空格
 
-/etc/environment
+[[/etc/environment]]
+
+可执行程序在/usr/bin创建软连接

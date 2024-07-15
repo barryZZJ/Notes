@@ -7,7 +7,8 @@ Created 星期日 23 七月 2023
 
 设置快捷方式 (.desktop)
 拷贝到 ''/usr/share/applications'' 或 ~/.local/share/applications 可以在库中显示
-图标默认放在~/.local/share/icon，Icon域即可不加路径和后缀名
+图标默认放在~/.local/share/icons，Icon域即可不加路径和后缀名
+可以是png
 https://blog.csdn.net/wuyujin1997/article/details/104655385
 
 双击执行sh
