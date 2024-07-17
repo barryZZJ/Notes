@@ -1,0 +1,11 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2024-07-17T09:58:00+08:00
+
+====== jinja2 ======
+Created 星期三 17 七月 2024
+
+
+渲染html模板 可与django flask配合使用
+
+https://docs.jinkan.org/docs/jinja2/

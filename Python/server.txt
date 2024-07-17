@@ -1,9 +1,0 @@
-Content-Type: text/x-zim-wiki
-Wiki-Format: zim 0.6
-Creation-Date: 2022-10-28T11:46:52+08:00
-
-====== server ======
-Created 星期五 28 十月 2022
-
-Django
-Flask

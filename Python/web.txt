@@ -1,0 +1,12 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2022-10-28T11:46:52+08:00
+
+====== web ======
+Created 星期五 28 十月 2022
+
+Django 更全能 更固定
+Flask 轻量级 选择更多
+
+Django vs Flask
+https://blog.jetbrains.com/pycharm/2023/11/django-vs-flask-which-is-the-best-python-web-framework/

@@ -22,6 +22,8 @@ Ctrl+Alt+Shift+D - Minimize the stream window
 Ctrl+Alt+Shift+C - Toggle local cursor display in remote desktop mouse mode (remote cursor will always show up due to GameStream limitations)
 Ctrl+Alt+Shift+L - Toggle locking the mouse pointer to the video area (requires "Optimize mouse for remote desktop instead of games" checkbox enabled)
 
+ctrl alt shift f1~f12 切换显示器
+
 win + shift + arrow：移动窗口所在的显示器
 
 **Touchscreen controls**

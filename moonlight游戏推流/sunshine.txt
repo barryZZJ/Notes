@@ -5,6 +5,8 @@ Creation-Date: 2024-01-24T21:57:40+08:00
 ====== sunshine ======
 Created 星期三 24 一月 2024
 
+https://docs.lizardbyte.dev/projects/sunshine/en/latest/
+
 安装注意事项：
 用installer安装
 要手柄支持需要安装Virtual Gamepad

@@ -5,4 +5,5 @@ Creation-Date: 2023-07-17T19:59:50+08:00
 ====== flask ======
 Created 星期一 17 七月 2023
 
-[[:Python:server:flask]]
+[[Python:web:flask]]
+
