@@ -7,7 +7,7 @@ Created 星期日 16 十月 2022
 
 https://python3-cookbook.readthedocs.io/zh_CN/latest/c13/p06_executing_external_command_and_get_its_output.html
 使用subprocess库
-[[:Python:subprocess子进程]]
+[[:Python:subprocess运行外部命令]]
 
 
 import subprocess

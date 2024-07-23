@@ -29,6 +29,7 @@ baseline串行，多参数：
 单个参数用pool.map，多个参数用pool.starmap更方便，区别是拆分参数的方式，详见 https://docs.python.org/3/library/multiprocessing.html#multiprocessing.pool.Pool.map
 
 【注意：传参时会构造副本，如果想节约内存需要使用sharedMemory，见 [[+共享内存]] 】
+使用全局变量请参考 [[+锁]]
 
 from multiprocessing import Pool, cpu_count
 

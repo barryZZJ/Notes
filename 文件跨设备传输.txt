@@ -1,0 +1,9 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2024-07-23T15:56:58+08:00
+
+====== 文件跨设备传输 ======
+Created 星期二 23 七月 2024
+
+本地传输，不需要第三方中转服务器
+https://github.com/localsend/localsend

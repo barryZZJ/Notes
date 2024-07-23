@@ -1,7 +1,11 @@
 Content-Type: text/x-zim-wiki
 Wiki-Format: zim 0.6
 
+
+简单的、不考虑获取输出的话，可以使用os.system快速调用。只能获取exit code
+
 https://docs.python.org/3.9/library/subprocess.html
+
 
 subprocess.run(args, *, stdin=None, input=None, stdout=None, stderr=None, capture_output=False, shell=False, cwd=None, timeout=None, check=False, encoding=None, errors=None, text=None, env=None, universal_newlines=None)
 

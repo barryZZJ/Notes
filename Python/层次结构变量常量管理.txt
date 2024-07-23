@@ -1,0 +1,38 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2024-07-23T10:07:34+08:00
+
+====== 层次结构变量常量管理 ======
+Created 星期二 23 七月 2024
+
+可变取值：
+1. 静态类成员。支持查找引用
+''class Args:''
+	''ARGSX264: str = ''''
+	''Suffxies: list = []''
+	''OutPat: dict = {}''
+
+''Args.ARGSX264 = "new value"''
+''Args.Suffxies.append("new value")''
+
+2. SimpleNamespace。不支持查找引用
+''from types import SimpleNamespace''
+
+''args = SimpleNamespace(ARGSX264="new value", Suffixes=SimpleNamespace(mp4=".mp4", hevc=".hevc"), OutPat=SimpleNamespace(folder="output_folder", file="output_file"))''
+
+''print(args.ARGSX264)  # Output: new value''
+''print(args.Suffixes.mp4)  # Output: .mp4''
+''print(args.OutPat.folder)  # Output: output_folder''
+
+不可变取值：
+1. namedtuple。不支持查找
+''from collections import namedtuple''
+
+''ConfigArgs = namedtuple('ConfigArgs', ['ARGSX264', 'Suffixes', 'OutPat'])''
+
+''args = ConfigArgs(ARGSX264="new value", Suffixes=[".mp4", ".hevc"], OutPat={"folder": "output_folder", "file": "output_file"})''
+
+''print(args.ARGSX264)  # Output: new value''
+''print(args.Suffixes)  # Output: ['.mp4', '.hevc']''
+''print(args.OutPat)    # Output: {'folder': 'output_folder', 'file': 'output_file'}''
+

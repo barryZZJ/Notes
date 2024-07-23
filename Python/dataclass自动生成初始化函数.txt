@@ -1,0 +1,34 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2024-07-23T10:10:55+08:00
+
+====== dataclass自动生成初始化函数 ======
+Created 星期二 23 七月 2024
+
+https://docs.python.org/zh-cn/3/library/dataclasses.html
+
+''from dataclasses import dataclass''
+
+''@dataclass''
+''class InventoryItem:''
+	''name: str''
+	''unit_price: float''
+	''quantity_on_hand: int = 0''
+
+会自动添加init函数：
+''def __init__(self, name: str, unit_price: float, quantity_on_hand: int = 0):''
+	''self.name = name''
+	''self.unit_price = unit_price''
+	''self.quantity_on_hand = quantity_on_hand''
+
+继承：
+1. 父类和字类都用dataclass。则父类参数在前，子类参数在后
+''@dataclass''
+''class Base:''
+	''x: str''
+''@dataclass''
+''class Sub(Base):''
+	''y: str''
+''s = Sub(x, y)''
+
+2. 如果有一边没有装饰，则必须跟普通类一样手写init函数，并调用父类init函数D
