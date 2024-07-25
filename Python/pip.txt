@@ -11,6 +11,8 @@ python -m pip install --upgrade pip
 
 python路径发生更改后重装pip：
 python -m ensurepip --default-pip
+不行的话：
+python -m pip install --upgrade pip
 
 proxy:
 --proxy <proxy>             Specify a proxy in the form scheme://[user:passwd@]proxy.server:port

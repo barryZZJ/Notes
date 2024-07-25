@@ -29,3 +29,4 @@ mount -t cifs -o username=barry,password=zzj850462,uid=$uid,gid=$gid,file_mode=0
 mount -t cifs -o username=barry,password=zzj850462,uid=$uid,gid=$gid,file_mode=0777,dir_mode=0777 //dorm.barryzzj.top/i /home/barryoffice/mnt/i/
 mount -t cifs -o username=barry,password=zzj850462,uid=$uid,gid=$gid,file_mode=0777,dir_mode=0777 //dorm.barryzzj.top/nspshare /home/barryoffice/mnt/nspshare/
 mount -t cifs -o username=barry,password=zzj850462,uid=$uid,gid=$gid,file_mode=0777,dir_mode=0777 //dorm.barryzzj.top/nspshare/zzj/IM_from_lhy/IM/NSP_IM20180104 /home/barryoffice/mnt/IM_server_20180104/
+mount -t cifs -o username=zzj,password=850462618,uid=1000,gid=1000,file_mode=0777,dir_mode=0777 //tyc.barryzzj.top/tyc /home/barryoffice/mnt/tyc
