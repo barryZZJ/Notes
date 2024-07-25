@@ -83,7 +83,7 @@ os.path.splitext(filename)[0]
 os.sep = "\\"
 
 #只遍历根目录下所有目录和文件：
-scandir返回生成器
+os.scandir() 同listdir，但返回entry生成器
 for entry in os.scandir(path):
 	entry: os.DirEntry
 	entry.name # 只有文件名和后缀名

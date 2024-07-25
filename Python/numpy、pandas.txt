@@ -35,6 +35,9 @@ df.drop(index=?, column=?, inplace=True) 删除指定行和/或列
 df.pop(item) 删除标签为item的列
 .append() 添加一行
 
+推理数据类型：
+pd.api.types.infer_dtype()
+
 Series:
 .all() 全都是True 缩减与
 .any() 存在True 缩减或
@@ -97,10 +100,10 @@ numpy:
 https://numpy.org/doc/stable/reference/index.html
 继承:
 ''class CustomArray(np.ndarray):''
-''    def __new__(cls, a):''
-''        # Create a new instance of CustomArray using the input_array''
-''        obj = np.asarray(a).view(cls)''
-''        return obj''
+	''def __new__(cls, a):''
+		''# Create a new instance of CustomArray using the input_array''
+		''obj = np.asarray(a).view(cls)''
+		''return obj''
 
 取值：arr[rowind, colind]
 取3行：arr[0:3]

@@ -1,0 +1,31 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2024-07-24T18:19:46+08:00
+
+====== 挂载smb ======
+Created 星期三 24 七月 2024
+
+sudo apt update
+sudo apt install cifs-utils
+
+#! /bin/bash
+mkdir -p /home/barryoffice/mnt/e/
+mkdir -p /home/barryoffice/mnt/h/
+mkdir -p /home/barryoffice/mnt/f/
+mkdir -p /home/barryoffice/mnt/g/
+mkdir -p /home/barryoffice/mnt/i/
+mkdir -p /home/barryoffice/mnt/nspshare/
+mkdir -p /home/barryoffice/mnt/IM_server_20180104/
+
+# 获取当前用户的 UID 和 GID
+uid=$(id -u)
+gid=$(id -g)
+
+# 挂载命令，添加了 uid、gid 和 file/dir_mode 选项
+mount -t cifs -o username=barry,password=zzj850462,uid=$uid,gid=$gid,file_mode=0777,dir_mode=0777 //dorm.barryzzj.top/e /home/barryoffice/mnt/e/
+mount -t cifs -o username=barry,password=zzj850462,uid=$uid,gid=$gid,file_mode=0777,dir_mode=0777 //dorm.barryzzj.top/h /home/barryoffice/mnt/h/
+mount -t cifs -o username=barry,password=zzj850462,uid=$uid,gid=$gid,file_mode=0777,dir_mode=0777 //dorm.barryzzj.top/f /home/barryoffice/mnt/f/
+mount -t cifs -o username=barry,password=zzj850462,uid=$uid,gid=$gid,file_mode=0777,dir_mode=0777 //dorm.barryzzj.top/g /home/barryoffice/mnt/g/
+mount -t cifs -o username=barry,password=zzj850462,uid=$uid,gid=$gid,file_mode=0777,dir_mode=0777 //dorm.barryzzj.top/i /home/barryoffice/mnt/i/
+mount -t cifs -o username=barry,password=zzj850462,uid=$uid,gid=$gid,file_mode=0777,dir_mode=0777 //dorm.barryzzj.top/nspshare /home/barryoffice/mnt/nspshare/
+mount -t cifs -o username=barry,password=zzj850462,uid=$uid,gid=$gid,file_mode=0777,dir_mode=0777 //dorm.barryzzj.top/nspshare/zzj/IM_from_lhy/IM/NSP_IM20180104 /home/barryoffice/mnt/IM_server_20180104/

@@ -23,5 +23,5 @@ def init_worker(lock):
 
 lock = multiprocessing.Lock()
 with multiprocessing.Pool(processes=num_processes, initializer=init_worker, initargs=(lock,)) as pool:
-    rets = pool.map(worker_function, args) # 在worker_function里调用shared_lock
+    rets = pool.map(worker_function, args) # 在worker_function里直接调用shared_lock
 }}}
