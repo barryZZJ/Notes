@@ -1,17 +1,21 @@
 Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
 
 !查阅CTeX宏集手册
 
 1. 使用CTeX文档类
 \documentclass[UTF8]{ctexart} ctexrep ctexbook ctexbeamer
-                              分别对应article report book beamer
+							  分别对应article report book beamer
 \begin{document}
 ...
 \end{document}
-明确编码为utf8后用pdflatex,不加编码用xelatex
+
+明确编码为utf8后用pdflatex,不加编码用**xelatex**
 
 2. 使用CTeX宏包（不改变documentclass）
-\usepackage[UTF8, scheme=chinese, heading=true, key=val...]{ctex}
+中文版：
+\usepackage[UTF8, scheme=chinese, heading=true, key=val...（见下参数）]{ctex}
+英文版：\usepackage[UTF8, scheme=plain, heading=false]{ctex}
 
 配置标题左对齐（默认是居中）
 heading=false
@@ -55,7 +59,7 @@ autoindent = ⟨true（默认）|false|数值|带单位的数值⟩
 
 \showthe\baselineskip 在编译器中显示当前默认行距
 
-中文字体字号设置https://www.cnblogs.com/shawncheer/p/5844925.html
+[[%E4%B8%AD%E6%96%87%E5%AD%97%E4%BD%93%E5%AD%97%E5%8F%B7%E8%AE%BE%E7%BD%AEhttps://www.cnblogs.com/shawncheer/p/5844925.html]]
 
 
 

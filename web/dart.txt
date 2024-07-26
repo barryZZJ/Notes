@@ -1,0 +1,11 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2024-07-26T10:29:42+08:00
+
+====== dart ======
+Created 星期五 26 七月 2024
+
+https://dart.dev/
+web app，类似javascript。
+跨平台，支持安卓、ios、windows、mac、linux等
+可快速编译成可执行文件

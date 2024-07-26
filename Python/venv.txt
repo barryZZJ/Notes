@@ -20,6 +20,8 @@ call venv\Scripts\activate.bat
 source venv/bin/activate # (完整路径，~要改成/<user>)
 deactivate
 
+路径不能包含中文，否则pycharm无法在终端自动激活虚拟环境
+
 使用别人的虚拟环境时需要本地安装相同版本的python，
 然后更新虚拟环境中的系统python路径：
 python -m venv --upgrade path_to_venv_root
