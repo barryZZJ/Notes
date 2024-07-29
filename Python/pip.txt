@@ -25,3 +25,6 @@ pip install -e <path/url>
 
 解决IED无法解析debug模式安装的包：
 pip install -e . --config-settings editable_mode=compat
+
+clean cache 删除缓存
+pip cache purge
