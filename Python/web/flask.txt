@@ -57,6 +57,10 @@ request.args.get('key', '') query string
 
 abort(404) raise一个HTTPException，后面的代码不会运行 （服务器不会停止
 
+=== 返回json ===
+return jsonify({'result': result})
+js解析：response.data.result
+
 === blueprints ===
 方便路径模块化
 所有bp最后全部在app.py中import，然后app.register_blueprint

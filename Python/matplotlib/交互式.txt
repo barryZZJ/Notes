@@ -5,6 +5,10 @@ Creation-Date: 2024-07-26T11:10:18+08:00
 ====== 交互式 ======
 Created 星期五 26 七月 2024
 
+pip install PyQt5==5.15.10
+或
+pip install PyQt6
+
 plt.ion()
 plt.xxx
 plt.show(block=True)

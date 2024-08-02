@@ -1,0 +1,12 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2024-08-02T12:44:20+08:00
+
+====== 3d图 ======
+Created 星期五 02 八月 2024
+
+平面图/表面图
+plt.surface
+
+如果画两个平面，会出现整个平面画在另一面上面，zorder不管用，需要手动依次绘制下方和上方的部分：
+https://stackoverflow.com/questions/28531752/display-the-maximum-surface-in-matplotlib/28608098#28608098

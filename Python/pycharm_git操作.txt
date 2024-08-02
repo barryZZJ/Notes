@@ -1,0 +1,13 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2024-08-02T18:25:47+08:00
+
+====== pycharm git操作 ======
+Created 星期五 02 八月 2024
+
+决不能干的：
+unversioned files里点右键——delete
+git记录里的Drop Commit不要点！最好用Revert，实在不行用Undo。Drop就再也找不回来了
+
+从add list里删除一定要用手动，指不定坏了就找不回来了。 git rm -r --cached dir
+
