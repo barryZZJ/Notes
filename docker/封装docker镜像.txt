@@ -1,0 +1,10 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2024-08-07T11:50:34+08:00
+
+====== 封装docker镜像 ======
+Created 星期三 07 八月 2024
+
+docker是轻量化linux，主要在linux上用，在windows用的话需要装wsl虚拟机才可以。
+
+https://docs.docker.com/guides/

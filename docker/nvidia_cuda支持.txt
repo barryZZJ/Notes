@@ -1,0 +1,17 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2024-08-07T12:29:54+08:00
+
+====== nvidia cuda支持 ======
+Created 星期三 07 八月 2024
+
+windows：需要额外装wsl
+https://docs.docker.com/desktop/gpu/
+
+linux：
+宿主机需要装cuda驱动
+只需要在宿主机上装一个toolkit，改造一下docker客户端，就能让docker支持gpu，不需要在封装时做任何操作。
+
+Nvidia Container Toolkit
+install: https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/latest/install-guide.html
+doc: https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/latest/index.html

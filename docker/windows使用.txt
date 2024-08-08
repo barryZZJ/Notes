@@ -1,0 +1,9 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2024-08-07T12:40:41+08:00
+
+====== windows使用 ======
+Created 星期三 07 八月 2024
+
+windows需要安装wsl，并在docker中启用wsl支持
+https://docs.docker.com/desktop/wsl/#turn-on-docker-desktop-wsl-2
