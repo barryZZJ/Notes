@@ -69,9 +69,12 @@ https://flask.palletsprojects.com/en/latest/tutorial/views/
 from flask import current_app
 
 
-===== 需要使用gunicorn运行： =====
+===== WSGI HTTP Server: =====
+===== Linux: Unicorn =====
+需要使用gunicorn运行：
 pip install gunicorn
-
+gunicorn pyfilename:appname -b 0.0.0.0:12345
+或
 gunicorn pyfilename:FlaskApplication -b 0.0.0.0:12345
 
 ''from flask import Flask, request, jsonify''
@@ -133,3 +136,6 @@ gunicorn pyfilename:FlaskApplication -b 0.0.0.0:12345
 		'''workers': 2  # Adjust the number of workers based on your requirements''
 	''}''
 	''FlaskApplication(app, options).run()''
+
+===== = =====
+===== Windows: waitress =====

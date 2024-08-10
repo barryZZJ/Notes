@@ -7,4 +7,8 @@ Created 星期三 07 八月 2024
 
 docker是轻量化linux，主要在linux上用，在windows用的话需要装wsl虚拟机才可以。
 
+https://docs.docker.com/build/building/packaging/
+
 https://docs.docker.com/guides/
+
+https://docs.docker.com/guides/getting-started/develop-with-containers/
