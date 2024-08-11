@@ -40,4 +40,4 @@ boot-repair gpt detected please create a bios-boot partition
 disk里添加一个1MB的分区，选择no filesystem，然后用gparted标注bios_grub flag（不是efi分区）
 【或：重新用UEFI方式进U盘】
 
-
+win：可以尝试DG或dism
