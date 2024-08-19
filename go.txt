@@ -7,6 +7,9 @@ Created 星期五 07 六月 2024
 
 编译型语言，面向过程
 
+https://go.dev/learn/
+https://go.dev/doc/
+
 go run xxx.go
 
 go build xxx.go

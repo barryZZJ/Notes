@@ -12,3 +12,9 @@ https://docs.docker.com/build/building/packaging/
 https://docs.docker.com/guides/
 
 https://docs.docker.com/guides/getting-started/develop-with-containers/
+
+docker build -t <imagename> .
+docker run -p <hostport>:5000 <imagename>
+
+docker hub:
+https://hub.docker.com/

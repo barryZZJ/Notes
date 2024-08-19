@@ -50,7 +50,8 @@ request.args.get('key', '') query string
 .get_data
 .get_json
 
-启动：1. 直接运行py文件
+===== 启动： =====
+1. 直接运行py文件
 2. flask --app pyname run -p PORT -h 0.0.0.0  文件名为app.py时不用加--app参数
 其他参数:
 --debug
@@ -74,68 +75,5 @@ from flask import current_app
 需要使用gunicorn运行：
 pip install gunicorn
 gunicorn pyfilename:appname -b 0.0.0.0:12345
-或
-gunicorn pyfilename:FlaskApplication -b 0.0.0.0:12345
-
-''from flask import Flask, request, jsonify''
-''import wecomsan''
-''from config import load_conf''
-''from gunicorn.app.base import BaseApplication''
-
-''app = Flask('RsspushAdapter')''
-
-''conf = load_conf()''
-''bot = wecomsan.WecomSan(**conf['bot'])''
-
-''@app.route('/', methods=['POST'])''
-''def receive_post():''
-	''try:''
-		''# print(request.form)''
-		''# ([('task_id', 'as1ji3zk8'),''
-		''# ('task_title', 'Twitter @Barry'),''
-		''# ('text', '测试2'),''
-		''# ('title', '测试2'),''
-		''# ('link', 'https://twitter.com/850462618Doe/status/1661768883538391050'),''
-		''# ('desp', '测试2')])''
-		''title = request.form.get('title')''
-		''desp = request.form.get('desp')''
-		''link = request.form.get('link')''
-		''task_id = request.form.get('task_id')''
-		''task_title = request.form.get('task_title')''
-
-		''redirect(title, desp, link, task_id, task_title)''
-		''return jsonify({'message': 'Success'})''
-
-	''except Exception as e:''
-		''print('error', str(e))''
-		''return jsonify({'error': str(e)}), 500''
-
-
-''def redirect(title, desp, link, task_id, task_title):''
-	''# redirect to wecomchan''
-	''msg = f'来自{task_title}的更新：\n标题：{title}\n内容：\n{desp}\n查看详情：{link}'''
-	''bot.send(msg)''
-
-
-''class FlaskApplication(BaseApplication):''
-	''def __init__(self, app, options=None):''
-		''self.options = options or {}''
-		''self.application = app''
-		''super().__init__()''
-
-	''def load_config(self):''
-		''for key, value in self.options.items():''
-			''self.cfg.set(key, value)''
-
-	''def load(self):''
-		''return self.application''
-
-
-''if __name__ == '__main__':''
-	''options = {''
-		'''workers': 2  # Adjust the number of workers based on your requirements''
-	''}''
-	''FlaskApplication(app, options).run()''
-
 ===== = =====
 ===== Windows: waitress =====
