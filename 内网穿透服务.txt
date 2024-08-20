@@ -12,7 +12,52 @@ FRP或者NPS都可以，或者像Ngrok这种的内网穿透服务就是不太稳
 测试：https://blog.csdn.net/aa3615058/article/details/125623251
 psping：用于测试延迟，抖动
 	psping ip:port
+
+frp:
+Ping statistics for 218.93.206.191:
+  Sent = 4, Received = 3, Lost = 1 (25% loss),
+  Minimum = 103.15ms, Maximum = 117.26ms, Average = 110.96ms
+Ping statistics for 218.93.206.191:
+  Sent = 4, Received = 4, Lost = 0 (0% loss),
+  Minimum = 78.88ms, Maximum = 125.41ms, Average = 104.08ms
+
+wireguard:
+Ping statistics for 172.40.0.1:
+  Sent = 4, Received = 4, Lost = 0 (0% loss),
+  Minimum = 68.64ms, Maximum = 99.46ms, Average = 90.26ms
+Ping statistics for 172.40.0.1:
+  Sent = 4, Received = 3, Lost = 1 (25% loss),
+  Minimum = 59.60ms, Maximum = 65.21ms, Average = 61.77ms
+
 iperf3：用于测试下载速度，上传速度
-	-c ip
-	-c ip -R
+sudo apt install iperf3
+https://iperf.fr/iperf-download.php
+启动服务器监听指定端口（默认5201）：
+	-s -p port
+客户端连接服务器端口：
+	-c ip -p port
+-R 反向测试，服务器发，客户端收
+-t 测试时间 默认10s
+-P 并发数
+
+frp:
+[ ID] Interval           Transfer     Bandwidth
+[  4]   0.00-10.01  sec  17.9 MBytes  15.0 Mbits/sec                  sender
+[  4]   0.00-10.01  sec  17.9 MBytes  15.0 Mbits/sec                  receiver
+
+frp -R:
+[ ID] Interval           Transfer     Bandwidth       Retr
+[  4]   0.00-10.00  sec  9.61 MBytes  8.06 Mbits/sec  572             sender
+[  4]   0.00-10.00  sec  6.41 MBytes  5.38 Mbits/sec                  receiver
+
+wireguard:
+[ ID] Interval           Transfer     Bandwidth
+[  4]   0.00-10.01  sec  9.50 MBytes  7.96 Mbits/sec                  sender
+[  4]   0.00-10.01  sec  9.29 MBytes  7.78 Mbits/sec                  receiver
+
+wireguard -R:
+[ ID] Interval           Transfer     Bandwidth       Retr
+[  4]   0.00-10.01  sec  4.32 MBytes  3.62 Mbits/sec  389             sender
+[  4]   0.00-10.01  sec  3.27 MBytes  2.74 Mbits/sec                  receiver
+
 speedTestX：docker版，上传、下载、延迟、抖动

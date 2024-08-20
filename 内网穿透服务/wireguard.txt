@@ -1,0 +1,69 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2024-08-20T09:52:07+08:00
+
+====== wireguard ======
+Created 星期二 20 八月 2024
+
+本质是VPN服务器。看评论说效果挺好。只需要连接一个端口，访问vpn服务器的其他端口会通过该端口转发。与frp相比可以节约端口，多个客户端通过服务器中转即可。
+
+！经测试，延迟可能短一点，但是上传下载的速度差了很多，可能是加密的原因。
+但是省了很多端口，尤其是moonlight可以公网跑了。
+
+https://www.wireguard.com/
+https://www.bilibili.com/video/BV1uT411w7Tq/
+
+原理说明 https://www.wireguard.com/#conceptual-overview
+
+[interface] 本机虚拟网卡配置
+
+[peer] 配置其他用户 
+Endpoint 指定发包的目的IP。如果不指定会根据最近一次收包情况记录。（要想被直接访问，必须要有公网ip）
+AllowedIPs 指定用户的源ip。收包时相当于白名单，如果源ip不匹配则丢掉。发包时相当于路由表，如果目标ip匹配则发给该用户。
+
+===== 服务器配置： =====
+sudo apt update
+sudo apt install wireguard
+
+''umask 077''
+''wg genkey | tee private.key | wg pubkey > public.key''
+
+''sudo nano /etc/wireguard/wg0.conf''
+
+[Interface]
+PrivateKey = <服务器私钥>
+Address = 172.40.0.1/24
+ListenPort = 21820
+
+[Peer]
+PublicKey = <客户端公钥>
+AllowedIPs = 172.40.0.2/32
+
+[Peer]
+PublicKey = <客户端公钥>
+AllowedIPs = 10.192.122.4/32, 192.168.0.0/16
+
+==== linux: ====
+启动 WireGuard 接口：
+sudo wg-quick up wg0
+关闭接口：
+sudo wg-quick down wg0
+如果报错先运行一下
+sudo modprobe wireguard
+设置开机自启动：
+sudo systemctl enable wg-quick@wg0
+
+检查连接状态：
+sudo wg show
+
+===== 客户端： =====
+[Interface]
+PrivateKey = <客户端私钥>
+Address = 172.40.0.2/24
+
+[Peer]
+PublicKey = <服务器公钥>
+Endpoint = <服务器IP>:21820
+AllowedIPs = 0.0.0.0/0 # 如果服务器作为全局代理
+AllowedIPs = 172.40.0.0/24 # 如果只想访问VPN局域网
+

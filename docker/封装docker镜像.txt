@@ -13,6 +13,7 @@ https://docs.docker.com/guides/
 
 https://docs.docker.com/guides/getting-started/develop-with-containers/
 
+cd 到有dockerfile的路径
 docker build -t <imagename> .
 docker run -p <hostport>:5000 <imagename>
 

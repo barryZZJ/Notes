@@ -1,0 +1,13 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2024-08-20T16:24:02+08:00
+
+====== 选购要求 ======
+Created 星期二 20 八月 2024
+
+
+1. 支持外接usb，使用usb2jfss，或本身jfss空间够大（AX6000/ZenWiFi_Pro_XT12/TUF-AX3000_V2/RT-AX86U PRO/GT-AX11000 PRO/RT-AX89X/及挂载USB2JFFS的机器），现在只有15M
+2. koolshare固件版本比较新
+3. 支持clash插件最新版
+4. 不要内置uu加速器
+5. 使用388固件，支持WireGuard

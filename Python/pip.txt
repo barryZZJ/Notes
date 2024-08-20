@@ -28,3 +28,7 @@ pip install -e . --config-settings editable_mode=compat
 
 clean cache 删除缓存
 pip cache purge
+
+离线安装：
+pip download <package>
+pip install *
