@@ -6,3 +6,5 @@ Creation-Date: 2023-01-25T17:30:51+08:00
 Created 星期三 25 一月 2023
 
 HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Run
+
+C:\ProgramData\Microsoft\Windows\Start Menu\Programs\StartUp
