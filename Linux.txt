@@ -9,6 +9,10 @@ Created 星期日 23 七月 2023
 linux命令大全
 https://www.runoob.com/linux/linux-command-manual.html
 
+切换用户
+sudo su
+su barryoffice
+
 gedit 文本编辑GUI工具
 nano 命令行文本编辑
 nautilus 资源管理器

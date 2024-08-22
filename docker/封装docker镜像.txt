@@ -19,3 +19,18 @@ docker run -p <hostport>:5000 <imagename>
 
 docker hub:
 https://hub.docker.com/
+
+配置环境：
+先构建一个空镜像，把必要的文件都拷进去，然后用交互式运行 run -it，手动配置环境没问题了再把该步骤放入docker，要不然一遍遍测试太麻烦了
+
+缓存apt，便于测试
+RUN --mount=target=/var/lib/apt/lists,type=cache,sharing=locked \
+	--mount=target=/var/cache/apt,type=cache,sharing=locked \
+	rm -f /etc/apt/apt.conf.d/docker-clean \
+	&& apt-get update \
+	&& apt-get -y --no-install-recommends install \
+		software-properties-common \
+		# Install portaudio dependencies
+		gcc libasound-dev portaudio19-dev libportaudio2 libportaudiocpp0 \
+		# flash-attn requires git
+		git \

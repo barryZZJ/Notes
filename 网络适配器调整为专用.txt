@@ -1,0 +1,8 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2024-08-22T09:58:37+08:00
+
+====== 网络适配器调整为专用 ======
+Created 星期四 22 八月 2024
+
+secpol.msc 本地安全策略——网络列表管理器策略

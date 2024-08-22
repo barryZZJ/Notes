@@ -20,6 +20,8 @@ docker pull easychen/rsspush
 
 运行：
 docker run -d -p 8000:8000 easychen/rsspush
+交互式运行 -it
+后台运行 -d
 
 恢复运行
 docker start {container-id}

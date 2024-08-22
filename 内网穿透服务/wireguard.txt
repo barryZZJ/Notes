@@ -18,11 +18,21 @@ https://gitee.com/spoto/wireguard
 原理说明 https://www.wireguard.com/#conceptual-overview
 不区分服务器和客户端，如果有公网ip，可以实现两两互联。
 
-[interface] 本机虚拟网卡配置
+===== 配置： =====
+网络拓扑：
+一台公网ip的服务器作为服务端，其他都是客户端。客户端只需要配置一次；每增加一个客户端需要修改服务端配置文件并重启服务（用reload）。
 
+自动化脚本：（待魔改）
+https://github.com/hwdsl2/wireguard-install
+wget -O wireguard.sh https://get.vpnsetup.net/wg
+sudo bash wireguard.sh
+
+配置文件说明：
+[interface] 本机虚拟网卡配置
 [peer] 配置其他用户 
 Endpoint 指定发包的目的IP。如果不指定会根据最近一次收包情况记录。（要想被直接访问，必须要有公网ip）
 AllowedIPs 指定用户的源ip。收包时相当于白名单，如果源ip不匹配则丢掉。发包时相当于路由表，如果目标ip匹配则发给该用户。
+
 
 ===== 服务器配置： =====
 #root权限
@@ -35,7 +45,7 @@ apt install wireguard resolvconf -y
 echo "net.ipv4.ip_forward = 1" >> /etc/sysctl.conf
 sysctl -p
 
-
+mkdir wireguard && cd wireguard
 ''umask 077''
 ''wg genkey | tee private.key | wg pubkey > public.key''
 ''wg genkey | tee c1private.key | wg pubkey > c1public.key''
@@ -60,17 +70,23 @@ PublicKey = <客户端2公钥>
 AllowedIPs = 172.40.0.3/32
 
 ==== linux: ====
-启动 WireGuard 接口：（重启服务器后，各个客户端需要重新ping一下服务器，或者等保活心跳包自动发送）
-sudo wg-quick up wg0
-关闭接口：
-sudo wg-quick down wg0
-如果报错先运行一下
-sudo modprobe wireguard
+启动：
+sudo systemctl start wg-quick@wg0
 设置开机自启动：
 sudo systemctl enable wg-quick@wg0
 
+手动启动 WireGuard 接口：
+sudo wg-quick up wg0
+手动关闭接口：
+sudo wg-quick down wg0
+如果报错先运行一下
+sudo modprobe wireguard
+
 检查连接状态：
 sudo wg show
+
+添加客户端：
+在配置文件新增[Peer]后，sudo systemctl reload wg-quick@wg0
 
 ===== 客户端： =====
 ''sudo nano /etc/wireguard/wg0.conf''

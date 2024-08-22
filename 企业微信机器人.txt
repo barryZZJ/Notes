@@ -14,3 +14,4 @@ https://developer.work.weixin.qq.com/document/10514#%E4%BD%BF%E7%94%A8%E6%8E%A5%
 
 1. 配置可信域名。（好像配置了可信域名才能设置可信ip）
 2. 设置可信ip。在可信ip内才能给用户发送消息
+
