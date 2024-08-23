@@ -34,3 +34,11 @@ RUN --mount=target=/var/lib/apt/lists,type=cache,sharing=locked \
 		gcc libasound-dev portaudio19-dev libportaudio2 libportaudiocpp0 \
 		# flash-attn requires git
 		git \
+
+离线分发：
+镜像：
+docker save -o xxx.tar <imagename>
+docker load -i xxx.tar
+容器：
+docker export
+docker import

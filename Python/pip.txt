@@ -31,4 +31,4 @@ pip cache purge
 
 离线安装：
 pip download <package>
-pip install *
+pip install * --no-build-isolation
