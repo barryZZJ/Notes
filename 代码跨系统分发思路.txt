@@ -1,0 +1,10 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2024-08-25T11:05:28+08:00
+
+====== 代码跨系统分发思路 ======
+Created 星期日 25 八月 2024
+
+1. 编译成可执行文件，完全不用配环境。但有可能出现不兼容的情况
+2. Python代码：用conda建虚拟环境，把env里的文件夹打包分发，客户机把里面的python添加到PATH即可
+3. Docker。比较麻烦，最适配linux系统。客户机还得装docker。而且影响性能。
