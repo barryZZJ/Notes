@@ -17,8 +17,7 @@ docker容器内默认情况下与主机进行了隔离，无法通过 127.0.0.1 
 1. docker run 添加 --network host 参数即可
 2. ip addr show docker0 查询虚拟网卡的ip，发现为172.17.0.1，使用这个ip即可
 
-下载
-docker pull easychen/rsspush
+下载cker pull easychen/rsspush
 
 运行容器：
 docker run -d -p 8000:8000 easychen/rsspush
@@ -26,18 +25,20 @@ docker run -d -p 8000:8000 easychen/rsspush
 后台运行 -d
 结束后自动删除容器 --rm
 
-查看log
-docker logs <image>
+
+查看容器：
+docker ps -a
+
+查看容器log
+docker logs <container_id>
 -f 实时
 
 恢复运行
-docker start {container-id}
+docker start <container_id>
 
 删除所有未使用的镜像、容器：
 docker system prune -a
 
-查看容器：
-docker ps -a
 关闭容器：
 docker stop <container_id>
 删除容器:

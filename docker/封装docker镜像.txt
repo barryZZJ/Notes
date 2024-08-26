@@ -42,3 +42,6 @@ docker load -i xxx.tar
 容器：
 docker export
 docker import
+
+多阶段build （多个FROM）
+https://stackoverflow.com/questions/33322103/multiple-froms-what-it-means

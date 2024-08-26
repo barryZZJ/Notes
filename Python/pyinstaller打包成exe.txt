@@ -12,7 +12,7 @@ pip install pyinstaller
 cmd中自动化：
 @echo off
 call "E:\Coding2\PyProjects\venv\zmsub\Scripts\activate.bat"
-pyinstaller compresser.py -y --clean --add-data src;./src -F --clean -n name --icon=xx.ico
+pyinstaller compresser.py -y --clean --add-data src;src -F --clean -n name --icon=xx.ico
 
 如果报错，记得-p添加site-packages目录, e.g. xxx\envs\script\Lib\site-packages 
 可发布文件在dist文件夹中
@@ -30,8 +30,8 @@ os版：
 ''import sys''
 
 ''ISEXE = hasattr(sys, 'frozen')''
-''BASE = os.path.dirname(sys.executable if ISEXE else __file__)  # 打包前为该py文件目录。打包后的exe所在目录。''
-''BASE_TMP = sys._MEIPASS if ISEXE else BASE # 打包前为该py所在目录。打包后运行时，系统tmp(-F单文件)所在路径，用于读取附加文件。如果是-D目录，则是打包后exe所在路径\_internal''
+''BASE = os.path.dirname(sys.executable if ISEXE else __file__)  # 打包后的exe所在目录。打包前为该py文件目录。''
+''BASE_TMP = sys._MEIPASS if ISEXE else BASE # 用于读取附加文件。打包后运行时，如果-F单文件，则为系统临时文件所在路径（解包到临时文件夹）；如果是-D目录，则是打包后exe所在路径\_internal（也是add-data的起始路径）。打包前为该py所在目录。''
 
 
 Path版：
@@ -40,8 +40,8 @@ Path版：
 ''from pathlib import Path''
 
 ''ISEXE = hasattr(sys, 'frozen')''
-''BASE = Path(os.path.dirname(sys.executable if ISEXE else os.path.dirname(__file__)))  # exe else 该py文件所在路径''
-''BASE_TMP = Path(sys._MEIPASS) if ISEXE else BASE # 打包后运行时系统tmp(-F)/exe(-D)所在路径，用于读取附加文件''
+''BASE = Path(os.path.dirname(sys.executable if ISEXE else os.path.dirname(__file__)))''
+''BASE_TMP = Path(sys._MEIPASS) if ISEXE else BASE''
 
 注意：python>=3.9不再支持win7
 
@@ -62,6 +62,10 @@ Path版：
 -r --resource FILE[,TYPE[,NAME[,LANGUAGE]]]
 -i --icon FILE.ico
  --disable-windowed-traceback
+--hiddenimport MODULENAME 有些hidden import的库需要手动import进来，如--hidden-import=torch --hidden-import=torch.utils.bacqkends --hidden-import=torchvision 查看所有hidden import的库的方法https://pyinstaller.org/en/stable/when-things-go-wrong.html#listing-hidden-imports
+
+
+pyinstaller --clean 清理缓存
 
 
 输出目录设置：
@@ -73,6 +77,7 @@ spec文件：
 设置中文：
 name=u'中文名'
 
+报错解决file already exists but should not:
 打包pyqt5时可能会弹出warning，
 在xx.spec文件里a=Analysis()后添加：
 for b in a.binaries:

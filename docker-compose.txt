@@ -5,19 +5,16 @@ Creation-Date: 2023-05-26T00:07:41+08:00
 ====== docker-compose ======
 Created 星期五 26 五月 2023
 
-安装：
-
-
 同时管理一系列容器，读取目录下的docker-compose.yml配置文件
 在有docker-compose.yml的目录下或用-f指定yml文件
 
 yml配置：
 代理：
 ''services:''
-''  web:''
-''    environment:''
-''      - HTTP_PROXY=http://127.0.0.1:10809''
-''      - HTTPS_PROXY=http://127.0.0.1:10809''
+  ''web:''
+	''environment:''
+	  ''- HTTP_PROXY=http://127.0.0.1:10809''
+	  ''- HTTPS_PROXY=http://127.0.0.1:10809''
 
 端口映射：
 本机端口:容器端口
@@ -26,8 +23,8 @@ yml配置：
 要想访问localhost的其他端口：
 在yml对应服务下添加：
 ''services:''
-''  web:''
-''    network_mode: "host"''
+  ''web:''
+	''network_mode: "host"''
 
 此时端口映射不再有用
 

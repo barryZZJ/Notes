@@ -1,0 +1,32 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2024-08-07T12:29:54+08:00
+
+====== 运行支持cuda的镜像 ======
+Created 星期三 07 八月 2024
+
+Nvidia Container Toolkit
+install: https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/latest/install-guide.html
+doc: https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/latest/index.html
+
+Run in Docker:
+1. (For Windows) Install WSL 2 ubuntu: `https://learn.microsoft.com/en-us/windows/wsl/install`
+2. Install Docker Desktop:
+   - Windows: https://www.docker.com/products/docker-desktop/
+	 - Enable WSL support in docker: https://docs.docker.com/desktop/wsl/
+   - Linux: https://docs.docker.com/desktop/install/linux-install/#generic-installation-steps
+3. Install Cuda on **host** machine:
+   - https://developer.nvidia.com/cuda-downloads
+4. Configure docker to support CUDA by installing NVIDIA Container Toolkit:
+   - Windows (refer to https://docs.docker.com/desktop/gpu/ https://docs.nvidia.com/cuda/wsl-user-guide/index.html#nvidia-compute-software-support-on-wsl-2): 
+	 1. Install NVIDIA GeForce Game Ready on host machine.
+	 2. (Optional) Change apt source to tsinghua in WSL: https://mirrors.tuna.tsinghua.edu.cn/help/ubuntu/
+	 3. Install CUDA in WSL (select Linux->**WSL-Ubuntu**): https://developer.nvidia.com/cuda-downloads?target_os=Linux&target_arch=x86_64&Distribution=WSL-Ubuntu&target_version=2.0&target_type=deb_network
+	 4. Test installation in WSL: `sudo docker run --gpus all nvcr.io/nvidia/k8s/cuda-sample:nbody nbody -gpu -benchmark`
+   - Linux:
+	 - Follow the guide in: https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/latest/install-guide.html
+5. Run docker Image with NVIDIA Container Toolkit
+   - Windows:
+	 1. On **host** machine cmd: `docker run --gpus=all -d -p 5000:5000 toolbox_minimal:1.1`
+   - Linux:
+	 1. `sudo docker run --runtime=nvidia --gpus all -d -p 5000:5000 toolbox_minimal:1.1`
