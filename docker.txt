@@ -25,7 +25,6 @@ docker run -d -p 8000:8000 easychen/rsspush
 后台运行 -d
 结束后自动删除容器 --rm
 
-
 查看容器：
 docker ps -a
 
