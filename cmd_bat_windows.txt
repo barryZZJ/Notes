@@ -65,9 +65,9 @@ printf 123> file 末尾不会自动换行，替代方案：<nul set /p=%output%>
 $1, $2, ..., $9 最多课引用九个参数
 %* 所有参数（不含%0）
 ''for %%p in (%*) do (''
-''  echo Processing parameter: %%p''
-''  rem 在这里编写要执行的命令，例如：''
-''  rem command.exe %%p''
+  ''echo Processing parameter: %%p''
+  ''rem 在这里编写要执行的命令，例如：''
+  ''rem command.exe %%p''
 '')''
 
 shift /n 从第n个参数开始向前移位，n取0~8
@@ -81,11 +81,14 @@ start [[/B]] "" 打开cmd而不弹出开头的提示
 
 echo. 输出换行
 
-cmd [[/c]] ... 执行字符串指定的命令然后终止
-cmd [[/k]] ... 执行字符串指定的命令但保留
+cmd [[/c]] ... 执行字符串指定的命令然后终止 会阻塞当前cmd
+cmd [[/k]] ... 执行字符串指定的命令但保留 会阻塞当前cmd
 /q  # == echo off
 不显示输出：
 >nul 2>nul cmd /c <some command>
+
+start cmd [[/c]] ... 新建一个cmd进程，不阻塞当前进程
+[[/B]] 后台运行，不显示窗口
 
 输出log到txt：
 xxx.bat > log.txt (>覆盖写, >>追加写) 

@@ -1,0 +1,14 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2024-08-28T22:41:50+08:00
+
+====== rdp ======
+Created 星期三 28 八月 2024
+
+rdp-twomon:
+#! /bin/sh
+xfreerdp /v:dorm.barryzzj.top:23389 /u:barry /p:zzj850462 /dynamic-resolution /home-drive /network:lan /multimon /monitors:1,2 +clipboard -heartbeat /log-level:OFF [[+sound]]
+
+rdp:
+#! /bin/sh
+xfreerdp /v:dorm.barryzzj.top:23389 /u:barry /p:zzj850462 /dynamic-resolution /home-drive /network:lan /multimon /monitors:1,2 +clipboard -heartbeat /log-level:OFF +sound

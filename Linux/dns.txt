@@ -1,0 +1,13 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2024-08-28T21:08:49+08:00
+
+====== dns ======
+Created 星期三 28 八月 2024
+
+sudo nano [[/etc/resolv.conf]]
+nameserver 8.8.8.8
+
+flushdns: 
+sudo resolvectl statistics
+sudo resolvectl flush-caches

@@ -1,0 +1,10 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2024-08-28T22:41:29+08:00
+
+====== xrandr ======
+Created 星期三 28 八月 2024
+
+screenlayout_3_screen_primary2.sh
+#!/bin/sh
+xrandr --output HDMI-0 --mode 1920x1080 --pos 1080x165 --rotate normal --output DP-0 --off --output DP-1 --off --output DP-2 --off --output DP-3 --off --output DP-4 --off --output DP-5 --off --output DP-1-1 --off --output HDMI-1-1 --off --output HDMI-1-2 --mode 1920x1080 --pos 0x0 --rotate left --output DP-1-2 --primary --mode 1680x1050 --pos 3000x200 --rotate lefts
