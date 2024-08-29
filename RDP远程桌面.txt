@@ -62,3 +62,7 @@ https://blog.csdn.net/csdn_life18/article/details/108250846
 
 H264 编码：
 https://engr-z.com/513.html
+
+指定显示器：
+mstsc [[/l]] 查看编号
+在.rdp文件中添加selectedmonitors:s:x,y x,y替换为前述编号

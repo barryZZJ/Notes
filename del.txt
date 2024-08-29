@@ -10,53 +10,39 @@ Created 星期五 02 九月 2022
 
 磁盘右键——属性——磁盘清理
 
-C盘：
-JB旧版缓存: 
-C:\Users\Barry\AppData\Local\JetBrains; \logs
-C:\Users\Barry\AppData\Roaming\JetBrains
-C:\Users\85046\Documents\WeChat Files
-QQ文件
-微信文件
-Python Pyprojects venv 虚拟环境
-pip cache: AppData\Local\pip\cache
-java dependencies: C:\Users\85046\.m2
-
+=== Caches: ===
+%HOMEPATH%\.cache
+pip cache purge : %localappdata%\pip\cache
+npm cache clean --force : %localappdata%\npm-cache\_cacache
+JetBrains JB 系列：
+	File——Invalidate Caches
+	%LOCALAPPDATA%\JetBrains  .\logs
+	%appdata%\JetBrains
 VRChat cache C:\Users\85046\AppData\LocalLow\VRChat\VRChat\Cache-xxx
+java dependencies: %HOMEPATH%\.m2
+vscode: E:\Coding\scripts\clean_vscode.bat
+chrome: 右上角...——删除浏览数据——过去4周
 
-logs:
-C:\ProgramData\Intel\Intel Extreme Tuning Utility\Logs （超大）
-C:\Users\Barry\AppData\Roaming\MySQL\Workbench\log
-C:\Windows\System32\AMD\EeuDumps（超大）
+=== logs: E:\Coding\scripts\clean_logs.bat ===
+Intel集显：C:\ProgramData\Intel\Intel Extreme Tuning Utility\Logs （超大）
+AMD集显：C:\Windows\System32\AMD\EeuDumps（超大）
+%appdata%\MySQL\Workbench\log
+%HOMEPATH%\java_error_in*.hprof
 
-驱动程序（慎删）
-https://blog.csdn.net/icbm/article/details/79826925
-C:\Windows\System32\DriverStore
-
-C:\Users\Barry\AppData\Local\Microsoft\vscode-cpptools\ipch  (C_Cpp.intelliSenseCacheSize)
-全局搜索: JAVA_ERROR_IN_IDEA.HPROF / java_error_in_pycharm64.hprof
-python第三方库
-C:/users
-vscode插件 C:\Users\Barry\.vscode\extensions
-各个IDE的缓存
-C:\Users\Barry\Documents\WeChat Files\wxid_iy5ejuzfavoq21\FileStorage
-C:\Users\Barry\AppData\Roaming\11bitstudios\Frostpunk\Default\saves 游戏存档
-
-C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA
-压缩：
-可以用steam的备份与还原压缩文件
-
+=== files: spacesniffer ===
+VSCode Extensions: %HOMEPATH%\.vscode
+Python:
+	Pyprojects venv 各个虚拟环境 第三方库
+F:\temp
+	微信文件 WeChat Files\wxid_iy5ejuzfavoq21\FileStorage
+	QQ文件
+%appdata%\11bitstudios\Frostpunk\Default\saves 游戏存档
 wallpaper engine 壁纸
-
-D:
 hgs
 steam 创意工坊
 vr游戏
-
 osu音乐文件
 
-darknet
-
-spfl_front
 数模
 重大\班委
 重大\信安竞赛、codes\federatedLearning、codes\Secure and Privacy Preserved Federated Learning System
@@ -69,8 +55,14 @@ vivado projects
 codes
 深度学习数据集
 D:\Software\LaTeX\latex
-
 opencv
 nvidia nsight visual studio edition
-
 字幕组：各个ts源、翻译源
+
+=== 驱动程序（慎删） ===
+https://blog.csdn.net/icbm/article/details/79826925
+C:\Windows\System32\DriverStore
+C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA
+
+
+
