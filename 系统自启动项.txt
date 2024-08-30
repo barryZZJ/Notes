@@ -5,6 +5,13 @@ Creation-Date: 2023-01-25T17:30:51+08:00
 ====== 系统自启动项 ======
 Created 星期三 25 一月 2023
 
-HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Run
+see Dism++
 
+系统启动项：
+HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Run
+用户启动项
+HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\Run
+
+启动菜单
 C:\ProgramData\Microsoft\Windows\Start Menu\Programs\StartUp
+%appdata%\Microsoft\Windows\Start Menu\Programs\StartUp

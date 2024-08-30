@@ -18,6 +18,9 @@ https://gitee.com/spoto/wireguard
 原理说明 https://www.wireguard.com/#conceptual-overview
 不区分服务器和客户端，如果有公网ip，可以实现两两互联。
 
+doc:
+https://github.com/pirate/wireguard-docs
+
 ===== 配置： =====
 网络拓扑：
 一台公网ip的服务器作为服务端，其他都是客户端。客户端只需要配置一次；每增加一个客户端需要修改服务端配置文件并重启服务（用reload）。
@@ -76,6 +79,9 @@ sudo systemctl start wg-quick@wg0
 设置开机自启动：
 sudo systemctl enable wg-quick@wg0
 
+添加客户端后，无损重启服务：
+在配置文件新增[Peer]后，sudo systemctl reload wg-quick@wg0
+
 手动启动 WireGuard 接口：
 sudo wg-quick up wg0
 手动关闭接口：
@@ -84,10 +90,7 @@ sudo wg-quick down wg0
 sudo modprobe wireguard
 
 检查连接状态：
-sudo wg show
-
-添加客户端：
-在配置文件新增[Peer]后，sudo systemctl reload wg-quick@wg0
+watch -n 1 sudo wg show
 
 ===== 客户端： =====
 ''sudo nano /etc/wireguard/wg0.conf''

@@ -27,7 +27,8 @@ WARNING: This is a development server. Do not use it in a production deployment.
 === 注册路由： ===
 https://flask.palletsprojects.com/en/latest/api/#url-route-registrations
 route:
-添加参数：<key>、<type:key> types: {string, int, float, path, uuid}
+添加参数：<key> 或 <type:key> types: {string(default), int, float, path, uuid}
+在key中定义的可以加入函数形参
 默认只处理GET
 @app.route('/login', methods=['GET', 'POST']
 @app.get()
@@ -71,9 +72,13 @@ from flask import current_app
 
 
 ===== WSGI HTTP Server: =====
+部署环境，支持大规模并发请求。不用的话只能支持少量并发请求。
 ===== Linux: Unicorn =====
 需要使用gunicorn运行：
 pip install gunicorn
 gunicorn pyfilename:appname -b 0.0.0.0:12345
 ===== = =====
 ===== Windows: waitress =====
+https://docs.pylonsproject.org/projects/waitress/en/latest/arguments.html#arguments
+pip install waitress
+waitress.serve(app, host=, port=)

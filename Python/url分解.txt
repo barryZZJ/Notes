@@ -4,6 +4,9 @@ Wiki-Format: zim 0.6
 ===== urllib =====
 Parse a URL into 6 components: 
 <scheme>://<netloc>/<path>;<params>?<query>#<fragment>
+e.g. urlparse('http://127.0.0.1:23222/redirectlocal/django/admin/login/?next=/admin/')
+ParseResult(scheme='http', netloc='127.0.0.1:23222', path='/redirectlocal/django/admin/login/', params='', query='next=/admin/', fragment='')
+netloc = hostname:port
 
 from urllib.parse import urlparse
 p = urlparse(url, allow_fragments=False)

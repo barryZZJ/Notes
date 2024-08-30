@@ -6,6 +6,8 @@ Wiki-Format: zim 0.6
 
 https://docs.python.org/3.9/library/subprocess.html
 
+.run .call .check_all 阻塞进程
+.Popen 不阻塞进程 .Popen().wait()可以阻塞进程
 
 subprocess.run(args, *, stdin=None, input=None, stdout=None, stderr=None, capture_output=False, shell=False, cwd=None, timeout=None, check=False, encoding=None, errors=None, text=None, env=None, universal_newlines=None)
 
@@ -56,6 +58,8 @@ https://stackoverflow.com/questions/13332268/how-to-use-subprocess-command-with-
 Popen 的stdin、stdout都可以看作文件，输入/输出完需要close
 
 === 杀掉进程 ===
+Popen.terminate()
+Popen.wait()
 Popen.kill()
 
 === 经验 ===

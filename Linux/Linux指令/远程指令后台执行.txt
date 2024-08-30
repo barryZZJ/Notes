@@ -7,6 +7,9 @@ nohup 指令 &
 
 nohup ./myprogram > nohup.out 2> nohup.err < /dev/null &
 
+隐藏输出：
+nohup xxx >/dev/null &
+
 当前终端查看后台进程：jobs -l
 杀死后台进程：kill %job号 或 kill 进程号
 
