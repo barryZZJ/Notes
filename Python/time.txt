@@ -5,6 +5,8 @@ https://docs.python.org/3/library/time.html
 
 根据秒数转时分秒：见datetime
 
+.sleep()
+
 # 当前时间戳，精确到小数点后7位
 .time() -> float 
 
