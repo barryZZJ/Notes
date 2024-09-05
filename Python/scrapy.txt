@@ -1,0 +1,28 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2024-09-05T22:02:56+08:00
+
+====== scrapy ======
+Created 星期四 05 九月 2024
+
+https://docs.scrapy.org/en/latest/intro/tutorial.html
+
+debug
+https://docs.scrapy.org/en/latest/topics/debug.html
+
+交互模式：
+scrapy shell <url>
+
+scrapy crawl <name>
+-O <file> output-overrite
+-o <file> output-append
+.json
+.jsonl
+.csv
+
+Response object
+.urljoin("/newpath")  -> "www.xxx.com/newpath"
+.follow("/newpath")
+
+.css(sel) css selector
+.xpath(sel) xpath selector
