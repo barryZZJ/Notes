@@ -10,9 +10,11 @@ https://blog.csdn.net/jia666666/article/details/81540785
 from PyQt5.QtWidgets import QMessageBox
 
 QMessageBox.information(None, None, "Debug mode is on")
+(parent, title, text, button, defaultButton)
 .critical 
 .warning 
 .question
+（不能按参数名传参）
 
 图标会跟随app.setWindowIcon（或者parent的？不确定），不需要单独设置
 
@@ -30,31 +32,31 @@ QTimer.singleShot(3000, msg_box.close)
 
 
 ''class QTimedMessageBox(QMessageBox):''
-''    def __init__(self, timeout, *args, **kwargs):''
-''        self.timeout = timeout''
-''        super().__init__(*args, **kwargs)''
+	''def __init__(self, timeout, *args, **kwargs):''
+		''self.timeout = timeout''
+		''super().__init__(*args, **kwargs)''
 
-''    def showEvent(self, event):''
-''        QTimer.singleShot(self.timeout, self.close)''
+	''def showEvent(self, event):''
+		''QTimer.singleShot(self.timeout, self.close)''
 
-''    @staticmethod''
-''    def information(parent, title, text, buttons=QMessageBox.Ok, defaultButton=QMessageBox.Ok, *, timeoutms):''
-''        msg_box = QMessageBox()''
-''        msg_box.setIcon(QMessageBox.Information)''
-''        msg_box.setWindowTitle(title)''
-''        msg_box.setText(text)''
-''        msg_box.setStandardButtons(buttons)''
-''        msg_box.setDefaultButton(defaultButton)''
-''        QTimer.singleShot(timeoutms, msg_box.close)''
-''        return msg_box.exec_()''
+	''@staticmethod''
+	''def information(parent, title, text, buttons=QMessageBox.Ok, defaultButton=QMessageBox.Ok, *, timeoutms):''
+		''msg_box = QMessageBox()''
+		''msg_box.setIcon(QMessageBox.Information)''
+		''msg_box.setWindowTitle(title)''
+		''msg_box.setText(text)''
+		''msg_box.setStandardButtons(buttons)''
+		''msg_box.setDefaultButton(defaultButton)''
+		''QTimer.singleShot(timeoutms, msg_box.close)''
+		''return msg_box.exec_()''
 
-''    @staticmethod''
-''    def critical(parent, title, text, buttons=QMessageBox.Ok, defaultButton=QMessageBox.Ok, *, timeoutms):''
-''        msg_box = QMessageBox()''
-''        msg_box.setIcon(QMessageBox.Critical)''
-''        msg_box.setWindowTitle(title)''
-''        msg_box.setText(text)''
-''        msg_box.setStandardButtons(buttons)''
-''        msg_box.setDefaultButton(defaultButton)''
-''        QTimer.singleShot(timeoutms, msg_box.close)''
-''        return msg_box.exec_()''
+	''@staticmethod''
+	''def critical(parent, title, text, buttons=QMessageBox.Ok, defaultButton=QMessageBox.Ok, *, timeoutms):''
+		''msg_box = QMessageBox()''
+		''msg_box.setIcon(QMessageBox.Critical)''
+		''msg_box.setWindowTitle(title)''
+		''msg_box.setText(text)''
+		''msg_box.setStandardButtons(buttons)''
+		''msg_box.setDefaultButton(defaultButton)''
+		''QTimer.singleShot(timeoutms, msg_box.close)''
+		''return msg_box.exec_()''
