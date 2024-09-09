@@ -7,11 +7,55 @@ Created 星期四 16 十一月 2023
 
 文件备份，比如用 rclone 13, Duplicacy 11, syncthing 10 等工具多端同步备份
 
+=== robocopy 可靠备份指令 ===
+https://www.cnblogs.com/songzhenhua/p/9948495.html
+https://learn.microsoft.com/en-us/windows-server/administration/windows-commands/robocopy
+ROBOCOPY source destination /MIR /LOG:log.txt /R:3 /W:60
 
+/MIR 镜像模式，相当于/E + /PURGE
+/E :: 复制子目录，包括空的子目录。默认不包含子目录
+/PURGE :: 删除源中不再存在的目标文件/目录。
+/CREATE :: 仅创建目录树和长度为零的文件。可以和 /MIR一起使用。只复制目录结构，不复制内容。
+/COPYALL :: 复制所有文件信息(等同于 /COPY:DATSOU)。
+/COPY:复制标记:: 要复制的文件内容(默认为 /COPY:DAT)。 可以连权限一并复制
+					   (copyflag: D=数据，A=属性，T=时间戳，X=跳过替换数据流)。
+					   (S=安全=NTFS ACL，O=所有者信息，U=审核信息)。
+/B 备份模式。清除文件权限。
+/Z 可重新启动模式。如果拷贝被中断，再次执行时从终端的地方开始
+/ZB 使用可重新启动模式；如果拒绝访问，使用备份模式。
+/J :: 复制时使用无缓冲的 I/O (推荐在复制大文件时使用)。
+
+/XF 文件[文件]... :: 排除与给定名称/路径/通配符匹配的文件。如/XF *.tmp *.bak
+/XD 目录[目录]... :: 排除与给定名称/路径匹配的目录。
+/XJ:: 排除(文件和目录的)符号链接和接合点。
+/XJD:: 排除目录和接合点的符号链接。
+/XJF :: 排除文件的符号链接。
+
+/MON:n :: 监视源；发现多于 n 个更改时再次运行。
+/MOT:m :: 监视源；如果更改，在 m 分钟时间后再次运行。
+/RH:hhmm-hhmm :: Specifies run times when new copies can be started。指定Robocopy开始的时间段，在这个时间段外，拷贝会被暂停。
+
+/LOG:文件 :: 将状态输出到日志文件(覆盖现有日志)。
+/LOG+:文件 :: 将状态输出到日志文件(附加到现有日志中)。
+/UNILOG:文件 :: 以 UNICODE 方式将状态输出到日志文件(覆盖现有日志)。
+/UNILOG+:文件 :: 以 UNICODE 方式将状态输出到日志文件(附加到现有日志中)。
+/TEE :: 输出到控制台窗口和日志文件。
+
+限速：
+/iomaxsize:<n>[kmg]	The requested max i/o size per read/write cycle in n kilobytes, megabytes, or gigabytes.
+/iorate:<n>[kmg]	The requested i/o rate in n kilobytes megabytes, or gigabytes per second.
+/threshold:<n>[kmg]	The file size threshold for throttling in n kilobytes, megabytes, or gigabytes (see Remarks).
+
+“/save:任务名”可以将当前操作记录为任务文件，通过“/job:任务名”就可以方便调
+用，不需要再输入一长串的命令了。
+
+
+=== 其他 ===
 创建存储池：Raid1
 设置——系统——存储——管理存储空间
 
 文件历史记录：备份文件 https://www.asus.com.cn/support/faq/1013067/
+不要用，win10配置很卡很卡，而且用起来不方便。
 控制面板——系统和安全——文件历史记录
 配置备份的文件夹：设置——系统——存储——查看备份选项——更多选项
 恢复备份：控制面板——系统和安全——文件历史记录

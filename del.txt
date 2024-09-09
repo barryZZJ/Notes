@@ -11,15 +11,16 @@ Created 星期五 02 九月 2022
 磁盘右键——属性——磁盘清理
 
 === Caches: ===
-%HOMEPATH%\.cache
-pip cache purge : %localappdata%\pip\cache
-npm cache clean --force : %localappdata%\npm-cache\_cacache
+%''USERPROFILE''%\.cache
+''pip cache purge'': %localappdata%\pip\cache 
+''npm cache clean --force'' : %localappdata%\npm-cache\_cacache
+gradle cache: ''rd /s /q %USERPROFILE%\.gradle\caches''
 JetBrains JB 系列：
 	File——Invalidate Caches
 	%LOCALAPPDATA%\JetBrains  .\logs
 	%appdata%\JetBrains
 VRChat cache C:\Users\85046\AppData\LocalLow\VRChat\VRChat\Cache-xxx
-java dependencies: %HOMEPATH%\.m2
+java dependencies: %USERPROFILE%\.m2
 vscode: E:\Coding\scripts\clean_vscode.bat
 chrome: 右上角...——删除浏览数据——过去4周
 
@@ -27,10 +28,10 @@ chrome: 右上角...——删除浏览数据——过去4周
 Intel集显：C:\ProgramData\Intel\Intel Extreme Tuning Utility\Logs （超大）
 AMD集显：C:\Windows\System32\AMD\EeuDumps（超大）
 %appdata%\MySQL\Workbench\log
-%HOMEPATH%\java_error_in*.hprof
+%USERPROFILE%\java_error_in*.hprof
 
 === files: spacesniffer ===
-VSCode Extensions: %HOMEPATH%\.vscode
+VSCode Extensions: %USERPROFILE%\.vscode
 Python:
 	Pyprojects venv 各个虚拟环境 第三方库
 F:\temp

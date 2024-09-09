@@ -1,0 +1,20 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2024-09-09T13:37:08+08:00
+
+====== 坏道对应文件名查找 ======
+Created 星期一 09 九月 2024
+
+http://www.pcmoe.net/thread-84072-1-1.html
+
+1.运行cmd，输入 fsutil fsinfo ntfsinfo e:
+
+2.从上述结果中找到 "每扇区字节数（Bytes Per Sector）"、"每个簇字节数（Bytes Per Cluster）"、"扇区数量"
+
+3.x = LBA 数值 / (每个簇字节数 / 每扇区字节数)
+
+注意: lba以硬盘起始为偏移，如果有多个盘符，则需要该减去该偏移前所有盘符的扇区数量，例如lba为2757798225，而该硬盘有c d e三个盘符，且c d扇区数量和为2754456895，因为2757798225 > 2754456895，则计算为(2757798225 - 2754456895) / (4096 / 512) = 417666.25，该lba对应盘符e
+
+4.输入 fsutil volume querycluster e: 417666
+
+5.最终显示对应的文件
