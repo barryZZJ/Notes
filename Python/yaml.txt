@@ -8,22 +8,19 @@ Created 星期二 18 十月 2022
 处理.yaml文件
 https://pyyaml.org/wiki/PyYAMLDocumentation
 
-结构实例，与ini相比可以支持多级字典
-pollfreq:
-  wx:
-	sensorstate: 30
-	upload: 30
-sleep:
-  wx:
-	sensor: 600
-timeout:
-  normal: 60
-  short: 3
-  wx:
-	login: 3600
-	sensor: 3600
-	upload: 18000
+结构示例，支持嵌套、支持列表、反斜杠不需要转义
+Key:
+  subkey: value
+  subkey: 'value1 value2'
+  subkey: "value1 value2"
+  subkey:
+	- listitem1
+	- listitem2
+  subkey: [listitem1, listitem2]
 
+"key: " 返回空字符串
+"key:
+  -" 返回[None]
 
 pip install pyyaml
 
@@ -33,7 +30,10 @@ try:
 except ImportError:
 	from yaml import Loader, Dumper
 
-yaml.load(...,Loader)
-yaml.dump(..., Dumper)
+stream = open(xxx)
+data = load(stream, Loader=Loader)
+output = dump(data, Dumper=Dumper)
 
-解决中文变为\u编码问题：在dump中添加参数allow_unicode=True
+解决dump时中文变为\u编码问题：在dump中添加参数allow_unicode=True
+
+

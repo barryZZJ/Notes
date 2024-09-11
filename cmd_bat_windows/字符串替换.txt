@@ -1,0 +1,9 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2024-09-11T11:04:05+08:00
+
+====== 字符串替换 ======
+Created 星期三 11 九月 2024
+
+%variable:find=repl%
+如%value: =% 把空格删掉

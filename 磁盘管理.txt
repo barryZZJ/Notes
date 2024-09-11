@@ -16,7 +16,7 @@ Created 星期六 03 十二月 2022
 https://learn.microsoft.com/zh-cn/previous-versions/windows/it-pro/windows-server-2003/cc739412(v=ws.10)#before-converting-disks-to-dynamic
 每个物理盘都会留有一份动态分区数据库的备份。
 
-只能对未分配空间进行转换。
+只能对未分配空间进行转换，先删除卷才可以。
 
 简单卷：等价于一个盘。可以创建跨区卷。
 跨区卷Spanned Volum：JBOD。合并多个空闲区域为一个逻辑盘。按顺序依次存储文件，第一个盘存分区表，后面的盘都是数据区。第一个盘坏了数据就全丢。性能没有提升和下降。相当于把几块小盘合成一个大盘
@@ -24,13 +24,11 @@ https://learn.microsoft.com/zh-cn/previous-versions/windows/it-pro/windows-serve
 镜像卷：Raid1，两个硬盘内容互为副本。最安全
 Raid5：一个盘存储纠错码，其他存储数据。至少需要3块硬盘。影响写入速度。比raid6更容易死，raid6是2个盘存纠错码。
 
-可以通过创建镜像卷再取消的方式迁移数据
-
-对已有分区选择扩展卷将创建跨区卷。
+对基本磁盘已有分区选择“扩展卷”将创建跨区卷。
 
 如果想把一块磁盘建立多个带区卷，可以在向导里指定卷大小
 
-指定大小
+可以通过创建镜像卷再取消的方式迁移数据
 
 dg支持：
 https://www.diskgenius.cn/help/ldmsupport.php

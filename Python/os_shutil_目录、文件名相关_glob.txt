@@ -55,7 +55,7 @@ for line in r.readlines():
 获取当前活动目录:
 os.getcwd()
 获取当前文件所在目录:
-os.path.dirname(__file__)
+os.path.dirname(__file__) 不带结尾\
 
 os.path （考虑使用pathlib.Path [[Path]]）
 .exists()

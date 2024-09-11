@@ -1,0 +1,13 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2024-09-11T11:29:24+08:00
+
+====== 局部命名空间 ======
+Created 星期三 11 九月 2024
+
+setlocal
+...
+endlocal
+可以嵌套
+
+enabledelayedexpansion 启用延迟变量扩展。

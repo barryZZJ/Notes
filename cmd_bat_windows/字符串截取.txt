@@ -1,0 +1,15 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2024-09-11T09:44:16+08:00
+
+====== 字符串截取 ======
+Created 星期三 11 九月 2024
+
+help set
+
+'':: Assign argument to local variable first:''
+''set var=%0''
+''@echo %var:~10,5%''
+
+%var:~-7% extracts the last 7 characters from %var%
+%var:~0,-4% would extract all characters except the last four which would also rid you of the file extension (assuming three characters after the period [.]).

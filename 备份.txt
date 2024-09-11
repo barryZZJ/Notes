@@ -12,15 +12,18 @@ https://www.cnblogs.com/songzhenhua/p/9948495.html
 https://learn.microsoft.com/en-us/windows-server/administration/windows-commands/robocopy
 ROBOCOPY source destination /MIR /LOG:log.txt /R:3 /W:60
 
-/MIR 镜像模式，相当于/E + /PURGE
-/E :: 复制子目录，包括空的子目录。默认不包含子目录
+/MIR 镜像目录树，相当于/E + /PURGE。只备份文件时不要使用，否则会把文件所在的整个目录树都拷贝过去，全是空文件夹。
+/S :: 复制子目录，但不复制空的子目录。
+/E :: 复制子目录，包括空的子目录。（默认不是包含子目录的）
+/LEV:n :: 仅复制源目录树的前 n 层。LEV:1表示根目录，不包含子目录
 /PURGE :: 删除源中不再存在的目标文件/目录。
-/CREATE :: 仅创建目录树和长度为零的文件。可以和 /MIR一起使用。只复制目录结构，不复制内容。
+/CREATE :: 仅创建目录树和长度为零的文件。可以和 /MIR一起使用。只复制目录结构，不复制内容。如果已经有内容，不会清空内容。
 /COPYALL :: 复制所有文件信息(等同于 /COPY:DATSOU)。
 /COPY:复制标记:: 要复制的文件内容(默认为 /COPY:DAT)。 可以连权限一并复制
 					   (copyflag: D=数据，A=属性，T=时间戳，X=跳过替换数据流)。
 					   (S=安全=NTFS ACL，O=所有者信息，U=审核信息)。
-/B 备份模式。清除文件权限。如果想复制需要管理员权限文件的权限表，以管理员权限运行robocopy（或获取管理权限），然后使用/B和/COPYALL即可。只/COPYALL也不行。
+
+/B 备份模式。清除文件权限。如果有管理员权限的文件需要复制，需要[[cmd bat windows:获取管理员权限]] 后，/B与/COPYALL连用，此时不会清除文件权限，而只用COPYALL则仍然无权限。
 /Z 可重新启动模式。如果拷贝被中断，再次执行时从终端的地方开始
 /ZB 使用可重新启动模式；如果拒绝访问，使用备份模式。
 /J :: 复制时使用无缓冲的 I/O (推荐在复制大文件时使用)。

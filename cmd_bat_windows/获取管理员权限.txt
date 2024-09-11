@@ -1,0 +1,17 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2024-09-11T11:35:21+08:00
+
+====== 获取管理员权限 ======
+Created 星期三 11 九月 2024
+
+
+NET SESSION >nul 2>&1
+IF %ERRORLEVEL% EQU 0 (
+	echo Running with admin privileges
+) ELSE (
+	echo Running without admin privileges
+	echo Requesting admin privileges...
+	powershell Start-Process -Verb RunAs -FilePath "%0"
+	exit /B
+)
