@@ -39,6 +39,15 @@ https://blog.csdn.net/LaoYuanPython/article/details/102650862
 
 stretch: 相当于对应方向大小的权重
 
+如果因为修改控件导致sizeHint改变，需要调用self.updateGeometry()才能得到正确的sizeHint
+如果调用了 deleteLater ，调整主窗口的大小需要依次：
+self.gridLayout.invalidate()
+self.gridLayout.activate()
+self.updateGeometry()  # 如果调用了layout的那两个，这个可以省略
+self.adjustSize()
+self.setFixedSize(self.sizeHint())
+
+
 === 将后缀.py改成.pyw可以隐藏命令行窗口 ===
 
 === 窗口内部拖拽 ===
