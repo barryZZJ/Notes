@@ -2,7 +2,7 @@ Content-Type: text/x-zim-wiki
 Wiki-Format: zim 0.6
 Creation-Date: 2023-02-25T11:52:55+08:00
 
-====== 内网穿透服务 ======
+====== VPN内网穿透服务 ======
 Created 星期六 25 二月 2023
 
 FRP或者NPS都可以，或者像Ngrok这种的内网穿透服务就是不太稳定

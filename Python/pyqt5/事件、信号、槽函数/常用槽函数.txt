@@ -26,3 +26,12 @@ Created 星期一 23 一月 2023
         ...
     
 }}}
+
+判断鼠标位置是否在控件上
+self.rect().contains(event.pos())
+
+鼠标按下：
+mousePressEvent
+
+鼠标弹起：（可以通过不调用super.mouseReleaseEvent()，使得在别的地方按下，再在该控件上弹起不触发）
+mouseReleaseEvent

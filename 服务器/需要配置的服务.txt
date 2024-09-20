@@ -75,7 +75,7 @@ linux x86架构下载amd64_musl
 4.2 运行后会一键安装java和mcl (mirai console loader)
 
 5. v2ray客户端
-见 [[:v2ray]]
+见 [[:VPN内网穿透服务:v2ray]]
 
 6. ipset + iptables 防火墙(x 会影响web管理)
 

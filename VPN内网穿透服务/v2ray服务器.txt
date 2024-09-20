@@ -1,0 +1,14 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2024-09-20T10:40:27+08:00
+
+====== v2ray服务器 ======
+Created 星期五 20 九月 2024
+
+直接用现成的，开启允许局域网连接
+
+或自己手配（可以用一些现成的自动配置脚本）：
+https://github.com/v2fly/v2ray-core/releases
+下载windows版v2ray内核 （show all assets）
+在config.json中配置，教程见 https://www.v2fly.org/config/overview.html
+

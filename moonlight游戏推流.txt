@@ -11,7 +11,7 @@ https://moonlight-stream.org/
 wiki:
 https://github.com/moonlight-stream/moonlight-docs/wiki/Setup-Guide
 
-可以自建VPN服务器解决多端口问题，[[%E7%94%A8%E6%B3%95%E5%8F%82%E8%80%83ZeroTierhttps://github.com/moonlight-stream/moonlight-docs/wiki/Setup-Guide#zerotier]]
+可以自建VPN服务器解决多端口问题，%E7%94%A8%E6%B3%95%E5%8F%82%E8%80%83ZeroTierhttps://github.com/moonlight-stream/moonlight-docs/wiki/Setup-Guide#zerotier
 
 博客：
 https://elmagnifico.tech/2022/01/16/Nvidia-Shield-3080ti-Moonlight/

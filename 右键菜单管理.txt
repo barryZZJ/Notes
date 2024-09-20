@@ -15,6 +15,11 @@ HKEY_CLASSES_ROOT\Directory\shell
 HKEY_CLASSES_ROOT\Folder\shell
 HKEY_CLASSES_ROOT\Folder\shellex\ContextMenuHandlers
 
+AMD显卡驱动右键菜单
+HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Directory\background\shellex\ContextMenuHandlers\ACE
+{5E2121EE-0300-11D4-8D3B-444553540000}
+REG_SZ 加入：HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Shell Extensions\Blocked
+
 * 右键空白处——新建：
 HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\Discardable\PostSetup\ShellNew 
 编辑右边的classes项即可

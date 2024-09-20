@@ -5,7 +5,7 @@ Creation-Date: 2024-01-31T10:50:52+08:00
 ====== 自制教程 ======
 Created 星期三 31 一月 2024
 
-file:///E:\%E4%BF%A1%E5%B7%A5%E6%89%80\%E6%96%87%E4%BB%B6\NSP%E9%9A%90%E7%A7%81%E7%BB%84%E5%85%B1%E4%BA%AB%E7%A9%BA%E9%97%B4%E9%85%8D%E7%BD%AE
+file:///E:\信工所\文件\NSP隐私组共享空间配置
 
 
 # NSP隐私组共享空间配置教程-内外网通用【进阶】
@@ -22,9 +22,9 @@ file:///E:\%E4%BF%A1%E5%B7%A5%E6%89%80\%E6%96%87%E4%BB%B6\NSP%E9%9A%90%E7%A7%81%
 
 在【简单】版教程中，我们说过，Windows中SMB客户端原生不支持指定其他端口。如果由于各种限制条件，我们必须使用其他端口，但又想享受原生支持带来的便利，就可以采用下面这套WinFsp+Rclone+NSSM的方案：
 
-- [WinFsp](https://winfsp.dev/)%EF%BC%9A%E7%BB%99windows%E6%89%93%E8%A1%A5%E4%B8%81%EF%BC%8C%E4%BD%BF%E5%85%B6%E6%94%AF%E6%8C%81%E8%87%AA%E5%AE%9A%E4%B9%89%E7%9A%84%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F%EF%BC%8C%E5%8C%85%E6%8B%AC%E6%88%91%E4%BB%AC%E9%9C%80%E8%A6%81%E7%9A%84%E5%8F%AF%E4%BB%A5%E8%87%AA%E5%AE%9A%E4%B9%89%E7%AB%AF%E5%8F%A3%E7%9A%84SMB%E5%8D%8F%E8%AE%AE%EF%BC%8C%E6%9C%89%E4%BA%86%E5%AE%83%E6%89%8D%E8%83%BD%E4%BD%BF%E7%94%A8%E4%B8%8B%E9%9D%A2%E7%9A%84Rclone。
-- [Rclone](https://rclone.org/)%EF%BC%9A%E4%B8%80%E4%B8%AA%E5%9F%BA%E4%BA%8E%E5%91%BD%E4%BB%A4%E8%A1%8C%E7%9A%84%E4%BA%91%E5%AD%98%E5%82%A8%E7%AE%A1%E7%90%86%E5%B7%A5%E5%85%B7%EF%BC%8C%E5%85%B6%E4%B8%AD%E5%8C%85%E6%8B%AC%E4%BA%86%E6%88%91%E4%BB%AC%E9%9C%80%E8%A6%81%E7%9A%84%E6%8C%82%E8%BD%BD%E7%A3%81%E7%9B%98%E5%8A%9F%E8%83%BD%EF%BC%88%E5%8D%B3%E6%98%A0%E5%B0%84%E9%A9%B1%E5%8A%A8%E5%99%A8%EF%BC%89%E3%80%82%E6%94%AF%E6%8C%81SMB%E3%80%81SFTP%E3%80%81HTTP%E3%80%81WebDAV%E3%80%81FTP%E7%AD%89%E5%90%84%E7%A7%8D%E5%8D%8F%E8%AE%AE%EF%BC%8C%E4%B9%9F%E6%94%AF%E6%8C%81Dropbox%E3%80%81Google Drive、Microsoft OneDrive、Yandex等各种云盘（可惜不支持百度网盘）。
-- [NSSM](https://nssm.cc/commands)%EF%BC%9Athe Non-Sucking Service Manager，可以把任意指令注册为服务，方便设置为开机自启动。
+- [WinFsp](https://winfsp.dev/)：给windows打补丁，使其支持自定义的文件系统，包括我们需要的可以自定义端口的SMB协议，有了它才能使用下面的Rclone。
+- [Rclone](https://rclone.org/)：一个基于命令行的云存储管理工具，其中包括了我们需要的挂载磁盘功能（即映射驱动器）。支持SMB、SFTP、HTTP、WebDAV、FTP等各种协议，也支持Dropbox、Google Drive、Microsoft OneDrive、Yandex等各种云盘（可惜不支持百度网盘）。
+- [NSSM](https://nssm.cc/commands)：the Non-Sucking Service Manager，可以把任意指令注册为服务，方便设置为开机自启动。
 
 这个方案简单来说就是给Windows套了一层皮，在我们无感使用的同时，又能让windows支持指定端口。
 
@@ -163,7 +163,7 @@ rclone文档：https://rclone.org/docs/
 
 `--poll-interval <seconds>`：Time to wait between polling for changes. Must be smaller than `dir-cache-time`. Only on supported remotes. Set to 0 to disable (default 1m0s)
 
-[[%E8%AF%A6%E8%A7%81https://rclone.org/commands/rclone_mount/#vfs-directory-cache]]
+%E8%AF%A6%E8%A7%81https://rclone.org/commands/rclone_mount/#vfs-directory-cache
 
 #### 确定配置文件
 

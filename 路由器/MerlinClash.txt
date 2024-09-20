@@ -51,6 +51,7 @@ https://mcreadme.gitbook.io/mc/faq/faq1#q17
 连不上clash管理面板：见faq，需要改chrome的flag：
 chrome://flags/#Insecure-origins-treated-as-secure
 enable: ''http://yacd.haishan.me,http://clash.razord.top,http://clash.metacubex.one,http://yacd.metacubex.one,http://router.asus.com''
+如果还是连不上，点网址左边的按钮——网站设置——不安全内容设为允许
 
 规则匹配序号在前的优先（自定义规则中约晚加入的越早匹配）
 

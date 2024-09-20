@@ -1,0 +1,12 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2024-09-15T19:44:41+08:00
+
+====== 桌面图标变白 ======
+Created 星期日 15 九月 2024
+
+https://blog.chrxw.com/archives/2021/12/17/1650.html
+
+因为移动steam路径导致图标找不到的话，
+确认图标本身还在F:\steam\Steam\steam\games中
+在steam里重新添加一边快捷方式，然后重启explorer即可

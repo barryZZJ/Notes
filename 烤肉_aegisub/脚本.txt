@@ -85,6 +85,7 @@ re.match(str,pat) re.find(str,pat)
 	match: 只匹配一次，捕获subgroup。返回match table数组，[1]是整个匹配结果的**match table**，后续的是捕获的subgroup的**match table**
 	无匹配则返回nil
 循环使用gmatch gfind，用法见网页
+re.split re.gsplit
 
 text, _ = pat:sub(text, repl)
 tab = pat:match(text)  注意下标从1开始
