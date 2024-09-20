@@ -1,0 +1,8 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2024-09-20T15:36:38+08:00
+
+====== wsl中安装gnome desktop ======
+Created 星期五 20 九月 2024
+
+https://gist.github.com/xitongsys/dec55d2e02db7475a47d585c3de23652
