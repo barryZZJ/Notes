@@ -5,13 +5,17 @@ Creation-Date: 2024-09-13T00:04:55+08:00
 ====== webdav ======
 Created 星期五 13 九月 2024
 
+客户端：
 支持映射驱动器，且可以指定端口，路径格式：
 http://url:port
 客户端需要改注册表，见下方注册事项。
 映射驱动器相关配置参数见 https://learn.microsoft.com/zh-cn/iis/publish/using-webdav/using-the-webdav-redirector
-
 第三方映射工具：RaiDrive
 
+服务端：
+考虑使用现成的 [[+Alist]]
+
+Windows自带服务器配置：
 ===== 配置流程记录： =====
 1. 搭建服务器：
 https://learn.microsoft.com/zh-cn/iis/install/installing-publishing-technologies/installing-and-configuring-webdav-on-iis
@@ -33,7 +37,7 @@ https://www.cnblogs.com/probezy/p/16854508.html
 1. 客户端允许通过基本身份认证与http协议服务器通信（默认只允许https，除非啥时候搭了个https的webdav，否则必须做）
 	a. 打开注册表——HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\WebClient\Parameters
 	b. BasicAuthLevel 的 1改为2（允许基本身份验证支持http。默认1只支持https）
-	c. 新建DWORD或修改 FileSizeLimitInBytes 值，十六进制下输入ffffffff（最大值），或者十进制下输入4294967295（最大值）。设置允许保存的文件大小
+	c. 新建DWORD或修改 FileSizeLimitInBytes 值，默认50MB。十六进制下输入ffffffff（最大值），或者十进制下输入4294967295（最大值）。设置允许保存的文件大小，否则挂载后超过该大小的文件会弹出“文件大小超出允许的限制，无法保存"
 	d. 重启webclient服务
 2. 服务器必须关闭Windows身份验证，只开启基本身份验证。
 	a. windows功能——Internet Information Services/万维网服务/安全性——勾选“基本身份验证”
@@ -45,7 +49,7 @@ https://www.cnblogs.com/probezy/p/16854508.html
 https://blog.csdn.net/taotaox/article/details/69907885
 调整最大上传大小：
 “管理”下的“配置编辑器”/点击下拉菜单：节(S)/选中system.webServer>security>requestFiltering/
-展开requestlimits，将maxAllowedContentLength的值（Byte）设为1073741824 即1GB
+展开requestlimits，将maxAllowedContentLength的值（Byte）设为1073741824 即1GB，默认30000000B≈28.6MB
 注：这样修改直接就能生效，无需重启iis或者服务器。
 
 增加列举文件夹数：（默认1w个左右）

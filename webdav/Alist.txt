@@ -1,0 +1,43 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2024-09-23T21:03:31+08:00
+
+====== Alist ======
+Created 星期一 23 九月 2024
+
+https://alist.nn.ci/zh/
+https://github.com/alist-org/alist
+
+可以在KoolShare软件中心安装到路由器中
+
+配置管理员：
+alist admin 自动生成密码
+密码为 2gcNZXWW
+alist admin set NEW_PASSWORD 更改管理员密码
+
+配置ip和端口：
+config.json中的"scheme"
+
+配置nssm：
+https://alist.nn.ci/zh/guide/install/manual.html#%E5%AE%88%E6%8A%A4%E8%BF%9B%E7%A8%8B
+
+alist server 前台运行
+alist start 后台运行
+alist stop / restart
+
+获取源文件/挂载webdav：在站点后加/dav
+http://yy.barryzzj.top:23881/dav
+<host>/dav/path/to/file
+
+登录后台管理：
+挂载网盘或本地目录：
+登录后下方“管理”/存储/驱动——本机存储
+挂载路径：url路径 如 /path
+根文件夹路径：本地路径
+
+添加或删除用户
+
+防盗链：开启后需带sign参数才能访问文件
+全局开启：后台——设置/全局——签名所有
+分别开启：后台——存储——编辑——启用签名
+
