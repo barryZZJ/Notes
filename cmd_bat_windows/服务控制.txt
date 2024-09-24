@@ -1,0 +1,9 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2024-09-24T15:12:47+08:00
+
+====== 服务控制 ======
+Created 星期二 24 九月 2024
+
+net stop xxx
+net start xxx

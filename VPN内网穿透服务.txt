@@ -29,6 +29,8 @@ Ping statistics for 172.40.0.1:
   Sent = 4, Received = 3, Lost = 1 (25% loss),
   Minimum = 59.60ms, Maximum = 65.21ms, Average = 61.77ms
 
+测速
+测试速度
 iperf3：用于测试下载速度，上传速度
 sudo apt install iperf3
 https://iperf.fr/iperf-download.php

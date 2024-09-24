@@ -15,8 +15,9 @@ alist admin 自动生成密码
 密码为 2gcNZXWW
 alist admin set NEW_PASSWORD 更改管理员密码
 
-配置ip和端口：
-config.json中的"scheme"
+config.json:
+配置ip和端口："scheme"
+"site_url" 建议留空，会影响预览时请求的地址$e_url，留空则使用当前浏览地址对应的host。
 
 配置nssm：
 https://alist.nn.ci/zh/guide/install/manual.html#%E5%AE%88%E6%8A%A4%E8%BF%9B%E7%A8%8B
@@ -25,19 +26,62 @@ alist server 前台运行
 alist start 后台运行
 alist stop / restart
 
-获取源文件/挂载webdav：在站点后加/dav
+挂载webdav：在站点后加/dav
 http://yy.barryzzj.top:23881/dav
 <host>/dav/path/to/file
 
-登录后台管理：
-挂载网盘或本地目录：
-登录后下方“管理”/存储/驱动——本机存储
-挂载路径：url路径 如 /path
+获取直链：右键——复制链接（即在站点后加/d）（获取直链）或加/dav（走webdav）
+获取直链后，不需要登陆即可获取，用于给别人分享。如果想设置有效期，可以开启签名。
+
+签名防盗链：开启后需带sign参数才能访问文件，通过sign检查是否过期，过期后地址失效。
+全局开启：
+设置/全局——签名所有 
+设置/全局——直链有效期（小时，默认0为永不过期） https://alist.nn.ci/zh/config/global.html#%E9%93%BE%E6%8E%A5%E8%BF%87%E6%9C%9F%E6%97%B6%E9%97%B4
+分别开启：
+存储——编辑——启用签名
+
+
+后台管理：
+设置/站点——允许挂载：可以关闭，不影响挂载webdav
+设置/预览——iframe预览：
+
+pdf预览：
+	https无法访问http搭建的alist，需要自己搭一个http能访问的pdf.js
+	http://yy.barryzzj.top:23222/pdf.js/web/viewer.html
+	注意默认禁止跨域请求，需要手改viewer.js的代码，在HOSTED_VIEWER_ORIGINS中添加搭建pdf.js的域名，如http://yy.barryzzj.top:23222
+	pdf 备用方案 https://g.alicdn.com/teambition/pdfviewer/1.2.0/index.html?file=$e_url
+
+office预览：
+默认的"Microsoft":"https://view.officeapps.live.com/op/view.aspx?src=$e_url",目前有404
+使用"xdocin":"https://view.xdocin.com/view?src=$e_url" 额外参数说明见https://view.xdocin.com/ 也支持pdf之类的预览，就可以不本地搭建了。
+
+用户权限：
+Webdav读取：（使用/dav路径挂载的webdav）只读
+Webdav管理：（使用/dav路径挂载的webdav）可写
+其他权限：http页面内的权限（不影响挂载webdav的操作权限）
+注意本地文件夹的权限设置也要通过
+
+用户基本路径：
+挂载的路径也是相对于这个基本路径，如设置基本路径为/nspshare后，
+挂载/dav直接就是nspshare的内容
+同时也支持自动跳转，访问/nspshare会自动跳转到/
+
+备份：
+注意恢复后测试一下用户能否登录，好像登录时会提示密码错误。
+
+=== 挂载 ===
+通用：登录后下方“管理”/存储/
+提取文件夹：把文件夹和文件分开显示，如果不选的话是会混在一起的
+
+挂载本地文件：
+驱动——本机存储
+挂载路径：url访问的路径 如 /path
 根文件夹路径：本地路径
+经测试加载视频速度没有SMB快
 
-添加或删除用户
-
-防盗链：开启后需带sign参数才能访问文件
-全局开启：后台——设置/全局——签名所有
-分别开启：后台——存储——编辑——启用签名
-
+挂载SMB：
+假设要挂载\\ip:port\a\b到url/c
+挂载路径：/c
+根文件夹路径：b （如果要挂载\a这里填 .）
+地址：ip:port
+分享名称：a

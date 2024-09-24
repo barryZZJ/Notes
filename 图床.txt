@@ -1,0 +1,35 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2024-09-24T20:27:33+08:00
+
+====== 图床 ======
+Created 星期二 24 九月 2024
+
+
+=== 京东图床： ===
+给京东客服 https://jdcs.jd.com/jdchat/custom.action?entry=jd_fwztc 发图片，在network中找到jpg的request，
+把图片链接的''https://dd-static.jd.com/ddimg/jfs'' 换成 ''https://img30.360buyimg.com/imgzone/jfs''
+''https://img30.360buyimg.com/imgzone/jfs''/t1/187891/8/34091/2198087/643b68adFa70f0951/07314a76fb786825.png
+
+京东商品页查看高清图：把n5改为imgzone
+
+
+=== 使用自建的alist ===
+需要放在不开启签名的路径下
+
+=== 可用的反代服务器 图床 ===
+https://github.com/DIYgod/RSSHub/issues/2769
+# duckduckgo必须翻墙才能使用
+https://proxy.duckduckgo.com/iu/?u=${href}
+# weserv不支持微博图片，支持picuki【加上后缀 _ue 则会对其进行 URL 编码】
+https://images.weserv.nl?url=${href}
+# wp不支持twitter图片，支持picuki，国内访问貌似快一些
+https://i0.wp.com/${host}${pathname}
+https://i1.wp.com/${host}${pathname}
+https://i2.wp.com/${host}${pathname}
+https://i3.wp.com/${host}${pathname}
+e.g.
+https://i0.wp.com/docs.rsshub.app/logo.png
+https://i1.wp.com/blog.skk.moe/img/suka-favicon.png
+https://i2.wp.com/rixcloud.com/static/img/hulu-comment.8038550.png
+https://i3.wp.com/i.loli.net/2019/04/23/5cbeb7e41414c.png

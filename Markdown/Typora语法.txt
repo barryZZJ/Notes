@@ -2,6 +2,13 @@ Content-Type: text/x-zim-wiki
 Wiki-Format: zim 0.6
 Creation-Date: 2022-09-02T15:23:06+08:00
 
+导入其他markdown文件
+[](path/to/other.md)
+或
+{% include path/to/other-file.md %}
+或
+@import "./part1/math_base.md"
+
 @[TOC](这里写自定义目录标题)
 
 # 欢迎使用Markdown编辑器
