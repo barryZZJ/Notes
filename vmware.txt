@@ -1,0 +1,34 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2024-09-25T13:46:36+08:00
+
+====== vmware ======
+Created 星期三 25 九月 2024
+
+桥接模式，MAC设为F4:F1:9E:19:8D:75
+
+.vmx文件：
+修改硬盘厂商：
+nvme0:0.productID = "Lenovo X800 NVMe M.2 2280s 1T SSD"
+nvme0:0.vendorID = "Lenovo"
+or
+scsi0:0.productID = "TOSHIBA DT01ACA200"
+scsi0:0.vendorID = "Lenovo"
+
+修改（机械硬盘？）序列号：
+disk.EnableUUID = TRUE
+在.vmdk里：
+修改ddb.uuid
+00 00 00 06 23 07 00 10-3a 5a 27 03 9a 00 05 11
+
+https://superuser.com/questions/855854/vmware-windows-7-change-system-manufacturer-and-system-model
+制造商、型号
+SMBIOS.reflectHost = TRUE
+or
+不行的话再加上
+SMBIOS.noOEMStrings = "TRUE"
+smbios.addHostVendor = "TRUE"
+or
+改为
+SMBIOS.use12CharSerialNumber = "TRUE"
+serialNumber = "myserialnumb"

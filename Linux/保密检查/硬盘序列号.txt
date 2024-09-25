@@ -9,7 +9,9 @@ Created 星期六 22 七月 2023
 wmic diskdrive get serialnumber
 
 linux:
+所有程序-工具-磁盘里能看到
 lsblk --nodeps -no serial /dev/sda
-（所有程序-磁盘里能看到）
+lsblk -o NAME,SERIAL
+sudo lshw -class disk | grep serial
 
-X3AYLS4GS
+00000006230700103A5A27039A000511
