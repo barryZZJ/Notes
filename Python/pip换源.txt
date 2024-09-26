@@ -5,3 +5,9 @@ Wiki-Format: zim 0.6
 python -m pip install --upgrade pip -i https://pypi.tuna.tsinghua.edu.cn/simple
 
 python -m pip config set global.index-url https://pypi.tuna.tsinghua.edu.cn/simple
+
+指定源
+pip install xxx -i https://...
+
+默认源
+https://pypi.org/simple
