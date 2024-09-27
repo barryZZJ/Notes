@@ -1,0 +1,13 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2024-09-27T20:08:48+08:00
+
+====== tensorboard记录训练参数 ======
+Created 星期五 27 九月 2024
+
+pip install tensorboard
+
+self.writer = SummaryWriter(comment=comment) if not eval else None
+self.writer.add_scalar('Train: Loss', avg_loss, self.episodes)
+
+tensorboard --logdir runs --host 0.0.0.0

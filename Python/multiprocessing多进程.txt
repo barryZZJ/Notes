@@ -56,7 +56,7 @@ worker接受多个参数，用starmap，somlist里的每个元素是个元组，
 1.2 手动指定每个核干的活的数量，需要手动把任务分成一个个chunk。此时worker为总循环的子集。
 单个参数：
 ''somlist1 = [arg1a, arg1b, ...]''
-''def worker1(chunks):''
+''def worker(chunks):''
 	''for arg1 in chunks:''
 		''foo(arg1)''
 ''chunks = np.array_split(somelist1, cpu_count())''
@@ -65,12 +65,15 @@ worker接受多个参数，用starmap，somlist里的每个元素是个元组，
 
 多个参数：
 ''somlist2 = [(arg1a, arg2a, arg3a), (arg1b, arg2b, arg3b), ...]''
-''def worker2(arg1, arg2, arg3):''
+''def worker(arg1, arg2, arg3):''
 	''foo(arg1, arg2, arg3)''
 ''chunks = np.array_split(somelist2, cpu_count())''
 ''with Pool(processes=cpu_count()) as pool:''
-	''pool.starmap(worker2, chunks)''
+	''pool.starmap(worker, chunks)''
 
+p = pool()
+with p:
+	p.map()
 
 2. 经典 Process
 与多线程类似，继承Process，重写run函数，外部调用start()
