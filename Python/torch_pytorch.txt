@@ -1,0 +1,87 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2024-09-27T12:53:17+08:00
+
+====== torch pytorch ======
+Created 星期五 27 九月 2024
+
+torch.multiprocessing
+https://pytorch.org/docs/stable/notes/multiprocessing.html
+https://pytorch.org/docs/stable/multiprocessing.html
+
+可能存在冒险问题，模型使用了旧的梯度。
+但是Hogwild算法证明SGD用旧的梯度也不影响效果 https://proceedings.neurips.cc/paper_files/paper/2011/file/218a0aefd1d1a4be65601cc6ddc1520e-Paper.pdf
+其他情况下需要手动加锁
+或者不共享模型，定期fedavg同步state_dict
+
+
+避免资源过度占用：
+N = # of vCPUs  (16 Logical Processor x 8 Cores) x 1 CPU = 128 vCPU
+M = # of processes
+
+torch.set_num_threads(floor(N/M))  # 假的， N应该等于物理处理器个数
+
+注意在cuda上的model需要先转回cpu才能传给worker，传回的时候也是。
+
+样例
+{{{code: lang="python3" linenumbers="False"
+import torch
+import torch.nn as nn
+import torch.optim as optim
+import torch.multiprocessing as mp
+from torch.utils.data import DataLoader, TensorDataset
+
+# Define a simple neural network model
+class SimpleModel(nn.Module):
+    def __init__(self):
+        super(SimpleModel, self).__init__()
+        self.fc1 = nn.Linear(10, 50)
+        self.fc2 = nn.Linear(50, 1)
+
+    def forward(self, x):
+        x = torch.relu(self.fc1(x))
+        x = self.fc2(x)
+        return x
+
+# Define the training function
+def train(rank, model, data_loader, optimizer, criterion, epochs):
+    for epoch in range(epochs):
+        for inputs, targets in data_loader:
+            optimizer.zero_grad()
+            outputs = model(inputs)
+            loss = criterion(outputs, targets)
+            loss.backward()
+            optimizer.step()
+            print(f"Process {rank}, Epoch {epoch}, Loss: {loss.item()}")
+
+# Define the worker function
+def worker(rank, model, data, targets, epochs):
+    torch.manual_seed(rank)
+    data_loader = DataLoader(TensorDataset(data, targets), batch_size=32, shuffle=True)
+    optimizer = optim.SGD(model.parameters(), lr=0.01)
+    criterion = nn.MSELoss()
+    train(rank, model, data_loader, optimizer, criterion, epochs)
+
+if __name__ == "__main__":
+    # Initialize the model and share it across processes
+    model = SimpleModel()
+    model.share_memory()
+
+    # Generate some random data
+    data = torch.randn(1000, 10)
+    targets = torch.randn(1000, 1)
+
+    # Number of processes and epochs
+    num_processes = 4
+    epochs = 5
+
+    # Start multiple processes
+    processes = []
+    for rank in range(num_processes):
+        p = mp.Process(target=worker, args=(rank, model, data, targets, epochs))
+        p.start()
+        processes.append(p)
+
+    for p in processes:
+        p.join()
+}}}

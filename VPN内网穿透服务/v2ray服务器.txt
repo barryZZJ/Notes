@@ -12,3 +12,47 @@ https://github.com/v2fly/v2ray-core/releases
 下载windows版v2ray内核 （show all assets）
 在config.json中配置，教程见 https://www.v2fly.org/config/overview.html
 
+配置v2ray订阅链接：
+批量导出订阅内容至剪贴板
+或
+批量导出分享URL至剪贴板——全部编码成一个base64，作为订阅链接的返回值即可
+
+v2ray转clash：
+ACL4SSR 等订阅转换工具，或手写
+{{{code: lang="yaml" linenumbers="False"
+mixed-port: 7890
+allow-lan: true
+bind-address: '*'
+mode: rule
+log-level: info
+external-controller: '127.0.0.1:9090'
+dns:
+    enable: true
+    ipv6: false
+    default-nameserver: [223.5.5.5, 119.29.29.29]
+    enhanced-mode: fake-ip
+    fake-ip-range: 198.18.0.1/16
+    use-hosts: true
+    nameserver: ['https://doh.pub/dns-query', 'https://dns.alidns.com/dns-query']
+    fallback: ['tls://1.0.0.1:853', 'https://cloudflare-dns.com/dns-query', 'https://dns.google/dns-query']
+    fallback-filter: { geoip: true, ipcidr: [240.0.0.0/4, 0.0.0.0/32] }
+proxies:
+    - {name: "barryoffice", server: office.barryzzj.top, port: 10808, type: socks5}
+proxy-groups:
+  - name: 工位 Global
+    type: select
+    proxies:
+      - barryoffice
+      - DIRECT
+rules:
+    - 'DST-PORT,24489,DIRECT'
+    - 'DST-PORT,23389,DIRECT'
+    - 'IP-CIDR,192.168.0.0/16,DIRECT'
+    - 'IP-CIDR,192.168.50.0/24,DIRECT'
+    - 'DOMAIN-SUFFIX,barryzzj.top,DIRECT'
+    - 'DOMAIN-SUFFIX,router.asus.com,DIRECT'
+    - 'DOMAIN-SUFFIX,local,DIRECT'
+    - 'IP-CIDR,127.0.0.0/8,DIRECT'
+    - 'MATCH,工位 Global'
+
+}}}

@@ -23,6 +23,8 @@ https://docs.python.org/3.9/library/multiprocessing.shared_memory.html
 
 【BUG】：windows下共享内存代码有bug，shm.close()的行为不符合预期，会导致共享内存提前释放，从而其他进程无法读取共享内存。传numpy数组替代方案：使用np.save，把共享内存改为共享外存，缺点是会增加很多IO时间。
 
+【可以试试torch.Tensor的shared_memory_()】
+
 要想传numpy数组，可以使用buffer实现，本质上是对字节流的编码/解码：
 {{{code: lang="python3" linenumbers="False"
 def create_shared_array(arr):
