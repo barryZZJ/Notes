@@ -21,6 +21,18 @@ disk.EnableUUID = TRUE
 修改ddb.uuid
 00 00 00 06 23 07 00 10-3a 5a 27 03 9a 00 05 11
 
+
+Lenovo X800 NVMe M.2 2280s 1T SSD    0000_0006_2307_0010_3A5A_2703_9A00_0511
+TOSHIBA DT01ACA200                LENOVO    X3AYLS4GS
+
+00000006230700103A5A27039A000511
+00 00 00 06 23 07 00 10-3A 5A 27 03 9A 00 05 11
+
+x3 ay ls 4g s
+
+修复vmdk：
+vmware-vdiskmanager -R "虚拟磁盘路径"
+
 https://superuser.com/questions/855854/vmware-windows-7-change-system-manufacturer-and-system-model
 制造商、型号
 SMBIOS.reflectHost = TRUE

@@ -1,0 +1,11 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2024-09-27T10:27:52+08:00
+
+====== FL框架 ======
+Created 星期五 27 九月 2024
+
+https://github.com/shaoxiongji/federated-learning
+
+你要是在non-iid数据上做实验 可以参考 https://github.com/xyjixyjixyji/FL-NonIID-algorithms-and-benchmark
+这里边有一些聚合时的优化 能提升模型精度

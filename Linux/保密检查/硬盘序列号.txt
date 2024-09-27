@@ -6,7 +6,7 @@ Creation-Date: 2023-07-22T18:22:44+08:00
 Created 星期六 22 七月 2023
 
 硬盘序列号
-wmic diskdrive get serialnumber
+wmic diskdrive get Model,name,serialnumber
 
 linux:
 所有程序-工具-磁盘里能看到
@@ -14,4 +14,4 @@ lsblk --nodeps -no serial /dev/sda
 lsblk -o NAME,SERIAL
 sudo lshw -class disk | grep serial
 
-00000006230700103A5A27039A000511
+X3AYLS4GS
