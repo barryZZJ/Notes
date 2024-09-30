@@ -1,0 +1,15 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2024-09-30T13:32:06+08:00
+
+====== pnpm ======
+Created 星期一 30 九月 2024
+
+换源
+pnpm config set registry https://registry.npmmirror.com
+恢复 pnpm config set registry https://registry.npmjs.org
+
+
+pnpm build
+pnpm start
+pnpm run dev

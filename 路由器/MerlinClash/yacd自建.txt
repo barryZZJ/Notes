@@ -1,0 +1,8 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2024-09-30T16:30:11+08:00
+
+====== yacd自建 ======
+Created 星期一 30 九月 2024
+
+https://github.com/haishanh/yacd

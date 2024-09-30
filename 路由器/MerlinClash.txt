@@ -65,6 +65,10 @@ enable: ''http://yacd.haishan.me,http://clash.razord.top,http://clash.metacubex.
    https://subconverter.herokuapp.com/
    https://api.dler.io/
    https://api.wcc.best/
+自建后端：
+https://github.com/tindy2013/subconverter/releases
+后端地址：自定义：http://192.168.50.200:25500/
+
 
 自定义规则解码：
 rule_parser.py

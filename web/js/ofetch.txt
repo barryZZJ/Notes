@@ -1,0 +1,16 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2024-09-30T14:52:34+08:00
+
+====== ofetch ======
+Created 星期一 30 九月 2024
+
+https://github.com/unjs/ofetch
+
+resp = await ofetch(url);
+
+指定编码格式：
+const resp = await ofetch(baseUrl, {
+	responseType: 'arrayBuffer'
+});
+const data = iconv.decode(Buffer.from(resp), 'shiftjis');

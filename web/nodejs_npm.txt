@@ -1,4 +1,5 @@
 Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
 
 nodejs为js语言实现的后端服务器。
 
@@ -7,10 +8,16 @@ koa轻量级web框架。https://www.ruanyifeng.com/blog/2017/08/koa.html
 # install dependencies
 cnpm install
 
-# serve with hot reload at localhost:8080
+调试模式 # serve with hot reload at localhost:8080
 npm run dev
+
+正常启动
+npm run start
 
 # build for production with minification
 npm run build
 
 cnpm install node-sass@latest 
+
+代理：
+npm config set proxy=http://127.0.0.1:3333 https-proxy=http://127.0.0.1:3333

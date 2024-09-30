@@ -8,4 +8,12 @@ Created 星期六 12 八月 2023
 https://docs.rsshub.app/joinus/new-rss/prerequisites.html#an-zhuang-node-js
 
 [[:web:js:got]]
+[[:web:js:ofetch]]
 [[:web:js:cheerio]]
+
+调试模式：
+pnpm run dev
+npm run dev
+
+ctx.set('json', {...});
+?format=debug.json

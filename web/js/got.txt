@@ -5,6 +5,8 @@ Creation-Date: 2023-05-02T16:37:47+08:00
 ====== got ======
 Created 星期二 02 五月 2023
 
+改用ofetch库
+
 https://github.com/sindresorhus/got
 
 设置proxy：

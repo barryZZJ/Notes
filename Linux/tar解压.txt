@@ -11,3 +11,6 @@ tar -xjvf x.tar.bz2
 tar -xZvf x.tar.Z
 unrar e x.rar
 unzip x.zip
+
+压缩：
+tar -czvf file.tar.gz folder
