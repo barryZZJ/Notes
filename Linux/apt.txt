@@ -54,6 +54,14 @@ PS：tar命令的两个参数解释：
 -j ：是否同时具有 bzip2 的属性？亦即是否需要用 bzip2 压缩？
 
 换源
+24版：
+软件和更新 - Ubuntu软件 - 下载自 
+选择最佳服务器，或手动选：
+阿里云 mirrors.aliyun.com
+腾讯云 mirrors.cloud.tencent.com
+华为云 mirrors.huaweicloud.com
+
+22版
 ''sudo nano /etc/apt/sources.list''
 换源后 sudo apt update
 

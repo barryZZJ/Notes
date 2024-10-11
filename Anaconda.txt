@@ -20,5 +20,15 @@ conda env remove -n 名字
 
 conda info -e
 
+环境迁移：
+需要同一平台同一系统
+1. 直接拷贝env下的文件夹到目标文件系统
+2. 使用 conda-pack
+	a. conda install conda-pack
+	b. conda pack -n <env> 生成.tar.gz
+	c. 拷贝到目标系统的env下
+	d. tar -zxvf <file>.tar.gz
+
+
 
 
