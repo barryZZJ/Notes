@@ -1,0 +1,8 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2024-10-09T21:43:57+08:00
+
+====== 调试手机远程调试 ======
+Created 星期三 09 十月 2024
+
+https://developer.chrome.com/docs/devtools/remote-debugging?hl=zh-cn

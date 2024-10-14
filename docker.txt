@@ -7,9 +7,6 @@ Created 星期四 30 三月 2023
 
 https://docs.docker.com/engine/install/ubuntu/#install-using-the-repository
 
-换源：
-
-
 制作的是镜像，一个镜像可以生成多个容器
 
 注意默认无法与宿主机通信

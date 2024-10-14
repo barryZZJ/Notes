@@ -13,7 +13,7 @@ Created 星期五 02 九月 2022
 === Caches: ===
 %''USERPROFILE''%\.cache
 ''pip cache purge'': %localappdata%\pip\cache 
-''npm cache clean --force'' : %localappdata%\npm-cache\_cacache
+''npm cache clean --force'' : %localappdata%\npm-cache\_cache
 gradle cache: ''rd /s /q %USERPROFILE%\.gradle\caches''
 JetBrains JB 系列：
 	File——Invalidate Caches
@@ -27,7 +27,6 @@ chrome: 右上角...——删除浏览数据——过去4周
 === logs: E:\Coding\scripts\clean_logs.bat ===
 Intel集显：C:\ProgramData\Intel\Intel Extreme Tuning Utility\Logs （超大）
 AMD集显：C:\Windows\System32\AMD\EeuDumps（超大）
-%appdata%\MySQL\Workbench\log
 %USERPROFILE%\java_error_in*.hprof
 
 === files: spacesniffer ===

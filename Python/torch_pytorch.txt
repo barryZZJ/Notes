@@ -21,7 +21,23 @@ M = # of processes
 
 torch.set_num_threads(floor(N/M))  # 假的， N应该等于物理处理器个数
 
-注意在cuda上的model需要先转回cpu才能传给worker，传回的时候也是。
+cuda tensor共享：（有BUG，在windows上共享后读取的值全为0，只能先转回cpu传给worker，在worker转成cuda，处理完后再转成cpu返回）
+mp.set_start_method('spawn', force=True)
+传入：
+调用model.share_memory() 和 Tensor.share_memory_()。model作为args传入即可。可以配合pool.map等使用
+返回：
+1. worker内直接return结果即可
+2. 使用 mp.Process(target=, args=) 构建子进程，使用mp.Queue()和mp.Event()作为args传入。
+	worker函数内
+	''result = model.<param>.grad.detach()''
+	''queue.put(result), event.wait()''
+	主进程内
+	''p.start()''
+	''result=queue.get()''
+	''result.clone()  # device不变''
+	''del result''
+	''event.set()''
+注意如果多个子进程，返回结果需要包含ind，避免event索引正确
 
 样例
 {{{code: lang="python3" linenumbers="False"

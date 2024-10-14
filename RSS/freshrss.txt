@@ -10,11 +10,30 @@ http://freshrss.github.io/FreshRSS/
 注意URL里不能有中文，要用UTF8编码后的%xx
 上白石萌音：%E4%B8%8A%E7%99%BD%E7%9F%B3%E8%90%8C%E9%9F%B3
 
-api地址
-http://yy.barryzzj.asia:28800/api/greader.php
-
-barryzzj
-nV0bq4PXEd
-
 update:
 docker-compose pull
+
+api地址
+(更全)google reader https://freshrss.github.io/FreshRSS/en/developers/06_GoogleReader_API.html
+FeedMe阅读器设置入口网址: http://yy.barryzzj.top:28800/api/greader.php
+
+fever https://freshrss.github.io/FreshRSS/en/developers/06_Fever_API.html
+代码使用api网址 http://yy.barryzzj.top:28800/api/fever.php
+
+配置API：
+Authentication - 勾选 Allow API access
+Profile - API password
+
+验证：
+barryzzj
+api密码 WOffP0rwfpMg44iA$fAD
+api_key=md5(username + ':' + api_password)  == f770ddc7e4de203bba2b33aa30274552
+
+接口：
+通用参数：body={'api_key': api_key}
+?api 查询api开放性
+?feeds 所有订阅源json列表。每个订阅源有id: int, title: str等
+?groups 所有分组（category）json列表。每个分组有groups: {id: int, title: str}, feeds_groups: 
+
+修改配置文件：
+/var/lib/docker/volumes/freshrss_data/_data/config.php

@@ -45,7 +45,7 @@ http://yy.barryzzj.top:23881/dav
 设置/站点——允许挂载：可以关闭，不影响挂载webdav
 设置/预览——iframe预览：
 
-pdf预览：
+pdf预览：pdfjs
 	https无法访问http搭建的alist，需要自己搭一个http能访问的pdf.js
 	http://yy.barryzzj.top:23222/pdf.js/web/viewer.html
 	注意默认禁止跨域请求，需要手改viewer.js的代码，在HOSTED_VIEWER_ORIGINS中添加搭建pdf.js的域名，如http://yy.barryzzj.top:23222
