@@ -24,16 +24,36 @@ conda info -e
 需要同一平台同一系统
 1. 直接拷贝env下的文件夹到目标文件系统
 2. 使用 conda-pack
-	a. conda install conda-pack
+	a. conda install conda-pack -y
 	b. conda pack -n <env> 生成.tar.gz
 	c. 拷贝到目标系统的env下
-	d. tar -zxvf <file>.tar.gz
+	d. mkdir <env> && tar -zxvf <env>.tar.gz -C <env>
 
 换源
 conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/free/
-conda config --add channels https://mirrors.aliyun.com/pypi/simple/
 conda config --set show_channel_urls yes
-
 conda config --show channels
 
+conda config --add channels defaults
+conda config --add channels conda-forge
+~/.condarc中调整顺序，给与conda-forge最高优先级
 
+conda-forge 镜像:
+conda config --set custom_channels.conda-forge https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud/
+
+conda config --remove channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/free/
+
+安装库时指定channel：
+-c conda-forge
+
+导出依赖
+conda env export > environment.yml
+安装
+conda env create -f environment.yml -n name
+或 conda env update -f environment.yml
+conda install --file requirements.txt
+
+install:
+--freeze-installed, --no-update-deps Do not update or change already-installed dependencies. （经测试不是绝对的，参考下面的package pinning）
+pin packages： https://docs.conda.io/projects/conda/en/latest/user-guide/tasks/manage-pkgs.html#preventing-packages-from-updating-pinning
+-d, --dry-run

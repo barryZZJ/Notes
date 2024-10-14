@@ -22,6 +22,8 @@ debug模式：
 -e, --editable <path/url>
 Install a project in editable mode (i.e. setuptools “develop mode”) from a local project path or a VCS url.
 pip install -e <path/url>
+--no-deps 不安装dependencies
+-I, --ignore-installed
 
 解决IED无法解析debug模式安装的包：
 pip install -e . --config-settings editable_mode=compat
