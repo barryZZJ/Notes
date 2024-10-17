@@ -36,4 +36,5 @@ api_key=md5(username + ':' + api_password)  == f770ddc7e4de203bba2b33aa30274552
 ?groups 所有分组（category）json列表。每个分组有groups: {id: int, title: str}, feeds_groups: 
 
 修改配置文件：
-/var/lib/docker/volumes/freshrss_data/_data/config.php
+/root/freshrss/mount/data
+/root/freshrss/mount/extensions
