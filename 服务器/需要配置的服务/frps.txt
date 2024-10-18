@@ -29,8 +29,8 @@ sudo ./frps.sh install  {install|uninstall|update|config}
 如果报错ine 45: [: 2431: binary operator expected，修改/usr/bin/frps，把$PID全部替换为${PID}
 
 手动配置：
-1. 下载frps，放入/usr/bin ln -s frps /usr/bin
-2. 写好配置文件（见下），放入/usr/local/frps/frps.ini
+1. 下载frps，放入/usr/bin ln -s ~/frps/frps /usr/bin
+2. 写好配置文件（见下），放入/usr/local/frps/frps.ini ln -s ~/frps/frps.ini /usr/local/frps/frps.ini
 3. 注册为服务：
 https://gofrp.org/docs/setup/systemd/
 apt install systemd
