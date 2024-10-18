@@ -16,9 +16,9 @@ c = conn.cursor()
 conn.close()
 
 # CREATE
-c.execute('CREATE TABLE IF NOT EXISTS numbers (id integer primary key, name text NOT NULL)')
+c.execute('CREATE TABLE IF NOT EXISTS tablename (id integer primary key, name text NOT NULL)')
 自增：使用内置的ROWID列 https://sqlite.org/autoinc.html%EF%BC%8C%E9%BB%98%E8%AE%A4%E4%BB%8E1%E5%BC%80%E5%A7%8B
-多个主键：CREATE TABLE something (
+多个主键：CREATE TABLE tablename (
   column1 INTEGER NOT NULL,
   column2 INTEGER NOT NULL,
   value,
@@ -31,6 +31,7 @@ conn.commit()
 # SELECT
 注意如果在循环体中有新的数据库操作，cursor的值会改变，导致循环立即终止，因此需要完整复制一份再遍历
 cursor = c.execute("SELECT id, name, address, salary from COMPANY")
+cursor.execute('SELECT * FROM table WHERE key = ?', (val,))  # val会代入?
 循环：
 for row in cursor: # 无论field的输入，都返回元组，数据类型取决于表定义时使用的类型
    print "ID = ", row[0]
@@ -57,6 +58,7 @@ _: 单个字符
 # INSERT
 INSERT INTO COMPANY (ID,NAME,AGE,ADDRESS,SALARY) VALUES (1, 'Paul', 32, 'California', 20000.00 );
 INSERT INTO COMPANY VALUES (7, 'James', 24, 'Houston', 10000.00 );
+cursor.execute('INSERT INTO table (key, key) VALUES(?, ?)', (val, val))
 
 实现insert if not exists else update:
 1.设置主键后，使用insert or replace。默认其他域会变为默认值。替换与主键匹配的其他域值 https://stackoverflow.com/a/23673922
@@ -80,8 +82,11 @@ for row in con.execute("SELECT md5(?)", (b"foo",)):
 }}}
 
 
-
 注意每次commit都会占用一次磁盘IO，因此可以的话尽量执行一组操作后一次性commit
 
 import报错：
 去SQLite官网去下载sqlite3，网址为：https://www.sqlite.org/download.html%EF%BC%8C%E4%B8%8B%E8%BD%BD%E5%AE%8C%E4%B9%8B%E5%90%8E%EF%BC%8C%E5%B0%86sqlite3.dll%E8%A7%A3%E5%8E%8B%E8%87%B3anaconda%E5%AF%B9%E5%BA%94%E7%8E%AF%E5%A2%83%E4%B8%8B%E7%9A%84DDLs%E7%9B%AE%E5%BD%95
+
+多线程处理：
+每个thread需要单独开一个connection，不能在线程间共享。默认是threadsafe的，会把操作串行化。
+sqlalchemy

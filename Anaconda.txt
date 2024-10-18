@@ -34,6 +34,8 @@ conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/f
 conda config --set show_channel_urls yes
 conda config --show channels
 
+conda config --remove channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/free/
+
 conda config --add channels defaults
 conda config --add channels conda-forge
 ~/.condarc中调整顺序，给与conda-forge最高优先级
@@ -41,10 +43,11 @@ conda config --add channels conda-forge
 conda-forge 镜像:
 conda config --set custom_channels.conda-forge https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud/
 
-conda config --remove channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/free/
-
 安装库时指定channel：
 -c conda-forge
+-c https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud/conda-forge/
+可以指定多个channel，优先级从左到右
+conda config --set channel_priority strict 严格保证优先级顺序 默认为flexible
 
 导出依赖
 conda env export > environment.yml
@@ -57,3 +60,4 @@ install:
 --freeze-installed, --no-update-deps Do not update or change already-installed dependencies. （经测试不是绝对的，参考下面的package pinning）
 pin packages： https://docs.conda.io/projects/conda/en/latest/user-guide/tasks/manage-pkgs.html#preventing-packages-from-updating-pinning
 -d, --dry-run
+--no-deps 不改变依赖

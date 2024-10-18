@@ -39,10 +39,10 @@ ssh-keygen -t rsa
 Linux:
 1. 安装：sudo apt install openssh-server
 2. 把id_rsa.pub里的内容写入~/.ssh/authorized_keys
-3. sudo nano /etc/ssh/sshd_config文件，设置
+3. sudo nano /etc/ssh/sshd_config文件，设置（默认是yes，不需要动，也不用重启ssh服务）
 PubkeyAuthentication yes
 AuthorizedKeysFile .ssh/authorized_keys
-4. 最后重启ssh服务 sudo service sshd restart
+并重启ssh服务 sudo service sshd restart
 
 windows ssh 服务器: OpenSSH
 1. 添加功能部分搜索openssh
@@ -95,7 +95,7 @@ Match User sshadmin
 ''AuthorizedKeysFile	.ssh/authorized_keys''
 #并保留（在最下面）：
 ''Match Group administrators''
-''      AuthorizedKeysFile __PROGRAMDATA__/ssh/administrators_authorized_keys''
+	  ''AuthorizedKeysFile __PROGRAMDATA__/ssh/administrators_authorized_keys''
 
 **添加客户端密钥：**https://learn.microsoft.com/en-us/windows-server/administration/openssh/openssh_server_configuration#authorizedkeysfile
 1. 客户端生成密钥 ssh-keygen -t rsa

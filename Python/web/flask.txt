@@ -37,7 +37,8 @@ route:
 https://flask.palletsprojects.com/en/latest/api/#flask.Flask.add_url_rule
 app.add_url_rule('/', view_func=func, methods=['GET','POST'])
 
-return '', 404  # 第二个参数可以指定状态码
+config: https://flask.palletsprojects.com/en/3.0.x/config/
+app.config[key] = val
 
 url_for(func_name)  生成指定函数名对应的url，名称参数作为URL路径（如果是route变量）或query string
 
@@ -50,6 +51,22 @@ request.args.get('key', '') query string
 .data
 .get_data
 .get_json
+
+=== 响应 ===
+return '', 404  # (可选)第二个参数可以指定状态码
+return jsonify(dict), 404
+response = make_response()
+return response
+
+=== Cookie: ===
+response.set_cookie(key, val)
+
+=== Session ===
+from flask import session
+app.secret_key = 'your_secret_key'
+set: session[key] = val
+get: session[key]
+客户端的val会被自动加密
 
 ===== 启动： =====
 1. 直接运行py文件
@@ -68,6 +85,7 @@ js解析：response.data.result
 所有bp最后全部在app.py中import，然后app.register_blueprint
 https://flask.palletsprojects.com/en/latest/tutorial/views/
 
+获取app对象：
 from flask import current_app
 
 
@@ -78,7 +96,7 @@ from flask import current_app
 pip install gunicorn
 gunicorn pyfilename:appname -b 0.0.0.0:12345
 ===== = =====
-===== Windows: waitress =====
+===== Windows/Linux: waitress =====
 https://docs.pylonsproject.org/projects/waitress/en/latest/arguments.html#arguments
 pip install waitress
 waitress.serve(app, host=, port=)

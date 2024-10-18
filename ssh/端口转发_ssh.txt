@@ -1,0 +1,13 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2024-10-14T09:59:32+08:00
+
+====== 端口转发 ssh ======
+Created 星期一 14 十月 2024
+
+本地->服务器
+ssh -L [local_host:][local_port]:[remote_host]:[remote_port] [user]@[ssh_server]
+ssh -L 8080:10.26.70.13:80 user@10.26.70.13
+
+服务器->本地
+ssh -R [remote_port]:[local_host]:[local_port] [user]@[ssh_server]
