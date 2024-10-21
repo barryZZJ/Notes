@@ -11,7 +11,7 @@ https://dormousehole.readthedocs.io/en/latest/
 
 ''from flask import Flask''
 
-''app = Flask(__name__)  # __main__''
+''app = Flask(__name__)  # __name__ == <file_name> if run using flask''
 
 ''@app.route('/WW_verify_Ua7WxLfBndo8F2SR.txt')''
 ''def verify_file():''
@@ -73,6 +73,8 @@ get: session[key]
 2. flask --app pyname run -p PORT -h 0.0.0.0  文件名为app.py时不用加--app参数
 其他参数:
 --debug
+
+使用flask启动时，__name__ == pyname，所以不会触发__name__ == '__main__'，把要想执行的代码放到全局中
 
 abort(404) raise一个HTTPException，后面的代码不会运行 （服务器不会停止
 
