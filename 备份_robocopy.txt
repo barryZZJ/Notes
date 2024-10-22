@@ -2,7 +2,7 @@ Content-Type: text/x-zim-wiki
 Wiki-Format: zim 0.6
 Creation-Date: 2023-11-16T15:50:03+08:00
 
-====== 备份 ======
+====== 备份 robocopy ======
 Created 星期四 16 十一月 2023
 
 文件备份，比如用 rclone 13, Duplicacy 11, syncthing 10 等工具多端同步备份
@@ -38,6 +38,10 @@ ROBOCOPY source destination /MIR /LOG:log.txt /R:3 /W:60
 /MOT:m :: 监视源；如果更改，在 m 分钟时间后再次运行。
 /RH:hhmm-hhmm :: Specifies run times when new copies can be started。指定Robocopy开始的时间段，在这个时间段外，拷贝会被暂停。
 
+重试
+/R:n :: 失败副本的重试次数: 默认为 1 百万。
+/W:n :: 两次重试间的等待时间: 默认为 30 秒。
+			
 /LOG:文件 :: 将状态输出到日志文件(覆盖现有日志)。
 /LOG+:文件 :: 将状态输出到日志文件(附加到现有日志中)。
 /UNILOG:文件 :: 以 UNICODE 方式将状态输出到日志文件(覆盖现有日志)。

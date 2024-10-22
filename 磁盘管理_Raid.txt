@@ -44,7 +44,7 @@ https://www.diskgenius.cn/help/ldmsupport.php
 控制面板\系统和安全\安全和维护
 
 其他方案：
-[[备份]]
+[[备份 robocopy]]
 
 DiskGenius虚拟raid：用于硬raid的数据恢复
 虚拟RAID是只读的，可以在虚拟RAID上创建临时分区以便恢复文件。软件没有提供虚拟RAID的写入功能，这样做是为了防止误操作破坏RAID盘数据。
