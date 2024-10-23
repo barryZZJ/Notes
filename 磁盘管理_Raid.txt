@@ -17,8 +17,8 @@ https://learn.microsoft.com/zh-cn/previous-versions/windows/it-pro/windows-serve
 每个物理盘都会留有一份动态分区数据库的备份。
 
 操作流程：
-1. 初始化
-2. 右键-新建带区卷（如果没有就转换成简单卷，变成动态盘，再转为带区卷）
+1. 新盘插进去不要格式化，对未分配分区直接右键，新建跨区卷。
+2. 对大文件分配单元大小4096（4k对齐）性能最优
 
 只能对未分配空间进行转换，先删除卷才可以。
 
@@ -53,3 +53,4 @@ https://learn.microsoft.com/zh-cn/previous-versions/windows/it-pro/windows-serve
 
 踩坑记录：
 raid0没法保留数据的情况下单独更换一块盘，只能整体拷出来、换硬盘、重组raid、再拷回去
+克隆磁盘好像不用收费，下回可以试试。
