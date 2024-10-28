@@ -8,3 +8,6 @@ Created 星期六 22 七月 2023
 lscpu
 
 cat /proc/cpuinfo
+
+占用率：
+top
