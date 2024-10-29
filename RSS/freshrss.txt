@@ -15,6 +15,7 @@ docker-compose pull
 
 api地址
 (更全)google reader https://freshrss.github.io/FreshRSS/en/developers/06_GoogleReader_API.html
+https://web.archive.org/web/20210126115837/https://blog.martindoms.com/2009/10/16/using-the-google-reader-api-part-2
 FeedMe阅读器设置入口网址: http://yy.barryzzj.top:28800/api/greader.php
 
 fever https://freshrss.github.io/FreshRSS/en/developers/06_Fever_API.html
