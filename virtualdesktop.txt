@@ -14,6 +14,8 @@ C:\ProgramData\Virtual Desktop
 
 添加杀毒软件排除项
 
+关闭防火墙
+
 升级显卡驱动
 
 ctrl+shift+win+b it will reset your graphics drivers
