@@ -45,10 +45,9 @@ AuthorizedKeysFile .ssh/authorized_keys
 并重启ssh服务 sudo service sshd restart
 
 windows ssh 服务器: OpenSSH
-1. 添加功能部分搜索openssh
+1. ”添加可选功能“搜索OpenSSH 服务器，安装
 2. 安装后服务名：**sshd** (OpenSSH SSH Server)
-3. 在可选功能中搜索OpenSSH 服务器，安装
-4. 配置：
+3. 配置：
 https://winscp.net/eng/docs/guide_windows_openssh_server
 windows条目说明：https://learn.microsoft.com/en-us/windows-server/administration/openssh/openssh_server_configuration
 linux条目说明：https://man.openbsd.org/sshd_config
@@ -78,7 +77,7 @@ LogLevel INFO | DEBUG | DEBUG3
 设为 LOCAL0 则日志在%programdata%\ssh\logs
 
 DEBUG:
-关闭sshd服务，自己在管理员命令行运行sshd -d 或 sshd -ddd
+关闭sshd服务，自己在**管理员**命令行运行sshd -d 或 sshd -ddd
 
 **配置密钥登录：**https://learn.microsoft.com/en-us/windows-server/administration/openssh/openssh_keymanagement#deploying-the-public-key
 （电脑名不要和用户名相同，否则会bug）
@@ -101,22 +100,22 @@ Match User sshadmin
 1. 客户端生成密钥 ssh-keygen -t rsa
 2. 服务端新建 AuthorizedKeysFile 对应的文件：
 【windows】
-【普通用户】''.ssh/authorized_keys，''相对于%userprofile%（C:\用户\<username>），想登录哪个用户就在哪个目录下配置：
+【登录的是普通用户】''.ssh/authorized_keys，''相对于%userprofile%（C:\用户\<username>），想登录哪个用户就在哪个目录下配置：
 2.1 新建.ssh文件夹（可以酌情调一下权限，经测试不影响）
 2.2 在.ssh内新建authorized_keys文件**（注意权限和所有者！）**：
 高级权限：取消继承、**只有System和该用户**完全控制（如果有其他用户则会导致Authentication Refused），**所有者必须也为该用户**，才可密钥登陆。
-【管理员用户】路径为%programdata%\ssh\administrators_authorized_keys
+【登陆的是管理员用户】路径为%programdata%\ssh\administrators_authorized_keys
 2.3 高级权限：取消继承、**只有System和Administrators组**完全控制，所有者必须为**Administrators**组。
 	管理员命令行设置文件权限：icacls.exe "%programdata%\ssh\administrators_authorized_keys" /inheritance:r /grant "Administrators:F" /grant "SYSTEM:F"
 【linux】在~/.ssh/autorized_keys下做相同操作，chmod 600即可
 重启sshd服务
-在 AuthorizedKeysFile 中写入客户端生成的公钥(.pub)（若权限不足，需临时修改所有者或以对应用户登录再修改）（更新后不用重启sshd服务）
+在新建的 AuthorizedKeysFile 中写入客户端生成的公钥(.pub)（若权限不足，用管理员打开vscode编辑；或临时修改所有者；或以对应用户登录再修改）（更新后不用重启sshd服务）
 windows：手动放入
 linux：ssh-copy-id user@host -p <port>
 
 （Windows不可用：sshd_config中的 PermitRootLogin prohibit-password改为 yes）
 
-完整配置文件备份：
+完整sshd_config配置文件备份：
 {{{code: lang="ini" linenumbers="False"
 # This is the sshd server system-wide configuration file.  See
 # sshd_config(5) for more information.
@@ -199,7 +198,7 @@ PasswordAuthentication no
 #Banner none
 
 # override default of no subsystems
-Subsystem	sftp	sftp-server.exe -d "D:"
+Subsystem	sftp	sftp-server.exe -d "E:"
 
 # Example of overriding settings on a per-user basis
 #Match User anoncvs
