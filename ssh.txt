@@ -105,7 +105,7 @@ Match User sshadmin
 2.2 在.ssh内新建authorized_keys文件**（注意权限和所有者！）**：
 高级权限：取消继承、**只有System和该用户**完全控制（如果有其他用户则会导致Authentication Refused），**所有者必须也为该用户**，才可密钥登陆。
 【登陆的是管理员用户】路径为%programdata%\ssh\administrators_authorized_keys
-2.3 高级权限：取消继承、**只有System和Administrators组**完全控制，所有者必须为**Administrators**组。
+2.3 高级权限：取消继承、**只有System和Administrators组**完全控制，所有者必须为**SYSTEM**。
 	管理员命令行设置文件权限：icacls.exe "%programdata%\ssh\administrators_authorized_keys" /inheritance:r /grant "Administrators:F" /grant "SYSTEM:F"
 【linux】在~/.ssh/autorized_keys下做相同操作，chmod 600即可
 重启sshd服务
