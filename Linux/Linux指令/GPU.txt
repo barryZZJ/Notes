@@ -1,0 +1,8 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2024-11-05T15:11:28+08:00
+
+====== GPU ======
+Created 星期二 05 十一月 2024
+
+nvidia-smi -L
