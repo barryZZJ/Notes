@@ -5,6 +5,10 @@ Creation-Date: 2023-01-23T23:12:44+08:00
 ====== 窗体 ======
 Created 星期一 23 一月 2023
 
+Qt.Dialog: no maximize or minimize buttons. 去掉?按钮，即只显示其他按钮：QDialog(Qt.WindowSystemMenuHint, Qt.WindowTitleHint | Qt.WindowCloseButtonHint)
+Qt.Popup: 弹出提示窗，没有标题栏，点其他地方后自动关闭
+Qt.Tool = Dialog + Popup
+
 === 窗体 ===
 https://doc.qt.io/qt-5/qwidget.html
 QMainWindow, QWidget

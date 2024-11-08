@@ -16,18 +16,24 @@ Created 星期五 02 九月 2022
 ''npm cache clean --force'' : %localappdata%\npm-cache\_cache
 gradle cache: ''rd /s /q %USERPROFILE%\.gradle\caches''
 JetBrains JB 系列：
-	File——Invalidate Caches
-	%LOCALAPPDATA%\JetBrains  .\logs
-	%appdata%\JetBrains
+	 File——Invalidate Caches
+	 %LOCALAPPDATA%\JetBrains  .\logs
+	 %appdata%\JetBrains
 VRChat cache C:\Users\85046\AppData\LocalLow\VRChat\VRChat\Cache-xxx
 java dependencies: %USERPROFILE%\.m2
 vscode: E:\Coding\scripts\clean_vscode.bat
 chrome: 右上角...——删除浏览数据——过去4周
+%TEMP%
 
 === logs: E:\Coding\scripts\clean_logs.bat ===
 Intel集显：C:\ProgramData\Intel\Intel Extreme Tuning Utility\Logs （超大）
 AMD集显：C:\Windows\System32\AMD\EeuDumps（超大）
 %USERPROFILE%\java_error_in*.hprof
+
+=== Hibernation File: hiberfil.sys ===
+先禁用休眠再启用
+powercfg.exe -h off
+powercfg.exe -h on
 
 === files: spacesniffer ===
 VSCode Extensions: %USERPROFILE%\.vscode

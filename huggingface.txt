@@ -1,0 +1,9 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2024-11-05T16:34:40+08:00
+
+====== huggingface ======
+Created 星期二 05 十一月 2024
+
+修改为镜像站：设置环境变量
+HF_ENDPOINT=https://hf-mirror.com

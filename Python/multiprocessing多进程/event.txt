@@ -1,0 +1,14 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2024-10-25T20:22:38+08:00
+
+====== event ======
+Created 星期五 25 十月 2024
+
+同threading.Event
+https://docs.python.org/3.9/library/threading.html#threading.Event
+
+is_set() -> bool
+set()
+clear()
+wait(timeout=None)

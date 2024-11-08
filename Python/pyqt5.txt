@@ -24,10 +24,6 @@ https://doc.qt.io/qt-6/qtwidgets-widgets-windowflags-example.html
 self.setFixedSize(MainWindow.width(), MainWindow.height())
 self.setWindowFlags(Qt.WindowMinimizeButtonHint | Qt.WindowCloseButtonHint)
 
-Qt.Dialog: no maximize or minimize buttons
-Qt.Popup: 弹出提示窗，没有标题栏，点其他地方后自动关闭
-Qt.Tool = Dialog + Popup
-
 === 关于size： ===
 sizeHint()是系统自动计算出的部件推荐大小，不可改变。如果部件不在布局管理中就为无效的值
 minimumSizeHint()

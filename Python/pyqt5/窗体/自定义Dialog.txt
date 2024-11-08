@@ -1,0 +1,15 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2024-10-22T09:48:27+08:00
+
+====== 自定义Dialog ======
+Created 星期二 22 十月 2024
+
+dialog = QDialog(self, Qt.WindowSystemMenuHint | Qt.WindowTitleHint | Qt.WindowCloseButtonHint)
+dialog.setWindowTitle
+bbox = QDialogButtonBox(QDialogButtonBox.Ok | QDialogButtonBox.Cancel, dialog)
+bbox.accepted.connect
+bbox.rejected.connect
+
+.show() 非阻塞
+.exec() 阻塞

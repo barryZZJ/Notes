@@ -1,0 +1,13 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2024-10-25T20:27:27+08:00
+
+====== barrier ======
+Created 星期五 25 十月 2024
+
+用于进程同步，确保所有进程都达到了某个指定节点
+https://docs.python.org/3.9/library/threading.html#barrier-objects
+
+barrier = Barrier(parties: int, action=None)
+action: 某一个进程在释放前会执行该操作
+.wait() -> int  返回第i个到达该barrier的id，0~parties-1

@@ -17,7 +17,7 @@ mkdir -p /home/barryoffice/mnt/i/
 mkdir -p /home/barryoffice/mnt/nspshare/
 mkdir -p /home/barryoffice/mnt/IM_server_20180104/
 
-# 获取当前用户的 UID 和 GID
+# 获取当前用户的 UID 和 GID # 如需指定用户名，在-u/-g后输入用户名/组名
 uid=$(id -u)
 gid=$(id -g)
 
@@ -30,3 +30,6 @@ mount -t cifs -o username=barry,password=zzj850462,uid=$uid,gid=$gid,file_mode=0
 mount -t cifs -o username=barry,password=zzj850462,uid=$uid,gid=$gid,file_mode=0777,dir_mode=0777 //dorm.barryzzj.top/nspshare /home/barryoffice/mnt/nspshare/
 mount -t cifs -o username=barry,password=zzj850462,uid=$uid,gid=$gid,file_mode=0777,dir_mode=0777 //dorm.barryzzj.top/nspshare/zzj/IM_from_lhy/IM/NSP_IM20180104 /home/barryoffice/mnt/IM_server_20180104/
 mount -t cifs -o username=zzj,password=850462618,uid=1000,gid=1000,file_mode=0777,dir_mode=0777 //tyc.barryzzj.top/tyc /home/barryoffice/mnt/tyc
+
+取消挂载：
+umount [[/path/to/mount]]

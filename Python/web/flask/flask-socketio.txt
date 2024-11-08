@@ -1,0 +1,9 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2024-10-26T16:33:30+08:00
+
+====== flask-socketio ======
+Created 星期六 26 十月 2024
+
+如果报 socketio.exceptions.ConnectionError: One or more namespaces failed to connect
+检查一下连接是否在接收响应之前就关闭了
