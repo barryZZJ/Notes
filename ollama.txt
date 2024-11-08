@@ -1,0 +1,35 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2024-11-08T10:03:55+08:00
+
+====== ollama ======
+Created 星期五 08 十一月 2024
+
+nano /etc/systemd/system/ollama.service
+改
+User=root
+Group=root
+新增
+Environment="OLLAMA_HOST=0.0.0.0"
+Environment="OLLAMA_MODELS=/mnt/models"  # 改模型文件夹
+然后
+systemctl daemon-reload
+systemctl restart ollama
+
+配置模型文件夹权限：
+sudo chown -R $USER:$GROUP /mnt/models
+sudo chmod -R 755 /mnt/models
+
+导入模型：
+https://github.com/ollama/ollama/blob/main/docs/import.md#Importing-a-model-from-Safetensors-weights
+
+
+ollama serve
+ollama list
+ollama run <model>  # By default models are kept in memory for 5 minutes before being unloaded.
+ollama stop <model>  # 立即清空内存，默认5min后清空
+OLLAMA_KEEP_ALIVE=5m
+
+faq：如修改连接数
+https://github.com/ollama/ollama/blob/main/docs/faq.md
+

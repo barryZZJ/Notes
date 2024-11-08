@@ -6,3 +6,6 @@ Creation-Date: 2024-10-24T10:05:23+08:00
 Created 星期四 24 十月 2024
 
 sudo yum --setopt=proxy=http://192.168.129.56:18809 install <package_name>
+
+换源：
+https://www.cnblogs.com/tangsong41/p/14441845.html

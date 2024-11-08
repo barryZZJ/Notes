@@ -1,0 +1,8 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2024-11-08T09:36:35+08:00
+
+====== find ======
+Created 星期五 08 十一月 2024
+
+find /path -name pattern
