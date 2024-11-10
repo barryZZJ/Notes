@@ -6,3 +6,10 @@ Creation-Date: 2024-08-22T09:58:37+08:00
 Created 星期四 22 八月 2024
 
 本地安全策略 secpol.msc ——网络列表管理器策略
+
+或
+
+https://www.anyviewer.cn/how-to/change-network-from-public-to-private-2111.html
+管理员启动powershell
+Get-NetConnectionProfile
+Set-NetConnectionProfile -Name "NetworkName" -NetworkCategory Private
