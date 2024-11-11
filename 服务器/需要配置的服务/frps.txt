@@ -30,7 +30,7 @@ sudo ./frps.sh install  {install|uninstall|update|config}
 
 手动配置：
 1. 下载frps，放入/usr/bin ln -s ~/frps/frps /usr/bin
-2. 写好配置文件（见下），放入/usr/local/frps/frps.ini ln -s ~/frps/frps.ini /usr/local/frps/frps.ini
+2. 写好配置文件（见下），放入/usr/local/frps/frps.ini: ln -s ~/frps/frps.ini /usr/local/frps/frps.ini
 3. 注册为服务：
 https://gofrp.org/docs/setup/systemd/
 apt install systemd
