@@ -33,3 +33,5 @@ OLLAMA_KEEP_ALIVE=5m
 faq：如修改连接数
 https://github.com/ollama/ollama/blob/main/docs/faq.md
 
+搭建UI：
+https://docs.openwebui.com/getting-started/quick-start/
