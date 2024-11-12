@@ -22,3 +22,6 @@ phpstorm64.exe
 pycharm64.exe
 rubymine64.exe
 studio64.exe
+
+快捷键：
+ctrl+shift+m 移动光标至成对括号 move caret to matching brace
