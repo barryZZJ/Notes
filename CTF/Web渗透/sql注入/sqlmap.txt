@@ -14,3 +14,4 @@ python sqlmap.py -u URL?id=1 --batch
 -C col_name
 
 --threads
+
