@@ -14,10 +14,13 @@ npm run dev
 正常启动
 npm run start
 
+# 发布：
 # build for production with minification
 npm run build
+然后挂载到nginx等服务器上
 
 cnpm install node-sass@latest 
 
 代理：
 npm config set proxy=http://127.0.0.1:3333 https-proxy=http://127.0.0.1:3333
+

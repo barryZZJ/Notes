@@ -44,7 +44,7 @@ Wants = network.target
 [Service]
 Type = simple
 # 启动frps的命令，需修改为您的frps的安装路径
-ExecStart = /usr/bin/frps -c /usr/local/frps/frps.ini
+ExecStart = /usr/bin/frps -c /usr/local/frps/frps.toml
 
 [Install]
 WantedBy = multi-user.target

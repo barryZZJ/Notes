@@ -8,6 +8,9 @@ Created 星期一 14 十月 2024
 本地->服务器
 ssh -L [local_host:][local_port]:[remote_host]:[remote_port] [user]@[ssh_server]
 ssh -L 8080:10.26.70.13:80 user@10.26.70.13
+访问本地的8080会被转发到服务器的80
 
 服务器->本地
 ssh -R [remote_port]:[local_host]:[local_port] [user]@[ssh_server]
+ssh -R 80:127.0.0.1:8080 user@10.26.70.13
+访问服务器的80会被转发到本地的8080

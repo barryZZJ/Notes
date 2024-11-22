@@ -1,0 +1,9 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2024-11-21T17:30:38+08:00
+
+====== 多用户 ======
+Created 星期四 21 十一月 2024
+
+不同标签页区分不同用户：
+前端把用户名存入sessionStorage，发起请求的时候在参数里带上这个值

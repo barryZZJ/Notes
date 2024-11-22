@@ -1,0 +1,9 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2024-11-19T22:23:12+08:00
+
+====== pkill ======
+Created 星期二 19 十一月 2024
+
+按进程名 kill
+pkill -f "python3 -m wecom_responder.app"

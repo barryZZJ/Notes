@@ -6,26 +6,36 @@ Creation-Date: 2023-09-03T14:25:35+08:00
 Created 星期日 03 九月 2023
 
 可以作为反向代理（转发流量）
-（有点鸡肋，大部分web app都基于/path的格式，就找不到了）
+（有点鸡肋，大部分web app都基于/path的格式，就找不到了。只能考虑配合frpc的http代理功能，支持自定义域名）
 
 # https://www.nginx.com/resources/wiki/start/
 # https://www.nginx.com/resources/wiki/start/topics/tutorials/config_pitfalls/
 # https://wiki.debian.org/Nginx/DirectoryStructure
 
-/etc/nginx/sites-available/barryzzj.top:
+sudo apt install nginx
+sudo sysytemctl start nginx
+sudo systemctl enable nginx
+
+configure:
+把静态文件拷到/var/www/，要不然可能没有访问权限
+sudo chown -R www-data:www-data /var/www/yacd
+sudo chmod -R 755 /var/www/yacd
+nano /etc/nginx/sites-available/barryzzj.top: （每个{server}块对应一个服务，每个文件对应一个域名）
 ''server {''
-''    listen 18000;''
-''    server_name barryzzj.top;''
+	''listen 80;''
+	''server_name yourdomain.com;''
 
-''    location /rsshub {''
-''        rewrite ^/rsshub(.*)$ $1 break;''
-''        proxy_pass http://localhost:1200;''
-''    }''
-
-''    # Add any other server configurations as needed.''
+	''location / {''
+		''root /var/www/yacd;''
+		''try_files $uri $uri/ /index.html;''
+	''}''
 ''}''
 
 
-sudo ln -s /etc/nginx/sites-available/example.com /etc/nginx/sites-enabled/
+sudo ln -s /etc/nginx/sites-available/barryzzj.top /etc/nginx/sites-enabled/
 sudo nginx -t
 sudo systemctl reload nginx
+
+查看log
+sudo tail -f /var/log/nginx/access.log
+sudo tail -f /var/log/nginx/error.log

@@ -88,8 +88,12 @@ wecombots/rsspush_adapter
 v2rayConfRotation
 wecombots/frpc_monitor
 wecombots/rss_monitor
-FreshRss
 
+8. [[路由器:MerlinClash:yacd自建]]
+
+* rsshub
+* freshrss
+* myflaskserver
 
 
 

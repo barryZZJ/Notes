@@ -1,0 +1,11 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2023-09-20T17:07:41+08:00
+
+====== 打包成exe ======
+Created 星期三 20 九月 2023
+
+https://blog.csdn.net/weixin_47160526/article/details/123496190
+
+1. 打包成jar。Build-Build Artifacts...，输出到项目的out目录下
+2. 使用exe4j，将打包后的jar包打包成exe可执行文件

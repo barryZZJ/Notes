@@ -5,6 +5,25 @@ Creation-Date: 2022-10-10T19:40:25+08:00
 ====== frpc ======
 Created 星期一 10 十月 2022
 
+https://gofrp.org/zh-cn/docs/
+
+tiny-frpc 使用ssh
+https://github.com/gofrp/tiny-frpc
+
+插件
+https://github.com/gofrp/plugin
+
+功能示例：
+内网多个主机的ssh复用同一端口 https://gofrp.org/zh-cn/docs/examples/multiple-ssh-over-same-port/
+通过自定义域名访问内网的Web服务 https://gofrp.org/zh-cn/docs/examples/vhost-http/
+	自定义二级域名，省去配置customDomains https://gofrp.org/zh-cn/docs/features/http-https/subdomain/
+	BasicAuth鉴权 https://gofrp.org/zh-cn/docs/features/http-https/auth/
+	URL路径路由 https://gofrp.org/zh-cn/docs/features/http-https/route/
+内网主机文件暴露到公网 https://gofrp.org/zh-cn/docs/examples/static-file/
+
+SSH Tunnel Gateway功能：https://gofrp.org/zh-cn/docs/features/common/ssh/
+在不想使用frpc的情况下，实现内网穿透，本质上是使用ssh -R
+
 linux安装：
 1. https://github.com/fatedier/frp
 2. frpc放入/usr/bin

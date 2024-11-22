@@ -9,3 +9,5 @@ ps -ef | grep 进程名
 
 netstat -nap | grep 进程pid
 netstat -nap | grep 端口号
+
+lsof -i :端口号

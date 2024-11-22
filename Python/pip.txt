@@ -17,6 +17,9 @@ python -m pip install --upgrade pip
 proxy:
 --proxy <proxy>             Specify a proxy in the form scheme://[user:passwd@]proxy.server:port
 
+跳过ssl验证
+export PIP_NO_SSL_VERIFY=true
+
 install:
 debug模式：
 -e, --editable <path/url>

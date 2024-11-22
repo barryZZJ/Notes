@@ -5,4 +5,10 @@ Creation-Date: 2024-09-30T16:30:11+08:00
 ====== yacd自建 ======
 Created 星期一 30 九月 2024
 
-https://github.com/haishanh/yacd
+原版：https://github.com/haishanh/yacd
+
+改进版：https://github.com/hinak0/yacd
+下载下来后，
+pnpm i
+pnpm build
+把public下的内容部署到nginx服务器上

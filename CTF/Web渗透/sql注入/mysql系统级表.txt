@@ -1,0 +1,19 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2024-11-20T21:23:15+08:00
+
+====== mysql系统级表 ======
+Created 星期三 20 十一月 2024
+
+information_schema:
+.schemata: 查数据库
+	schema_name: 数据库名
+
+.tables: 查表
+	table_schema: 数据库名
+	table_name: 表名
+
+.columns: 查列名
+	table_schema: 数据库名
+	table_name: 表名
+	column_name: 列名

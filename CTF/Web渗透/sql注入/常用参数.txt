@@ -1,0 +1,21 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2024-11-20T21:48:58+08:00
+
+====== 常用参数 ======
+Created 星期三 20 十一月 2024
+
+user()：连接当前数据库的用户名、地址
+database()：当前数据库名
+@@version 或 version()：当前使用的数据库版本
+@@datadir：数据库存储数据路径
+concat(str1, str2, ...)：拼接字符串，用于联合两条数据结果，参数可以是列名等变量。如 concat(username,0x3a,password)。返回一个字符串，逗号分隔。
+group_concat(array)：和 concat() 类似，如 group_concat(DISTINCT+user,0x3a,password)，或group_concat(table_name)，用于把多条数据一次注入出来。返回一个字符串，逗号分隔。
+concat_ws()：用法类似
+hex() 和 unhex()：用于 hex 编码解码
+ASCII()：返回字符的 ASCII 码值
+CHAR()：把整数转换为对应的字符
+load_file()：以文本方式读取文件，在 Windows 中，路径设置为 \\
+select xxx into outfile '路径'：权限较高时(如root)可直接写文件
+SUBSTR(string, start, length)：截取字符串，start从1开始
+MID(string, start, length)：同上，也是截取字符串
