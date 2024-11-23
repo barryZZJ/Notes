@@ -15,3 +15,7 @@ https://www.yuque.com/antswordproject/antsword
 注意使用“浏览网页”时仍会带antSword的UA
 
 所里网需要配置代理才能连上，而且需要多次尝试
+
+设置cookie：
+Name: cookie
+Value: key1=val1;key2=val2
