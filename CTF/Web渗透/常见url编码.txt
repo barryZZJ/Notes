@@ -1,0 +1,13 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2024-11-24T19:11:52+08:00
+
+====== 常见url编码 ======
+Created 星期日 24 十一月 2024
+
+https://www.w3schools.com/tags/ref_urlencode.ASP
+%20 空格
++ 空格
+%23 # 井号
+%22 " 双引号
+%27 ' 单引号

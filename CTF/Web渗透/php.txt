@@ -9,9 +9,13 @@ https://www.php.net/manual/en/index.php
 
 常用函数
 ''highlight_file(__FILE__)''
-var_dump($_GET['key'])
+var_dump($_GET['key'])  显示变量详细信息
+print_r($var) 把变量打印为易读字符串，比var_dump更易读
 eval(string) 把string当作php代码执行
+assert(string) 也会把string当作php代码执行
 system(string $command) 执行shell指令，如system("ls /")
+urlencode(string)
+urldecode(string)
 
 * 字符串和数字进行“==” 弱类型比较时，会将字符串转为数字
 	* 转换规则：
@@ -24,6 +28,8 @@ system(string $command) 执行shell指令，如system("ls /")
 	* 指定下标：obj[1]=val 或 obj[x]=val, $_GET['obj']可以得到{1: 'val'}或{'x': 'val'}
 	* 多维数组：obj[1][2]=val 得到 {1: {2: 'val'} }
 * md5处理数组的结果为NULL
+* php文件常见部署位置：/var/www/html/index.php
+
 
 语法：
 字符串拼接：
@@ -34,4 +40,12 @@ sprintf("%s %s", $s1, $s2)
 	单引号中的控制符如\n不会被转义，$val变量也不会被解释、\'表示单引号字符，\\表示\字符
 	双引号会转义控制字符，会解释$val变量，如"$_GET[key]"可以直接获得对应结果
 撇号`  内部的会被当做shell指令执行，如echo `cat /flag`
+注释：
+// one line comment
+# one line comment
+/* multiline comment */
 
+注意使用cat、head在php页面显示php会不显示或显示不全，因为识别到<?php则仍会当作php文件解析，解法：
+使用tac（反向显示的cat）倒序输出即可，或使用tail，避开<?php
+把php文件输出到1.txt中，再通过url访问1.txt。 cat flag.php>1.txt  或 cat *>1.txt
+注入webshell，通过webshell查看。

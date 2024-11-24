@@ -48,6 +48,7 @@ cmd = 'ping baidu.com'
 r = os.popen(cmd)
 for line in r.readlines():
 	print (line)
+或print(r.read())
 
 .mkdir()
 .makedirs('多级路径', exist_ok=True)

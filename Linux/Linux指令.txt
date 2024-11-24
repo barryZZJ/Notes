@@ -14,3 +14,7 @@ xxx > /dev/null 2>&1
 文件内容作为输入 "xxx < file.txt"
 
 
+查看文件权限
+stat file
+ls -l file
+namei -l file

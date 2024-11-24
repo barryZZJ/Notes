@@ -1,0 +1,9 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2024-11-24T17:21:30+08:00
+
+====== base64编码解码 ======
+Created 星期日 24 十一月 2024
+
+atob(base64encoded) b64->string
+btoa(string) string->b64

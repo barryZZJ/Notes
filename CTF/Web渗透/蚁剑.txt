@@ -19,3 +19,8 @@ https://www.yuque.com/antswordproject/antsword
 设置cookie：
 Name: cookie
 Value: key1=val1;key2=val2
+
+
+连接类型：
+eval() - PHP
+system() - CMDLINUX

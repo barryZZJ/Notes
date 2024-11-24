@@ -1,0 +1,15 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2024-11-24T17:01:04+08:00
+
+====== 正则绕过 ======
+Created 星期日 24 十一月 2024
+
+插入%9
+
+https://blog.csdn.net/qq_45521281/article/details/105656936
+
+?num='%ab'^'%ff';
+
+ascii 码表
+https://www.w3schools.com/charsets/ref_html_ascii.asp
