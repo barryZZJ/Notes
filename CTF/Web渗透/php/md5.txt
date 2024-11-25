@@ -1,7 +1,18 @@
 Content-Type: text/x-zim-wiki
 Wiki-Format: zim 0.6
-Creation-Date: 2024-11-14T22:21:28+08:00
+Creation-Date: 2024-11-25T19:35:13+08:00
 
+====== md5 ======
+Created 星期一 25 十一月 2024
+
+https://www.php.net/manual/zh/function.md5.php
+
+md5(string): string
+输出格式为32位数字+小写字母
+
+md5处理数组的结果为NULL
+
+结果为0e开头的字符串
 QNKCDZO
 0e830400451993494058024219903391
 s878926199a

@@ -18,12 +18,12 @@ urlencode(string)
 urldecode(string)
 
 * 字符串和数字进行“==” 弱类型比较时，会将字符串转为数字
-	* 转换规则：
+	* 转换规则：https://php.p2hp.com/manual/zh/language.types.integer.php#language.types.integer.casting
 	* 非数字开头视为0："a123" == 0 // true
 	* 数字开头则非数字开始截断："123.4a567" == 123.4 //true
 	* 科学计数法字符串视为数字，如 "10"=="1e1", "0e12345" == 0
-	* [[+md5结果为0e开头的字符串]]
-* md5处理数组的结果为NULL
+	* +md5结果为0e开头的字符串
+* 字符串转整数：intval(val, base=10) 失败时返回0，空array返回0，非空array返回1
 * php文件常见部署位置：/var/www/html/index.php
 
 

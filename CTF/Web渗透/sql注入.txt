@@ -8,15 +8,7 @@ Created 星期五 15 十一月 2024
 https://hello-ctf.com/HC_Web/sql_injection/
 https://www.nssctf.cn/note/set/3597
 
-sql 语法：https://dev.mysql.com/doc/refman/8.4/en/sql-statements.html
-单行注释：通用：-- 注意--后面要有一个空格，或者--+ --\t --\n等控制字符也可以。
-mysql特有的是#
-在url构造中，#编码为%23，空格编码为+，因此最好在url中用--+
-多行注释：/* ... */
-SELECT: https://dev.mysql.com/doc/refman/8.4/en/select.html
-	LIMIT [offset,] row_count  其中offset从0开始
-	LIMIT row_count OFFSET offset
-
+原理：
 对于 where id = ? 的问号位置，后台常见语句有
 $id
 '$id'
@@ -25,16 +17,18 @@ $id
 或他们的组合，如("'$id'")
 要想办法让符号闭合，这样后面的内容就可以自由构造，最后再加上注释符号--，取消掉原有的右引号。注意分号，视情况添加。
 
+1. 寻找注入点：
 通过报错判断后台语句：
 试探：1'  1"  '1  "1 等
 执行id = "1""，报错near '"1""' at line 1
 执行id = '1''，报错near'' 1''' at line 1
 执行id = ''1'，报错near '1'' at line 1
 
-判断列数：order by <col num>
+2. 判断列数：order by <col num>
 从1开始尝试增加列号，如果报错说明总列数小于该参数。假设有3列，一般是id, username, password
+WHERE id='-1' or '1'='1' order by 1-- 
 
-使用union获取信息：
+3. 使用union获取信息：
 	union 后面的表列数需要与前面一致，通过添加数字代替不够的列。
 	注意select后的列必须跟union前显示的列顺序一致。
 查看回显点：通过传入错误id -1，使得结果为union右边的表。

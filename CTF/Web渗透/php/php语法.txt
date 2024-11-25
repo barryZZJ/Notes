@@ -24,6 +24,8 @@ sprintf("%s %s", $s1, $s2)
 # one line comment
 /* multiline comment */
 
+''@符号'' 错误控制运算符。执行函数时抑制错误报告。如@eval
+
 变量：https://www.php.net/manual/en/language.variables.basics.php
 命名规则：不能以数字开头
 任意字符串作为变量名：用花括号括起来
