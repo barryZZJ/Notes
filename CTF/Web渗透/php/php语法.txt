@@ -1,0 +1,70 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2024-11-23T10:17:35+08:00
+
+====== php语法 ======
+Created 星期六 23 十一月 2024
+
+https://www.php.net/manual/en/index.php
+
+字符串拼接：
+点号 . 如 $s1 . " " . $s2
+双引号 "$s1 $s2"
+sprintf("%s %s", $s1, $s2)
+
+字符串：单引号、双引号、
+单引号中的控制符如\n不会被转义，$val变量也不会被解释、\'表示单引号字符，\\表示\字符
+双引号会转义控制字符，会解释$val变量，如"$_GET[key]"可以直接获得对应结果
+
+撇号` : 
+内部的会被当做shell指令执行，如echo `cat /flag` 相当于 system('cat /flag')
+
+注释：
+// one line comment
+# one line comment
+/* multiline comment */
+
+变量：https://www.php.net/manual/en/language.variables.basics.php
+命名规则：不能以数字开头
+任意字符串作为变量名：用花括号括起来
+${'4a-b'} = 'val';
+模糊变量名：（多个$号）
+$a = 'b';
+$b = 'c';
+$$a === $b;  // output: c
+$c = '4a-b';
+$$c == ${'4a-b'}; // output: val
+
+数组/字典：https://www.php.net/manual/en/language.types.array.php
+array(1, 2)
+array(
+	key => value,
+	...
+)
+或用[]代替array()
+
+$arr[]=1 表示追加元素
+* GET/POST参数传入数组/字典：
+	* 顺序构造：?obj[]=val1&obj[]=val2&...  这样$_GET['obj']解析出来的就是数组['val1', 'val2', 'val3']
+	* 指定下标：?obj[1]=val 或 ?obj[x]=val, $_GET['obj']可以得到{1: 'val'}或{'x': 'val'}
+	* 多维数组：?obj[1][2]=val 得到 {1: {2: 'val'} }
+
+使用数组整型溢出绕过赋值式“永真”判断：
+''<?php''
+''include "flag.php";''
+''highlight_file(__FILE__);''
+
+''if (isset($_GET['0'])){''
+	''$arr[$_GET['0']]=1;''
+	''if ($arr[]=1){''
+		''die("nonono!");''
+	''}''
+	''else{''
+		''die($flag);''
+	''}''
+''}''
+''?>''
+int范围查阅Manual可知：32位最大是2^31-1，64位是2^63-1，即 2147483647 与 9223372036854775807
+如果设置$arr[9223372036854775807]=1后，再$arr[]=1追加将会失败。
+
+

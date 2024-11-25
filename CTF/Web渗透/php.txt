@@ -23,27 +23,9 @@ urldecode(string)
 	* 数字开头则非数字开始截断："123.4a567" == 123.4 //true
 	* 科学计数法字符串视为数字，如 "10"=="1e1", "0e12345" == 0
 	* [[+md5结果为0e开头的字符串]]
-* GET/POST参数传入数组/字典：
-	* 顺序构造：obj[]=val1&obj[]=val2&...  这样$_GET['obj']解析出来的就是数组['val1', 'val2', 'val3']
-	* 指定下标：obj[1]=val 或 obj[x]=val, $_GET['obj']可以得到{1: 'val'}或{'x': 'val'}
-	* 多维数组：obj[1][2]=val 得到 {1: {2: 'val'} }
 * md5处理数组的结果为NULL
 * php文件常见部署位置：/var/www/html/index.php
 
-
-语法：
-字符串拼接：
-点号 . 如 $s1 . " " . $s2
-双引号 "$s1 $s2"
-sprintf("%s %s", $s1, $s2)
-字符串：单引号、双引号、
-	单引号中的控制符如\n不会被转义，$val变量也不会被解释、\'表示单引号字符，\\表示\字符
-	双引号会转义控制字符，会解释$val变量，如"$_GET[key]"可以直接获得对应结果
-撇号`  内部的会被当做shell指令执行，如echo `cat /flag`
-注释：
-// one line comment
-# one line comment
-/* multiline comment */
 
 注意使用cat、head在php页面显示php会不显示或显示不全，因为识别到<?php则仍会当作php文件解析，解法：
 使用tac（反向显示的cat）倒序输出即可，或使用tail，避开<?php
