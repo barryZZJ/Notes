@@ -1,0 +1,12 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2024-11-25T10:07:39+08:00
+
+====== python ======
+Created 星期一 25 十一月 2024
+
+https://docs.python.org/3.8/
+
+常用函数
+ord('a') - 97
+chr(65) - 'A'

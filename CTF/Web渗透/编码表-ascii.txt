@@ -1,0 +1,14 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2024-11-25T10:05:34+08:00
+
+====== 编码表-ascii ======
+Created 星期一 25 十一月 2024
+
+ascii 码表
+https://www.w3schools.com/charsets/ref_html_ascii.asp
+
+a: 97
+z: 122
+A: 65
+Z: 90

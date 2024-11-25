@@ -1,0 +1,14 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2024-11-25T09:39:04+08:00
+
+====== pyjail沙箱逃逸 ======
+Created 星期一 25 十一月 2024
+
+https://xz.aliyun.com/t/12647?time__1311=GqGxuDRiYiwxlrzG7Dym7GCKcEouQioD
+
+Flask在渲染模板的时候，有
+''"".__class__ // == ""["__class__"]''
+这一特性，把上下文变成了[]中的字符串，这个特性经常会被用来绕过点号的过滤。
+由于里面的内容已经是字符串了，还可以做一个这样的变形
+''"".__class__ // == ""["__cla"+"ss__"]''

