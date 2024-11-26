@@ -24,6 +24,7 @@ sudo ./frps.sh install  {install|uninstall|update|config}
 （记得修改配置的log_file为/usr/local/frps/frps.log)
 
 配置文件：/usr/local/frps/frps.ini
+如果log输出设为console，就可以直接在systemctl status里看到输出了
 
 /etc/init.d/frps {start|stop|restart|status|config|version}
 如果报错ine 45: [: 2431: binary operator expected，修改/usr/bin/frps，把$PID全部替换为${PID}

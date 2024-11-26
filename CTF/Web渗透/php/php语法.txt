@@ -69,4 +69,17 @@ $arr[]=1 表示追加元素
 int范围查阅Manual可知：32位最大是2^31-1，64位是2^63-1，即 2147483647 与 9223372036854775807
 如果设置$arr[9223372036854775807]=1后，再$arr[]=1追加将会失败。
 
+魔法常数：
+https://www.php.net/manual/en/language.constants.magic.php
+''__LINE__''	The current line number of the file.
+''__FILE__''	The full path and filename of the file with symlinks resolved. If used inside an include, the name of the included file is returned.
+''__DIR__''	The directory of the file. If used inside an include, the directory of the included file is returned. This is equivalent to dirname(__FILE__). This directory name does not have a trailing slash unless it is the root directory.
+''__FUNCTION__''	The function name, or {closure} for anonymous functions.
+''__CLASS__''	The class name. The class name includes the namespace it was declared in (e.g. Foo\Bar). When used in a trait method, __CLASS__ is the name of the class the trait is used in.
+''__TRAIT__''	The trait name. The trait name includes the namespace it was declared in (e.g. Foo\Bar).
+''__METHOD__''	The class method name.
+''__PROPERTY__''	Only valid inside a property hook. It is equal to the name of the property.
+''__NAMESPACE__''	The name of the current namespace.
+
+
 
