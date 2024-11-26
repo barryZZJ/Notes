@@ -5,7 +5,7 @@ Creation-Date: 2024-06-04T09:41:33+08:00
 ====== 桌面图标变宽修复 ======
 Created 星期二 04 六月 2024
 
-改注册表后重启电脑
+改注册表后注销或重启电脑
 
 HKEY_CURRENT_USER\Control Panel\Desktop\WindowMetrics
 lconSpacing和IconVerticalSpacing改-1125
