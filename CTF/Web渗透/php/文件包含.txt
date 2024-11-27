@@ -41,6 +41,21 @@ var_dump(scandir('/'));
 include(相对路径或绝对路径)
 include('''file://绝对路径''')  // 以 ''file://'' 开头则必须为绝对路径
 
+测试：
+include '/etc/passwd'
+可以查看的地方：
+各种日志：
+/var/log/nginx/access.log
+/var/log/nginx/error.log
+/var/log/apache2/access.log
+/var/log/apache2/error.log
+/var/log/auth.log
+/var/log/syslog  或 /var/log/messages // 系统
+/var/log/kern.log
+/var/log/boot.log
+/var/log/dmesg
+通过修改能出现在日志里的字段，如UA，注入webshell
+
 2. data协议
 https://datatracker.ietf.org/doc/html/rfc2397
 * **需要**allow_url_fopen、**需要**allow_url_include
@@ -97,7 +112,9 @@ POST输入：
 ''php://stdin 、 php://stdout 、 php://stderr''
 
 4. http协议、ftp协议
-
+https://www.php.net/manual/zh/wrappers.http.php
+* **需要**allow_url_fopen、**需要**allow_url_include
+尝试?url=http://www.baidu.com
 
 其他协议见文档
 
