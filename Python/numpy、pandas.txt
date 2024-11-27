@@ -48,6 +48,12 @@ Series:
 2. .items() (index, value)对
 
 DataFrame:
+按格：
+1. df.at[行名, 列名] 一次只能获取一格
+2. df.loc[行名，列名] 行名/列名参数可以是列表
+3. df.iat[行号, 列号]
+4. df.iloc[行号, 列号]  与iloc区别同上
+
 按行：
 .loc: 按标签选择，以行列名获取
 .loc['row'] 获取一行
@@ -74,6 +80,11 @@ df['row_i':'row_j'] 用切片可以获取行
 .values/.to_numpy() 只含元素的列表
 
 遍历：
+按格：
+for col in df.columns:
+	for i in range(len(df[col])):
+		cell = df.at[i, col]
+
 按行：
 for i, row in df.iterrows():
 	# i是index，row是一行所有元素组成的Series对象 
