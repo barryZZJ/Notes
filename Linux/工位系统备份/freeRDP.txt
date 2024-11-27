@@ -10,6 +10,7 @@ https://github.com/FreeRDP/FreeRDP/wiki
 https://github.com/awakecoding/FreeRDP-Manuals/blob/master/User/FreeRDP-User-Manual.markdown
 
 sudo apt install freerdp2-x11
+或使用flatpak安装
 
 参数设置：https://www.mankier.com/1/xfreerdp
 -toggle-fullscreen                Disable Alt+Ctrl+Enter to toggle fullscreen
@@ -20,6 +21,8 @@ flatpak run com.freerdp.FreeRDP /v:dorm.barryzzj.asia:23389 /u:barry /p:8504 /sm
 动态分辨率，随窗口大小自适应（响应慢）：
 flatpak run com.freerdp.FreeRDP /v:dorm.barryzzj.asia:23389 /u:barry /p:8504 /dynamic-resolution /home-drive +sound +clipboard -heartbeat
 /multimon 多屏
+/monitors:1,2
+
 /usb:id,dev:12d1:107e
 /usb:auto
 [/dvc:urbdrc,dbg,dev:0529:0001]

@@ -65,5 +65,5 @@ mkdir -p /home/barryoffice/mnt/IM_server_20180104/
 /usr/bin/sshfs -p 23355 -o IdentityFile=/home/barryoffice/.ssh/id_ecdsa barry@dorm.barryzzj.top:/g:/ /home/barryoffice/mnt/g/
 /usr/bin/sshfs -p 23355 -o IdentityFile=/home/barryoffice/.ssh/id_ecdsa barry@dorm.barryzzj.top:/i:/ /home/barryoffice/mnt/i/
 /usr/bin/sshfs -p 23355 -o IdentityFile=/home/barryoffice/.ssh/id_ecdsa barry@dorm.barryzzj.top:/f:/nspshare/ /home/barryoffice/mnt/nspshare/
-/usr/bin/sshfs -p 23355 -o IdentityFile=/home/barryoffice/.ssh/id_ecdsa barry@dorm.barryzzj.top:/f:/nspshare/zzj/IM_from_lhy/IM/NSP_IM20180104/ /home/barryoffice/mnt/IM_server_20180104/
+/usr/bin/sshfs -p 23355 -o IdentityFile=/home/barryoffice/.ssh/id_ecdsa barry@dorm.barryzzj.top:/f:/nspshare/zzj/IM_from_lhy/IM/NSP_IM20180104/ /home/barryoffice/mnt/IM_server_20180f104/
 }}}
