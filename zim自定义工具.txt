@@ -1,0 +1,10 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2024-11-28T11:02:55+08:00
+
+====== zim自定义工具 ======
+创建日期 星期四 28 十一月 2024
+
+不支持写多行，因此需要调用一个外部文件，如
+%n\xxx.bat
+sh -c "%n/xxx.sh"
