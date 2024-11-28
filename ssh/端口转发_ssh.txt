@@ -19,3 +19,4 @@ ssh -R 80:127.0.0.1:8080 user@10.26.70.13
 访问服务器的80会被转发到本地的8080
 不指定remote_host的ip地址的话，只能被服务器的localhost访问
 要想指定remote_host，/etc/ssh/sshd_config的GatewayPorts必须设为yes，然后重启sshd服务
+remote_host设为*表示绑定所有ip

@@ -24,6 +24,16 @@ https://github.com/gofrp/plugin
 SSH Tunnel Gateway功能：https://gofrp.org/zh-cn/docs/features/common/ssh/
 在不想使用frpc的情况下，实现内网穿透，本质上是使用ssh -R
 
+防特征检测：
+https://blog.claves.cn/archives/6151
+https://uknowsec.cn/posts/notes/FRP%E6%94%B9%E9%80%A0%E8%AE%A1%E5%88%92.html
+frpc中：
+transport.tls.enable = true
+use_encryption = true
+use_compression = true
+配置tls加密
+https://gofrp.org/zh-cn/docs/features/common/network/network-tls/
+
 linux安装：
 1. https://github.com/fatedier/frp
 2. frpc放入/usr/bin
