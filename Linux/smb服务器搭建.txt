@@ -1,0 +1,43 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2024-11-27T17:21:13+08:00
+
+====== smb服务器搭建 ======
+创建日期 星期三 27 十一月 2024
+
+https://ubuntu.com/tutorials/install-and-configure-samba
+https://documentation.ubuntu.com/server/explanation/intro-to/samba/
+https://ubuntu.com/server/docs/samba-as-a-file-server
+https://help.ubuntu.com/community/Samba
+
+sudo apt install samba samba-common
+
+服务名：smbd
+
+/etc/samba/smb.conf
+[global]下新增
+security = user
+最后添加
+[nspshare]
+   comment = nspshare on Ubuntu
+   browseable = yes
+   path = /media/barry/HardDrive/nspshare
+   read only = no
+   admin users = barry, nsp, tyc
+
+sudo systemctl restart smbd  或 sudo smbcontrol smbd reload-config
+sudo ufw allow samba
+
+sudo adduser nsp
+sudo passwd nsp
+sudo smbpasswd -a nsp
+Username used must belong to a system account, else it won’t save.
+
+权限控制相关（嫌麻烦的话经测试直接admin users就可以）
+https://documentation.ubuntu.com/server/how-to/samba/share-access-controls/
+sudo chown -R user /path
+sudo chgrp -R group /path
+
+
+
+
