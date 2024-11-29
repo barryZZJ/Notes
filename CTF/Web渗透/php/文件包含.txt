@@ -49,12 +49,7 @@ include '/etc/passwd'
 /var/log/nginx/error.log
 /var/log/apache2/access.log
 /var/log/apache2/error.log
-/var/log/auth.log
-/var/log/syslog  或 /var/log/messages // 系统
-/var/log/kern.log
-/var/log/boot.log
-/var/log/dmesg
-通过修改能出现在日志里的字段，如UA，注入webshell
+通过控制能出现在日志里的字段，如UA，注入webshell
 
 2. data协议
 https://datatracker.ietf.org/doc/html/rfc2397
