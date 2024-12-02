@@ -18,6 +18,8 @@ https://docs.python.org/3/library/asyncio.html
 
 await coroutine/task：block当前函数，交还控制权给event loop
 
+控制同步：asyncio.Event()
+
 **asyncio**
 .run(coroutine object)：启动一个event loop，不断执行队列里的task，event loop获得控制权的时候会选一个task执行。全部执行完毕后返回返回值。
 ！如果不在主线程，执行完run后需要配置一个新的loop：asyncio.set_event_loop(asyncio.new_event_loop())，而且这个loop要run起来，默认是没有运行的。
@@ -37,6 +39,9 @@ https://docs.python.org/3.9/library/asyncio-task.html#id10
 
 **Task (Future的子类)**: https://docs.python.org/3.9/library/asyncio-task.html#task-object
 协程执行的最小单元
+可以被cancel
+task = asyncio.create_task(coro)
+await task
 
 底层API：
 **Future:** https://docs.python.org/3.9/library/asyncio-future.html#asyncio.Future

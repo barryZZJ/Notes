@@ -1,0 +1,57 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2024-12-02T20:01:44+08:00
+
+====== async版socket ======
+Created 星期一 02 十二月 2024
+
+https://docs.python.org/3.9/library/asyncio-eventloop.html#asyncio.Server.serve_forever
+https://docs.python.org/3/library/asyncio-stream.html#asyncio.start_server
+
+server端：
+s = await asyncio.start_server(handler, host, port, start_serving=False)
+
+await s.start_serving()  # non-blocking，但是如果server所在的函数执行完了server就没了
+await s.serve_forever()  # blocking，只能通过task.cancel取消，但不知道怎么获取task
+
+s.close()  # leaves connections open
+await s.wait_closed()  # wait until close() completes
+
+async def handler(reader, writer):
+	data = await reader.read(1024)
+	data = data.decode()
+	clientaddr = writer.get_extra_info('peername')
+	writer.write(data.encode())
+	await writer.drain()
+	writer.close()
+	await writer.wait_closed()
+
+每有一个client发送connect，就会调用一次handler（否则永远不会调用）。即handler不需要无限循环
+
+设置timeout：
+await server.start_serving()
+while True:
+	try:
+		await asyncio.wait_for(server.wait_closed(), timeout=5)
+	except asyncio.TimeoutError:
+		if shutdown.is_set():
+			server.close()
+			await server.wait_closed()
+			print("Server closed")
+			break
+
+client端：
+async def handle_client_connection():
+	reader, writer = await asyncio.open_connection('127.0.0.1', 12346)
+
+	writer.write(b'hello')
+	await writer.drain()
+
+	data = await reader.read(1024)
+	print(f'Received: {data.decode()}')
+
+	print('Closing the connection')
+	writer.close()
+	await writer.wait_closed()
+asyncio.run(handle_client_connection())
+如果需要同时多个连接，使用asyncio.create_task，配合asyncio.gather
