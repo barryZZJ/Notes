@@ -1,0 +1,40 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2024-11-20T21:48:58+08:00
+
+====== 常用参数函数 ======
+Created 星期三 20 十一月 2024
+
+https://dev.mysql.com/doc/refman/8.4/en/built-in-function-reference.html
+
+user()：连接当前数据库的用户名、地址
+database()：当前数据库名
+@@version 或 version()：当前使用的数据库版本
+@@datadir：数据库存储数据路径
+
+concat(str1, str2, ...)：拼接字符串，用于联合两条数据结果，参数可以是列名等变量。返回一个字符串，无分隔。https://dev.mysql.com/doc/refman/8.4/en/string-functions.html#function_concat
+concat_ws(separator, str1, str2, ...): 指定拼接用的分隔符
+
+group_concat(array)：和 concat() 类似，如 group_concat(DISTINCT+user,0x3a,password)，或group_concat(table_name)，用于把多条数据一次注入出来。返回一个字符串，逗号分隔。
+https://dev.mysql.com/doc/refman/8.4/en/aggregate-functions.html#function_group-concat
+	完整用法：group_concat(DISTINCT score ORDER BY score DESC SEPARATOR ' ')
+
+hex() 和 unhex()：用于 hex 编码解码
+ASCII(str)：返回字符串首个字符的 ASCII 码值。空字符串返回0。
+CHAR(N,... [USING charset])：把整数转换为对应的字符。N可以是数字字符串。默认返回bytes，使用USING可以得到字符串，如CHAR(76 USING utf8);
+SUBSTR(string, pos, len)：截取字符串，pos从1开始，pos>=len(str)+1时返回空字符串。pos为负时从右往左取，为0时返回空字符串。 https://dev.mysql.com/doc/refman/8.4/en/string-functions.html#function_substr
+	SUBSTR(str, pos)
+	SUBSTR(str FROM pos)
+	SUBSTR(str, pos, len)
+	SUBSTR(str FROM pos FOR len)
+MID(string, start, length)：为substr的synonym
+
+LOCATE(substr,str) LOCATE(substr, str, pos)：查找字符串首次出现的位置。pos从1开始。返回0表示未找到。
+
+EXISTS(query) or NOT_EXISTS(query)  判断查询是否有结果，query通常是个select语句，返回0或1
+
+load_file()：以文本方式读取文件，在 Windows 中，路径设置为 \\
+select xxx into outfile '路径'：权限较高时(如root)可直接写文件
+
+expr IN (value,...)  'abc' IN ('abc', 'def');
+FIND_IN_SET(str,strlist)   FIND_IN_SET('b', 'a,b,c,d') 返回2

@@ -59,6 +59,7 @@ https://datatracker.ietf.org/doc/html/rfc2397
 示例：
 include('''data://text/plain,<?php phpinfo();''')
 include('''data://text/plain;base64,[base64编码]''')
+''<?php phpinfo();?>''的编码为：PD9waHAgcGhwaW5mbygpOz8+
 
 3. php协议 https://www.php.net/manual/zh/wrappers.php.php
 * 不需要allow_url_fopen
@@ -110,6 +111,7 @@ POST输入：
 https://www.php.net/manual/zh/wrappers.http.php
 * **需要**allow_url_fopen、**需要**allow_url_include
 尝试?url=http://www.baidu.com
+如果成功，可以自建含恶意代码的服务让其访问
 
 其他协议见文档
 

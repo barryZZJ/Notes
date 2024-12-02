@@ -11,6 +11,7 @@ md5(string, binary=false): string
 输出格式为32位数字+小写字母
 binary为true时结果为16 字符长度的原始二进制格式，转成字符串应该是自动utf8编码
 
+使用数组绕过：
 md5处理数组的结果为NULL
 
 二进制结果编码后以'or'开头：

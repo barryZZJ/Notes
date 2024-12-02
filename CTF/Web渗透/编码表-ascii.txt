@@ -8,6 +8,8 @@ Created 星期一 25 十一月 2024
 ascii 码表
 https://www.w3schools.com/charsets/ref_html_ascii.asp
 
+可见字符范围：32~126
+
 a: 97
 z: 122
 A: 65

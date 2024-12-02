@@ -6,6 +6,9 @@ Creation-Date: 2024-11-25T16:11:15+08:00
 Created 星期一 25 十一月 2024
 
 sql 语法：https://dev.mysql.com/doc/refman/8.4/en/sql-statements.html
+
+sql里的自增id是从1开始的，遇到id=1可以联想到sql注入
+
 单行注释：通用：-- 注意--后面要有一个空格，或者--+ --\t --\n等控制字符也可以。
 mysql特有的是#
 在url构造中，#编码为%23，空格编码为+，因此最好在url中用--+
@@ -19,3 +22,9 @@ AND, &&	Logical AND
 NOT, !	Negates value
 OR, ||	Logical OR
 XOR	Logical XOR
+
+比较：
+=   <=   >=  !=  <>
+<=>  NULL-safe equal  https://dev.mysql.com/doc/refman/8.4/en/comparison-operators.html#operator_equal-to
+expr BETWEEN min AND max
+expr NOT BETWEEN min AND max
