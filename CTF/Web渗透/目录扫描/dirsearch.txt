@@ -20,3 +20,5 @@ python3 dirsearch.py -e php,html,js -u https://target -w /path/to/wordlist
 --suffixes
 --exclude-extensions
 --skip-on-status 403,401
+
+ctrl c 暂停

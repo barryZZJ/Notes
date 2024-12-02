@@ -5,10 +5,13 @@ import hashlib
 
 # 字符串生成MD5
 def md5(s: str) -> str:
-	return hashlib.md5(s.encode()).hexdigest() # 返回值为小写16进制字符串
+	return hashlib.md5(s.encode()).hexdigest() # 返回值为32位小写16进制字符串
 
 def md5int(s: str) -> int:
 	return int(hashlib.md5(s.encode()).hexdigest(), 16)
+
+.digest() -> bytes 128bit, 16byte
+.hexdigest() -> str 32digits
 
 def genearteMD5(str):
 	# 创建md5对象

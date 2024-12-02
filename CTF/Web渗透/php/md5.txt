@@ -7,10 +7,17 @@ Created 星期一 25 十一月 2024
 
 https://www.php.net/manual/zh/function.md5.php
 
-md5(string): string
+md5(string, binary=false): string
 输出格式为32位数字+小写字母
+binary为true时结果为16 字符长度的原始二进制格式，转成字符串应该是自动utf8编码
 
 md5处理数组的结果为NULL
+
+二进制结果编码后以'or'开头：
+ffifdyop
+'or'xxx
+129581926211651571912466741651878684928
+xxx'or'8
 
 结果为0e开头的字符串
 QNKCDZO

@@ -2,10 +2,19 @@ Content-Type: text/x-zim-wiki
 Wiki-Format: zim 0.6
 Creation-Date: 2023-06-21T10:52:34+08:00
 
-====== asyncio ======
+====== asyncio,coroutine,协程 ======
 Created 星期三 21 六月 2023
 
 https://docs.python.org/3/library/asyncio.html
+
+相比线程优点：
+1. 轻量级：协程比线程更轻量级，创建和销毁协程的开销比线程小得多。
+2. 更好的性能：由于协程在单个线程内运行，避免了线程切换的开销，因此在I/O密集型任务中性能更好。
+3. 更好的控制：协程由程序员显式控制切换点，避免了线程的竞争和死锁问题。
+
+使用场景：
+高并发、IO密集、资源受限、避免竞争和死锁
+如爬虫、web服务器、实时数据处理（websocket）
 
 await coroutine/task：block当前函数，交还控制权给event loop
 
@@ -30,7 +39,7 @@ https://docs.python.org/3.9/library/asyncio-task.html#id10
 协程执行的最小单元
 
 底层API：
-**Future: **https://docs.python.org/3.9/library/asyncio-future.html#asyncio.Future
+**Future:** https://docs.python.org/3.9/library/asyncio-future.html#asyncio.Future
 相当于Promise
 A Future represents an eventual result of an asynchronous operation. awaitable
 获取方法：
@@ -76,9 +85,18 @@ https://docs.python.org/3.9/library/asyncio-eventloop.html#asyncio.loop.run_in_e
 
 ''import asyncio''
 
-''async def main():''
-''    print('Hello ...')''
-''    await asyncio.sleep(1)''
-''    print('... World!')''
+''async def task1():''
+	''print("Task 1 started")''
+	''await asyncio.sleep(1)''
+	''print("Task 1 finished")''
 
+''async def task2():''
+	''print("Task 2 started")''
+	''await asyncio.sleep(2)''
+	''print("Task 2 finished")''
+
+''async def main():''
+	''await asyncio.gather(task1(), task2())''
+
+''# 运行协程''
 ''asyncio.run(main())''
