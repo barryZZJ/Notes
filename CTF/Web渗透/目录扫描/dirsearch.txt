@@ -1,0 +1,22 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2024-12-02T09:56:07+08:00
+
+====== dirsearch ======
+Created 星期一 02 十二月 2024
+
+https://github.com/maurosoria/dirsearch/
+
+python3 dirsearch.py -u https://target
+python3 dirsearch.py -e php,html,js -u https://target
+python3 dirsearch.py -e php,html,js -u https://target -w /path/to/wordlist
+
+-u url
+-e, --extensions php
+
+-t threads = 25
+-a, --async 使用协程 提高性能，降低CPU
+--prefixes
+--suffixes
+--exclude-extensions
+--skip-on-status 403,401
