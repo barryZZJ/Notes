@@ -41,6 +41,7 @@ while True:
 			break
 
 client端：
+https://docs.python.org/3.9/library/asyncio-stream.html#asyncio.open_connection
 async def handle_client_connection():
 	reader, writer = await asyncio.open_connection('127.0.0.1', 12346)
 
@@ -55,3 +56,4 @@ async def handle_client_connection():
 	await writer.wait_closed()
 asyncio.run(handle_client_connection())
 如果需要同时多个连接，使用asyncio.create_task，配合asyncio.gather
+

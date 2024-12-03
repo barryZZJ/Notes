@@ -21,9 +21,10 @@ await coroutine/task：block当前函数，交还控制权给event loop
 控制同步：asyncio.Event()
 
 **asyncio**
-.run(coroutine object)：启动一个event loop，不断执行队列里的task，event loop获得控制权的时候会选一个task执行。全部执行完毕后返回返回值。
+.run(coroutine object)：启动一个event loop，不断执行队列里的task，event loop获得控制权的时候会选一个task执行。全部执行完毕后结束loop，返回返回值。
 ！如果不在主线程，执行完run后需要配置一个新的loop：asyncio.set_event_loop(asyncio.new_event_loop())，而且这个loop要run起来，默认是没有运行的。
 ！原因：首次调用get_event_loop()时会自动建立一个loop，而调用.run会新建loop并覆盖asyncio默认的loop，运行完run后loop将close，此时如果不是主线程将无法自动产生新的loop
+要想共用loop，需要底层手动新建loop，并设置set_event_loop
 
 .gather(*coroutines) -> Awaitable: ==Promise.all，等所有coroutine都await，相当于同时做多个子任务
 
