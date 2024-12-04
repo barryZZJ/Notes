@@ -1,0 +1,11 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2024-12-03T18:04:55+08:00
+
+====== testclient ======
+Created 星期二 03 十二月 2024
+
+给定app和route，即可直接内部调用flask的函数，不需要构造http请求
+
+with app.test_client() as c:
+	resp = c.get('/path')

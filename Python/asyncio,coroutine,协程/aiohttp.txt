@@ -1,0 +1,25 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2024-12-03T15:28:21+08:00
+
+====== aiohttp ======
+Created 星期二 03 十二月 2024
+
+异步发送http请求的requests库
+
+import asyncio
+import aiohttp
+
+async def post_request(url, data):
+	async with aiohttp.ClientSession() as session:
+		async with session.post(url, json=data) as response:
+			print(f'Status: {response.status}')
+			print(f'Response: {await response.text()}')
+
+
+或
+
+session = aiohttp.ClientSession()
+resp = await session.post()
+result = await resp.json()
+await session.close()

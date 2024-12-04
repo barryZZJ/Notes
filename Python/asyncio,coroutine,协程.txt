@@ -6,6 +6,12 @@ Creation-Date: 2023-06-21T10:52:34+08:00
 Created 星期三 21 六月 2023
 
 https://docs.python.org/3/library/asyncio.html
+https://www.bilibili.com/video/BV1oa411b7c9/
+
+通过event loop进行调度，每个await会往loop里放一个task，并交回控制权。
+loop只能等task主动交回控制权，所以如果有死循环就会卡死
+本质上还是单线程
+
 
 相比线程优点：
 1. 轻量级：协程比线程更轻量级，创建和销毁协程的开销比线程小得多。
@@ -13,7 +19,7 @@ https://docs.python.org/3/library/asyncio.html
 3. 更好的控制：协程由程序员显式控制切换点，避免了线程的竞争和死锁问题。
 
 使用场景：
-高并发、IO密集、资源受限、避免竞争和死锁
+高并发、IO密集（网络通讯）、资源受限、避免竞争和死锁
 如爬虫、web服务器、实时数据处理（websocket）
 
 await coroutine/task：block当前函数，交还控制权给event loop
@@ -37,6 +43,8 @@ https://docs.python.org/3.9/library/asyncio-task.html#id10
 任务加入其他线程的loop：https://docs.python.org/3.9/library/asyncio-task.html#id11
 .run_coroutine_threadsafe(coro, loop) -> Future  
 	# Submit a coroutine to the given event loop. This function is meant to be called from a different OS thread than the one where the event loop is running.
+
+不要滥用await，如果有多个await要善用create_task，这样各个task可以提前被运行，节约等待时间。
 
 **Task (Future的子类)**: https://docs.python.org/3.9/library/asyncio-task.html#task-object
 协程执行的最小单元

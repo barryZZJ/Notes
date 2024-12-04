@@ -16,3 +16,22 @@ sudo systemctl stop serviceqaxsafe.service
 禁用服务（启用用unmask），比disable更强力：
 sudo systemctl mask serviceqaxsafe.service
 Masking a service will create a symbolic link from the service unit file to /dev/null, effectively preventing the service from being started manually or automatically.
+
+.service文件
+/etc/systemd/system/xx.service
+{{{code: lang="ini" linenumbers="False"
+[Unit]
+# 服务名称，可自定义
+Description = My Rsshub
+After = network.target syslog.target
+Wants = network.target
+
+[Service]
+Type = simple
+# 启动frps的命令，需修改为您的frps的安装路径
+ExecStart = pnpm start
+WorkingDirectory = /root/myrsshub/RSSHub
+
+[Install]
+WantedBy = multi-user.target
+}}}
