@@ -1,0 +1,25 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2024-12-05T09:51:34+08:00
+
+====== usb2jffs,虚拟内存 ======
+Created 星期四 05 十二月 2024
+
+https://www.koolcenter.com/posts/115
+
+https://github.com/koolshare/rogsoft/blob/master/usb2jffs/README.md
+
+使用后软件中心、插件等都会安装到U盘里
+
+还可以配合虚拟内存插件，将U盘作为虚拟内存
+
+为避免U盘挂掉，插件默认的同步是12小时进行一次，可以手动调大间隔（比如一周一次，或者直接关闭同步）
+
+性能问题：
+USB2JFFS插件要求USB磁盘设备读取不低于30MB/s, 写入速度不低于为50MB/s。
+如果你的USB磁盘读写速度较低，使用本插件将会得到更差的实际体验！
+
+总结：
+可以只用U盘当虚拟内存，或者在jffs告急时使用
+建议512MB虚拟内存即可
+挂载虚拟内存后大多数情况下都看不到虚拟内存的使用，但是系统的稳定性会大大增强
