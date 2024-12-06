@@ -1,0 +1,13 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2024-12-06T19:20:25+08:00
+
+====== remmina ======
+创建日期 星期五 06 十二月 2024
+
+功能键：右ctrl
++ F: 切换全屏
++ F4: 断开连接
++ F9: 最小化
++ T: 切换（窗口化时的）工具栏
+单击右Ctrl: 切换快捷键捕获
