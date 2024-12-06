@@ -48,22 +48,14 @@ flatpak run com.freerdp.FreeRDP /v:yy.barryzzj.top:23330 /u:barry /p:zzj850462 /
 }}}
 
 
-mount.sh
+/etc/fstab
 {{{code: lang="sh" linenumbers="False"
-#! /bin/bash
-mkdir -p /home/barryoffice/mnt/e/
-mkdir -p /home/barryoffice/mnt/h/
-mkdir -p /home/barryoffice/mnt/f/
-mkdir -p /home/barryoffice/mnt/g/
-mkdir -p /home/barryoffice/mnt/i/
-mkdir -p /home/barryoffice/mnt/nspshare/
-mkdir -p /home/barryoffice/mnt/IM_server_20180104/
-#/usr/bin/sshfs -p 23355 -o IdentityFile=/home/barryoffice/.ssh/id_ecdsa barry@dorm.barryzzj.top:/d:/ /home/barryoffice/mnt/d/
-/usr/bin/sshfs -p 23355 -o IdentityFile=/home/barryoffice/.ssh/id_ecdsa barry@dorm.barryzzj.top:/e:/ /home/barryoffice/mnt/e/
-/usr/bin/sshfs -p 23355 -o IdentityFile=/home/barryoffice/.ssh/id_ecdsa barry@dorm.barryzzj.top:/h:/ /home/barryoffice/mnt/h/
-/usr/bin/sshfs -p 23355 -o IdentityFile=/home/barryoffice/.ssh/id_ecdsa barry@dorm.barryzzj.top:/f:/ /home/barryoffice/mnt/f/
-/usr/bin/sshfs -p 23355 -o IdentityFile=/home/barryoffice/.ssh/id_ecdsa barry@dorm.barryzzj.top:/g:/ /home/barryoffice/mnt/g/
-/usr/bin/sshfs -p 23355 -o IdentityFile=/home/barryoffice/.ssh/id_ecdsa barry@dorm.barryzzj.top:/i:/ /home/barryoffice/mnt/i/
-/usr/bin/sshfs -p 23355 -o IdentityFile=/home/barryoffice/.ssh/id_ecdsa barry@dorm.barryzzj.top:/f:/nspshare/ /home/barryoffice/mnt/nspshare/
-/usr/bin/sshfs -p 23355 -o IdentityFile=/home/barryoffice/.ssh/id_ecdsa barry@dorm.barryzzj.top:/f:/nspshare/zzj/IM_from_lhy/IM/NSP_IM20180104/ /home/barryoffice/mnt/IM_server_20180f104/
+/dev/disk/by-uuid/2BDD94C1F22ECC7F /media/barry/Solid auto nosuid,nodev,nofail,x-gvfs-show,x-gvfs-name=Solid 0 0
+/dev/disk/by-uuid/2DFF0F5EF8A0DCD3 /media/barry/HardDrive auto nosuid,nodev,nofail,x-gvfs-show,x-gvfs-name=HardDrive 0 0
+//dorm.barryzzj.top/d  /media/barry/d  cifs  username=barry,password=zzj850462,file_mode=0777,dir_mode=0777  0  0
+//dorm.barryzzj.top/e  /media/barry/e  cifs  username=barry,password=zzj850462,file_mode=0777,dir_mode=0777  0  0
+//dorm.barryzzj.top/f  /media/barry/f  cifs  username=barry,password=zzj850462,file_mode=0777,dir_mode=0777  0  0
+//dorm.barryzzj.top/g  /media/barry/g  cifs  username=barry,password=zzj850462,file_mode=0777,dir_mode=0777  0  0
+//dorm.barryzzj.top/h  /media/barry/h  cifs  username=barry,password=zzj850462,file_mode=0777,dir_mode=0777  0  0
+
 }}}

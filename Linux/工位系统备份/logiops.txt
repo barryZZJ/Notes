@@ -10,7 +10,7 @@ https://github.com/PixlOne/logiops
 更新设置：
 systemctl restart logid
 
-参考配置：
+参考配置：（如果滚轮有问题，可以把整个hiresscroll部分删掉试试）
 /etc/logid.cfg
 {{{code: lang="markdown" linenumbers="False"
 devices = (

@@ -1,0 +1,11 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2024-12-06T11:51:03+08:00
+
+====== 挂载本地磁盘 ======
+创建日期 星期五 06 十二月 2024
+
+挂载指令：
+sudo mount /dev/sdb1 /media/barry/Data (mount命令重启后会失效)
+
+--bind 挂载磁盘子目录

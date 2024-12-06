@@ -5,9 +5,29 @@ Creation-Date: 2023-07-23T17:32:02+08:00
 ====== 自动挂载本地磁盘 ======
 Created 星期日 23 七月 2023
 
+编辑/etc/fstab实现
+修改完文件后，运行
+sudo mount -a
+验证配置是否正确，配置不正确可能会导致系统无法正常启动。
+如果正确，运行 sudo systemctl daemon-reload
+
+ubuntu 24:
+磁盘管理——齿轮按钮——编辑挂载选项
+
+工位磁盘指令备份：
+/dev/disk/by-uuid/2BDD94C1F22ECC7F /media/barry/Solid auto nosuid,nodev,nofail,x-gvfs-show,x-gvfs-name=Solid 0 0
+/dev/disk/by-uuid/2DFF0F5EF8A0DCD3 /media/barry/HardDrive auto nosuid,nodev,nofail,x-gvfs-show,x-gvfs-name=HardDrive 0 0
+
+smb指令备份：（要先建好文件夹）
+//dorm.barryzzj.top/d  /media/barry/d  cifs  username=barry,password=zzj850462,file_mode=0777,dir_mode=0777  0  0
+//dorm.barryzzj.top/e  /media/barry/e  cifs  username=barry,password=zzj850462,file_mode=0777,dir_mode=0777  0  0
+//dorm.barryzzj.top/f  /media/barry/f  cifs  username=barry,password=zzj850462,file_mode=0777,dir_mode=0777  0  0
+//dorm.barryzzj.top/g  /media/barry/g  cifs  username=barry,password=zzj850462,file_mode=0777,dir_mode=0777  0  0
+//dorm.barryzzj.top/h  /media/barry/h  cifs  username=barry,password=zzj850462,file_mode=0777,dir_mode=0777  0  0
+
+
+旧版：
 https://www.cnblogs.com/fieldtianye/p/9295986.html
-挂载指令：
-sudo mount /dev/sdb1 /media/barry/Data (mount命令重启后会失效)
 
 0. sudo mkdir /media/barry/Data
 1.查看磁盘分区的UUID:
@@ -40,4 +60,3 @@ sudo mount -a
 验证配置是否正确，配置不正确可能会导致系统无法正常启动。
 
 5.重启系统
-
