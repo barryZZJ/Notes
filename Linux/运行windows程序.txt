@@ -1,0 +1,9 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2024-12-06T18:28:24+08:00
+
+====== 运行windows程序 ======
+创建日期 星期五 06 十二月 2024
+
+可执行文件添加到steam中再运行
+如果闪退，尝试修改兼容性一栏，强制使用特定版本
