@@ -23,7 +23,6 @@ uid=$(id -u)  # 1000
 gid=$(id -g)  # 1000
 
 # 挂载命令，添加了 uid、gid 和 file/dir_mode 选项
-# 如果挂载路径是/media，就不用加uid和gid。file_mode和dir_mode还是要加
 mount -t cifs -o username=barry,password=zzj850462,uid=$uid,gid=$gid,file_mode=0777,dir_mode=0777 //dorm.barryzzj.top/e /home/barryoffice/mnt/e/
 mount -t cifs -o username=barry,password=zzj850462,uid=$uid,gid=$gid,file_mode=0777,dir_mode=0777 //dorm.barryzzj.top/h /home/barryoffice/mnt/h/
 mount -t cifs -o username=barry,password=zzj850462,uid=$uid,gid=$gid,file_mode=0777,dir_mode=0777 //dorm.barryzzj.top/f /home/barryoffice/mnt/f/

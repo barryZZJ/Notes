@@ -1,0 +1,9 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2024-12-06T17:20:05+08:00
+
+====== 切换terminal语言 ======
+创建日期 星期五 06 十二月 2024
+
+export LANG=en_US
+export LANG=zh_CN

@@ -13,10 +13,11 @@ sudo mount -a
 
 ubuntu 24:
 磁盘管理——齿轮按钮——编辑挂载选项
+获取当前用户uid、gid: ''id -u, id -g''
 
-工位磁盘指令备份：
-/dev/disk/by-uuid/2BDD94C1F22ECC7F /media/barry/Solid auto nosuid,nodev,nofail,x-gvfs-show,x-gvfs-name=Solid 0 0
-/dev/disk/by-uuid/2DFF0F5EF8A0DCD3 /media/barry/HardDrive auto nosuid,nodev,nofail,x-gvfs-show,x-gvfs-name=HardDrive 0 0
+工位磁盘指令备份：（需要安装ntfs-3g，否则没有写权限）
+/dev/disk/by-uuid/2BDD94C1F22ECC7F /media/barry/Solid ntfs-3g nosuid,nodev,nofail,x-gvfs-show,x-gvfs-name=Solid,uid=1000,gid=1000,dmask=000,fmask=000 0 0
+/dev/disk/by-uuid/2DFF0F5EF8A0DCD3 /media/barry/HardDrive ntfs-3g nosuid,nodev,nofail,x-gvfs-show,x-gvfs-name=HardDrive,uid=1000,gid=1000,dmask=000,fmask=000 0 0
 
 smb指令备份：（要先建好文件夹）
 //dorm.barryzzj.top/d  /media/barry/d  cifs  username=barry,password=zzj850462,file_mode=0777,dir_mode=0777  0  0

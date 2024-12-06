@@ -39,3 +39,11 @@ flatpak run com.freerdp.FreeRDP /v:dorm.barryzzj.asia:23389 /u:barry /p:8504 /dy
 rdp-multimon:
 #! /bin/sh
 flatpak run com.freerdp.FreeRDP /v:dorm.barryzzj.asia:23389 /u:barry /p:8504 /dynamic-resolution /home-drive /network:lan /multimon +sound +clipboard -heartbeat -toggle-fullscreen
+
+rdp-twomon:
+#! /bin/sh
+xfreerdp /v:dorm.barryzzj.top:23389 /u:barry /p:zzj850462 /dynamic-resolution /home-drive /network:lan /multimon /monitors:1,2 +clipboard -heartbeat /log-level:OFF Linux指令:rdp:sound
+
+rdp:
+#! /bin/sh
+xfreerdp /v:dorm.barryzzj.top:23389 /u:barry /p:zzj850462 /dynamic-resolution /home-drive /network:lan /multimon /monitors:1,2 +clipboard -heartbeat /log-level:OFF +sound

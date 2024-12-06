@@ -50,12 +50,11 @@ flatpak run com.freerdp.FreeRDP /v:yy.barryzzj.top:23330 /u:barry /p:zzj850462 /
 
 /etc/fstab
 {{{code: lang="sh" linenumbers="False"
-/dev/disk/by-uuid/2BDD94C1F22ECC7F /media/barry/Solid auto nosuid,nodev,nofail,x-gvfs-show,x-gvfs-name=Solid 0 0
-/dev/disk/by-uuid/2DFF0F5EF8A0DCD3 /media/barry/HardDrive auto nosuid,nodev,nofail,x-gvfs-show,x-gvfs-name=HardDrive 0 0
 //dorm.barryzzj.top/d  /media/barry/d  cifs  username=barry,password=zzj850462,file_mode=0777,dir_mode=0777  0  0
 //dorm.barryzzj.top/e  /media/barry/e  cifs  username=barry,password=zzj850462,file_mode=0777,dir_mode=0777  0  0
 //dorm.barryzzj.top/f  /media/barry/f  cifs  username=barry,password=zzj850462,file_mode=0777,dir_mode=0777  0  0
 //dorm.barryzzj.top/g  /media/barry/g  cifs  username=barry,password=zzj850462,file_mode=0777,dir_mode=0777  0  0
 //dorm.barryzzj.top/h  /media/barry/h  cifs  username=barry,password=zzj850462,file_mode=0777,dir_mode=0777  0  0
-
+/dev/disk/by-uuid/2BDD94C1F22ECC7F /media/barry/Solid ntfs-3g nosuid,nodev,nofail,x-gvfs-show,x-gvfs-name=Solid,uid=1000,gid=1000,dmask=000,fmask=000 0 0
+/dev/disk/by-uuid/2DFF0F5EF8A0DCD3 /media/barry/HardDrive ntfs-3g nosuid,nodev,nofail,x-gvfs-show,x-gvfs-name=HardDrive,uid=1000,gid=1000,dmask=000,fmask=000 0 0
 }}}
