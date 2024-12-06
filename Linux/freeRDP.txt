@@ -36,11 +36,11 @@ debug:
 script：
 rdp-onemon:
 #! /bin/sh
-flatpak run com.freerdp.FreeRDP /v:dorm.barryzzj.asia:23389 /u:barry /p:8504 /dynamic-resolution /size:1920x1080 /home-drive /network:lan +sound +clipboard -heartbeat
+flatpak run com.freerdp.FreeRDP /v:dorm.barryzzj.asia:23389 /u:barry /p:8504 /dynamic-resolution /size:1920x1080 /home-drive /network:lan +sound +clipboard -heartbeat /log-level:OFF
 
 rdp-multimon:
 #! /bin/sh
-flatpak run com.freerdp.FreeRDP /v:dorm.barryzzj.asia:23389 /u:barry /p:8504 /dynamic-resolution /home-drive /network:lan /multimon +sound +clipboard -heartbeat -toggle-fullscreen
+flatpak run com.freerdp.FreeRDP /v:dorm.barryzzj.asia:23389 /u:barry /p:8504 /dynamic-resolution /home-drive /network:lan /multimon +sound +clipboard -heartbeat -toggle-fullscreen /log-level:OFF
 
 rdp-twomon:
 #! /bin/sh
@@ -48,4 +48,27 @@ xfreerdp /v:dorm.barryzzj.top:23389 /u:barry /p:zzj850462 /dynamic-resolution /h
 
 rdp:
 #! /bin/sh
-xfreerdp /v:dorm.barryzzj.top:23389 /u:barry /p:zzj850462 /dynamic-resolution /home-drive /network:lan /multimon /monitors:1,2 +clipboard -heartbeat /log-level:OFF +sound
+xfreerdp /v:dorm.barryzzj.top:23389 /u:barry /p:zzj850462 /dynamic-resolution /home-drive /network:lan /multimon /monitors:1,2 +clipboard -heartbeat /log-level:OFF +sound /log-level:OFF
+
+
+rdp-twomon.desktop
+{{{code: lang="desktop" linenumbers="False"
+[Desktop Entry]
+Name=RDP-twomon
+Exec=/home/barry/rdp-twomon
+Terminal=false
+Type=Application
+Icon=rdp
+}}}
+
+
+rdp-onemon.desktop
+{{{code: lang="desktop" linenumbers="False"
+[Desktop Entry]
+Name=RDP-OneMonitor
+Exec=/home/barryoffice/rdp-onemon
+Terminal=false
+Type=Application
+Icon=rdp-onemon
+}}}
+

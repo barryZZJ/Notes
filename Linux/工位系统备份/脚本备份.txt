@@ -5,49 +5,6 @@ Creation-Date: 2024-07-02T15:52:58+08:00
 ====== 脚本备份 ======
 创建日期 星期二 02 七月 2024
 
-rdp.desktop
-{{{code: lang="desktop" linenumbers="False"
-[Desktop Entry]
-Name=RDP
-Exec=/home/barryoffice/rdp
-Terminal=false
-Type=Application
-Icon=rdp
-}}}
-
-
-rdp-onemon.desktop
-{{{code: lang="desktop" linenumbers="False"
-[Desktop Entry]
-Name=RDP-OneMonitor
-Exec=/home/barryoffice/rdp-onemon
-Terminal=false
-Type=Application
-Icon=rdp-onemon
-}}}
-
-
-rdp.sh
-{{{code: lang="sh" linenumbers="False"
-#! /bin/sh
-flatpak run com.freerdp.FreeRDP /v:dorm.barryzzj.top:23389 /u:barry /p:zzj850462 /dynamic-resolution /home-drive /network:lan /multimon +sound +clipboard -heartbeat -toggle-fullscreen -clipboard
-}}}
-
-
-rdp-onemon.sh
-{{{code: lang="sh" linenumbers="False"
-#! /bin/sh
-flatpak run com.freerdp.FreeRDP /v:dorm.barryzzj.top:23389 /u:barry /p:zzj850462 /dynamic-resolution /size:1920x1080 /home-drive /network:lan +sound +clipboard -heartbeat
-}}}
-
-
-rdp-yy.sh
-{{{code: lang="sh" linenumbers="False"
-#! /bin/sh
-flatpak run com.freerdp.FreeRDP /v:yy.barryzzj.top:23330 /u:barry /p:zzj850462 /dynamic-resolution /home-drive /network:auto /multimon +sound +clipboard -heartbeat -toggle-fullscreen
-}}}
-
-
 /etc/fstab
 {{{code: lang="sh" linenumbers="False"
 //dorm.barryzzj.top/d  /media/barry/d  cifs  username=barry,password=zzj850462,file_mode=0777,dir_mode=0777  0  0
