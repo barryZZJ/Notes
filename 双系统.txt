@@ -1,0 +1,14 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2024-12-07T16:08:40+08:00
+
+====== 双系统 ======
+Created 星期六 07 十二月 2024
+
+给硬盘划出1~2个新的分区装系统，一个装/（相当于C盘），一个装/home
+bios关闭secure boot和fast boot
+做启动盘
+u盘启动
+安装时选择手动分配，把/boot/efi挂载到与windows同一个启动分区（第一个硬盘的第一个分区），新版貌似是自动识别的
+把/挂载到新划分的分区
+把/home挂载到另一个分区

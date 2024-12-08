@@ -11,6 +11,9 @@ with requests.Session() as s:
 或
 s = requests.Session()
 
+设置session的header：
+s.headers.update()
+
 跳过ssl验证：参数加个verify=False。
 不显示对应的warning: from requests.packages import urllib3; urllib3.disable_warnings()
 配置fiddler证书：https://gist.github.com/Firenza/0fa8cc4e5d03c0f0efc8919f3d53ff58
