@@ -12,3 +12,6 @@ Options - Connections - Allow remote computers to connect.
 给手机抓包：
 https://www.cnblogs.com/mmz-tester/p/11125007.html
 想办法在手机上装CA证书和WLAN证书即可解密https
+
+配置fiddlercertmaker
+https://github.com/ericyishi/summary/blob/master/tools/testing/fiddler.md
