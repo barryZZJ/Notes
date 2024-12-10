@@ -28,4 +28,4 @@ system() - CMDLINUX
 网页内有其他内容也不影响
 
 插件：
-绕过disable_functions
+绕过disable_functions，每个选项可以依次测试如ls指令，有输出说明成功

@@ -2,7 +2,7 @@ Content-Type: text/x-zim-wiki
 Wiki-Format: zim 0.6
 Creation-Date: 2024-12-09T23:06:15+08:00
 
-====== bypass屏蔽函数 ======
+====== bypass disable functions被屏蔽的函数 ======
 Created 星期一 09 十二月 2024
 
 phpinfo() 查看disable_functions
