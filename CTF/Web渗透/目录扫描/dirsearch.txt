@@ -12,7 +12,7 @@ python3 dirsearch.py -e php,html,js -u https://target
 python3 dirsearch.py -e php,html,js -u https://target -w /path/to/wordlist
 
 -u url
--e, --extensions php
+-e, --extensions .phps,.bak
 
 -t threads = 25
 -a, --async 使用协程 提高性能，降低CPU

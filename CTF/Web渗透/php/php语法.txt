@@ -81,5 +81,8 @@ https://www.php.net/manual/en/language.constants.magic.php
 ''__PROPERTY__''	Only valid inside a property hook. It is equal to the name of the property.
 ''__NAMESPACE__''	The name of the current namespace.
 
-
+正则表达式：
+https://www.php.net/manual/en/reference.pcre.pattern.syntax.php
+i: 匹配大小写
+s: .匹配换行
 

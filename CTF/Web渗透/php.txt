@@ -9,7 +9,7 @@ https://www.php.net/manual/en/index.php
 
 常用函数
 phpinfo()
-''highlight_file(__FILE__)''
+''highlight_file(__FILE__)''  可以用来查看flag.php的内容
 var_dump($_GET['key'])  显示变量详细信息
 print_r($var) 把变量打印为易读字符串，比var_dump更易读
 eval(string) 把string当作php代码执行
@@ -29,6 +29,12 @@ glob(string $pattern, int $flags=0): array|false  e.g. glob('*')
 	* +md5结果为0e开头的字符串
 * 字符串转整数：intval(val, base=10) 失败时返回0，空array返回0，非空array返回1
 * php文件常见部署位置：/var/www/html/index.php
+	* 查找方法：
+		* Nginx: /etc/nginx/nginx.conf  或  /etc/nginx/sites-available/default 中的 **root** 域
+		* Apache: **DocumentRoot** 域
+			[debian/ubuntu] /etc/apache2/apache2.conf 或 /etc/apache2/sites-available/000-default.conf
+			[centos/rhel] /etc/httpd/conf/httpd.conf 或 /etc/httpd/conf.d/  
+* 查看flag.php内容：highlight_file('flag.php')
 
 
 注意使用cat、head在php页面显示php会不显示或显示不全，因为识别到<?php则仍会当作php文件解析，解法：

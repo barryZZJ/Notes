@@ -2,15 +2,19 @@ Content-Type: text/x-zim-wiki
 Wiki-Format: zim 0.6
 Creation-Date: 2024-12-09T23:06:15+08:00
 
-====== bypass disable functions被屏蔽的函数 ======
+====== bypass disable function被屏蔽的函数 ======
 Created 星期一 09 十二月 2024
 
-phpinfo() 查看disable_functions
+php.ini中可以配置 disable_functions ，指定哪些函数不能使用
+
+phpinfo() 可以查看 disable_functions
 
 尝试常用函数
 highlight_file
 var_dump、print_r
 scandir('.')
 glob('*')
+能执行系统指令的函数 [[webshell]]
 
 使用蚁剑的"绕过disable_functions"插件
+

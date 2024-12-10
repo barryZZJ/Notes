@@ -1,0 +1,42 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2024-12-10T10:42:48+08:00
+
+====== 文件上传 ======
+Created 星期二 10 十二月 2024
+
+Apache服务器：修改.htaccess文件
+将其他后缀名文件当.php解析：
+上传.htaccess文件至网站根目录
+内容为
+AddType application/x-httpd-php .png
+
+特定文件名当php解析：
+上传.htaccess内容为：
+<FilesMatch "conf"> 
+SetHandler application/x-httpd-php 
+</FilesMatch>
+这样config.txt这个文件就会解析为php
+
+修改.htaccess的前提是httpd.conf或apache2.conf中的AllowOverride指令设为All，如
+<Directory /path/to/your/document/root>
+	AllowOverride All
+</Directory>
+
+PHP实现同样效果：上传.user.ini文件
+.user.ini https://www.php.net/manual/en/configuration.file.per-user.php
+用户级配置文件，可以覆盖全局配置php.ini
+默认需要300秒才会重新读取配置文件
+
+php.ini 参数：https://www.php.net/manual/en/ini.list.php
+	user_ini.filename string 更换用户配置文件名
+	auto_prepend_file=1.txt 执行主文件前自动 require 1.txt （不受后缀名.php的限制仍能解析php）
+	auto_append_file string 执行主文件后自动 require 该文件
+	
+
+https://ctf.show/writeups/1826091
+PHP上传机制：
+在php中，使用Content-Type: multipart/form-data;上传文件时，会将它保存在临时文件中，在php的配置中upload_tmp_dir参数为保存临时文件的路经，linux下面默认为/tmp。也就是说只要php接收上传请求，就会生成一个临时文件。如果具有上传功能，那么会将这个文件拷走储存。无论如何在执行结束后这个文件会被删除。并且php每次创建的临时文件名都有固定的格式，为phpXXXX.tmp（Windows中）、phpabcdef（Linux中，固定为php+6字符）。
+
+临时文件保存路径可以通过$_FILES['file']['tmp_name']获取 // /tmp/phpv3rm7M
+

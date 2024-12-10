@@ -29,24 +29,3 @@ XOR	Logical XOR
 <=>  NULL-safe equal  https://dev.mysql.com/doc/refman/8.4/en/comparison-operators.html#operator_equal-to
 expr BETWEEN min AND max
 expr NOT BETWEEN min AND max
-
-https://dev.mysql.com/doc/refman/8.4/en/group-by-modifiers.html
-虚拟表绕过
-GROUP BY col1 **WITH ROLLUP**: 生成结果包含NULL值，方便绕过密码
-如 ''username=1' or 1=1 GROUP BY password&password=''
-对应php代码为先查询username，然后判断 ''$password==$row['password']''
-原理：
-新增一行汇总行，其中被GROUP BY的列（e.g col1）值为NULL，其他列为求和
-如 ''mysql> SELECT year, SUM(profit) AS profit''
-	   ''FROM sales''
-	   ''GROUP BY year WITH ROLLUP;''
-''+------+--------+''
-''| year | profit |''
-''+------+--------+''
-''| 2000 |   4525 |''
-''| 2001 |   3010 |''
-''| NULL |   7535 |''
-''+------+--------+''
-如果指定GROUP BY了多个列，则对这些列全排列，分别置NULL（包括全为NULL）
-（如果sql_mode设置的有ONLY_FULL_GROUP_BY，则非数值列不能group py）
-非数值列求和结果是只保留第一个值

@@ -5,6 +5,8 @@ Creation-Date: 2024-12-09T19:04:01+08:00
 ====== tamper,bypass屏蔽词 ======
 Created 星期一 09 十二月 2024
 
+绕过WAF (web application firewall)
+
 混淆，有被过滤的符号时可以用来绕过
 --tamper="space2comment,versionedkeywords"
 
@@ -14,3 +16,61 @@ Created 星期一 09 十二月 2024
 space2comment: 绕过空格，变为/**/
 between: 绕过>和=
 randomcase: 随机大小写
+versionedkeywords: 将每个非函数关键字用 MySQL 版本注释/*!xxx*/包围起来。只有mysql会执行其中的内容，别的数据库则视为注释。
+informationschemacomment: INFORMATION_SCHEMA后面添加/**/
+
+
+apostrophemask	单引号url编码
+apostrophenullencode	单引号unicode编码
+base64encode	将payload进行base64编码
+between	将大于等于号用between替代
+binary	在可能的地方注入binary，将字符串转化为16进制格式，一般用在order by注入中
+chardoubleencode	双重url编码所有payload
+charencode	url编码所有payload
+commalesslimit	将逗号用offset代替
+commalessmid	将mid函数中的逗号用from for代替
+commentbeforeparentheses	在括号前加内联注释符/**/
+concat2concatws	将concat转化为concatws
+equaltolike	等号转化为like
+escapequotes	在单引号和双引号前面加上两个反斜杠
+greatest	用greatest代替大于符号
+halfversionedmorekeywords	关键之前加注释符号，适用于mysql<5.1
+hex2char	将16进制显示的数据转化为用CONCAT（CHAR（），…）来显示
+htmlencode	html编码所有非字母和数字的字符
+ifnull2casewhenisnull	改变ifnull语句的写法
+ifnull2ifisnull	替换ifnull为if(isnull(A))
+informationschemacomment	标示符后添加注释
+least	替换大于号为least
+lowercase	全部替换为小写值
+luanginx	用于绕过Lua nginx WAF,Lua nginx WAF不支持处理超过100个参数
+modsecurityversioned	空格替换为查询版本的注释ƒ
+modsecurityzeroversioned	添加完整的查询版本的注释
+multiplespaces	添加多个空格
+overlongutf8	将所有字符转义为utf8
+overlongutf8more	以指定的payload转换所有字符
+percentage	每个字符前添加%
+plus2concat	将加号替换为concat函数
+plus2fnconcat	将加号替换为ODBC函数{fnCONCAT()}
+randomcase	字符大小写随机替换
+randomcomments	/**/分割关键字
+sp_password	追加sp_password字符串
+space2comment	空格替换为/**/
+space2dash	空格替换为-加随机字符
+space2hash	空格替换为#加随机字符
+space2morecomment	空格替换为/_/
+space2morehash	空格替换为#加随机字符及换行符
+space2mssqlblank	空格替换为其他空符号
+space2mssqlhash	空格替换为%23%0A
+space2mysqlblank	空格替换为其他空白符号
+space2mysqldash	空格替换为-%0A
+space2plus	空格替换为加号
+space2randomblank	空格替换为备选字符集中的随机字符
+substring2leftright	PostgreSQL中将substring函数用left right函数代替
+symbliclogical	AND和OR替换为&&和
+unionalltounion	union all select 替换为union select
+unmagicquotes	宽字符绕过GPC
+uppercase	全部替换为大写值
+varnish	添加HTTP头
+versionedkeywords	用注释封装每个非函数的关键字
+versionedmorekewords	使用注释绕过
+xforwardedfor	添加伪造的HTTP头
