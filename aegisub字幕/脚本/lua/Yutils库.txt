@@ -1,0 +1,10 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2024-12-09T16:04:44+08:00
+
+====== Yutils库 ======
+Created 星期一 09 十二月 2024
+
+https://github.com/Youka/Yutils
+
+包含一些打印table（方便debug）、高级数学运算、解析样式、解析视频音频信息之类的功能

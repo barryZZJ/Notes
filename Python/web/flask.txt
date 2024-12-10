@@ -101,3 +101,9 @@ gunicorn pyfilename:appname -b 0.0.0.0:12345
 https://docs.pylonsproject.org/projects/waitress/en/latest/arguments.html#arguments
 pip install waitress
 waitress.serve(app, host=, port=)
+
+默认不会显示flask的web流量log，解决：
+pip install Paste
+from paste.translogger import TransLogger
+waitress.serve(TransLogger(app), ...)
+

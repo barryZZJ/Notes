@@ -9,7 +9,11 @@ Aegisub 追踪插件 Aegisub-Motion mocha
 https://www.bilibili.com/video/av289069676/
 https://github.com/TypesettingTools/Aegisub-Motion
 https://github.com/TypesettingTools/Aegisub-Motion/wiki
-encoder使用x264更精确，但用于Mocha的话需要安装QuickTime
+
+导出的片段跟实际有错位：
+换encoder，使用x264更精确，但用于Mocha的话需要安装QuickTime
+二压一遍再导出
+
 
 工作流程：https://borisfx.com/documentation/mocha/9.5.0/#_workflow_inside_mocha
 导出：选择第一个(CS3)
@@ -24,7 +28,8 @@ encoder使用x264更精确，但用于Mocha的话需要安装QuickTime
 	在内部再画一个spline可以移除其中的内容（可用于发生前景被遮挡的情况）
 	打开planar surface (蓝框)，调整为被追踪平面，同时可以打开grid，预览tracking data的效果，并及时发现追踪错误。
 	从最清晰、最大的一帧开始追
-	完全不动的话，可以直接跳过追踪，或者在开头结尾设置两个关键帧再追。
+	完全不动的话，可以直接跳过追踪，或者在开头结尾设置两个关键帧再追，避免抖动。
+	正着不行可以试试倒着追
 
 	追踪不正确时，调整追踪参数和形状。
 		调整Search Area、Motion、Preprocessing的参数

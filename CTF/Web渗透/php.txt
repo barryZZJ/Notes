@@ -8,6 +8,7 @@ Created 星期四 14 十一月 2024
 https://www.php.net/manual/en/index.php
 
 常用函数
+phpinfo()
 ''highlight_file(__FILE__)''
 var_dump($_GET['key'])  显示变量详细信息
 print_r($var) 把变量打印为易读字符串，比var_dump更易读
@@ -16,6 +17,9 @@ assert(string) 也会把string当作php代码执行
 system(string $command) 执行shell指令，如system("ls /")
 urlencode(string)
 urldecode(string)
+include
+scandir(string $directory, $sorting_order = SCANDIR_SORT_ASCENDING, ?$context = null): array|false
+glob(string $pattern, int $flags=0): array|false  e.g. glob('*')
 
 * 字符串和数字进行“==” 弱类型比较时，会将字符串转为数字
 	* 转换规则：https://php.p2hp.com/manual/zh/language.types.integer.php#language.types.integer.casting

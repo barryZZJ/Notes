@@ -1,0 +1,16 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2024-12-09T23:06:15+08:00
+
+====== bypass屏蔽函数 ======
+Created 星期一 09 十二月 2024
+
+phpinfo() 查看disable_functions
+
+尝试常用函数
+highlight_file
+var_dump、print_r
+scandir('.')
+glob('*')
+
+使用蚁剑的"绕过disable_functions"插件

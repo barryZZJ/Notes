@@ -46,7 +46,8 @@ template syl noblank
 **Note: 如果template syl运行后没反应是因为没有k轴！可以改用template char**
 ====================
 once: 只用于代码行，定义函数
-line [name]: template行：对每个syl执行一次，只生成一行；code行：对每行执行一次；template行可以包括name，name相同的会按顺序合并在一起(可以不是k轴)
+template行：对每个syl执行一次，只生成一行；code行：对每行执行一次；template行可以包括name，name相同的会按顺序合并在一起(可以不是k轴)
+line [name]: 
 	如 line effect
 	如果只想每行执行一次的话使用pre-line
 pre-line [name]: 只用于template行，在[name]相同的line模板输出结果前添加(只执行一次)

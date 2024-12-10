@@ -40,7 +40,7 @@ http://unanimated.hostfree.pw/ts/ts-layers.htm
 \shad<depth> 阴影 \xshad<depth> \yshad<depth> 分量可以为负数
 \an<pos> 1~9对齐方式
 \be<0/1/int> \blur<float> 边框不为0时模糊边框（外发光），否则模糊文字本身（要想达到带边框时也整体模糊的效果，可以设置淡入淡出/透明度后，在底下重复一层，并把其\1c改成边框的颜色(两层都不带bord)，看上去效果挺好的）
-\pos(x,y) 整数
+\pos(x,y) 整数  要想移动需要\move
 \r<style> 设置新样式 (为空时使用原样式)
 
 字体相关：
@@ -48,10 +48,11 @@ http://unanimated.hostfree.pw/ts/ts-layers.htm
 
 \fs<fontsize> 字号
 \fsc<scale%> \fscx<scale%> \fscy<scale%> 字体缩放 scale:0~100
-使用vsfiltermod时，\fscx \fscy指令存在bug，会忽略小数点影响观感，解决办法是替换掉这两个指令：
-1. 换成\fsc: \\fscy([\d.]+)\\fscx([\d.]+)  ->  \\fsc$1
-2. 勾选linear
-3. 不使用vsfiltermod
+使用vsfiltermod时，\fscx \fscy指令存在bug，会忽略小数点影响观感，解决办法：
+1. 把\fs的参数除以10，\fscx和\fscy的参数乘以10，消掉小数点。对应C Font Resize脚本 https://cnlang.me/thread-86816-1-1.html
+2. \fscx和\fscy参数相同时替换成\fsc: \\fscy([\d.]+)\\fscx([\d.]+)  ->  \\fsc$1
+3. 导入追踪数据时勾选linear
+4. 不使用vsfiltermod
 
 \fsp<spacing> 字符间距 -~0~+
 \fsvp<spacing> 调节垂直间距（行距），正数为减小缩近行间距，负数为增加拉宽行间距（夹在两行间、需要 VSFilterMod）
@@ -159,7 +160,7 @@ e.g. Banner;5;0;50
 
 VSFilterMod 新增tags：https://github.com/computerfan/VSFilterMod/wiki/New-Tags
 https://cwlrin.wiki/wp-content/uploads/2021/02/vsfiltermod-%E6%89%8B%E5%86%8C.pdf
-\fsc 字体缩放
+\fsc 字体缩放 
 \frs 每个字的baseline旋转
 \fsvp \fshp 调节垂直、水平baseline位置
 \z z轴取值

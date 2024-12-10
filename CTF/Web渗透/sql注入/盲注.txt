@@ -18,7 +18,7 @@ OR和AND也可以用 || 和 && 替换
 下面的语句，如果id存在，则用AND，如果不存在则用OR
 * LENGTH(str): int
 	判断字段长度：二分法 AND LENGTH(username)<NUM 或 <=NUM
-* SUBSTR(str, pos, len) 注意pos从1开始
+* SUBSTR(str, pos, len) SUBSTR(str FROM pos FOR len) 注意pos从1开始
 	爆破字符，推断字符串：
 		id = 1 AND SUBSTR(username,1,1) = 'x'
 	优化：使用ASCII函数将字符转换为ascii码，然后二分查找。

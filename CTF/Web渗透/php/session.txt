@@ -1,0 +1,14 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2024-12-09T20:28:31+08:00
+
+====== session ======
+Created 星期一 09 十二月 2024
+
+https://www.php.net/manual/en/reserved.variables.session.php
+
+执行session_start()后，
+会给COOKIE添加一条PHPSESSID=xxx
+其中key可以由session_name()指定，默认是PHPSESSID
+
+session内容可以通过$_SESSION获取

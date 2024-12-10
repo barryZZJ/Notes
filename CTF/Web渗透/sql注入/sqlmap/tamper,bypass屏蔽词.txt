@@ -1,0 +1,16 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2024-12-09T19:04:01+08:00
+
+====== tamper,bypass屏蔽词 ======
+Created 星期一 09 十二月 2024
+
+混淆，有被过滤的符号时可以用来绕过
+--tamper="space2comment,versionedkeywords"
+
+每个脚本会对输入变形
+
+内置脚本介绍：
+space2comment: 绕过空格，变为/**/
+between: 绕过>和=
+randomcase: 随机大小写

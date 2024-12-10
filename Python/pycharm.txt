@@ -25,3 +25,4 @@ studio64.exe
 
 快捷键：
 ctrl+shift+m 移动光标至成对括号 move caret to matching brace
+alt+shift+q 上传当前远程文件
