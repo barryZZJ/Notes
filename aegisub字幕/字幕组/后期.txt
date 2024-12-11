@@ -11,7 +11,7 @@ Created 星期日 27 十一月 2022
 压制、发视频
 
 压制成片，1080简体先发到小群；
-所有成片本地制作种子，发到bangumi，然后种子传到组长PC+盒子；发到做种群
+所有成片本地制作种子，发到bangumi，组长的rss会自动订阅（然后种子传到组长PC+盒子）；发到做种群
 视频发给组长（需要公网ip做种）
 
 
@@ -21,7 +21,7 @@ zm_sub@outlook.com
 
 京东图床：
 给京东客服 https://jdcs.jd.com/jdchat/custom.action?entry=jd_fwztc 发图片，在network中找到jpg的request，
-把图片链接的''https://dd-static.jd.com/ddimg/jfs ''换成 ''https://img30.360buyimg.com/imgzone/jfs''
+把图片链接的''https://dd-static.jd.com/ddimg/jfs'' 换成 ''https://img30.360buyimg.com/imgzone/jfs''
 ''https://img30.360buyimg.com/imgzone/jfs''/t1/187891/8/34091/2198087/643b68adFa70f0951/07314a76fb786825.png
 
 京东商品页查看高清图：把n5改为imgzone

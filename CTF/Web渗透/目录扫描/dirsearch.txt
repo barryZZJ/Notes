@@ -12,7 +12,8 @@ python3 dirsearch.py -e php,html,js -u https://target
 python3 dirsearch.py -e php,html,js -u https://target -w /path/to/wordlist
 
 -u url
--e, --extensions .phps,.bak
+-e, --extensions php,asp,aspx,jsp,html,htm,phps  # 不知道为什么只设置一个的时候不起作用
+--suffixes .bak,.swp  # 带suffixes参数需要额外跑一遍 # .swp: vim临时文件
 
 -t threads = 25
 -a, --async 使用协程 提高性能，降低CPU

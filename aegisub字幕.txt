@@ -7,3 +7,12 @@ Created 星期五 23 九月 2022
 
 https://aegi.vmoe.info/docs/3.2/Main_Page/
 https://aeg-dev.github.io/AegiSite/docs/3.2/ass_tags/
+
+youtube下载的vp9编码动态帧率视频，使用原版ffmpegsource会出现解码的帧跟实际对不上，解决办法：
+yt-dlp下载时视频用-f videoid+audioid 选择avc编码(h264)恒定帧率版本（e.g. -f 137+140）（v: ext=mp4, proto!=m3u8, a: ext=m4a），用来打轴；
+然后压制时换成vp9编码的高清源
+
+x 换魔改版：
+https://github.com/AmusementClub/Aegisub  - 不能用yt的vp9编码的源
+https://github.com/arch1t3cht/Aegisub  - 不稳定
+Options——Advanced——Video——Provider 换成BestSource或Vapoursynth

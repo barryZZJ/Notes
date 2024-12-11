@@ -67,7 +67,7 @@ http://unanimated.hostfree.pw/ts/ts-layers.htm
 阴影颜色 \4c&H<bb><gg><rr>&
 
 透明度（注意要加H，前后都要有&，否则Aegisub-motion识别不出来）
-\alpha&H<aa>&
+\alpha&H<aa>&  00: 全显示，FF：全隐藏
 \1a&H<aa>& 注意1a为FF时shad也会隐藏，绕过的办法是1a设为FE
 \2a&H<aa>&
 \3a&H<aa>&
@@ -98,7 +98,7 @@ Circle (almost):
 
 复杂渐变：
 \fade(<a1>,<a2>,<a3>,<t1>,<t2>,<t3>,<t4>) 
-a: 0~255; t: 相对起始时间ms
+a: 0(显示)~255(全隐藏); t: 相对起始时间ms
 0~t1: a1
 t1~t2: a1->a2
 t2~t3: a2
