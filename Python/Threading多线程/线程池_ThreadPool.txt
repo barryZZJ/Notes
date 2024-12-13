@@ -5,16 +5,28 @@ Creation-Date: 2024-10-25T21:06:18+08:00
 ====== 线程池 ThreadPool ======
 Created 星期五 25 十月 2024
 
-from concurrent.futures import ThreadPoolExecutor, as_completed
 
+
+示例：
 https://docs.python.org/3.9/library/concurrent.futures.html#concurrent.futures.ThreadPoolExecutor
-
+from concurrent.futures import ThreadPoolExecutor, as_completed
 with ThreadPoolExecutor(max_workers=n) as executor:
 	futures = [executor.submit(func) for i in range(xxx)]
 	for future in as_completed(futures):
-		future.result()
+		print(future.result())
+示例2：
+executor = ThreadPoolExecutor(max_workers=n)
+try:
+	futures = [executor.submit(func) for i in range(xxx)]
+	for future in as_completed(futures):
+		print(future.result())
+finally:
+	executor.shutdown()
 
+执行函数：
 https://docs.python.org/3.9/library/concurrent.futures.html#concurrent.futures.Executor
-executor.submit()
+executor.submit(fn,/,*args,**kwargs)
 executor.map()
 
+
+可以在子线程的参数里传入executor，意味着可以在子线程中使用多进程

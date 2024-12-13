@@ -8,7 +8,7 @@ Creation-Date: 2022-09-06T17:04:15+08:00
 2. 拷入OP、ED，并平移位置。
 3. 拷入翻译文本，全部标为织梦-对话中文。
 4. 按顺序打轴，每句话视频播放校对一遍，注意位置是否有遮挡，帧是否需要微调等。
-5. 使用Timing Post-processor填充100ms空隙 (Max gap: 100, Max overlap: 50, Bias: ->End)（注意只应用于对话，并且不作用于上下分开的字幕）
+5. 使用Timing Post-processor填充空隙，解决闪烁 (Max gap: 1500, Max overlap: 50, Bias: 偏向End)（注意只应用于对话，并且不作用于上下分开的字幕）
 6. 做屏幕字
 	a. 检查标点符号，日文有的符号中文也要同步
 	b. 特殊字幕设置字体字号、取色、特效（\fn\fs\bord0\shad0\1c\3c）：

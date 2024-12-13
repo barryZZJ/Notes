@@ -16,6 +16,10 @@ await s.serve_forever()  # blocking，只能通过task.cancel取消，但不知�
 
 s.close()  # leaves connections open
 await s.wait_closed()  # wait until close() completes
+或
+async with s:
+	...
+# s is closed and no longer accepts new connections
 
 async def handler(reader, writer):
 	data = await reader.read(1024)

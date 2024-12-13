@@ -8,10 +8,10 @@ Created 星期三 21 六月 2023
 https://docs.python.org/3/library/asyncio.html
 https://www.bilibili.com/video/BV1oa411b7c9/
 
-通过event loop进行调度，每个await会往loop里放一个task，并交回控制权。
+通过event loop进行调度，每遇到一次await会往loop里创建一个task，block当前函数，并把控制权还给loop。
+当loop有控制权时就会执行各个task。
 loop只能等task主动交回控制权，所以如果有死循环就会卡死
-本质上还是单线程
-
+本质上还是单线程。
 
 相比线程优点：
 1. 轻量级：协程比线程更轻量级，创建和销毁协程的开销比线程小得多。
@@ -22,29 +22,66 @@ loop只能等task主动交回控制权，所以如果有死循环就会卡死
 高并发、IO密集（网络通讯）、资源受限、避免竞争和死锁
 如爬虫、web服务器、实时数据处理（websocket）
 
-await coroutine/task：block当前函数，交还控制权给event loop
 
-控制同步：asyncio.Event()
+example:
+''import asyncio''
 
+''async def task1():''
+	''print("Task 1 started")''
+	''await asyncio.sleep(1)''
+	''print("Task 1 finished")''
+
+''async def task2():''
+	''print("Task 2 started")''
+	''await asyncio.sleep(2)''
+	''print("Task 2 finished")''
+
+''async def main():''
+	''await asyncio.gather(task1(), task2())''
+
+''# 运行协程''
+''asyncio.run(main())''
+
+语法
+await coroutine/task
+async def f() -> coroutine
+async with func_coroutine() as x: ...
+
+=== 顶层API: ===
 **asyncio**
-.run(coroutine object)：启动一个**新的**event loop，不断执行队列里的task，event loop获得控制权的时候会选一个task执行。全部执行完毕后结束loop，返回返回值。
-！不在主线程，执行完run后需要配置一个新的loop：asyncio.set_event_loop(asyncio.new_event_loop())，而且这个loop要run起来，默认是没有运行的。
-！原因：首次调用get_event_loop()时会自动建立一个loop，而调用.run会新建loop并覆盖asyncio默认的loop，运行完run后loop将close，此时如果不是主线程将无法自动产生新的loop
-要想共用loop，需要底层手动新建loop，并设置set_event_loop
+.run(coroutine object)：启动一个**新的**event loop，不断执行队列里的task，执行完毕后返回返回值。
+（执行完后loop被销毁，不能复用。要想复用需要用底层的loop接口，手动创建loop，调用loop.run_until_complete）
 
-.gather(*coroutines) -> Awaitable: ==Promise.all，等所有coroutine都await，相当于同时做多个子任务
+手动创建loop：
+asyncio.set_event_loop(asyncio.new_event_loop())，而且这个loop要run起来，默认是没有运行的。
+！如果不是主线程，asyncio将无法自动产生新的loop
 
-.create_task(coro) -> Task：把coro封装成task，注册到event loop，等待未来被运行，且不阻塞当前任务
-.sleep(delaysec) -> Coroutine  # 设为0可以避免当前task长时间独占loop
+.create_task(coro) -> Task：把coro封装成task (见下)，注册到event loop，等待未来被运行。且**不阻塞**当前任务
+	不要滥用await，如果有多个await要多用.create_task，这样各个task可以提前被运行，节约等待时间。
 
-.to_thread(func) -> Coroutine  # Asynchronously run function func in a separate thread. 用于IO bound任务，避免阻塞loop。可以结合.gather与其他task并行
+.gather(*coroutines|*tasks) -> Awaitable: ==Promise.all，等所有coroutine都await，相当于同时做多个子任务
+.as_completed(*coros|*tasks) -> Iterator[Awaitable]  按task执行顺序返回
+	''for future in asyncio.as_completed(*tasks):''
+		''ret = await future''
+
+.sleep(delaysec) -> Coroutine  # .sleep(0) 可以避免当前task长时间独占loop
+
+.to_thread(sync_func) -> Coroutine  # loop.run_in_executor 的顶层接口，自动新建一个executor # 用于IO bound任务，避免阻塞loop。可以结合.gather与其他task并行
 https://docs.python.org/3.9/library/asyncio-task.html#id10
 
 任务加入其他线程的loop：https://docs.python.org/3.9/library/asyncio-task.html#id11
 .run_coroutine_threadsafe(coro, loop) -> Future  
 	# Submit a coroutine to the given event loop. This function is meant to be called from a different OS thread than the one where the event loop is running.
+与run_in_executor相对，把coroutine送到其他线程的loop中运行
+示例：
+def run_loop(loop): asyncio.set_event_loop(loop)  loop.run_forever()
+loops = [asyncio.new_event_loop() for _ in range(NUM_THREADS)]
+with ThreadPoolExecutor(max_workers=NUM_THREADS) as executor:
+	executor.submit(run_loop, loop)
+	asyncio.run_coroutine_threadsafe(async_func, loop)
+[loop.call_soon_threadsafe(loop.stop) for loop in loops]
 
-不要滥用await，如果有多个await要善用create_task，这样各个task可以提前被运行，节约等待时间。
+控制同步：asyncio.Event()
 
 **Task (Future的子类)**: https://docs.python.org/3.9/library/asyncio-task.html#task-object
 协程执行的最小单元
@@ -52,7 +89,40 @@ https://docs.python.org/3.9/library/asyncio-task.html#id10
 task = asyncio.create_task(coro)
 await task
 
-底层API：
+=== 底层API： ===
+**Loop:**
+https://docs.python.org/3.9/library/asyncio-eventloop.html
+asyncio.get_running_loop()
+asyncio.get_event_loop() Get the current event loop. create a new on if not exist and is in main thread
+
+执行coroutine/task: https://docs.python.org/3.9/library/asyncio-eventloop.html#id1
+.run_untile_complete
+.run_forever()
+.stop() .close()  # 不close的话可以重新run，复用。
+.is_running() .is_closed()
+
+Scheduling callbacks https://docs.python.org/3.9/library/asyncio-eventloop.html#scheduling-callbacks
+.call_soon()  Schedule the callback to be called with args arguments at the next iteration of the event loop.
+.call_soon_threadsafe() Must be used to schedule callbacks //from another thread//.
+Scheduling delayed callbacks
+.call_later(delaysec
+.call_at(when
+
+.create_future() -> Future
+.create_task(coroutine) -> Task
+
+结合多线程/多进程：execute code in thread or process pool:
+https://docs.python.org/3.9/library/asyncio-eventloop.html#asyncio.loop.run_in_executor
+.run_in_executor(executor, sync_func, *args) -> Future  # 配合concurrent库的线程池/进程池使用，用于执行第三方的同步函数，进一步提高效率。把func包装成一个task并放入loop，非阻塞（不必调用create_task）
+多进程适合处理cpu bound任务，多线程适合处理IO bound任务（asyncio只有一个线程，需要等task主动归还控制权，而多线程不用）。
+如果单个任务不重，多进程反而会因为overhead很慢。
+[[Threading多线程:线程池 ThreadPool]]
+[[multiprocessing多进程]]
+
+''with concurrent.futures.ProcessPoolExecutor(max_workers=os.cpu_count()) as executor:''
+	''futures = [loop.run_in_executor(executor, f, arg) for _ in range(num_connections)]''
+	''return await asyncio.gather(*futures)''
+
 **Future:** https://docs.python.org/3.9/library/asyncio-future.html#asyncio.Future
 相当于Promise
 A Future represents an eventual result of an asynchronous operation. awaitable
@@ -71,46 +141,3 @@ if not fut.cancelled():
 .cancel
 .get_loop()
 
-
-**Loop:**
-https://docs.python.org/3.9/library/asyncio-eventloop.html
-asyncio.get_running_loop()
-asyncio.get_event_loop() Get the current event loop. create a new on if not exist and is in main thread
-
-loop running https://docs.python.org/3.9/library/asyncio-eventloop.html#id1
-.run_untile_complete
-.run_forever()
-.stop() .close()
-.is_running() .is_closed()
-
-Scheduling callbacks
-.call_soon()  Schedule the callback to be called with args arguments at the next iteration of the event loop.
-.call_soon_threadsafe() Must be used to schedule callbacks //from another thread//.
-Scheduling delayed callbacks
-.call_later(delaysec
-.call_at(when
-
-.create_future() -> Future
-.create_task() -> Task
-
-execute code in thread or process pool:
-https://docs.python.org/3.9/library/asyncio-eventloop.html#asyncio.loop.run_in_executor
-.run_in_executor(executer, func, *args) -> awaitable  # executer can be None
-
-''import asyncio''
-
-''async def task1():''
-	''print("Task 1 started")''
-	''await asyncio.sleep(1)''
-	''print("Task 1 finished")''
-
-''async def task2():''
-	''print("Task 2 started")''
-	''await asyncio.sleep(2)''
-	''print("Task 2 finished")''
-
-''async def main():''
-	''await asyncio.gather(task1(), task2())''
-
-''# 运行协程''
-''asyncio.run(main())''
