@@ -28,5 +28,8 @@ https://docs.python.org/3.9/library/concurrent.futures.html#concurrent.futures.E
 executor.submit(fn,/,*args,**kwargs)
 executor.map()
 
-
 可以在子线程的参数里传入executor，意味着可以在子线程中使用多进程
+
+Future object https://docs.python.org/3.9/library/concurrent.futures.html#concurrent.futures.Future
+.result(timeout=None)
+.add_don_callback(fn)  fn:(fut)
