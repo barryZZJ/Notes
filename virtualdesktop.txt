@@ -5,6 +5,9 @@ Creation-Date: 2024-09-18T21:56:16+08:00
 ====== virtualdesktop ======
 Created 星期三 18 九月 2024
 
+轻易不要更新！
+如果游戏卡顿：修改OpenXR runtime
+
 报错
 Error Streaming Desktop
 Try updating your GPU drivers
@@ -23,3 +26,4 @@ ctrl+shift+win+b it will reset your graphics drivers
 监视进程被谁杀掉了
 https://blog.csdn.net/CJF_iceKing/article/details/112754801
 https://learn.microsoft.com/en-us/windows-hardware/drivers/debugger/registry-entries-for-silent-process-exit
+
