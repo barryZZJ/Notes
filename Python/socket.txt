@@ -42,6 +42,7 @@ while True:
 2. sk.getpeername() 会报OSError
 3. sk._closed / sk.fileno()<0 经测试都没用
 
+更快的断开：socket.shutdown() before .close()
  
 客户端
 import socket,time

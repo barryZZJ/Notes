@@ -70,6 +70,8 @@ enable: ''http://yacd.haishan.me,http://clash.razord.top,http://clash.metacubex.
 https://github.com/tindy2013/subconverter/releases
 后端地址：自定义：http://192.168.50.200:25500/
 
+修改DNS：
+https://merlinkodo.github.io/Clash-Rev-Doc/config/dns/#nameserver-policy
 
 自定义规则解码：
 rule_parser.py

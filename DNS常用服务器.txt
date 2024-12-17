@@ -8,20 +8,34 @@ Created 星期六 03 十二月 2022
 https://dnsdaquan.com/
 https://www.zhihu.com/question/34826522/answer/1269091359
 
+nslookup:
+nslookup example.com 8.8.8.8
+交互式：
+>server 8.8.8.8
+>example.com
+>example.com 223.5.5.5
+>set debug  # 一级debug
+>set d2  # 更详细的debug
+
 {{.\pasted_image.png}}
 
 谷歌
 8.8.8.8
 8.8.4.4
 
+北京电信DNS：219.141.136.10　219.141.140.10
+北京联通DNS：202.106.196.115　202.106.46.151　202.106.0.20　202.106.195.68
+
 阿里：
-223.5.5.5
+223.5.5.5  // public1.alidns.com
 223.6.6.6
 
 腾讯
 119.29.29.29
 182.254.116.116
 
+百度
+180.76.76.76 
 
 美国：
 Level3 Public DNS 

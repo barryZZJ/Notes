@@ -8,6 +8,8 @@ Created 星期一 02 十二月 2024
 https://docs.python.org/3.9/library/asyncio-eventloop.html#asyncio.Server.serve_forever
 https://docs.python.org/3/library/asyncio-stream.html#asyncio.start_server
 
+（用户量大规模时使用 [[socket:epoll]] ）
+
 server端：
 s = await asyncio.start_server(handler, host, port, start_serving=False)
 
