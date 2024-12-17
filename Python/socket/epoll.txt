@@ -1,79 +1,3 @@
-<<<<<<< HEAD
-Content-Type: text/x-zim-wiki
-Wiki-Format: zim 0.6
-Creation-Date: 2024-12-13T16:00:25+08:00
-
-====== epoll ======
-Created 星期五 13 十二月 2024
-
-linux专属select方式，适合建立大规模连接的服务器。通过事件的方式选择可用的socket。（可看作高级版asyncio实现方案）
-每个socket都使用nonblocking模式，当socket收到消息时，会被放入events中，因此被选中的socket的conn.recv直接就能获取到数据。
-
-nonblocking模式下，只要服务端在断开连接前发送过消息，客户端就一定能收到，无论服务端连接是否断开。
-
-进一步优化的话，客户端处理函数可以跟threading结合。
-
-多线程注意bug：
-被选中的socket，当对方close后，服务器如果不手动unregister，就会一直出现在events中，并不断收到空的data（且不会报错）。（对方close之前则不会出现在events）
-而多线程导致对方close和服务器unregister之间有延迟，此时会不断遇到空data，解决办法：在进入多线程前先判断是否收到空data，此时视为连接关闭。
-
-
-示例：
-{{{code: lang="python3" linenumbers="False"
-import select
-import socket
-import loguru
-
-# Create a nonblocking server socket
-server_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-server_socket.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
-server_socket.setblocking(False)
-server_socket.bind(('127.0.0.1', 12345))
-server_socket.listen()
-
-# Create an epoll object
-epoll = select.epoll()
-epoll.register(server_socket.fileno(), select.EPOLLIN)
-
-connections = {}
-
-try:
-	while True:
-		events = epoll.poll(timeout=1)  # 如果不设timeout则一直阻塞到来event
-		for fileno, event in events:  # events包含等待时间内所有可用的socket，如果很多的话处理逻辑可以用多线程并行
-			if fileno == server_socket.fileno():
-				conn, addr = server_socket.accept()  # 只有客户端发起连接时才会运行到这里
-				conn.setblocking(False)
-				epoll.register(conn.fileno(), select.EPOLLIN)
-				connections[conn.fileno()] = (conn, addr)
-				loguru.logger.info(f'Accepted connection from {addr}')
-			elif event & select.EPOLLIN:
-				conn, addr = connections[fileno]
-				try:
-					data = conn.recv(1024)  # 只有客户端发送消息时才会运行到这里
-					if data:
-						loguru.logger.info(f'Received data: {data.decode("utf-8")} from {addresses[fileno]}')
-						response = b'HTTP/1.1 200 OK\r\nContent-Length: 13\r\n\r\nHello, world!'
-						conn.sendall(response)
-					else:
-						epoll.unregister(fileno)
-						conn.close()
-						del connections[fileno]
-				except Exception as e:
-					loguru.logger.error(f'Error: {e}')
-					epoll.unregister(fileno)
-					conn.close()
-					del connections[fileno]
-finally:
-	for fileno in conns:
-		conn, addr = conns[fileno]
-		conn.close()
-		epoll.unregister(fileno)
-	epoll.unregister(server_socket.fileno())
-	epoll.close()
-	server_socket.close()
-}}}
-=======
 Content-Type: text/x-zim-wiki
 Wiki-Format: zim 0.6
 Creation-Date: 2024-12-13T16:00:25+08:00
@@ -93,6 +17,7 @@ nonblocking模式下，只要服务端在断开连接前发送过消息，客户
 而多线程导致服务器unregister之前就响应了下一次events，此时会不断遇到空data，解决办法：在进入多线程前先判断是否收到空data，此时视为连接关闭。
 
 
+
 示例：
 {{{code: lang="python3" linenumbers="False"
 import select
@@ -148,4 +73,3 @@ finally:
 	epoll.close()
 	server_socket.close()
 }}}
->>>>>>> 9e3c10b (scuduled task commit)

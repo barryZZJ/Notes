@@ -16,7 +16,7 @@ go run xxx.go
 go build xxx.go
 
 包管理
-go mod init example.com/myproject
+go mod init myproject
 go mod tidy 根据import内容下载对应的包
 
 换源：
