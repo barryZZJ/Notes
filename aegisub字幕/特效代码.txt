@@ -166,7 +166,7 @@ https://cwlrin.wiki/wp-content/uploads/2021/02/vsfiltermod-%E6%89%8B%E5%86%8C.pd
 \z z轴取值
 \distort(u1,v1,u2,v2,u3,v3) 形变 \distort(1,0,1,1,0,1) （左上为原点，从右上开始顺时针依次）
 \rnd<arg> \rndx \rndy \rndz 每个像素随机偏移<arg>个像素，可接\t
-\$vc(lt, rt, lb, rb) 颜色渐变，$=1~4分别对应1c,2c,3c,4c 【复杂的颜色渐变可以考虑替换成\1img】
+\$vc(lt, rt, lb, rb) 颜色渐变，$=1~4分别对应1c,2c,3c,4c 可以重复使用，作用于两个\$vc之间的文字【复杂的颜色渐变可以考虑替换成\1img】
 \$va(lt, rt, lb, rb) 透明度渐变，$=1~4分别对应1c,2c,3c,4c
 \$img(path[,xoffset,yoffset]) 平铺图片 
 	如需要单张图片需要添加符合图片大小的vector clip矢量绘图，可以使用现成的lua脚本 $=1~4 
