@@ -29,6 +29,8 @@ lossless codec like -c:v ffv1 which preserves the quality of the input video.
 	-report 保存日志到txt
 	-c codec for both video and audio
 
+-map 指定输入流
+
 倍速播放
 视频的PTS系数为 1/倍速
 e.g. 2倍速：

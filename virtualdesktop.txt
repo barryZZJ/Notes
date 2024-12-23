@@ -19,6 +19,10 @@ C:\ProgramData\Virtual Desktop
 
 关闭防火墙
 
+europe.vrdesktop.net
+america.vrdesktop.net
+走代理
+
 升级显卡驱动
 
 ctrl+shift+win+b it will reset your graphics drivers
