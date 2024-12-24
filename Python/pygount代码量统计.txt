@@ -8,3 +8,4 @@ Created 星期六 03 二月 2024
 https://pypi.org/project/pygount/
 pip install pygount
 pygount -f summary /path
+可以统计各种语言的代码量

@@ -7,3 +7,9 @@ Created 星期二 23 五月 2023
 
 扫描端口：
 nmap -p 80,1-100 192.168.0.1
+-Pn 跳过连通性测试，认为主机在线
+
+
+扫描漏洞，可以查到端口服务的版本，自动查找对应的漏洞
+https://github.com/vulnersCom/nmap-vulners
+nmap -sV --script vulners [--script-args mincvss=<arg_val>] <target=<ip> -p <port>>

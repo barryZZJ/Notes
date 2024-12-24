@@ -22,4 +22,35 @@ python3 dirsearch.py -e php,html,js -u https://target -w /path/to/wordlist
 --exclude-extensions
 --skip-on-status 403,401
 
+--exclude-text TEXT  --exclude-texts "403 Forbidden"
+--exclude-regex "^Error$"
+--exclude-redirect "https://(.*).okta.com/*"
+--exclude-response /error.html
+--exclude-sizes 1B,243KB
+
+-o output_file
+
 ctrl c 暂停
+
+python dirsearch.py -u https://target --exclude-status 404,500 -r 2 --recursion-status 200-399
+# 排除404,500，递归深度2，递归扫描的有效状态码200-399
+python dirsearch.py -l target.txt --crawl --random-agent
+# -l 批量扫描，在响应中爬取新路径，为每个请求选择一个随机用户代理
+python dirsearch.py -l target.txt -t 50 -o dir-result.txt --exclude-status 404,500
+# 批量扫描，指定线程50，输出txt，排除404,500
+python dirsearch.py -l target.txt -t 50 -o dir-result.txt --exclude-status 404,500 -r --recursion-status 200-399
+# 批量扫描，指定线程50，输出txt，排除404,500，递归扫描的有效状态码200-399
+python dirsearch.py -u https://target.com --exclude-status 403,404,500 -r 2 --recursion-status 200-399 --crawl --random-agent --subdirs /,cfgc/,collect/,userServer/,wealth/
+# 扫描子目录（默认会扫描/）
+python dirsearch.py -u https://target.com --exclude-status 403,404,500 -r 2 --recursion-status 200-399 --crawl --random-agent --subdirs /,cfgc/,collect/ -t 100 -w D:\Tool\dirsearch\dirsearch-master-20230714\db\sensitive_directory_dic.txt --log ./test_log.txt
+# -w 指定字典 --log输出日志
+
+【额外部分用法】
+cat urls.txt | python3 dirsearch.py --stdin
+# 从urls.txt文件中读取目标URL,并通过stdin输入传递给dirsearch。这样可以批量扫描urls.txt里的多个URL。
+python3 dirsearch.py -u https://target --max-time 360
+# 设置单个目标URL,并使用--max-time参数设置最长扫描时间为360秒。
+python3 dirsearch.py -u https://target --auth admin:pass --auth-type basic
+# 扫描设置basic认证,用户名为admin,密码为pass。可以用于测试需要认证的目录。
+python3 dirsearch.py -u https://target --header-list rate-limit-bypasses.txt
+# 使用--header-list参数从rate-limit-bypasses.txt文件中读取请求头,用来绕过防护的速率限制。

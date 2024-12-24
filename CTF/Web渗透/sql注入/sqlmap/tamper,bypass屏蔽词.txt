@@ -19,7 +19,7 @@ randomcase: 随机大小写
 versionedkeywords: 将每个非函数关键字用 MySQL 版本注释/*!xxx*/包围起来。只有mysql会执行其中的内容，别的数据库则视为注释。
 informationschemacomment: INFORMATION_SCHEMA后面添加/**/
 
-
+sqlmap --list-tampers
 apostrophemask	单引号url编码
 apostrophenullencode	单引号unicode编码
 base64encode	将payload进行base64编码

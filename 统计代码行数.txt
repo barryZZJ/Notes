@@ -8,3 +8,7 @@ Created 星期五 21 六月 2024
 powershell：
 (Get-ChildItem -Recurse -Filter "*.py" | Get-Content | Measure-Object -Line).Lines
 只忽略空行
+
+[[git:统计代码行数]]
+
+[[Python:pygount代码量统计]]

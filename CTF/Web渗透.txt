@@ -12,8 +12,10 @@ dirsearch扫描后台目录 [[+目录扫描:dirsearch]]
 	备份文件 .bak，如upload.php.bak
 	源码.phps，如upload.php.bak
 	vim临时文件 .swp
+
 cookies
+
 域名解析为TXT记录
-	
+
 	
 
