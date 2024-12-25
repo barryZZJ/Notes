@@ -143,8 +143,8 @@ https://docs.rsshub.app/parameter.html#duo-mei-ti-chu-li
 用法：需要环境变量ALLOW_USER_HOTLINK_TEMPLATE=true，在订阅url后添加通用参数
 ?image_hotlink_template=https://images.weserv.nl?url=${href}
 ?image_hotlink_template=https://i3.wp.com/${host}${pathname}
-twitter用https://images.weserv.nl?url=${href}
-weibo, picuki用https://i3.wp.com/${host}${pathname}
+[[twitter%E7%94%A8https://images.weserv.nl?url=${href}]]
+weibo, [[picuki%E7%94%A8https://i3.wp.com/${host}${pathname}]]
 ins用?
 
 可用的反代服务器 图床 https://github.com/DIYgod/RSSHub/issues/2769
@@ -157,6 +157,8 @@ https://i0.wp.com/${host}${pathname}
 https://i1.wp.com/${host}${pathname}
 https://i2.wp.com/${host}${pathname}
 https://i3.wp.com/${host}${pathname}
+# 抖音、小红书、微博、推特等
+https://dlpanda.com/
 e.g.
 https://i0.wp.com/docs.rsshub.app/logo.png
 https://i1.wp.com/blog.skk.moe/img/suka-favicon.png
