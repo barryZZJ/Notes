@@ -17,9 +17,10 @@ Created 星期五 02 九月 2022
 gradle cache: ''rd /s /q %USERPROFILE%\.gradle\caches''
 JetBrains JB 系列：
 	 File——Invalidate Caches
-	 %LOCALAPPDATA%\JetBrains  .\logs
+	 %localappdata%\JetBrains  .\logs
 	 %appdata%\JetBrains
 	 %appdata%\JetBrains\旧版程序文件夹可以整个删掉
+	%localappdata%\JetBrains\旧版程序文件夹可以整个删掉
 VRChat cache C:\Users\85046\AppData\LocalLow\VRChat\VRChat\Cache-xxx
 java dependencies: %USERPROFILE%\.m2
 vscode: E:\Coding\scripts\clean_vscode.bat
