@@ -15,7 +15,12 @@ ffprobe.exe -v error -select_streams v:0 -show_entries stream=duration -of defau
 
 -show_streams
 获取音频编码
-ffprobe -select_streams a:0 -show_entries codec_name
-
+ffprobe.exe -v error -select_streams a:0 -show_entries stream=codec_name -of default=noprint_wrappers=1:nokey=1 "file"
+输出aac
 
 出错时retcode仍为0
+
+
+获取FPS
+ffprobe -v error -select_streams v:0 -show_entries stream=avg_frame_rate -of default=nw=1:nk=1 <infile>
+输出24000/1001

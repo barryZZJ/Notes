@@ -32,3 +32,23 @@ https://github.com/mewwts/addict
 默认情况missing keys return an empty Dict
 
 .update() is in-place
+
+如果因为没有自动补全比较麻烦，可以使用静态类:
+''class _Paths:''
+	''RING = ''''
+	''ROOT_FOLDER = ''''
+	''FFMPEG = ''''
+	''FFPROBE = ''''
+	''MP4BOX = ''''
+	''VSPIPE = ''''
+	''X264 = ''''
+	''X265 = ''''
+	''TemplatePaths = {}''
+
+	''def __str__(self):''
+		''d = {}''
+		''for k in self.__class__.__dict__.keys():''
+			''if not k.startswith('__'):''
+				''d[k] = getattr(self, k)''
+		''return str(d)''
+

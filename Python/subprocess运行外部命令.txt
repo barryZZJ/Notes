@@ -54,8 +54,8 @@ out_text = out_bytes.stdout.decode('utf8')
 https://stackoverflow.com/questions/13332268/how-to-use-subprocess-command-with-pipes
 	vspipe = subprocess.Popen([VSPIPE, SCRIPT_TMP, '-c', 'y4m', '-'], stdout=PIPE)
 	x264 = subprocess.run([X264, *args, '-o', VS_TMP], stdin=vspipe.stdout, check=True, stdout=PIPE)
-	vspipe.stdout.close()
-Popen 的stdin、stdout都可以看作文件，输入/输出完需要close
+	stdout, stderr = vspipe.communicate()
+	vspipe.wait()
 
 === 杀掉进程 ===
 Popen.terminate()

@@ -1,0 +1,18 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2024-12-25T20:59:14+08:00
+
+====== Mediainfo ======
+Created 星期三 25 十二月 2024
+
+https://mediaarea.net/en/MediaInfo/Download/Windows
+
+查看FPS：
+mediainfo --inform=Video;%FrameRate_Num%/%FrameRate_Den% 64.mp4
+--inform=General;%FileName%%FileExt%
+
+--inform 指定输出内容
+--Info-Parameters  查看key
+格式为 <Field>;%<key>%
+
+ffprobe也可以

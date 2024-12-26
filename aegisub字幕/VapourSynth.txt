@@ -20,6 +20,10 @@ src = r"{src}"
 audio = core.bas.Source(src)
 audio.set_output(1)
 
+生成空白视频
+vs.core.std.BlankClip
+
+log或报错都输出到stderr，因为stdout是视频流
 
 == AviSynth ==
 http://avisynth.nl/index.php/Main_Page
