@@ -17,6 +17,9 @@ sudo systemctl stop serviceqaxsafe.service
 sudo systemctl mask serviceqaxsafe.service
 Masking a service will create a symbolic link from the service unit file to /dev/null, effectively preventing the service from being started manually or automatically.
 
+查看log
+journalctl -u servicename
+
 .service文件
 /etc/systemd/system/xx.service
 {{{code: lang="ini" linenumbers="False"

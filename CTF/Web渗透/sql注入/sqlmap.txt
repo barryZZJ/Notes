@@ -12,7 +12,7 @@ POST方法: python sqlmap.py -u URL --data "username=admin&password=admin123" --
 --data=DATA POST方法的参数  可以尝试单次验证码是否可以复用
 --batch             Never ask for user input, use the default behavior
 --cookie=KEY=VAL
--p TESTPARAMETER  指定要测试的参数，如username
+-p TESTPARAMETER  指定要测试的参数，如username,password
 
 --level=1~5 默认1
 --risk=1~3 默认1
