@@ -27,7 +27,7 @@ https://docs.rsshub.app/joinus/new-rss/before-start.html#chuang-jian-ming-ming-k
 删除.git/config -> hooksPath = .husky
 安装：npm ci --production
 在.env中配置参数：
-https://docs.rsshub.app/install/#pei-zhi
+https://docs.rsshub.app/zh/deploy/config
 [[+env备份]]
 
 在lib/v2中新建文件夹，包含router.js, maintainer.js等
