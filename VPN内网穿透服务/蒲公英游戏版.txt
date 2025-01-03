@@ -1,0 +1,18 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2025-01-02T14:40:22+08:00
+
+====== 蒲公英游戏版 ======
+Created 星期四 02 一月 2025
+
+管理平台
+https://console.sdwan.oray.com/
+
+https://www.bilibili.com/opus/758915571742933014
+
+免费版有3个用户
+
+也是首先尝试p2p，失败再进行中转
+
+蒲公英也有服务器端 https://pgy.oray.com/download#server
+

@@ -7,6 +7,8 @@ Created 星期六 25 二月 2023
 
 FRP或者NPS都可以，或者像Ngrok这种的内网穿透服务就是不太稳定
 
+使用VPN方案可以有效节约端口数
+
 即端口转发。临时方案：  [[cmd bat windows:portproxy 本地端口转发]] 或 [[ssh:端口转发 ssh]]
 
 测试：https://blog.csdn.net/aa3615058/article/details/125623251
