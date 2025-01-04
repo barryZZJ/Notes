@@ -31,9 +31,15 @@ https://login.tailscale.com/admin/machines
 
 全局代理的关键词是 --advertise-exit-node
 
-搭建derp中转服务器：视频8min左右
+搭建derp中转服务器：https://tailscale.com/kb/1232/derp-servers 视频8min左右
 默认需要https域名，通过重新编译go源码绕过限制
 注意需要修改derp.service 添加验证机制
+TUN使用udp 3478端口 -> 外网25478 端口
+HTTPS使用内网23445端口 -> 外网https://yy.barryzzj.top:25445
 
 搭建控制/协调服务器：视频15min左右
 
+
+tailscale netcheck
+tailscale status
+tailscale ping <ip>
