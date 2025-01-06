@@ -3,8 +3,20 @@ Wiki-Format: zim 0.6
 
 # 16进制字符串转bytes
 b = bytes.fromhex("1f2f3f4f")
+
 # bytes转16进制字符串
-b.hex()
+b.hex()  # b'\x28\xd2\x44\xd8' -> 28d244d8
+
+# bytes 转 int
+int.from_bytes(byte_data, byteorder='big')
+
+# int 转 bytes
+int_value.to_bytes(byte_length, 'big')  # 12345 -> b'\x00\x00\x30\x39'
+
+# 将整数转换为十六进制字符串
+hex_string = hex(int_data)  #'0x28d244d8'
+
+
 
 # base64
 import base64

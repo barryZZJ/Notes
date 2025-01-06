@@ -68,7 +68,12 @@ def init():
   self.start()
 
 def start():
+  self.s.settimeout(1.0)
   while True:
-	conn, addr = self.s.accept()
-	Thread(target=handler, args=[conn, addr]).start()
+	try:
+		conn, addr = self.s.accept()
+		Thread(target=handler, args=[conn, addr]).start()
+	except socket.timeout:
+		continue
   
+.settimeout(1.0)  # 超时会报socket.timeout错误
