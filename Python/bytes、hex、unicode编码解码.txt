@@ -13,10 +13,17 @@ int.from_bytes(byte_data, byteorder='big')
 # int 转 bytes
 int_value.to_bytes(byte_length, 'big')  # 12345 -> b'\x00\x00\x30\x39'
 
+# bytearray 介绍
+bytes取下标时，会返回int，解决办法：
+ba = bytearray()
+ba.append(bytes[i])
+res = bytes(ba)
+
+bytearray('string')
+bytearray([65,66])  # -> b'AB'
+
 # 将整数转换为十六进制字符串
 hex_string = hex(int_data)  #'0x28d244d8'
-
-
 
 # base64
 import base64

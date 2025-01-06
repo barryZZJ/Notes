@@ -1,0 +1,19 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2025-01-06T10:55:36+08:00
+
+====== pydivert抓包 ======
+Created 星期一 06 一月 2025
+
+import pydivert
+
+调用winapi，需要管理员运行
+with pydivert.WinDivert("inbound and udp.DstPort == 46000 and udp.PayloadLength > 500") as w:
+	for packet in w:
+		addr: str = packet.ipv4.src_addr  # format: string "xxx.xxx.xxx.xxx"
+		payload: bytes = packet.payload
+		w.send(packet)
+
+如果用wireshark抓包，抓到的是经python修改后的。
+	
+
