@@ -9,3 +9,6 @@ route print
 
 route add
 route change 
+
+手动调整优先级：
+网络适配器——ipv4设置——高级——□自动跃点——接口跃点数1

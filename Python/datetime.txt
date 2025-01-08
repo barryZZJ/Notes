@@ -42,8 +42,8 @@ time_format = "TZID=Asia/Shanghai:{date.year}{date.month:0>2d}{date.day:0>2d}T{d
 "20221213T102932Z"
 datetime.today().strftime("%Y%m%dT%H%M%SZ")
 
-"2023/1/7 18:29"
-"%Y/%m/%d %H:%M"
+"2023/1/7 18:29:00"
+"%Y/%m/%d %H:%M:%S"
 
 datetime.today().strftime("%Y-%m-%d_%H-%M-%S")
 

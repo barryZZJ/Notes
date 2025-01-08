@@ -1,7 +1,10 @@
 Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
 
 毫秒级时间戳：
 int(time.time()*1000)
+1736208000000
+
 秒级：
 int(time.time())
 
@@ -11,3 +14,6 @@ e.g. 1648292453.216886
 
 time.time_ns() 单位：纳秒
 1648292467112285000
+
+时间戳转datetime：
+datetime.datetime.fromtimestamp(sec)

@@ -61,3 +61,9 @@ install:
 pin packages： https://docs.conda.io/projects/conda/en/latest/user-guide/tasks/manage-pkgs.html#preventing-packages-from-updating-pinning
 -d, --dry-run
 --no-deps 不改变依赖
+
+环境泄露，进不到虚拟环境里：
+检查:
+~/.bashrc
+~/.bash_profile
+里有没有export PATH指令的干扰，需要移动到~/.bashrc的conda initilize之前，然后重启终端即可。

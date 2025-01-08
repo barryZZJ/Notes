@@ -10,9 +10,13 @@ https://blog.csdn.net/ermuzhi/article/details/7815733
 https://blog.csdn.net/lucky_ricky/article/details/74330806
 编辑~/.bashrc文件
 
+/etc/profile
+/etc/bashrc
+/etc/environment
+~/.bashrc
+~/.bash_profile
+
 //在最后一行添上：
 export PATH=$PATH:/xxx/xxx  ///xxx/xxx位需要加入的环境变量地址 等号两边没空格
-
-[[/etc/environment]]
 
 可执行程序在/usr/bin创建软连接
