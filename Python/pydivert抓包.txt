@@ -14,6 +14,8 @@ with pydivert.WinDivert("inbound and udp.DstPort == 46000 and udp.PayloadLength 
 		payload: bytes = packet.payload
 		w.send(packet)
 
+是拦截不是监听，如果不w.send，包是不会发出的
+
 如果用wireshark抓包，抓到的是经python修改后的。
 	
 

@@ -27,8 +27,8 @@ datefmt = '%Y-%m-%d %H:%M:%S'
 logging.basicConfig(format=fmt, datefmt=datefmt, level=logging.INFO)
 
 设置logger配置：
-log = logging.getLogger([name])
-log.setLevel(logging.INFO)
+log = logging.getLogger(name: Optional)
+log.setLevel(logging.INFO)  # 需要先调用logging.basicConfig() （不用带参数）才能生效
 
 输出到文件
 logging.basicConfig(filename='example.log', encoding='utf-8', level=logging.DEBUG)
