@@ -1,10 +1,10 @@
 Content-Type: text/x-zim-wiki
 Wiki-Format: zim 0.6
 
-# 16进制字符串转bytes
+# 16进制字符串hex转bytes
 b = bytes.fromhex("1f2f3f4f")
 
-# bytes转16进制字符串
+# bytes转16进制字符串hex
 b.hex()  # b'\x28\xd2\x44\xd8' -> 28d244d8
 
 # bytes 转 int
@@ -14,6 +14,7 @@ int.from_bytes(byte_data, byteorder='big')
 int_value.to_bytes(byte_length, 'big')  # 12345 -> b'\x00\x00\x30\x39'
 
 # bytearray 介绍
+bytes是immutable, bytearray是mutable
 bytes取下标时，会返回int，解决办法：
 ba = bytearray()
 ba.append(bytes[i])
