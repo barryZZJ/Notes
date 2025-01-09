@@ -1,0 +1,8 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2025-01-09T11:14:49+08:00
+
+====== 修改网络适配器 ======
+Created 星期四 09 一月 2025
+
+win+r: ncpa.cpl
