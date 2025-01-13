@@ -41,9 +41,9 @@ mv *.moon moons.d/
 8. 配置NAT从23393转发至内网9993
 防火墙开放：默认使用9993端口 udp
 
-每个节点需要手动添加moon服务器：
+每个节点需要手动添加moon服务器，然后重启服务：
 zerotier-cli orbit 8bdcc55048 8bdcc55048
-或把生成的*.moon文件拷入/var/lib/zerotier-one/moons.d文件夹
+或把生成的*.moon文件拷入/var/lib/zerotier-one/moons.d文件夹，windows：C:\ProgramData\ZeroTier\One\moons.d
 
 查看状态：
 zerotier-cli peers
