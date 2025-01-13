@@ -26,6 +26,11 @@ deactivate
 然后更新虚拟环境中的系统python路径：
 python -m venv --upgrade path_to_venv_root
 
+修好python之后手动修pip：
+python -m pip install --upgrade pip 或 python -m ensurepip --default-pip
+
+修改宿主python的环境：pyvenv.cfg
+
 克隆虚拟环境：
 https://github.com/edwardgeorge/virtualenv-clone
 pip install virtualenv-clone
