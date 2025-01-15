@@ -1,6 +1,9 @@
 Content-Type: text/x-zim-wiki
 Wiki-Format: zim 0.6
 
+下载
+https://www.anaconda.com/download/success
+
 If you'd prefer that conda's base environment not be activated on startup, 
    set the auto_activate_base parameter to false: 
 
