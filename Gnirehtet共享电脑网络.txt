@@ -1,0 +1,17 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2025-01-21T09:19:06+08:00
+
+====== Gnirehtet共享电脑网络 ======
+Created 星期二 21 一月 2025
+
+https://github.com/Genymobile/gnirehtet
+
+1. 安装adb：
+https://developer.android.com/studio/releases/platform-tools.html
+放入gnierhtet文件夹
+
+2. 运行 gnierhtet-run.bat
+指定dns服务器：
+gnirehtet run -d 159.226.8.7
+
