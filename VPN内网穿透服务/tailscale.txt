@@ -35,7 +35,8 @@ https://login.tailscale.com/admin/machines
 默认需要https域名，通过重新编译go源码绕过限制
 注意需要修改derp.service 添加验证机制
 TUN使用udp 3478端口 -> 外网25478 端口
-HTTPS使用内网23445端口 -> 外网https://yy.barryzzj.top:25445
+HTTPS使用内网23445端口 -> 外网 https://yy.barryzzj.top:25445
+可以用HostName域代替IPv4域，输入域名
 
 搭建控制/协调服务器：视频15min左右
 
