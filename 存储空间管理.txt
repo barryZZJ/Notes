@@ -1,0 +1,14 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2025-02-07T00:08:51+08:00
+
+====== 存储空间管理 ======
+Created 星期五 07 二月 2025
+
+支持不同大小，不同**逻辑**驱动器之间建立存储池。
+动态磁盘不支持，必须转为普通磁盘
+
+支持USB、SATA等不同连接方式
+
+只有raid1（双向镜像）、raid0（简单）、raid5（奇偶校验），没有JBOD
+
