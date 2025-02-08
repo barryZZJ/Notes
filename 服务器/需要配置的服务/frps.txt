@@ -13,6 +13,8 @@ frp官网：
 https://gofrp.org/docs/
 https://github.com/fatedier/frp
 
+避免流量特征被匹配：服务端开启强制tls验证，客户端也要开启tls
+
 frps服务端：（服务器防火墙记得开放对应端口）（不要开kcp，否则会用不了）
 # 一键配置脚本：https://github.com/MvsCode/frps-onekey
 mkdir frps
