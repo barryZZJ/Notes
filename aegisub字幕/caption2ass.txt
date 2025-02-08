@@ -1,0 +1,41 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2025-02-08T11:01:54+08:00
+
+====== caption2ass ======
+Created 星期六 08 二月 2025
+
+https://github.com/maki-rxrz/Caption2Ass_PCR/blob/master/bin/Caption.dll%20%E6%94%B9%E9%80%A0%E7%89%88%E3%81%AE%20Readme.txt
+
+从ts源提取字幕
+
+参数：
+-format
+输出格式
+srt
+ass
+taw
+dual
+
+-PMT_PID
+
+-delay MS
+正：延后
+负：提前
+
+-asstype
+
+-norubi
+
+-detect_length 0
+检查多少万个packet。0表示检查到文件末尾
+
+-srtornament
+
+-hlc
+
+-log
+
+-i
+-o
+

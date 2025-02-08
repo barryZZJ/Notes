@@ -8,6 +8,8 @@ Created 星期四 19 一月 2023
 download best:
 yt-dlp -f bestvideo[ext=mp4]+bestaudio[ext=m4a] --merge-output-format mp4 %*
 
+-F 列出所有格式
+
 最高画质：
 --format "(bestvideo[height>1080]+bestaudio[ext=m4a]+bestaudio[ext=webm]/616+bestaudio[ext=m4a]+bestaudio[ext=webm]/bestvideo[ext=mp4][protocol!*=m3u8]+bestaudio[ext=m4a]+bestaudio[ext=webm]/bestvideo+bestaudio/best)"
 
@@ -21,4 +23,4 @@ yt-dlp --write-auto-subs --sub-langs "ja-orig,zh-Hans" --convert-subs "ass" http
 
 --proxy http://192.168.50.1:3333
 
--F 列出所有格式
+

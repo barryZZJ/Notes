@@ -1,5 +1,0 @@
-Content-Type: text/x-zim-wiki
-Wiki-Format: zim 0.6
-Creation-Date: 2022-09-08T18:17:37+08:00
-
-先把游戏放在对应目录里，再点击下载
