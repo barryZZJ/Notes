@@ -1,0 +1,26 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2025-02-09T15:37:10+08:00
+
+====== NAS影音库 ======
+Created 星期日 09 二月 2025
+
+1. Jellyfin
+免费开源、有移动客户端
+可以在网页上在线播放，自动转码
+docker: nyanmisaka/jellyfin
+
+2. Emby
+jellyfin的收费版本，转码效果更好
+
+3. Plex
+免费，好像要收订阅费？
+影片信息刮削能力强
+
+
+自建AV媒体库
+https://pockies.github.io/2019/03/25/everaver-emby-kodi/
+https://pockies.github.io/2020/01/09/av-data-capture-jellyfin-kodi/
+https://github.com/JavScraper/Emby.Plugins.JavScraper
+https://github.com/cclauss/javsdt
+

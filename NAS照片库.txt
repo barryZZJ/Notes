@@ -1,0 +1,12 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2025-02-09T16:01:13+08:00
+
+====== NAS照片库 ======
+Created 星期日 09 二月 2025
+
+immich
+https://www.bilibili.com/video/BV1gJ4m1W7jP
+使用docker安装
+支持AI检索、人脸识别、足迹
+有移动客户端，可以备份手机相册

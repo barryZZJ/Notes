@@ -1,0 +1,21 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2025-02-09T19:06:10+08:00
+
+====== Asseto Corsa ======
+Created 星期日 09 二月 2025
+
+MOD安装教程：https://www.bilibili.com/video/BV1qz421f7sX/
+本期视频中出现的示例模组链接：
+1. SRP首都高复兴计划：https://shutokorevivalproject.com/
+2. RSS方程式2017：https://racesimstudio.sellfy.store/p/fh17/
+3. RSS 2017 - 法拉利SF70H早期款涂装：https://www.overtake.gg/downloads/rss-formula-hybrid-2017-ferrari-sf70h.14366/
+4. 红牛环2021赛道广告牌：https://www.overtake.gg/downloads/styria-austria-gps-red-bull-2021-f1-track-skin.43469/
+5. GT7 HUD：https://www.overtake.gg/downloads/gt7-hud.56420/
+6. 地平线4 HUD: https://www.overtake.gg/downloads/forza-horizon-4-hud.37388/
+7. SOL：https://www.overtake.gg/downloads/sol.24914/
+8. PURE：https://www.patreon.com/peterboese/posts
+9. C13 AEGIS / PURE滤镜：https://www.overtake.gg/downloads/c13-aegis-post-processing-filter.59979/
+10. C13 Camera Obscura / SOL用请下载2.1.06版：https://www.overtake.gg/downloads/photorealistic-ppfilter-c13-camera-obscura.45901/
+11. Advanced Gamepad Assist:
+https://www.overtake.gg/downloads/advanced-gamepad-assist.62485/
