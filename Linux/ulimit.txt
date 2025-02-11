@@ -1,0 +1,15 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2025-02-10T20:55:22+08:00
+
+====== ulimit ======
+Created 星期一 10 二月 2025
+
+只有root可以在命令行增加limit上限。
+修改文件：
+/etc/security/limits.conf
+
+''* soft nofile 4096''
+''#* hard nofile 4096''
+
+然后重新登录用户，即可执行ulimit -n xxx指令
