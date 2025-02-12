@@ -1,0 +1,27 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2025-02-11T17:14:43+08:00
+
+====== 防火墙 ======
+Created 星期二 11 二月 2025
+
+ubuntu:
+查看防火墙状态
+ufw status
+关闭防火墙
+ufw disable
+
+centos 7
+查看防火墙状态
+firewall-cmd --state
+临时关闭防火墙
+systemctl stop firewalld.service
+永久关闭防火墙
+systemctl disable firewalld
+
+firewall-cmd --zone=public --add-port=5672/tcp --permanent   # 开放5672端口
+firewall-cmd --zone=public --remove-port=5672/tcp --permanent  #关闭5672端口
+firewall-cmd --reload   # 配置立即生效
+
+查看防火墙所有开放的端口
+firewall-cmd --zone=public --list-ports

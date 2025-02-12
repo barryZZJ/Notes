@@ -5,6 +5,7 @@ Creation-Date: 2022-10-10T19:40:25+08:00
 ====== frpc ======
 Created 星期一 10 十月 2022
 
+文档
 https://gofrp.org/zh-cn/docs/
 
 tiny-frpc 使用ssh
@@ -27,12 +28,20 @@ SSH Tunnel Gateway功能：https://gofrp.org/zh-cn/docs/features/common/ssh/
 防特征检测：
 https://blog.claves.cn/archives/6151
 https://uknowsec.cn/posts/notes/FRP%E6%94%B9%E9%80%A0%E8%AE%A1%E5%88%92.html
+https://atsud0.me/2022/01/FRP%E6%94%B9%E9%80%A0%E7%AC%94%E8%AE%B0/
 frpc中：
+[common]
 transport.tls.enable = true
-use_encryption = true
-use_compression = true
-配置tls加密
+transport.tls.disableCustomTLSFirstByte = false  # 启用 TLS 连接时，不发送 0x17 特殊字节。默认为 true。当配置为 true 时，无法和 vhostHTTPSPort 端口复用。配合手动修改的pkg/util/net/tls.go中 FRPTLSHeadByte = 0x10
+[proxy]
+transport.useEncryption = true
+transport.useCompression = true
+frps中：
+detailedErrorsToClient = false
+transport.tls.force = true
+配置tls加密（如果 frps 端没有配置证书，则会使用随机生成的证书来加密流量。）
 https://gofrp.org/zh-cn/docs/features/common/network/network-tls/
+
 
 linux安装：
 1. https://github.com/fatedier/frp
@@ -76,7 +85,10 @@ smb: 192.168.50.201:445
 ssh: 192.168.50.201:23355
 
 配置文件可以参考frpc_full.ini
-**frpc.ini** 
+
+其他协议：
+KCP 协议，相比于 TCP，在弱网环境下传输效率提升明显，但是会有一些额外的流量消耗。
+QUIC 协议，底层采用 UDP 传输，解决了 TCP 上的一些问题，传输效率更高，连接延迟低。
 
 === 本地用： ===
 # frpc configuration
