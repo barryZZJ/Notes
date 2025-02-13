@@ -1,0 +1,9 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2025-02-12T11:13:58+08:00
+
+====== 端口是否开放 ======
+Created 星期三 12 二月 2025
+
+nc -zv ip port
+nc -zv 10.26.70.13 80

@@ -27,12 +27,13 @@ SSH Tunnel Gateway功能：https://gofrp.org/zh-cn/docs/features/common/ssh/
 
 防特征检测：
 https://blog.claves.cn/archives/6151
+https://xie.infoq.cn/article/d6e190ea22c428a4e21b4f0d0
 https://uknowsec.cn/posts/notes/FRP%E6%94%B9%E9%80%A0%E8%AE%A1%E5%88%92.html
-https://atsud0.me/2022/01/FRP%E6%94%B9%E9%80%A0%E7%AC%94%E8%AE%B0/
+https://uknowsec.cn/posts/notes/FRP%E6%94%B9%E9%80%A0%E8%AE%A1%E5%88%92%E7%BB%AD.html
 frpc中：
 [common]
 transport.tls.enable = true
-transport.tls.disableCustomTLSFirstByte = false  # 启用 TLS 连接时，不发送 0x17 特殊字节。默认为 true。当配置为 true 时，无法和 vhostHTTPSPort 端口复用。配合手动修改的pkg/util/net/tls.go中 FRPTLSHeadByte = 0x10
+transport.tls.disableCustomTLSFirstByte = false  # 并修改 FRPTLSHeadByte 为0x86，同时也可以增加至4个byte，参考上面的文章
 [proxy]
 transport.useEncryption = true
 transport.useCompression = true
@@ -41,7 +42,9 @@ detailedErrorsToClient = false
 transport.tls.force = true
 配置tls加密（如果 frps 端没有配置证书，则会使用随机生成的证书来加密流量。）
 https://gofrp.org/zh-cn/docs/features/common/network/network-tls/
-
+编译：
+make # 遍历当前平台，输出到bin文件夹
+make -f Makefile.cross-compiles  # 编译所有平台，输出到release文件夹
 
 linux安装：
 1. https://github.com/fatedier/frp

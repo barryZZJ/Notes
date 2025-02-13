@@ -50,6 +50,7 @@ host = '127.0.0.1'
 port = 8090
 
 sk=socket.socket(socket.AF_INET,socket.SOCK_STREAM)
+# sk.bind((host, port)) # port为0表示任意可用端口，如果端口用完，会报OSError: [Errno 98] Address already in use
 sk.connect((host,port))
 
 for i in range(10):
@@ -59,6 +60,8 @@ for i in range(10):
 	time.sleep(2)
 	i = i + 1
 sk.close()
+
+如果连接数大于65535，客户端需要绑定到多个ip地址
 
 服务端多线程
 def init():

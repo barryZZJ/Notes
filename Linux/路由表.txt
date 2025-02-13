@@ -1,0 +1,21 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2025-02-12T10:49:47+08:00
+
+====== 路由表 ======
+Created 星期三 12 二月 2025
+
+ip addr [show <interface>]
+
+ip route show
+ip route add [network/prefix] [via <gateway>] [dev <interface>] [src <src ip>]
+ip route add 10.26.70.0/24 via 10.26.70.254 dev em1 src 172.16.0.2
+
+route -n
+netstat -rn
+ip route
+iptables -L
+
+测试连通性：
+ping -I <srcip/interface> 10.26.70.13
+ip route get 10.26.70.13 from 172.16.0.1

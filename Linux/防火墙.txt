@@ -14,6 +14,8 @@ ufw disable
 centos 7
 查看防火墙状态
 firewall-cmd --state
+查看防火墙所有开放的端口
+firewall-cmd --zone=public --list-ports
 临时关闭防火墙
 systemctl stop firewalld.service
 永久关闭防火墙
@@ -23,5 +25,3 @@ firewall-cmd --zone=public --add-port=5672/tcp --permanent   # 开放5672端口
 firewall-cmd --zone=public --remove-port=5672/tcp --permanent  #关闭5672端口
 firewall-cmd --reload   # 配置立即生效
 
-查看防火墙所有开放的端口
-firewall-cmd --zone=public --list-ports

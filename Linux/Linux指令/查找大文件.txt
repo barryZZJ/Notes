@@ -7,7 +7,13 @@ Created 星期五 08 十一月 2024
 
 find /path/to/search -type f -size +100M
 
+find / -path /home -prune -o -type f -size +1G -print
+
 显示文件大小
 find /path -type f -size +1G -exec ls -lh {} \; | awk '{ print $9 ": " $5 }'
 
+sudo find / -path /home -prune -o -type f -size +1G -exec ls -lh {} + | awk '{ print $9 ": " $5 }'
+
 ll -h
+
+du -sh /path

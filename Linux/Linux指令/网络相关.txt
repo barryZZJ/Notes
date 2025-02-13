@@ -5,13 +5,24 @@ Creation-Date: 2023-07-23T17:35:35+08:00
 ====== 网络相关 ======
 Created 星期日 23 七月 2023
 
-路由表
-route -n
-netstat -rn
-ip route
-iptables -L
+[[路由表]]
 
 查网关：
 ip route | grep default | awk '{print $3}'
 netstat -nr | grep '^0.0.0.0' | awk '{print $2}'
 route -n | grep '^0.0.0.0' | awk '{print $2}'
+
+给物理网卡添加ip地址
+sudo ip addr add 172.16.$j.$i/16 brd + dev <interface>
+删除ip地址
+sudo ip addr del 172.16.$j.$i/16 brd + dev <interface>
+
+给虚拟网卡添加ip地址
+sudo modprobe dummy
+sudo ip link add name zzjveth0 type dummy
+sudo ip addr add 172.16.$j.$i/16 brd + dev zzjveth0 label zzjveth0:$ip_index
+sudo ip link set dev zzjveth0 up
+删除ip地址
+sudo ip addr del 172.16.$j.$i/16 brd + dev zzjveth0 label zzjveth0:$ip_index
+sudo ip link delete zzjveth0 type dummy
+sudo rmmod dummy
