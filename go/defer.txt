@@ -1,0 +1,8 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2025-02-14T10:28:34+08:00
+
+====== defer ======
+Created 星期五 14 二月 2025
+
+defer 后的函数在当前函数return时自动被调用（即使有错误发生），一般用于清理函数，如defer file.close()

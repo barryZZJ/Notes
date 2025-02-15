@@ -1,0 +1,53 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2025-02-14T10:27:52+08:00
+
+====== 协程-多线程 ======
+Created 星期五 14 二月 2025
+
+go 关键字用于启动一个新的协程（goroutine）。协程是 Go 语言中的一种轻量级线程，由 Go 运行时管理。使用 go 关键字可以并发地执行函数，而无需等待该函数完成。
+
+go func(args)
+或
+go func(args) { ... }(args)
+
+通道/消息队列
+无缓冲通道（在发送和接收操作完成之前会阻塞）
+	// 创建一个传输 int 类型数据的通道
+	ch := make(chan int)
+
+	// 启动一个新的协程，向通道发送数据
+	go func() {
+		ch <- 42 // 发送数据到通道
+	}()
+
+	// 从通道接收数据
+	value := <-ch // 接收数据
+	fmt.Println("Received:", value)
+
+有缓冲通道（允许在缓冲区满之前进行非阻塞的发送操作）
+	// 创建一个有缓冲的通道，缓冲区大小为 2
+	ch := make(chan int, 2)
+
+	// 向通道发送数据
+	go func() {
+		ch <- 1
+		ch <- 2
+	}()
+	close(ch)
+	// 从通道接收数据
+	fmt.Println(<-ch)
+	fmt.Println(<-ch)
+	// 或
+	s := 0
+	for val := range ch {
+		s += val
+	}
+
+协程同步：
+sync.WaitGroup
+.add(int)：增加等待计数器的值，表示有多少个协程需要等待完成。
+.done()：减少等待计数器的值，表示一个协程已经完成。
+.wait()：阻塞直到等待计数器的值变为零，表示所有协程都已经完成。
+
+一般在主线程开始和结束时分别调用add和wait，在子线程任务完成后调用done

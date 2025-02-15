@@ -13,7 +13,7 @@ subprocess.run(args, *, stdin=None, input=None, stdout=None, stderr=None, captur
 
 * args：表示要执行的命令。必须是一个字符串，字符串参数列表。
 * stdin、stdout 和 stderr：子进程的标准输入、输出和错误。其值可以是 subprocess.PIPE、subprocess.DEVNULL、一个已经存在的文件描述符、已经打开的文件对象或者 None。stderr=stdout 可以合并到 stdout 里一起输出。
-* capture_output: 拦截输出，相当于stdout=PIPE, stderr=PIPE，通过ret.stdout, ret.stderr获取 (类型为bytes)
+* capture_output: 拦截输出，不输出到控制台，相当于stdout=PIPE, stderr=PIPE，通过ret.stdout, ret.stderr获取 (类型为bytes)
 * timeout：设置命令超时时间。如果命令执行时间超时，子进程将被杀死，并弹出 TimeoutExpired 异常。
 * input: The input argument is passed to Popen.communicate() and thus to the subprocess’s stdin. If used it must be a byte sequence, or a string if encoding or errors is specified or text is true. When used, the internal Popen object is automatically created with stdin=PIPE, and the stdin argument may not be used as well.
 * check：如果该参数设置为 True，并且进程退出状态码不是 0，则弹 出 CalledProcessError 异常，arguments包含the exit code, and stdout and stderr

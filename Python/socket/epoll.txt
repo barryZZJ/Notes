@@ -15,7 +15,7 @@ nonblocking模式下，只要服务端在断开连接前发送过消息，客户
 多线程注意解决bug：
 被close的socket仍可读，但读到的内容为空（不会报错），表示对方关闭，因此当服务器读到空data，需要unregister，并close socket，否则就会一直出现EPOLLIN event（对方close之前则不会出现在events）
 而多线程导致服务器unregister之前就响应了下一次events，此时会不断遇到空data，解决办法：在进入多线程前先判断是否收到空data，此时视为连接关闭。
-
+（也可以考虑直接先在服务端close）
 
 
 示例：
