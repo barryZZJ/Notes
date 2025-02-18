@@ -1,0 +1,14 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2025-02-17T09:50:33+08:00
+
+====== 拖放文件支持 ======
+Created 星期一 17 二月 2025
+
+以拖放到.py为例：
+1. 配置打开方式
+HKEY_CLASSES_ROOT\py_auto_file\shell\open\command
+默认字符串值改为"E:\CodingSoftware\python39\Python39\pythonw.exe" "%1"
+2. 添加DropHandler (参考batfile项下的）
+HKEY_CLASSES_ROOT\py_auto_file\shellx\DropHandler
+默认字符串值改为{86C86720-42A0-1069-A2E8-08002B30309D}
