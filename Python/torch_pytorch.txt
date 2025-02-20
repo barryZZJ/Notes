@@ -5,6 +5,11 @@ Creation-Date: 2024-09-27T12:53:17+08:00
 ====== torch pytorch ======
 Created 星期五 27 九月 2024
 
+conda install pytorch torchvision torchaudio pytorch-cuda=12.4 -c pytorch -c nvidia
+conda install pytorch torchvision torchaudio pytorch-cuda=11.8 -c pytorch -c nvidia
+
+最好一起安装，才能解决版本依赖问题，否则需要先uninstall再重新install
+
 torch.multiprocessing
 https://pytorch.org/docs/stable/notes/multiprocessing.html
 https://pytorch.org/docs/stable/multiprocessing.html
