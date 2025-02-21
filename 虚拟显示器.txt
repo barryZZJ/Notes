@@ -9,7 +9,7 @@ Created 星期一 18 三月 2024
 [[:moonlight游戏推流:欺骗器_其他分辨率]]
 
 === IddSampleDriver ===
-https://github.com/ge9/IddSampleDriver?tab=readme-ov-file
+https://github.com/ge9/IddSampleDriver
 Get 5 virtual monitors for the price of zero!
 Steps (for experienced pros only!!!)
 {{{code: lang="markdown" linenumbers="False"
