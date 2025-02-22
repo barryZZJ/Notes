@@ -1,0 +1,56 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2025-02-21T15:58:14+08:00
+
+====== iterator自定义generator ======
+Created 星期五 21 二月 2025
+
+https://wiki.python.org/moin/Iterator
+
+generator是一种iterator
+
+iter(iterable) -> Iterator
+
+自定义iterator格式：
+''import random''
+
+''class RandomIterable:''
+	''def __iter__(self):''
+		''return self''
+	''def __next__(self):''
+		''if random.choice(["go", "go", "stop"]) == "stop":''
+			''raise StopIteration  # signals "the end"''
+		''return 1''
+
+根据数组创建无限循环：
+''class Cycle:''
+	''def __init__(self, l):''
+		''self.l = l''
+		''self.it = iter(l)''
+	''def __iter__(self):''
+		''return self''
+	''def __next__(self):''
+		''try:''
+			''return next(self.it)''
+		''except StopIteration:''
+			''self.it = iter(self.l)''
+			''return next(self.it)''
+
+def squares(start, stop):
+	for i in range(start, stop):
+		yield i * i
+等价于：
+''class Squares(object):''
+	''def __init__(self, start, stop):''
+	   ''self.start = start''
+	   ''self.stop = stop''
+
+	''def __iter__(self):'' 
+		''return self''
+
+	''def __next__(self): # next in Python 2''
+	   ''if self.start >= self.stop:''
+		   ''raise StopIteration''
+	   ''current = self.start * self.start''
+	   ''self.start += 1''
+	   ''return current''

@@ -1,13 +1,18 @@
 Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
 
 def fab(max): 
-    n, a, b = 0, 0, 1 
-    while n < max: 
-        yield b      # 使用 yield
-        # print b 
-        a, b = b, a + b 
-        n = n + 1
+	n, a, b = 0, 0, 1 
+	while n < max: 
+		yield b      # 使用 yield
+		# print b 
+		a, b = b, a + b 
+		n = n + 1
 
 
 for n in fab(5): #fab(5)是一个可迭代对象
-    print n
+	print n
+
+
+注意：generator不可被pickle，但iterator可以
+[[iterator自定义generator]]

@@ -1,9 +1,12 @@
 Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
 
 存：
 with open(path, 'wb') as f:
-    pickle.dump(obj, f)
+	pickle.dump(obj, f)
 
 取：
 with open(path, 'rb') as f:
    obj = pickle.load(f)
+
+dill: 高级pickle，可以序列化lambda函数等
