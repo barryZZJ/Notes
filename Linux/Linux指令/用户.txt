@@ -10,3 +10,5 @@ who
 w
 
 ss -tnp|grep sshd
+
+sudo chown -R username:groupname /path

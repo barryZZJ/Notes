@@ -16,6 +16,7 @@ python -m pip install --upgrade pip
 
 proxy:
 --proxy <proxy>             Specify a proxy in the form scheme://[user:passwd@]proxy.server:port
+export PIP_PROXY=http://192.168.116.239:18809
 
 跳过ssl验证
 --trusted-host pypi.org

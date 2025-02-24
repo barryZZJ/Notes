@@ -1,0 +1,15 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2025-02-22T11:03:16+08:00
+
+====== 用户新建 ======
+Created 星期六 22 二月 2025
+
+sudo useradd -m <username>
+sudo passwd <username>
+加入组（可选）
+sudo usermod -aG <groupname> <username>
+
+赋予root权限：
+sudo usermod -aG sudo <username>
+或sudo usermod -aG wheel <username>  (centos)

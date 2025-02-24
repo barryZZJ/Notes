@@ -5,6 +5,10 @@ Wiki-Format: zim 0.6
 https://www.anaconda.com/download/success
 https://docs.anaconda.com/miniconda/install/
 
+更新conda：
+conda update conda
+conda update anaconda
+
 If you'd prefer that conda's base environment not be activated on startup, 
    set the auto_activate_base parameter to false: 
 
@@ -26,7 +30,11 @@ conda create -n 名字 python==3.x --clone <exist_env_name> -y
 
 conda env remove -n 名字
 
-conda info -e
+conda env list
+
+配置代理：
+export HTTP_PROXY=http://192.168.116.239:18809
+export HTTPS_PROXY=http://192.168.116.239:18809
 
 环境迁移：
 需要同一平台同一系统
@@ -75,3 +83,6 @@ pin packages： https://docs.conda.io/projects/conda/en/latest/user-guide/tasks/
 ~/.bashrc
 ~/.bash_profile
 里有没有export PATH指令的干扰，需要移动到~/.bashrc的conda initilize之前，然后重启终端即可。
+
+安装g++：
+conda install -c conda-forge gxx_linux-64
