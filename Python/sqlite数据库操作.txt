@@ -60,7 +60,11 @@ INSERT INTO COMPANY (ID,NAME,AGE,ADDRESS,SALARY) VALUES (1, 'Paul', 32, 'Califor
 INSERT INTO COMPANY VALUES (7, 'James', 24, 'Houston', 10000.00 );
 cursor.execute('INSERT INTO table (key, key) VALUES(?, ?)', (val, val))
 
-实现insert if not exists else update:
+#insert or ignore
+需要保证查重列的属性是主键，或有UNIQUE
+INSERT OR IGNORE INTO t (name) VALUES ('a');
+
+#insert if not exists else update:
 1.设置主键后，使用insert or replace。默认其他域会变为默认值。替换与主键匹配的其他域值 https://stackoverflow.com/a/23673922
 	INSERT OR REPLACE INTO Book(ID, Name) VALUES(1001, 'SQLite');
 	注意未赋值的域会重置为默认值
