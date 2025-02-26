@@ -1,0 +1,11 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2025-02-26T09:42:15+08:00
+
+====== 测试端口是否开放 ======
+Created 星期三 26 二月 2025
+
+telnet ip port
+如果连接成功则端口开放，如果报错则不开放
+
+tcping -p port ip
