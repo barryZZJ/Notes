@@ -32,7 +32,7 @@ https://github.com/cclauss/javsdt
 https://github.com/gfriends/gfriends
 
 自动重命名：
-AV Data Capture（最强） https://github.com/mvdctop/Movie_Data_Capture
+AV Data Capture（最强） https://github.com/mvdctop/Movie_Data_Capture https://github.com/sqzw-x/mdcx
 	软件针对Emby开发（附带支持plex/kodi/jellyfin）
 	
 EverAver Renamer
