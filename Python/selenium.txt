@@ -134,7 +134,7 @@ XPATH = "xpath"
 	//为查找子孙
 	.为从当前节点开始查找
 	.. 父级节点
-	.// 即为当前节点的子孙，//为document全局查找
+	. //即为当前节点的子孙，//为document全局查找
 	* 匹配任意标签
 	@attr 匹配属性名，如tag[@class]
 	[.='text'] 匹配文字
@@ -239,11 +239,11 @@ alert_is_present
 .url_changes .url_contains .url_matches
 
 ''try:''
-''    element = WebDriverWait(driver, 10).until(''
-''        EC.presence_of_element_located((By.ID, "myDynamicElement"))''
-''    )''
+	''element = WebDriverWait(driver, 10).until(''
+		''EC.presence_of_element_located((By.ID, "myDynamicElement"))''
+	'')''
 ''finally:''
-''    driver.quit()''
+	''driver.quit()''
 
 Custom Wait Conditions
 设置''__call__()''返回所需内容或False
@@ -313,9 +313,12 @@ driver = webdriver.Chrome(service=service)
 	''self.find_element(By.TAG_NAME, 'p').click()''
 	''self.switch_to.new_window()''
 
-* 选项卡切换
+* 选项卡/标签页切换
+https://www.selenium.dev/documentation/webdriver/interactions/windows/#switching-windows-or-tabs
+https://selenium-python.readthedocs.io/api.html#selenium.webdriver.remote.webdriver.WebDriver.switch_to
 browser.switch_to.window(windowname)
-browser.switch_to.new_window('tab')
+browser.switch_to.new_window('tab') # Opens a new tab and switches to new tab
+browser.switch_to.new_window('window') # Opens a new window and switches to new window
 
 * proxy
 from selenium import webdriver
