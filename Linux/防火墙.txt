@@ -5,13 +5,13 @@ Creation-Date: 2025-02-11T17:14:43+08:00
 ====== 防火墙 ======
 Created 星期二 11 二月 2025
 
-ubuntu:
+* ubuntu:
 查看防火墙状态
 ufw status
 关闭防火墙
 ufw disable
 
-centos 7
+* centos 7
 查看防火墙状态
 firewall-cmd --state
 查看防火墙所有开放的端口
