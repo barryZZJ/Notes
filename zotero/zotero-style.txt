@@ -13,4 +13,10 @@ Fields（填自定义数据集的数据集缩写）: CCF, ccf, myCCF, BarCCF
 
 青草绿 黑夜
 ''#d3ddbf''
-''canvas{filter: none !important;} .textLayer {   background-color: None !important; }''
+canvas{filter: None !important;} .textLayer {   background-color: None !important; }
+
+.textLayer {will-change: filter; image-rendering: crisp-edges;  }
+
+https://codepen.io/sosuke/pen/Pjoqqp
+https://isotropic.co/tool/hex-color-to-css-filter/
+

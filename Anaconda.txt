@@ -67,9 +67,10 @@ conda config --set channel_priority strict 严格保证优先级顺序 默认为
 
 导出依赖
 conda env export > environment.yml
-安装
+安装新环境
 conda env create -f environment.yml -n name
-或 conda env update -f environment.yml
+更新当前环境（删除yml中的name，或带-n参数）
+conda env update -f environment.yml -n <env>
 conda install --file requirements.txt
 
 install:
