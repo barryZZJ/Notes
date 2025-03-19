@@ -25,6 +25,7 @@ https://pytorch.org/docs/stable/multiprocessing.html
 其他情况下需要手动加锁
 或者不共享模型，定期fedavg同步state_dict
 
+torch.cuda.is_available()
 
 避免资源过度占用：
 N = # of vCPUs  (16 Logical Processor x 8 Cores) x 1 CPU = 128 vCPU
