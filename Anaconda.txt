@@ -87,3 +87,5 @@ pin packages： https://docs.conda.io/projects/conda/en/latest/user-guide/tasks/
 
 安装g++：
 conda install -c conda-forge gxx_linux-64
+
+无法安装whl，需要用pip
