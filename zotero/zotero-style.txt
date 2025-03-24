@@ -9,7 +9,13 @@ https://github.com/MuiseDestiny/zotero-style
 
 配置文献标签：
 Publication Tags
-Fields（填自定义数据集的数据集缩写）: CCF, ccf, myCCF, BarCCF
+Fields（填自定义数据集的数据集缩写）: CCF, ccf, myCCF, BarCCF, CCF_CN
+搜索优先级：（Publisher不是会议名的都需要把Proceedings Title拷贝到Conference Name里，避免优先级导致搜不到）
+1. publicationTitile
+	1. Conference Name
+	2. Publisher
+2. proceedingsTitle
+
 
 青草绿 黑夜
 ''#d3ddbf''
