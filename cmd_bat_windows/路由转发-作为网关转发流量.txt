@@ -1,0 +1,22 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2025-03-31T17:06:13+08:00
+
+====== 路由转发-作为网关转发流量 ======
+Created 星期一 31 三月 2025
+
+需要有两个网卡，一个网卡连内网，一个连外网
+
+法1：使用Internet连接共享功能 https://blog.csdn.net/liangjiabao5555/article/details/131126810
+外网网卡——属性——Internet连接共享——选择内网网卡
+内网其他电脑配置网关ip即可，dns应该也可以是网关ip
+
+法2：开启Routing and Remote Access服务 
+https://blog.csdn.net/weixin_44647835/article/details/109616688
+https://www.cnblogs.com/chrishg/articles/12861053.html
+将 HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\Tcpip\Parameters\IPEnableRoute设为1：
+	reg add HKLM\SYSTEM\CurrentControlSet\Services\Tcpip\Parameters /v IPEnableRouter /D 1 /f
+配置静态路由条目
+route add <内网网段> mask 255.255.255.0 <外网网卡ip>
+	e.g. route add 192.168.114.0 mask 255.255.255.0 192.168.49.99
+

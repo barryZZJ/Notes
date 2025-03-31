@@ -1,0 +1,15 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2025-03-31T16:57:38+08:00
+
+====== sc ======
+Created 星期一 31 三月 2025
+
+https://learn.microsoft.com/en-us/previous-versions/windows/it-pro/windows-server-2012-r2-and-2012/cc754599(v=ws.11)
+
+sc create /?
+等号和值之间需要一个空格
+sc create <name> binPath= "\path\to.exe args" [displayname=<DisplayName>]
+
+sc config
+sc delete

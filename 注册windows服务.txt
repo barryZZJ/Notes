@@ -1,0 +1,10 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2025-03-31T16:56:49+08:00
+
+====== 注册windows服务 ======
+Created 星期一 31 三月 2025
+
+1. sc
+2. Powershell: New-Service, Remove-Service, Set-Service
+3. nssm
