@@ -7,6 +7,11 @@ Created 星期一 11 三月 2024
 
 替换：
 通配符：https://www.cnblogs.com/whchensir/p/5768030.html
+段落标记（回车）	^p
+手动换行符↓	^l
+
+制表符	^t
+
 常用：
 ? 任意单个字符
 ''* 任意多个字符''
