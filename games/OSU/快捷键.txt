@@ -2,5 +2,8 @@ Content-Type: text/x-zim-wiki
 Wiki-Format: zim 0.6
 Creation-Date: 2022-09-08T18:15:21+08:00
 
-调整note下降速度：F3 F4
+调整note下降速度：F3- F4+
+速度快，同屏按键少，反而有助于读谱。因此较复杂的图应该加快速度
+并且把 Scale osu!mania scroll speed with BPM打开
+
 重载皮肤： ctrl shift alt s

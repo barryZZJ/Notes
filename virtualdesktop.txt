@@ -12,6 +12,8 @@ Created 星期三 18 九月 2024
 Error Streaming Desktop
 Try updating your GPU drivers
 解决办法：
+很有可能是找不到显卡，不要在远程桌面的账号里打开vd
+
 检查log：
 C:\ProgramData\Virtual Desktop
 

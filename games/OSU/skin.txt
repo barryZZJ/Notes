@@ -1,0 +1,39 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2025-04-05T13:08:32+08:00
+
+====== skin ======
+Created 星期六 05 四月 2025
+
+https://osu.ppy.sh/wiki/en/Skinning/skin.ini#[mania]
+https://osu.ppy.sh/community/forums/topics/51694?n=1
+https://osu.ppy.sh/wiki/en/Skinning/osu%21mania
+
+skin.ini:
+//所有y轴位置都是越大越靠下
+[Mania]
+Keys: 4
+//整体位置，pxs to the left of screen, middle is 300
+ColumnStart: 300
+// 连击数y轴位置
+ComboPosition: 110
+// 准确性(Good,Perfect)y轴位置
+ScorePosition: 210
+// 判定线y轴位置
+HitPosition: 240~480
+
+NoteImage0:单键
+NoteImage0H: 长条开始
+NoteImage0L: 长条中段
+NoteImage0T: 长条结尾
+
+水平位置：
+ColumnStart: 325
+
+判定线位置：
+HitPosition: 480  // 480 is bottom
+
+每个按钮得分（0 50 100 200）位置：
+ScorePosition
+
+hit error 准确率条：设置-Score meter type-hit error
