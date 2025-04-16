@@ -9,8 +9,14 @@ https://pytorch.org/get-started/previous-versions/
 conda install pytorch torchvision torchaudio pytorch-cuda=12.4 -c pytorch -c nvidia
 conda install pytorch torchvision torchaudio pytorch-cuda=11.8 -c pytorch -c nvidia
 pip install torch==1.9.1+cu111 torchvision==0.10.1+cu111 torchaudio==0.9.1 -f https://download.pytorch.org/whl/torch_stable.html
+v2.5.1 python>=3.9
+conda install pytorch==2.5.1 torchvision==0.20.1 torchaudio==2.5.1 pytorch-cuda=12.4 -c pytorch -c nvidia
+pip install torch==2.5.1 torchvision==0.20.1 torchaudio==2.5.1 --index-url https://download.pytorch.org/whl/cu124
+v2.4.1
+conda install pytorch==2.4.1 torchvision==0.19.1 torchaudio==2.4.1 pytorch-cuda=12.4 -c pytorch -c nvidia
+！注意检查安装时是不是cu124版本，还是cpu版本
 
-pytorch-geometric: conda install pyg -c pyg
+pytorch-geometric: conda install pyg=*=*cu* -c pyg
 torchmetrics: conda install -c conda-forge torchmetrics
 
 查询版本发布时间：https://dev-discuss.pytorch.org/c/release-announcements/27
