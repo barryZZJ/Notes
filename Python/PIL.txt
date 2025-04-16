@@ -2,6 +2,7 @@ Content-Type: text/x-zim-wiki
 Wiki-Format: zim 0.6
 
 pip install pillow
+
 from PIL import Image, ImageDraw
 im = Image.open(path) # type: Image.Image
 with Image.open(infile) as im:
@@ -68,3 +69,12 @@ def image_to_byte_array(image: Image) -> bytes:
   # Turn the BytesIO object back into a bytes object
   imgByteArr = imgByteArr.getvalue()
   return imgByteArr
+
+
+报错处理
+ImportError: DLL load failed while importing _imaging: 找不到指定的模块
+原因：pillow需要降级到6.2.1
+pip uninstall pillow
+pip install pillow==6.2.1 -i https://pypi.tuna.tsinghua.edu.cn/simple/
+对应python版本3.5~3.8
+{{.\pasted_image.png}}

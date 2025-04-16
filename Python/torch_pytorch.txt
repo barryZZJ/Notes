@@ -10,6 +10,9 @@ conda install pytorch torchvision torchaudio pytorch-cuda=12.4 -c pytorch -c nvi
 conda install pytorch torchvision torchaudio pytorch-cuda=11.8 -c pytorch -c nvidia
 pip install torch==1.9.1+cu111 torchvision==0.10.1+cu111 torchaudio==0.9.1 -f https://download.pytorch.org/whl/torch_stable.html
 
+pytorch-geometric: conda install pyg -c pyg
+torchmetrics: conda install -c conda-forge torchmetrics
+
 查询版本发布时间：https://dev-discuss.pytorch.org/c/release-announcements/27
 cuda版本兼容性：https://github.com/pytorch/pytorch/blob/main/RELEASE.md
 
