@@ -38,8 +38,9 @@ ssh-keygen -t rsa
 === ssh服务器： ===
 Linux:
 1. 安装：sudo apt install openssh-server
-2. 把id_rsa.pub里的内容写入~/.ssh/authorized_keys
-3. sudo nano /etc/ssh/sshd_config文件，设置（默认是yes，不需要动，也不用重启ssh服务）
+2. chmod 700 .ssh
+3. 把id_rsa.pub里的内容写入~/.ssh/authorized_keys，并chmod 600 或 644
+4. sudo nano /etc/ssh/sshd_config文件，设置（默认是yes，不需要动，也不用重启ssh服务）
 PubkeyAuthentication yes
 AuthorizedKeysFile .ssh/authorized_keys
 并重启ssh服务 sudo service sshd restart
@@ -107,7 +108,7 @@ Match User sshadmin
 【登陆的是管理员用户】路径为%programdata%\ssh\administrators_authorized_keys
 2.3 高级权限：取消继承、**只有System和Administrators组**完全控制，所有者必须为**SYSTEM**。
 	管理员命令行设置文件权限：icacls.exe "%programdata%\ssh\administrators_authorized_keys" /inheritance:r /grant "Administrators:F" /grant "SYSTEM:F"
-【linux】在~/.ssh/autorized_keys下做相同操作，chmod 600即可，即时生效。
+【linux】在~/.ssh/authorized_keys下做相同操作，chmod 600即可，即时生效。
 
 在新建的 AuthorizedKeysFile 中写入客户端生成的公钥(.pub)（若权限不足，用管理员打开vscode编辑；或临时修改所有者；或以对应用户登录再修改）（更新后不用重启sshd服务）
 windows：手动放入
