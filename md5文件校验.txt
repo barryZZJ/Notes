@@ -1,0 +1,9 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2025-04-23T19:03:47+08:00
+
+====== md5文件校验 ======
+Created 星期三 23 四月 2025
+
+命令行
+certutil -hashfile <file_name> MD5
