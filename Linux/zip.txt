@@ -1,0 +1,9 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2025-04-24T11:31:36+08:00
+
+====== zip ======
+Created 星期四 24 四月 2025
+
+zip -r project.zip project -x "project/folder2/*" "project/folder3/*"
+-x exclude
