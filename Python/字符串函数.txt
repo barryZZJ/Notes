@@ -6,8 +6,24 @@ https://www.runoob.com/python/python-strings.html
 .removesuffix(suff)
 .removeprefix(pref)
 
-isdecimal() ⊆ isdigit() ⊆ isnumeric()
 isalpha()
+
+isdecimal() ⊆ isdigit() ⊆ isnumeric()
+
+isdecimal()
+True: Unicode数字，全角数字（双字节）
+False: 罗马数字，汉字数字
+Error: byte数字（单字节）
+
+isdigit()
+True: Unicode数字，byte数字（单字节），全角数字（双字节），罗马数字
+False: 汉字数字
+Error: 无
+
+isnumeric()
+True: Unicode数字，全角数字（双字节），罗马数字，汉字数字
+False: 无
+Error: byte数字（单字节）
 
 part1, first_dot, part2 = '1.2.3'.partition('.')
 # part1 == 1, first_dot == ., part2 == 2.3
