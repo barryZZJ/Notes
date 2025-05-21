@@ -1,0 +1,10 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2025-05-20T14:35:25+08:00
+
+====== gradio ======
+Created 星期二 20 五月 2025
+
+纯python写代码
+
+huggingface的模型使用web页面就是用它实现的
