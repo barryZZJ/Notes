@@ -1,0 +1,24 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2025-05-22T16:35:15+08:00
+
+====== web application ======
+Created 星期四 22 五月 2025
+
+web 应用
+
+Cross-platform desktop application 开发框架
+* electron https://www.electronjs.org/
+* nextjs https://nextjs.org/
+* tauri https://tauri.app/ （rust后端）
+
+If you want maturity and don’t mind larger app size: Go with Electron.
+If you want lightweight, modern, and are okay with something a bit newer: Try Tauri.
+If you want the lightest possible footprint and simple features: Consider Neutralino.js.
+
+工作流：
+1. 开发前端UI（三件套/React/Vue）
+2. 使用上述框架接入后端
+3. 测试、运行、打包
+
+hong'li'huang'di
