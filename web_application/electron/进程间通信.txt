@@ -1,0 +1,32 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2025-05-27T10:49:17+08:00
+
+====== 进程间通信 ======
+Created 星期二 27 五月 2025
+
+要想在main中访问HTML的DOM，或者在renderer中访问Nodejs，需要使用进程间通信IPC
+https://www.electronjs.org/zh/docs/latest/tutorial/ipc
+
+示例：在main中定义ping函数，通过preloader开放给renderer调用
+main.js
+''const { app, BrowserWindow, ipcMain } = require('electron/main')''
+''...''
+''app.whenReady().then(() => {''
+  ''ipcMain.handle('ping', () => 'pong')''
+  ''createWindow()''
+''})''
+
+preload.js
+''const { contextBridge, ipcRenderer } = require('electron')''
+
+''contextBridge.exposeInMainWorld('ping', () => ipcRenderer.invoke('ping'))''
+//千万不要暴露整个ipcRenderer模块
+
+renderer.js
+''const func = async () => {''
+  ''const response = await window.versions.ping()''
+  ''console.log(response) // 打印 'pong' 要在devtools里看''
+''}''
+
+''func()''

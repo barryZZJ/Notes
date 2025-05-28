@@ -1,0 +1,23 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2020-05-6T11:33:52+08:00
+
+https://react.docschina.org/docs/getting-started.html
+https://react.docschina.org/docs/add-react-to-a-website.html
+
+生产环境：
+官方：
+<script crossorigin src="https://unpkg.com/react@16/umd/react.production.min.js"></script>
+<script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.production.min.js"></script>
+Staticfile CDN 的 React CDN 库：
+<script crossorigin src="https://cdn.staticfile.org/react/16.4.0/umd/react.production.min.js"></script>
+<script crossorigin src="https://cdn.staticfile.org/react-dom/16.4.0/umd/react-dom.production.min.js"></script>
+
+开发环境：
+官方：
+<script crossorigin src="https://unpkg.com/react@16/umd/react.development.js"></script>
+<script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+
+Staticfile CDN 的 React CDN 库
+<script crossorigin src="https://cdn.staticfile.org/react/16.4.0/umd/react.development.js"></script>
+<script crossorigin src="https://cdn.staticfile.org/react-dom/16.4.0/umd/react-dom.development.js"></script>

@@ -1,0 +1,26 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2025-05-27T10:41:22+08:00
+
+====== 暴露API ======
+Created 星期二 27 五月 2025
+
+preload.js
+需要使用contextBridge将接口开放给renderer.js
+
+''const { contextBridge } = require('electron')''
+
+''contextBridge.exposeInMainWorld('versions', {''
+  ''node: () => process.versions.node,''
+  ''chrome: () => process.versions.chrome,''
+  ''electron: () => process.versions.electron''
+  ''// 除函数之外，我们也可以暴露变量''
+''})''
+''contextBridge.exposeInMainWorld('myAPI', {''
+  ''desktop: true''
+''})''
+
+renderer.js: 
+''window.versions // or versions''
+''window.myAPI''
+''// => {desktop: true}''

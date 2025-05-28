@@ -1,0 +1,26 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2025-05-27T09:26:18+08:00
+
+====== electron ======
+Created 星期二 27 五月 2025
+
+doc
+https://www.electronjs.org/zh/docs/latest
+
+main.js: main process
+renderer.js: window process，不能访问nodejs和electron的API，不能使用require
+preload.js: 在窗口渲染之前运行，可以访问API，如window
+
+1. main.js new BrowserWindow，并loadFile('index.html')
+2. 在index.html中<script src="./renderer.js"></script>
+3. renderer中即可对窗口进行操作，也可以require其他npm module
+
+简易开发工具：electron fiddle
+
+examples:
+https://www.electronjs.org/zh/docs/latest/tutorial/examples
+
+template:
+https://github.com/Deluze/electron-vue-template
+https://github.com/guasam/electron-react-app

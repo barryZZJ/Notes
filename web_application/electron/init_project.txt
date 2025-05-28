@@ -1,0 +1,93 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2025-05-27T10:32:55+08:00
+
+====== init project ======
+Created 星期二 27 五月 2025
+
+开发流程 https://www.electronjs.org/zh/docs/latest/tutorial/tutorial-first-app#
+1. npm init -y
+2. npm install electron --save-dev
+3. package.json中，添加：（其中main和scripts必须）
+  ''"name": "my-electron-app",''
+  ''"version": "1.0.0",''
+  ''"description": "Hello World!",''
+  ''"main": "main.js",''
+  ''"scripts": {''
+	''"start": "electron .",''
+	''"test": "echo \"Error: no test specified\" && exit 1"''
+  ''},''
+  ''"author": "Jane Doe",''
+  ''"license": "MIT",''
+4. 创建main.js、index.html、preload.js、renderer.js
+5. npm run start
+
+main.js
+{{{code: lang="js" linenumbers="False"
+// Modules to control application life and create native browser window
+const { app, BrowserWindow } = require('electron');
+const path = require('node:path')
+
+function createWindow () {
+  // Create main browser window.
+  const wind = new BrowserWindow({
+    width: 800,
+    height: 600,
+    webPreferences: {
+      preload: path.join(__dirname, 'preload.js'),
+      nodeIntegration: true
+    }
+  });
+  wind.loadFile('index.html');
+}
+
+app.whenReady().then(() => {
+	createWindow();
+});
+}}}
+
+index.html
+{{{code: lang="html" linenumbers="False"
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <!-- https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP -->
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'">
+    <title>Hello World!</title>
+  </head>
+  <body>
+    <h1>Hello World!</h1>
+    We are using Node.js <span id="node-version"></span>,
+    Chromium <span id="chrome-version"></span>,
+    and Electron <span id="electron-version"></span>.
+
+    <!-- You can also require other files to run in this process -->
+    <script src="./renderer.js"></script>
+  </body>
+</html>
+
+}}}
+
+preload.js
+类似chrome扩展脚本的开发，在加载网页之前注入
+{{{code: lang="js" linenumbers="False"
+/**
+ * The preload script runs before `index.html` is loaded
+ * in the renderer. It has access to web APIs as well as
+ * Electron's renderer process modules and some polyfilled
+ * Node.js functions.
+ *
+ * https://www.electronjs.org/docs/latest/tutorial/sandbox
+ */
+window.addEventListener('DOMContentLoaded', () => {
+  const replaceText = (selector, text) => {
+    const element = document.getElementById(selector)
+    if (element) element.innerText = text
+  }
+
+  for (const type of ['chrome', 'node', 'electron']) {
+    replaceText(`${type}-version`, process.versions[type])
+  }
+})
+}}}

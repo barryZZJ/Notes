@@ -8,9 +8,11 @@ Created 星期四 22 五月 2025
 web 应用
 
 Cross-platform desktop application 开发框架
-* electron https://www.electronjs.org/
-* nextjs https://nextjs.org/
-* tauri https://tauri.app/ （rust后端）
+后端
+* electron  https://www.electronjs.org/ 复杂，教程丰富
+* tauri（基于rust） https://tauri.app/ 轻量化
+前端
+* nextjs（react） https://nextjs.org/
 
 If you want maturity and don’t mind larger app size: Go with Electron.
 If you want lightweight, modern, and are okay with something a bit newer: Try Tauri.

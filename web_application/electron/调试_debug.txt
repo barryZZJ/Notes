@@ -1,0 +1,48 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2025-05-27T11:17:24+08:00
+
+====== 调试 debug ======
+Created 星期二 27 五月 2025
+
+调试渲染进程
+BrowserWindow.webContents.openDevTools()  // or Ctrl+Shift+I
+
+调试主进程：https://www.electronjs.org/zh/docs/latest/tutorial/debugging-main-process
+vscode调试配置 .vscode/launch.json
+{{{code: lang="json" linenumbers="False"
+{
+  "version": "0.2.0",
+  "compounds": [
+    {
+      "name": "Main + renderer",
+      "configurations": ["Main", "Renderer"],
+      "stopAll": true
+    }
+  ],
+  "configurations": [
+    {
+      "name": "Renderer",
+      "port": 9222,
+      "request": "attach",
+      "type": "chrome",
+      "webRoot": "${workspaceFolder}"
+    },
+    {
+      "name": "Main",
+      "type": "node",
+      "request": "launch",
+      "cwd": "${workspaceFolder}",
+      "runtimeExecutable": "${workspaceFolder}/node_modules/.bin/electron",
+      "windows": {
+        "runtimeExecutable": "${workspaceFolder}/node_modules/.bin/electron.cmd"
+      },
+      "args": [".", "--remote-debugging-port=9222"],
+      "outputCapture": "std",
+      "console": "integratedTerminal"
+    }
+  ]
+}
+}}}
+由于我们要将进程绑定到 Renderer 任务，您应用中的前几行代码可能会被跳过，因为调试器 (Debugger) 在执行代码之前没有足够的时间进行连接。 在开发环境中，您可以通过刷新页面或者使用 setTimeout 延迟运行代码，来避开这个问题
+
