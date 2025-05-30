@@ -19,6 +19,9 @@ conda install pytorch==2.4.1 torchvision==0.19.1 torchaudio==2.4.1 pytorch-cuda=
 pytorch-geometric: conda install pyg=*=*cu* -c pyg
 torchmetrics: conda install -c conda-forge torchmetrics
 
+torchvision 与torch 版本
+https://github.com/pytorch/vision#installation
+
 查询版本发布时间：https://dev-discuss.pytorch.org/c/release-announcements/27
 cuda版本兼容性：https://github.com/pytorch/pytorch/blob/main/RELEASE.md
 

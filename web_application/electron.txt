@@ -7,6 +7,7 @@ Created 星期二 27 五月 2025
 
 doc
 https://www.electronjs.org/zh/docs/latest
+https://www.electronjs.org/zh/docs/latest/api/app
 
 main.js: main process
 renderer.js: window process，不能访问nodejs和electron的API，不能使用require
