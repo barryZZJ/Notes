@@ -19,3 +19,7 @@ iptables -L
 测试连通性：
 ping -I <srcip/interface> 10.26.70.13
 ip route get 10.26.70.13 from 172.16.0.1
+
+具体路径：
+windows: tracert
+linux: traceroute tracepath

@@ -16,6 +16,7 @@ ufw disable
 firewall-cmd --state
 查看防火墙所有开放的端口
 firewall-cmd --zone=public --list-ports
+firewall-cmd --zone=public --list-all
 临时关闭防火墙
 systemctl stop firewalld.service
 永久关闭防火墙
