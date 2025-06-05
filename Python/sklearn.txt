@@ -1,0 +1,11 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2025-06-04T10:34:02+08:00
+
+====== sklearn ======
+Created 星期三 04 六月 2025
+
+https://scikit-learn.org/stable/install.html
+
+pip install scikit-learn
+conda install scikit-learn -c conda-forge
