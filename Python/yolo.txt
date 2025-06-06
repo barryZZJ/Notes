@@ -1,0 +1,16 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2025-06-05T16:43:40+08:00
+
+====== yolo ======
+Created 星期四 05 六月 2025
+
+https://docs.ultralytics.com/zh/quickstart/
+
+pip install ultralytics
+
+train args
+https://docs.ultralytics.com/modes/train/
+
+predict args
+https://docs.ultralytics.com/modes/predict/#inference-arguments
