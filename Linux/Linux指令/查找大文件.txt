@@ -5,14 +5,14 @@ Creation-Date: 2024-11-08T09:41:16+08:00
 ====== 查找大文件 ======
 Created 星期五 08 十一月 2024
 
-du /path -h -x --max-depth=1
+du /home -h -x --max-depth=1
 
-find /path/to/search -type f -size +100M
+find /home -type f -size +100M
 
 find / -path /home -prune -o -type f -size +1G -print
 
 显示文件大小
-find /path -type f -size +1G -exec ls -lh {} \; | awk '{ print $9 ": " $5 }'
+find /home -type f -size +1G -exec ls -lh {} \; | awk '{ print $9 ": " $5 }'
 
 sudo find / -path /home -prune -o -type f -size +1G -exec ls -lh {} + | awk '{ print $9 ": " $5 }'
 

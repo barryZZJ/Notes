@@ -18,6 +18,10 @@ v2.4.1
 conda install pytorch==2.4.1 torchvision==0.19.1 torchaudio==2.4.1 pytorch-cuda=12.4 -c pytorch -c nvidia
 ！注意检查安装时是不是cu124版本，还是cpu版本
 
+cpu版本: https://download.pytorch.org/whl/cpu
+pip install torch==2.7.1+cpu torchvision==0.22.1+cpu
+conda install pytorch-cpu torchvision-cpu -c pytorch
+
 pytorch-geometric: conda install pyg=*=*cu* -c pyg
 torchmetrics: conda install -c conda-forge torchmetrics
 

@@ -1,7 +1,8 @@
 Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
 
 爬虫时使用
 
 xpath对应库名：lxml
-cssselector css选择器 https://www.w3school.com.cn/cssref/css_selectors.asp
+cssselector css选择器 https://www.w3school.com.cn/cssref/css_selectors.asp https://www.runoob.com/cssref/css-selectors.html
 beautifulsoup:可以方便地把html文件解析成树形结构，方便访问各个层次元素等等，也可以使用css选择器

@@ -1,6 +1,9 @@
 Content-Type: text/x-zim-wiki
 Wiki-Format: zim 0.6
 
+
+[[httpx]] 新一代网络请求库，和requests一样方便
+
 https://cn.python-requests.org/zh_CN/latest/
 https://requests.readthedocs.io/en/latest/
 https://docs.python-requests.org/en/latest/user/advanced/

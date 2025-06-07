@@ -14,6 +14,7 @@ Created 星期五 02 九月 2022
 %''USERPROFILE''%\.cache
 ''pip cache purge'': %localappdata%\pip\cache 
 ''npm cache clean --force'' : %localappdata%\npm-cache\_cache
+''pnpm store prune''
 gradle cache: ''rd /s /q %USERPROFILE%\.gradle\caches''
 JetBrains JB 系列：
 	 File——Invalidate Caches
