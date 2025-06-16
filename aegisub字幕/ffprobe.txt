@@ -24,3 +24,7 @@ ffprobe.exe -v error -select_streams a:0 -show_entries stream=codec_name -of def
 获取FPS
 ffprobe -v error -select_streams v:0 -show_entries stream=avg_frame_rate -of default=nw=1:nk=1 <infile>
 输出24000/1001
+
+获取分辨率
+ffprobe -v error -select_streams v:0 -show_entries stream=width -of csv=p=0:s=x <infile>
+# 3840x1920
