@@ -24,9 +24,11 @@ powerhsell:
 ''conda activate xxx''
 
 linux:
+''eval "$(conda shell.bash hook)"''
 ''eval "$(/root/miniconda3/bin/conda shell.bash hook)"''
 
-conda create -n 名字 python==3.x --clone <exist_env_name> -y
+重命名/克隆
+conda create -n 名字 --clone <exist_env_name> -y
 
 conda env remove -n 名字
 

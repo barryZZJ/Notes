@@ -8,3 +8,12 @@ Created 星期一 31 三月 2025
 https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.management/new-service?view=powershell-7.5
 
 New-Service -Name "TestService" -BinaryPathName '"C:\WINDOWS\System32\svchost.exe" -k netsvcs' -DependsOn "NetLogon"
+
+Get-Service
+Restart-Service
+Resume-Service
+Set-Service
+Start-Service
+Stop-Service
+Suspend-Service
+Remove-Service
