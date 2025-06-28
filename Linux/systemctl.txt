@@ -20,6 +20,11 @@ Masking a service will create a symbolic link from the service unit file to /dev
 查看log
 journalctl -u servicename
 
+定期清理log
+/etc/systemd/journald.conf
+SystemMaxUse=100M
+systemctl restart systemd-journald
+
 .service文件
 /etc/systemd/system/xx.service
 {{{code: lang="ini" linenumbers="False"
