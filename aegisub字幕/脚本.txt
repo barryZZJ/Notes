@@ -5,6 +5,8 @@ Creation-Date: 2022-09-23T23:32:14+08:00
 ====== 脚本 ======
 Created 星期五 23 九月 2022
 
+https://aegisub.org/docs/
+
 https://aegi.vmoe.info/docs/3.2/Automation/Lua/
 https://aegi.vmoe.info/docs/3.2/Automation/Lua/Subtitle_file_interface/
 https://aegi.vmoe.info/docs/3.2/Automation/Lua/Modules/re/
