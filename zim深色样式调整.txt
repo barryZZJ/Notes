@@ -1,0 +1,17 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2025-07-02T10:02:03+08:00
+
+====== zim深色样式调整 ======
+创建日期 星期三 02 七月 2025
+
+cp /usr/share/zim/style.conf ~/.config/zim/
+nano ~/.config/zim/style.conf
+
+[Tag code]
+foreground[darktheme] = lightgray
+
+[Tag pre]
+# This style is used for multi-line verbatim blocks
+foreground[darktheme] = lightgray
+
