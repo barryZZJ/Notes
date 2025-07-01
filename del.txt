@@ -13,6 +13,7 @@ Created 星期五 02 九月 2022
 === Caches: ===
 %''USERPROFILE''%\.cache
 ''pip cache purge'': %localappdata%\pip\cache 
+''conda clean -t -p''
 ''npm cache clean --force'' : %localappdata%\npm-cache\_cache
 ''pnpm store prune''
 gradle cache: ''rd /s /q %USERPROFILE%\.gradle\caches''

@@ -43,7 +43,7 @@ export HTTPS_PROXY=http://192.168.116.239:18809
 1. 直接拷贝env下的文件夹到目标文件系统
 2. 使用 conda-pack
 	a. conda install conda-pack -y
-	b. conda pack -n <env> 生成.tar.gz
+	b. conda pack -n <env> 生成.tar.gz  (--ignore-missing-files)
 	c. 拷贝到目标系统的env下
 	d. mkdir <env> && tar -zxvf <env>.tar.gz -C <env>
 	e. conda activate <env>

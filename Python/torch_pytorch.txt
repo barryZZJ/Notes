@@ -18,7 +18,7 @@ pip install torch==2.5.1 torchvision==0.20.1 torchaudio==2.5.1 --index-url https
 v2.4.1
 conda install pytorch==2.4.1 torchvision==0.19.1 torchaudio==2.4.1 pytorch-cuda=12.4 -c pytorch -c nvidia
 ！注意检查安装时是不是cu124版本，还是cpu版本
-！直接在服务器安装的torch会报找不到GLIBC_2.27，需要用toolbox_backend/envs里的toolbox_linux_v2.tar.gz，拷贝到服务器里，才能运行，是py3.11 torch2.4.0 cuda12.4，而且奇怪的是直接在服务器安装同样的版本也不行，怀疑是有些预编译了
+！直接在服务器安装的torch会报找不到GLIBC_2.27，需要用toolbox_backend/envs里的toolbox_linux_v2.tar.gz，拷贝到服务器里，才能运行，是py3.11 torch2.4.0 cuda12.4，而且奇怪的是直接在服务器安装同样的版本也不行，怀疑是有些预编译了，或许需要在centos虚拟机里pack好对应的环境，再拷到服务器上
 v2.7.1
 pip3 install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu128
 
