@@ -46,6 +46,8 @@ export HTTPS_PROXY=http://192.168.116.239:18809
 	b. conda pack -n <env> 生成.tar.gz
 	c. 拷贝到目标系统的env下
 	d. mkdir <env> && tar -zxvf <env>.tar.gz -C <env>
+	e. conda activate <env>
+	f. conda-unpack (每次更换路径后都需要运行)
 
 换源
 conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/free/
@@ -70,7 +72,7 @@ conda config --set channel_priority strict 严格保证优先级顺序 默认为
 导出依赖
 conda env export > environment.yml
 安装新环境
-conda env create -f environment.yml -n name
+conda env create -f environment.yml[ -n name]
 更新当前环境（删除yml中的name，或带-n参数）
 conda env update -f environment.yml -n <env>
 conda install --file requirements.txt
