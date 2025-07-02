@@ -1,0 +1,18 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2025-07-02T10:57:10+08:00
+
+====== zim设置 ======
+Created 星期三 02 七月 2025
+
+修改environ.ini （新版要放到_internal里）
+[Environment]
+HOME=../
+TEMP=./tmp
+XDG_CONFIG_HOME=./config
+XDG_CONFIG_DIRS=
+XDG_DATA_HOME=./data
+XDG_DATA_DIRS=
+XDG_CACHE_HOME=./cache
+
+配置文件保存在相对于environ.ini的位置
