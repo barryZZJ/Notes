@@ -7,3 +7,5 @@ Created 星期日 23 七月 2023
 
 #! /bin/sh
 #! /bin/bash
+
+cd "$(dirname "$0")"
