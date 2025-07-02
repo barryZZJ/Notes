@@ -24,14 +24,18 @@ flatpak run com.freerdp.FreeRDP /v:dorm.barryzzj.asia:23389 /u:barry /p:8504 /sm
 flatpak run com.freerdp.FreeRDP /v:dorm.barryzzj.asia:23389 /u:barry /p:8504 /dynamic-resolution /home-drive +sound +clipboard -heartbeat
 /multimon 多屏
 /monitors:1,2
+/monitors-list
 
 /usb:id,dev:12d1:107e
 /usb:auto
 [/dvc:urbdrc,dbg,dev:0529:0001]
 (使用lsusb查看deviceid，貌似不支持安卓手机)
 
+声音：
+/sound:sys:alsa /microphone:sys:alsa
+
 debug:
-当没有声音的时候，可以用moonlight顶一下账号，再rdp登陆回来。或者注销/重启宿主机。
+当没有声音的时候，重启AudioSrc (Windows Audio) 服务
 
 script：
 rdp-onemon:
