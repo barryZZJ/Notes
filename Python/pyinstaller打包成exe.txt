@@ -22,6 +22,7 @@ pyinstaller compresser.py -y --clean --add-data src;src -F --clean -n name --ico
 打包时报“无法成功完成操作，因为文件包含病毒或潜在的垃圾软件。”，需要把实时防护关掉
 
 === pyinstaller>4.2路径问题： ===
+https://pyinstaller.org/en/v6.14.1/runtime-information.html
 打包成单个文件后，python环境/附加文件会在tmp文件夹下，__file__返回的也是这个路径下的py文件(但文件不存在)
 exe文件路径：''os.path.dirname(sys.executable)'' 双击运行时，os.getcwd()返回exe所在目录
 --runtime-tmpdir PATH指定tmp文件夹
