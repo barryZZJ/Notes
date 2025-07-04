@@ -24,8 +24,8 @@ sudo mkdir -p /etc/systemd/system/docker.service.d
 sudo nano [[/etc/systemd/system/docker.service.d/proxy.conf]]
 
 [Service]
-Environment="HTTP_PROXY=http[[://127.0.0.1:10809/]]"
-Environment="HTTPS_PROXY=http[[://127.0.0.1:10809/]]"
+Environment="HTTP_PROXY=http://127.0.0.1:10809/"
+Environment="HTTPS_PROXY=http://127.0.0.1:10809/"
 Environment="NO_PROXY=localhost,127.0.0.1,.example.com,yy.barryzzj.top"
 
 sudo systemctl daemon-reload

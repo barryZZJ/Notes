@@ -10,6 +10,8 @@ https://cheatography.com/srgmc/cheat-sheets/lua-scripting-5-1/
 https://devhints.io/lua
 https://www.lua.org/manual/5.1/manual.html
 
+没有整除，需要用math.floor
+
 数组（下标从1开始！不支持负数下标）
 arr = {}
 arr = { ['key'] = 'val' }
@@ -109,3 +111,11 @@ string.format(pattern, args)
 %d - int
 %s - str
 %c - char
+%f - float, %.1f
+
+regex: The character % works as an escape character (% == \)
+e.g. "(%w+)%s*(%w+)"
+string.find(s, pat) -> i_st, i_ed of first match, captured values. or nil
+string.match(s, pat) -> return first capture or whole match (if no capture) or nil (if no match)
+string.gsub(s, pat) -> str, the total number of matches that occurred
+

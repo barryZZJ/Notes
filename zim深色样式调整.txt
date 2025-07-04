@@ -19,3 +19,9 @@ foreground[darktheme] = lightgray
 # This style is used for multi-line verbatim blocks
 foreground[darktheme] = lightgray
 
+[Tag link]
+foreground[darktheme]=#99c3ff
+
+Plugins:
+Insert Equation
+勾选Use font color for dark theme

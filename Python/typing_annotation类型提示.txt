@@ -36,8 +36,8 @@ def f(a, **kwargs):
 	'''
 
 指定变量：
-a # type: List[str]
-单独写a: int 
+a = ... # type: List[str]
+单独写a: int = ...
 
 检测：
 isinstance(o, t)
@@ -63,8 +63,8 @@ Literal["val1", "val2"]
 此时传入参数必须是具体的字符串常量，而不能是变量。解决方法：@overload一个函数定义，参数类型指定为str
 e.g.:
 ''def open(path: _PathType,''
-''         mode: Literal["r", "w", "a", "x", "r+", "w+", "a+", "x+"],''
-''         ) -> IO[Text]: ...''
+		 ''mode: Literal["r", "w", "a", "x", "r+", "w+", "a+", "x+"],''
+		 '') -> IO[Text]: ...''
 
 ''# Fallback overload for when the user isn't using literal types''
 ''@overload''
@@ -74,9 +74,9 @@ e.g.:
 TypedDict
 类似pydantic的module的方式，只用于类型检查，运行时为dict类型.
 ''class Point2D(TypedDict):''
-''    x: int''
-''    y: int''
-''    label: str''
+	''x: int''
+	''y: int''
+	''label: str''
 ''Point2D = TypedDict('Point2D', {'x': int, 'y': int, 'label': str})''
 ''Point2D = TypedDict('Point2D', x=int, y=int, label=str)''
 ''a: Point2D = {'x': 1, 'y': 2, 'label': 'good'}  # OK''
@@ -106,6 +106,7 @@ is_typeddict
 
 TYPE_CHECKING:
 用于代码编写时IDE识别库，而不真正import
+注意要用引号包裹，也可解决循环引用的问题
 if TYPE_CHECKING:
 	import expensive_mod
 
@@ -120,16 +121,16 @@ https://docs.python.org/3/library/typing.html#typing.overload
 
 ''class Duck:''
 
-''    @overload''
-''    def quack(self) -> None: ...''
+	''@overload''
+	''def quack(self) -> None: ...''
 
-''    @overload''
-''    def quack(self, mark: str) -> None: ...''
+	''@overload''
+	''def quack(self, mark: str) -> None: ...''
 
-''    # 以上两个方法最终会被这个方法覆盖掉''
-''    def quack(self, arg=None):''
-''        if arg:''
-''            print(f"GaGaGa: {arg}")''
-''        else:''
-''            print("GaGaGa!")''
+	''# 以上两个方法最终会被这个方法覆盖掉''
+	''def quack(self, arg=None):''
+		''if arg:''
+			''print(f"GaGaGa: {arg}")''
+		''else:''
+			''print("GaGaGa!")''
 

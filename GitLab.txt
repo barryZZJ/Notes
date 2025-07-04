@@ -86,7 +86,7 @@ user['git_user_name'] = "GitLab"
 user['git_user_email'] = "850462618@qq.com"
 
 cstnet:
-[[TODO]] 发送地址改为NspGitLab@iie.ac.cn
+TODO 发送地址改为NspGitLab@iie.ac.cn
 // "Mail from" must equal authorized user
 gitlab_rails['smtp_enable'] = true
 gitlab_rails['smtp_address'] = "mail.cstnet.cn"

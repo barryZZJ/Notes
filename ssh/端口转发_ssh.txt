@@ -13,6 +13,8 @@ ssh -L [local_host:]local_port:remote_host:remote_port user@ssh_server
 ssh -L 8080:10.26.70.13:80 user@10.26.70.13
 访问本地的8080会被转发到服务器的80
 -N 禁用输入（只转发，不需要执行命令时使用）
+ssh -L 192.168.116.239:22213:10.26.70.13:22 zzj@10.26.70.13 -N
+ssh -L 192.168.116.239:22214:10.26.70.14:22 zzj@10.26.70.14 -N
 
 服务器->本地
 ssh -R [remote_host:]remote_port:local_host:local_port user@ssh_server

@@ -118,8 +118,8 @@ _G.aegisub.debug.out("%d", 123)
 .len()
 for char in unicode.chars()
 
-**_G.util: 	默认已导入**
-copy(table) deep_copy(table)
+**_G.util: 	默认已导入** https://aegisub.org/docs/latest/automation/lua/modules/util/
+copy(line) deep_copy(line)
 ass_color(r,g,b) -> &HBBGGRR
 ass_style_color(r, g, b, a) -> &HAABBGGRR
 ass_alpha(num) -> &HAA&
