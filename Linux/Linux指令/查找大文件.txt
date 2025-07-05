@@ -22,3 +22,5 @@ du -sh /path
 
 临时解决方案：转移文件后，创建软链接
 mv ~/.cache /mnt/external/.cache && ln -s /mnt/external/.cache ~/
+
+/tmp清理
