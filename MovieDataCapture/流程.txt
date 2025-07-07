@@ -1,0 +1,12 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2025-07-06T22:54:36+08:00
+
+====== 流程 ======
+Created 星期日 06 七月 2025
+
+正常模式刮削一遍
+根据命名结果更新qb里的名字
+删除☆,☆☆中的视频
+运行complete-images
+更新emby库（如果没有勾选监控文件夹变化）
