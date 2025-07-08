@@ -5,3 +5,6 @@ Creation-Date: 2023-07-24T14:32:10+08:00
 ====== mount挂载磁盘 ======
 Created 星期一 24 七月 2023
 
+查看已挂载文件夹内的原始本地文件
+
+mount --bind /original/mount /new/mount

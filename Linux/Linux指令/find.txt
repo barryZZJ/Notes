@@ -6,3 +6,5 @@ Creation-Date: 2024-11-08T09:36:35+08:00
 Created 星期五 08 十一月 2024
 
 find /path -name pattern
+
+find /path -name *filename*

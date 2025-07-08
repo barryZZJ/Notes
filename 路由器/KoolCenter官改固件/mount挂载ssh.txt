@@ -1,0 +1,14 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2025-07-08T16:29:43+08:00
+
+====== mount挂载ssh ======
+Created 星期二 08 七月 2025
+
+opkg install https://bin.entware.net/aarch64-k3.10/sshfs_3.7.2-3_aarch64-3.10.ipk
+[[Linux:工位系统备份:mount挂载磁盘:挂载sftp]]
+
+rsa密钥放入~/.ssh/id_dropbear
+
+mkdir /mnt/e
+sshfs -p 23355 -o allow_other -o reconnect,ServerAliveInterval=15,ServerAliveCountMax=19 barry@127.0.0.1:/j:/simon/ /mnt/sda1/files/qbittorrent/downloads/simon

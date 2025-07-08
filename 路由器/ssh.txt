@@ -1,4 +1,15 @@
 Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+
+====== ssh ======
+Created 星期二 08 七月 2025
+
+ssh为Dropbear版，
+不支持ecdsa，会报Exited: String too long 需要改用rsa密钥
+不支持config文件，需要手动输入
+
+生成密钥：
+dropbearkey -t rsa -f ~/.ssh/id_dropbear
 
 ssh <username>@ip
 密码为登录web界面的密码

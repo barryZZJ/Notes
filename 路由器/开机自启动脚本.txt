@@ -5,6 +5,10 @@ Creation-Date: 2024-03-26T23:42:01+08:00
 ====== 开机自启动脚本 ======
 Created 星期二 26 三月 2024
 
+koolshare服务启动和停止时分别运行脚本：
+/jffs/scripts/services-start
+/jffs/scripts/services-stop
+
 vi /jffs/scripts/services-start
 chmod a+rx services-start
 

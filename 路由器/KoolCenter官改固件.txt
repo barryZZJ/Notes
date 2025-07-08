@@ -8,6 +8,8 @@ Created 星期四 15 九月 2022
 AX56Uv2固件(386)下载：
 https://fw.koolcenter.com/KoolCenter_ASUS_Official_Mod/RT-AX56U_V2/
 
+https://ifdian.net/a/sadog?tab=shop
+
 重要指令：
 重启软件中心
 sh /koolshare/perp/perp.sh

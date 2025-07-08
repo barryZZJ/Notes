@@ -1,0 +1,28 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2025-07-08T14:34:24+08:00
+
+====== entware opkg ======
+Created 星期二 08 七月 2025
+
+包管理工具
+
+安装后可以使用 opkg 安装管理 
+/opt/bin/opkg
+
+opkg list
+opkg update
+opkg list-installed
+opkg list-upgradable
+
+opkg install nano
+可以opkg install <url>
+
+包网址
+https://bin.entware.net/aarch64-k3.10
+默认镜像
+https://fw.koolcenter.com/ksware/aarch64-k3.10
+tx-ax6000 选择的默认架构是aarch64-k3.10
+修改repository：
+/tmp/mnt/sda1/entware/etc/opkg.conf中的
+src/gz entware https://fw.koolcenter.com/ksware/aarch64-k3.10

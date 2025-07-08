@@ -1,0 +1,17 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2025-07-08T14:49:19+08:00
+
+====== clouddrive2 ======
+Created 星期二 08 七月 2025
+
+类似Alist，可以挂载各种网盘、webdav、本地文件夹
+并且可以提供webdav服务
+（不支持smb）
+并且似乎可以跟易有云一样，多设备访问
+
+与alist不同的是，可以挂载到本例
+
+挂载至本地时报错：fusermount3 找不到：
+确保你的Linux内核支持fuse，可以通过查看是否存在/dev/fuse来检查是否支持fuse，内核不支持fuse将无法挂载本地目录
+如果你需要以非root用户运行CloudDrive，请按照对应操作系统手册安装fuse3，安装好后确认fusermount3命令可以运行，并修改/etc/fuse.conf，确保user_allow_other这一行前面的注释符#已经被删除掉

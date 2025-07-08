@@ -26,9 +26,19 @@ mkdir -p /home/barryoffice/mnt/IM_server_20180104/
 /usr/bin/sshfs -p 23355 -o IdentityFile=/home/barryoffice/.ssh/id_ecdsa barry@dorm.barryzzj.top:/f:/nspshare/ /home/barryoffice/mnt/nspshare/
 /usr/bin/sshfs -p 23355 -o IdentityFile=/home/barryoffice/.ssh/id_ecdsa barry@dorm.barryzzj.top:/f:/nspshare/zzj/IM_from_lhy/IM/NSP_IM20180104/ /home/barryoffice/mnt/IM_server_20180104/
 
-
 使用-o allow_other需要更改文件/etc/fuse.conf，将#user_allow_other 的#删除。
 
+超时问题：
+https://serverfault.com/questions/6709/sshfs-mount-that-survives-disconnect/639735
+https://askubuntu.com/questions/791002/how-to-prevent-sshfs-mount-freeze-after-changing-connection-after-suspend
+ServerAliveInterval 每多久（秒）检测一次服务器是否在线；ServerAliveCountMax 连续多少次不在线则断开连接。检测期间程序会被挂起，直到超时断开连接或连接恢复。默认无限挂起直到连接恢复。
+reconnect  掉线后重连，默认每隔1秒重连一次，无限次重试；ReconnectDelay=10  掉线后每隔多少秒重连一次
+
+
+掉线自动重连，超时则报错（每15秒检查一下alive，超过3次则自动重连，i.e. 断开时一直重连，1分钟后断开连接）
+-o reconnect,ServerAliveInterval=15,ServerAliveCountMax=3
+掉线自动重连，超时则一直挂起，会导致应用程序假死
+-o reconnect
 
 取消挂载：
 umount /path/to/mount

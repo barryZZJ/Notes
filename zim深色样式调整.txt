@@ -13,13 +13,20 @@ Windows: $XDG_CONFIG_HOME见environ.ini
 $XDG_CONFIG_HOME/config/zim/style.conf
 
 [Tag code]
+foreground=#2e3436
 foreground[darktheme] = lightgray
 
 [Tag pre]
 # This style is used for multi-line verbatim blocks
+foreground=#2e3436
 foreground[darktheme] = lightgray
 
 [Tag link]
+foreground=blue
+foreground[darktheme]=#99c3ff
+
+[Tag page-link]
+foreground=blue
 foreground[darktheme]=#99c3ff
 
 Plugins:

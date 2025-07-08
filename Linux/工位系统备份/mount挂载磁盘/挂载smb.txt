@@ -5,6 +5,9 @@ Creation-Date: 2024-07-24T18:19:46+08:00
 ====== 挂载smb ======
 Created 星期三 24 七月 2024
 
+查询是否安装：
+mount.cifs
+
 sudo apt update
 sudo apt install cifs-utils
 
@@ -21,6 +24,8 @@ mkdir -p /home/barryoffice/mnt/IM_server_20180104/
 # 相当于chown
 uid=$(id -u)  # 1000
 gid=$(id -g)  # 1000
+或手动查询：
+cat /etc/passwd | grep 用户名
 
 # 挂载命令，添加了 uid、gid 和 file/dir_mode 选项
 mount -t cifs -o username=barry,password=zzj850462,uid=$uid,gid=$gid,file_mode=0777,dir_mode=0777 //dorm.barryzzj.top/e /home/barryoffice/mnt/e/

@@ -1,0 +1,8 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2025-07-08T17:07:40+08:00
+
+====== 添加至PATH ======
+Created 星期二 08 七月 2025
+
+ln -s srcfile /koolshare/bin/

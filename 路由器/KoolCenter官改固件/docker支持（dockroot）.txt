@@ -1,0 +1,12 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2025-07-08T11:33:29+08:00
+
+====== docker支持（dockroot） ======
+Created 星期二 08 七月 2025
+
+路由器版轻量化docker
+https://fw.koolcenter.com/binary/DockRoot/
+
+qbittorrent
+https://hub.docker.com/r/qbittorrentofficial/qbittorrent-nox

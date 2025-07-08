@@ -7,3 +7,10 @@ Created 星期日 18 六月 2023
 
 webui api
 https://github.com/qbittorrent/qBittorrent/wiki/WebUI-API-(qBittorrent-4.1)
+
+设置文件路径：
+config: %APPDATA%\qBittorrent
+分类配置文件在里面的categories.json
+
+data: %LOCALAPPDATA%\qBittorrent
+关键是BT_backup，里面是所有的种子

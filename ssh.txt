@@ -35,6 +35,12 @@ ssh-keygen -t rsa
 -t ecdsa
 生成不同名字的可以用于登录不同服务器
 
+密钥文件 chmod 600 ~/.ssh/id_ecdsa
+
+linux权限管理：
+chmod 700 ~/.ssh
+chmod 600 ~/.ssh/*
+
 === ssh服务器： ===
 Linux:
 1. 安装：sudo apt install openssh-server
@@ -99,7 +105,7 @@ Match User sshadmin
 
 **添加客户端密钥：**https://learn.microsoft.com/en-us/windows-server/administration/openssh/openssh_server_configuration#authorizedkeysfile
 1. 客户端生成密钥 ssh-keygen -t rsa
-2. 服务端新建 AuthorizedKeysFile 对应的文件：
+2. 服务端新建 AuthorizedKeysFile 对应的文件：（即时生效）
 【windows】
 【登录的是普通用户】''.ssh/authorized_keys，''相对于%userprofile%（C:\用户\<username>），想登录哪个用户就在哪个目录下配置：
 2.1 新建.ssh文件夹（可以酌情调一下权限，经测试不影响）
@@ -108,6 +114,7 @@ Match User sshadmin
 【登陆的是管理员用户】路径为%programdata%\ssh\administrators_authorized_keys
 2.3 高级权限：取消继承、**只有System和Administrators组**完全控制，所有者必须为**SYSTEM**。
 	管理员命令行设置文件权限：icacls.exe "%programdata%\ssh\administrators_authorized_keys" /inheritance:r /grant "Administrators:F" /grant "SYSTEM:F"
+注意每次更改完需要重新调整ssh文件夹的权限，否则会报错不让连接
 【linux】在~/.ssh/authorized_keys下做相同操作，chmod 600即可，即时生效。
 
 在新建的 AuthorizedKeysFile 中写入客户端生成的公钥(.pub)（若权限不足，用管理员打开vscode编辑；或临时修改所有者；或以对应用户登录再修改）（更新后不用重启sshd服务）
