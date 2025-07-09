@@ -8,6 +8,9 @@ Created 星期一 19 八月 2024
 配置文件：
 https://learn.microsoft.com/en-us/windows/wsl/wsl-config#configure-global-options-with-wslconfig
 
+
+wsl --shutdown
+
 卸载：
 https://medium.com/@bonguides25/how-to-completely-uninstall-the-subsystem-for-linux-wsl-on-windows-24b0945050a0
 wsl -l -v
