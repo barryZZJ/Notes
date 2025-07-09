@@ -8,5 +8,5 @@ Created 星期二 08 七月 2025
 路由器版轻量化docker
 https://fw.koolcenter.com/binary/DockRoot/
 
-qbittorrent
+qbittorrent （内存不够大，很容易把路由器搞崩）
 https://hub.docker.com/r/qbittorrentofficial/qbittorrent-nox
