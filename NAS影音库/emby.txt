@@ -1,0 +1,9 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2025-07-10T12:53:33+08:00
+
+====== emby ======
+Created 星期四 10 七月 2025
+
+关闭转码功能：
+设置——用户——播放

@@ -38,3 +38,6 @@ AV Data Capture（最强） https://github.com/mvdctop/Movie_Data_Capture https:
 	
 EverAver Renamer
 JavHelper https://javhelper.blogspot.com/
+
+
+Kodi: 本地解码
