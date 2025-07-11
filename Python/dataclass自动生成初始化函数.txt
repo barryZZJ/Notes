@@ -32,3 +32,14 @@ https://docs.python.org/zh-cn/3/library/dataclasses.html
 ''s = Sub(x, y)''
 
 2. 如果有一边没有装饰，则必须跟普通类一样手写init函数，并调用父类init函数D
+
+
+自动解析属性的类型：
+https://docs.python.org/3.9/library/dataclasses.html#dataclasses.Field
+from dataclasses import fields
+fields(ClassName) -> Field
+
+Field.name
+.type
+.default
+...

@@ -1,0 +1,13 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2025-07-10T19:04:45+08:00
+
+====== TypedDict带自动补全的字典 ======
+Created 星期四 10 七月 2025
+
+class MyDict(TypedDict):
+	key: type
+
+d = MyDict()
+d[此时有自动补全]
+
