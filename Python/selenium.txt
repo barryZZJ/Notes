@@ -7,6 +7,13 @@ https://www.selenium.dev/selenium/docs/api/py/api.html
 
 selenium 是用来模拟登陆获取cookie的，避免了分析网页执行原理
 
+设置cookie：
+selenium只会添加当前域名的cookie，因此需要先访问对应域名再添加cookie，要不然会报InvalidCookieDomainException
+br.get(url)
+br.add_cookie()
+br.get(url)
+
+
 设置chromedriver：
 下载当前浏览器对应版本的chromedriver (https://googlechromelabs.github.io/chrome-for-testing/ http://npm.taobao.org/mirrors/chromedriver/ )，放入C:\Program Files (x86)\Google\Chrome\Application，并添加进PATH
 ×自动下载webdriver:

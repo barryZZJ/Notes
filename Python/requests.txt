@@ -29,7 +29,7 @@ https://blog.csdn.net/iKaChu/article/details/106787413
 url
 params:dict
 headers:dict
-[[cookies:dict]]
+cookies:dict
 timeout: int 秒 None表示无限等待
 
 headers:
