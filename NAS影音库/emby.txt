@@ -7,3 +7,16 @@ Created 星期四 10 七月 2025
 
 关闭转码功能：
 设置——用户——播放
+
+分集方法：
+1. multi-version
+https://emby.media/support/articles/Movie-Naming.html#multi-version-movies
+以-xx结尾，通过下拉菜单选集
+优点：所有视频共用同一张海报等图片
+缺点：不同版本之间顺序是错的
+
+2. Split-video files
+https://emby.media/support/articles/Movie-Naming.html#split-video-files-file-stacking
+以-cd#结尾，显示在“附加部分”
+优点：顺序是对的
+缺点：每集都需要单独的海报

@@ -30,7 +30,7 @@ minimumSizeHint()
 https://blog.csdn.net/LaoYuanPython/article/details/102650268
 
 sizepolicy:
-https://doc.qt.io/qtforpython-5/PySide2/QtWidgets/QSizePolicy.html
+https://doc.qt.io/archives/qtforpython-5/PySide2/QtWidgets/QSizePolicy.html#PySide2.QtWidgets.PySide2.QtWidgets.QSizePolicy.Policy
 https://blog.csdn.net/LaoYuanPython/article/details/102650862
 
 stretch: 相当于对应方向大小的权重
