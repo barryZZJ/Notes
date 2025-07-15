@@ -1,0 +1,10 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2025-07-14T14:54:43+08:00
+
+====== word插件 ======
+Created 星期一 14 七月 2025
+
+调整参考文献列表样式：
+修改“书目”样式即可
+五号、单倍行距、首行缩进 0.6 厘米

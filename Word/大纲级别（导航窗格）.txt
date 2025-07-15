@@ -1,0 +1,9 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2025-07-14T15:22:40+08:00
+
+====== 大纲级别（导航窗格） ======
+Created 星期一 14 七月 2025
+
+调整标题样式在导航窗格中的缩进级别：
+段落—常规—大纲级别
