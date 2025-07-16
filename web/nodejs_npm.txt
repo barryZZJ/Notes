@@ -5,8 +5,6 @@ nodejs为js语言实现的后端服务器。
 
 https://nodejs.org/en/download
 
-koa轻量级web框架。https://www.ruanyifeng.com/blog/2017/08/koa.html
-
 # install dependencies
 cnpm install
 
