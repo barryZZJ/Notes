@@ -1,0 +1,8 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2025-07-17T10:42:17+08:00
+
+====== wakelock保持屏幕点亮 ======
+Created 星期四 17 七月 2025
+
+https://developer.chrome.com/docs/capabilities/web-apis/wake-lock?hl=zh-cn
