@@ -15,7 +15,7 @@ br.get(url)
 
 
 设置chromedriver：
-下载当前浏览器对应版本的chromedriver (https://googlechromelabs.github.io/chrome-for-testing/ http://npm.taobao.org/mirrors/chromedriver/ )，放入C:\Program Files (x86)\Google\Chrome\Application，并添加进PATH
+下载当前浏览器对应版本的chromedriver (https://googlechromelabs.github.io/chrome-for-testing/ http://npm.taobao.org/mirrors/chromedriver/ )，放入C:\Program Files\Google\Chrome\Application，并添加进PATH
 ×自动下载webdriver:
 https://pypi.org/project/webdriver-manager/
 driver = webdriver.Chrome(ChromeDriverManager().install())

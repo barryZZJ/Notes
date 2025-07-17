@@ -10,12 +10,13 @@ Created 星期二 06 十二月 2022
 https://pypi.org/project/browsercookie/
 上面这个不能用，改用下面这个，语法都一样
 https://pypi.org/project/browser-cookie3/
+pip install browser-cookie3
 
 cookie发生变化后需要完全关闭浏览器才能在代码中获取到更新
 {{{code: lang="python3" linenumbers="False"
 import browser_cookie3
-cj = browsercookie.chrome()
-cj = browsercookie.load()  # or
+cj = browser_cookie3.chrome()
+cj = browser_cookie3.load()  # or
 r = requests.get(url, cookies=cj)
 }}}
 

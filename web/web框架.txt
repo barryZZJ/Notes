@@ -8,4 +8,9 @@ Created 星期二 15 七月 2025
 express
 https://expressjs.com/zh-cn/
 
+https：
+https.createServer(options, app).listen(PORT, () => {
+	console.log(`HTTPS server running at https://localhost:${PORT}`);
+});
+
 koa轻量级web框架。https://www.ruanyifeng.com/blog/2017/08/koa.html
