@@ -29,10 +29,10 @@ Lenovo
 2023年12月22日
 
 硬盘序列号
-lsblk --nodeps -no serial /dev/nvme0n1
 lsblk --nodeps -no serial /dev/sda
+lsblk --nodeps -no serial /dev/nvme0n1
 wmic diskdrive get Model,name,serialnumber
-8S16010518X34300363，X3AYLS4GS
+X3AYLS4GS
 
 设备序列号
 sudo dmidecode -t 1|grep "Serial Number"
