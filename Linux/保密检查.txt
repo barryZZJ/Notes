@@ -15,9 +15,11 @@ Creation-Date: 2023-07-24T17:37:18+08:00
 台式机
 
 设备型号
+sudo dmidecode -t 1
 ThinkStation P368
 
 设备品牌
+sudo dmidecode -t 1
 Lenovo
 
 设备用途
@@ -27,9 +29,14 @@ Lenovo
 2023年12月22日
 
 硬盘序列号
+lsblk --nodeps -no serial /dev/nvme0n1
+lsblk --nodeps -no serial /dev/sda
+wmic diskdrive get Model,name,serialnumber
 8S16010518X34300363，X3AYLS4GS
 
 设备序列号
+sudo dmidecode -t 1|grep "Serial Number"
+wmic bios get serialnumber
 GM0DGXZ7
 
 资产编号
@@ -42,9 +49,11 @@ D02-0021
 2A-1-047
 
 IP地址
+ifconfig
 192.168.129.56
 
 MAC地址
+ifconfig
 F4-F1-9E-19-8D-75
 
 操作系统安装日期

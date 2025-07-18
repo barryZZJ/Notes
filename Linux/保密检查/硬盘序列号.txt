@@ -11,6 +11,7 @@ wmic diskdrive get Model,name,serialnumber
 linux:
 所有程序-工具-磁盘里能看到
 lsblk --nodeps -no serial /dev/sda
+lsblk --nodeps -no serial /dev/nvme0n1
 lsblk -o NAME,SERIAL
 sudo lshw -class disk | grep serial
 
