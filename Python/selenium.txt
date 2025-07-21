@@ -208,6 +208,10 @@ https://selenium-python.readthedocs.io/api.html#selenium.webdriver.remote.webdri
 .execute_async_script(script:str,*args)
 运行异步脚本
 	.set_script_timeout(time_to_wait: float) 设置等待时间
+会自动加入一个callback参数，用于获取返回值
+''var callback = arguments[arguments.length - 1];'' 
+''Promise.then((result)=>callback(result));''
+
 
 * 等待加载 WebDriverWait
 from selenium.webdriver.support.wait import WebDriverWait
