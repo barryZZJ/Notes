@@ -13,7 +13,7 @@ Created 星期四 10 七月 2025
 https://emby.media/support/articles/Movie-Naming.html#multi-version-movies
 以-xx结尾，通过下拉菜单选集
 优点：所有视频共用同一张海报等图片
-缺点：不同版本之间顺序是错的
+缺点：不同版本之间顺序是错的，还不能自定义顺序
 
 2. Split-video files
 https://emby.media/support/articles/Movie-Naming.html#split-video-files-file-stacking
