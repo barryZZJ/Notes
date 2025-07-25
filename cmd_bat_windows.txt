@@ -91,7 +91,8 @@ cmd [[/k]] ... 执行字符串指定的命令但保留 会阻塞当前cmd
 cmd [[/q]] [[/c]] "xxx"
 
 start cmd [[/c]] ... 新建一个cmd进程，不阻塞当前进程
-[[/B]] 后台运行，不显示窗口
+[[/b]] 后台运行，不显示窗口
+start "" /b venv/Script/pythonw.exe xx.py  隐藏cmd窗口，打开python文件
 
 输出log到txt：
 xxx.bat > log.txt (>覆盖写, >>追加写) 

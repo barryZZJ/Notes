@@ -25,6 +25,11 @@ def on_mainwiz_currentIdChanged(self, id):
 https://blog.csdn.net/jia666666/article/details/81775614
 https://doc.qt.io/qt-5/qmetaobject.html#connectSlotsByName
 
+=== 直接设置事件函数： ===
+def myEvent(event):
+	...
+object.mousePressEvent = myEvent
+
 
 === 手动连接槽函数： ===
 signal用.connect方法连接到槽函数
