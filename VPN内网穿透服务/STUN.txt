@@ -1,0 +1,24 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2025-08-05T00:44:36+08:00
+
+====== STUN ======
+Created 星期二 05 八月 2025
+
+STUN内网穿透：
+NAT1类型时，可以通过STUN技术获取到外网实际端口，再利用端口转发给本地其他端口的服务
+
+但是外网地址、端口会发生变化，可行的解决办法：
+1. 配合ddns SRV、SVCB记录（可以自动记录端口号），通过lucky/webhook自动更新这个记录（兼容性不太好）：
+	
+	SVCB/HTTPS记录（dns over https）（兼容性不好，chrome edge不支持，firefox支持，未来再考虑）
+	也可以用来解决443端口被封禁的办法，实现无端口访问https
+		https://66666.host/dns-https-hide-port/
+	
+	SRV记录（只有minecraft支持，其实是自动补全了部分网址，浏览器不支持，不考虑）（可以考虑自建一个解析脚本，搭在yy上）
+	https://www.bilibili.com/opus/899444689582686242 (使用webhook更新)（教程里面说域名结尾加点是dyns6的特性，别的dns不需要加）
+	https://www.bilibili.com/opus/1074785660025438216 (v2 使用lucky更新)
+		端口填公网端口
+
+2. TXT记录
+使用lucky的DDNS创建TXT记录，显示最新的ip和端口号，手动修改相关服务

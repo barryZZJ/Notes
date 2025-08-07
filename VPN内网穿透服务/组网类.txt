@@ -1,0 +1,23 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2025-08-05T11:11:00+08:00
+
+====== 组网类 ======
+Created 星期二 05 八月 2025
+
+
+udp的对于网络质量要求高，所以需要自行测试效果
+
+游戏用：
+zerotier  p2p udp -> 中转tcp
+tailscale p2p udp -> 中转tcp
+	如果不用中转服务器的话，可以分别尝试自己的运营商对哪个更友好，选择用哪个
+radmin lan p2p -> 中转 国外服务器
+hamachi
+
+√皎月连 付费，p2p->中转，服务器在国内
+√ 蒲公英游戏版 临时用，免费版3用户，p2p->中转 https://pgy.oray.com/download#game
+vLan平台
+tinc  p2p
+softether
+openvpn 中心化 dogfight套壳客户端 https://zhmoegirl.com/posts/4cb4d37ba8d8/ https://www.dogfight360.com/blog/1590/

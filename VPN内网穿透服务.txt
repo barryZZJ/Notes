@@ -5,63 +5,35 @@ Creation-Date: 2023-02-25T11:52:55+08:00
 ====== VPN内网穿透服务 ======
 Created 星期六 25 二月 2023
 
-FRP或者NPS都可以，或者像Ngrok这种的内网穿透服务就是不太稳定
+===== 分类： =====
+=== 组网类 [[+组网类]] ===
+相当于VPN，可以通过虚拟ip直接连接其他主机
+* zerotier
+* tailscale
+* wireguard
+* 皎月连（服务器在国内，但收费）
+* 蒲公英（服务器在国内，但收费）
+* 各种对战平台（hamachi、vLan、radmin...）
+优点：
+1. 网络环境好的话可以P2P
+2. 节约端口，全程只需一个端口
+缺点：
+1. 网络环境不好需要自建中转服务器，否则走外网的服务器贼慢，网速瓶颈在服务器
+2. 需要每个设备都安装客户端
 
-使用VPN方案可以有效节约端口数
+=== 转发类 [[+转发类]] ===
+通过端口转发实现内外网通信
+* frp
+* v2ray
+* 临时方案：  [[cmd bat windows:portproxy 本地端口转发]] 或 [[ssh:端口转发 ssh]]
+缺点：需要自行配置公网中转服务器，网速瓶颈在服务器
+优点：不用装客户端，任意电脑输ip即可连接
 
-即端口转发。临时方案：  [[cmd bat windows:portproxy 本地端口转发]] 或 [[ssh:端口转发 ssh]]
-
-测试：https://blog.csdn.net/aa3615058/article/details/125623251
-psping：用于测试延迟，抖动
-	psping ip:port
-
-frp:
-Ping statistics for 218.93.206.191:
-  Sent = 4, Received = 3, Lost = 1 (25% loss),
-  Minimum = 103.15ms, Maximum = 117.26ms, Average = 110.96ms
-Ping statistics for 218.93.206.191:
-  Sent = 4, Received = 4, Lost = 0 (0% loss),
-  Minimum = 78.88ms, Maximum = 125.41ms, Average = 104.08ms
-
-wireguard:
-Ping statistics for 172.40.0.1:
-  Sent = 4, Received = 4, Lost = 0 (0% loss),
-  Minimum = 68.64ms, Maximum = 99.46ms, Average = 90.26ms
-Ping statistics for 172.40.0.1:
-  Sent = 4, Received = 3, Lost = 1 (25% loss),
-  Minimum = 59.60ms, Maximum = 65.21ms, Average = 61.77ms
-
-测速
-测试速度
-iperf3：用于测试下载速度，上传速度
-sudo apt install iperf3
-https://iperf.fr/iperf-download.php
-启动服务器监听指定端口（默认5201）：
-	-s -p port
-客户端连接服务器端口：
-	-c ip -p port
--R 反向测试，服务器发，客户端收
--t 测试时间 默认10s
--P 并发数
-
-frp:
-[ ID] Interval           Transfer     Bandwidth
-[  4]   0.00-10.01  sec  17.9 MBytes  15.0 Mbits/sec                  sender
-[  4]   0.00-10.01  sec  17.9 MBytes  15.0 Mbits/sec                  receiver
-
-frp -R:
-[ ID] Interval           Transfer     Bandwidth       Retr
-[  4]   0.00-10.00  sec  9.61 MBytes  8.06 Mbits/sec  572             sender
-[  4]   0.00-10.00  sec  6.41 MBytes  5.38 Mbits/sec                  receiver
-
-wireguard:
-[ ID] Interval           Transfer     Bandwidth
-[  4]   0.00-10.01  sec  9.50 MBytes  7.96 Mbits/sec                  sender
-[  4]   0.00-10.01  sec  9.29 MBytes  7.78 Mbits/sec                  receiver
-
-wireguard -R:
-[ ID] Interval           Transfer     Bandwidth       Retr
-[  4]   0.00-10.01  sec  4.32 MBytes  3.62 Mbits/sec  389             sender
-[  4]   0.00-10.01  sec  3.27 MBytes  2.74 Mbits/sec                  receiver
-
-speedTestX：docker版，上传、下载、延迟、抖动
+=== STUN [[+STUN]] ===
+适合1层运营商NAT（可以路由器再1层NAT）时使用
+维持一个通道，通过STUN技术可以获取到外网实际端口，再利用端口转发给本地其他端口的服务
+* lucky
+* Natter https://github.com/MikeWang000000/Natter
+* NATMap https://github.com/heiher/natmap
+优点：同端口转发，且不存在中转服务器，无网速瓶颈
+缺点：公网ip、端口可能会动态变化，需要其他解决办法（见对应笔记）

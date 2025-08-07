@@ -1,0 +1,24 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2025-08-05T11:26:27+08:00
+
+====== lucky ======
+Created 星期二 05 八月 2025
+
+Lucky STUN内网穿透
+https://www.lucky666.cn/docs/modules/stun
+配置说明：
+穿透通道本地端口：一个不用的端口，用来维持通道
+禁用lucky内置转发，在路由器配置端口转发，从上面的通道端口，转发到下层主机实际服务端口。（否则全部视为内网的流量，有安全问题）
+
+STUN发生变化时会自动执行DDNS任务
+
+高级玩法：
+1. web服务：多个web服务复用同一个端口
+https://66666.host/stun001-luckyweb/
+
+使用DDNS创建TXT记录，显示最新的ip和端口号；创建SRV记录：
+https://www.bilibili.com/opus/1074785660025438216
+
+如果UPnP失效，需要使用upnp客户端：
+https://www.bilibili.com/opus/895245066240524337

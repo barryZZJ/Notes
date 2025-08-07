@@ -1,0 +1,18 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2025-08-05T00:51:50+08:00
+
+====== cloudflare 4to6 ======
+Created 星期二 05 八月 2025
+
+在ipv4-only情况下访问ipv6的方法
+
+适合只有ipv6公网时使用
+https://post.smzdm.com/p/avxzg2gm/
+通过cloudflare的cdn，把 ipv6 转成 ipv4
+相当于过一层免费的vps
+
+缺点：
+仅http/https协议
+限定端口
+服务器在国外，延迟很高

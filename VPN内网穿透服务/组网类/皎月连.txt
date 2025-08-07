@@ -1,0 +1,12 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2025-06-08T12:37:03+08:00
+
+====== 皎月连 ======
+Created 星期日 08 六月 2025
+
+据说是纯p2p，不中转
+适应两端同时都是对称型NAT的网络环境
+网络环境极端的话没法用
+
+https://www.natpierce.cn/

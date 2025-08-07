@@ -1,0 +1,109 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2024-08-20T09:52:07+08:00
+
+====== wireguard ======
+Created 星期二 20 八月 2024
+
+x
+本质是VPN服务器。看评论说效果挺好。只需要连接一个端口，访问vpn服务器的其他端口会通过该端口转发。与frp相比可以节约端口，多个客户端通过服务器中转即可。
+基于UDP
+
+！经测试，延迟可能短一点，但是上传下载的速度差了很多，可能是加密的原因。
+但是省了很多端口，尤其是moonlight可以公网跑了。
+配置还是麻烦了点，不如看看 游戏用vpn 吧
+
+https://www.wireguard.com/
+
+https://www.bilibili.com/video/BV1uT411w7Tq/
+https://gitee.com/spoto/wireguard
+
+原理说明 https://www.wireguard.com/#conceptual-overview
+不区分服务器和客户端，如果有公网ip，可以实现两两互联。
+
+doc:
+https://github.com/pirate/wireguard-docs
+
+===== 配置： =====
+网络拓扑：
+一台公网ip的服务器作为服务端，其他都是客户端。客户端只需要配置一次；每增加一个客户端需要修改服务端配置文件并重启服务（用reload）。
+
+自动化脚本：（待魔改）
+https://github.com/hwdsl2/wireguard-install
+wget -O wireguard.sh https://get.vpnsetup.net/wg
+sudo bash wireguard.sh
+
+配置文件说明：
+[interface] 本机虚拟网卡配置
+[peer] 配置其他用户 
+Endpoint 指定发包的目的IP。如果不指定会根据最近一次收包情况记录。（要想被直接访问，必须要有公网ip）
+AllowedIPs 指定用户的源ip。收包时相当于白名单，如果源ip不匹配则丢掉。发包时相当于路由表，如果目标ip匹配则发给该用户。
+
+配置完后把[[网络适配器调整为专用]] （因为防火墙——入站规则——核心网络请求（ICMP v4）公网被禁用了
+
+===== 服务器配置： =====
+#root权限
+sudo -i
+
+#安装wireguard软件
+apt install wireguard resolvconf -y
+
+#开启IP转发
+echo "net.ipv4.ip_forward = 1" >> /etc/sysctl.conf
+sysctl -p
+
+mkdir wireguard && cd wireguard
+''umask 077''
+''wg genkey | tee private.key | wg pubkey > public.key''
+''wg genkey | tee c1private.key | wg pubkey > c1public.key''
+''wg genkey | tee c2private.key | wg pubkey > c2public.key''
+
+''sudo nano /etc/wireguard/wg0.conf''
+
+[Interface]
+PrivateKey = <服务器私钥>
+Address = 172.40.0.1/24
+ListenPort = 21820
+PostUp = iptables -A FORWARD -i wg0 -j ACCEPT; iptables -A FORWARD -o wg0 -j ACCEPT; iptables -t nat -A POSTROUTING -o eth0 -j MASQUERADE
+PostDown = iptables -D FORWARD -i wg0 -j ACCEPT; iptables -D FORWARD -o wg0 -j ACCEPT; iptables -t nat -D POSTROUTING -o eth0 -j MASQUERADE
+#注意eth0需要为本机网卡名称。yy服务器为ens18
+
+[Peer]
+PublicKey = <客户端1公钥>
+AllowedIPs = 172.40.0.2/32
+
+[Peer]
+PublicKey = <客户端2公钥>
+AllowedIPs = 172.40.0.3/32
+
+==== linux: ====
+启动：
+sudo systemctl start wg-quick@wg0
+设置开机自启动：
+sudo systemctl enable wg-quick@wg0
+
+添加客户端后，无损重启服务：
+在配置文件新增[Peer]后，sudo systemctl reload wg-quick@wg0
+
+手动启动 WireGuard 接口：
+sudo wg-quick up wg0
+手动关闭接口：
+sudo wg-quick down wg0
+如果报错先运行一下
+sudo modprobe wireguard
+
+检查连接状态：
+watch -n 1 sudo wg show
+
+===== 客户端： =====
+''sudo nano /etc/wireguard/wg0.conf''
+
+[Interface]
+PrivateKey = <客户端私钥>
+Address = 172.40.0.2/24
+
+[Peer]
+PublicKey = <服务器公钥>
+AllowedIPs = 172.40.0.0/24 # 如果只想访问VPN局域网
+Endpoint = <服务器IP>:21820
+PersistentKeepalive = 25 # NAT保活，间隔(秒)，如果需要被访问。

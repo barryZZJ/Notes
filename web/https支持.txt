@@ -6,4 +6,12 @@ Creation-Date: 2025-07-16T16:31:44+08:00
 Created 星期三 16 七月 2025
 
 生成自签名证书
-openssl req -nodes -new -x509 -keyout server.key -out server.cert
+openssl req -nodes -new -x509 -keyout server.key -out server.crt -config G:\Portable\openssl\GnuWin32\bin\openssl.cnf
+
+emby用：
+openssl pkcs12 -export -out emby.pfx -inkey server.key -in server.crt
+
+E:\CodingSoftware\conda\miniconda3\Library\bin
+G:\Portable\openssl\GnuWin32\bin
+
+F:\ca\cacert.crt

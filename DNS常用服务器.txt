@@ -49,3 +49,6 @@ ipconfig /flushdns
 dns服务商
 ns1.alidns.com
 ns2.alidns.com
+cloudflare:
+dexter.ns.cloudflare.com
+luciana.ns.cloudflare.com
