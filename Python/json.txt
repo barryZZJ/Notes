@@ -5,6 +5,7 @@ import json
 
 json转字符串：
 json.dumps(dict)
+美化：indent=4
 
 字符串转json：
 json.loads(str)
