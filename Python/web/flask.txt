@@ -24,6 +24,10 @@ WARNING: This is a development server. Do not use it in a production deployment.
 
 **注意：**需要手动指定host为0.0.0.0，否则外部访问不了
 
+static files:
+根目录下新建static文件夹
+''app = Flask(__name__, static_folder='static', static_url_path='/static')''
+
 === 注册路由： ===
 https://flask.palletsprojects.com/en/latest/api/#url-route-registrations
 route:

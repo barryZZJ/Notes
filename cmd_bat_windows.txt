@@ -94,6 +94,12 @@ start cmd [[/c]] ... 新建一个cmd进程，不阻塞当前进程
 [[/b]] 后台运行，不显示窗口
 start "" /b venv/Script/pythonw.exe xx.py  隐藏cmd窗口，打开python文件
 
+cat文件：
+type
+
+grep内容：
+findstr
+
 输出log到txt：
 xxx.bat > log.txt (>覆盖写, >>追加写) 
 1>stdout.txt (1>输出普通输出)

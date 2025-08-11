@@ -52,7 +52,7 @@ AuthorizedKeysFile .ssh/authorized_keys
 并重启ssh服务 sudo service sshd restart
 
 windows ssh 服务器: OpenSSH
-1. ”添加可选功能“搜索OpenSSH 服务器，安装
+1. 设置—系统—可选功能——”添加可选功能“搜索OpenSSH 服务器，安装
 2. 安装后服务名：**sshd** (OpenSSH SSH Server)
 3. 配置：
 https://winscp.net/eng/docs/guide_windows_openssh_server
@@ -62,12 +62,15 @@ https://github.com/PowerShell/Win32-OpenSSH/wiki/sshd_config
 配置文件：C:\ProgramData\ssh\sshd_config
 Port 23355
 ListenAddress 0.0.0.0
+ListenAddress :: #同时添加这一行，以支持ipv6
 #连接后默认文件夹为/C:/Users/<username>，要想修改，添加-d参数：
 # (https://man.openbsd.org/cgi-bin/man.cgi/OpenBSD-current/man8/sftp-server.8?query=sftp-server&sec=8
 Subsystem   sftp    sftp-server.exe -d "D:"
 # 只启动sftp（？）
 ForceCommand internal-sftp
-5. 防火墙添加入站规则（注意修改端口号）：
+4. 配置administrators_authorized_keys权限（见下）
+5. 配置ssh文件夹权限（同上）
+6. 防火墙添加入站规则（注意修改端口号）：
 管理员Powershell：''New-NetFirewallRule -Name sshd -DisplayName 'OpenSSH Server (sshd)' -Enabled True -Direction Inbound -Protocol TCP -Action Allow -LocalPort 22''
 或手动添加：
 OpenSSH SSH Server (sshd)
@@ -112,7 +115,7 @@ Match User sshadmin
 2.2 在.ssh内新建authorized_keys文件**（注意权限和所有者！）**：
 高级权限：取消继承、**只有System和该用户**完全控制（如果有其他用户则会导致Authentication Refused），**所有者必须也为该用户**，才可密钥登陆。
 【登陆的是管理员用户】路径为%programdata%\ssh\administrators_authorized_keys
-2.3 高级权限：取消继承、**只有System和Administrators组**完全控制，所有者必须为**SYSTEM**。
+2.1 高级权限：取消继承、**只有System和Administrators组**完全控制，所有者必须为**SYSTEM**。
 	管理员命令行设置文件权限：icacls.exe "%programdata%\ssh\administrators_authorized_keys" /inheritance:r /grant "Administrators:F" /grant "SYSTEM:F"
 注意每次更改完需要重新调整ssh文件夹的权限，否则会报错不让连接
 【linux】在~/.ssh/authorized_keys下做相同操作，chmod 600即可，即时生效。

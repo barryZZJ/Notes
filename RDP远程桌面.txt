@@ -31,7 +31,8 @@ mstsc.exe登录远程桌面
 https://learn.microsoft.com/zh-CN/windows-server/remote/remote-desktop-services/clients/change-listening-port
 
 专业版也不能多用户同时登陆，会顶掉，目前解决办法是装rdpwrap
-win10配置多会话/多用户登录：
+
+win10配置多会话登录(同一个用户不会顶掉自己)：
 https://blog.51cto.com/gyj110/6010498
 （完事之后需要重启一下计算机）
 
