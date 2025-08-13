@@ -28,7 +28,85 @@ arp -s 192.168.50.200 04:7C:16:DB:FF:E8
 
 关机、休眠中都可以启动
 
-
 ubuntu配置方法：
 1. 使用mncli https://pimylifeup.com/ubuntu-enable-wake-on-lan/
 2. 安装ethtool https://sparkydogx.github.io/2019/01/16/ubuntu-wake-on-lan/
+
+华硕路由器WOL工具问题：
+默认使用/usr/sbin/ether-wake工具发送到255.255.255.255，但是windows貌似接收不到，需要发送到192.168.50.255才能接收到
+解决方法：改用支持自定义目的ip的工具，如：lucky、自定义go脚本：
+{{{code: lang="go" linenumbers="True"
+package main
+
+import (
+	"encoding/hex"
+	"flag"
+	"fmt"
+	"net"
+	"os"
+	"strings"
+)
+
+func buildMagicPacket(mac string) ([]byte, error) {
+	mac = strings.ReplaceAll(mac, ":", "")
+	mac = strings.ReplaceAll(mac, "-", "")
+	mac = strings.ToLower(mac)
+	if len(mac) != 12 {
+		return nil, fmt.Errorf("Invalid MAC address format")
+	}
+	macBytes, err := hex.DecodeString(mac)
+	if err != nil {
+		return nil, err
+	}
+	packet := make([]byte, 6+16*6)
+	for i := 0; i < 6; i++ {
+		packet[i] = 0xFF
+	}
+	for i := 0; i < 16; i++ {
+		copy(packet[6+i*6:], macBytes)
+	}
+	return packet, nil
+}
+
+func main() {
+	port := flag.Int("p", 9, "Port (default 9)")
+	ip := flag.String("i", "255.255.255.255", "Broadcast IP address")
+	flag.Parse()
+
+	if flag.NArg() != 1 {
+		fmt.Println("Usage: wol [-p port=9] [-i IP=255.255.255.255] MAC")
+		fmt.Println("Example: wol -p 9 -i 192.168.1.255 01:23:45:67:89:ab")
+		os.Exit(1)
+	}
+
+	mac := flag.Arg(0)
+
+	packet, err := buildMagicPacket(mac)
+	if err != nil {
+		fmt.Println("Failed to generate magic packet:", err)
+		os.Exit(1)
+	}
+
+	addr := fmt.Sprintf("%s:%d", *ip, *port)
+	conn, err := net.Dial("udp", addr)
+	if err != nil {
+		fmt.Println("Failed to connect to target:", err)
+		os.Exit(1)
+	}
+	defer conn.Close()
+
+	_, err = conn.Write(packet)
+	if err != nil {
+		fmt.Println("Failed to send magic packet:", err)
+		os.Exit(1)
+	}
+
+	fmt.Printf("Sent WOL magic packet to %s port %d (MAC: %s)\n", *ip, *port, mac)
+}
+
+// build.bat:
+//@echo off
+//set GOOS=linux
+//set GOARCH=arm64
+//go build -o wol_arm64
+}}}
