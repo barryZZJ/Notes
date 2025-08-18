@@ -27,6 +27,12 @@ alist start 后台运行
 alist stop / restart
 
 挂载webdav：在站点后加/dav
+（注意windows只能挂载https，需要修改注册表：
+[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\WebClient\Parameters] 
+echo "BasicAuthLevel"=dword:00000002 >> temp.reg
+）
+修改允许访问的文件大小上限，默认50MB
+echo "FileSizeLimitInBytes"=dword:ffffffff >> temp.reg
 http://yy.barryzzj.top:23881/dav
 <host>/dav/path/to/file
 
@@ -48,12 +54,12 @@ http://yy.barryzzj.top:23881/dav
 pdf预览：pdfjs
 	https无法访问http搭建的alist，需要自己搭一个http能访问的pdf.js
 	http://yy.barryzzj.top:23222/pdf.js/web/viewer.html
-	注意默认禁止跨域请求，需要手改viewer.js的代码，在HOSTED_VIEWER_ORIGINS中添加搭建pdf.js的域名，如http://yy.barryzzj.top:23222
+	注意默认禁止跨域请求，需要手改viewer.js的代码，在HOSTED_VIEWER_ORIGINS中添加搭建pdf.js的域名，[[%E5%A6%82http://yy.barryzzj.top:23222]]
 	pdf 备用方案 https://g.alicdn.com/teambition/pdfviewer/1.2.0/index.html?file=$e_url
 
 office预览：
-默认的"Microsoft":"https://view.officeapps.live.com/op/view.aspx?src=$e_url",目前有404
-使用"xdocin":"https://view.xdocin.com/view?src=$e_url" 额外参数说明见https://view.xdocin.com/ 也支持pdf之类的预览，就可以不本地搭建了。
+默认的"Microsoft":"https://view.officeapps.live.com/op/view.aspx?src=$e_url",%E7%9B%AE%E5%89%8D%E6%9C%89404
+使用"xdocin":"https://view.xdocin.com/view?src=$e_url" [[%E9%A2%9D%E5%A4%96%E5%8F%82%E6%95%B0%E8%AF%B4%E6%98%8E%E8%A7%81https://view.xdocin.com/]] 也支持pdf之类的预览，就可以不本地搭建了。
 
 用户权限：
 Webdav读取：（使用/dav路径挂载的webdav）只读
