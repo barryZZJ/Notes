@@ -14,10 +14,17 @@ https://www.lucky666.cn/docs/modules/stun
 STUN发生变化时会自动执行DDNS任务
 
 高级玩法：
+https://zhuanlan.zhihu.com/p/1930681378451719589
 1. web服务：多个web服务复用同一个端口
 https://66666.host/stun001-luckyweb/
 
-使用DDNS创建TXT记录，显示最新的ip和端口号；创建SRV记录：
+2. SNI分流：基于公网服务器的转发
+
+3. 自建myflaskserver，实现重定向
+4. 基于SunPanel的dashboard
+https://zhuanlan.zhihu.com/p/1894455911793279193
+
+5. 使用DDNS创建TXT记录，显示最新的ip和端口号；创建SRV记录：
 https://www.bilibili.com/opus/1074785660025438216
 
 如果UPnP失效，需要使用upnp客户端：
