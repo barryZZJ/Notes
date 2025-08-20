@@ -46,7 +46,7 @@ Linux:
 1. 安装：sudo apt install openssh-server
 2. chmod 700 .ssh
 3. 把id_rsa.pub里的内容写入~/.ssh/authorized_keys，并chmod 600 或 644
-4. sudo nano /etc/ssh/sshd_config文件，设置（默认是yes，不需要动，也不用重启ssh服务）
+4. sudo nano **/etc/ssh/sshd_config**文件，设置（默认是yes，不需要动，也不用重启ssh服务）
 PubkeyAuthentication yes
 AuthorizedKeysFile .ssh/authorized_keys
 并重启ssh服务 sudo service sshd restart
@@ -82,9 +82,12 @@ OpenSSH SSH Server (sshd)
 **其他配置选项说明：**
 Log:
 LogLevel INFO | DEBUG | DEBUG3
-日志文件 SyslogFacility：
+日志文件位置 SyslogFacility项指定：
 默认 AUTH，日志在事件查看器-应用程序和服务日志-OpenSSH
 设为 LOCAL0 则日志在%programdata%\ssh\logs
+
+Linux下AUTH对应/var/log/auth.log（如 Ubuntu、Debian 等基于 Debian 的系统）
+/var/log/secure（如 CentOS、Red Hat、Fedora 等基于 Red Hat 的系统）
 
 DEBUG:
 关闭sshd服务，自己在**管理员**命令行运行sshd -d 或 sshd -ddd
