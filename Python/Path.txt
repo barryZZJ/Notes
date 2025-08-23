@@ -49,6 +49,7 @@ str(Path)  # 转换为当前系统下的路径字符串
 .rename() .replace()
 .rmdir() # 文件夹必须为空
 .touch(exist_ok=True)  # 新建文件
+.unlink(missing_ok=False) Remove this file or symbolic link.
 
 example: C:\full\path\to\file.mp4
 .parts # tuple ('C:\\', 'full', 'path', 'to', 'file.mp4')

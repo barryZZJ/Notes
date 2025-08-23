@@ -10,6 +10,7 @@ shutil https://docs.python.org/3.9/library/shutil.html
 .move(old, new)
 .which
 .rename(src, dst)
+.rmtree
 
 os
 .remove() 删除文件
