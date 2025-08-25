@@ -1,0 +1,9 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2025-08-25T20:50:07+08:00
+
+====== 用户新建 ======
+Created 星期一 25 八月 2025
+
+管理员cmd
+net user <username> <password> /add

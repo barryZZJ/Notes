@@ -14,3 +14,6 @@ https://zotero-chinese.com/styles/journal-of-cyber-security/
 
 zotero域与csl关键字对应：
 https://aurimasv.github.io/z2csl/typeMap.xml
+
+csl文件备份：
+https://github.com/barryZZJ/zotero-csl

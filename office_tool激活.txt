@@ -1,0 +1,12 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2025-08-25T21:35:28+08:00
+
+====== office tool激活 ======
+Created 星期一 25 八月 2025
+
+kms.loli.best
+
+microsoft 365:
+ctrl shift p
+ospp /inslicid MondoVolume /sethst kms.loli.best /setprt 1688 /act

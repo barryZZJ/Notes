@@ -1,0 +1,10 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2025-08-25T21:24:59+08:00
+
+====== 删除密码 ======
+Created 星期一 25 八月 2025
+
+cmd管理员：
+net user xxx *
+按两下回车
