@@ -42,8 +42,9 @@ https://blog.51cto.com/gyj110/6010498
 
 ===== ############################################################### =====
 快速添加用户：
-计算机管理 系统工具—》本地用户和组—》用户
-把用户加入Remote Desktop Users组
+1. net user <username> <password> /add
+	or 计算机管理 系统工具—》本地用户和组—》用户
+2. 把用户加入Remote Desktop Users组
 
 修改端口：
 https://learn.microsoft.com/zh-CN/windows-server/remote/remote-desktop-services/clients/change-listening-port

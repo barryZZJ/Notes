@@ -1,0 +1,10 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2025-08-27T09:12:30+08:00
+
+====== shadowing mode远程协助 ======
+Created 星期三 27 八月 2025
+
+使用mstsc的shadow模式+rdpwrapper实现远程技术支持
+https://blog.csdn.net/uddiqpl/article/details/146583368
+https://github.com/FreeRDP/FreeRDP/discussions/6747

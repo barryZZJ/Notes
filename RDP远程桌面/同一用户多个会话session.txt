@@ -1,0 +1,18 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2025-08-27T09:35:34+08:00
+
+====== 同一用户多个会话session ======
+Created 星期三 27 八月 2025
+
+1. RDPWrap：
+取消Single session per user ()
+
+2. gpedit.msc
+Computer Configuration\Administrative Templates\Windows Components\Terminal Services\Terminal Server\Connections\
+
+开启后，如果没有断开的会话，则开启新会话，否则登录最后一次断开的会话
+
+管理办法：
+1. cmd: query session
+2. 任务管理器——用户，控制断开、连接、注销，可以用于切换不同会话

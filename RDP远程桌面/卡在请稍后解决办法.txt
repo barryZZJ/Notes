@@ -5,4 +5,18 @@ Creation-Date: 2024-11-27T18:58:15+08:00
 ====== 卡在请稍后解决办法 ======
 Created 星期三 27 十一月 2024
 
-https://www.bilibili.com/opus/711199313989992480
+应该是session切换的bug，导致同一用户顶掉之后，没法接入当前的session
+https://zhuanlan.zhihu.com/p/568825875
+
+解决办法：
+临时：
+1. 登录别的用户，再通过任务管理器连接目标用户
+2. 注销后再重新连接（注意 reset seesion <sessionID>会注销用户！）
+3. 安卓使用aRDP登录后（不好用）断开连接，再用官方rdp登录。
+
+永久：
+1. 禁用网络级认证（NLA）：RdpWrapper：Authentication Mode设为GUI Authentication Only。然后连接时不指定凭据，手动输入密码
+2. 开启[[同一用户多个会话session]]
+
+不好使：
+重启TermService服务
