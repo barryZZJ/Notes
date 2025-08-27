@@ -1,0 +1,26 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2025-08-26T19:10:59+08:00
+
+====== lossless scaling 小黄鸭使用技巧 ======
+Created 星期二 26 八月 2025
+
+缩放：
+SGSR、BCAS用于真人视频
+Anime4K用于动漫
+
+RTX显卡AI自动超分辨率：（就不要开小黄鸭的缩放了）
+https://www.bilibili.com/opus/903022612104347699
+https://zhuanlan.zhihu.com/p/610429457
+显示设置——图形设置——添加chrome——设为高性能
+NVIDIA控制面板里的超分辨率(RTX视频增强)打开
+chrome设置：使用图形加速功能（如果可用）
+
+Potplayer：
+安装MpcVideoRenderer https://github.com/emoose/VideoRenderer
+设置——视频——渲染器——选择MPC
+
+
+浏览器要开全屏再补帧，否则毫无用处
+
+裁剪输入用于剔除不想要被补帧的区域

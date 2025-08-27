@@ -1,0 +1,8 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2025-08-26T10:25:23+08:00
+
+====== win11进uefi固件设置 ======
+Created 星期二 26 八月 2025
+
+ctrl shift del, 按住shift+右下角重启按钮

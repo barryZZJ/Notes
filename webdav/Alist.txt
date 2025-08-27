@@ -36,6 +36,10 @@ echo "FileSizeLimitInBytes"=dword:ffffffff >> temp.reg
 http://yy.barryzzj.top:23881/dav
 <host>/dav/path/to/file
 
+如果挂载后没法删除、新建文件，检查用户是否有硬盘写入、修改权限
+（不知道为啥啊，本地挂载可以删除，远端就不行，是不是服务商把PUT、DELETE包给ban了？）
+
+
 获取直链：右键——复制链接（即在站点后加/d）（获取直链）或加/dav（走webdav）
 获取直链后，不需要登陆即可获取，用于给别人分享。如果想设置有效期，可以开启签名。
 

@@ -1,0 +1,9 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2025-08-26T14:38:32+08:00
+
+====== 初始化系统 ======
+Created 星期二 26 八月 2025
+
+跳过联网、用户登录：
+start ms-cxh:localonly
