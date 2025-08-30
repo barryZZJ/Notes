@@ -1,0 +1,16 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2025-08-29T18:37:13+08:00
+
+====== 常用目录 ======
+Created 星期五 29 八月 2025
+
+https://github.com/danielmiessler/SecLists
+/robots.txt
+备份文件 ''/www.zip''
+备份文件 .bak，如upload.php.bak
+源码.phps，如upload.php.bak
+vim临时文件 .swp
+/admin.php
+/debug.php
+/passwords.txt

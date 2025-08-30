@@ -12,7 +12,7 @@ python3 dirsearch.py -e php,html,js -u https://target
 python3 dirsearch.py -e php,html,js -u https://target -w /path/to/wordlist
 
 -u url
--e, --extensions php,asp,aspx,jsp,html,htm,phps  # 不知道为什么只设置一个的时候不起作用
+-e, --extensions php,asp,aspx,jsp,html,htm,phps  # 不知道为什么只设置一个的时候不起作用，其他常用后缀：cfg,txt,sav,jar,zip,sh,...
 --suffixes .bak,.swp  # 带suffixes参数需要额外跑一遍 # .swp: vim临时文件
 
 -t threads = 25

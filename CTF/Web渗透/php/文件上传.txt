@@ -5,6 +5,8 @@ Creation-Date: 2024-12-10T10:42:48+08:00
 ====== 文件上传 ======
 Created 星期二 10 十二月 2024
 
+可以通过[[文件上传]] [[webshell]] 再 [[文件包含]] 注入webshell
+
 Apache服务器：修改.htaccess文件
 将其他后缀名文件当.php解析：
 上传.htaccess文件至网站根目录

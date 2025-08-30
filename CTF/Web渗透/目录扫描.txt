@@ -7,3 +7,6 @@ Created 星期一 02 十二月 2024
 
 工具汇总
 https://cloud.tencent.com/developer/article/2115753
+
+gobuster
+https://github.com/OJ/gobuster

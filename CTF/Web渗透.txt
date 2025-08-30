@@ -6,12 +6,8 @@ Creation-Date: 2024-11-14T17:28:04+08:00
 Created 星期四 14 十一月 2024
 
 思路：
-dirsearch扫描后台目录 [[+目录扫描:dirsearch]]
-	/robots.txt
-	备份文件 ''/www.zip''
-	备份文件 .bak，如upload.php.bak
-	源码.phps，如upload.php.bak
-	vim临时文件 .swp
+dirsearch扫描后台目录 [[+目录扫描:常用目录]]
+	
 
 cookies
 
