@@ -80,8 +80,10 @@ conda install --file requirements.txt
 install:
 --freeze-installed, --no-update-deps Do not update or change already-installed dependencies. （经测试不是绝对的，参考下面的package pinning）
 pin packages： https://docs.conda.io/projects/conda/en/latest/user-guide/tasks/manage-pkgs.html#preventing-packages-from-updating-pinning
+	In the environment's conda-meta directory, add a file named pinned: pytorch==2.5.1=py3.11_cuda12.4_cudnn9.1.0_0
 -d, --dry-run
 --no-deps 不改变依赖
+
 
 环境泄露，进不到虚拟环境里：
 检查:
