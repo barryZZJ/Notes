@@ -1,0 +1,27 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2025-09-08T16:11:18+08:00
+
+====== mysql ======
+Created 星期一 08 九月 2025
+
+systemctl start mysqld
+
+cat /var/log/mysqld.log | grep password
+
+mysql -u root -p
+# 修改密码
+ALTER USER 'root'@'localhost' IDENTIFIED BY 'NewP@ssw0rd!';
+# 首次登陆修改密码级别
+SHOW VARIABLES LIKE 'validate_password.%';
+SET GLOBAL validate_password_policy = LOW;
+SET GLOBAL validate_password_length = 6;
+
+[mysql]
+default-character-set =utf8
+
+# 配置远程连接授权
+# 如果是新用户而不是root，则要先新建用户
+create user '这里填你要新建的用户名'@'%' identified by '这里填你要新建用户的密码'; 
+# 把在所有数据库的所有表的所有权限赋值给位于所有IP地址的root用户，以root账户为例
+grant all privileges on *.* to root@'%'identified by '这里填你的root账户密码';
