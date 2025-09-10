@@ -11,7 +11,13 @@ https://developer.work.weixin.qq.com/document/10514#%E4%BD%BF%E7%94%A8%E6%8E%A5%
 
 [[:serverchan:wecomchan]]
 
+在“我的企业”——“微信插件”中发送二维码，可以在微信中看到。
 
+自动发送消息：
 1. 配置可信域名。（好像配置了可信域名才能设置可信ip）
 2. 设置可信ip。在可信ip内才能给用户发送消息
 
+接收消息：https://developer.work.weixin.qq.com/document/10514
+http://myflaskserver.barryzzj.top:23354/drink_chan_recv/
+
+（都不支持ipv6）
