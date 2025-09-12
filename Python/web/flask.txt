@@ -89,6 +89,15 @@ js解析：response.data.result
 方便路径模块化
 所有bp最后全部在app.py中import，然后app.register_blueprint
 https://flask.palletsprojects.com/en/latest/tutorial/views/
+动态注册blueprint：
+''import importlib, inspect''
+''module_path = f"wecom_responder.routes.redirect.redirect"''
+''module = importlib.import_module(module_path)''
+''for var_name, obj in inspect.getmembers(module):''
+	''if isinstance(obj, flask.Blueprint):''
+		''app.register_blueprint(obj)''
+		''logger.info(f"已注册bp: redirect.{obj.name}")''
+
 
 获取app对象：
 from flask import current_app
