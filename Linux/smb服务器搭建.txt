@@ -23,20 +23,28 @@ security = user
    browseable = yes
    path = /media/barry/HardDrive/nspshare
    read only = no
+   create mask = 0755
    admin users = barry, nsp, tyc
 
-sudo systemctl restart smbd  或 sudo smbcontrol smbd reload-config
+sudo systemctl restart smbd sudo systemctl restart nmbd  或 sudo smbcontrol smbd reload-config
+防火墙开放445端口
 sudo ufw allow samba
 
 sudo adduser nsp
 sudo passwd nsp
-sudo smbpasswd -a nsp
-Username used must belong to a system account, else it won’t save.
 
-权限控制相关（嫌麻烦的话经测试直接admin users就可以）
+添加smb用户：
+sudo smbpasswd -a nsp
+输入密码
+Username used must belong to a system account, else it won’t save.
+-x delete user
+
+权限控制相关（嫌麻烦的话经测试直接设置admin users就可以）
 https://documentation.ubuntu.com/server/how-to/samba/share-access-controls/
+sudo chown user:group /path
 sudo chown -R user /path
 sudo chgrp -R group /path
+admin users = xxx
 
 
 
