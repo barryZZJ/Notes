@@ -7,3 +7,5 @@ Created 星期二 05 十一月 2024
 
 修改为镜像站：设置环境变量
 HF_ENDPOINT=https://hf-mirror.com
+
+huggingface-cli download --resume-download --local-dir-use-symlinks False ab-ai/PII-Model-Phi3-Mini --local-dir pii --cache-dir pii
