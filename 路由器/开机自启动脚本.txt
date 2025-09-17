@@ -13,3 +13,7 @@ vi /jffs/scripts/services-start
 chmod a+rx services-start
 
 （要先刷固件）
+
+防火墙脚本
+/jffs/scripts/firewall-start
+/jffs/scripts/firewall-stop

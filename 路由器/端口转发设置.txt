@@ -10,4 +10,18 @@ Created 星期四 18 五月 2023
 
 yacd: 9999 -> 192.168.50.1
 
-注意如果想
+LAN口端口转发，手动配置路由表：
+
+如：192.168.116.239:445 -> 192.168.116.239:21445
+10.26.70.14:445 -> 192.168.116.239:22445
+# DNAT规则
+iptables -t nat -A PREROUTING -d 192.168.116.239 -p tcp --dport 445 -j DNAT --to-destination 192.168.116.239:21445
+# 源地址伪装
+iptables -t nat -A POSTROUTING -p tcp -d 192.168.116.239 --dport 21445 -j MASQUERADE
+
+# 删除规则（如需要）
+iptables -t nat -D PREROUTING -d 192.168.50.250 -p tcp --dport 445 -j DNAT --to-destination 192.168.116.239:21445
+iptables -t nat -D POSTROUTING -p tcp -d 192.168.116.239 --dport 21445 -j MASQUERADE
+
+# 查看NAT规则
+iptables -t nat -L -n -v

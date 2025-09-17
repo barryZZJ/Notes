@@ -14,37 +14,40 @@ sudo apt install samba samba-common
 
 服务名：smbd
 
-/etc/samba/smb.conf
+1. 新建共享文件夹目录/path，chmod 755 /path，chown user:group /path
+2. 修改/etc/samba/smb.conf
 [global]下新增
 security = user
 最后添加
-[nspshare]
+[<共享文件夹名>]
    comment = nspshare on Ubuntu
    browseable = yes
    path = /media/barry/HardDrive/nspshare
-   read only = no
-   create mask = 0755
+   writable = yes   
+;权限控制（嫌麻烦的话经测试直接设置admin users就可以）：
+;https://documentation.ubuntu.com/server/how-to/samba/share-access-controls/
+   writable = no
+   write list = <username>,+<groupname>
    admin users = barry, nsp, tyc
-
-sudo systemctl restart smbd sudo systemctl restart nmbd  或 sudo smbcontrol smbd reload-config
-防火墙开放445端口
-sudo ufw allow samba
-
+3. sudo systemctl restart smbd sudo systemctl restart nmbd  或 sudo smbcontrol smbd reload-config
+4. 新建系统用户
 sudo adduser nsp
 sudo passwd nsp
-
-添加smb用户：
+5. 单独设置smb密码（必须是系统已有用户）：
 sudo smbpasswd -a nsp
-输入密码
-Username used must belong to a system account, else it won’t save.
--x delete user
+-x delete
+6. 防火墙开放445端口
+sudo ufw allow samba
+7. SELinux配置
+7.1 检查SELinux状态
+getenforce
+如果返回Enforcing，则需要修改，返回Permissive或Disabled则跳过
+7.2 检查samba相关布尔值
+getsebool -a | grep samba
+7.3 修改布尔值
+sudo setsebool -P samba_export_all_rw on
+sudo setsebool -P samba_export_all_ro on
 
-权限控制相关（嫌麻烦的话经测试直接设置admin users就可以）
-https://documentation.ubuntu.com/server/how-to/samba/share-access-controls/
-sudo chown user:group /path
-sudo chown -R user /path
-sudo chgrp -R group /path
-admin users = xxx
 
 
 
