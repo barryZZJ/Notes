@@ -7,6 +7,11 @@ Created 星期四 05 六月 2025
 
 https://docs.ultralytics.com/zh/quickstart/
 
+模型下载：
+https://github.com/ultralytics/assets/releases
+人脸识别模型下载：
+https://github.com/YapaLab/yolo-face
+
 pip install ultralytics
 
 train args
@@ -14,3 +19,117 @@ https://docs.ultralytics.com/modes/train/
 
 predict args
 https://docs.ultralytics.com/modes/predict/#inference-arguments
+
+检测任务
+https://docs.ultralytics.com/tasks/detect/
+
+model = YOLO(pt_path)
+
+# Predict with the model
+results = model(Image.Image) # or results = model.predict(Image.Image) -> list[Results]
+# 传入多个图片时，len(results)>1
+# 推理参数: https://docs.ultralytics.com/modes/predict/#inference-arguments
+# verbose=False 隐藏输出日志
+
+# Access the results
+for result in results:
+# box结果是小数，需要int处理
+	xywh = result.boxes.xywh  # center-x, center-y, width, height
+	xywhn = result.boxes.xywhn  # normalized
+	xyxy = result.boxes.xyxy  # top-left-x, top-left-y, bottom-right-x, bottom-right-y
+	xyxyn = result.boxes.xyxyn  # normalized
+	names = [result.names[cls.item()] for cls in result.boxes.cls.int()]  # class name of each box
+	confs = result.boxes.conf  # confidence score of each box
+	xyxy = _get_boxes_xyxy(result) # filter and order by confidence
+
+def _get_boxes_xyxy(result, conf_thres=0.5):
+	boxes = result.boxes
+	boxes = boxes[boxes.conf > conf_thres]  # Filter boxes by confidence
+	boxes = boxes[(-boxes.conf).argsort()]  # Sort boxes by confidence in descending order
+	xyxy = clip_boxes(boxes.xyxy, result.orig_shape)
+	return xyxy
+
+类别 class id:
+https://docs.ultralytics.com/datasets/detect/
+取决于训练集，默认是COCO
+model.names
+{0: 'person',
+ 1: 'bicycle',
+ 2: 'car',
+ 3: 'motorcycle',
+ 4: 'airplane',
+ 5: 'bus',
+ 6: 'train',
+ 7: 'truck',
+ 8: 'boat',
+ 9: 'traffic light',
+ 10: 'fire hydrant',
+ 11: 'stop sign',
+ 12: 'parking meter',
+ 13: 'bench',
+ 14: 'bird',
+ 15: 'cat',
+ 16: 'dog',
+ 17: 'horse',
+ 18: 'sheep',
+ 19: 'cow',
+ 20: 'elephant',
+ 21: 'bear',
+ 22: 'zebra',
+ 23: 'giraffe',
+ 24: 'backpack',
+ 25: 'umbrella',
+ 26: 'handbag',
+ 27: 'tie',
+ 28: 'suitcase',
+ 29: 'frisbee',
+ 30: 'skis',
+ 31: 'snowboard',
+ 32: 'sports ball',
+ 33: 'kite',
+ 34: 'baseball bat',
+ 35: 'baseball glove',
+ 36: 'skateboard',
+ 37: 'surfboard',
+ 38: 'tennis racket',
+ 39: 'bottle',
+ 40: 'wine glass',
+ 41: 'cup',
+ 42: 'fork',
+ 43: 'knife',
+ 44: 'spoon',
+ 45: 'bowl',
+ 46: 'banana',
+ 47: 'apple',
+ 48: 'sandwich',
+ 49: 'orange',
+ 50: 'broccoli',
+ 51: 'carrot',
+ 52: 'hot dog',
+ 53: 'pizza',
+ 54: 'donut',
+ 55: 'cake',
+ 56: 'chair',
+ 57: 'couch',
+ 58: 'potted plant',
+ 59: 'bed',
+ 60: 'dining table',
+ 61: 'toilet',
+ 62: 'tv',
+ 63: 'laptop',
+ 64: 'mouse',
+ 65: 'remote',
+ 66: 'keyboard',
+ 67: 'cell phone',
+ 68: 'microwave',
+ 69: 'oven',
+ 70: 'toaster',
+ 71: 'sink',
+ 72: 'refrigerator',
+ 73: 'book',
+ 74: 'clock',
+ 75: 'vase',
+ 76: 'scissors',
+ 77: 'teddy bear',
+ 78: 'hair drier',
+ 79: 'toothbrush'}
