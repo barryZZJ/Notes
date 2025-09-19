@@ -15,11 +15,14 @@ python -m ensurepip --default-pip
 python -m pip install --upgrade pip
 
 proxy:
---proxy <proxy>             Specify a proxy in the form scheme://[user:passwd@]proxy.server:port
+--proxy http://192.168.116.239:18809             Specify a proxy in the form scheme://[user:passwd@]proxy.server:port
 export PIP_PROXY=http://192.168.116.239:18809
 
+
 跳过ssl验证
---trusted-host pypi.org
+--trusted-host pypi.org --trusted-host files.pythonhosted.org --trusted-host download.pytorch.org
+--trusted-host tsinghua.edu.cn
+
 x export PIP_NO_SSL_VERIFY=true
 
 install:
@@ -30,7 +33,7 @@ pip install -e <path/url>
 --no-deps 不安装dependencies
 -I, --ignore-installed
 
-解决IED无法解析debug模式安装的包：
+解决IDE无法解析debug模式安装的包：
 pip install -e . --config-settings editable_mode=compat
 
 clean cache 删除缓存
