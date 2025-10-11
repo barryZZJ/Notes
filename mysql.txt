@@ -9,7 +9,7 @@ systemctl start mysqld
 
 cat /var/log/mysqld.log | grep password
 
-mysql -u root -p
+mysql -u root -p -h 127.0.0.1 -P 3306
 # 修改密码
 ALTER USER 'root'@'localhost' IDENTIFIED BY 'NewP@ssw0rd!';
 # 首次登陆修改密码级别
@@ -25,3 +25,6 @@ default-character-set =utf8
 create user '这里填你要新建的用户名'@'%' identified by '这里填你要新建用户的密码'; 
 # 把在所有数据库的所有表的所有权限赋值给位于所有IP地址的root用户，以root账户为例
 grant all privileges on *.* to root@'%'identified by '这里填你的root账户密码';
+
+备份：
+mysqldump -u root -p -h 127.0.0.1 -P 3306 <DATABASE> > db.sql
