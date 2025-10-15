@@ -4,6 +4,7 @@ Wiki-Format: zim 0.6
 下载
 https://www.anaconda.com/download/success
 https://docs.anaconda.com/miniconda/install/
+搜索：https://anaconda.org/search
 
 更新conda：
 conda update conda
@@ -51,10 +52,12 @@ export HTTPS_PROXY=http://192.168.116.239:18809
 
 换源
 conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/free/
+conda config --add channels conda-forge
 conda config --set show_channel_urls yes
 conda config --show channels
 
 conda config --remove channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/free/
+conda config --remove channels conda-forge
 
 conda config --add channels defaults
 conda config --add channels conda-forge
