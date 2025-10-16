@@ -6,6 +6,7 @@ Creation-Date: 2023-12-28T16:34:08+08:00
 Created 星期四 28 十二月 2023
 
 pip install opencv-python
+conda install opencv -c conda-forge # 报错，import失败
 import cv2
 
 https://docs.opencv.org/4.x/
