@@ -25,7 +25,7 @@ conda install python==3.11 pytorch==2.4.0 torchvision==0.19.0 torchaudio==2.4.0 
 v2.4.1
 conda install pytorch==2.4.1 torchvision==0.19.1 torchaudio==2.4.1 pytorch-cuda=12.4 -c pytorch -c nvidia
 ！注意检查安装时是不是cu124版本，还是cpu版本
-！直接在`服务器安装的torch会报找不到GLIBC_2.27，需要用toolbox_backend/envs里的toolbox_linux_v2.tar.gz，拷贝到服务器里，才能运行，是py3.11 torch2.4.0 cuda12.4，而且奇怪的是直接在服务器安装同样的版本也不行，怀疑是有些预编译了，或许需要在centos虚拟机里pack好对应的环境，再拷到服务器上（结论好像是，系统的glibc版本太老了，而且不支持更新，因此只能装老版本的pytorch，或者封装成docker镜像）（貌似用官方conda-forge源而不是镜像源就可以）
+！直接在`服务器安装的torch会报找不到GLIBC_2.27，需要用toolbox_backend/envs里的toolbox_linux_v2.tar.gz，拷贝到服务器里，才能运行，是py3.11 torch2.4.0 cuda12.4，而且奇怪的是直接在服务器安装同样的版本也不行，怀疑是有些预编译了，或许需要在centos虚拟机里pack好对应的环境，再拷到服务器上（结论好像是，系统的glibc版本太老了，而且不支持更新，因此只能装老版本的pytorch，或者封装成docker镜像）（貌似用官方conda-forge源而不是镜像源安装pytorch就可以）
 v2.7.1
 pip3 install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu128
 
@@ -90,10 +90,13 @@ mp.set_start_method('spawn', force=True)
 
 errors：
 环境错误处理
-version `GLIBC_2.27' not found: conda install gcc
+version `GLIBC_2.27' not found: conda install gcc （貌似用官方conda-forge源而不是镜像源安装pytorch就可以）
 
 RuntimeError: Distributed package doesn't have NCCL built in
 Windows不支持NCCL backend，在dist.init_process_group语句之前添加backend=‘gloo’，替代NCCL
+
+Error: libcudnn_ops_infer.so.8: cannot open shared object file: No such file or directory
+conda install -c anaconda cudnn
 
 样例
 {{{code: lang="python3" linenumbers="False"
