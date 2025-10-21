@@ -27,4 +27,5 @@ create user '这里填你要新建的用户名'@'%' identified by '这里填你�
 grant all privileges on *.* to root@'%'identified by '这里填你的root账户密码';
 
 备份：
-mysqldump -u root -p -h 127.0.0.1 -P 3306 <DATABASE> > db.sql
+mysqldump --hex-blob -u root -p -h 127.0.0.1 -P 3306 <DATABASE> > db.sql
+--hex-blob 用十六进制保存 BLOB
