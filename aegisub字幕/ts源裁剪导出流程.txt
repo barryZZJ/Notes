@@ -15,6 +15,12 @@ Created 星期一 27 二月 2023
 5. 回到主界面Audio encoding部分，载入HD音频文件，在Cuts部分载入刚才的clt文件，encoder选QAAC，delay会自动填写（否则的话填写第一步的偏移量），点Queue
 6. 得到剪好的音频文件.m4a
 
+MeGUI直接裁剪视频：
+Video encoding——加载avs脚本，输出文件地址，选择编码器、File format——点击Queue
+然后使用Muxer合并
+
+或选择用VS处理：
+
 === VS处理视频： ===
 打开tmp_d2v.vpy
 修改source和clt_file，使用utf8编码的d2v文件，自动读取clt剪辑视频
