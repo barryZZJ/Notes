@@ -49,7 +49,8 @@ Linux:
 4. sudo nano **/etc/ssh/sshd_config**文件，设置（默认是yes，不需要动，也不用重启ssh服务）
 PubkeyAuthentication yes
 AuthorizedKeysFile .ssh/authorized_keys
-并重启ssh服务 sudo service sshd restart
+5. systemctl daemon-reload
+6. systemctl restart ssh.socket 或 systemctl restart sshd
 
 windows ssh 服务器: OpenSSH
 1. 设置—系统—可选功能——”添加可选功能“搜索OpenSSH 服务器，安装

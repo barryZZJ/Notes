@@ -5,14 +5,21 @@ Creation-Date: 2023-07-23T17:32:02+08:00
 ====== 自动挂载本地磁盘 ======
 Created 星期日 23 七月 2023
 
-编辑/etc/fstab实现
-修改完文件后，运行
+sudo nano /etc/fstab
+修改完文件后（指令见下），运行
 sudo mount -a
 验证配置是否正确，配置不正确可能会导致系统无法正常启动。
 如果正确，运行 sudo systemctl daemon-reload
 
 ubuntu 24:
-磁盘管理——齿轮按钮——编辑挂载选项
+磁盘管理——选择分区——齿轮按钮——编辑挂载选项：（查看fstab是否添加了对应指令）
+	√系统启动时挂载
+	√显示用户界面
+	nosuid,nodev,nofail,x-gvfs-show,x-gvfs-name=Solid,uid=1000,gid=1000,dmask=000,fmask=000
+	/media/barry/Solid
+	/dev/disk/by-uuid/2BDD94C1F22ECC7Fc
+	ntfs-3g
+
 获取当前用户uid、gid: ''id -u, id -g''
 
 工位磁盘指令备份：（需要安装ntfs-3g，否则没有写权限）
@@ -25,6 +32,7 @@ smb指令备份：（要先建好文件夹）
 //dorm.barryzzj.top/f  /media/barry/f  cifs  username=barry,password=zzj850462,file_mode=0777,dir_mode=0777  0  0
 //dorm.barryzzj.top/g  /media/barry/g  cifs  username=barry,password=zzj850462,file_mode=0777,dir_mode=0777  0  0
 //dorm.barryzzj.top/h  /media/barry/h  cifs  username=barry,password=zzj850462,file_mode=0777,dir_mode=0777  0  0
+//10.26.70.14/nspshare  /media/barry/nspshare  cifs  username=nspshare,password=nsp123123,file_mode=0777,dir_mode=0777  0  0
 
 
 旧版：

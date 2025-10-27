@@ -17,3 +17,9 @@ chmod a+rx services-start
 防火墙脚本
 /jffs/scripts/firewall-start
 /jffs/scripts/firewall-stop
+
+发往192.168.116.239:445的转发到:21445
+iptables -t nat -A PREROUTING -d 192.168.116.239 -p tcp --dport 445 -j DNAT --to-destination 192.168.116.239:21445
+iptables -t nat -A POSTROUTING -p tcp -d 192.168.116.239 --dport 21445 -j MASQUERADE
+iptables -t nat -A PREROUTING -d 10.26.70.14 -p tcp --dport 445 -j DNAT --to-destination 192.168.116.239:22445
+iptables -t nat -A POSTROUTING -p tcp -d 192.168.116.239 --dport 22445 -j MASQUERADE
