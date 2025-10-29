@@ -1,0 +1,11 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2025-10-28T10:56:05+08:00
+
+====== chrome ======
+Created 星期二 28 十月 2025
+
+第二个用户固定到任务栏：
+
+目标:
+"C:\Program Files\Google\Chrome\Application\chrome.exe" --profile-directory="Profile 3"
