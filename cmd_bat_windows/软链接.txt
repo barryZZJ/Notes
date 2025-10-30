@@ -22,5 +22,8 @@ mklink /d target src
 
 必须为NTFS才能创建
 
+硬链接只能用于文件，且必须在同一个盘符下
+
 删除：
 直接rmdir即可
+
