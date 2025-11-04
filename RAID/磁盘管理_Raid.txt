@@ -1,0 +1,63 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2022-12-03T22:45:34+08:00
+
+====== 磁盘管理 Raid ======
+Created 星期六 03 十二月 2022
+
+如果装双系统、或做移动硬盘，不要转换成动态磁盘。
+转换后很难转回去（DG收费版支持动态盘转基本盘）
+只有windows支持动态磁盘
+（！：很久不更新了，微软的官方文档写不要再用这个功能。改用 [[存储空间管理]] 创建存储池，缺点是存储池没有JBOD）
+（！：通过USB连接的硬盘不支持转为动态磁盘！）
+
+https://learn.microsoft.com/en-us/troubleshoot/windows-server/backup-and-storage/establish-striped-volume-raid-0
+
+右键开始菜单——磁盘管理
+
+转换为动态卷才能执行下列操作。https://learn.microsoft.com/zh-cn/windows/win32/fileio/basic-and-dynamic-disks
+https://learn.microsoft.com/zh-cn/previous-versions/windows/it-pro/windows-server-2003/cc739412(v=ws.10)#before-converting-disks-to-dynamic
+每个物理盘都会留有一份动态分区数据库的备份。
+
+操作流程：
+1. 新盘插进去不要格式化，对未分配分区直接右键，新建跨区卷。
+2. 对大文件分配单元大小4096（4k对齐）性能最优
+
+只能对未分配空间进行转换，先删除卷才可以。
+
+简单卷：等价于一个盘。可以创建跨区卷。
+跨区卷Spanned Volum：JBOD。合并多个空闲区域为一个逻辑盘。按顺序依次存储文件，第一个盘存分区表，后面的盘都是数据区。第一个盘坏了数据就全丢。性能没有提升和下降。相当于把几块小盘合成一个大盘
+带区卷Striped：Raid0，文件分块保存到各个硬盘，并行存取。最快，最不安全，一块坏就全部丢失。
+镜像卷：Raid1，两个硬盘内容互为副本。最安全
+Raid5：一个盘存储纠错码，其他存储数据。至少需要3块硬盘。影响写入速度。比raid6更容易死，raid6是2个盘存纠错码。
+
+容量以小硬盘为上限
+
+对基本磁盘已有分区选择“扩展卷”将创建跨区卷。
+
+如果想把一块磁盘建立多个带区卷，可以在向导里指定卷大小
+
+可以通过创建镜像卷再取消的方式迁移数据
+
+转回基本磁盘：手动删除所有分区后，即变为未格式化的硬盘
+
+
+dg支持：
+https://www.diskgenius.cn/help/ldmsupport.php
+可以用dg把简单卷无损转换为基本磁盘
+
+磁盘修复：
+控制面板\系统和安全\安全和维护
+
+其他方案：
+[[备份 robocopy]]
+
+DiskGenius虚拟raid：用于硬raid的数据恢复
+虚拟RAID是只读的，可以在虚拟RAID上创建临时分区以便恢复文件。软件没有提供虚拟RAID的写入功能，这样做是为了防止误操作破坏RAID盘数据。
+
+https://learn.microsoft.com/zh-cn/previous-versions/windows/it-pro/windows-server-2003/cc739412(v=ws.10)
+
+踩坑记录：
+raid0没法保留数据的情况下单独更换一块盘，只能整体拷出来、换硬盘、重组raid、再拷回去
+dg克隆磁盘好像不用收费，下回可以试试。
+

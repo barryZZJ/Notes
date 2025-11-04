@@ -1,0 +1,16 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2025-11-04T10:41:46+08:00
+
+====== 硬RAID ======
+Created 星期二 04 十一月 2025
+
+微星AMD主板如何设定RAID数组
+https://www.msi.cn/support/technical_details/MB_BIOS_RAID#txt02
+
+删除阵列时会清空所有数据
+已有阵列的硬盘数不能更改，需要重组阵列，数据会全部删除。
+
+注意如果要把系统装到raid里，需要额外安装驱动
+https://www.bilibili.com/video/BV18b4y1W7rY/
+

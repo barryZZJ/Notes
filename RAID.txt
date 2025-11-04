@@ -1,0 +1,39 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2025-11-04T10:40:52+08:00
+
+====== RAID ======
+Created 星期二 04 十一月 2025
+
+https://www.bilibili.com/video/BV1vA411W7yU/
+
+raid5: 
+N≥3
+容量：N-1
+可以坏：1
+如果有硬盘坏了，先备份好硬盘的内容，再重建。否则容易大量读取导致全挂。
+写开销大
+适合存储档案、备份、读为主的任务
+
+raid6: 
+N≥4
+容量：N-2
+可以坏：2
+
+raid10：
+N≥4
+容量：N/2
+可以坏：非同组的2
+两两raid1，两个raid1组raid0
+需要raid卡组建。邪道：硬raid1+软raid0，不知道性能损耗如何
+可以随时添加一组raid1，方便扩大容量
+适用于既有大量数据需要存取，同时又对数据安全性要求严格的领域
+
+JBOD：
+第一块硬盘包含数据分段表，不能坏
+
+unraid：
+JBOD+校验
+收费
+
+软raid占用cpu资源
