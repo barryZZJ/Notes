@@ -7,6 +7,9 @@ Created 星期一 27 二月 2023
 
 参考织梦字幕组压制 字幕提取流程及教程.pdf
 
+TODO: AI转录、翻译工具，新出了硬字幕识别功能，浴帽推荐，会员版效果不错，“会员基础版 一校”。
+https://www.subeasy.ai/zh-CN
+
 === MeGUI处理音频： ===
 1. HD Streams Extractor 分离音频aac，记下音频偏移量
 2. File Indexer打开ts源，使用默认的DGIndex，然后点Queue，得到d2v文件（需要另外保存一份为utf8编码）（记录输出音频的delay）

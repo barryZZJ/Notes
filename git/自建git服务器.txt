@@ -5,8 +5,21 @@ Creation-Date: 2023-08-09T16:01:41+08:00
 ====== 自建git服务器 ======
 Created 星期三 09 八月 2023
 
-https://stackoverflow.com/questions/8390828/how-can-i-have-github-on-my-own-server
+ssh服务器/挂载的共享文件夹即可作为git服务器：
+https://www.bilibili.com/video/BV1gUy4B6EWP
+https://git-scm.com/book/en/v2/Git-on-the-Server-The-Protocols
+1. 服务器在~目录创建bare repository（即只有.git文件夹的仓库）: git init --bare <repo>
+2. 只要客户端能访问服务器，即可克隆
+- ssh协议：git clone username@server:<repo>.git
+- 挂载文件夹/本地其他文件夹：git clone /path/to/repo.git
+3. 正常使用git
+备注：
+没有网页GUI前端，貌似应该是没有pr之类的功能；
+通过ssh密钥授权，即可实现git的访问控制，最好不要全用root吧，这样是哪个人都分不清。
 
+
+
+https://stackoverflow.com/questions/8390828/how-can-i-have-github-on-my-own-server
 
 纯git
 https://www.inmotionhosting.com/support/website/git/git-server/

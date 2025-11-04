@@ -27,3 +27,4 @@ mklink /d target src
 删除：
 直接rmdir即可
 
+链接会跟正常文件一起排序，而快捷方式单独排序。
