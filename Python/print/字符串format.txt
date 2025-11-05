@@ -16,8 +16,8 @@ https://www.runoob.com/python/att-string-format.html
  
 约束宽度：
 '{:2d}'.format(1) # ' 1'
-'{:<2d}'.format(1) # ' 1'
-'{:>2d}'.format(1) # '1 '
+'{:<2d}'.format(1) # '1 '
+'{:>2d}'.format(1) # ' 1'
 "{a:2d}".format(a=1) # " 1"
 (d：约束参数为整型)
 

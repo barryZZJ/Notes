@@ -7,6 +7,8 @@ Created 星期二 04 十一月 2025
 
 https://www.bilibili.com/video/BV1vA411W7yU/
 
+bios只支持sata接口组raid，不支持USB接口
+
 raid5: 
 N≥3
 容量：N-1
