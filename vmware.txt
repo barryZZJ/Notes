@@ -5,6 +5,9 @@ Creation-Date: 2024-09-25T13:46:36+08:00
 ====== vmware ======
 Created 星期三 25 九月 2024
 
+先下载正版，再用密钥激活：
+https://github.com/201853910/VMwareWorkstation
+
 桥接模式，MAC设为F4:F1:9E:19:8D:75
 
 .vmx文件：

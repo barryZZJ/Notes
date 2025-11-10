@@ -15,6 +15,8 @@ https://learn.microsoft.com/en-us/windows-server/storage/storage-spaces/overview
 支持USB、SATA等不同连接方式
 
 只有raid1（双向镜像、三向镜像）、raid0（简单）、raid5（奇偶校验），没有JBOD
+三向镜像需要5个驱动器
+raid5需要3个驱动器
 
 奇偶校验：
 写开销大
@@ -24,4 +26,5 @@ https://learn.microsoft.com/en-us/windows-server/storage/storage-spaces/overview
 
 从存储池删除磁盘：
 确保存储池剩余空间足够转移待删除磁盘，然后会出现一个”为删除做准备“按钮
-
+然后等着 / 点击优化驱动器使用率？
+等一段时间后，准备好删除后，会出现删除按钮，点击即可

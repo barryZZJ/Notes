@@ -5,8 +5,7 @@ Creation-Date: 2025-07-09T08:34:39+08:00
 ====== 挂载ext4硬盘 ======
 Created 星期三 09 七月 2025
 
-wsl --insatll 
-wsl --set-version Ubuntu 2
+
 wmic diskdrive list brief
 wsl --mount \\.\PHYSICALDRIVE10 --partition 1
 wsl.exe --unmount \\.\PHYSICALDRIVE10

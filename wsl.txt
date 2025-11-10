@@ -5,9 +5,13 @@ Creation-Date: 2024-08-19T11:21:35+08:00
 ====== wsl ======
 Created 星期一 19 八月 2024
 
+https://learn.microsoft.com/en-us/windows/wsl/install
+wsl --install
+
+https://learn.microsoft.com/en-us/windows/wsl/basic-commands
+
 配置文件：
 https://learn.microsoft.com/en-us/windows/wsl/wsl-config#configure-global-options-with-wslconfig
-
 
 wsl --shutdown
 

@@ -1,0 +1,31 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2025-11-04T10:41:46+08:00
+
+====== 主板RAID ======
+Created 星期二 04 十一月 2025
+
+也是软raid，只不过用的是controller
+
+已有阵列的硬盘数不能更改，只能删除阵列或新建阵列，不够灵活。
+
+吃主板的兼容性，更换主板会导致RAID控制器不一样，导致无法读取数据，不如windows存储空间
+
+
+微星AMD主板如何设定RAID数组
+https://www.msi.cn/support/technical_details/MB_BIOS_RAID#txt02
+
+只支持sata接口、NVMe接口组raid，不支持USB接口
+
+只支持SATA1~4插口，SATA_A1 SATA_A2是模拟出来的，速度慢，且不支持主板raid
+
+删除阵列时会清空所有数据
+
+新建阵列时，之前的单个硬盘都看作一个阵列，需要先删除（清空数据），才能创建新阵列。
+
+注意如果要把系统装到raid里，需要额外安装驱动
+https://www.bilibili.com/video/BV18b4y1W7rY/
+
+实测不装驱动进系统不显示，但是并不会装驱动
+
+

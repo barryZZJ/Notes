@@ -1,0 +1,8 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2025-11-09T17:23:06+08:00
+
+====== docker desktop win安装 ======
+Created 星期日 09 十一月 2025
+
+start /w "" "Docker Desktop Installer.exe" install -accept-license  --installation-dir=E:\Docker -wsl-default-data-root=E:\Docker\wsl

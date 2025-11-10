@@ -23,3 +23,10 @@ iptables -t nat -A PREROUTING -d 192.168.116.239 -p tcp --dport 445 -j DNAT --to
 iptables -t nat -A POSTROUTING -p tcp -d 192.168.116.239 --dport 21445 -j MASQUERADE
 iptables -t nat -A PREROUTING -d 10.26.70.14 -p tcp --dport 445 -j DNAT --to-destination 192.168.116.239:22445
 iptables -t nat -A POSTROUTING -p tcp -d 192.168.116.239 --dport 22445 -j MASQUERADE
+
+
+ipv6:
+ip6tables -N BARRYROUTER 2>/dev/null
+ip6tables -F BARRYROUTER
+ip6tables -A BARRYROUTER -p tcp -m multiport --dport 10001,16601,18443,15443,16443,23389,23355,23882,28096,28000,28001,28443,16666 -j ACCEPT
+ip6tables -C INPUT -j BARRYROUTER 2>/dev/null || ip6tables -I INPUT 1 -j BARRYROUTER

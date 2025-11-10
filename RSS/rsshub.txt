@@ -15,11 +15,11 @@ https://docs.rsshub.app/social-media.html#twitter
 https://docs.rsshub.app/parameter.html
 
 === 部署： ===
-https://docs.rsshub.app/install/#docker-bu-shu
-	配置：
-	https://docs.rsshub.app/install/#pei-zhi
+https://docs.rsshub.app/zh/deploy/
+	.env配置：
+	https://docs.rsshub.app/zh/deploy/config
 (容器内127.0.0.1不能指向你的clash，需要换成你机器的内网IP) ip addr show docker0查询为172.17.0.1
-''-e ACCESS_KEY=MZuQe72YXjyyf7MgAP3z -e IG_USERNAME=barryjackson118 -e IG_PASSWORD=zzjzzj01234 -e IG_PROXY=socks://127.0.0.1:10808 ''
+''-e ACCESS_KEY=MZuQe72YXjyyf7MgAP3z -e IG_USERNAME=barryjackson118 -e IG_PASSWORD=zzjzzj01234 -e IG_PROXY=socks://127.0.0.1:10808'' 
 ''docker run -d --name rsshub -p 1200:1200 --network host -e PROXY_URI=socks://127.0.0.1:10808 -e CACHE_EXPIRE=600 -e REQUEST_TIMEOUT=10000 diygod/rsshub''
 ''docker stop rsshub''
 ''docker rm rsshub''

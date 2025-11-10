@@ -7,8 +7,7 @@ Created 星期二 04 十一月 2025
 
 https://www.bilibili.com/video/BV1vA411W7yU/
 
-bios只支持sata接口组raid，不支持USB接口
-主板上SATA_A1/_A2速度慢，且不支持硬raid
+除了阵列卡之外的方案都是基于软件，都会吃CPU和内存
 
 raid5: 
 N≥3
@@ -39,4 +38,3 @@ unraid：
 JBOD+校验
 收费
 
-软raid占用cpu资源

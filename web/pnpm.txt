@@ -9,6 +9,7 @@ Created 星期一 30 九月 2024
 pnpm config set registry https://registry.npmmirror.com
 恢复 pnpm config set registry https://registry.npmjs.org
 
+npm install -g pnpm@latest-10
 
 pnpm build
 pnpm start

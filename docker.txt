@@ -20,6 +20,9 @@ docker容器内默认情况下与主机进行了隔离，无法通过 127.0.0.1 
 下载cker pull easychen/rsspush
 
 配置镜像下载代理
+docker镜像仓库：
+https://github.com/dongyubin/DockerHub
+1. =========================
 sudo mkdir -p /etc/systemd/system/docker.service.d
 sudo nano [[/etc/systemd/system/docker.service.d/proxy.conf]]
 
@@ -62,3 +65,6 @@ docker rmi <image_name_or_id>
 -f 强制删除
 删除所有未使用的镜像：
 docker image prune
+
+容器迁移
+https://docs.docker.com/desktop/settings-and-maintenance/backup-and-restore/
