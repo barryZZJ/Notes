@@ -7,3 +7,10 @@ Created 星期二 28 二月 2023
 
 https://docs.python.org/3/library/functools.html
 reduce
+
+
+partial: 固定复杂函数的某些参数，返回一个简单函数
+如：
+from functools import partial
+basetwo = partial(int, base=2)
+basetwo('10010')

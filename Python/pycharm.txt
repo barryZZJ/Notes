@@ -26,3 +26,7 @@ studio64.exe
 快捷键：
 ctrl+shift+m 移动光标至成对括号 move caret to matching brace
 alt+shift+q 上传当前远程文件
+f11: 书签（需要shift+f11显示所有书签，或在bookmarks页面选择跳转）
+ctrl+f11：带快捷键的书签 (Mnemonic bookmark)，直接点对应的快捷键即可添加（可以通过ctrl+<1>快捷跳转）
+shift+f11: 显示所有书签
+ctrl+shift+f11：显示带快捷键的书签
