@@ -1,0 +1,29 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2025-11-12T11:02:46+08:00
+
+====== torch函数笔记 ======
+Created 星期三 12 十一月 2025
+
+.requires_grad : bool
+.requires_grad_(Optional[bool])
+指定该tensor是否计算grad graph
+
+
+.no_grad(): https://docs.pytorch.org/docs/stable/generated/torch.no_grad.html
+在no_grad环境下新计算出的tensor不记录grad
+x = torch.tensor([1.], requires_grad=True)
+with torch.no_grad():
+	y = x * 2  
+	# y.requires_grad == False
+	# x.requires_grad == True
+
+.detach()
+返回一个脱离grad graph的leaf副本，不改变原始tensor的状态
+a = a.detach()  # 如果覆盖了原始tensor，则相当于a = a.requires_grad_(False)
+
+l2-norm:
+torch.norm(t, p=2) 比 torch.linalg.norm 速度更快（GPU上），CPU上速度差不多
+
+cos sim:
+转换成一个tensor再计算，比遍历每一个更快

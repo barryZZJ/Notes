@@ -90,6 +90,14 @@ LogLevel INFO | DEBUG | DEBUG3
 Linux下AUTH对应/var/log/auth.log（如 Ubuntu、Debian 等基于 Debian 的系统）
 /var/log/secure（如 CentOS、Red Hat、Fedora 等基于 Red Hat 的系统）
 
+# 查看SSH相关日志
+tail -f /var/log/secure
+# 或者
+journalctl -u sshd -f
+
+# 查看系统日志
+tail -f /var/log/messages
+
 DEBUG:
 关闭sshd服务，自己在**管理员**命令行运行sshd -d 或 sshd -ddd
 

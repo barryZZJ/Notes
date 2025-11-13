@@ -7,7 +7,22 @@ Created 星期五 27 九月 2024
 
 pip install tensorboard
 
-self.writer = SummaryWriter(comment=comment) if not eval else None
-self.writer.add_scalar('Train: Loss', avg_loss, self.episodes)
+torch.utils.tensorboard.SummaryWriter
+https://docs.pytorch.org/tutorials/recipes/recipes/tensorboard_with_pytorch.html
+https://docs.pytorch.org/docs/stable/tensorboard.html
 
-tensorboard --logdir runs --host 0.0.0.0
+writer = SummaryWriter(log_dir='logs/run1') if not eval else None
+writer.add_scalar('Loss/Train', loss, epoch)  # tag加斜杠可以用于分类
+writer.flush()
+
+.add_scalar
+.add_text
+
+# log image
+# https://www.tensorflow.org/tensorboard/image_summaries#visualizing_a_single_image
+writer.add_image(
+
+cmd:
+> tensorboard --logdir logs --host 0.0.0.0
+http://localhost:6006/
+# 根据logs下的不同文件夹，会自动识别成不同的run
