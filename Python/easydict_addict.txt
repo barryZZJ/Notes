@@ -1,6 +1,17 @@
 Content-Type: text/x-zim-wiki
 Wiki-Format: zim 0.6
 
+如果不想安装库，简单解决办法：
+def load_config(filename=None):
+	"""Load configurations of yaml file"""
+	with open(filename, "r") as fp:
+		config = yaml.load(fp, Loader=yaml.FullLoader)
+	# Empty class for yaml / json loading
+	class cfg: pass
+	for key in config:
+		setattr(cfg, key, config[key])
+	return cfg
+
 === easydict ===
 >>> from easydict import EasyDict as edict
 >>> d = edict({'foo':3, 'bar':{'x':1, 'y':2}})
@@ -35,14 +46,14 @@ https://github.com/mewwts/addict
 
 如果因为没有自动补全比较麻烦，可以使用静态类:
 ''class _Paths:''
-	''RING = ''''
-	''ROOT_FOLDER = ''''
-	''FFMPEG = ''''
-	''FFPROBE = ''''
-	''MP4BOX = ''''
-	''VSPIPE = ''''
-	''X264 = ''''
-	''X265 = ''''
+	''RING ='' ''
+	''ROOT_FOLDER ='' ''
+	''FFMPEG ='' ''
+	''FFPROBE ='' ''
+	''MP4BOX ='' ''
+	''VSPIPE ='' ''
+	''X264 ='' ''
+	''X265 ='' ''
 	''TemplatePaths = {}''
 
 	''def __str__(self):''

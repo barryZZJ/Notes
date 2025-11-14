@@ -1,0 +1,26 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2025-11-13T13:42:02+08:00
+
+====== 建立socks代理服务器 ======
+Created 星期四 13 十一月 2025
+
+在本地客户端建立socks一个代理，监听绑定的地址，以目标服务器为跳板发起请求
+ssh -N -g -D 0.0.0.0:1080 user@jump.example.com
+
+-D [bind_address:]port  
+
+Host jump
+  HostName jump.example.com
+  User user
+  DynamicForward 1080
+  # 之后用: ssh jump -N -f -g
+
+# curl 通过 SOCKS5 代理并让远端解析 DNS（推荐，避免本地 DNS 泄露）
+curl --socks5-hostname localhost:1080 http://example.com
+
+要求跳板机允许tcp转发：AllowTcpForwarding
+
+-f 令 ssh 在认证并准备执行远程命令前 fork 到后台（background）。常和 -N（不执行远程命令，仅做端口转发）或端口转发选项一起使用，用于把 SSH 隧道驻留在后台。
+
+-g：允许局域网其他主机连接

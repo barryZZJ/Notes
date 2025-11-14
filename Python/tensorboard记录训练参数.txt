@@ -23,6 +23,7 @@ writer.flush()
 writer.add_image(
 
 cmd:
-> tensorboard --logdir logs --host 0.0.0.0
+> tensorboard --logdir experiments --host 0.0.0.0 --samples_per_plugin "images=20"
 http://localhost:6006/
 # 根据logs下的不同文件夹，会自动识别成不同的run
+# 默认只显示10张图片，修改 --samples_per_plugin 

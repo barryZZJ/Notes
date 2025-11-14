@@ -20,3 +20,10 @@ https://emby.media/support/articles/Movie-Naming.html#split-video-files-file-sta
 以-cd#结尾，显示在“附加部分”
 优点：顺序是对的
 缺点：每集都需要单独的海报
+
+
+serverid:
+programdata/data/device.txt
+or 
+http://localhost:8096/emby/System/Info/Public
+{"LocalAddresses":[],"RemoteAddresses":[],"ServerName":"bj BarryZZJ's Emby","Version":"4.8.11.0","Id":"fc5668c1b40242cbb8a1f3482d44932b"}

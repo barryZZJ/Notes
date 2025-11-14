@@ -1,0 +1,25 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2025-11-13T13:31:58+08:00
+
+====== 使用跳板机连接 ======
+Created 星期四 13 十一月 2025
+
+# 通过单个跳板（跳板端口默认22）
+ssh -J jumpuser@jump.example.com targetuser@target.example.com
+
+# 跳板有自定义端口，目标也有自定义端口
+ssh -J jumpuser@jump.example.com:22233 targetuser@target.example.com -p 25322
+
+# 多跳：jump1 -> jump2 -> target
+ssh -J jump1@example.com,jump2@example.com target@example.com
+
+config配置：
+Host target
+  HostName target.example.com
+  User targetuser
+  ProxyJump jumpuser@jump.example.com:2222  #也可以直接填写已配置config的其他Host的名字
+  ForwardAgent yes    # 若需代理转发
+
+
+要求跳板机允许tcp转发：AllowTcpForwarding

@@ -1,0 +1,8 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2025-11-13T12:59:12+08:00
+
+====== 抓包 tcpdump ======
+Created 星期四 13 十一月 2025
+
+sudo tcpdump -ni any host 10.26.70.13
