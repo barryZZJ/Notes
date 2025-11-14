@@ -27,3 +27,32 @@ Terminal=false
 Type=Application
 Icon=rdp
 Categories=Game;
+
+启动后Icon与点击的快捷方式不一致修复：
+1. 确认窗口的 WM_CLASS：
+xprop WM_CLASS
+然后点击 xfreerdp 窗口。记下输出（例如 WM_CLASS(STRING) = "xfreerdp", "XFreeRDP"）。
+2. 把 .desktop 的 StartupWMClass 设置为 xprop 输出中的其中一个字符串，例如 "StartupWMClass=xfreerdp"。保存后取消固定并重新固定该 launcher，或重启 GNOME Shell（Alt+F2 → r）或登出/登录。
+
+合并多个快捷方式：actions
+如果没有立即生效，重启 GNOME Shell（Alt+F2 → 输入 r → 回车）或登出/登录。
+[Desktop Entry]
+Name=RDP - twomon bar
+Exec=xfreerdp /v:dorm.barryzzj.top:23389 /u:barry /p:zzj850462 /dynamic-resolution /home-drive /network:lan /multimon /monitors:0,1 /sound:sys:alsa +clipboard -heartbeat -toggle-fullscreen /log-level:OFF /floatbar:sticky:on,show:always 
+Terminal=false
+Type=Application
+Icon=rdp
+StartupWMClass=xfreerdp
+Actions=Twomon;Onemon;
+
+[Desktop Action Twomon]
+Name=RDP — twomon
+Exec=xfreerdp /v:dorm.barryzzj.top:23389 /u:barry /p:zzj850462 /dynamic-resolution /home-drive /network:lan /multimon /monitors:0,1 /sound:sys:alsa -clipboard -heartbeat /log-level:OFF
+Icon=rdp3
+
+[Desktop Action Onemon]
+Name=RDP — onemon
+Exec=xfreerdp /v:dorm.barryzzj.top:23389 /u:barry /p:zzj850462 /dynamic-resolution /size:1920x1080 /f /home-drive /network:lan /monitors:1 /floatbar /sound:sys:alsa +clipboard -heartbeat /log-level:OFF 
+Icon=rdp2
+
+
