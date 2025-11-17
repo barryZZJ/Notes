@@ -27,3 +27,6 @@ programdata/data/device.txt
 or 
 http://localhost:8096/emby/System/Info/Public
 {"LocalAddresses":[],"RemoteAddresses":[],"ServerName":"bj BarryZZJ's Emby","Version":"4.8.11.0","Id":"fc5668c1b40242cbb8a1f3482d44932b"}
+
+多版本电影，extras不识别：
+需要把每个版本的文件名修改为文件夹名

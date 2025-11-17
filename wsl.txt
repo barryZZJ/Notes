@@ -18,5 +18,5 @@ wsl --shutdown
 卸载：
 https://medium.com/@bonguides25/how-to-completely-uninstall-the-subsystem-for-linux-wsl-on-windows-24b0945050a0
 wsl -l -v
-wsl --unregister ubuntu
+wsl --unregisteer ubuntu
 应用程序和功能：取消 虚拟机平台、WSL

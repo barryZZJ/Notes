@@ -65,6 +65,7 @@ ffmpeg -i video.mp4 -i audio.mp3 -c:v copy -c:a aac -map 0:v:0 -map 1:a:0 output
 
 音频转码
 https://www.rondochen.com/convert-mkv-to-mp4-with-ffmpeg/
+ffmpeg -i xxx.eac -c:a aac output.aac
 
 生成m4a
 ffmpeg -i inputvideo -vn -c:a aac out.m4a

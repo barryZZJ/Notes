@@ -1,0 +1,17 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2025-11-15T15:13:50+08:00
+
+====== 文件所有者权限 ======
+Created 星期六 15 十一月 2025
+
+# 获取所有权
+takeown /f * /r /d y
+
+# 然后设置权限
+icacls * /grant %USERNAME%:F /T
+
+F: 完全控制
+R: 读
+M: 修改
+W：写
