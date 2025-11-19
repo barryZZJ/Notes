@@ -46,6 +46,12 @@ https://gofrp.org/zh-cn/docs/features/common/network/network-tls/
 make # 遍历当前平台，输出到bin文件夹
 make -f Makefile.cross-compiles  # 编译所有平台，输出到release文件夹
 
+引入X-Forwarded-For 头：
+只需要在代理配置中增加一行 transport.proxyProtocolVersion = "v2" 即可开启此功能。
+目前只有 http 类型的代理或者启用了 https2http 或 https2https 插件的代理支持这一功能。
+需要注意的是，在代理配置中如果要启用此功能，需要本地的服务能够支持 Proxy Protocol 这一协议，目前 nginx 和 haproxy 都能够很好的支持。
+
+
 linux安装：
 1. https://github.com/fatedier/frp
 2. frpc放入/usr/bin

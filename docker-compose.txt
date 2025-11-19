@@ -30,19 +30,19 @@ yml配置：
 
 start and restart all the services defined in docker-compose.yml
 前台启动：
-docker-compose up
+docker compose up
 后台启动：
-docker-compose up -d --remove-orphans
+docker compose up -d --remove-orphans
 查看日志（后台启动时）：
-docker-compose logs -f --timestamps
+docker compose logs -f --timestamps
 
 关闭：
-docker-compose stop
+docker compose stop
 重启
-docker-compose start
+docker compose start
 
 卸载：
-docker-compose down --remove-orphans
+docker compose down --remove-orphans
 -v remove all volumes
 
 确认是否删除成功：
@@ -51,5 +51,9 @@ docker rm <container_id>
 
 更新：
 yml里image应以:latest结尾
-docker-compose pull
+docker compose pull
+
+映射虚拟路径和实际路径：
+volumnes:
+	- ./host/path:/container/path
 

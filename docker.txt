@@ -20,18 +20,33 @@ docker容器内默认情况下与主机进行了隔离，无法通过 127.0.0.1 
 下载cker pull easychen/rsspush
 
 配置镜像下载代理
+1.=========
+阿里云镜像加速 https://help.aliyun.com/zh/acr/user-guide/accelerate-the-pulls-of-docker-official-images
+仅限阿里云用户，在支持公网访问的阿里云产品上使用该镜像加速能力
+	加速器地址 https://nathqvfm.mirror.aliyuncs.com
+	sudo mkdir -p /etc/docker
+	sudo tee /etc/docker/daemon.json <<-'EOF'
+	{
+	  "registry-mirrors": ["https://nathqvfm.mirror.aliyuncs.com"]
+	}
+	EOF
+	sudo systemctl daemon-reload
+	sudo systemctl restart docker
+2. =========
 docker镜像仓库：
 https://github.com/dongyubin/DockerHub
-1. =========================
-sudo mkdir -p /etc/systemd/system/docker.service.d
-sudo nano [[/etc/systemd/system/docker.service.d/proxy.conf]]
+（理论上来说替换进上面的registry-mirrors即可
 
-[Service]
-Environment="HTTP_PROXY=http://127.0.0.1:10809/"
-Environment="HTTPS_PROXY=http://127.0.0.1:10809/"
-Environment="NO_PROXY=localhost,127.0.0.1,.example.com,yy.barryzzj.top"
-
-sudo systemctl daemon-reload
+3. =========
+配置代理
+新版：https://docs.docker.com/engine/daemon/proxy/#httphttps-proxy
+{
+  "proxies": {
+	"http-proxy": "http://127.0.0.1:10809",
+	"https-proxy": "http://127.0.0.1:10809",
+	"no-proxy": "localhost,127.0.0.1,.example.com,*.barryzzj.top"
+  }
+}
 sudo systemctl restart docker
 
 运行容器：

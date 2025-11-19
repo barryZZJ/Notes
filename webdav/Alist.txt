@@ -79,6 +79,13 @@ Webdav管理：（使用/dav路径挂载的webdav）可写
 备份：
 注意恢复后测试一下用户能否登录，好像登录时会提示密码错误。
 
+配置单点登录：
+https://github.com/AlistGo/alist/discussions/7181
+https://alistgo.com/guide/advanced/sso.html#single-sign-on-client-secrets
+教程里说的是错的，问号前面不需要加斜杠。
+配置完参数后，需要在个人资料——绑定单点登陆平台
+记得把配置里的site_url去掉，否则sso访问时用的redirect_uri固定为site_url，（如果不设置则是当前使用的host）
+
 === 挂载 ===
 通用：登录后下方“管理”/存储/
 提取文件夹：把文件夹和文件分开显示，如果不选的话是会混在一起的

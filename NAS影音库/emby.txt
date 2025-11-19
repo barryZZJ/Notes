@@ -31,6 +31,15 @@ http://localhost:8096/emby/System/Info/Public
 多版本电影，extras不识别：
 需要把每个版本的文件名修改为文件夹名
 
+Auto-login:
+https://emby.media/community/index.php?/topic/135000-login-into-web-app-with-http-headers-how-can-i-make-it-happen/
+获取token：
+	curl 'http://embyserver:port/Users/AuthenticateByName?api_key=[api key i created from admin panel]' -H 'Content-Type: application/json; charset=UTF-8' --data-raw '{"Username":"[my username]","Pw":"[my user passord]"}' --compressed
+浏览器：
+	JSON.parse(localStorage.servercredentials3).Servers[0].Users
+
+bj: http://myflaskserver.barryzzj.top:23354/dd/dormemby/web/index.html?userId=f922910a982949218520d87cf7960134&accessToken=2a707af79e524692b366b5c2274f485f&e=1
+dd: http://myflaskserver.barryzzj.top:23354/dd/ddemby/web/index.html?userId=8e2da2a8e20f4e7b81be996d2fc3bfcb&accessToken=d44a6a5a9b3d492f8c700047f33ec303&e=1
 
 emby user hub
 https://note.mmdns.top/archives/embyuserhub-embyyong-hu-guan-li-xi-tong

@@ -1,0 +1,21 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2025-11-18T19:51:22+08:00
+
+====== authentik ======
+Created 星期二 18 十一月 2025
+
+install:
+https://docs.goauthentik.io/install-config/install/docker-compose/
+
+configs:
+https://docs.goauthentik.io/install-config/configuration/
+
+重置akadmin密码
+https://docs.goauthentik.io/troubleshooting/login
+
+已有应用的接入教程
+https://integrations.goauthentik.io/applications/
+
+认证api格式：
+http://authentik.barryzzj.top:23354/application/o/<slug[[>/]]

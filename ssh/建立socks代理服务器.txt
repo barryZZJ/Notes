@@ -5,7 +5,7 @@ Creation-Date: 2025-11-13T13:42:02+08:00
 ====== 建立socks代理服务器 ======
 Created 星期四 13 十一月 2025
 
-在本地客户端建立socks一个代理，监听绑定的地址，以目标服务器为跳板发起请求
+目标服务器为socks代理发起请求，代理监听本地绑定的地址
 ssh -N -g -D 0.0.0.0:1080 user@jump.example.com
 
 -D [bind_address:]port  
