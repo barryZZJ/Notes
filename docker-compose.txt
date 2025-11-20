@@ -56,4 +56,8 @@ docker compose pull
 映射虚拟路径和实际路径：
 volumnes:
 	- ./host/path:/container/path
+默认挂载在/var/lib/docker/volumes中
+docker volume ls
+docker volume inspect <id>
+
 

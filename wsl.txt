@@ -6,7 +6,7 @@ Creation-Date: 2024-08-19T11:21:35+08:00
 Created 星期一 19 八月 2024
 
 https://learn.microsoft.com/en-us/windows/wsl/install
-wsl --install
+wsl --install --no-distribution
 
 https://learn.microsoft.com/en-us/windows/wsl/basic-commands
 

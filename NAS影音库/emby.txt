@@ -5,6 +5,9 @@ Creation-Date: 2025-07-10T12:53:33+08:00
 ====== emby ======
 Created 星期四 10 七月 2025
 
+API
+https://dev.emby.media/doc/restapi/User-Authentication.html?q=login
+
 关闭转码功能：
 设置——用户——播放
 

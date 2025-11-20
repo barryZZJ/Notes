@@ -5,6 +5,8 @@ Creation-Date: 2025-11-18T19:51:22+08:00
 ====== authentik ======
 Created 星期二 18 十一月 2025
 
+登陆后会有applications列表，相当于我们的myflaskserver dd dashboard
+
 install:
 https://docs.goauthentik.io/install-config/install/docker-compose/
 
@@ -18,4 +20,20 @@ https://docs.goauthentik.io/troubleshooting/login
 https://integrations.goauthentik.io/applications/
 
 认证api格式：
-http://authentik.barryzzj.top:23354/application/o/<slug[[>/]]
+''http://authentik.barryzzj.top:23354/application/o/<slug>/''
+
+
+API:
+https://api.goauthentik.io/
+
+
+邀请注册：
+https://docs.goauthentik.io/users-sources/user/invitations/
+
+添加OAuth / OIDC Provider:
+参考 [[webdav:Alist]]
+Authorization Flow： implicit 和 explicit 的区别是后者多点一步确认
+
+
+
+

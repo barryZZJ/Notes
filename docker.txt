@@ -48,6 +48,8 @@ https://github.com/dongyubin/DockerHub
   }
 }
 sudo systemctl restart docker
+或
+Docker desktop: 设置中手动指定
 
 运行容器：
 docker run -d -p 8000:8000 easychen/rsspush
@@ -80,6 +82,9 @@ docker rmi <image_name_or_id>
 -f 强制删除
 删除所有未使用的镜像：
 docker image prune
+
+删除所有未使用的挂载卷：
+docker volume prune
 
 容器迁移
 https://docs.docker.com/desktop/settings-and-maintenance/backup-and-restore/

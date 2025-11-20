@@ -1,0 +1,72 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2025-11-19T23:13:05+08:00
+
+====== Nginx Proxy Manager ======
+Created 星期三 19 十一月 2025
+
+https://nginxproxymanager.com/advanced-config/
+
+相当于lucky的反向代理+、frp的http++，他们本质上应该也是用的nginx。
+
+后台WebUI配置界面：访问容器81端口。配置完可以关掉这个端口
+
+配置好后，使用域名访问容器80端口，即可反代
+
+配置：
+- New Proxy Host  反向代理
+Domain Names: 给内部服务配置一个域名，如app.domain.com，且这个域名指向当前服务器
+Forward Hostname / IP、Forward Port：内部服务实际地址、端口（服务器要能访问到）。host.docker.internal 表示容器所在的主机的ip
+访问app.domain.com:容器80，即可反代到内部服务
+
+Custom Locations: 二级反代
+
+Proxy Hosts 是反向代理
+Reidrection Hosts 是重定向
+Add Access List 配置访问权限
+
+
+
+搭建：
+services:
+  app:
+	image: 'jc21/nginx-proxy-manager:latest'
+	restart: unless-stopped
+	environment:
+	  TZ: "Asia/Shanghai"
+	  # Mysql/Maria connection parameters:
+	  DB_MYSQL_HOST: "db"
+	  DB_MYSQL_PORT: 3306
+	  DB_MYSQL_USER: "npm"
+	  DB_MYSQL_PASSWORD: "iz4Gv1WfSXuGCJo"
+	  DB_MYSQL_NAME: "npm"
+	  # Optional SSL (see section below)
+	  # DB_MYSQL_SSL: 'true'
+	  # DB_MYSQL_SSL_REJECT_UNAUTHORIZED: 'true'
+	  # DB_MYSQL_SSL_VERIFY_IDENTITY: 'true'
+	  # Uncomment this if IPv6 is not enabled on your host
+	  # DISABLE_IPV6: 'true'
+	ports:
+	  - '8070:80'
+	  - '8071:81' # admin UI
+	  - '8443:443'
+	volumes:
+	  - ./data:/data
+	  - ./letsencrypt:/etc/letsencrypt
+	depends_on:
+	  - db
+
+  db:
+	image: 'jc21/mariadb-aria:latest'
+	restart: unless-stopped
+	environment:
+	  MYSQL_ROOT_PASSWORD: 'iz4Gv1WfSXuGCJo'
+	  MYSQL_DATABASE: 'npm'
+	  MYSQL_USER: 'npm'
+	  MYSQL_PASSWORD: 'iz4Gv1WfSXuGCJo'
+	  MARIADB_AUTO_UPGRADE: '1'
+	volumes:
+	  - ./mysql:/var/lib/mysql
+
+docker composer up -d
+登录hostname:8071配置

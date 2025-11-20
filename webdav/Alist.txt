@@ -82,9 +82,29 @@ Webdav管理：（使用/dav路径挂载的webdav）可写
 配置单点登录：
 https://github.com/AlistGo/alist/discussions/7181
 https://alistgo.com/guide/advanced/sso.html#single-sign-on-client-secrets
-教程里说的是错的，问号前面不需要加斜杠。
-配置完参数后，需要在个人资料——绑定单点登陆平台
-记得把配置里的site_url去掉，否则sso访问时用的redirect_uri固定为site_url，（如果不设置则是当前使用的host）
+Authentik:
+	Authorization flow: default-provider-authorization-implicit-consent
+	Redirect URIs: 
+	(Regex)
+	http://ddalist\.ddasus\.barryzzj\.top:\d+/api/auth/sso_callback\?method=(sso_get_token|get_sso_id)
+	http://bjalist\.ddasus\.barryzzj\.top:\d+/api/auth/sso_callback\?method=(sso_get_token|get_sso_id)
+	http://192\.168\.50\.1:\d+/api/auth/sso_callback\?method=(sso_get_token|get_sso_id)
+	http://localhost:\d+/api/auth/sso_callback\?method=(sso_get_token|get_sso_id)
+	http://127\.0\.0\.1:\d+/api/auth/sso_callback\?method=(sso_get_token|get_sso_id)
+
+Alist:
+	SSO oidc username key（不能改）: preferred_username
+	单点登录组织/用户名称：authentik
+	Sso endpoint name: http://authentik.barryzzj.top:23354/application/o/alist-dd/
+	自动注册：√ 开启后，新用户用authentik登录，会自动创建一个用户，用户名同authentik内的用户名。
+	兼容模式：×
+	权限：用户权限二进制转十进制，如“无需密码访问”为2
+	个人资料——绑定单点登陆平台。否则会视为新用户
+	记得把配置里的site_url去掉，否则sso访问时用的redirect_uri固定为site_url，（如果不设置则是当前使用的host）
+Lucky：
+	关闭“自动反代重定向”，否则跳转不到authentik
+	
+
 
 === 挂载 ===
 通用：登录后下方“管理”/存储/

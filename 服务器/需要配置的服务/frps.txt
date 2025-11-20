@@ -140,6 +140,6 @@ Ping测试：
 
 其他服务：
 提供简单的文件访问服务
-https://gofrp.org/docs/examples/static-file/
+https://gofrp.org/[[https://gofrp.org/zh-cn/docs/examples/vhost-http/|zh-cn/]][[docs/examples/static-file/]]
 内网web服务
-https://gofrp.org/docs/examples/vhost-http/
+https://gofrp.org/zh-cn/docs/examples/vhost-http/
