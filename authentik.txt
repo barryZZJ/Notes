@@ -22,17 +22,48 @@ https://integrations.goauthentik.io/applications/
 认证api格式：
 ''http://authentik.barryzzj.top:23354/application/o/<slug>/''
 
-
 API:
 https://api.goauthentik.io/
-
 
 邀请注册：
 https://docs.goauthentik.io/users-sources/user/invitations/
 
+=== Provider： ===
+配置一个认证服务器。接入的http应用会通过访问provider，管provider要鉴权信息。
+
 添加OAuth / OIDC Provider:
 参考 [[webdav:Alist]]
 Authorization Flow： implicit 和 explicit 的区别是后者多点一步确认
+
+Proxy Provider：
+需要给自建服务设置一个反代服务（如nginx、NPM、traefik）（一个自建服务对应一个反代，现在反代就看做自建服务本身），在反代里加入authentik的鉴权地址，这样就能利用反代服务跳转到认证页面，记录认证的cookie了。
+
+=== Outpost: ===
+https://docs.goauthentik.io/add-secure-apps/outposts/
+把provider的活抽离出来，负责与自建服务的api进行交互鉴权，一般是跟自建服务部署在同一主机上，方便自建服务跟outpost指定的端口进行交互。
+一个自建服务对应一个outpost。
+outpost则通过api与authentik交互。
+默认会有一个authentik embeded outpost部署在authentik主机上。
+
+如果自建服务运行在本机，可以使用自动配置的outpost：
+	编辑/新建outpost——integration选Local Docker connection即可
+	由authentik管理，会自动连接本地docker，然后自动创建一个outpost容器。
+	如果是Proxy类型的，端口也是9000、9443，会跟authentik冲突，所以要么用默认的authentik embeded outpost，要么下面的手动创建。
+	
+	高级设置 outpost所在容器的一些设置：（貌似不用配置，保留默认就可以）参考：https://www.bilibili.com/video/BV12z421C7hU/ 11:45
+		如果outpost访问不到authentik，需要修改：
+			authentik_host: http://authentik-server-1:9000/  (来自docker ps）
+			docker_network: authentik_default  (来自docker network ls)
+
+如果自建服务在别的主机，考虑手动创建outpost，再配置outpost连接authentik
+/如果自建服务在docker里，也可以考虑手动创建outpost，让outpost与自建服务同时开关
+	https://docs.goauthentik.io/add-secure-apps/outposts/manual-deploy-docker-compose/
+	参考：https://www.bilibili.com/video/BV1Mb421a7fF  4:23
+	outpost用的也是9000和9443，所以如果和authentik在同一主机上，需要修改端口
+
+然后配置反代服务，让反代访问provider：
+
+	
 
 
 

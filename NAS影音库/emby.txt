@@ -37,7 +37,11 @@ http://localhost:8096/emby/System/Info/Public
 Auto-login:
 https://emby.media/community/index.php?/topic/135000-login-into-web-app-with-http-headers-how-can-i-make-it-happen/
 获取token：
-	curl 'http://embyserver:port/Users/AuthenticateByName?api_key=[api key i created from admin panel]' -H 'Content-Type: application/json; charset=UTF-8' --data-raw '{"Username":"[my username]","Pw":"[my user passord]"}' --compressed
+	curl "http://192.168.50.200:8096/Users/AuthenticateByName?api_key=a42424cf8d88415e9cd09e5e7c199499" -H "Content-Type: application/json; charset=UTF-8" --data-raw "{\"Username\":\"barry\",\"Pw\":\"G8p9MET3Gg\"}" --compressed
+
+	curl "http://192.168.50.200:8096/Users/AuthenticateByName?api_key=306c5468d1734b73851a6604f379b23b" -H "Content-Type: application/json; charset=UTF-8" --data-raw "{\"Username\":\"barry\",\"Pw\":\"G8p9MET3Gg\"}" --compressed
+	result：
+	{"User":{"Name":"barry","ServerId":"fc5668c1b40242cbb8a1f3482d44932b","Prefix":"B","DateCreated":"2025-07-05T08:18:06.3854512Z","Id":"f922910a982949218520d87cf7960134","PrimaryImageTag":"ab44c9c0bbd36a56ef4d2d0c3feb9d0c","HasPassword":true,"HasConfiguredPassword":true,"LastLoginDate":"2025-11-20T16:56:15.6550689Z","LastActivityDate":"2025-11-20T16:56:15.6556198Z","Configuration":{"PlayDefaultAudioTrack":true,"DisplayMissingEpisodes":false,"SubtitleMode":"Smart","OrderedViews":[],"LatestItemsExcludes":["10357d6b7c2842e99970ebc5fbcda717","28fba16c10f7454b87f196c6bcea90fc","35720c0e7d1645bdafb85948fe849175","35f2b9ef147e4253bb86a6dd50db4a05"],"MyMediaExcludes":[],"HidePlayedInLatest":true,"HidePlayedInMoreLikeThis":false,"HidePlayedInSuggestions":false,"RememberAudioSelections":true,"RememberSubtitleSelections":true,"EnableNextEpisodeAutoPlay":true,"ResumeRewindSeconds":0,"IntroSkipMode":"ShowButton","EnableLocalPassword":false},"Policy":{"IsAdministrator":true,"IsHidden":false,"IsHiddenRemotely":true,"IsHiddenFromUnusedDevices":false,"IsDisabled":false,"LockedOutDate":0,"AllowTagOrRating":false,"BlockedTags":[],"IsTagBlockingModeInclusive":false,"IncludeTags":[],"EnableUserPreferenceAccess":true,"AccessSchedules":[],"BlockUnratedItems":[],"EnableRemoteControlOfOtherUsers":true,"EnableSharedDeviceControl":true,"EnableRemoteAccess":true,"EnableLiveTvManagement":true,"EnableLiveTvAccess":true,"EnableMediaPlayback":true,"EnableAudioPlaybackTranscoding":false,"EnableVideoPlaybackTranscoding":false,"EnablePlaybackRemuxing":true,"EnableContentDeletion":true,"RestrictedFeatures":[],"EnableContentDeletionFromFolders":[],"EnableContentDownloading":true,"EnableSubtitleDownloading":true,"EnableSubtitleManagement":true,"EnableSyncTranscoding":true,"EnableMediaConversion":true,"EnabledChannels":[],"EnableAllChannels":true,"EnabledFolders":[],"EnableAllFolders":true,"InvalidLoginAttemptCount":0,"EnablePublicSharing":true,"RemoteClientBitrateLimit":0,"AuthenticationProviderId":"Emby.Server.Implementations.Library.DefaultAuthenticationProvider","ExcludedSubFolders":[],"SimultaneousStreamLimit":0,"EnabledDevices":[],"EnableAllDevices":true,"AllowCameraUpload":true,"AllowSharingPersonalItems":true},"PrimaryImageAspectRatio":1,"HasConfiguredEasyPassword":false},"SessionInfo":{"PlayState":{"CanSeek":false,"IsPaused":false,"IsMuted":false,"RepeatMode":"RepeatNone","SubtitleOffset":0,"Shuffle":false,"PlaybackRate":1},"AdditionalUsers":[],"RemoteEndPoint":"192.168.50.200","Protocol":"HTTP/1.1","PlayableMediaTypes":[],"PlaylistIndex":0,"PlaylistLength":0,"Id":"e7c839c5e9d5a406b0f23c9a20cebd56","ServerId":"fc5668c1b40242cbb8a1f3482d44932b","UserId":"f922910a982949218520d87cf7960134","UserName":"barry","UserPrimaryImageTag":"ab44c9c0bbd36a56ef4d2d0c3feb9d0c","Client":"authentik","LastActivityDate":"2025-11-20T16:56:15.6556198Z","DeviceName":"Sheldor's Emby at bj","InternalDeviceId":2,"DeviceId":"fc5668c1b40242cbb8a1f3482d44932b","ApplicationVersion":"4.8.11.0","SupportedCommands":[],"SupportsRemoteControl":false},"AccessToken":"9250ba7a710f42c9ae8b7dbd2fc95012","ServerId":"fc5668c1b40242cbb8a1f3482d44932b"}
 浏览器：
 	JSON.parse(localStorage.servercredentials3).Servers[0].Users
 
@@ -49,3 +53,10 @@ https://note.mmdns.top/archives/embyuserhub-embyyong-hu-guan-li-xi-tong
 
 emby signup
 https://github.com/onelxzy/emby_signup
+
+
+
+LDAP + authentik:
+https://www.bilibili.com/video/BV12z421C7hU
+意思是在authentik上建一个LDAP服务器，注册好对应的用户，然后emby通过LDAP向authentik发送登录请求。使用效果是在emby登陆页面输入配置好的LDAP用户，就能直接登陆进去。
+需要premier用户才能使用LDAP插件
