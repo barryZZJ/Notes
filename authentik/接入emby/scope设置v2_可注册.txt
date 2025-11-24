@@ -1,0 +1,109 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2025-11-22T20:54:05+08:00
+
+====== scope设置v2 可注册 ======
+Created 星期六 22 十一月 2025
+
+''import json''
+''from urllib.parse import urlencode''
+''from urllib.request import Request, urlopen''
+''import secrets''
+
+''API_KEY = "306c5468d1734b73851a6604f379b23b"''
+''BASE_URL = "http://192.168.20.1:28096"  #make sure Authentik can access Emby. i user server:port because they are on the same network but one can also use domain''
+''RESP_HEADER_USER = 'X-Emby-Username' # 自定义header，转发给npm''
+''RESP_HEADER_PW = 'X-Emby-Password' # 自定义header，转发给npm''
+''USERNAME_KEY = 'bjemby_username'''
+''PASSWORD_KEY = 'bjemby_password'''
+
+''TEMPLATE_USERID = "8daba53ee6564c00b8052f4bef813678"''
+
+''if request.user.username == "":''
+	''return "null"''
+
+''def generate_password(size=15):''
+	''return secrets.token_urlsafe(size)  # Generate a random 15-character password''
+
+''def _api_create_new_user(username, password):''
+	''# Step 1: Create the new user by copying from the template user''
+	''create_user_endpoint = f"{BASE_URL}/emby/Users/New?api_key={API_KEY}"''
+	''create_user_headers = {"Content-Type": "application/json; charset=UTF-8"}''
+
+	''retry = 5''
+	''new_username = username''
+	''while retry:''
+		''create_user_payload = {''
+			''"Name": new_username,''
+			''"CopyFromUserId": TEMPLATE_USERID,''
+			''"UserCopyOptions": ["UserPolicy" ,"UserConfiguration"]''
+		''}''
+		''try:''
+			''create_user_request = Request(create_user_endpoint, data=json.dumps(create_user_payload).encode(), method="POST", headers=create_user_headers)''
+			''with urlopen(create_user_request) as response:''
+				''response_data = response.read().decode()''
+			''response_json = json.loads(response_data)''
+			''user_id = response_json["Id"]  # Get the new user's ID''
+			''return user_id, new_username''
+		''except Exception as e:''
+			''if hasattr(e, 'code') and e.code == 400:''
+				''error_response = e.read().decode()''
+				''if "already exists" in error_response:''
+					''# Username already exists, generate a new one and retry''
+					''new_username = f"{username}_{secrets.token_hex(3)}"''
+				''else:''
+					''raise e''
+			''else:''
+				''raise e''
+		''retry -= 1''
+
+''def _api_update_password(user_id, new_password):''
+	''# Step 2: Set the password for the new user''
+	''set_password_endpoint = f"{BASE_URL}/emby/Users/{user_id}/Password?api_key={API_KEY}"''
+	''set_password_payload = {''
+		''"NewPw": new_password''
+	''}''
+	''create_user_headers = {"Content-Type": "application/json; charset=UTF-8"}''
+
+	''set_password_request = Request(set_password_endpoint, data=json.dumps(set_password_payload).encode(), method="POST", headers=create_user_headers)''
+	''with urlopen(set_password_request) as response:''
+		''if response.status != 204:  # Expecting a 204 No Content response''
+			''raise RuntimeError("Failed to set password for the user.")''
+
+''def sign_up(username):''
+	''# Generate a unique password for the new user''
+	''password = generate_password(15)''
+	''user_id, username = _api_create_new_user(username, password)''
+	''_api_update_password(user_id, password)''
+
+	''# Return the new username and password''
+	''return username, password''
+
+''embyuser = request.user.attributes.get(USERNAME_KEY, "")''
+''embypass = request.user.attributes.get(PASSWORD_KEY, "")''
+
+''if embyuser == "" or embypass == "":''
+	''# new user, need sign up''
+	''try:''
+		''embyuser, embypass = sign_up(request.user.username)''
+		''# if sign up successful''
+		''# save to user attributes''
+		''request.user.attributes[USERNAME_KEY] = embyuser''
+		''request.user.attributes[PASSWORD_KEY] = embypass''
+		''request.user.save()''
+	''except Exception as e:''
+		''# sign up failed''
+		''# raise e''
+		''return "null"''
+
+
+''return {''
+	''"ak_proxy": {''
+		''"user_attributes": {''
+			''"additionalHeaders": {''
+				''RESP_HEADER_USER: embyuser,''
+				''RESP_HEADER_PW: embypass''
+			''}''
+		''}''
+	''}''
+''}''

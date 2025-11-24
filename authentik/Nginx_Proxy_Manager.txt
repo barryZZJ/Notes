@@ -10,63 +10,43 @@ https://nginxproxymanager.com/advanced-config/
 相当于lucky的反向代理+、frp的http++，他们本质上应该也是用的nginx。
 
 后台WebUI配置界面：访问容器81端口。配置完可以关掉这个端口
+使用反代服务：使用域名访问容器80端口，即可反代
 
-配置好后，使用域名访问容器80端口，即可反代
+搭建：[[+docker-compose配置]]
+	docker composer up -d
+	登录hostname:81 配置UI界面
+	使用hostname:13000使用反代服务
 
-配置：
-- New Proxy Host  反向代理
-Domain Names: 给内部服务配置一个域名，如app.domain.com，且这个域名指向当前服务器
-Forward Hostname / IP、Forward Port：内部服务实际地址、端口（服务器要能访问到）。host.docker.internal 表示容器所在的主机的ip
-访问app.domain.com:容器80，即可反代到内部服务
+进入UI后台配置：
+New Proxy Host  反向代理
+	Domain Names: 给内部服务配置一个域名，如app.domain.com，且这个域名指向当前服务器
+	Forward Hostname / IP、Forward Port：内部服务实际地址、端口（服务器要能访问到）。host.docker.internal 表示容器所在的主机的ip
+	访问app.domain.com:容器80，即可反代到内部服务
 
 Custom Locations: 二级反代
 
-Proxy Hosts 是反向代理
 Reidrection Hosts 是重定向
 Add Access List 配置访问权限
 
+高级设置配置debug log：
+	access_log /data/logs/authentik_access.log;
+	error_log /data/logs/authentik_error.log debug;
 
+	或者用lua调试：
+	access_by_lua_block {
+		ngx.log(ngx.ERR, "str", ngx.var.emby_username)
+	}
+	access_by_lua_block: Runs during the access phase, typically used for authentication or access control.
+	content_by_lua_block: Runs during the content generation phase, used to generate dynamic responses.
+	log_by_lua_block: Runs during the logging phase, after the request is processed.
 
-搭建：
-services:
-  app:
-	image: 'jc21/nginx-proxy-manager:latest'
-	restart: unless-stopped
-	environment:
-	  TZ: "Asia/Shanghai"
-	  # Mysql/Maria connection parameters:
-	  DB_MYSQL_HOST: "db"
-	  DB_MYSQL_PORT: 3306
-	  DB_MYSQL_USER: "npm"
-	  DB_MYSQL_PASSWORD: "iz4Gv1WfSXuGCJo"
-	  DB_MYSQL_NAME: "npm"
-	  # Optional SSL (see section below)
-	  # DB_MYSQL_SSL: 'true'
-	  # DB_MYSQL_SSL_REJECT_UNAUTHORIZED: 'true'
-	  # DB_MYSQL_SSL_VERIFY_IDENTITY: 'true'
-	  # Uncomment this if IPv6 is not enabled on your host
-	  # DISABLE_IPV6: 'true'
-	ports:
-	  - '8070:80'
-	  - '8071:81' # admin UI
-	  - '8443:443'
-	volumes:
-	  - ./data:/data
-	  - ./letsencrypt:/etc/letsencrypt
-	depends_on:
-	  - db
+	编译conf错误会显示在/var/log/nginx/error.log
 
-  db:
-	image: 'jc21/mariadb-aria:latest'
-	restart: unless-stopped
-	environment:
-	  MYSQL_ROOT_PASSWORD: 'iz4Gv1WfSXuGCJo'
-	  MYSQL_DATABASE: 'npm'
-	  MYSQL_USER: 'npm'
-	  MYSQL_PASSWORD: 'iz4Gv1WfSXuGCJo'
-	  MARIADB_AUTO_UPGRADE: '1'
-	volumes:
-	  - ./mysql:/var/lib/mysql
+	如果报找不到/连不上 host.docker.internal 记得把代理关掉
 
-docker composer up -d
-登录hostname:8071配置
+	lua内注释为双横线，不能有井号
+
+测试npm与authentik连通性：
+docker exec -it <container_id> sh
+# curl -I http://authentik-server-1:9000  # docker ps
+

@@ -1,0 +1,134 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2025-11-22T01:11:13+08:00
+
+====== 反代配置 跳转 通用端口v2 ======
+Created 星期六 22 十一月 2025
+
+''# $http_host 端口存在则显示''
+''# $host 不显示端口''
+''client_max_body_size 100M;''
+''proxy_set_header X-Real-IP $remote_addr;''
+''proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;''
+''proxy_set_header X-Forwarded-Proto $scheme;''
+''proxy_set_header Sec-WebSocket-Extensions $http_sec_websocket_extensions;''
+''proxy_set_header Sec-WebSocket-Key $http_sec_websocket_key;''
+''proxy_set_header Sec-WebSocket-Version $http_sec_websocket_version;''
+''proxy_set_header Upgrade $http_upgrade;''
+''proxy_set_header Connection "Upgrade";''
+''proxy_redirect off;''
+''proxy_buffering off;''
+
+
+''# 适合只做认证，认证通过后跳转到实际地址。需要能通过参数直接登录的情况，否则需要配置反代。''
+''# 支持反代容器80绑定到主机任意端口''
+''# 效果：访问/，会跳转至统一身份认证，通过后则会302到emby实际地址''
+
+
+''location /{''
+	''proxy_set_header Upgrade $http_upgrade;''
+
+	''auth_request     /outpost.goauthentik.io/auth/nginx;''
+	''error_page       401 = @goauthentik_proxy_signin;  # 未登陆时走''
+	''auth_request_set $auth_cookie $upstream_http_set_cookie;''
+	''add_header       Set-Cookie $auth_cookie;''
+    
+	''# Retrieve emby_username and emby_password from upstream headers''
+	''auth_request_set $emby_username $upstream_http_x_dd_emby_username;''
+	''auth_request_set $emby_password $upstream_http_x_dd_emby_password;''
+    
+	''# Use a subrequest to fetch the access token''
+	''auth_request_set $ddembyuri "";'' 
+	''access_by_lua_block {''
+		''local username = ngx.var.emby_username''
+		''local password = ngx.var.emby_password''
+		''local api_key = "a42424cf8d88415e9cd09e5e7c199499"''
+		''local base_url = "http://host.docker.internal:8096"''
+
+
+		''local http = require("resty.http")''
+		''local httpc = http.new()''
+
+		''ngx.log(ngx.ERR, "Debug: Username = ", username, ", Password = ", password)''
+		''local res, err = httpc:request_uri(base_url .. "/Users/AuthenticateByName?api_key=" .. api_key, {''
+			''method = "POST",''
+			''body = string.format('{"Username":"%s","Pw":"%s"}', username, password),''
+			''headers = {''
+				''["Content-Type"] = "application/json; charset=UTF-8"''
+			''}''
+		''})''
+		''-- 如果报connect() to [fdc4:f303:9324::254]:8096 failed (101: Network is unreachable)，检查vpn。''
+		''-- 如果没问题，检查emby的log，也可能是认证数据有误''
+
+		''if not res then''
+			''ngx.log(ngx.ERR, "Failed to fetch access token: ", err)''
+			''ngx.var.ddembyuri = ""''
+			''do return end''
+		''end''
+
+		''if res.body and string.find(res.body, "无效用户名或密码") then''
+			''ngx.log(ngx.ERR, "Debug: Invalid username or password")''
+			''ngx.log(ngx.ERR, "Debug: Username = ", username, ", Password = ", password)''
+			''ngx.var.ddembyuri = ""''
+			''do return end''
+		''end''
+
+
+		''local cjson = require("cjson")''
+		''local data''
+        
+		''pcall(function()''
+			''data = cjson.decode(res.body)''
+		''end)''
+
+		''if not data then''
+			''ngx.log(ngx.ERR, "Debug: Failed to parse JSON response")''
+			''ngx.log(ngx.ERR, "Debug: Response Body = ", res.body)''
+			''ngx.var.ddembyuri = ""''
+			''do return end''
+		''end''
+
+		''if not data.User or not data.AccessToken then''
+			''ngx.log(ngx.ERR, "Debug: Invalid response structure")''
+			''ngx.log(ngx.ERR, "Debug: Response Body = ", res.body)''
+			''ngx.var.ddembyuri = ""''
+			''do return end''
+		''end''
+
+		''ngx.var.ddembyuri = "/web/index.html?userId=" .. data.User.Id .. "&accessToken=" .. data.AccessToken .. "&e=1"''
+		''ngx.log(ngx.ERR, "Debug: ddembyuri = ", ngx.var.ddembyuri)''
+        
+	''}''
+	''try_files        "" @redirect_ddemby; # necessary''
+
+''}''
+
+
+''location @redirect_signout {''
+	''add_header Set-Cookie $auth_cookie;''
+	''return     302 /outpost.goauthentik.io/sign_out;''
+''}''
+
+
+''location @redirect_ddemby {''
+	''add_header Set-Cookie $auth_cookie;''
+	''return     302 http://myflaskserver.barryzzj.top:23354/dd/ddemby$ddembyuri;''
+''}''
+
+''location /outpost.goauthentik.io {''
+	''proxy_pass              http://authentik-server-1:9000/outpost.goauthentik.io;''
+	''proxy_set_header        Host $http_host; # 要跟Provider中的external host一致才可通过校验(要带端口)，且external host会影响redirect_uri的地址生成，所以必须要填浏览器能访问的''
+	''proxy_set_header        X-Original-URL $scheme://$http_host$request_uri; # necessary, otherwise \authentik returns 500''
+	''add_header              Set-Cookie $auth_cookie;''
+	''auth_request_set        $auth_cookie $upstream_http_set_cookie;''
+	''proxy_pass_request_body off;''
+	''proxy_set_header        Content-Length "";''
+''}''
+
+''location @goauthentik_proxy_signin {''
+	''internal;''
+	''add_header Set-Cookie $auth_cookie;''
+	''return 302 $scheme://$http_host/outpost.goauthentik.io/start?rd=$request_uri;''
+''}''
+
+

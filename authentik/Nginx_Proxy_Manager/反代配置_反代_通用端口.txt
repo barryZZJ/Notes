@@ -1,0 +1,56 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2025-11-22T01:11:37+08:00
+
+====== 反代配置 反代 通用端口 ======
+Created 星期六 22 十一月 2025
+
+''# 适合需要使用反代访问emby的情况（一般不需要，仅供参考），访问根目录则是emby原登陆界面，访问/authentik即可进行统一身份认证，成功后会跳转至登陆后的界面''
+''# 支持反代容器80绑定到主机任意端口''
+
+''# $http_host 端口存在则显示''
+''# $host 不显示端口''
+''client_max_body_size 100M;''
+''proxy_set_header X-Real-IP $remote_addr;''
+''proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;''
+''proxy_set_header X-Forwarded-Proto $scheme;''
+''proxy_set_header Sec-WebSocket-Extensions $http_sec_websocket_extensions;''
+''proxy_set_header Sec-WebSocket-Key $http_sec_websocket_key;''
+''proxy_set_header Sec-WebSocket-Version $http_sec_websocket_version;''
+''proxy_set_header Upgrade $http_upgrade;''
+''proxy_set_header Connection "Upgrade";''
+''proxy_redirect off;''
+''proxy_buffering off;''
+
+''location /authentik {''
+	''proxy_set_header Upgrade $http_upgrade;''
+
+	''auth_request     /outpost.goauthentik.io/auth/nginx;  # 不能加scheme,host,port''
+	''error_page       401 = @goauthentik_proxy_signin;  # 未登陆时走''
+	''auth_request_set $auth_cookie $upstream_http_set_cookie;''
+	''add_header       Set-Cookie $auth_cookie;''
+	''auth_request_set $authentik_embyuri $upstream_http_x_emby_uri;''
+	''try_files        "" @redirect; # necessary''
+
+''}''
+
+''location @redirect {''
+	''add_header Set-Cookie $auth_cookie;''
+	''return     302 $scheme://$http_host$authentik_embyuri;''
+''}''
+
+''location /outpost.goauthentik.io {''
+	''proxy_pass              http://authentik-server-1:9000/outpost.goauthentik.io;''
+	''proxy_set_header        Host $http_host; # 要跟Provider中的external host一致才可通过校验(要带端口)，且external host会影响redirect_uri的地址生成，所以必须要填浏览器能访问的''
+	''proxy_set_header        X-Original-URL $scheme://$http_host$request_uri; # necessary, otherwise \authentik returns 500''
+	''add_header              Set-Cookie $auth_cookie;''
+	''auth_request_set        $auth_cookie $upstream_http_set_cookie;''
+	''proxy_pass_request_body off;''
+	''proxy_set_header        Content-Length "";''
+''}''
+
+''location @goauthentik_proxy_signin {''
+	''internal;''
+	''add_header Set-Cookie $auth_cookie;''
+	''return 302 $scheme://$http_host/outpost.goauthentik.io/start?rd=$request_uri;''
+''}''

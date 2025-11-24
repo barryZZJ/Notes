@@ -27,6 +27,21 @@ https://api.goauthentik.io/
 
 邀请注册：
 https://docs.goauthentik.io/users-sources/user/invitations/
+https://github.com/goauthentik/authentik/issues/9719#issuecomment-3064702888
+
+1. 下载 https://goauthentik.io/blueprints/example/flows-enrollment-2-stage.yaml
+2. 在Flow里import
+3. 在Stage里添加一个Invitation类型，名字随意
+4. 打开Flow的default-enrollment-flow —— Stage Bindings —— Bind existing stage —— 选择刚才创建的 invitation stage，order填0 ——完成
+
+添加密码复杂度要求：创建Password Policy，在default-enrollment-flow 的 prompt stage中Bind Policy，并配置fields
+自动添加到group：https://next.goauthentik.io/users-sources/user/invitations/#automatic-group-assignment
+添加为Internal User：修改default-enrollment-user-write
+
+
+=== Application ===
+配置访问权限：
+点开后，Policy / Group / User bindings，添加有访问权限的组/用户
 
 === Provider： ===
 配置一个认证服务器。接入的http应用会通过访问provider，管provider要鉴权信息。
@@ -36,35 +51,55 @@ https://docs.goauthentik.io/users-sources/user/invitations/
 Authorization Flow： implicit 和 explicit 的区别是后者多点一步确认
 
 Proxy Provider：
-需要给自建服务设置一个反代服务（如nginx、NPM、traefik）（一个自建服务对应一个反代，现在反代就看做自建服务本身），在反代里加入authentik的鉴权地址，这样就能利用反代服务跳转到认证页面，记录认证的cookie了。
+三种分类目前的理解：
+	Proxy：把自建服务用authentik (outpost)自动 包一层反代。authentik (outpost) 作为反代服务，访问External Host就是authentik (outpost) 的反代服务器，通过认证之后，跳转到Internal Host自建服务。（当然authentik和自建服务不用在同一台主机上）参考：https://integrations.goauthentik.io/media/tautulli/#authentik-configuration
+	Forward Auth：
+		自己手动给自建服务包一层反代（如nginx、NPM、traefik），一个自建服务对应一个反代，现在反代就看做自建服务本身，手动配置与 authentik (outpost) 的交互逻辑，用户访问External Host就是访问自己的反代服务器。
+		这样的好处就是自己反代的可控性更高，比如可以把鉴权入口放在一个单独的path，或者完全可以没有内部服务，而是直接302到实际服务，但前提是实际服务需要支持带token的访问方式，否则没法把鉴好的权传过去。
+		
+
+=== property-mappings: ===
+	传输authentik信息（如当前用户名）给自建服务
+Scope：
+https://next.goauthentik.io/add-secure-apps/providers/property-mappings/expression?utm_source=authentik
+https://next.goauthentik.io/add-secure-apps/providers/proxy
+	配置在provider上，决定provider如何与反代服务交互
+	可以通过静态、动态header转递信息：https://next.goauthentik.io/add-secure-apps/providers/proxy/custom_headers/
+	User object: https://next.goauthentik.io/users-sources/user/user_ref/
+	user.pk  # id: int
+	获取配置：
+	request.user.attributes.get('key', 'default')
+	存储信息：
+	request.user.attributes["test"] = "321"
+	request.user.save()
+	报错并不会提示，只是没有返回结果。要做好调试。
 
 === Outpost: ===
 https://docs.goauthentik.io/add-secure-apps/outposts/
+https://next.goauthentik.io/add-secure-apps/outposts/embedded/
+
 把provider的活抽离出来，负责与自建服务的api进行交互鉴权，一般是跟自建服务部署在同一主机上，方便自建服务跟outpost指定的端口进行交互。
 一个自建服务对应一个outpost。
 outpost则通过api与authentik交互。
 默认会有一个authentik embeded outpost部署在authentik主机上。
 
-如果自建服务运行在本机，可以使用自动配置的outpost：
+如果自建服务运行在本机，可以使用自动配置的embedded outpost：
 	编辑/新建outpost——integration选Local Docker connection即可
 	由authentik管理，会自动连接本地docker，然后自动创建一个outpost容器。
 	如果是Proxy类型的，端口也是9000、9443，会跟authentik冲突，所以要么用默认的authentik embeded outpost，要么下面的手动创建。
 	
-	高级设置 outpost所在容器的一些设置：（貌似不用配置，保留默认就可以）参考：https://www.bilibili.com/video/BV12z421C7hU/ 11:45
-		如果outpost访问不到authentik，需要修改：
-			authentik_host: http://authentik-server-1:9000/  (来自docker ps）
-			docker_network: authentik_default  (来自docker network ls)
-
 如果自建服务在别的主机，考虑手动创建outpost，再配置outpost连接authentik
 /如果自建服务在docker里，也可以考虑手动创建outpost，让outpost与自建服务同时开关
 	https://docs.goauthentik.io/add-secure-apps/outposts/manual-deploy-docker-compose/
 	参考：https://www.bilibili.com/video/BV1Mb421a7fF  4:23
 	outpost用的也是9000和9443，所以如果和authentik在同一主机上，需要修改端口
 
-然后配置反代服务，让反代访问provider：
+高级设置 outpost所在容器的一些设置：参考：https://www.bilibili.com/video/BV12z421C7hU/ 11:45
+https://next.goauthentik.io/add-secure-apps/outposts/embedded/
+	embedded outpost修改：
+	authentik_host: http://authentik.barryzzj.top:23354/ #outpost如何访问authentik。#如果是embedded outpost，经测试无论如何都能找到，这一项其实充当authentik_host_browser的作用。此时authentik_host_browser不起作用。
 
-	
-
-
-
-
+	手动创建outpost修改：
+	authentik_host: http://authentik.barryzzj.top:23354/ #outpost如何访问authentik。如果在同一主机，[[%E5%8F%AF%E4%BB%A5%E8%AE%BE%E7%BD%AE%E4%B8%BAhttp://authentik-server-1:9000/]] (来自docker ps)。
+	docker_network: authentik_default  #(来自docker network ls) # non-embedded only
+	authentik_host_browser: http://authentik.barryzzj.top:23354/ #引导用户浏览器如何访问authentik

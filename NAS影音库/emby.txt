@@ -6,6 +6,13 @@ Creation-Date: 2025-07-10T12:53:33+08:00
 Created 星期四 10 七月 2025
 
 API
+https://dev.emby.media/reference/RestAPI.html
+RestAPI使用方法：https://dev.emby.media/doc/restapi/index.html
+	http[s]://hostname:port/emby/{apipath}
+	鉴权：https://dev.emby.media/doc/restapi/API-Key-Authentication.html
+	1. 添加query参数api_key=xxx  2. 添加 X-Emby-Token 头
+https://dev.emby.media/reference/RestAPI/UserService/postUsersNew.html
+https://dev.emby.media/reference/RestAPI/UserService/postUsersAuthenticatebyname.html
 https://dev.emby.media/doc/restapi/User-Authentication.html?q=login
 
 关闭转码功能：
@@ -36,8 +43,15 @@ http://localhost:8096/emby/System/Info/Public
 
 Auto-login:
 https://emby.media/community/index.php?/topic/135000-login-into-web-app-with-http-headers-how-can-i-make-it-happen/
+apikey dd: a42424cf8d88415e9cd09e5e7c199499
+
+dorm:
+	apikey: 306c5468d1734b73851a6604f379b23b
+	access token from dorm: 83597c855312415e8184f7527525ef85
+	access token from dd:     83597c855312415e8184f7527525ef85
+	login: http://192.168.50.200:8096/web/index.html?userId=f922910a982949218520d87cf7960134&accessToken=83597c855312415e8184f7527525ef85&e=1
 获取token：
-	curl "http://192.168.50.200:8096/Users/AuthenticateByName?api_key=a42424cf8d88415e9cd09e5e7c199499" -H "Content-Type: application/json; charset=UTF-8" --data-raw "{\"Username\":\"barry\",\"Pw\":\"G8p9MET3Gg\"}" --compressed
+	curl "http://192.168.20.20:8096/Users/AuthenticateByName?api_key=a42424cf8d88415e9cd09e5e7c199499" -H "Content-Type: application/json; charset=UTF-8" --data-raw "{\"Username\":\"barry\",\"Pw\":\"G8p9MET3Gg\"}" --compressed
 
 	curl "http://192.168.50.200:8096/Users/AuthenticateByName?api_key=306c5468d1734b73851a6604f379b23b" -H "Content-Type: application/json; charset=UTF-8" --data-raw "{\"Username\":\"barry\",\"Pw\":\"G8p9MET3Gg\"}" --compressed
 	result：
@@ -56,7 +70,3 @@ https://github.com/onelxzy/emby_signup
 
 
 
-LDAP + authentik:
-https://www.bilibili.com/video/BV12z421C7hU
-意思是在authentik上建一个LDAP服务器，注册好对应的用户，然后emby通过LDAP向authentik发送登录请求。使用效果是在emby登陆页面输入配置好的LDAP用户，就能直接登陆进去。
-需要premier用户才能使用LDAP插件

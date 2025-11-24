@@ -1,0 +1,39 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2025-11-22T01:31:18+08:00
+
+====== scope设置v2 ======
+Created 星期六 22 十一月 2025
+
+修改其中的RESP_HEADER
+bj:
+X-Bj-Emby-Username
+
+dd:
+''import json''
+''from urllib.parse import urlencode''
+''from urllib.request import Request, urlopen''
+
+''RESP_HEADER_USER = 'X-Dd-Emby-Username' # 自定义header，转发给npm''
+''RESP_HEADER_PW = 'X-Dd-Emby-Password' # 自定义header，转发给npm''
+
+
+''if request.user.username == "":''
+	''return "null"''
+
+''embyuser = request.user.attributes.get("emby_username", "") #here we are getting the user name attribute we added earlier to the user''
+''embypass = request.user.attributes.get("emby_password", "") #here we are getting the password name attribute we added earlier to the user''
+
+''if embyuser == "" or embypass == "":''
+	''return "null"''
+
+''return {''
+	''"ak_proxy": {''
+		''"user_attributes": {''
+			''"additionalHeaders": {''
+				''RESP_HEADER_USER: embyuser,''
+				''RESP_HEADER_PW: embypass''
+			''}''
+		''}''
+	''}''
+''}''

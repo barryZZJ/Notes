@@ -1,0 +1,88 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2025-11-21T22:21:14+08:00
+
+====== 接入emby ======
+Created 星期五 21 十一月 2025
+=========================
+LDAP + authentik:
+https://www.bilibili.com/video/BV12z421C7hU
+意思是在authentik上建一个LDAP服务器，注册好对应的用户，然后emby通过LDAP向authentik发送登录请求。使用效果是在emby登陆页面输入配置好的LDAP用户，就能直接登陆进去。
+需要premier用户才能使用LDAP插件
+=========================
+Authentik + outpost + scope
+实现在反代弹出前置验证，验证通过后302自动登录实际地址（而不是反代，没有中转开销，且反代只需要跑在本地）
+！因为emby能直接通过query参数鉴权，因此可以这么搞。如果其他服务，需要用npm反代。！
+
+1. 给emby配置npm反代
+1.1 搭建npm [[Nginx Proxy Manager]]
+1.2 添加一条域名为 bjemby.auth.barryzzj.top 的反代服务，内部随便填，用不上
+（经测试，只能一个服务对应一个host，同一host的不同path在provider看来是同一个External Host，而且没法添加path进行区分，因为 proxy_set_header Host $http_host 头只能包含域名和端口）
+其中配置了api_key和base_url，负责与emby登录进行对接。（不放到scope里是为了保证emby accessToken不过期，经测试，auth_request auth_request_set 获取的结果是authentik的缓存，只有重新登录时才会重新运行对应的scope脚本，因此不能返回会过期的token，需要直接返回用户名和密码）（也可以研究一下如果emby登录失败，sign_out，或者删除cookie，让他强制重新登陆）
+1.3 添加Custom Nginx Configuration： [[Nginx Proxy Manager:反代配置 跳转 通用端口v2]]
+
+2. 配置对应frpc，把bjemby.auth.barryzzj.top公布到公网的固定端口上：
+''[[proxies]]''
+''name = "npm_reverse_proxy_http"''
+''type = "http"''
+''localIp = "192.168.20.20"''
+''localPort = 13000''
+''customDomains = ["auth.barryzzj.top", "*.auth.barryzzj.top"]  # 设置为泛域名，方便添加新的服务。需要frps删除subdomainHost配置''
+''transport.useEncryption = true''
+''transport.useCompression = true''
+
+
+3. 配置authentik
+3.1 添加scope 提供用户名和密码
+（配置一个动态header便于反代获取用户名密码，然后在反代里进行登录）
+	Customization - Property Mappings - Create - Scope Mapping
+	Name: Emby - bj access uri
+	Scope name: ak_proxy
+	Expression: [[+scope设置v2]]
+	可以用不同账户测试一下返回结果是否有效
+	当前脚本不带注册功能，带注册功能的见v2_with_signup
+3.2 配置emby账号密码
+	Users - Edit - Attributes添加（不要带缩进）：
+	emby_password: xxx
+	emby_username: barry
+	！如果账号密码发生了变化，需要额外进入User里把OAuthToken记录删掉，强制重新登录authentik，才能获取最新的账号密码（应该有更优雅的解法，但实在搞不动了，交给未来的我吧）！
+3.3 添加Application：
+	1. Create with Provider——
+		Name: Emby - bj
+		Slug: emby-bj
+		Launch URL: http://dormemby.auth.barryzzj.top:23354  # 同前面npm设置的域名
+	2. 配置Proxy Provider
+		Forward auth (single application)
+		External host: http://dormemby.auth.barryzzj.top:23354   # 同前面npm设置的域名 #External Host用作校验origin（匹配npm中的''proxy_set_header Host）''和生成redirect_uri（校验通过后跳转回原服务），应该是客户端能访问的被反代后的自建服务的地址，（只不过我们在反代服务里配置了302跳转，避免中转开销）
+		按需调整 Token validity: days=365 调试时可以用 seconds=10
+			支持 microseconds, milliseconds, seconds, minutes, hours, days, weeks
+		Advanced protocol settings - Additional scopes - 添加Emby - bj access uri
+3.4 配置outpost
+	1. Embedded Outpost, Type选择Proxy
+	2. 高级设置 修改 authentik_host: http://authentik.barryzzj.top:23354/
+	3. Applications添加Emby - bj
+
+使用：
+首次使用前先清空emby的local storage
+访问 http://dormemby.auth.barryzzj.top:23354  http://ddemby.auth.barryzzj.top:23354
+发生的事情是：
+	先跳转到''auth_request''指定的地址，如果没有登陆过authentik，会401到@''goauthentik_proxy_signin''进行认证，登陆后还会再跳转回来（External Host决定），此时变为已认证，
+	然后由provider获取scope，此时provider会去认证emby，获取X-Emby-Uri，添加到custom header里。
+	npm获取header ''$upstream_http_x_emby_uri'' 作为已认证的路径，直接 302 ，从而自动登陆
+
+添加新用户：
+1. 提供authentik注册链接
+2. 把他加入对应的Group Emby visible
+3. 对方访问http://dormemby.auth.barryzzj.top:23354 即可使用，不需要记/也不能修改emby的用户名密码，在User的attributes里查看，
+
+修改密码：
+需要修改的话改完attribute还要把OAuthToken的记录清空、Session清空，重新触发authentik登录。
+
+删除emby用户：
+1. 清空attribute、清空OAuthToken、Session清空，重新登录
+
+BUG：
+- 可能是emby历史认证与新认证不匹配的原因，会出现Access token is invalid or expired，导致登录不进去。需要先手动把emby的local storage清掉。
+- 也好像authentik会把emby uri给缓存下来，只有认证登录时才会重新去emby鉴权，解决：√改成npm内进行鉴权，保证每次登录都会重新获取最新的accesstoken（如果没过期就会获得一模一样的）。
+	x让authentik的token的生命周期跟emby token的保持一致。（现在还不清楚emby token的失效时长）如果出现这个问题，先把local storage清空，然后把authentik的OAuthToken记录删掉、Session清空。
+- 有时会莫名其妙跳转失败，报internal server error，log也显示连接不上主机。尝试重启容器解决。
