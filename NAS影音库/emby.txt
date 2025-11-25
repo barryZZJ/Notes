@@ -69,4 +69,8 @@ emby signup
 https://github.com/onelxzy/emby_signup
 
 
+手机流量看很卡：
+经测试只能是下载问题，有人说强制只允许5G可以解决，*#*#4636，首选网络类型改为NR only。
+但是sb荣耀不给调。
+{{.\pasted_image.png}}
 

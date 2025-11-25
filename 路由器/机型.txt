@@ -6,3 +6,6 @@ Creation-Date: 2025-07-08T15:45:05+08:00
 Created 星期二 08 七月 2025
 
 TX-AX6000
+
+
+ac是WIFI5 ax是WIFI6 be是WIFI7
