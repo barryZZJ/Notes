@@ -9,3 +9,6 @@ Created 星期四 08 九月 2022
 https://zhuanlan.zhihu.com/p/478530031
 
 不要下载，拷贝游戏本体到common，并拷贝对应的.acf文件，修改acf中steam路径，然后重启steam即可
+
+
+修改缓存默认下载硬盘：存储空间——设置默认下载库【？不确定是否有效】
