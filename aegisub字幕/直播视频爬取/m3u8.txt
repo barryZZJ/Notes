@@ -1,0 +1,40 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2022-09-03T09:57:51+08:00
+
+
+=== 通用方案 ===
+如tver eplus视频下载：
+安装扩展 the stream detector，抓取m3u8连接（选择manifest.m3u8即可，包含了所有画质），会自动复制成N_m3u8DL_RE下载指令，下载下来的ts会自动转码成mp4。
+然后手动合并音视频即可
+
+或用m3u8在线下载器下载
+http://blog.luckly-mjw.cn/tool-show/m3u8-downloader/index.html
+
+还可以看一下已有的扩展
+Play HLS
+Video Downloader Professional
+
+https://github.com/nilaoda/N_m3u8DL-RE
+https://github.com/nilaoda/N_m3u8DL-CLI
+
+https://dakaijun.cn/note/1441/
+
+对应ts源
+
+=== 抓取直播视频的方案 ===
+https://www.douban.com/note/776237960/?_i=2167435TMUazgK,2169981TMUazgK
+(Potplay法如果有卡顿，“保存流”的结果也是有卡顿的，所以不太行）
+
+=== python手动下载m3u8 ===
+https://www.bilibili.com/read/cv12504862/
+需要手动把.m3u8的内容拷贝下来到video.m3u8中，然后运行代码
+
+下载下来是.ts文件，转mp4：
+1. 拼接成一整个文件
+''copy /b *.ts total.ts''
+2.使用ffmpeg转码为mp4：
+''ffmpeg -i total.ts -vcodec copy -acodec copy total.mp4''
+即可得到mp4格式的完整视频文件。
+=== = ===
+

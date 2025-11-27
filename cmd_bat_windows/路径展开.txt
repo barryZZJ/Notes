@@ -11,11 +11,24 @@ Created 星期六 06 五月 2023
 cd /d %~dp0 即cd到当前bat所在文件夹
 其他相关指令：
 https://www.cnblogs.com/smwikipedia/archive/2009/03/30/1424749.html
+~p - 删除任何引号(")，扩充 %p
+%~fp - 将 %p 扩充到一个完全合格的路径名
+%~dp - 仅将 %p 扩充到一个驱动器号
+%~pp - 仅将 %p 扩充到一个路径
+%~np - 仅将 %p 扩充到一个文件名
+%~xp - 仅将 %p 扩充到一个文件扩展名
+%~sp - 扩充的路径只含有短名
+%~ap - 将 %p 扩充到文件的文件属性
+%~tp - 将 %p 扩充到文件的日期/时间
+%~zp - 将 %p 扩充到文件的大小
+
+可以组合修饰符来得到多重结果:
 示例：(0可以换成其他数字，对应不同的参数）
 %~f0 D:/path/test.bat
 %~dp0 D:/path/
 %~dpn0 D:/path/test
 %~dpnx0 D:/path/test.bat
+%~n0 test
 %~nx0 test.bat
 %~x0 .bat
 处理变量：（X为变量名）

@@ -1,0 +1,39 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2023-03-13T21:09:13+08:00
+
+====== 流程说明 ======
+Created 星期一 13 三月 2023
+
+{{.\pasted_image.png}}
+
+https://forum.videohelp.com/threads/401859-How-to-download-mpd-stream-%28DRM-protected%29/page3
+
+https://forum.videohelp.com/threads/404586-how-to-work-out-the-pssh-when-not-shown-in-the-mpd#post2647121
+
+N_m3u8DL:
+https://github.com/nilaoda/N_m3u8DL-CLI
+https://nilaoda.github.io/N_m3u8DL-CLI/Advanced.html
+
+(depre
+https://github.com/Satsuoni/widevine-l3-guesser
+https://github.com/cryptonek/widevine-l3-decryptor
+https://github.com/tomer8007/widevine-l3-decryptor/wiki/Reversing-the-old-Widevine-Content-Decryption-Module
+In the context of browsers the actual decryption of the media is usually done inside a proprietary binary (widevinecdm.dll, known as the Content Decryption Module or CDM) only after receiving the license from a license server with an encrypted key in it.
+
+WidevineDecryptor: Found key: 100b6c20940f779a4589152b57d2dacb (KID=eb676abbcb345e96bbcf616630f1a3da)
+ffmpeg -decryption_key 100b6c20940f779a4589152b57d2dacb -i encrypted_media.mp4 -codec copy decrypted_media.mp4
+
+
+Use widevine decryptor to get keys.
+Use N_m3u8DL-CLI_v2.9.7 with ffmpeg to download video and audio.
+Use mp4decrypt to decrypt video and audio separately.
+	mp4decrypt --key <key> file output
+Use ffmpeg to merge video and audio.
+
+key:
+"widevine" "drm" "license" "lic" "cenc"
+licensing
+
+
+
