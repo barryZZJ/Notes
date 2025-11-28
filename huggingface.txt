@@ -10,10 +10,11 @@ pip install huggingface_hub
 修改为镜像站：设置环境变量（貌似还是会跑流量，建议直接在镜像站里手动下载）
 HF_ENDPOINT=https://hf-mirror.com
 
+模型：
 huggingface-cli download --resume-download --local-dir-use-symlinks False ab-ai/PII-Model-Phi3-Mini --local-dir pii --cache-dir pii
 
+数据集：
 huggingface-cli download --repo-type dataset --resume-download --local-dir-use-symlinks False Iceclear/FFHQ-HQ1024 --local-dir ffhq1024 --cache-dir ffhq1024
-
 huggingface-cli download --repo-type dataset --resume-download --local-dir-use-symlinks False yangtao9009/FFHQ1024 --local-dir ffhq1024 --cache-dir ffhq1024
 
 配置token：
