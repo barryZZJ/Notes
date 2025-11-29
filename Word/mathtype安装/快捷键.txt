@@ -23,3 +23,4 @@ https://docs.wiris.com/mathtype/en/user-interfaces/mathtype-7-interface/main-tut
 显示输入框很慢时，尝试重启word解决
 
 公式编号置右：插入行间公式（公式前要有一个mathtype生成的tab）后，直接tab
+
