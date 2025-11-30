@@ -18,6 +18,8 @@ api地址
 https://web.archive.org/web/20210126115837/https://blog.martindoms.com/2009/10/16/using-the-google-reader-api-part-2
 FeedMe阅读器设置入口网址: http://yy.barryzzj.top:28800/api/greader.php
 
+api token: https://freshrss.github.io/FreshRSS/en/users/06_Mobile_access.html
+
 fever https://freshrss.github.io/FreshRSS/en/developers/06_Fever_API.html
 代码使用api网址 http://yy.barryzzj.top:28800/api/fever.php
 
@@ -39,3 +41,6 @@ api_key=md5(username + ':' + api_password)  == f770ddc7e4de203bba2b33aa30274552
 修改配置文件：
 /root/freshrss/mount/data
 /root/freshrss/mount/extensions
+
+迁移：
+https://freshrss.github.io/FreshRSS/en/admins/05_Backup.html

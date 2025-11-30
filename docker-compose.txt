@@ -19,14 +19,20 @@ yml配置：
 端口映射：
 本机端口:容器端口
 
-注意默认与宿主机隔离
-要想访问localhost的其他端口：
+默认容器网络与宿主机隔离，要想容器访问localhost的其他端口：
+1. 使用host.docker.internal
+2. 使用主机ip
+3. 绑定端口（反向映射）
+4. 修改网络模式为host（不推荐）：
 在yml对应服务下添加：
 ''services:''
   ''web:''
 	''network_mode: "host"''
-
 此时端口映射不再有用
+
+测试连通性：
+nc -zv host.docker.internal 31200
+
 
 start and restart all the services defined in docker-compose.yml
 前台启动：
@@ -41,7 +47,7 @@ docker compose stop
 重启
 docker compose start
 
-卸载：
+卸载：（没有被mount的文件会被删除！）
 docker compose down --remove-orphans
 -v remove all volumes
 
