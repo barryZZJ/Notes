@@ -10,23 +10,33 @@ Created 星期一 27 二月 2023
 TODO: AI转录、翻译工具，新出了硬字幕识别功能，浴帽推荐，会员版效果不错，“会员基础版 一校”。
 https://www.subeasy.ai/zh-CN
 
-=== MeGUI处理音频： ===
-1. HD Streams Extractor 分离音频aac，记下音频偏移量
-2. File Indexer打开ts源，使用默认的DGIndex，然后点Queue，得到d2v文件（需要另外保存一份为utf8编码）（记录输出音频的delay）
-3. AVS Script Creator打开d2v文件，点save，得到avs脚本，视频预览界面关掉
-4. AVS Cutter，打开avs脚本，通过set设置要切的各个分段（记得剪掉提供部分的广告），然后点 do all and close，得到clt文件（或手动点击Save cuts file）
-5. 回到主界面Audio encoding部分，载入HD音频文件，在Cuts部分载入刚才的clt文件，encoder选QAAC，delay会自动填写（否则的话填写第一步的偏移量），点Queue
-6. 得到剪好的音频文件.m4a
+免费版思路：
+用whisperx转录，然后放到vscode里让copilot翻译
+translate this subtitle file into chinese, keep the srt format, but merge lines and there timecodes when a whole sentence is splitted abnormaly
 
-MeGUI直接裁剪视频：
-Video encoding——加载avs脚本，输出文件地址，选择编码器、File format——点击Queue
+=== MeGUI生成clt文件 ===
+1. File Indexer打开ts源，使用默认的DGIndex，然后点Queue，得到d2v文件（需要另外保存一份为utf8编码）（记录输出音频的delay）
+2. AVS Script Creator打开d2v文件，点save，得到avs脚本，视频预览界面关掉
+3. 用aegisub记录要裁剪的各个部分的帧
+4. AVS Cutter，打开avs脚本，通过set设置要切的各个分段（记得剪掉提供部分的广告），然后点 do all and close，得到clt文件，并且会把cut信息写入视频的avs脚本里（或手动点击Save cuts file）
+
+=== MeGUI裁剪音频： ===
+1. HD Streams Extractor 分离音频aac，记下音频偏移量
+2. 回到主界面Audio encoding部分，载入HD音频文件，在Cuts部分载入刚才的clt文件，encoder选QAAC，delay会自动填写（否则的话填写第一步的偏移量），点Queue
+3. 得到剪好的音频文件.m4a
+--------------------
+
+=== 裁剪视频： ===
+一、MeGUI直接裁剪视频：
+Video encoding——加载avs脚本，输出文件地址，选择编码器、config、File format——点击Queue
 然后使用Muxer合并
 
-或选择用VS处理：
+二、或选择用VS裁剪并处理视频：
 
 === VS处理视频： ===
 打开tmp_d2v.vpy
 修改source和clt_file，使用utf8编码的d2v文件，自动读取clt剪辑视频
+F5预览效果
 可以考虑使用FadeIn, FadeOut滤镜实现转场（但是音频没法淡入淡出）
 任务管理器详细信息里把优先级调高
 
@@ -40,6 +50,7 @@ preset选择ax264 ts
 （preset是用时间换画质{veryslow, slower, slow, medium}，crf是用空间换画质，越小码率越高）
 (veryslow 18.5 码率 < slow 18 √)
 注意把焦点切换到别的窗口，否则不小心再次按到start就得重新压制了
+--------------------
 
 === 处理字幕（仅用于预览） ===
 1. ts拖入Caption2Ass_PCR，提取出字幕
