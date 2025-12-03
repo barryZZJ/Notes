@@ -66,4 +66,11 @@ volumnes:
 docker volume ls
 docker volume inspect <id>
 
+已经运行的容器新增挂载映射：
+#1. 创建本地目录
+mkdir -p ./mount/p
+#2. 从容器中复制数据到本地
+docker cp freshrss:/var/www/FreshRSS/p ./mount/
+#3. 然后重新启动
+docker-compose up -d
 

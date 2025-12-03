@@ -1,0 +1,11 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2025-12-02T22:49:06+08:00
+
+====== reset ======
+Created 星期二 02 十二月 2025
+
+reset current branch head
+
+git reset --hard <commit id>
+Warning: any local changes will be lost

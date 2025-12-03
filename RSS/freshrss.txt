@@ -42,5 +42,8 @@ api_key=md5(username + ':' + api_password)  == f770ddc7e4de203bba2b33aa30274552
 /root/freshrss/mount/data
 /root/freshrss/mount/extensions
 
+修改最短刷新时间
+
+
 迁移：
 https://freshrss.github.io/FreshRSS/en/admins/05_Backup.html
