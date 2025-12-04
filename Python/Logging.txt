@@ -36,7 +36,7 @@ logging.basicConfig(filename='example.log', encoding='utf-8', level=logging.DEBU
 handlers:
 https://docs.python.org/3/howto/logging.html#handlers
 可以单独设置一个handler的format:
-fmter = logging.Formatter(fmt=fmt, datefmt=datefmt)
+fmter = (logging.Formatter('%(asctime)s - %(message)s', datefmt='%Y-%m-%d %H:%M:%S')
 hdlr = logging.FileHandler(PATHS.LOGFILE, encoding='utf8')
 hdlr.setFormatter(fmter)
 logger.addHandler(hdlr)

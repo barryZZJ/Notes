@@ -11,7 +11,7 @@ pip install huggingface_hub
 HF_ENDPOINT=https://hf-mirror.com
 
 模型：
-huggingface-cli download --resume-download --local-dir-use-symlinks False ab-ai/PII-Model-Phi3-Mini --local-dir pii --cache-dir pii
+huggingface-cli download --resume-download --local-dir-use-symlinks False lowlevelware/512x512_diffusion_unconditional_ImageNet --local-dir uncond --cache-dir uncond
 
 数据集：
 huggingface-cli download --repo-type dataset --resume-download --local-dir-use-symlinks False Iceclear/FFHQ-HQ1024 --local-dir ffhq1024 --cache-dir ffhq1024
