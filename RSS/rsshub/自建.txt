@@ -109,6 +109,16 @@ MEMORY_MAX: 最大缓存数量（memory 缓存类型时有效），默认 256
 正常：npm start
 调试：npm run dev
 
+安装puppeteer
+npx puppeteer browsers install chrome
+版本对应关系
+https://github.com/puppeteer/puppeteer/blob/main/docs/supported-browsers.md
+想要指定版本的chrome，需要下载对应版本的puppeteer
+npm install puppeteer@latest
+pnpm add puppeteer@24.8.0
+配置 CHROMIUM_EXECUTABLE_PATH （在rsshub\node_modules\.cache\puppeteer下）
+https://docs.rsshub.app/deploy/#configuration-2
+
 debug:
 json:
 创建自定义对象。
@@ -129,7 +139,7 @@ debug.html
 方便国内不挂VPN就查看图片；方便查看微博等具有反盗链的图片（只要没有referer就可以查看，但是有些阅读器会自动添加referer）
 【两种方法不能同时使用！】
 1. 环境变量配置
-https://docs.rsshub.app/zh/install/#图片处理
+https://docs.rsshub.app/zh/install/#%E5%9B%BE%E7%89%87%E5%A4%84%E7%90%86
 ''HOTLINK_TEMPLATE=https://i3.wp.com/${host}${pathname}''
 ''HOTLINK_INCLUDE_PATHS=/weibo,/picuki,/twitter''
 ''HOTLINK_EXCLUDE_PATHS=''
