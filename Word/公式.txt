@@ -1,0 +1,10 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2025-12-05T15:09:35+08:00
+
+====== 公式 ======
+Created 星期五 05 十二月 2025
+
+插入编号，编号右对齐：
+1. 在公式环境末尾输入#(1.1)，然后按下回车。缺点：只能公式字体
+2. 设置样式：https://www.bilibili.com/video/BV1Xd4y1Z7Xi/

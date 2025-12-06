@@ -1,0 +1,12 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2025-12-05T16:19:22+08:00
+
+====== 快捷键 ======
+Created 星期五 05 十二月 2025
+
+更新域 F9
+切换选定域代码 shift F9
+切换所有域代码 alt F9
+锁定域代码（不更新）ctrl F11
+解除锁定 ctrl shift F11
