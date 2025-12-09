@@ -15,9 +15,13 @@ https://developer.work.weixin.qq.com/document/10514#%E4%BD%BF%E7%94%A8%E6%8E%A5%
 
 自动发送消息：
 1. 配置可信域名。（好像配置了可信域名才能设置可信ip）
-2. 设置可信ip。在可信ip内才能给用户发送消息
+2. 设置可信ip。仅配置的可信IP能调用接口。在可信ip内才能给用户发送消息
 
 接收消息：https://developer.work.weixin.qq.com/document/10514
 http://myflaskserver.barryzzj.top:23354/drink_chan_recv/
 
 （都不支持ipv6）
+
+
+错误排查清单：
+1. 检查雨云服务器ip是否变化，添加到企业微信应用 可信ip中
