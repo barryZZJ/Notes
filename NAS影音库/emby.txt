@@ -18,6 +18,9 @@ https://dev.emby.media/doc/restapi/User-Authentication.html?q=login
 关闭转码功能：
 设置——用户——播放
 
+特别篇排序
+https://emby.media/support/articles/Ordering-TV-Specials.html
+
 分集方法：
 1. multi-version
 https://emby.media/support/articles/Movie-Naming.html#multi-version-movies

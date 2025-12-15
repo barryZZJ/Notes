@@ -19,3 +19,7 @@ extensions.zotero.annotations.noteTemplates.highlight
 ''{{highlight}}{{if comment}}<p>{{comment}}</p>{{endif}}''	
 
 ''{{highlight quotes='false'}}'' 可以不显示引号，但也会没法跳转
+
+
+备份文件恢复
+https://www.zotero.org/support/zotero_data#restoring_from_the_last_automatic_backupe
