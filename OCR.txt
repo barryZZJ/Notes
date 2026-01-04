@@ -3,3 +3,6 @@ Wiki-Format: zim 0.6
 Creation-Date: 2022-09-10T13:52:16+08:00
 
 easyocr比tesseract强
+
+视频硬字幕提取
+https://github.com/YaoFANGUK/video-subtitle-extractor
