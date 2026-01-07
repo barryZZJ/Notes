@@ -1,0 +1,9 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2026-01-06T16:35:19+08:00
+
+====== better-bibtex ======
+Created 星期二 06 一月 2026
+
+Fields to omit:
+url,abstract,urldate,note,keywords,file,annote
