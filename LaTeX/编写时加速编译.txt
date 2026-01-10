@@ -1,10 +1,17 @@
 Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
 
-1. documentdclass添加draft参数：不渲染图片
+1. documentclass添加draft参数：不渲染图片、不添加超链接
 
-2. \includeonly{} 只渲染括号中的文件，与\include{}或\input{}搭配使用
+2. \input{}
+\input{file} 是无感拆分文件，为了方便编辑
+注释掉相关的\input即可跳过对应部分的渲染
 
-3. 最后介绍一个实用的工具宏包 syntonly。加载这个宏包后，在导言区使用 \syntaxonly 命
+3. \include{} 与 \includeonly{}
+\include{file} = \clearpage\input{file}\clearpage  会在前后插入分页符
+\includeonly{} 只能作用于 \include{}，写在\begin{document}之前，只渲染指定的文件，其他的\include会被跳过
+
+4. 最后介绍一个实用的工具宏包 syntonly。加载这个宏包后，在导言区使用 \syntaxonly 命
 令，可令 LATEX 编译后不生成 DVI 或者 PDF 文档，只排查错误，编译速度会快不少：
 \usepackage{syntonly}
 \syntaxonly
