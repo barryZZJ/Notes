@@ -1,0 +1,37 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2022-09-23T18:02:37+08:00
+
+====== aegisub插件 ======
+Created 星期五 23 九月 2022
+
+插件管理工具
+https://github.com/TypesettingTools/DependencyControl
+
+lyger's tool
+https://github.com/lyger/Aegisub_automation_scripts/
+
+unanimated插件列表 https://github.com/unanimated/luaegisub
+其中的Relocator可以手动设置追踪点 https://www.bilibili.com/video/BV1Yi4y1P7Ko
+Reloactor最新版: http://unanimated.hostfree.pw/ts/relocator.lua
+手册 http://unanimated.hostfree.pw/ts/scripts-manuals.htm
+colourise http://unanimated.hostfree.pw/ts/scripts-manuals.htm#colourise
+
+自动化实现追踪：AegisubMotion+Blender/Mocha
+https://www.bilibili.com/video/av289069676
+AegisubMotion:
+	https://github.com/TypesettingTools/Aegisub-Motion
+	docs: https://github.com/TypesettingTools/Aegisub-Motion/wiki
+	(位置不变的话会合并成一个长时间轴)(支持先写好\t特效，再应用追踪数据)
+Blender
+Mocha: https://www.52pojie.cn/thread-1128366-1-1.html
+
+VSFilterMod
+手册
+https://cwlrin.wiki/wp-content/uploads/2021/02/vsfiltermod-%E6%89%8B%E5%86%8C.pdf
+下载
+https://github.com/computerfan/VSFilterMod
+x https://github.com/sorayuki/VSFilterMod
+（未用过）https://github.com/Masaiki/VSFilterMod
+x86版的.dll拷入aegisub目录下的scri
+在options最下面Advanced-Video中的Subtitles provider选择CSRI/vsfiltermod_textsub

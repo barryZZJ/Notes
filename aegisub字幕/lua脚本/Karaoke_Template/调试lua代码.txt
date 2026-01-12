@@ -1,0 +1,18 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2026-01-10T15:20:01+08:00
+
+====== 调试lua代码 ======
+Created 星期六 10 一月 2026
+
+在 automation/include/barry/下新建 file.lua
+
+file.lua中最后要
+return {func=func}
+
+在ass中添加:
+Effect: code once  Dialogue: barry = _G.require("barry.file")
+即可通过
+!barry.func()!调用函数
+
+每次代码更新后，需要按住ctrl点Automation，重新载入代码

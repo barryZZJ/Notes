@@ -1,0 +1,26 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2026-01-11T14:54:12+08:00
+
+====== 纯脚本处理k字 ======
+Created 星期日 11 一月 2026
+
+include("karaskel.lua")
+
+functino main(subs,sels, curr)
+	local meta, styles = karaskel.collect_head(subs)
+	for _, li in ipairs(sels) do
+		local line = subs[li]
+		karaskel.preproc_line(subs, meta, styles, line)
+		for si = 1, line.kara.n do
+			local syl = line.kara[si]    
+			...
+
+使用line.kara -> table 获取syl
+	line.kara.n
+	line.kara[i] -> syl
+syl对象：https://aegisub.org/docs/latest/automation/lua/modules/karaskel.lua/#karaoke-and-furigana-syllable-tables
+
+使用line.furi -> table 获取furi
+
+line.styleref -> Style table

@@ -1,0 +1,49 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2023-02-20T20:16:49+08:00
+
+====== exception handling ======
+Created 星期一 20 二月 2023
+
+主动抛出错误
+error(msg)
+
+拦截错误：
+success, ret = pcall(myfunc, args)
+
+使用自定义handler拦截错误：
+success, ret = xpcall(myfunc, errhandler, args)
+function errhandler(err)
+	print(debug.traceback(err))
+end
+
+如果没有错误，success==true, ret为myfunc的返回值
+如果有错误，success==false, ret为错误的信息
+
+debug.traceback()为完整的堆栈报错信息
+{{{code: lang="lua" linenumbers="False"
+function myErrorHandler(err)
+  print("Lua reported a runtime error:")
+  print(debug.traceback(err))
+end
+
+success, result = xpcall(myFunction, myErrorHandler)
+}}}
+
+
+{{{code: lang="lua" linenumbers="False"
+function emulateRuntimeError(msg)
+  local level = 2 -- skip this function and get info for caller
+  local info = debug.getinfo(level, "Sl")
+  local errStr = string.format("%s:%d: %s", info.short_src, info.currentline, msg)
+  local traceback = debug.traceback("", level)
+
+  print("Lua runtime error:")
+  print(errStr)
+  print(traceback)
+end
+
+-- example usage:
+emulateRuntimeError("Something went wrong!")
+
+}}}

@@ -1,0 +1,147 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2022-09-23T23:32:14+08:00
+
+====== lua脚本 ======
+Created 星期五 23 九月 2022
+
+https://aegisub.org/docs/latest/
+
+https://aegi.vmoe.info/docs/3.2/Automation/Lua/
+https://aegi.vmoe.info/docs/3.2/Automation/Lua/Subtitle_file_interface/
+https://aegi.vmoe.info/docs/3.2/Automation/Lua/Modules/re/
+
+http://unanimated.hostfree.pw/ts/scripts-manuals.htm?i=1
+
+process reporting: https://aegi.vmoe.info/docs/3.0/Automation/Lua/Progress_reporting/
+
+显示对话框 aegisub.dialog
+https://aegisub.org/docs/latest/automation/lua/dialogs/#display-dialog-functions
+
+aegisub API: https://aegisub.org/docs/3.2/Automation/Lua/Miscellaneous_APIs/index.html#aegisubtextextents
+aegisub.project_properties()["video_file"]
+aegisub.project_properties().video_position
+
+if aegisub.project_properties==nil then
+	t_error("Current frame unknown.\nProbably your Aegisub is too old.\nMinimum required: r8374.",true)
+end
+vframe=aegisub.project_properties().video_position
+if vframe==nil or fr2ms(1)==nil then t_error("Current frame unknown. Probably no video loaded.",true) end
+
+ms2fr=aegisub.frame_from_ms(time)
+fr2ms=aegisub.ms_from_frame(frame)
+
+xres, yres, ar, artype = aegisub.video_size()
+
+aegisub.debug.out(str)
+
+Return value: The macro processing function can return up to two values: a new selected_lines table containing indices of the lines to select after the macro returns, and an index of the line to make the new active_line. If set, the new active line index must be one of the lines in the new selected_lines table.
+
+function f(subtitles, selected_lines, active_line)
+substitles: user data object （可当作table使用，但不是table，不能用table.xxx函数）
+selected_lines: indexes array  （永远是数组）
+active_line: number
+
+遍历所有行：
+''for i = 1,'' [[#subs|''#subs'']] ''do''
+	''aegisub.progress.set(i * 100 / #sels)''
+	''if subs[i].class == "dialogue" then''
+		''local oline = subs[i]''
+		''line = subs[i]''
+		''line.text = 'new'''
+		''subs[i] = line''
+	''end''
+''end''
+''aegisub.set_undo_point(script_name)''
+遍历选中行：
+''for _, i in ipairs(sels) do''
+	''...''
+''end''
+
+subtitle object https://aegi.vmoe.info/docs/3.2/Automation/Lua/Subtitle_file_interface/
+line table: https://aegi.vmoe.info/docs/3.2/Automation/Lua/Modules/karaskel.lua/#dialogue-line-table
+	.class  # str, == "dialogue" or "info" or "style" or "unknown"
+	.comment  # bool
+	.text  # str
+	.start_time # number 毫秒
+	.end_time # number 毫秒
+	local meta, styles = karaskel.collect_head(subs)
+	if subs[i].class == "dialogue" and not subs[i].comment then karaskel.preproc_line(subs, meta, styles, subs[i])
+	.left  == x
+	.top
+
+删除行
+subtitles[i] = nil
+subtitles.delete(i)
+subtitles.delete(i1, i2, ...)
+subtitles.delete({i1, i2, ...})
+subtitles.deleterange(first, last)
+
+debug: https://aegisub.org/docs/latest/automation/lua/progress_reporting/#debug-output
+如果设置了aegisub.debug.out("")，会保留日志界面
+（可以省略string.format函数，直接传入参数）
+
+lua标准库自带string的一些操作：但是没有re库完善
+https://www.runoob.com/manual/lua53doc/manual.html#pdf-string.find
+:find(pat)
+:match(pat)
+:gmatch(pat)
+:gsub(pat)
+
+regex: https://aegi.vmoe.info/docs/3.2/Automation/Lua/Modules/re/
+lua里escape符号要加%
+pat = re.compile()
+re.sub(str, pat, repl)[1]
+re.match(str,pat) re.find(str,pat)
+	find: 匹配多次，不捕获subgroup。返回match table数组，每个元素是一个匹配结果的**match table**
+	match: 只匹配一次，捕获subgroup。返回match table数组，[1]是整个匹配结果的**match table**，后续的是捕获的subgroup的**match table**
+	无匹配则返回nil
+循环使用gmatch gfind，用法见网页
+re.split re.gsplit
+
+text, _ = pat:sub(text, repl)
+tab = pat:match(text)  注意下标从1开始
+如果要获取满足匹配的个数，用res = exp:find，#res即匹配的数量
+split同样会返回pat括号里的内容
+
+tab[i]['str'] 为匹配结果
+**match table**格式:
+{
+	{
+		["str"] = "b",
+		["first"] = 2,
+		["last"] = 2
+	},
+	...
+}
+
+aegisub提供的模块，包括util, karaskel.lua, unicode, cleantags.lua, clipboard, re, lpeg, luabins, lfs.
+见[[+Karaoke Template]]
+
+
+{{{code: lang="lua" linenumbers="False"
+function process_lines(subtitles, selected_lines, active_line)
+	sels = {}
+	local i_dialogue = 1
+
+	for _, i in ipairs(selected_lines) do  -- or for i = 1, #subtitles
+		aegisub.progress.set(i * 100 / #subtitles)
+
+		local l = subtitles[i]  # subtitle object
+		if subtitles[i].class == "dialogue" then
+			aegisub.debug.out(string.format('Processing line %d: "%s"\n', i_dialogue, l.text))
+
+			nl = l
+			subtitles[i] = l
+			table.insert(sels, i)
+		    i_dialogue = i_dialogue + 1
+		end
+	end
+	aegisub.set_undo_point(script_name)
+	return sels
+end
+}}}
+
+
+剪贴板 clipboard
+https://aegi.vmoe.info/docs/3.2/Automation/Lua/Modules/clipboard/

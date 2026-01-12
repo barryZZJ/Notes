@@ -1,0 +1,260 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2023-01-29T22:11:49+08:00
+
+====== Karaoke Template ======
+Created 星期日 29 一月 2023
+
+https://aegisub.org/docs/latest/automation/karaoke_templater/
+https://aegi.vmoe.info/docs/3.2/Automation/Karaoke_Templater/
+https://aegi.vmoe.info/docs/3.2/Automation/Lua/Modules/karaskel.lua/#karaoke-and-furigana-syllable-tables
+
+!：如果因为特效对白太多导致卡顿，可以临时切换成k轴模式，或者不在音频栏中全部显示所有对白
+
+===== Effect =====
+https://aeg-dev.github.io/AegiSite/docs/3.2/automation/karaoke_templater/template_modifiers/
+默认只对相同样式（Style）的行执行，添加all则应用于所有样式
+template <modifier=syl>: 模板行
+code <modifier=once>: 代码行，用于定于变量、函数（如果是定义函数/全局变量使用code once，如果要应用于每一行/每一个音节使用code line/syl）
+空白、且样式相同: timed karaoke line
+fx: styled karaoke line
+如果没有k轴，则整行认为是一个音节
+
+代码行修改台词内容：
+<Effect>code once, <Text>function f() nt=""; for c in _G.unicode.chars(orgline.text) do nt=nt..string.format("{\\t(%f,0,%s}", 0.1,"1")..c; end return nt; end
+<Effect>template line notext, <Text>!f()!
+
+===== modifiers 可以多个组合 =====
+https://aeg-dev.github.io/AegiSite/docs/3.2/automation/karaoke_templater/template_modifiers/
+e.g.:
+1. builtin函数
+<Effect>code once
+<Text>function str(num) return _G.tostring(num) end; function num(str) return _G.tonumber(str) end;
+2. 获取视频分辨率
+xres, yres = _G.aegisub.video_size() if xres == nil  then x_rat = 1 y_rat = 1 else x_rat = xres/720 y_rat = x_rat end if (xres and xres ~= meta.res_x) or (yres and yres ~= meta.res_y) then _G.aegisub.debug.out(2, "Warning: script resolution %dx%d does not match with loaded video resolution %dx%d resample script resolution", meta.res_x, meta.res_y, xres, yres) end
+3. 获取脚本分辨率
+meta.res_x; meta.res_y;
+4. 获取一帧的时长（ms）
+msa = _G.aegisub.ms_from_frame(1) msb = _G.aegisub.ms_from_frame(100) if msa == nil and msb == nil then _G.aegisub.debug.out(2, "Warning: Please load the video or use dummy video.Frame duration was provisionally set to 33 milliseconds. ") frame_dur = 33  else frame_dur = (msb-msa)/100 end
+计算一行的帧个数：frame_dur / <line_dur> == frame_num
+temp = {} function set_temp(ref,val) temp[ref] = val return val end （==remember(key,val))
+
+====================
+code line all once
+template pre-line name all
+template line name notext all
+template syl noblank
+**Note: 如果template syl运行后没反应是因为没有k轴！可以改用template char**
+====================
+once: 只用于代码行，定义函数
+code行：对每line执行一次；
+code syl行：对每个syl执行一次；
+template行：对每个syl执行一次，只生成一行；template行可以包括name，name相同的会按顺序合并在一起(可以不是k轴)
+line [name]: 
+	如 line effect
+	如果只想每行执行一次的话使用pre-line
+pre-line [name]: 只用于template行，在[name]相同的line模板输出结果前添加(只执行一次)
+	如果没有对应的line行则默认line行为karaoke行的原内容
+	要想实现notext的效果，需要手动加一个空白的同名line行，且标注notext
+syl: 对每个音节执行（每个\k之间是一个音节），每个音节生成一行(**必须是k轴**，否则相当于line。加noblank去掉空行)
+syl char: 对每个character而不是每个syllable执行(不用是k轴，仍作用于每个字符)
+furi: 作用于振假名/注音假名
+all: 对所有样式都执行，默认只对相同样式（Style）的行执行
+fx <name>: 对inline-fx为<name>的syllable进行额外处理
+fxgroup <name>
+keeptags: 不支持与char或multi连用
+multi: 作用于multi-highlight timed karaoke的每个highlight
+noblank: 模板不会作用于blank(/空白)字符。（一般都开启）
+	A syllable is considered blank if its tag-stripped text consists only of a combination of ASCII whitespace characters and ideographic fullwidth space characters, or is completely empty. A syllable is also considered empty if its duration is zero.
+notext: 不保留字幕文本。用于输出矢量绘图。【不可用于code行】
+repeat <n>或loop <n>: 模板会(对每个syllable)重复执行n次，n必须是常数。循环变量用j, maxj或tenv.j, tenv.maxj获取
+
+定义全局变量（如果是随机数则每行都不一样）：
+<Effect> code line all <Text> var=0;
+<Effect> code line all <Text> function f(arg) var=var+arg; return ""; end
+（如果需要存储随机数可以用remember() recall())
+
+=== Line and syllable information ===
+https://aegisub.org/docs/latest/automation/karaoke_templater/code_execution_environment/#line-and-syllable-information
+直接获取，**不需要_G**，可以在 template 行和**不含once**的 code 行使用。
+
+line对象 - (retime等修改后的)**当前行**
+https://aegisub.org/docs/latest/automation/lua/modules/karaskel.lua/#dialogue-line-table
+.left float
+.raw Comment: 0,0:00:01.00,0:00:05.00,Default,,0,0,0,karaoke,{\c&H0A0A0A&\blur6}xxx
+.text 带tag的文本
+.text_stripped
+.start_time .end_time
+.duration
+
+orgline - 修改前的当前行
+
+syl对象 - 当前**单个音节**
+https://aegisub.org/docs/latest/automation/lua/modules/karaskel.lua/#karaoke-and-furigana-syllable-tables
+!syl.left! relative, float
+
+style对象 - **style table:**
+https://aegisub.org/docs/latest/automation/lua/modules/karaskel.lua/#style-table
+!line.styleref.xxx! 
+!line.left+syl.left-line.styleref.outline!
+!syl.style!
+line 获取当前行的信息 https://aegisite.vercel.app/docs/latest/automation/lua/modules/karaskel.lua/#dialogue-line-table
+
+basesyl
+
+meta
+
+=== Standard libraries and related things ===
+https://aeg-dev.github.io/AegiSite/docs/3.2/automation/karaoke_templater/code_execution_environment/
+
+使用_G变量访问lua标准库以及aegisub导入的库 https://aegisub.org/docs/latest/automation/lua/modules/
+如：_G.table, _G.math
+可以使用aegisub提供的模块，包括util, karaskel.lua, unicode, cleantags.lua, clipboard, re, lpeg, luabins, lfs.
+默认已导入_G.karaskel、_G.utils、_G.unicode，其他的需要手动在code once行中_G.require "re"，然后用_G.re访问
+
+_G.table.sort相当于table.sort
+
+debug: https://aegisub.org/docs/latest/automation/lua/progress_reporting/#debug-output
+_G.aegisub.debug.out("%d", 123)
+
+**_G.unicode: 	默认已导入**
+.len()
+for char in unicode.chars()
+
+**_G.util: 	默认已导入** https://aegisub.org/docs/latest/automation/lua/modules/util/
+copy(line) deep_copy(line)
+ass_color(r,g,b) -> &HBBGGRR
+ass_style_color(r, g, b, a) -> &HAABBGGRR
+ass_alpha(num) -> &HAA&
+r, g, b, a = util.extract_color(colorstring)
+alpha_from_style(coloralphastring)
+color_from_style(coloralphastring)
+**strings:**
+trim(instring)
+head, tail = headtail(instring) # 根据第一个空格，分割成头、尾两部分
+for word in util.words(instring) do ... end
+**numbers:**
+clamp(inval, min, max)
+outval = interpolate(t, a, b) -> 在a-b之间插值，t取值0~1表示倾向a还是b。结果会被clamp到(a,b)
+outcolor = interpolate_color(t, color1, color2) -> 同上。color1, color2 和 outcolor 是颜色字符串， outcolour 是ASS格式颜色字符串。
+outalpha = interpolate_alpha(t, alpha1, alpha2) -> 同上。alpha参数是0~255数字，也可以是color string
+
+lua标准库：http://www.lua.org/manual/5.1/manual.html#5
+标准库中的函数如tostring(), tonumber()均需要通过_G才能获取
+
+可以使用_G.string库 http://www.lua.org/manual/5.1/manual.html#5.4
+和_G.math库 http://www.lua.org/manual/5.1/manual.html#5.6
+
+定义变量时使用local标识符，否则会跟同名的重复。
+
+=== Utility functions ===
+**!retime!**
+https://aegisub.org/docs/latest/automation/karaoke_templater/code_execution_environment/#retime
+按mode指定时间，且可以通过startadjust, endadjust微调头尾。
+It adjusts the start and end time of the output line in various ways.
+retime(mode, startadjust, endadjust)
+Possible _mode_s:
+* abs or set - Both startadjust and endadjust are used as absolute time values to set the start and end time of the line directly.
+* preline (-x, 0) - Intended to make effects that happen before the actual line start. Both start and end time of the line are set to the start time of the line, then startadjust is added to the start time and endadjust added to the end time. Usually startadjust should be negative here and endadjust be zero.
+* line - Use the regular line timings and just add startadjust to the start time and endadjust to the end time.
+* start2syl - Intended to make the look of the syllable from the start of the line until it is highlighted. The start time of the line is kept and the end time is set to the start time of the syllable. Use startadjust and endadjust to offset the times.
+* presyl (-x, 0)- Similar to preline but for the syllable timing instead.
+* syl - From start of syllable to end of syllable.
+* postsyl (0, x)- Similar to presyl but the base timing is the syllable end time instead of start time. You will usually want to use a zero addstart and positive addend here.
+* syl2end - The time from the end of the syllable to the end of line, similar to start2syl.
+* postline (0, x)- Similar to postsyl but for the line timing instead. 生成结果的起始时间=orgline.end+startadjust，结束时间=orgline.end+endadjust
+$lstart, $lend, $ldur等与时间相关的var均为retime之前的时间
+
+**relayer**(newlayer)
+
+**restyle**(newstyle)
+
+循环相关：
+https://aegisite.vercel.app/docs/latest/automation/karaoke_templater/code_execution_environment/#looping-templates
+循环变量用j, maxj或tenv.j, tenv.maxj获取，也可以在!!环境中使用。j取值1~maxj
+**maxloop**(maxj) 用于动态循环次数，如果是固定的可以直接在effect里输入loop <n>
+**loopctl**(newj, newmaxj)
+
+
+**remember-and-recall**
+https://aegisub.org/docs/latest/automation/karaoke_templater/code_execution_environment/#remember-and-recall
+适合与随机数配合使用
+remember(name, value) -> value
+remember_if(name, value, condition) -> value
+recall(name) -> value
+val=recal(name, default) -> value
+
+随机数
+https://www.runoob.com/manual/lua53doc/manual.html#pdf-math.random
+_G.math.randomseed(os.time())
+_G.math.random(m=0, n=1) -> 不带m,n时返回[0,1)浮点数，否则返回[m,n] 整数
+
+===== Inline Variables ($-variables) =====
+https://aeg-dev.github.io/AegiSite/docs/3.2/automation/karaoke_templater/inline_variables/
+使用$var引用，如需运算需要两端加上!!，如!$var!
+!!之间当作lua程序处理
+【只能在template行使用，不能在code行使用】
+
+
+包含的var如下：
+**Automatic variants 自动根据当前是line还是syl调整，直接通过$start, $center等获取**
+In pre-line templates the automatic inline variables refer to the line variants, and everywhere else they refer to the syllable variants.
+
+start, end, mid
+	start and and midway time for line/syllable; absolute for lines and relative for syllables
+dur, kdur
+	duration in milliseconds and centiseconds of line/syllable
+i
+	line or syllable index
+left, center, right
+	left, center and right edges of line/syllable, absolute from left screen edge
+top, middle, bottom
+	top middle and bottom edges of line/syllable, absolute from top screen edge
+x, y
+	x and y position of line/syllable when using default alignment
+width, height
+	width and height of line/syllable in pixels, this is rounded and might not match exactly with the positioning variables
+
+**Line variants**
+【这里获取到的都是orgline的，要想获得修改后的，使用!line.start_time!,!line.duration!等】【但是line.left等位置不能获取被\pos修改后的，而且就算在样式里改frz也获取不到】
+【位置相关的参数都是整数，要想获取小数，使用!line.width!等line对象的属性】
+layer
+	line layer
+lstart, lend, ldur, lmid
+	line start time, end time, duration and midway, all absolute times in milliseconds
+style
+	name of the line style
+actor
+	name of the line actor
+margin_l, margin_r
+	effective left and right margin (line if nonzero, otherwise style)
+margin_v, margin_t, margin_b
+	effective vertical, top and bottom margin, vertical and top is same
+syln
+	number of syllables on line
+li
+	line index (first physical line in file is 1)
+lleft, lcenter, lright (int) 【lleft和lright能保证在实际值的外面，不会截断】
+	line left, horizontal center and right edges, taking margins and alignment into account, rounded to an integer value
+ltop, lmiddle, lbottom
+	line top, vertical middle and bottom edges, taking margins and alignment into account, rounded
+lx, ly
+	line x and y position suitable for a \pos command when alignment is not overridden
+lwidth, lheight
+	line width and height in pixels, this is rounded and might not match exactly with the positioning variables
+
+**Syllable variants【使用syl获取修改后的？，参考上面的line】**
+sstart, send, smid
+	syllable start, end and midway times relative to start of line, suitable for putting into \t and \move
+sdur, skdur
+	syllable duration in milliseconds and centiseconds
+si
+	syllable index from start of line
+sleft, scenter, sright (int)
+	**absolute** left, horizontal center and right edges for syllable from left edge of screen, suitable directly for \pos and \move
+sbottom, smiddle, stop
+	absolute bottom, vertical middle and top edges for syllable from top edge of screen, suitable directly for \pos and \move, adjusted for furigana positioning if needed
+sx, sy
+	syllable absolute x and y position in default alignment, suitable for using directly in \pos and \move
+swidth, sheight
+	syllable width and height in pixelsthis is rounded and might not match exactly with the positioning variables

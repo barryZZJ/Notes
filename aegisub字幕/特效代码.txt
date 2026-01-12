@@ -74,11 +74,13 @@ http://unanimated.hostfree.pw/ts/ts-layers.htm
 \4a&H<aa>&
 aa: 00~FF，00表示不透明，FF表示完全透明。如\alpha&H80&
 
-矢量绘图
+矢量绘图 / vector path / SVG path
+https://aegisub.org/docs/latest/ass_tags/#drawing-commands
 https://aegi.vmoe.info/docs/3.2/ASS_Tags/#section-3
 https://cnlang.org/thread-85231-1-1.html
 \p<0/1/n> n表示缩放倍数，越大图片越小
 \pbo y方向的偏移像素值
+m n l b s p c
 像素点：
 {\p1}m 0 0 l 1 0 l 1 1 l 0 1{\p0}
 
@@ -89,9 +91,28 @@ Rounded square:
 {\p1}m 0 0 s 100 0 100 100 0 100 c{\p0}
 (c equals to "p 0 0 100 0 100 100" in this case)
 
-Circle (almost):
+oval:
 {\p1}m 50 0 b 100 0 100 100 50 100 b 0 100 0 0 50 0{\p0}
+circle
+{\p1}m 50 0 b 116 0 116 100 50 100 b -16 100 -16 0 50 0{\p0}
+circle (\an5时原点定位在下边）
+m 0 0 b 0 13 11 24 24 24 b 37 24 48 13 48 0 b 48 -13 37 -24 24 -24 b 11 -24 0 -13 0 0 
+circle (\an5时原点定位在原点）
+m 0 24 b 0 37 11 48 24 48 b 37 48 48 37 48 24 b 48 11 37 0 24 0 b 11 0 0 11 0 24 
+circle（用于\clip指令，以左上角为圆心）
+m -24 0 b -24 13 -13 24 0 24 b 13 24 24 13 24 0 b 24 -13 13 -24 0 -24 b -13 -24 -24 -13 -24 0 
+按圆心scale：
+function scale_number(n, is_x, cx, cy, scale) if is_x then return cx + (n - cx) * scale else return cy + (n - cy) * scale end end
 
+function scale_circle_path(path, scale, cx, cy) local is_x = true local result = {} for token in path:gmatch("%S+") do local num = tonumber(token) if num then local scaled = scale_number(num, is_x, cx, cy, scale) table.insert(result, string.format("%.6g", scaled)) is_x = not is_x else table.insert(result, token) is_x = true end end return table.concat(result, " ") end
+
+function shift_number(n, shift) return n + shift end
+
+function shift_circle_path(path, shift_x, shift_y) local is_x = true local result = {} for token in path:gmatch("%S+") do local num = _G.tonumber(token) if num then local shifted if is_x then shifted = shift_number(num, shift_x) else shifted = shift_number(num, shift_y) end _G.table.insert(result, string.format("%.6g", shifted)) is_x = not is_x else _G.table.insert(result, token) is_x = true end end return _G.table.concat(result, " ") end
+
+PATH="m 0 24 b 0 37 11 48 24 48 b 37 48 48 37 48 24 b 48 11 37 0 24 0 b 11 0 0 11 0 24"
+print(scale_circle_path(PATH, 2, 24, 24))
+print(shift_circle_path(PATH, 24, 24))
 渐变/淡入淡出
 \fad(<fadein>,<fadeout>)
 在前<fadin>ms淡入(第一个正常帧的+xms)，后<fadeout>ms淡出(最后一个正常帧的-xms)。设为0则取消渐变效果
@@ -182,7 +203,7 @@ $=3 border
 $=4 shad
 \mover (Polar) 沿极坐标平移 \moves3 \moves4 (Spline) 沿不同轨迹运动
 \jitter 各方向重复抖动
-\movevc() + \[i]clip() 移动同一行中的clip/iclip遮罩，参数同\move，clip使用绝对坐标，movevc使用是相对坐标，clip所在的原位置是0,0。clip必须使用矢量代码
+\movevc(x1,y1) \movevc(x1,y1,x2,y2[,t1,t2]) 移动同一行中的clip/iclip遮罩，参数同\move，clip使用绝对坐标(ASSDraw里的原点)，movevc使用是相对坐标，clip所在的原位置是0,0。clip必须使用矢量代码
 \lua(somemethd, args) \somemethod(args)
 \ortho0 frx fry使用透视投影（默认，且改进了原版）
 \ortho1 frx fry使用正交投影（原版没有）
