@@ -1,7 +1,10 @@
 Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
 
 使用\autoref直接产生“图1.1”“式1.1”等字样
 使用\ref则只生成数字
+
+公式引用：\eqref{} -> (x)
 
 \usepackage{hyperref}
 \hypersetup{hidelinks}

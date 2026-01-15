@@ -1,0 +1,62 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2026-01-13T17:27:19+08:00
+
+====== 插入定理、定义 ======
+Created 星期二 13 一月 2026
+
+\theoremstyle{plain}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{assumption}[theorem]{Assumption}
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+
+可以在[]里添加定理名称或引用
+\begin{theorem}[\textbf{some theorem}~\cite{xxx}]
+xxx
+\end{theorem}
+
+\subsection{Theorems and Such}
+The preferred way is to number definitions, propositions, lemmas, etc.
+consecutively, within sections, as shown below.
+\begin{definition}
+  \label{def:inj}
+  A function $f:X \to Y$ is injective if for any $x,y\in X$ different, $f(x)\ne
+	f(y)$.
+\end{definition}
+Using \cref{def:inj} we immediate get the following result:
+\begin{proposition}
+  If $f$ is injective mapping a set $X$ to another set $Y$,
+  the cardinality of $Y$ is at least as large as that of $X$
+\end{proposition}
+\begin{proof}
+  Left as an exercise to the reader.
+\end{proof}
+\cref{lem:usefullemma} stated next will prove to be useful.
+\begin{lemma}
+  \label{lem:usefullemma}
+  For any $f:X \to Y$ and $g:Y\to Z$ injective functions, $f \circ g$ is
+  injective.
+\end{lemma}
+\begin{theorem}
+  \label{thm:bigtheorem}
+  If $f:X\to Y$ is bijective, the cardinality of $X$ and $Y$ are the same.
+\end{theorem}
+An easy corollary of \cref{thm:bigtheorem} is the following:
+\begin{corollary}
+  If $f:X\to Y$ is bijective,
+  the cardinality of $X$ is at least as large as that of $Y$.
+\end{corollary}
+\begin{assumption}
+  The set $X$ is finite.
+  \label{ass:xfinite}
+\end{assumption}
+\begin{remark}
+  According to some, it is only the finite case (cf. \cref{ass:xfinite}) that
+  is interesting.
+\end{remark}
