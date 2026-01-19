@@ -1,0 +1,19 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2026-01-16T10:16:12+08:00
+
+====== 插入代码2 ======
+Created 星期五 16 一月 2026
+
+doc: https://ctan.org/pkg/algorithms
+
+These require the corresponding stylefiles, algorithm.sty and algorithmic.sty
+
+\usepackage{algorithm}
+\usepackage{algorithmic}
+\usepackage[noend]{algorithmic}  % 省略 end for 等关键字
+
+\renewcommand{\algorithmicrequire}{\textbf{Input:}}
+\renewcommand{\algorithmicensure}{\textbf{Output:}}
+\newcommand{\RETURN}{\STATE \textbf{return}}
+
