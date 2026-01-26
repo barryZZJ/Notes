@@ -6,3 +6,6 @@ Creation-Date: 2024-11-05T15:11:28+08:00
 Created 星期二 05 十一月 2024
 
 nvidia-smi -L
+
+安装驱动：
+Software & Updates - Additional Drivers - 版本来自 https://www.nvidia.com/en-us/geforce/drivers/

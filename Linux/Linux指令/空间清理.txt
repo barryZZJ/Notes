@@ -1,0 +1,16 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2026-01-23T17:18:05+08:00
+
+====== 空间清理 ======
+Created 星期五 23 一月 2026
+
+sudo du -xhd1 /var | sort -h
+
+sudo journalctl --vacuum-size=200M
+
+sudo rm -rf /var/cache/apt/archives/*.deb
+sudo rm -rf /var/cache/apt/archives/partial/*
+
+sudo rm -rf /tmp/*
+sudo rm -rf /var/tmp/*

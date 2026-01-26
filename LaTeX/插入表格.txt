@@ -1,4 +1,5 @@
 Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
 
 表格
 array相当于tabular，但是套在equation中，自动数学模式
@@ -37,7 +38,9 @@ P{<width>}
 横线：(画线后不用换行)
 \hline （能跟竖线连上） 
 \hline\hline 双横线
-booktabs宏包：
+
+高级表格：
+booktabs宏包：https://mirrors.sjtug.sjtu.edu.cn/ctan/macros/latex/contrib/booktabs/booktabs.pdf
 \toprule \midrule \bottomrule 加粗横线，与内容有间距，写两次是双横线。画线后不用换行
 
 
