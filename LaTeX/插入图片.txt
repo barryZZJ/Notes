@@ -3,7 +3,7 @@ Wiki-Format: zim 0.6
 
 图片
 \usepackage{graphicx}
-\graphicspath{{src}} % Set the default folder for images
+''\graphicspath{{src}} % Set the default folder for images''
 
 !htbp - "!"忽略美学
 
@@ -30,7 +30,7 @@ Wiki-Format: zim 0.6
 \hfill 在每一行中均匀排布，可以代替空格
 1. 多图共享一个总标号：使用多个\includegraphics，空格：\qquad，换行\\[x pt]
 
-2. 每个图有一个单独的标号：（多个minipage用\qquad，\\隔开）
+2. 每个图有一个单独的大标号 Figure. x：（多个minipage用\qquad，\\隔开）
 minipage环境（可加参数[t/b]表示顶部/底部对齐）
 
 \begin{figure}[htbp]
@@ -45,16 +45,21 @@ minipage环境（可加参数[t/b]表示顶部/底部对齐）
 3. 每个图有个小标题/标号，外面一个大标题 https://blog.csdn.net/u012428169/article/details/115449123
 修改小标号 \renewcommand\thesubfigure{(\arabic{subfigure})}
 罗马数字: \roman, 阿拉伯数字：\arabic, 大写罗马数字：\Roman
-推荐用3.1 subfloat
+
+推荐用3.1 subfig包的subfloat环境
 注意如果标题包含数学环境里的[]，要用{}把整个数学环境括起来，否则会报错。
-3.1 新subfig包：添加[caption=false]参数可以避免修改标题格式
-\subfloat[Caption1\label{fig:subim1}]{%
+3.1 新subfig包：\usepackage{subfig} 添加[caption=false]参数可以避免修改标题格式
+\begin{figure}
+\subfloat[img 1\label{fig:subim1}]{%
   \includegraphics[width=0.45\linewidth]{example-image-a}%
-}\hfill
-\subfloat[Caption1\label{fig:subim2}]{%
+}\hfill % or \\
+\subfloat[img 2\label{fig:subim2}]{%
   \includegraphics[width=0.45\linewidth]{example-image-b}%
 }
+\caption{Main Caption}
+\end{figure}
 使用\ref会生成如1a字样；使用\subref可以只生成(a)
+
 
 3.2注意subcaption包会修改默认的标题格式
 推荐使用\subcaptionbox，能使水平并列大小不同的图形按下边界对齐，且标题与子图宽度对应，引用subcaption宏包

@@ -1,0 +1,54 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2026-01-29T10:42:58+08:00
+
+====== 修改tensorboard内容 ======
+Created 星期四 29 一月 2026
+
+仅供参考，实测没用
+
+{{{code: lang="python3" linenumbers="False"
+from tensorboard.backend.event_processing import event_accumulator
+from torch.utils.tensorboard import SummaryWriter
+from PIL import Image
+import io
+import numpy as np
+import os
+input_path = r'/experiments_ref\config_dps_ffhq256_10m\1112_1610\events.out.tfevents.1762935018.DESKTOP-BARRY.38648.0'  # 输入需要指定event文件
+output_path = r'/experiments_ref\config_dps_ffhq256_10m\1112_1610'
+
+# 读取需要修改的event文件
+ea = event_accumulator.EventAccumulator(input_path)
+ea.Reload()
+tags_map = ea.Tags()  # dict with keys like 'scalars', 'images', ...
+
+
+# 写入新的文件
+writer = SummaryWriter(output_path)  # 创建一个SummaryWriter对象
+
+# Scalar tags: decrement step by 1 for matching patterns
+for tag in tags_map.get('scalars', []):
+    scalar_list = ea.Scalars(tag)
+    for s in scalar_list:
+        step = s.step
+        if ('_loss/' in tag) or ('_guidance/' in tag) or ('_metrics_' in tag):
+            step = int(step) - 1
+        writer.add_scalar(tag, s.value, step, s.wall_time)
+
+# Image tags: only adjust for specific image tags and decrement step
+for tag in tags_map.get('images', []):
+    if tag not in ('x_t', 'x_0_hat'):
+        continue
+    for img_event in ea.Images(tag):
+        try:
+            img = Image.open(io.BytesIO(img_event.encoded_image_string)).convert('RGB')
+            arr = np.asarray(img)
+        except Exception:
+            # skip malformed image
+            continue
+        step = int(img_event.step) - 1
+        # dataformats='HWC' because arr is HxWxC (numpy)
+        writer.add_image(tag, arr, step, dataformats='HWC', walltime=img_event.wall_time)
+
+writer.close()
+}}}
