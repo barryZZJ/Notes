@@ -7,6 +7,7 @@ array相当于tabular，但是套在equation中，自动数学模式
 table[htb]里套tabular / tabularx
   tabularx: https://blog.csdn.net/m0_38024097/article/details/108416476
 
+
 tabluar[tcb规定垂直上中下对齐]{列样式定义水平对齐|c| <or> |*{5}{c|}} 
 
 
@@ -38,6 +39,11 @@ P{<width>}
 横线：(画线后不用换行)
 \hline （能跟竖线连上） 
 \hline\hline 双横线
+
+''\multicolumn{⟨n⟩}{⟨column-spec⟩}{⟨item⟩}''
+\usepackage{multirow}
+''\multirow{⟨n⟩}{⟨width⟩}{⟨item⟩}''
+width填*
 
 高级表格：
 booktabs宏包：https://mirrors.sjtug.sjtu.edu.cn/ctan/macros/latex/contrib/booktabs/booktabs.pdf

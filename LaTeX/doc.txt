@@ -7,14 +7,16 @@ Created 星期五 09 一月 2026
 
 E:\Coding2\LaTeX
 
+搜索：
+texdoc <package>
+https://ctan.org/
+
 中文:
 http://mirrors.ustc.edu.cn/CTAN/info/lshort/chinese/lshort-zh-cn.pdf
 英文:
 https://mirrors.cqu.edu.cn/CTAN/info/latex2e-help-texinfo/latex2e.pdf
 https://latexref.xyz/dev/latex2e.pdf
 
-搜索package的doc
-https://texdoc.org/index.html
 
 https://www.latex-project.org/help/documentation
 
