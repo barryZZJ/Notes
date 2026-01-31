@@ -1,0 +1,10 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2026-01-31T14:03:34+08:00
+
+====== amend ======
+Created 星期六 31 一月 2026
+
+git commit --amend
+
+会把已add的改动合并至最近一次commit中
