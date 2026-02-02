@@ -11,6 +11,8 @@ ufw status
 关闭防火墙
 ufw disable
 
+ufw allow from any to any port xxx
+
 * centos 7
 查看防火墙状态
 firewall-cmd --state
