@@ -9,6 +9,7 @@ http://www.4k8k.xyz/article/Strive_For_Future/118609968
 
 行内公式
 \( \) 或 $ $
+解决长度溢出问题：在行首加\sloppy，或手动进行换行 https://tex.stackexchange.com/questions/1959/allowing-line-break-at-in-inline-math-mode/1960#1960
 
 行间公式
 \[\] == equation* 没编号

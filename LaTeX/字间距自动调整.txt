@@ -1,0 +1,9 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2026-02-09T17:05:39+08:00
+
+====== 字间距自动调整 ======
+Created 星期一 09 二月 2026
+
+\fussy 减少字间距
+\sloppy 增加字间距，避免overfull box
