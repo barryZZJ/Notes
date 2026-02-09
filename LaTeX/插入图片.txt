@@ -26,6 +26,10 @@ Wiki-Format: zim 0.6
 \raggedright 左对齐
 \raggedleft 右对齐
 
+裁剪
+\includegraphics[width=\linewidth,trim=12 10 12 10,clip]{figs/figure.pdf}
+顺序：左 下 右 上，单位pt
+
 多图排版：3.9.2
 \hfill 在每一行中均匀排布，可以代替空格
 1. 多图共享一个总标号：使用多个\includegraphics，空格：\qquad，换行\\[x pt]

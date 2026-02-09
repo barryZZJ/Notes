@@ -7,14 +7,17 @@ array相当于tabular，但是套在equation中，自动数学模式
 table[htb]里套tabular / tabularx
   tabularx: https://blog.csdn.net/m0_38024097/article/details/108416476
 
+tabluar[规定垂直上中下对齐]{列样式定义水平对齐}
+tabluar[tcb]{|c|}
+tabluar[tcb]{|*{5}{c|}}
+tabluar[tcb]{*{5}{c}}
 
-tabluar[tcb规定垂直上中下对齐]{列样式定义水平对齐|c| <or> |*{5}{c|}} 
-
-
+见latex2e文档en tabular部分
 对齐格式
 l c r 
 p{<width>} 指定宽度(实现自动换行) 
-@{<string>} 添加字符串
+@{<string or space>} 添加字符串
+*{num}{cols}
 
 （@格式可以适当使用以充当竖线。如{@{} r@{:}lr @{}}。特别地，@{} 可直接用来消除单元格前后的间距）
 内容里用&隔开
@@ -40,7 +43,11 @@ P{<width>}
 \hline （能跟竖线连上） 
 \hline\hline 双横线
 
-''\multicolumn{⟨n⟩}{⟨column-spec⟩}{⟨item⟩}''
+竖线：
+\vline
+修改宽度：\setlength{\arrayrulewidth}{1.0pt}
+
+''\multicolumn{<n col>}{<align:lcr>}{<text>}''
 \usepackage{multirow}
 ''\multirow{⟨n⟩}{⟨width⟩}{⟨item⟩}''
 width填*

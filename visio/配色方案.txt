@@ -1,0 +1,29 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2026-02-03T15:41:45+08:00
+
+====== 配色方案 ======
+Created 星期二 03 二月 2026
+
+课代表来了
+1. AdobeColor
+网址：https://color.adobe.com/zh/explore
+Adobe官方推出的配色工具网站
+优点：中文界面友好，容易上手，加载速度快，功能齐全
+But：下载色卡需要登录
+
+2. Dopely Colors
+网址：https://colors.dopely.top
+优点：无需登录可直接下载，并且带有渐变色卡
+
+3. uiGradients
+网址：https://uigradients.com/
+优点：界面很简洁，大屏颜色展示，用来找主色调及其过渡色很方便
+
+4. 中国色
+网址：https://zhongguose.com/ai/palettes
+优点：界面简洁，大屏颜色展示，每种颜色都有对应的名称，可以用名称快速找到近似色
+
+5. Adobe illustrator自带色板
+优点：配色科学，操作简单
+But：颜色饱和度高，需要与颜色参考功能搭配使用
