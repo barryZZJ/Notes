@@ -55,9 +55,9 @@ def draw_boxes_on_page(
 page.add_redact_annot(rect, fill=None)
 page.apply_redactions(images, graphics=1, text=0)
     images: 2: PDF_REDACT_IMAGE_PIXELS 删除重叠部分的像素点
-    graphics: 即drawings，PDF_REDACT_LINE_ART_REMOVE_IF_COVERED = 1 (仅删除完全被指定box包裹的内容); PDF_REDACT_LINE_ART_REMOVE_IF_TOUCHED = 2 (删除所有相交的内容，可能会误杀). When removing line-art, please be aware that stroked vector graphics (i.e. type “s” or “sf”) have a larger wrapping rectangle than one might expect: first of all, at least 50% of the path’s line width have to be added in each direction to truly include all of the drawing. If a so-called “miter limit” is provided (see page 121 of the PDF specification), the enlarging value is miter * width / 2. So, when letting everything default (width = 1, miter = 10), the redaction rectangle should be at least 5 points larger in every direction.
+    graphics: 即drawings，PDF_REDACT_LINE_ART_REMOVE_IF_COVERED = 1 (仅删除完全被指定box包裹的内容); PDF_REDACT_LINE_ART_REMOVE_IF_TOUCHED = 2 (删除所有相交的内容，可能会误杀). 注意可能需要扩大box，注意有没有误杀。When removing line-art, please be aware that stroked vector graphics (i.e. type “s” or “sf”) have a larger wrapping rectangle than one might expect: first of all, at least 50% of the path’s line width have to be added in each direction to truly include all of the drawing. If a so-called “miter limit” is provided (see page 121 of the PDF specification), the enlarging value is miter * width / 2. So, when letting everything default (width = 1, miter = 10), the redaction rectangle should be at least 5 points larger in every direction.
     text: 0: 开, 1: 关
-
+另外如果删不干净，可以不改变box大小重复迭代几次，每次都能删掉点东西。
 
 标记删除（类似画方框）：https://pymupdf.readthedocs.io/en/latest/page.html#Page.add_redact_annot
 page.add_redact_annot(rect, fill=(r,g,b))
