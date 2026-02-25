@@ -1,0 +1,52 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2026-02-25T2:11:49+08:00
+
+====== bisect二分法查找 ======
+Created 星期三 25 二月 2026
+
+pip install pymupdf
+
+import fitz
+
+fitz.open(str(input_path))
+
+for pno in range(doc.page_count):
+    page = doc[pno]
+    for i, dr in enumerate(page.get_drawings()):
+        r = dr.get("rect")
+        if r is None:
+            continue
+        rect = fitz.Rect(r)
+doc.save(str(output_path))
+
+
+获取不可编辑内容：
+page.get_drawings()
+
+获取文字：
+for block in data.get("blocks", []):
+    if block.get("type") != 0:  # 0 = text
+        continue
+
+    for line in block.get("lines", []):
+        for span in line.get("spans", []):
+            text = span.get("text", "")
+            x0, y0, x1, y1 = span["bbox"]
+            rect = fitz.Rect(x0, y0, x1, y1)
+
+画方框：page.draw_rect
+
+
+仅删除完全被指定box包裹的内容：https://pymupdf.readthedocs.io/en/latest/page.html#Page.apply_redactions
+page.add_redact_annot(rect, fill=None)
+page.apply_redactions(images, graphics, text)
+
+
+标记删除（类似画方框）：https://pymupdf.readthedocs.io/en/latest/page.html#Page.add_redact_annot
+page.add_redact_annot(rect, fill=(r,g,b))
+如果fill为(r,g,b)，则填充整个rect。
+如果想避免与其他内容重叠，可以设fill为None
+
+
+
