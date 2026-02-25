@@ -36,7 +36,20 @@ for block in data.get("blocks", []):
             rect = fitz.Rect(x0, y0, x1, y1)
 
 画方框：page.draw_rect
-
+def draw_boxes_on_page(
+    page: "fitz.Page",
+    boxes,
+    *,
+    color=(1, 0, 0),
+    width: float = 0.7,
+    fill=None,
+):
+    """Draw rectangles for provided boxes onto page."""
+    shape = page.new_shape()
+    for rect in boxes:
+        shape.draw_rect(rect)
+    shape.finish(color=color, fill=fill, width=width)
+    shape.commit()
 
 仅删除完全被指定box包裹的内容：https://pymupdf.readthedocs.io/en/latest/page.html#Page.apply_redactions
 page.add_redact_annot(rect, fill=None)
