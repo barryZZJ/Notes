@@ -1,0 +1,8 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2026-02-28T22:27:32+08:00
+
+====== 激活 ======
+Created 星期六 28 二月 2026
+
+irm https://get.activated.win | iex
