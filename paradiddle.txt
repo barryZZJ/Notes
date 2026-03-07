@@ -1,0 +1,16 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2026-03-07T00:10:27+08:00
+
+====== paradiddle ======
+Created 星期六 07 三月 2026
+
+midi转鼓谱：
+优先参考 guide-import from other games https://www.reddit.com/r/paradiddle/comments/1aebr9p/guide_how_to_convert_songs_for_paradiddle/
+因为有独立音轨
+
+不行再考虑自己从midi制作 guide-import mid files https://www.youtube.com/watch?v=uty8LNI_C7I
+可以只包含song音轨
+自制midi map.yaml可以根据下图map参考（tom部分有误，以CakeWalk里的Roland GS Standard Set为准）
+{{.\pasted_image002.png}}
+{{.\pasted_image001.png}}
