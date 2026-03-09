@@ -1,0 +1,39 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2026-03-07T12:09:54+08:00
+
+====== reaper DAW ======
+Created 星期六 07 三月 2026
+
+Preferences:
+Audio - MIDI Outputs - Enable "Microsoft GS Wavetable Synth"
+
+View:
+Routing Matrix
+1. 点击track上的ROUTE按钮 - MIDI Hardware Output - Microsoft GS Wavetable Synth
+2. 或在下面的Routing Matrix中手选
+
+MIDI note 命名：
+File - Note/CC Names - Load ... from file
+
+在游戏中播放DAW的输出：
+https://steamcommunity.com/games/685240/announcements/detail/3326339453404631345
+
+麦克风转MIDI：
+1. 系统麦克风设置：实测麦克风音量100，增益0，可以有效过滤杂音
+2. 启动loopMIDI，新建一个音源。reaper选择为MIDI Output
+3. reaper preference - input device设为对应麦克风
+4. 新建一个track，点击红色record按钮，选择Input: Mono
+5. 添加一个FX，搜索Drum Trigger。
+	MIDI Note=36、MIDI Channel=10。
+	先把 Original Signal Mix=0%（只要 MIDI）。
+	调 Open Threshold 到“正常踢会触发、环境噪声不触发”为止。
+	Close Threshold 设比 Open 低 1–6dB，减少抖动。
+	新增了Velocity Scale，可以修改速度加成比例，目前是339
+	有双触发就把 Retrigger Interval 往上加（比如从 30ms -> 50ms/70ms）。
+6. 游戏中设置MIDI Input
+
+已有工程文件：
+1. 打开loopMIDI
+2. reaper打开工程文件
+3. 进入游戏即可
