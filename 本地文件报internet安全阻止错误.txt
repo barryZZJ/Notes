@@ -1,0 +1,9 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2026-03-14T16:19:07+08:00
+
+====== 本地文件报internet安全阻止错误 ======
+Created 星期六 14 三月 2026
+
+检查
+Get-ChildItem "HKCU:\Software\Microsoft\Windows\CurrentVersion\Internet Settings\ZoneMap" -ErrorAction SilentlyContinue
