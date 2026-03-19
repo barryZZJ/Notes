@@ -1,0 +1,22 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2026-03-18T15:28:51+08:00
+
+====== 蓝牙设备删除 ======
+Created 星期三 18 三月 2026
+
+1. 设备管理器——显示隐藏的设备
+蓝牙设备——右键卸载
+
+
+
+下载
+http://bluetoothinstaller.com/bluetooth-command-line-tools/
+
+取消配对所有设备
+btpair -u
+
+取消配对指定设备：
+控制面板——设备和打印机
+右键属性——蓝牙——唯一标识符 如 40:8e:2c:47:5e:ab
+btpair -u -b 40:8e:2c:47:5e:ab
