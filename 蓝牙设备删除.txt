@@ -8,8 +8,10 @@ Created 星期三 18 三月 2026
 1. 设备管理器——显示隐藏的设备
 蓝牙设备——右键卸载
 
+如果删不干净，再把那个叫"蓝牙枚举器"的给删掉
 
 
+2. （没用）
 下载
 http://bluetoothinstaller.com/bluetooth-command-line-tools/
 
