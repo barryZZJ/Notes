@@ -1,4 +1,4 @@
 Content-Type: text/x-zim-wiki
 
 在头部添加：
-// @require file:///D:\xxx.js
+''// @require file:///D:\xxx.js''

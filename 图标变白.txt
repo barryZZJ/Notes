@@ -9,5 +9,6 @@ Created 星期一 22 一月 2024
 右键任务栏图标，右键弹出窗口中程序名，右键属性，修改文件路径
 
 steam游戏图标变白：
+用vscode打开.url文件，有IconFile属性
 右键属性，找到<APPID>复制，用steamdb打开，下载clienticon，放入.url文件中IconFile对应的位置（修改旧的IconFile值），重启explorer
 https://steamdb.info/app/<APPID>/info/
