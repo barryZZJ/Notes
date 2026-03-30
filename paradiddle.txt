@@ -20,7 +20,7 @@ midi转鼓谱/从RhythmVerse和Chorus Encore谱面转换：
 RhythmVerse上下载作者名在song.ini的charter里
 
 不同格式的谱面:
-Rock Band谱面是xxx_rb3con文件 (Section 2)，需要用C3Tools提取，（试了选Try to separate to stereo，会尝试分成出乐器的track，但很慢；如果选Downmix是混在一起)
+Rock Band谱面是xxx_rb3con文件 (Section 2)，需要用C3Tools提取，（试了选Try to separate to stereo，会尝试分成出乐器的track，但很慢。注意有时候分离失败会不输出音频，此时要选择Downmix)
 Clone Hero谱面直接是音乐文件 + notes.mid (Section 3)
 Guitar Hero的是.chart文件，需要用Moonscraper Chart Editor打开，然后直接export选.mid，Instrument Events选择Expert模式最符合原谱（对应Pro Drums模式），否则会把鼓和镲混在一起。其他选项目前不太确定，先保持默认。
 

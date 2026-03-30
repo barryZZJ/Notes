@@ -1,7 +1,21 @@
 Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
 
 https://tqdm.github.io/
 from tqdm import tqdm
 
 for item in tqdm(<iterable>):
-    <process item>
+	<process item>
+
+高级用法：
+from tqdm import trange  # trange(..) 相当于 tqdm(range(...))
+
+显示详细进度信息：（不会动态更新）
+desc: str, 会在前面输出desc
+postfix: dict, 会在后面输出 "key=val"
+动态更新进度信息：
+for item in (pbar := tqdm()):
+	...
+	pbar.set_description()
+	pbar.set_postfix(dict)
+	...
