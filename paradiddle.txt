@@ -5,9 +5,32 @@ Creation-Date: 2026-03-07T00:10:27+08:00
 ====== paradiddle ======
 Created 星期六 07 三月 2026
 
-midi转鼓谱：
+其他铺面下载
+https://rhythmverse.co/songfiles/game
+https://www.enchor.us/
+
+midi下载：
+https://freemidi.org/
+https://www.midiworld.com/
+
+midi转鼓谱/从RhythmVerse和Chorus Encore谱面转换：
 优先参考 guide-import from other games https://www.reddit.com/r/paradiddle/comments/1aebr9p/guide_how_to_convert_songs_for_paradiddle/
 因为有独立音轨
+
+RhythmVerse上下载作者名在song.ini的charter里
+
+不同格式的谱面:
+Rock Band谱面是xxx_rb3con文件 (Section 2)，需要用C3Tools提取，（试了选Try to separate to stereo，会尝试分成出乐器的track，但很慢；如果选Downmix是混在一起)
+Clone Hero谱面直接是音乐文件 + notes.mid (Section 3)
+Guitar Hero的是.chart文件，需要用Moonscraper Chart Editor打开，然后直接export选.mid，Instrument Events选择Expert模式最符合原谱（对应Pro Drums模式），否则会把鼓和镲混在一起。其他选项目前不太确定，先保持默认。
+
+三种的drum mapping 都选择 rythm_game_mapping.yaml
+
+修复报错：不在0~127范围内：
+直接跳过报错的语句就行。不能用Reaper打开midi文件，只导出drum，实测偏移量不对
+
+查看难度：
+notes.mid中的DRUMS track，分为不同难度，详见rhythm_game_mapping.yaml
 
 不行再考虑自己从midi制作 guide-import mid files https://www.youtube.com/watch?v=uty8LNI_C7I
 可以只包含song音轨

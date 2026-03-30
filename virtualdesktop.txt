@@ -30,6 +30,8 @@ america.vrdesktop.net
 ctrl+shift+win+b it will reset your graphics drivers
 
 监视进程被谁杀掉了
+gflags
+silent process exit
 https://blog.csdn.net/CJF_iceKing/article/details/112754801
 https://learn.microsoft.com/en-us/windows-hardware/drivers/debugger/registry-entries-for-silent-process-exit
 

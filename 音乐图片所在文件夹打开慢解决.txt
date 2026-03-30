@@ -1,0 +1,11 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2026-03-29T16:42:53+08:00
+
+====== 音乐图片所在文件夹打开慢解决 ======
+Created 星期日 29 三月 2026
+
+1. 右键——属性——自定义——优化此文件夹——常规项目
+2. 修改注册表
+https://superuser.com/questions/1175439/windows-disable-folder-type-detection-in-explorer-globally
+
