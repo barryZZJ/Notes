@@ -7,6 +7,7 @@ Created 星期一 13 二月 2023
 
 https://segmentfault.com/a/1190000022772403
 
+I:\temp\CloudMusic\Cache
 C:\Users\85046\AppData\Local\Netease\CloudMusic\Cache\Cache
 
 .uc文件每一个 byte 与0xa3做异或，即可得到mp3
