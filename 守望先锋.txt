@@ -1,0 +1,9 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2026-04-04T09:35:25+08:00
+
+====== 守望先锋 ======
+Created 星期六 04 四月 2026
+
+玩的时候需要关闭clash（设为DIRECT也不行）
+可能跟最近所里不让用梯子有关

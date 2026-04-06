@@ -32,6 +32,9 @@ barryzzj
 api密码 WOffP0rwfpMg44iA$fAD
 api_key=md5(username + ':' + api_password)  == f770ddc7e4de203bba2b33aa30274552
 
+登录失败等逻辑bug错误解决：
+不要mount /var/www/FreshRSS/p 文件夹，里面有登录代码处理逻辑，mount后会导致不跟随版本更新
+
 接口：
 通用参数：body={'api_key': api_key}
 ?api 查询api开放性

@@ -29,6 +29,7 @@ logging.basicConfig(format=fmt, datefmt=datefmt, level=logging.INFO)
 设置logger配置：
 log = logging.getLogger(name: Optional)
 log.setLevel(logging.INFO)  # 需要先调用logging.basicConfig() （不用带参数）才能生效
+一般只在当前包中用，name设为''"__main__"；''通过设置为固定字符串，可以跨包使用。
 
 输出到文件
 logging.basicConfig(filename='example.log', encoding='utf-8', level=logging.DEBUG)

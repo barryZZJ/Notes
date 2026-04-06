@@ -13,7 +13,7 @@ https://blog.csdn.net/qq_50007511/article/details/110202258
 
 doc
 https://developers.weixin.qq.com/doc/offiaccount/Getting_Started/Overview.html
-		
+
 	新增素材
 	https://developers.weixin.qq.com/doc/offiaccount/Asset_Management/New_temporary_materials.html
 	files = {'media': open(r'/tmp/pycharm_project_471/test_short.mp4', 'rb'),

@@ -1,0 +1,11 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2026-04-03T21:51:59+08:00
+
+====== teamspeak ======
+Created 星期五 03 四月 2026
+
+直接安装
+https://www.teamspeak.com/en/downloads/#server
+
+具体见keepass

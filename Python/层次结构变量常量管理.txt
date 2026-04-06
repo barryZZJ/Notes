@@ -8,7 +8,7 @@ Created 星期二 23 七月 2024
 可变取值：
 1. 静态类成员。支持查找引用
 ''class Args:''
-	''ARGSX264: str = ''''
+	''ARGSX264: str ='' ''
 	''Suffxies: list = []''
 	''OutPat: dict = {}''
 
@@ -23,6 +23,16 @@ Created 星期二 23 七月 2024
 ''print(args.ARGSX264)  # Output: new value''
 ''print(args.Suffixes.mp4)  # Output: .mp4''
 ''print(args.OutPat.folder)  # Output: output_folder''
+
+3. 自定义类
+''class dotdict(dict):''
+	''"""dot.notation access to dictionary attributes"""''
+	''__getattr__ = dict.get''
+	''__setattr__ = dict.__setitem__''
+	''__delattr__ = dict.__delitem__''
+
+
+
 
 不可变取值：
 1. namedtuple。不支持查找
