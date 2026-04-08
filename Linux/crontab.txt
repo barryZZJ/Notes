@@ -5,6 +5,9 @@ Creation-Date: 2022-09-28T15:43:19+08:00
 ====== crontab ======
 Created 星期三 28 九月 2022
 
+f1 f2 f3 f4 f5 program
+m h date_of_month month day_of_week
+
 https://www.runoob.com/linux/linux-comm-crontab.html
 使用crontab -e进入配置编辑
 crontab -l 列举
