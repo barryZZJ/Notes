@@ -16,11 +16,17 @@ writer.add_scalar('Loss/Train', loss, epoch)  # tag加斜杠可以用于分类
 writer.flush()
 
 .add_scalar
+.add_scalars
 .add_text
+.add_image  # 输入tensor，如果dtype是np.float64（默认），则取值范围[0,1]；如果dtype是np.uint8，则取值范围[0,255]
+.add_images
+.add_figure # 输入plt的figure对象
 
 # log image
 # https://www.tensorflow.org/tensorboard/image_summaries#visualizing_a_single_image
-writer.add_image(
+.add_image(
+
+
 
 cmd:
 > tensorboard --logdir experiments --host 0.0.0.0 --samples_per_plugin "images=20"
