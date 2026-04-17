@@ -16,6 +16,15 @@ Wiki-Format: zim 0.6
 引用：
 正文中用\autoref{mylabel}，就实现了。
 
+修改autoref文字：
+\renewcommand{\tableautorefname}{Tab.}
+\renewcommand{\sectionautorefname}{Sec.}
+\renewcommand{\figureautorefname}{Fig.}
+%\renewcommand{\equationautorefname}{Eq.}
+\renewcommand{\eqref}[1]{Eq. (\ref{#1})}
+\providecommand{\algorithmautorefname}{Alg.}
+
+
 要先使用\usepackage{hyperref} ，然后定义：
 \def\equationautorefname{式}%
 \def\footnoteautorefname{脚注}%

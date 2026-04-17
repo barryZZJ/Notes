@@ -1,0 +1,11 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2026-04-17T10:59:17+08:00
+
+====== vscode快捷键 ======
+Created 星期五 17 四月 2026
+
+ctrl alt B: build
+
+ctrl alt J: latex原文->定位pdf
+ctrl+click: pdf->定位latex原文

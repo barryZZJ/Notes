@@ -5,7 +5,8 @@ Wiki-Format: zim 0.6
 https://katex.org/docs/supported.html
 http://www.4k8k.xyz/article/Strive_For_Future/118609968
 
-数学环境 amsmath
+\usepackage{amsmath}
+\usepackage{amssymb}
 
 行内公式
 \( \) 或 $ $
