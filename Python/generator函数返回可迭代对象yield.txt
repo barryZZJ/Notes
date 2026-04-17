@@ -9,6 +9,8 @@ def fab(max):
 		a, b = b, a + b 
 		n = n + 1
 
+yield from <iterable>
+# 相当于 for item in iterable: yield item:
 
 for n in fab(5): #fab(5)是一个可迭代对象
 	print n

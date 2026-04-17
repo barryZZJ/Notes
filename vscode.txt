@@ -1,0 +1,9 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2026-04-16T11:53:55+08:00
+
+====== vscode ======
+Created 星期四 16 四月 2026
+
+中文输入法不显示候选框：
+设置中关闭 Edit Context
