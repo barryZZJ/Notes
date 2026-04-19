@@ -16,7 +16,7 @@ tabluar[tcb]{*{5}{c}}
 对齐格式
 l c r 
 p{<width>} 指定宽度(实现自动换行) 
-@{<string or space>} 添加字符串
+@{<string or space>} 添加字符串  ： 两列之间添加空白：<c>@{\hspace{0.5em}}<c>
 *{num}{cols}
 
 （@格式可以适当使用以充当竖线。如{@{} r@{:}lr @{}}。特别地，@{} 可直接用来消除单元格前后的间距）
@@ -46,6 +46,9 @@ P{<width>}
 竖线：
 \vline
 修改宽度：\setlength{\arrayrulewidth}{1.0pt}
+留白：{<c>@{\hspace{4pt}\vrule\hspace{4pt}}<c>}
+留白加临时修改宽度：{<c>@{\hspace{4pt}\vrule width 1.5pt\hspace{4pt}}<c>}
+修改颜色：@{\color{white}\vline}
 
 ''\multicolumn{<n col>}{<align:lcr>}{<text>}''
 \usepackage{multirow}

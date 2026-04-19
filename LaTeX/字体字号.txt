@@ -1,9 +1,11 @@
 Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
 
 字号：
 三号16pt、小三15pt、四号14pt、小四12pt、五号10.5pt
 pt = point = word中的磅
 
+\fontsize{size}{skip}
 {\fontsize{xpt}{1.2xpt} \selectfont sometext} 
 % 如果不是在导言区，\fontsize 的设定需要 \selectfont 命令才能立即生效
 
