@@ -50,9 +50,16 @@ P{<width>}
 留白加临时修改宽度：{<c>@{\hspace{4pt}\vrule width 1.5pt\hspace{4pt}}<c>}
 修改颜色：@{\color{white}\vline}
 
-''\multicolumn{<n col>}{<align:lcr>}{<text>}''
+虚线：
+\usepackage{tabularx}
+\usepackage{arydshln}
+\hdashline
+\cdashline{<column1>-<column2>}  \cdashline{2-6}
+
+
+''\multicolumn{<n col>}{<lcr@>}{<text>}''
 \usepackage{multirow}
-''\multirow{⟨n⟩}{⟨width⟩}{⟨item⟩}''
+''\multirow{⟨n⟩}{⟨width=*⟩}{⟨text⟩}''
 width填*
 
 高级表格：
@@ -62,6 +69,8 @@ booktabs宏包：https://mirrors.sjtug.sjtu.edu.cn/ctan/macros/latex/contrib/boo
 
 垂直盒子实现手动换行：
 \parbox[<tbc>]{width}{text}
+\parbox{2cm}{\centering Batch\\Size}
 
 子表格：
 在table里插入minipage，每个minipage里再使用tabular
+

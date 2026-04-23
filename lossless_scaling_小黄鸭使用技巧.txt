@@ -18,6 +18,17 @@ chrome设置：使用图形加速功能（如果可用）
 
 Potplayer：
 安装MpcVideoRenderer https://github.com/emoose/VideoRenderer
+Setup:
+* Extract ZIP somewhere you want to install the renderer (make sure not to move/delete it afterwards or renderer will break)
+* Right click Install_MPCVR_32.cmd file and choose Run as Administrator, same for Install_MPCVR_64.cmd.
+* Inside Potplayer go to 视频 - 视频渲染器, pick MPC Video Renderer from the dropdown list.
+(for MPC-BE it should be under View > Options > Video)
+* Press OK to all dialogs and close down your player (usually needs to close down for it to change renderer properly)
+* Now open a video file, changing the SuperRes/HDR options in NVIDIA Control Panel while a video is playing should have a noticeable difference.
+* SuperRes: recommend following the steps at bottom of #1 (comment) to automatically convert any 10/16-bit P01X content to a format that VSR has better support for.
+SuperRes has to be enabled in VideoRenderer options for it to activate, the EnableVideoSuperRes.reg file below can enable it for you, or you can use the VideoRenderer options window in MPC-BE (View > Options > Video > Properties, portable MPC-BE here can set it globally: MPC-BE.1.6.11.x64.7z).
+
+RTX HDR should be activated as long as it's enabled in NVCP.
 设置——视频——渲染器——选择MPC
 
 

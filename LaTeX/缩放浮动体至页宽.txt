@@ -1,0 +1,14 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2026-04-19T16:23:08+08:00
+
+====== 缩放浮动体至页宽 ======
+Created 星期日 19 四月 2026
+
+\usepackage{graphicx}
+
+可作用于 tabular、subfloat、includegraphics 等，不用手动调整图片、文字大小，会自动缩放至页宽
+
+\resizebox{\linewidth}{!}{
+  \begin{tabular} ... \end{tabular}
+}
