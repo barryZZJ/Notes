@@ -1,0 +1,18 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2026-04-24T10:50:10+08:00
+
+====== sforzando ======
+Created 星期五 24 四月 2026
+
+Cakewalk自带的SI-Drums没有声音，用免费的sforzando代替
+
+免费鼓音源
+SM Drums  https://smmdrums.wordpress.com/for-sfz-sforzando/
+list: https://sfzinstruments.github.io/drums/
+https://shop.karoryfer.com/pages/free-samples
+
+说明文件：
+G:\Plogue\Sounds\Manual, Track Templates, Reaper Proj files\Manual\Sforsand Manual.pdf
+
+加载音源：instrument - Deeply Sampled Free Drums - SM Drums kit

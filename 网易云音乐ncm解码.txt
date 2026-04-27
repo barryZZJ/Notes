@@ -1,0 +1,23 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2026-04-24T15:30:08+08:00
+
+====== 网易云音乐ncm解码 ======
+Created 星期五 24 四月 2026
+
+https://github.com/taurusxin/ncmdump
+
+I:\CloudMusic\VipSongsDownload
+
+同级别（高清甄音）直接下载的音质（采样率）比缓存转换的要高
+
+用法
+ncmdump -d in_dir
+-r recursive
+-m 参数删除源文件若正确处理
+-o out_dir
+
+ncmdump <input_file.ncm>
+
+自动爬取专辑封面图 版本
+https://git.taurusxin.com/taurusxin/ncmdump-go

@@ -25,23 +25,43 @@ https://integrations.goauthentik.io/applications/
 API:
 https://api.goauthentik.io/
 
-邀请注册：
+=== 邀请注册： ===
 https://docs.goauthentik.io/users-sources/user/invitations/
 https://github.com/goauthentik/authentik/issues/9719#issuecomment-3064702888
 
+创建对应的enrollment flow （已创建，存为 enrollment-flow-emby-dd / bj）
 1. 下载 https://goauthentik.io/blueprints/example/flows-enrollment-2-stage.yaml
 2. 在Flow里import
-3. 在Stage里添加一个Invitation类型，名字随意
-4. 打开Flow的default-enrollment-flow —— Stage Bindings —— Bind existing stage —— 选择刚才创建的 invitation stage，order填0 ——完成
+3. 在Stage里添加一个Invitation类型，名字随意 
+4. 打开Flow的default-enrollment-flow —— Stage Bindings —— Bind existing stage —— 选择刚才创建的 invitation stage，order填0 ——完成 (存为 enrollment-flow-emby-dd / bj）
+添加密码复杂度要求：
+创建Password Policy，在default-enrollment-flow 的 prompt stage中Bind Policy，并配置fields
 
-添加密码复杂度要求：创建Password Policy，在default-enrollment-flow 的 prompt stage中Bind Policy，并配置fields
-自动添加到group：https://next.goauthentik.io/users-sources/user/invitations/#automatic-group-assignment
-添加为Internal User：修改default-enrollment-user-write
+新注册用户自动添加到group：
+https://next.goauthentik.io/users-sources/user/invitations/#automatic-group-assignment
+打开enrollment-flow-emby-dd / bj，编辑其中的User Write Stage（enrollment-user-write-to-group-emby-dd / bj）：选择 Group
 
+邀请链接：
+Directory - Invitations - 选择刚才建的enrollment flow
+http://authentik.barryzzj.top:23354/if/flow/enrollment-flow-emby-dd/?itoken=823b350b-d271-4646-95b8-e890b9860f70
+
+添加为Internal User：
+修改default-enrollment-user-write
+
+=== 用户 ===
+编辑用户所属group：
+Directory - Users - 点开对应用户 - Groups
+
+查看用户能访问的Applications：
+Directory - Users - 点开对应用户 - Applications
+
+查看Emby用户名密码：
+Directory - Users - 右边编辑按钮 - Attributes
 
 === Application ===
 配置访问权限：
-点开后，Policy / Group / User bindings，添加有访问权限的组/用户
+Applications点开名称后，"Policy / Group / User bindings"，添加有访问权限的组/用户
+默认不添加则全员可见
 
 === Provider： ===
 配置一个认证服务器。接入的http应用会通过访问provider，管provider要鉴权信息。

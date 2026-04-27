@@ -1,0 +1,86 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2026-04-24T10:50:28+08:00
+
+====== 创建midi谱 ======
+Created 星期五 24 四月 2026
+
+导入音频文件：
+1. 确定bpm后，整体往后拖，匹配到第一个4n的小节作为开头
+2. 音频起始位置往前拖到项目开头，添加静音部分
+
+添加midi鼓轨道：
+1. 右键轨道空白部分-Insert virtual instrument on new track
+2. 选择sforzando VST3i
+3. 加载SM Drums kit
+4. Insert - new MIDI item
+5. 双击新增的轨道 打开note编辑界面
+	File - Note / CC Names - Load - SM Drum Kit
+6. 加载CCnames
+7. 开启Spectro peaks + Spectrogram (Alt shift P)
+	Peaks display settings加载预设后进行微调
+
+切换Velocity：自动复制上一个选中的note的velocity
+
+调整BPM：
+右下角，先选择：Project timebase: Time，然后调整BPM
+
+调整播放速度：
+1. 调整右下角playback rate旋钮
+2. 或：同调整BPM，但选择Beats (auto-stretch at tempo changes)
+
+切换BPM：
+Insert - Tempo/Signature change marker
+
+导出midi：
+1. 把midi轨道的开头与音乐开头对齐，取消静音
+2. 选择midi的头尾（如果已经是项目开头则不用选）
+3. File - Export project MIDI
+4. Time selection only / Entire Project, selected tracks only, type 1 MIDI file, 勾选Embed project tempo/time signature changes
+5. ParaUtils的试听的bpm可能不对，检查输出rlrr文件的length就好。
+6. 检查时间是否对齐：选中midi开头，File-Project settings-Project start time - Set 0:00 to current time edit cursor
+
+导出音频：如果音频开头进行了调整，需要重新渲染音频文件
+File - Render - 
+	Source: Selected media items
+	Sample rate
+	Format: OGG Vorbis
+	VBR quality 0.5以下 
+- render
+
+关闭自动循环：
+右键MIDI track - Item Settings - Loop item source
+
+自动滚动：
+Options - Automatically scroll view during playback
+
+切换频谱：
+Options - Peaks display Mode
+可以保存预设
+*ctrl alt p: show peaks display settings
+*Alt P: toggle spectrogram
+*Shift P: toggle spectral peaks
+*Alt Shift P: toggle spectral peaks + spectrogram
+
+经验:(Drum preset)
+高粉色底鼓、矮红棕色军鼓、矮粉色嗵鼓（越红越高）
+蓝色延长音为crash，越长、越碎/音调越低尺寸越大、
+比较哗~的声音可能是两个镲一起打发出的
+
+调整grid粒度：Alt+G开关grid
+midi编辑窗口：下方菜单可调整grid粒度
+主界面：Options - Snap/Grid (Alt + L) - Show grid. line spacing
+
+搜索快捷键和操作：Actions - Action list
+
+快捷键：
+Alt S: 自动吸附
+S: split
+R: 循环播放
+*shift 滚轮：左右平移（可以在编辑快捷键中修改滚轮方向）(scroll horizontally reversed)
+*alt 滚轮：上下平移(scroll vertically)
+pgup pgdown ctrl 滚轮：上下缩放轨道
+
+*Up/*Down: Increase / Decrease pitch cursor one semitone
+
+编辑快捷键：Actions - show action list

@@ -1,0 +1,20 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2026-04-24T13:18:17+08:00
+
+====== SpleeterGUI ======
+Created 星期五 24 四月 2026
+
+分离音轨声部工具 用预训练的模型
+
+https://www.bilibili.com/read/cv37361119
+
+common problems
+https://makenweb.com/spleeter_help.php
+
+用法：
+1. 选择分离声部模型：
+	2：vocal+伴奏 
+	4：vocal+bass+drum+others
+	5：vocal+bass+drum+piano+others
+2. 储存至

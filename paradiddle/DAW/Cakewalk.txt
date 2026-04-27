@@ -1,0 +1,18 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2026-04-24T10:51:33+08:00
+
+====== Cakewalk ======
+Created 星期五 24 四月 2026
+
+自定义Note Names:
+打开 C:\Users\85046\AppData\Roaming\Cakewalk\Sonar\Master.ins
+在.Note Names处新建一节
+然后重启
+
+
+慢放：
+Ctrl A 选择所有track
+Alt A 打开AudioSnap
+修改Average Tempo
+点击Clip Follows Project

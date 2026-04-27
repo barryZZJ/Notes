@@ -1,0 +1,14 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2026-04-24T13:18:33+08:00
+
+====== 分离音轨声部 ======
+Created 星期五 24 四月 2026
+
+分离出不同乐器
+
+UVR5的Demucs好像还不错
+
+1. SpleeterGUI
+2. uvr5 https://ultimatevocalremover.com/ ultimate vocal remover gui
+3. https://studio.moises.ai/ (每月免费5次AI音轨分离)

@@ -15,6 +15,7 @@ Routing Matrix
 
 MIDI note 命名：
 File - Note/CC Names - Load ... from file
+按住ctrl可以隐藏/调整顺序
 
 在游戏中播放DAW的输出：
 https://steamcommunity.com/games/685240/announcements/detail/3326339453404631345

@@ -1,0 +1,28 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2026-04-24T13:38:07+08:00
+
+====== midi编辑工具 ======
+Created 星期五 24 四月 2026
+
+1. MuseScore / Guitar Pro
+https://github.com/musescore/MuseScore
+本质是乐曲制作软件，默认用五线谱
+
+默认用的是通用mapping
+可以在视图——混音器 加载sforzando音色
+并且自定义note编号（自定义套组）
+
+2. MidiEditor
+使用通用mapping，纯编辑note
+
+3. 使用DAW，导入midi音轨
+
+游戏谱面：
+游戏谱面的mid与通用mapping不同，一个mid文件包含不同的乐器，每个乐器是一个track
+且包含不同难度，对应了不同的note值范围。
+鼓track的对应关系可见ParaUtil的rhythm_game_mapping.yaml
+
+查看游戏谱面；
+1. Moonscraper Chart Editor 可以试听，选择不同乐器和难度
+2. MidiEditor可以打开查看，但不能试听

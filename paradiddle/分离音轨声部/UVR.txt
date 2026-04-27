@@ -1,0 +1,13 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2026-04-24T15:12:56+08:00
+
+====== UVR ======
+Created 星期五 24 四月 2026
+
+模型介绍
+https://www.bilibili.com/video/BV12m4y1H7ik
+
+选择Demucs模型才能分离鼓谱
+
+Ensemble Mode - Drums / No Drums - Min Spec/Max Spec

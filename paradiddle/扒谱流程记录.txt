@@ -1,0 +1,40 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2026-04-24T12:58:26+08:00
+
+====== 扒谱流程记录 ======
+Created 星期五 24 四月 2026
+
+=== 古法手工扒谱 ===
+[[https://www.bilibili.com/video/BV11r4y177VM|保姆级架子鼓扒谱演示 半小时一首复杂动漫OP]]
+[[https://www.bilibili.com/video/BV1iT4y1L7bP|如何轻松“扒鼓谱”！]]
+
+1. [[分离音轨声部]]
+2. 分析bpm [[wavetone]]  计算：拍数/秒数*60
+3. 听写鼓谱 [[DAW:reaper DAW:创建midi谱|Reaper]] 最好用 / Cakewalk 垃圾 / MuseScore / Guitar Pro 5.2 
+	对齐bpm后，可以整体向后平移几个小节，避免丢失开头
+	Hi-hat 42, 46
+	Snare          : [38]
+	Kick           : [35,36]
+	Tom4 Tom3 Tom1
+	Crash13, 15 17, Ride17 20, China15
+4. 导出为midi文件
+5. ParaUtil转为游戏谱面（需要选择跟音源对应的mapping）
+
+技巧：
+一次专听一个乐器，顺序
+	1. Hi-hat 踩镲
+	2. 底鼓
+	3. 军鼓、嗵鼓（容易弄混，声道不在中间的是嗵鼓）
+	4. Crash 强音镲、效果镲
+声场分布：鼓的布局左右对称（因为是面向鼓录制的）
+	中间是军鼓、嗵鼓从右往左由高到低
+	中间偏右踩镲，最左最右crash
+	{{.\pasted_image.png}}
+	
+听不清的可以尝试：慢放 / 循环听 / 一次听两拍 / 根据频谱分析乐器
+把其他乐器声音降低
+用MuseScore等其他软件确认音色
+
+=== AI自动扒谱 ===
+RipX DAW （收费）

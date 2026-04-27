@@ -1,0 +1,38 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2026-04-24T13:04:27+08:00
+
+====== wavetone ======
+Created 星期五 24 四月 2026
+
+音频转midi 分析工具
+https://pan.baidu.com/s/12_kVEaI0N6Jw7Roc1eWh0w 提取码: 22f9
+用来把音频/人声转为midi，手动编辑midi音符
+
+《使用WaveTone进行扒谱、bpm测算、抽参（音高线可视化）、哼唱采谱等操作》：https://www.bilibili.com/video/BV1hY4y1z71b
+
+设置：
+1. 发音修正时间250ms
+
+导入：
+拖入音频文件，直接点分析
+
+分析bpm：（推荐用频谱分析）
+分析-节拍分析
+	手动测量：播放时按住shift，每一拍按下空格
+	或直接用自动测量的结果
+1. 调整拍数
+2. 确定开始时间offset
+3. 确定BPM
+
+
+界面：
+调节滑块，调整显示阈值和颜色
+放大镜调节界面缩放
+输入分析的bpm
+编辑处可调节一个音符的时值
+编辑midi：铅笔按钮
+
+快捷键：
+右键试听
+
