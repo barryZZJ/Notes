@@ -5,47 +5,67 @@ Creation-Date: 2026-04-24T10:50:28+08:00
 ====== 创建midi谱 ======
 Created 星期五 24 四月 2026
 
+调整BPM：
+右下角，先选择：Project timebase: Time，然后调整BPM
+
+新建工程
+
 导入音频文件：
-1. 确定bpm后，整体往后拖，匹配到第一个4n的小节作为开头
-2. 音频起始位置往前拖到项目开头，添加静音部分
+1. 分别导入原版音频、drums、no drums
+2. 选择三个轨道 - 按G (Group items） 这样可以同步移动
+3. 确认bpm：修改工程bpm为t0，往后拖至音乐的鼓点与任意一条竖线对齐，检查bpm是否与鼓点对上。
+4. 点击音频开头，Alt S 开启吸附，拖选从音频开头至第一个长度大于1.5s的竖线，记下这个时长x秒，也可以记一下对应的结束位置。（拖选的部分应该没有鼓点。如果存在鼓点，则需要向后移动音频，使得第一个鼓点落在≥1.5s的位置，x为项目开头到第一个鼓点的长度。此时视音频文件开头为项目开头，对应第6步不需要再移动。最后记得导出这个音频）【选择1.5s是因为游戏中节拍器第一拍的声音在1.5s响，为了保证第一拍的声音跟reaper中的能对应上】【经测试，修改bpm时，节拍器的声音还是尽量维持高低低低，只是间隔不一样了，所以没办法通过控制修改bpm的时机来控制节拍器第一拍响的时机】
+5. 计算60/x=t
+6. 把音频拖至项目开头，并点击项目开头，Shift+C，Set tempo填入t，Set time signature选**1**/4。（此时会发现刚才结束的位置正好落在第一个竖线）
+7. 选择第一个竖线，Shift+C，Set tempo填入实际bpm t0，Set time signature选**4**/4。（此时鼓点会与后续的竖线对齐）
+8. 设置project显示的measure和时间
+	- 点击音乐实际第一小节开始的位置，Alt Enter (File - Project Settings) - Change start time/measure - Set measure 1 to nearest measure ...
+	- 点击音频文件开头的位置，Ctrl 1 添加一个marker，然后 Alt Enter (File - Project Settings) - Change start time/measure - Set 0:00 to current edit cursor
+9. 开启Spectro peaks + Spectrogram (shift P)
+	Peaks display settings (Ctrl Alt P) 加载预设后进行微调
 
 添加midi鼓轨道：
 1. 右键轨道空白部分-Insert virtual instrument on new track
-2. 选择sforzando VST3i
-3. 加载SM Drums kit
-4. Insert - new MIDI item
-5. 双击新增的轨道 打开note编辑界面
-	File - Note / CC Names - Load - SM Drum Kit
-6. 加载CCnames
-7. 开启Spectro peaks + Spectrogram (Alt shift P)
-	Peaks display settings加载预设后进行微调
+	2. 选择sforzando VST3i
+	3. 加载SM Drums kit
+2. Insert - new MIDI item	
+3. track 命名为DRUM expert，拖动开始位置与音频文件对齐，拖动结束位置直到末尾。右键 - Item Settings 关闭 Loop item source
+4. 双击新增的轨道 打开note编辑界面
+	加载CCnames：File - Note / CC Names - Load - SM Drum Kit
+	开始听写鼓谱
+7. 最后统一检查一下velocity
 
-切换Velocity：自动复制上一个选中的note的velocity
-
-调整BPM：
-右下角，先选择：Project timebase: Time，然后调整BPM
+切换note Velocity：自动复制上一个选中的note的velocity
 
 调整播放速度：
 1. 调整右下角playback rate旋钮
 2. 或：同调整BPM，但选择Beats (auto-stretch at tempo changes)
+调整track速度：
+Alt + 左键 拖动开头或结尾
 
-切换BPM：
+中途切换BPM：(Shift+C)
 Insert - Tempo/Signature change marker
 
 导出midi：
-1. 把midi轨道的开头与音乐开头对齐，取消静音
-2. 选择midi的头尾（如果已经是项目开头则不用选）
+1. 把midi轨道取消静音，高亮midi轨道
+2. 选择音频文件的头尾
 3. File - Export project MIDI
-4. Time selection only / Entire Project, selected tracks only, type 1 MIDI file, 勾选Embed project tempo/time signature changes
-5. ParaUtils的试听的bpm可能不对，检查输出rlrr文件的length就好。
-6. 检查时间是否对齐：选中midi开头，File-Project settings-Project start time - Set 0:00 to current time edit cursor
+	- Time selection only
+	- Selected tracks only
+	- type 1 MIDI file
+	- 勾选 Embed project tempo
+	（说明：如果选Entire Project，则默认起始时间(0:00)是整个项目最左边。没到项目开头的会在这一段添加空白。如果选Time selection only，则起始时间(0:00)是selection的开头）
+6. ParaUtils的试听的bpm可能不对，检查输出rlrr文件的length就好。
+7. 检查时间是否对齐：选中midi开头，File-Project settings-Project start time - Set 0:00 to current time edit cursor
 
-导出音频：如果音频开头进行了调整，需要重新渲染音频文件
+导出音频：如果音频开头进行了调整，需要重新渲染音频文件。（使用已保存的preset: Paradiddle）
+高亮音频轨道
 File - Render - 
-	Source: Selected media items
-	Sample rate
+	Source: Selected tracks
+	Bounds: Entire project
+	Sample rate: 与源文件相同
 	Format: OGG Vorbis
-	VBR quality 0.5以下 
+	VBR quality: 0.5以下 
 - render
 
 关闭自动循环：
@@ -62,8 +82,17 @@ Options - Peaks display Mode
 *Shift P: toggle spectral peaks
 *Alt Shift P: toggle spectral peaks + spectrogram
 
-经验:(Drum preset)
-高粉色底鼓、矮红棕色军鼓、矮粉色嗵鼓（越红越高）
+经验：
+除了Drums，其他三个轨道都mute，根据情况Solo原曲和midi轨
+修改难度时批量删除八分音符：Edit - Quantize - Quantize position to grid
+
+不同难度经验：
+- Hard: 删除16分音符
+- Medium: 删除8分音符
+- Easy: Medium试打一遍，删除打不明白的部分
+
+频谱经验:(Drum preset)
+高|暗粉色底鼓、矮红棕色军鼓、矮|亮粉色嗵鼓（越红越高）
 蓝色延长音为crash，越长、越碎/音调越低尺寸越大、
 比较哗~的声音可能是两个镲一起打发出的
 

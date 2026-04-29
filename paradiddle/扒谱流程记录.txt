@@ -16,7 +16,7 @@ Created 星期五 24 四月 2026
 	Hi-hat 42, 46
 	Snare          : [38]
 	Kick           : [35,36]
-	Tom4 Tom3 Tom1
+	Tom1: [48], Tom2:[47], FloorTom:[45,43]
 	Crash13, 15 17, Ride17 20, China15
 4. 导出为midi文件
 5. ParaUtil转为游戏谱面（需要选择跟音源对应的mapping）

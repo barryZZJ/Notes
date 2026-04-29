@@ -88,6 +88,7 @@ cmd [[/k]] ... 执行字符串指定的命令但保留 会阻塞当前cmd
 不显示输出：
 >nul 2>nul cmd /c <some command>
 
+不显示窗口运行脚本：
 cmd [[/q]] [[/c]] "xxx"
 
 start cmd [[/c]] ... 新建一个cmd进程，不阻塞当前进程

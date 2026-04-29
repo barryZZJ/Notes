@@ -1,3 +1,11 @@
 Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
 
-将后缀.py改成.pyw
+====== 隐藏命令行窗口 ======
+
+
+使用pythonw运行即可
+或将后缀.py改成.pyw，会自动用pythonw运行
+
+cmd /q /c "xxx.bat"
+start "" /b venv/Script/pythonw.exe xx.py  隐藏cmd窗口，打开python文件
