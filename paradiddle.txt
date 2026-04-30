@@ -8,6 +8,12 @@ Created 星期六 07 三月 2026
 启动方式：
 把Meta Link 设为默认的OpenXR，然后在steam中选择使用Oculus VR模式运行
 
+debug:
+手柄震动问题貌似是quest系统的问题，只能等系统更新解决了
+
+切换版本：
+备份了latest和prev两个版本，需要运行哪个就把哪个拷贝到游戏目录即可
+
 其他铺面下载
 https://rhythmverse.co/songfiles/game
 https://www.enchor.us/
