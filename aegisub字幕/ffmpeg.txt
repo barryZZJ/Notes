@@ -74,6 +74,20 @@ ffmpeg -i inputvideo -vn -c:a aac out.m4a
 https://ffmpeg.org/ffmpeg.html#Video-and-Audio-file-format-conversion
 ffmpeg -i input.ts out.mp4
 
+调整比特率(不加单位默认为bps)：
+constant:
+-b:v 4000k
+variable bitrate with constant quality:
+-crf 23
+
+-maxrate xxx 限制最大比特率
+
+x265编码：
+-c:v libx265 -vtag hvc1
+nvidia gpu加速 -vcodec hevc_nvenc
+amd gpu加速 -c:v hevc_amf 
+
+
 所有输出均在stderr；
 出错时returnCode不为0.
 

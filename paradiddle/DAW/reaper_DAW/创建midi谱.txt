@@ -13,12 +13,13 @@ Created 星期五 24 四月 2026
 导入音频文件：
 1. 分别导入原版音频、drums、no drums
 2. 选择三个轨道 - 按G (Group items） 这样可以同步移动
-3. 确认bpm：修改工程bpm为t0，往后拖至音乐的鼓点与任意一条竖线对齐，检查bpm是否与鼓点对上。
-4. 点击音频开头，Alt S 开启吸附，拖选从音频开头至第一个长度大于1.5s的竖线，记下这个时长x秒，也可以记一下对应的结束位置。（拖选的部分应该没有鼓点。如果存在鼓点，则需要向后移动音频，使得第一个鼓点落在≥1.5s的位置，x为项目开头到第一个鼓点的长度。此时视音频文件开头为项目开头，对应第6步不需要再移动。最后记得导出这个音频）【选择1.5s是因为游戏中节拍器第一拍的声音在1.5s响，为了保证第一拍的声音跟reaper中的能对应上】【经测试，修改bpm时，节拍器的声音还是尽量维持高低低低，只是间隔不一样了，所以没办法通过控制修改bpm的时机来控制节拍器第一拍响的时机】
-5. 计算60/x=t
-6. 把音频拖至项目开头，并点击项目开头，Shift+C，Set tempo填入t，Set time signature选**1**/4。（此时会发现刚才结束的位置正好落在第一个竖线）
-7. 选择第一个竖线，Shift+C，Set tempo填入实际bpm t0，Set time signature选**4**/4。（此时鼓点会与后续的竖线对齐）
-8. 设置project显示的measure和时间
+3. 确认bpm：修改工程bpm为t0，往后拖至音乐的鼓点与小节起始竖线对齐，检查bpm是否与鼓点对上。【注意：对齐的时候竖线提前一点，因为要敲击之后才会发声】
+4. 点击音频开头，Alt S 开启吸附，拖选从音频开头至第一个长度大于1.5s的小节起始竖线，记下这个时长x秒，也可以记一下对应的结束位置（这个竖线将成为小节起始线，注意对齐实际节拍）。
+	（拖选的部分应该没有鼓点。如果存在鼓点，则需要向后移动音频，使得第一个鼓点落在≥1.5s的位置，x为项目开头到第一个鼓点的长度。此时视音频文件开头为项目开头，对应第6步不需要再移动。最后记得导出这个音频）【选择1.5s是因为游戏中节拍器第一拍的声音在1.5s响，为了保证第一拍的声音跟reaper中的能对应上】【经测试，修改bpm时，节拍器的声音还是尽量维持高低低低，只是间隔不一样了，所以没办法通过控制修改bpm的时机来控制节拍器第一拍响的时机】
+6. 计算60/x=t，记住原始bpm t0
+7. 把音频拖至项目开头，并点击项目开头，Shift+C，Set tempo填入t，Set time signature选**1**/4。（此时会发现刚才结束的位置正好落在第一个竖线）
+8. 选择第一个竖线，Shift+C，Set tempo填入实际bpm t0，Set time signature选**4**/4。（此时鼓点会与后续的竖线对齐）
+9. 设置project显示的measure和时间
 	- 点击音乐实际第一小节开始的位置，Alt Enter (File - Project Settings) - Change start time/measure - Set measure 1 to nearest measure ...
 	- 点击音频文件开头的位置，Ctrl 1 添加一个marker，然后 Alt Enter (File - Project Settings) - Change start time/measure - Set 0:00 to current edit cursor
 9. 开启Spectro peaks + Spectrogram (shift P)
@@ -34,6 +35,11 @@ Created 星期五 24 四月 2026
 	加载CCnames：File - Note / CC Names - Load - SM Drum Kit
 	开始听写鼓谱
 7. 最后统一检查一下velocity
+	hi-hat closed >20, <110
+	hi-hat open > 110
+	hi-hat foot < 20
+	Ride >20, <110
+	Ride-bell >110
 
 切换note Velocity：自动复制上一个选中的note的velocity
 
@@ -85,6 +91,7 @@ Options - Peaks display Mode
 经验：
 除了Drums，其他三个轨道都mute，根据情况Solo原曲和midi轨
 修改难度时批量删除八分音符：Edit - Quantize - Quantize position to grid
+开镲别的游戏一般是放到Ride17上，我们可以通过控制velocity实现
 
 不同难度经验：
 - Hard: 删除16分音符
@@ -109,6 +116,9 @@ R: 循环播放
 *shift 滚轮：左右平移（可以在编辑快捷键中修改滚轮方向）(scroll horizontally reversed)
 *alt 滚轮：上下平移(scroll vertically)
 pgup pgdown ctrl 滚轮：上下缩放轨道
+*Shift+A: Insert note at edit cursor (advance by grid)
+*A: Insert note w/ vel 100 at edit cursor (advance by grid)
+*Ctrl + 左键双击: Insert note w/ vel 100 at mouse cursor
 
 *Up/*Down: Increase / Decrease pitch cursor one semitone
 

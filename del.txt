@@ -10,6 +10,8 @@ Created 星期五 02 九月 2022
 
 磁盘右键——属性——磁盘清理
 
+C:\Windows\Installer\Razor*
+
 === Caches: ===
 %''USERPROFILE''%\.cache
 ''pip cache purge'': %localappdata%\pip\cache 

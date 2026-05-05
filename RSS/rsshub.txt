@@ -9,8 +9,8 @@ Created 星期一 22 五月 2023
 
 使用实例：
 https://docs.rsshub.app/usage.html#sheng-cheng-ding-yue-yuan
-具体格式：
-https://docs.rsshub.app/social-media.html#twitter
+rss具体格式：
+https://docs.rsshub.app/joinus/advanced/advanced-feed
 通用参数：
 https://docs.rsshub.app/parameter.html
 

@@ -8,6 +8,13 @@ Created 星期六 07 三月 2026
 启动方式：
 把Meta Link 设为默认的OpenXR，然后在steam中选择使用Oculus VR模式运行
 
+2d模式启动:
+Binaries\Win64\Paradiddle-Win64-Shipping.exe Paradiddle -nohmd
+
+切换版本：
+1. 重命名steam文件夹下的游戏本体
+2. 覆盖存储文件 C:\Users\85046\AppData\Local\Paradiddle\Saved
+
 debug:
 手柄震动问题貌似是quest系统的问题，只能等系统更新解决了
 
@@ -17,6 +24,13 @@ debug:
 其他铺面下载
 https://rhythmverse.co/songfiles/game
 https://www.enchor.us/
+
+难度设置：
+bpm <80: 1
+bpm 80~ 100: 2
+bpm 100~120: 3
+bpm 120~150: 4
+bpm > 150: 5
 
 midi下载：
 https://freemidi.org/

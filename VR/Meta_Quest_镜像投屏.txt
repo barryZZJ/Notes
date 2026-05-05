@@ -1,0 +1,33 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2026-04-30T15:06:17+08:00
+
+====== Meta Quest 镜像投屏 ======
+Created 星期四 30 四月 2026
+
+有线镜像至外部显示器
+https://www.meta.com/help/quest/1561768654489777/
+必须要转成DP，然后如果想转成HDMI需要 主动式DP转HDMI
+并且没有声音
+
+无线镜像至外部显示器（手机、PC）
+https://www.meta.com/help/quest/192719842695017/
+
+1. 投屏到手机
+- 通过Meta Horizon App投屏既可以走内网，也可以走外网。
+- 用LetsView延迟能更低一些，但是只能竖屏
+2. 投屏到PC
+- 网页投屏（可能需要美国节点。还是会提示所在地区不可用，不知道怎么解决）延迟高
+- 安装Meta Quest Link，在quest中开启air link，在Meta Quest Link中点击投屏按钮。延迟低一点感觉
+(切换回有线link：拔插usb后等待一会）
+- 安装SideQuest，支持有线投屏
+2.2投屏到MAC
+- LetsView mac版
+
+3. 投屏到电视
+- 先投屏到PC/手机，再投屏到电视（手机自带的投屏功能）
+- LetsView
+
+
+HDMI Link app, 把quest作为显示屏：
+https://www.meta.com/zh-cn/help/quest/1350679463006443/

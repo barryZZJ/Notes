@@ -1,0 +1,31 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2026-05-02T15:07:35+08:00
+
+====== ParaUtils ======
+Created 星期六 02 五月 2026
+
+高级玩法：
+可以通过调DrumSet的pitch，实现4个底鼓
+
+=== 兼容踩镲、镲帽： ===
+	"highwaySettings":
+	{
+		"ghostNotes": true,
+		"accentNotes": true,
+		"ghostNoteThreshold": 20,
+		"accentNoteThreshold": 110
+	},
+
+小于ghostNoteThreshold的显示为空心
+大于accentNoteThreshold的显示为高亮
+否则为普通亮度
+
+按照官方说法，
+Hi-hat: closed - ghost; open - regular
+Ride: edge - ghost; bell - regular
+
+按我自己的习惯
+Hi-hat: closed - regular; open - accent; foot - ghost
+Ride: edge - regular; bell - accent
+

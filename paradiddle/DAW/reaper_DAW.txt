@@ -13,6 +13,9 @@ Routing Matrix
 1. 点击track上的ROUTE按钮 - MIDI Hardware Output - Microsoft GS Wavetable Synth
 2. 或在下面的Routing Matrix中手选
 
+播放没声音：
+Preferences - Audio(Deivce) - 修改Audio system
+
 MIDI note 命名：
 File - Note/CC Names - Load ... from file
 按住ctrl可以隐藏/调整顺序

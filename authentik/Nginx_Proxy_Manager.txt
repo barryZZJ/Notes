@@ -50,3 +50,7 @@ Add Access List 配置访问权限
 docker exec -it <container_id> sh
 # curl -I http://authentik-server-1:9000  # docker ps
 
+debug:
+报500：
+进后台重新保存一下配置文件试试
+
