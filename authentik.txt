@@ -27,19 +27,35 @@ https://api.goauthentik.io/
 
 === 邀请注册： ===
 https://www.youtube.com/watch?v=mGOTpRfulfQ 包含从主页注册、和发送邀请链接（create users as inactive可以通过邮件确认变为active）
-有两种方式，一种是从主页点击注册按钮跳转至注册，邮箱验证（create users as inactive），验证通过后才能登录（变为active用户）；另一种是发送邀请链接，填写邮箱但不用验证，直接登录（添加user-login stage）。
+有两种方式，一种是从主页点击注册按钮跳转至注册（default authentication flow - Identification Stage
+ - 配置Flow settings - Enrollment Flow），邮箱验证（create users as inactive），验证通过后才能登录（变为active用户）；另一种是发送邀请链接，填写邮箱但不用验证，直接登录（添加user-login stage）。
 我的版本把这俩合并了，既要邀请链接，也要邮箱验证。
 
 https://docs.goauthentik.io/users-sources/user/invitations/
 https://github.com/goauthentik/authentik/issues/9719#issuecomment-3064702888
 
-创建enrollment flow （已创建，存为 my register Flow (inactive until email confirmation) with default access to emby-dd）
-1. 下载 https://goauthentik.io/blueprints/example/flows-enrollment-2-stage.yaml
-2. 在Flow里import
-3. 配置已注册用户直接跳转到主页：Flow Overview - Edit - Behavior settings - Deniced action - CONTINUE
-4. 在Stage里添加一个Invitation类型，名字随意
-5. 打开创建的Flow - Stage Bindings - Bind existing stage - 添加刚才创建的 invitation stage，order 0 
-6. 添加Prompt Stage 填写注册信息：
+主页添加注册按钮，跳转至邀请码输入：
+1. 登陆界面允许跳转到注册：
+编辑Stages - default-authentication-identification - Flow settings，设置Enrollment flow
+配置已登录用户直接跳转到主页：Flow Overview - Edit - Behavior settings - Deniced action - CONTINUE
+2. 自定义邀请码：
+	1. Prompts新增一个输入邀请码的field，Field Key设为invitation-code
+	2. Policies新增Expression Policy
+	''if request.context.get('prompt_data',{}).get('invitation-code','') == 'mone':''
+		''return True''
+	''ak_message("邀请码错误！")''
+	''return False''
+	3. 新增一个 Prompt stage，添加邀请码field和上述policy
+	4. 新增一个 Enrollment Flow (Authentication: require no authentication)，添加上述stage，
+3. 再添加一个 redirect stage 跳转到真正注册用的flow（创建见下）
+
+创建真实注册入口（已创建，存为 my register Flow (inactive until email confirmation) with default access to emby-dd）
+1. 新建 Flow: 
+	Title：Welcome to authentik!
+	Designation: Enrollment
+	Authentication: Require being redirected from another flow
+(old: 下载 https://goauthentik.io/blueprints/example/flows-enrollment-2-stage.yaml , 在Flow里import)
+2. 添加Prompt Stage 填写注册信息：
 	添加一个 Prompt Stage，选择要填写的Field （要等一会才能加载出来）（用户名 - 密码 - 重复密码 - 邮箱 - 昵称）
 	（编辑可填写的Fields：Flows and Stages - Prompts，可以在这里改变他们的显示顺序）
 	Policy可以先清空
@@ -68,13 +84,13 @@ https://github.com/goauthentik/authentik/issues/9719#issuecomment-3064702888
 		''return True''
 	编辑刚才的Prompt Stage - Edit Stage， 选择刚添加的 Policy
 	
-6. 添加User-write stage 添加用户
+3. 添加User-write stage 写入新增用户
 	Create new users when required
 	如果勾选Create users as inactive，则需要等待邮箱验证通过才能登陆，否则可以直接登录
 	User type: Internal
 	User path template: users/emby-dd
-	Group: emby-dd autologin visible  （新注册用户自动添加到这个group https://next.goauthentik.io/users-sources/user/invitations/#automatic-group-assignment）
-7. 添加Email stage 验证邮箱
+	Group: emby-dd autologin visible  （新注册用户自动添加到这个group https://next.goauthentik.io/users-sources/user/invitations/#automatic-group-assignment%EF%BC%89
+4. 添加Email stage 验证邮箱
 	添加邮箱认证：
 	1. 在.env中添加（只开SSL，关闭TLS；__FROM好像也不能乱改）
 		''# SMTP Host Emails are sent to''
@@ -99,17 +115,21 @@ https://github.com/goauthentik/authentik/issues/9719#issuecomment-3064702888
 		Subject: 设置邮件标题 
 		Template: Account Confirmation
 	邮件里验证网址的host会自动修改为当前使用的host，不用专门配置
-8. 允许直接跳转到登录后页面：添加user-login stage（如果需要邮箱验证就不加这一步！）
+5. (可选) 允许直接跳转到登录后页面：添加user-login stage（如果需要邮箱验证就不加这一步！）
 
 
-邀请链接：
+使用邀请链接：
+1. 新建一个 Flow (Designation: Enrollment; Authentication: Require no authentication)
+配置已登录用户直接跳转到主页：Flow Overview - Edit - Behavior settings - Deniced action - CONTINUE
+2. Create and bind Stage - 新增一个 Invitation Stage, order 0；再 bind existing stage 新增真实注册入口对应的stage, order 10
+3. 创建邀请链接
 Directory - Invitations - 选择刚才建的enrollment flow，把前面的网址改成外网地址即可。
 http://authentik.barryzzj.top:23354/if/flow/register/?itoken=823b350b-d271-4646-95b8-e890b9860f70
 
+=== 用户 ===
 添加为Internal User：
 修改default-enrollment-user-write
 
-=== 用户 ===
 编辑用户所属group：
 Directory - Users - 点开对应用户 - Groups
 

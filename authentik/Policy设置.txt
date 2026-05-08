@@ -1,0 +1,20 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2026-05-07T18:10:07+08:00
+
+====== Policy设置 ======
+Created 星期四 07 五月 2026
+
+Expression policy
+doc：
+https://next.goauthentik.io/customize/policies/types/expression/
+https://next.goauthentik.io/customize/policies/types/expression/reference/
+
+request.context
+context["pending_user"]
+context["prompt_data"]
+
+
+request.user
+https://next.goauthentik.io/users-sources/user/user_ref/
+user.is_authenticated
