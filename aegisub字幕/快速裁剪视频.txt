@@ -1,0 +1,12 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2026-05-08T11:42:59+08:00
+
+====== 快速裁剪视频 ======
+Created 星期五 08 五月 2026
+
+1. Potplayer或Aegisub确定开头和结尾帧
+2. MeGUI生成clt文件（主要是为了裁剪音频方便）
+3. vs 编码裁剪后的视频
+4. MeGUI编码裁剪后的音频
+5. MeGUI mux音视频

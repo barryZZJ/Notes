@@ -28,7 +28,23 @@ log或报错都输出到stderr，因为stdout是视频流
 == AviSynth ==
 http://avisynth.nl/index.php/Main_Page
 
-裁剪  http://www.vapoursynth.com/doc/functions/video/trim.html
+裁剪音频（然后传给qaac编码）
+''ClearAutoloadDirs()''
+''AddAutoloadDir("G:\Portable\MeGUI\MeGUI-2944-64\tools\avs\plugins")''
+''Import("F:\backup\手机\Pictures\萌音图片\笔迹\2026.04.29_FC会員限定！le mone do《texte》Letter Box クイズ回答発表！.mp4_track_1_english.avs")''
+''__film = last''
+''__just_audio = __film''
+''__blank = BlankClip(length=4437, fps=30)''
+''__film = AudioDub(__blank, __film)''
+''__t0 = __film.trim(4113, 4436)''
+''__t0'' 
+''AudioDubEx(__just_audio, last)''
+''# detected channels: 2''
+''# detected channel positions: 2/0/0''
+''return last''
+
+
+裁剪视频  http://www.vapoursynth.com/doc/functions/video/trim.html
 src8 = core.std.Trim(src8,2532,3532)
 std.Trim(vnode clip[, int first=0, int last, int length])
 

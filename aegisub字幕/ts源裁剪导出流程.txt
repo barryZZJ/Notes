@@ -14,20 +14,20 @@ https://www.subeasy.ai/zh-CN
 用whisperx转录，然后放到vscode里让copilot翻译
 translate this subtitle file into chinese, keep the srt format, but merge lines and there timecodes when a whole sentence is splitted abnormaly
 
-=== MeGUI生成clt文件 ===
+=== MeGUI 生成裁剪视频clt文件 ===
 1. File Indexer打开ts源，使用默认的DGIndex，然后点Queue，得到d2v文件（需要另外保存一份为utf8编码）（记录输出音频的delay）
 2. AVS Script Creator打开d2v文件，点save，得到avs脚本，视频预览界面关掉
 3. 用aegisub记录要裁剪的各个部分的帧
 4. AVS Cutter，打开avs脚本，通过set设置要切的各个分段（记得剪掉提供部分的广告），然后点 do all and close，得到clt文件，并且会把cut信息写入视频的avs脚本里（或手动点击Save cuts file）
 
 === MeGUI裁剪音频： ===
-1. HD Streams Extractor 分离音频aac，记下音频偏移量
+1. HD Streams Extractor 分离音频aac（或使用解析视频时生成的track_1.avs），记下音频偏移量
 2. 回到主界面Audio encoding部分，载入HD音频文件，在Cuts部分载入刚才的clt文件，encoder选QAAC，delay会自动填写（否则的话填写第一步的偏移量），点Queue
 3. 得到剪好的音频文件.m4a
 --------------------
 
-=== 裁剪视频： ===
-一、MeGUI直接裁剪视频：
+=== 渲染裁剪后的视频： ===
+一、MeGUI直接渲染视频：
 Video encoding——加载avs脚本，输出文件地址，选择编码器、config、File format——点击Queue
 然后使用Muxer合并
 

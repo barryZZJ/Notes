@@ -1,0 +1,10 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2026-05-08T11:47:07+08:00
+
+====== 小丸工具箱 ======
+Created 星期五 08 五月 2026
+
+裁剪视频：（不会同时裁剪音频，只能选无音频流，然后用MeGUI生成clt裁剪音频）
+起始帧：裁剪开头帧
+编码帧数：裁剪结尾帧-裁剪开头帧
