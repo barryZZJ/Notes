@@ -43,6 +43,7 @@ powercfg.exe -h off
 powercfg.exe -h on
 
 === files: spacesniffer ===
+C:\Program Files (x86)\Windows Kits\10 : win10 PE
 VSCode Extensions: %USERPROFILE%\.vscode
 Python:
 	Pyprojects venv 各个虚拟环境 第三方库

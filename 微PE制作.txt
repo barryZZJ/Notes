@@ -1,0 +1,10 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2026-05-09T14:57:16+08:00
+
+====== 微PE制作 ======
+Created 星期六 09 五月 2026
+
+安装PE到移动硬盘：
+不需要格式化硬盘
+只需要给硬盘分出一个FAT32分区，安装时选择该分区即可，不会动其他分区的文件
