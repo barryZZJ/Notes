@@ -7,6 +7,7 @@ Created 星期六 07 三月 2026
 
 启动方式：
 把Meta Link 设为默认的OpenXR，然后在steam中选择使用Oculus VR模式运行
+Haptics on Quest headsets on PC: fixed Quest haptics not feeling as strong if you launch the app in OpenXR mode. Note that you'll still need to be using Meta Link as your active OpenXR runtime to take advantage of the higher quality haptics.
 
 2d模式启动:
 Binaries\Win64\Paradiddle-Win64-Shipping.exe Paradiddle -nohmd

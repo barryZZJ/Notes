@@ -13,6 +13,6 @@ unrar e x.rar
 unzip x.zip
 
 压缩：
-tar -zcvf file.tar.gz folder
+tar -zcvf file.tar.gz input folder / files
 
 tar -cvf file.tar folder

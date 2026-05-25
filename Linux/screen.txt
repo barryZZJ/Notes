@@ -1,0 +1,9 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2026-05-23T14:33:44+08:00
+
+====== screen ======
+Created 星期六 23 五月 2026
+
+守护进程
+https://www.autodl.com/docs/daemon/#screen
