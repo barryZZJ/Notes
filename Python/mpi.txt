@@ -1,0 +1,9 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2026-05-28T18:47:25+08:00
+
+====== mpi ======
+Created 星期四 28 五月 2026
+
+windows: msmpi
+linux: pip install openmpi 

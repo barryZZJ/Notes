@@ -8,10 +8,12 @@ Created 星期五 27 九月 2024
 https://pytorch.org/get-started[[/locally/]]
 
 安装不同版本torch的指令：https://pytorch.org/get-started/previous-versions/
+pip3 install torch torchvision --index-url https://download.pytorch.org/whl/cu132
 conda install pytorch torchvision torchaudio pytorch-cuda -c pytorch -c nvidia
 conda install pytorch torchvision torchaudio pytorch-cuda=12.4 python=3 -c pytorch -c nvidia
 conda install pytorch torchvision torchaudio pytorch-cuda=11.8 -c pytorch -c nvidia
 pip install torch==1.9.1+cu111 torchvision==0.10.1+cu111 torchaudio==0.9.1 -f https://download.pytorch.org/whl/torch_stable.html
+pip install torch==2.9.1 torchvision==0.24.1 torchaudio==2.9.1 --index-url https://download.pytorch.org/whl/cu130
 pip install torch==2.5.1+cu124 torchvision==0.20.1+cu124 --index-url https://download.pytorch.org/whl/cu124
 conda install pytorch==1.11.0 torchvision==0.12.0 torchaudio==0.11.0 cudatoolkit=11.3 -c pytorch
 
@@ -101,6 +103,10 @@ conda install -c anaconda cudnn
 ERROR:
 libtorch_cpu.so: undefined symbol: iJIT_NotifyEvent
 修改mkl版本
+
+Segmentation fault (core dumped)
+Floating point exception (core dumped)
+重装torch解决
 
 样例
 {{{code: lang="python3" linenumbers="False"
