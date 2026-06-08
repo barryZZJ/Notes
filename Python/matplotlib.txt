@@ -88,6 +88,7 @@ coordinate system:
 
 
 plot types: https://matplotlib.org/stable/plot_types/index.html
+plot  折线图
 scatter         散点图
 bar           条形图（注意横向条形图的y轴是从下网上的，与正常条形图的例子相反） https://zhuanlan.zhihu.com/p/25128216
    y = np.arange(datasize)

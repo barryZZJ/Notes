@@ -7,5 +7,9 @@ Created 星期二 05 十一月 2024
 
 nvidia-smi -L
 
-安装驱动：
+安装显卡驱动：
+https://blog.csdn.net/qq_44940689/article/details/132508548
 Software & Updates - Additional Drivers - 版本来自 https://www.nvidia.com/en-us/geforce/drivers/
+
+或
+sudo ubuntu-drivers install

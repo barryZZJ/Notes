@@ -49,6 +49,22 @@ out_text = out_bytes.stdout.decode('utf8')
 	stdout=PIPE, stderr=stdout  # bytes
 如果返回码不为0会报subprocess.CalledProcessError，.包含.returncode, .output, .stdout, .stderr属性
 
+如果传入text=True，则.stdout .stderr为str
+
+即时输出运行结果：
+用Popen
+p = subprocess.Popen(
+	cmd,
+	stdout=subprocess.PIPE,
+	stderr=subprocess.STDOUT,
+	text=True,
+	bufsize=1,
+)
+
+for line in p.stdout:
+	print(line, end="", flush=True)
+
+return_code = p.wait() 
 
 === 通过pipe通信 ===
 https://stackoverflow.com/questions/13332268/how-to-use-subprocess-command-with-pipes

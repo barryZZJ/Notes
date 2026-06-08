@@ -16,3 +16,5 @@ unzip x.zip
 tar -zcvf file.tar.gz input folder / files
 
 tar -cvf file.tar folder
+
+--exclude='latest*'

@@ -1,0 +1,24 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2026-06-01T16:21:58+08:00
+
+====== 内核升级 ======
+Created 星期一 01 六月 2026
+
+查看当前内核版本：
+uname -r
+
+Mainline GUI:
+sudo add-apt-repository ppa:cappelikan/ppa
+sudo apt update
+sudo apt install mainline
+mainline-gtk
+
+apt:
+https://zhuanlan.zhihu.com/p/133323571
+https://zhuanlan.zhihu.com/p/696464286
+https://blog.csdn.net/weixin_42915431/article/details/106614841
+https://rainsec.github.io/post/Ubuntu20.04%20%E5%8D%87%E7%BA%A7%E9%99%8D%E7%BA%A7%E5%86%85%E6%A0%B8%E5%88%B0%E6%8C%87%E5%AE%9A%E7%89%88%E6%9C%AC
+sudo apt update
+sudo apt upgrade linux-image-generic
+update-grub
