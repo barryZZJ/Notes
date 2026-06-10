@@ -118,6 +118,8 @@ R: 循环播放
 pgup pgdown ctrl 滚轮：上下缩放轨道
 *Shift+A: Insert note at edit cursor (advance by grid)
 *A: Insert note w/ vel 100 at edit cursor (advance by grid)
+*Ctrl + 数字：insert note
+*数字：跳过长度
 *Ctrl + 左键双击: Insert note w/ vel 100 at mouse cursor
 
 *Up/*Down: Increase / Decrease pitch cursor one semitone

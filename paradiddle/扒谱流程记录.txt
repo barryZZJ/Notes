@@ -9,6 +9,7 @@ Created 星期五 24 四月 2026
 [[https://www.bilibili.com/video/BV11r4y177VM|保姆级架子鼓扒谱演示 半小时一首复杂动漫OP]]
 [[https://www.bilibili.com/video/BV1iT4y1L7bP|如何轻松“扒鼓谱”！]]
 
+3.5h一首
 1. [[分离音轨声部]]
 2. 分析bpm [[wavetone]]  计算：拍数/秒数*60
 3. 听写鼓谱 [[DAW:reaper DAW:创建midi谱|Reaper]] 最好用 / Cakewalk 垃圾 / MuseScore / Guitar Pro 5.2 
@@ -21,9 +22,14 @@ Created 星期五 24 四月 2026
 	注意velocity的设置，可以通过ghost, accent 对应开镲、镲帽等 [[ParaUtils]]
 4. 导出为midi文件
 5. ParaUtil转为游戏谱面（需要选择跟音源对应的mapping）
-
+	Song Complexity: 
+	# 1 if bpm <80
+	# 2: 80~100
+	# 3: 100~120
+	# 4: 120~150
+	# 5: >150
 技巧：
-一次专听一个乐器，顺序
+一次根据频谱只听一个乐器，顺序
 	1. Hi-hat 踩镲
 	2. 底鼓
 	3. 军鼓、嗵鼓（容易弄混，声道不在中间的是嗵鼓）
