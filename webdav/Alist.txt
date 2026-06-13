@@ -80,6 +80,7 @@ Webdav管理：（使用/dav路径挂载的webdav）可写
 https://github.com/AlistGo/alist/discussions/7181
 https://alistgo.com/guide/advanced/sso.html#single-sign-on-client-secrets
 Authentik:
+新建一个OAuth2 Provider（一个站点对应一个，但regex可以通用。同一个站点多个application可以不设置provider）
 	Authorization flow: default-provider-authorization-implicit-consent
 	Redirect URIs: 
 	(Regex)
@@ -88,6 +89,7 @@ Authentik:
 	http://192\.168\.50\.1:\d+/api/auth/sso_callback\?method=(sso_get_token|get_sso_id)
 	http://localhost:\d+/api/auth/sso_callback\?method=(sso_get_token|get_sso_id)
 	http://127\.0\.0\.1:\d+/api/auth/sso_callback\?method=(sso_get_token|get_sso_id)
+	http://alist\.barryzzj\.top:\d+/api/auth/sso_callback\?method=(sso_get_token|get_sso_id)
 
 Alist:
 	SSO oidc username key（不能改）: preferred_username
