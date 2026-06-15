@@ -51,6 +51,7 @@ Clone Hero谱面直接是音乐文件 + notes.mid (Section 3)
 Guitar Hero的是.chart文件，需要用 Moonscraper Chart Editor 打开，然后直接export选.mid，Instrument Events选择Expert模式最符合原谱（对应Pro Drums模式），否则会把鼓和镲混在一起。其他选项目前不太确定，先保持默认。
 
 三种的drum mapping 都选择 rythm_game_mapping.yaml
+（注意大部分谱面的Ride17应该改成开踩镲、或者Crash15（右））
 
 修复报错：不在0~127范围内：
 直接跳过报错的语句就行。不能用Reaper打开midi文件，只导出drum，实测偏移量不对
