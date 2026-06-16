@@ -5,3 +5,7 @@ git config -l
 git config --global -l
 
 git config --global -e
+
+初次配置：
+git config --global user.name barryzzj
+git config --global user.email "850462618@qq.com"

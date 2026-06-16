@@ -1,0 +1,21 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2026-06-16T16:05:51+08:00
+
+====== 恢复开始菜单和任务栏 ======
+Created 星期二 16 六月 2026
+
+https://github.com/valinet/ExplorerPatcher
+
+恢复右键菜单样式：
+文件管理器：禁用Windows11右键菜单
+
+
+
+====== 恢复右键菜单样式 ======
+
+reg add "HKCU\Software\Classes\CLSID\{86ca1aa0-34aa-4e8b-a509-50c905bae2a2}\InprocServer32" /f /ve
+重启资源管理器
+
+恢复Win11的右键菜单，按照上面的步骤，执行下面的语句即可：
+reg delete "HKCU\Software\Classes\CLSID\{86ca1aa0-34aa-4e8b-a509-50c905bae2a2}\InprocServer32" /va /f

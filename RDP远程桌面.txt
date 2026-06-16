@@ -19,7 +19,7 @@ mstsc.exe登录远程桌面
 	1. 直接删除PIN（如果是灰色的，把下面的“要求 MIcrosoft 账户使用 Windows Hello 登录”这个选项关掉） https://zhuanlan.zhihu.com/p/537738910
 	  https://www.bilibili.com/read/cv13721356/
 	1. 临时关闭PIN。将“需要通过Windows Hello登录Microsoft帐户”设置为“关”，windows+L锁屏，用普通密码登录，这个时候就可以以网络级别身份验证登录远程桌面了 https://blog.csdn.net/slvayf/article/details/129376371
-		
+
 
 2. 本地账户使用用户名，微软账户用邮箱（不确定，如果不能登录就改为本地账户）
 
