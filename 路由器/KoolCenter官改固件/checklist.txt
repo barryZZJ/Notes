@@ -12,8 +12,8 @@ nvram get wan0_ipaddr
 	修改查ip命令5默认指令(/koolshare/scripts/aliddns_update.sh) √
 	修改界面命令5(/koolshare/webs/Module_aliddns.asp) √
 阿里云解析
-Ali Access Key ID LTAI5tMA6ZeMo7zf9MoEniPv
-Ali Access Key Secret o3koSCiXlLAjaZnFoosSPK1OiWw9lG
+Ali Access Key ID 
+Ali Access Key Secret 
 需要授予 AliyunDNSFullAccess
 
 删除/jffs下的uu.tar.gz

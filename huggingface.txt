@@ -19,5 +19,5 @@ huggingface-cli download --repo-type dataset --resume-download --local-dir-use-s
 
 配置token：
 huggingface-cli login
---token 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
+--token hf_xxxx
 

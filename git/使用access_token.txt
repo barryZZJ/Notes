@@ -9,7 +9,7 @@ https://github.com/settings/tokens
 2. git登录：
 
 正常输入用户名，密码输入token：
-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
+ghp_xxx
 
 3. 长期存储token：
 git config --global credential.helper store
