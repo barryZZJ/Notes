@@ -1,0 +1,67 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2026-06-25T13:44:58+08:00
+
+====== Kubernetes ======
+Created 星期四 25 六月 2026
+
+https://kubernetes.io/zh-cn/docs/home/
+
+管理大量docker容器
+自动修复
+
+kubectl
+- get [all/pod/nodes/svc/deployment/namespace] 查看状态信息
+	get pod -o wide 查看ip地址
+	-n <namespace>
+- describe [service/deployment/pod...] <name> 查看详细信息
+- start / stop
+- run <name=nginx> --image=nginx  创建一个pod
+- create [service/deployment/ingress/configmap...]
+	create deployment <name> --image=nginx  -> 创建deployment，自动创建replicaset，自动创建pod
+	create -f <deploymentname>.yaml 根据yaml创建deployment 更常用
+- apply 
+	-f <deploymentname>.yaml 把配置文件创建/更新到集群中
+	-n <namespace> 命名空间隔离
+- edit deployment <name> 编辑配置文件
+- logs <podname> 查看日志
+- exec -it <podname> -- /bin/bash 接入pod的shell
+- delete [deployment/service...] <name>
+	delete -f <deploymentname>,yaml
+
+配置文件：
+.yaml
+
+配置service：
+kubectl create service <name> / 
+配置文件创建service / 
+kubectl expose deployment <name> 将已创建deployment公开为service
+
+Service类型：
+ClusterIP：默认，集群內部服务
+NodePort：公开到集群节点上
+LoadBalancer：负载均衡，公开到负载均衡器上
+ExternalName：CNAME映射到外部域名
+Headless：没有ClusterIP，用于DNS解析和服务发现
+
+命名空间：
+-n <namespace>
+隔离不同命名空间的资源，隔离项目或环境
+ get ns/namespace
+默认在default中
+
+搭建环境：
+minikube
+multipass + k3s
+
+核心组件：
+node：主机/虚拟机
+pod：容器运行单元
+deployment：组合并管理多个pod、无状态，副本控制、滚动更新、自动扩缩容
+StatefulSet：组合并管理多个pod、有状态（数据库、缓存），副本控制、滚动更新、自动扩缩容
+service（与一组pod通信）类型：ClusterIP（对集群内），NodePort（对集群外）
+ingress：管理外部到node内部的service的访问，类似nginx，配置转发规则、域名、负载均衡、SSL证书
+ConfigMap/Secret：配置文件
+Volumes：持久化存储
+Helm：包管理工具
+
