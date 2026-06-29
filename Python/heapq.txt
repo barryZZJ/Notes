@@ -1,0 +1,34 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2026-06-27T09:56:10+08:00
+
+====== heapq ======
+Created 星期六 27 六月 2026
+
+
+默认最小堆
+heap[k] <= heap[2*k+1] and heap[k] <= heap[2*k+2]
+
+heapq.heapify(list)  ： in-place 最小堆
+heapq.heappush(heap, item)
+heapq.heappop(heap) -> item  或  heap[0]访问最小值
+heapq.heappushpop(heap, item)  -> item 先push再pop，效率更高。相当于取最小元素和item中的min，返回值一定≤item
+heapq.heapreplace(heap, item) -> item 先pop再push，相当于替换掉当前最小元素，返回值可能比item大。
+
+上面所有函数加_max变成最大堆
+
+heapq.merge(*iterables, key:callable[item]->key=None, reverse=False) -> iterator  要求每个iterable都是从小到大排序
+heapq.nlargest(n, iterable, key=None) -> list
+heapq.nsmallest(n, iterable, key=None) -> list
+The latter two functions perform best for smaller values of n. For larger values, it is more efficient to use the sorted() function. Also, when n==1, it is more efficient to use the built-in min() and max() functions. If repeated usage of these functions is required, consider turning the iterable into an actual heap.
+
+h = [3,6,1,2,5,8,4]
+heapq.heapify(h)
+print(h)
+
+
+def heapsort(iterable):
+	h = []
+	for value in iterable:
+		heappush(h, value)
+	return [heappop(h) for i in range(len(h))]

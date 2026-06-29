@@ -32,6 +32,7 @@ HKEY_CLASSES_ROOT，找到对应后缀名，删掉二次展开项里的“ShellN
 
 * 文件右键菜单：
 HKEY_CLASSES_ROOT\*\shell （所有文件）
+HKEY_CLASSES_ROOT\AllFilesystemObjects\shell
 HKEY_CLASSES_ROOT\SystemFileAssociations\后缀名\shell （指定后缀名）
 {{.\1.png}}
 {{.\2.png}}

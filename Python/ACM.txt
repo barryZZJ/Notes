@@ -1,0 +1,19 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2026-06-27T10:39:28+08:00
+
+====== ACM ======
+Created 星期六 27 六月 2026
+
+
+# 输入一组数据并输出 
+str = input()
+print(str) # 不含\n
+
+
+
+# 输入多组数据并输出
+import sys 
+for line in sys.stdin: # 无限循环直到EOF
+  for value in line.split():
+	print(value)
