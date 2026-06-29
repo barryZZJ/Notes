@@ -11,7 +11,7 @@ https://www.bilibili.com/video/BV12z421C7hU
 需要premier用户才能使用LDAP插件
 =========================
 Authentik + outpost + scope
-实现在反代弹出前置验证，验证通过后302自动登录实际地址（而不是反代，没有中转开销，且反代只需要跑在本地）
+简介：用NPM反代至authentik前置认证页面，认证通过后自动向emby鉴权/注册用户，并302跳转至emby登录后的实际地址（而不是反代，没有中转开销，且反代只需要跑在本地）
 ！因为emby能直接通过query参数鉴权，因此可以这么搞。如果其他服务，需要用npm反代。！
 
 1. 给emby配置npm反代
