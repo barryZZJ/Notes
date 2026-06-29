@@ -51,9 +51,6 @@ Headless：没有ClusterIP，用于DNS解析和服务发现
  get ns/namespace
 默认在default中
 
-搭建环境：
-minikube
-multipass + k3s
 
 核心组件：
 node：主机/虚拟机

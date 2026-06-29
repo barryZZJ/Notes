@@ -1,0 +1,15 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2026-06-26T15:49:14+08:00
+
+====== 安装环境 ======
+Created 星期五 26 六月 2026
+
+搭建环境：
+minikube
+multipass + k3s
+
+minikube start  --image-mirror-country=cn  启动k8s集群
+	 stop | delete
+
+需要启动docker

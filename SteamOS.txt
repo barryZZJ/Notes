@@ -1,0 +1,18 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2026-06-27T15:32:32+08:00
+
+====== SteamOS ======
+Created 星期六 27 六月 2026
+
+不支持NVIDIA显卡！
+
+官方镜像：
+https://store.steampowered.com/steamos/
+https://help.steampowered.com/zh-cn/faqs/view/65B4-2AA3-5F37-4227
+
+双系统
+https://github.com/Josh5/steamos_dual_boot_installer_patch
+
+第三方安装说明
+https://www.reddit.com/r/SteamOS/comments/1t87883/how_to_install_oficial_steamos_on_a_pc_guide/
