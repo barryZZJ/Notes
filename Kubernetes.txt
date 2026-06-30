@@ -11,6 +11,17 @@ https://kubernetes.io/zh-cn/docs/home/
 管理大量docker容器
 自动修复
 
+核心组件：
+node：主机/虚拟机
+pod：容器运行单元
+deployment：组合并管理多个pod、无状态，副本控制、滚动更新、自动扩缩容
+StatefulSet：组合并管理多个pod、有状态（数据库、缓存），副本控制、滚动更新、自动扩缩容
+service（与一组pod通信）类型：ClusterIP（对集群内），NodePort（对集群外）
+ingress：管理外部到node内部的service的访问，类似nginx，配置转发规则、域名、负载均衡、SSL证书
+ConfigMap/Secret：配置文件
+Volumes：持久化存储
+Helm：包管理工具
+
 kubectl
 - get [all/pod/nodes/svc/deployment/namespace] 查看状态信息
 	get pod -o wide 查看ip地址
@@ -52,14 +63,5 @@ Headless：没有ClusterIP，用于DNS解析和服务发现
 默认在default中
 
 
-核心组件：
-node：主机/虚拟机
-pod：容器运行单元
-deployment：组合并管理多个pod、无状态，副本控制、滚动更新、自动扩缩容
-StatefulSet：组合并管理多个pod、有状态（数据库、缓存），副本控制、滚动更新、自动扩缩容
-service（与一组pod通信）类型：ClusterIP（对集群内），NodePort（对集群外）
-ingress：管理外部到node内部的service的访问，类似nginx，配置转发规则、域名、负载均衡、SSL证书
-ConfigMap/Secret：配置文件
-Volumes：持久化存储
-Helm：包管理工具
+
 

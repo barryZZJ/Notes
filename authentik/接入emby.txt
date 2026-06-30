@@ -14,7 +14,7 @@ Authentik + outpost + scope
 简介：用NPM反代至authentik前置认证页面，认证通过后自动向emby鉴权/注册用户，并302跳转至emby登录后的实际地址（而不是反代，没有中转开销，且反代只需要跑在本地）
 ！因为emby能直接通过query参数鉴权，因此可以这么搞。如果其他服务，需要用npm反代。！
 
-1. 给emby配置npm反代
+1. 给emby配置npm反代，增加前置authentik认证入口
 1.1 搭建npm [[Nginx Proxy Manager]]
 1.2 添加一条域名为 bjemby.auth.barryzzj.top 的反代服务，内部随便填，用不上
 （经测试，只能一个服务对应一个host，同一host的不同path在provider看来是同一个External Host，而且没法添加path进行区分，因为 proxy_set_header Host $http_host 头只能包含域名和端口）
@@ -33,8 +33,8 @@ Authentik + outpost + scope
 
 
 3. 配置authentik
-3.1 添加scope 提供用户名和密码
-（配置一个动态header便于反代获取用户名密码，然后在反代里进行登录）
+3.1 添加scope 提供用户名和密码 ( property mappings )
+（从authentik用户属性里读取用户名密码，配置一个动态header把用户名密码传给反代，然后在反代里进行登录。带注册功能的话首次会自动注册，并自动保存用户名密码到用户属性）
 	Customization - Property Mappings - Create - Scope Mapping
 	Name: Emby - bj access uri
 	Scope name: ak_proxy
@@ -84,6 +84,6 @@ Authentik + outpost + scope
 
 BUG：
 - 可能是emby历史认证与新认证不匹配的原因，会出现Access token is invalid or expired，导致登录不进去。需要先手动把emby的local storage清掉。
-- 也好像authentik会把emby uri给缓存下来，只有认证登录时才会重新去emby鉴权，解决：√改成npm内进行鉴权，保证每次登录都会重新获取最新的accesstoken（如果没过期就会获得一模一样的）。
+- （authentik的Token没有过期，自动登陆的时候，就不会触发内置的emby鉴权脚本）也好像authentik会把emby uri给缓存下来，只有认证登录时才会重新去emby鉴权，解决：√改成npm内进行鉴权，保证每次登录都会重新获取最新的accesstoken（如果没过期就会获得一模一样的）。
 	x让authentik的token的生命周期跟emby token的保持一致。（现在还不清楚emby token的失效时长）如果出现这个问题，先把local storage清空，然后把authentik的OAuthToken记录删掉、Session清空。
 - 有时会莫名其妙跳转失败，报internal server error，log也显示连接不上主机。尝试重启容器解决。
