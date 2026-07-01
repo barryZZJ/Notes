@@ -18,8 +18,8 @@ https://kubernetes.io/zh-cn/docs/home/
 - kube-scheduler：负责调度Pod，根据资源、亲和性、污点容忍、节点状态等条件，把Pod分配到合适节点。
 - kube-controller-manager：运行各种控制器，不断对比期望状态和实际状态，比如Deployment副本数不足时创建新Pod。
 2. Node组件
-kubelet：运行在每个节点上，负责和apiserver通信，拉起Pod，管理容器生命周期，上报节点和Pod状态。
-kube-proxy：负责Service网络转发，维护iptables或IPVS规则。
+kubelet：运行在每个node上的agent，负责和apiserver通信，启动容器。管理容器生命周期，上报节点和Pod状态。
+kube-proxy：network proxy that runs on each node in your cluster, 负责Service网络转发，维护iptables或IPVS规则。
 container runtime：容器运行时，如containerd、CRI-O，负责真正拉镜像、启动和停止容器。
 
 核心资源对象：
