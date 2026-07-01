@@ -16,52 +16,80 @@ node：主机/虚拟机
 pod：容器运行单元
 deployment：组合并管理多个pod、无状态，副本控制、滚动更新、自动扩缩容
 StatefulSet：组合并管理多个pod、有状态（数据库、缓存），副本控制、滚动更新、自动扩缩容
-service（与一组pod通信）类型：ClusterIP（对集群内），NodePort（对集群外）
+service（与一组pod通信）类型：ClusterIP（默认，从集群内访问），NodePort（从集群外访问）
 ingress：管理外部到node内部的service的访问，类似nginx，配置转发规则、域名、负载均衡、SSL证书
 ConfigMap/Secret：配置文件
 Volumes：持久化存储
 Helm：包管理工具
 
+minikube ssh 进入虚拟机node
+
 kubectl
-- get [all/pod/nodes/svc/deployment/namespace] 查看状态信息
+- get [all/pod/node/svc/deployment/namespace] 查看状态信息
 	get pod -o wide 查看ip地址
 	-n <namespace>
+- top 查看资源
 - describe [service/deployment/pod...] <name> 查看详细信息
-- start / stop
 - run <name=nginx> --image=nginx  创建一个pod
 - create [service/deployment/ingress/configmap...]
-	create deployment <name> --image=nginx  -> 创建deployment，自动创建replicaset，自动创建pod
-	create -f <deploymentname>.yaml 根据yaml创建deployment 更常用
 - apply 
 	-f <deploymentname>.yaml 把配置文件创建/更新到集群中
 	-n <namespace> 命名空间隔离
 - edit deployment <name> 编辑配置文件
 - logs <podname> 查看日志
-- exec -it <podname> -- /bin/bash 接入pod的shell
+- exec -it <podname> -- /bin/bash 接入pod的shell。 -- 后接命令
 - delete [deployment/service...] <name>
 	delete -f <deploymentname>,yaml
+
+-n, --namespace <namespace> 限制命名空间
+-l run=<label> 限制标签
 
 配置文件：
 .yaml
 
-配置service：
+Deployment：
+创建：
+create deployment <name> --image=nginx  -> 创建deployment，自动创建replicaset，自动创建pod
+create -f <deploymentname>.yaml 根据yaml创建deployment 更常用。一般通过label管理多个pod
+
+扩缩容：
+kubectl scale deployment my-nginx --replicas=0; kubectl scale deployment my-nginx --replicas=2;
+
+--------------------
+Service: https://kubernetes.io/zh-cn/docs/concepts/services-networking/service/
+与一组pod（deployment）通信
+targetPort：容器接收流量的端口；port： 可任意取值的抽象的 Service 端口，其他 Pod 通过该端口访问 Service
+服务查找方式：环境变量和DNS
+环境变量e.g.
+KUBERNETES_SERVICE_HOST=10.0.0.1
+KUBERNETES_SERVICE_PORT=443
+KUBERNETES_SERVICE_PORT_HTTPS=443
+MY_NGINX_SERVICE_HOST=10.0.162.149
+MY_NGINX_SERVICE_PORT=80
+
+配置service：https://kubernetes.io/zh-cn/docs/tutorials/services/connect-applications-service/
 kubectl create service <name> / 
 配置文件创建service / 
 kubectl expose deployment <name> 将已创建deployment公开为service
 
 Service类型：
-ClusterIP：默认，集群內部服务
+ClusterIP：默认，集群內部服务，可以在集群内访问
 NodePort：公开到集群节点上
 LoadBalancer：负载均衡，公开到负载均衡器上
 ExternalName：CNAME映射到外部域名
 Headless：没有ClusterIP，用于DNS解析和服务发现
 
-命名空间：
--n <namespace>
+--------------------
+命名空间namespace：
+-n, --namespace <namespace>
 隔离不同命名空间的资源，隔离项目或环境
  get ns/namespace
 默认在default中
 
+kubectl create namespace <name>
 
+cgroup: https://kubernetes.io/zh-cn/docs/concepts/architecture/cgroups/
+(control groups) linux内核功能
+负责资源限制和资源统计
 
 

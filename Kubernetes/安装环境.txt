@@ -13,3 +13,5 @@ minikube start  --image-mirror-country=cn  启动k8s集群
 	 stop | delete
 
 需要启动docker
+
+minikube ssh 进入虚拟机node

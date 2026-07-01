@@ -84,6 +84,6 @@ Authentik + outpost + scope
 
 BUG：
 - 可能是emby历史认证与新认证不匹配的原因，会出现Access token is invalid or expired，导致登录不进去。需要先手动把emby的local storage清掉。
-- （authentik的Token没有过期，自动登陆的时候，就不会触发内置的emby鉴权脚本）也好像authentik会把emby uri给缓存下来，只有认证登录时才会重新去emby鉴权，解决：√改成npm内进行鉴权，保证每次登录都会重新获取最新的accesstoken（如果没过期就会获得一模一样的）。
+- （authentik没有重新登陆的时候，就不会触发内置的emby鉴权脚本重新获取emby token，会直接使用之前缓存的emby token，导致emby token过期时不同步）也好像authentik会把emby uri给缓存下来，只有认证登录时才会重新去emby鉴权，解决：√改成npm内进行鉴权，保证每次登录都会重新获取最新的accesstoken（如果没过期就会获得一模一样的）。
 	x让authentik的token的生命周期跟emby token的保持一致。（现在还不清楚emby token的失效时长）如果出现这个问题，先把local storage清空，然后把authentik的OAuthToken记录删掉、Session清空。
 - 有时会莫名其妙跳转失败，报internal server error，log也显示连接不上主机。尝试重启容器解决。
