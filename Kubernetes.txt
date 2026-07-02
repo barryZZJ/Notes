@@ -18,14 +18,14 @@ https://kubernetes.io/zh-cn/docs/home/
 - kube-scheduler：负责调度Pod，根据资源、亲和性、污点容忍、节点状态等条件，把Pod分配到合适节点。
 - kube-controller-manager：运行各种控制器，不断对比期望状态和实际状态，比如Deployment副本数不足时创建新Pod。
 2. Node组件
-kubelet：运行在每个node上的agent，负责和apiserver通信，启动容器。管理容器生命周期，上报节点和Pod状态。
+kubelet：运行在每个node上的agent，负责和apiserver通信，管理容器生命周期，上报节点和Pod状态。
 kube-proxy：network proxy that runs on each node in your cluster, 负责Service网络转发，维护iptables或IPVS规则。
 container runtime：容器运行时，如containerd、CRI-O，负责真正拉镜像、启动和停止容器。
 
 核心资源对象：
 node：主机/虚拟机
 pod：容器运行单元
-deployment：组合并管理多个pod、无状态，副本控制、滚动更新、自动扩缩容
+deployment：组合并管理多个pod、无状态，副本控制、滚动更新（逐步替换旧Pod）、自动扩缩容
 StatefulSet：组合并管理多个pod、有状态（数据库、缓存），副本控制、滚动更新、自动扩缩容
 service（与一组pod通信）类型：ClusterIP（默认，从集群内访问），NodePort（从集群外访问）
 ingress：管理外部到node内部的service的访问，类似nginx，配置转发规则、域名、负载均衡、SSL证书
@@ -51,6 +51,11 @@ kubectl
 - exec -it <podname> -- /bin/bash 接入pod的shell。 -- 后接命令
 - delete [deployment/service...] <name>
 	delete -f <deploymentname>,yaml
+- rollout 
+	history deployment <name>
+	undo deployment <name>
+	status daemonset <name>
+	pause/resume/restart deployment <name>
 
 -n, --namespace <namespace> 限制命名空间
 -l run=<label> 限制标签
@@ -63,8 +68,12 @@ Deployment：
 create deployment <name> --image=nginx  -> 创建deployment，自动创建replicaset，自动创建pod
 create -f <deploymentname>.yaml 根据yaml创建deployment 更常用。一般通过label管理多个pod
 
-扩缩容：
-kubectl scale deployment my-nginx --replicas=0; kubectl scale deployment my-nginx --replicas=2;
+扩缩容：https://kubernetes.io/zh-cn/docs/concepts/workloads/autoscaling/
+手动：
+kubectl scale deployment my-nginx --replicas=<x>
+自动：
+HPA Horizontal Pod Autoscaler
+
 
 --------------------
 Service: https://kubernetes.io/zh-cn/docs/concepts/services-networking/service/
